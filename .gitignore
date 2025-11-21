@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# MacOS
+.DS_Store
+
+# Virtuelle Umgebung
+.venv/
+
+# Jupyter
+*.ipynb_checkpoints
+
+# Rohdaten nicht ins Repo
+Data/Raw/
