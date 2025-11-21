@@ -92,27 +92,18 @@ def assess_diff(diff: float) -> str:
         return "around squad level"
     
 def get_primary_score_and_band(row):
-    """
-    Return the primary score and band for a player based on their position.
-    FW / Off_MF -> Offensive score
-    MF          -> Midfield score
-    DF / Def_MF -> Defensive score
-    """
     pos = row.get("Pos")
 
-    if pos in ("FW", "Off_MF"):
+    if pos == "FW":
         return row.get("OffScore_abs"), row.get("OffBand")
 
     if pos == "MF":
         return row.get("MidScore_abs"), row.get("MidBand")
 
-    if pos in ("DF", "Def_MF"):
+    if pos == "DF":
         return row.get("DefScore_abs"), row.get("DefBand")
 
-    # Fallback (e.g. GK oder unbekannt)
     return float("nan"), None
-
-
 
 
 def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
@@ -219,6 +210,18 @@ def main():
 )
 
     df_all, df_agg, df_squad = load_data()
+
+    # ---- Simplify positions to FW / MF / DF ----
+    pos_map = {
+        "FW": "FW",
+        "Off_MF": "MF",
+        "MF": "MF",
+        "Def_MF": "MF",
+        "DF": "DF",
+    }
+
+    df_all["Pos"] = df_all["Pos"].map(pos_map).fillna(df_all["Pos"])
+
 
     if df_all.empty:
         st.info("No processed data found yet. Run the pipeline locally and push the CSVs or Kaggle sync.")
