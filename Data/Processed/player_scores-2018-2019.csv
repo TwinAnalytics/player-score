@@ -1,8 +1,10 @@
 Player,Squad,Comp,Pos,Age,Min,90s,OffScore_abs,OffBand,MidScore_abs,MidBand,DefScore_abs,DefBand
+Ismael Aaneba,Strasbourg,fr Ligue 1,DF,19,204,2.3,,,,,628.2052958483166,Top Starter
 Patrick van Aanholt,Crystal Palace,eng Premier League,DF,27,3195,35.5,,,,,291.99496393566073,Solid Squad Player
 Ignazio Abate,Milan,it Serie A,DF,31,1302,14.5,,,,,382.56883588281045,Solid Squad Player
 Yunis Abdelhamid,Reims,fr Ligue 1,DF,30,3420,38.0,,,,,438.74688315685546,Top Starter
 Mehdi Abeid,Dijon,fr Ligue 1,MF,25,2023,22.5,,,334.93333333333334,Solid Squad Player,,
+Charles Abi,Saint-Étienne,fr Ligue 1,FW,18,32,0.4,239.4591836734694,Solid Squad Player,,,,
 David Abraham,Eint Frankfurt,de Bundesliga,DF,32,1420,15.8,,,,,412.3938538328944,Top Starter
 Amir Abrashi,Freiburg,de Bundesliga,MF,28,790,8.8,,,149.24242424242422,Below Big-5 Level,,
 Francesco Acerbi,Lazio,it Serie A,DF,30,3309,36.8,,,,,437.058951727144,Top Starter
@@ -10,22 +12,31 @@ Afriyie Acquah,Empoli,it Serie A,Off_MF,26,1510,16.8,197.84735449735453,Below Bi
 Tyler Adams,RB Leipzig,de Bundesliga,MF,19,721,8.0,,,533.3333333333334,Top Starter,,
 Aday,Girona,es La Liga,MF,30,645,7.2,,,639.5925925925926,Top Starter,,
 Khaled Adénon,Amiens,fr Ligue 1,DF,33,1994,22.2,,,,,400.337781390413,Top Starter
+Claud Adjapong,Sassuolo,it Serie A,FW,20,270,3.0,260.35991433610485,Solid Squad Player,,,,
+Yacine Adli,Bordeaux,fr Ligue 1,Off_MF,18,216,2.4,253.96851851851855,Solid Squad Player,,,,
+Ali Adnan Kadhim,Atalanta,it Serie A,DF,24,166,1.8,,,,,314.0220922677063,Solid Squad Player
 Aritz Aduriz,Athletic Club,es La Liga,FW,37,943,10.5,225.75117877838963,Solid Squad Player,,,,
 Luis Advíncula,Rayo Vallecano,es La Liga,DF,28,2389,26.5,,,,,286.67744833782564,Solid Squad Player
 Martin Agirregabiria,Alavés,es La Liga,DF,22,2032,22.6,,,,,364.40156438293366,Solid Squad Player
 Nayef Aguerd,Dijon,fr Ligue 1,DF,22,1050,11.7,,,,,430.2471277909874,Top Starter
 Sergio Agüero,Manchester City,eng Premier League,FW,30,2459,27.3,703.1862317576604,Top Starter,,,,
 Ruben Aguilar,Montpellier,fr Ligue 1,DF,25,2528,28.1,,,,,321.8192575150806,Solid Squad Player
+Juan Aguilera,Huesca,es La Liga,MF,32,344,3.8,,,197.36842105263156,Below Big-5 Level,,
+Emmanuel Agyemang-Badu,Udinese,it Serie A,MF,27,161,1.8,,,144.66666666666666,Below Big-5 Level,,
 Jean-Eudes Aholou,Monaco,fr Ligue 1,MF,24,1075,11.9,,,362.40896358543415,Solid Squad Player,,
+Antonis Aidonis,Stuttgart,de Bundesliga,DF,17,80,0.9,,,,,326.1088748808047,Solid Squad Player
 Ola Aina,Torino,it Serie A,DF,21,2160,24.0,,,,,365.51016429963795,Solid Squad Player
 Youssef Aït Bennasser,Saint-Étienne,fr Ligue 1,MF,22,936,10.4,,,266.1538461538462,Solid Squad Player,,
 Youssef Aït Bennasser,Monaco,fr Ligue 1,MF,22,1073,11.9,,,454.1176470588236,Top Starter,,
+Rayan Aït-Nouri,Angers,fr Ligue 1,MF,17,57,0.6,,,250.0,Solid Squad Player,,
 Ludovic Ajorque,Strasbourg,fr Ligue 1,FW,24,1531,17.0,396.0364145658263,Solid Squad Player,,,,
 Manuel Akanji,Dortmund,de Bundesliga,DF,23,2205,24.5,,,,,352.54612722281894,Solid Squad Player
 Carlos Akapo,Huesca,es La Liga,DF,25,1023,11.4,,,,,389.30308226707115,Solid Squad Player
 Nathan Aké,Bournemouth,eng Premier League,DF,23,3411,37.9,,,,,424.8970551428543,Top Starter
+Sergio Akieme,Rayo Vallecano,es La Liga,DF,20,180,2.0,,,,,235.328320802005,Solid Squad Player
 Chadrac Akolo,Stuttgart,de Bundesliga,FW,23,525,5.8,184.678864649308,Below Big-5 Level,,,,
 Kevin Akpoguma,Hoffenheim,de Bundesliga,DF,23,499,5.5,,,,,637.2075643654591,Top Starter
+Kevin Akpoguma,Hannover 96,de Bundesliga,DF,23,313,3.5,,,,,508.74233202052744,Top Starter
 David Alaba,Bayern Munich,de Bundesliga,DF,26,2530,28.1,,,,,249.34554654726966,Solid Squad Player
 Sofiane Alakouch,Nîmes,fr Ligue 1,DF,20,1895,21.1,,,,,403.1437202801632,Top Starter
 Lucas Alario,Leverkusen,de Bundesliga,FW,25,1265,14.1,532.6901625898588,Top Starter,,,,
@@ -39,10 +50,16 @@ Pedro Alcalá,Girona,es La Liga,DF,29,1868,20.8,,,,,459.0535780009464,Top Starte
 Thiago Alcántara,Bayern Munich,de Bundesliga,MF,27,2408,26.8,,,629.3283582089553,Top Starter,,
 Rubén Alcaraz,Valladolid,es La Liga,MF,27,2976,33.1,,,318.32829808660625,Solid Squad Player,,
 Toby Alderweireld,Tottenham,eng Premier League,DF,29,2922,32.5,,,,,397.5115223957329,Solid Squad Player
+Álex Alegría,Rayo Vallecano,es La Liga,FW,25,140,1.6,189.33673469387753,Below Big-5 Level,,,,
+Alexis Alegue,Nantes,fr Ligue 1,FW,21,5,0.1,0.0,Below Big-5 Level,,,,
+Iván Alejo,Getafe,es La Liga,Off_MF,23,146,1.6,131.20000000000002,Below Big-5 Level,,,,
 Carles Aleñá,Barcelona,es La Liga,MF,20,637,7.1,,,481.4084507042254,Top Starter,,
+Alexander,Leganés,es La Liga,FW,29,10,0.1,0.0,Below Big-5 Level,,,,
 Trent Alexander-Arnold,Liverpool,eng Premier League,DF,19,2462,27.4,,,,,311.5130892925745,Solid Squad Player
+Alfonso,Hoffenheim,de Bundesliga,Off_MF,18,9,0.1,180.0,Below Big-5 Level,,,,
 Rachid Alioui,Nîmes,fr Ligue 1,FW,26,1252,13.9,373.08217643572215,Solid Squad Player,,,,
 Allan,Napoli,it Serie A,MF,27,2616,29.1,,,465.5670103092783,Top Starter,,
+Allan,Eint Frankfurt,de Bundesliga,MF,21,176,2.0,,,205.00000000000003,Solid Squad Player,,
 Dele Alli,Tottenham,eng Premier League,Off_MF,22,1825,20.3,375.51368754398305,Solid Squad Player,,,,
 Miguel Almirón,Newcastle Utd,eng Premier League,Off_MF,24,759,8.4,207.0601851851852,Solid Squad Player,,,,
 Júnior Alonso,Celta Vigo,es La Liga,MF,25,536,6.0,,,254.44444444444443,Solid Squad Player,,
@@ -64,28 +81,34 @@ Joachim Andersen,Sampdoria,it Serie A,DF,22,2880,32.0,,,,,390.8402255639097,Soli
 Felipe Anderson,West Ham,eng Premier League,FW,25,3043,33.8,369.14623837700753,Solid Squad Player,,,,
 Florin Andone,Brighton,eng Premier League,FW,25,881,9.8,235.8598269239668,Solid Squad Player,,,,
 Benjamin André,Rennes,fr Ligue 1,MF,27,2495,27.7,,,352.53910950661856,Solid Squad Player,,
+Marco Andreolli,Cagliari,it Serie A,DF,32,106,1.2,,,,,413.37788916736287,Top Starter
 Marco Andreolli,Chievo,it Serie A,DF,32,646,7.2,,,,,317.5128899690302,Solid Squad Player
 José Ángel,Eibar,es La Liga,DF,28,3028,33.6,,,,,318.3418864621871,Solid Squad Player
 Cristian Ansaldi,Torino,it Serie A,Off_MF,31,1807,20.1,302.29652925846943,Solid Squad Player,,,,
 Mirco Antenucci,SPAL,it Serie A,FW,33,2133,23.7,248.97099833838834,Solid Squad Player,,,,
 Waldemar Anton,Hannover 96,de Bundesliga,DF,22,3060,34.0,,,,,498.2410929283993,Top Starter
 Luca Antonelli,Empoli,it Serie A,DF,31,755,8.4,,,,,462.0973067589608,Top Starter
+Mauro Antonio Burruchaga,Chievo,it Serie A,MF,20,58,0.6,,,157.7777777777778,Below Big-5 Level,,
 Michail Antonio,West Ham,eng Premier League,FW,28,2103,23.4,357.22749384654145,Solid Squad Player,,,,
 Antoñito,Valladolid,es La Liga,MF,30,1863,20.7,,,377.3397745571658,Solid Squad Player,,
 Vitorino Antunes,Getafe,es La Liga,MF,31,2181,24.2,,,452.72727272727263,Top Starter,,
 Anuar,Valladolid,es La Liga,FW,23,1081,12.0,136.57835726883346,Below Big-5 Level,,,,
 Dennis Aogo,Stuttgart,de Bundesliga,MF,31,1025,11.4,,,324.6783625730994,Solid Squad Player,,
 Houssem Aouar,Lyon,fr Ligue 1,MF,20,3061,34.0,,,621.0392156862745,Top Starter,,
+Emmanuel Apeh,Celta Vigo,es La Liga,FW,21,14,0.2,95.23809523809523,Below Big-5 Level,,,,
 Mauro Arambarri,Getafe,es La Liga,MF,22,2676,29.7,,,265.324354657688,Solid Squad Player,,
 Guilherme Arana,Sevilla,es La Liga,DF,21,629,7.0,,,,,262.19861341665853,Solid Squad Player
 Charles Aránguiz,Leverkusen,de Bundesliga,MF,29,1891,21.0,,,689.0476190476192,Top Starter,,
 Luiz Araújo,Lille,fr Ligue 1,FW,22,781,8.7,411.71038913649755,Top Starter,,,,
 Néstor Araujo,Celta Vigo,es La Liga,DF,26,2682,29.8,,,,,400.092625299266,Top Starter
 Anaitz Arbilla,Eibar,es La Liga,DF,31,1950,21.7,,,,,386.9760422561781,Solid Squad Player
+Joaquín Ardaiz,Frosinone,it Serie A,FW,19,20,0.2,0.0,Below Big-5 Level,,,,
 Santiago Arias,Atlético Madrid,es La Liga,DF,26,1772,19.7,,,,,339.6168933331637,Solid Squad Player
 Lorenzo Ariaudo,Frosinone,it Serie A,DF,29,1682,18.7,,,,,402.2938889924536,Top Starter
+Nicolò Armini,Lazio,it Serie A,DF,17,38,0.4,,,,,357.46031746031747,Solid Squad Player
 Yoël Armougom,Caen,fr Ligue 1,DF,20,1853,20.6,,,,,264.4958675004663,Solid Squad Player
 Stuart Armstrong,Southampton,eng Premier League,Off_MF,26,1432,15.9,329.26785215134277,Solid Squad Player,,,,
+José Arnaiz,Leganés,es La Liga,FW,23,113,1.3,98.3359497645212,Below Big-5 Level,,,,
 Marko Arnautović,West Ham,eng Premier League,FW,29,1990,22.1,468.7672060277102,Top Starter,,,,
 Maximilian Arnold,Wolfsburg,de Bundesliga,MF,24,2872,31.9,,,517.5548589341693,Top Starter,,
 Harry Arter,Cardiff City,eng Premier League,MF,28,1997,22.2,,,228.97897897897897,Solid Squad Player,,
@@ -94,6 +117,7 @@ Takuma Asano,Hannover 96,de Bundesliga,FW,23,699,7.8,115.59052851909998,Below Bi
 Santiago Ascacíbar,Stuttgart,de Bundesliga,MF,21,2428,27.0,,,207.7283950617284,Solid Squad Player,,
 Marco Asensio,Real Madrid,es La Liga,FW,22,1779,19.8,298.4135993342343,Solid Squad Player,,,,
 Iago Aspas,Celta Vigo,es La Liga,FW,30,2251,25.0,697.8352229780802,Top Starter,,,,
+Simon Asta,Augsburg,de Bundesliga,DF,17,90,1.0,,,,,553.4302422723475,Top Starter
 Youcef Atal,Nice,fr Ligue 1,FW,22,2263,25.1,272.96126604692347,Solid Squad Player,,,,
 Christian Atsu,Newcastle Utd,eng Premier League,Off_MF,26,1493,16.6,180.2447121820616,Below Big-5 Level,,,,
 Pierre-Emerick Aubameyang,Arsenal,eng Premier League,FW,29,2726,30.3,647.5012659996157,Top Starter,,,,
@@ -107,6 +131,7 @@ Kaan Ayhan,Düsseldorf,de Bundesliga,DF,23,2449,27.2,,,,,476.99272691532747,Top 
 Floyd Ayité,Fulham,eng Premier League,FW,29,476,5.3,234.85794149945096,Solid Squad Player,,,,
 César Azpilicueta,Chelsea,eng Premier League,DF,28,3402,37.8,,,,,381.43648362528893,Solid Squad Player
 Abdoulaye Ba,Rayo Vallecano,es La Liga,DF,27,2110,23.4,,,,,485.70704149651516,Top Starter
+Ludovic Baal,Rennes,fr Ligue 1,DF,32,126,1.4,,,,,332.0491705454112,Solid Squad Player
 Khouma Babacar,Sassuolo,it Serie A,FW,25,1488,16.5,401.7857371904991,Top Starter,,,,
 Ryan Babel,Fulham,eng Premier League,FW,31,1251,13.9,443.48573929971667,Top Starter,,,,
 Carlos Bacca,Villarreal,es La Liga,FW,31,1270,14.1,394.94889918142206,Solid Squad Player,,,,
@@ -119,6 +144,7 @@ Stéphane Bahoken,Angers,fr Ligue 1,FW,26,2469,27.4,344.205507831681,Solid Squad
 Daniel Baier,Augsburg,de Bundesliga,MF,34,2815,31.3,,,301.3631522896699,Solid Squad Player,,
 Leon Bailey,Leverkusen,de Bundesliga,FW,20,1914,21.3,359.55001792057453,Solid Squad Player,,,,
 Eric Bailly,Manchester Utd,eng Premier League,DF,24,638,7.1,,,,,485.2130325814537,Top Starter
+Leighton Baines,Everton,eng Premier League,DF,33,375,4.2,,,,,234.7646895015316,Solid Squad Player
 Marvin Bakalorz,Hannover 96,de Bundesliga,MF,28,1470,16.3,,,188.45807770961144,Below Big-5 Level,,
 Tiemoué Bakayoko,Milan,it Serie A,MF,23,2301,25.6,,,362.13541666666663,Solid Squad Player,,
 Ridle Baku,Mainz 05,de Bundesliga,MF,20,937,10.4,,,249.55128205128204,Solid Squad Player,,
@@ -126,6 +152,7 @@ Fabián Balbuena,West Ham,eng Premier League,DF,26,2013,22.4,,,,,513.88037192548
 Keita Baldé,Inter,it Serie A,FW,23,889,9.9,559.7135374913154,Top Starter,,,,
 Gareth Bale,Real Madrid,es La Liga,FW,29,1786,19.8,459.39228261450484,Top Starter,,,,
 Mikel Balenziaga,Athletic Club,es La Liga,DF,30,523,5.8,,,,,276.75625846224756,Solid Squad Player
+Andrija Balić,Udinese,it Serie A,FW,20,27,0.3,189.31859410430837,Below Big-5 Level,,,,
 Fodé Ballo-Touré,Lille,fr Ligue 1,DF,21,1593,17.7,,,,,389.0332233597175,Solid Squad Player
 Fodé Ballo-Touré,Monaco,fr Ligue 1,DF,21,1594,17.7,,,,,352.11758209082024,Solid Squad Player
 Florent Balmont,Dijon,fr Ligue 1,MF,38,1076,12.0,,,448.0555555555556,Top Starter,,
@@ -139,6 +166,7 @@ Yacine Bammou,Caen,fr Ligue 1,FW,26,923,10.3,176.56670262495498,Below Big-5 Leve
 Éver Banega,Sevilla,es La Liga,MF,30,2667,29.6,,,630.7657657657659,Top Starter,,
 Mattia Bani,Chievo,it Serie A,DF,24,2610,29.0,,,,,531.6411404687267,Top Starter
 Léo Baptistão,Espanyol,es La Liga,FW,25,1233,13.7,312.11172076291996,Solid Squad Player,,,,
+Antonín Barák,Udinese,it Serie A,FW,23,329,3.7,88.31522338665195,Below Big-5 Level,,,,
 Federico Barba,Chievo,it Serie A,DF,24,2483,27.6,,,,,425.6515685348637,Top Starter
 Danilo Barbosa,Nice,fr Ligue 1,MF,22,1548,17.2,,,257.09302325581393,Solid Squad Player,,
 Enis Bardhi,Levante,es La Liga,MF,23,2836,31.5,,,438.3915343915344,Top Starter,,
@@ -151,12 +179,18 @@ Aymen Barkok,Düsseldorf,de Bundesliga,MF,20,510,5.7,,,247.01754385964912,Solid 
 Ashley Barnes,Burnley,eng Premier League,FW,28,2388,26.5,419.54509476746676,Top Starter,,,,
 Harvey Barnes,Leicester City,eng Premier League,FW,20,1004,11.2,329.59950329338085,Solid Squad Player,,,,
 Antonio Barragán,Betis,es La Liga,FW,31,934,10.4,87.89560439560438,Below Big-5 Level,,,,
+Antonio Barreca,Newcastle Utd,eng Premier League,DF,23,5,0.1,,,,,34.63203463203463,Below Big-5 Level
 Antonio Barreca,Monaco,fr Ligue 1,DF,23,593,6.6,,,,,268.14713551555656,Solid Squad Player
+Leandro Barreiro Martins,Mainz 05,de Bundesliga,MF,18,90,1.0,,,270.53333333333336,Solid Squad Player,,
+Ander Barrenetxea,Real Sociedad,es La Liga,FW,16,399,4.4,242.98024462310175,Solid Squad Player,,,,
 Édgar Barreto,Sampdoria,it Serie A,MF,34,785,8.7,,,534.5593869731802,Top Starter,,
 Musa Barrow,Atalanta,it Serie A,FW,19,601,6.7,454.7854830157602,Top Starter,,,,
+Fin Bartels,Werder Bremen,de Bundesliga,FW,31,23,0.3,54.421768707483,Below Big-5 Level,,,,
 Marc Bartra,Betis,es La Liga,DF,27,2928,32.5,,,,,500.33802454855083,Top Starter
+Andrea Barzagli,Juventus,it Serie A,DF,37,260,2.9,,,,,319.7672341773975,Solid Squad Player
 Daniele Baselli,Torino,it Serie A,MF,26,2379,26.4,,,478.6111111111112,Top Starter,,
 Toma Bašić,Bordeaux,fr Ligue 1,MF,21,1333,14.8,,,378.78378378378375,Solid Squad Player,,
+Thomas Basila,Nantes,fr Ligue 1,DF,19,92,1.0,,,,,396.61760461760457,Solid Squad Player
 Borja Bastón,Alavés,es La Liga,FW,25,1439,16.0,296.7955404383975,Solid Squad Player,,,,
 Alessandro Bastoni,Parma,it Serie A,DF,19,1690,18.8,,,,,399.30790871440365,Solid Squad Player
 Bastos,Lazio,it Serie A,DF,27,1139,12.7,,,,,350.6256454785257,Solid Squad Player
@@ -165,11 +199,16 @@ Michy Batshuayi,Valencia,es La Liga,FW,24,527,5.9,257.926579294618,Solid Squad P
 Robert Bauer,Nürnberg,de Bundesliga,DF,23,1722,19.1,,,,,399.7592585302698,Solid Squad Player
 Timo Baumgartl,Stuttgart,de Bundesliga,DF,22,1620,18.0,,,,,488.93084563260004,Top Starter
 Julian Baumgartlinger,Leverkusen,de Bundesliga,MF,30,1559,17.3,,,319.84585741811173,Solid Squad Player,,
+Christoph Baumgartner,Hoffenheim,de Bundesliga,MF,18,85,0.9,,,257.77777777777777,Solid Squad Player,,
 Jon Bautista,Real Sociedad,es La Liga,FW,23,597,6.6,234.57103919008685,Solid Squad Player,,,,
+Paul Baysse,Bordeaux,fr Ligue 1,DF,30,74,0.8,,,,,409.74937343358397,Top Starter
 Paul Baysse,Caen,fr Ligue 1,DF,30,1788,19.9,,,,,437.0745960378332,Top Starter
+Noah Joel Sarenren Bazee,Hannover 96,de Bundesliga,FW,21,155,1.7,132.35894357743098,Below Big-5 Level,,,,
 Claudio Beauvue,Caen,fr Ligue 1,FW,30,1499,16.7,226.7444566649015,Solid Squad Player,,,,
 Bebé,Rayo Vallecano,es La Liga,FW,28,1302,14.5,255.53423514999864,Solid Squad Player,,,,
+Bebé,Eibar,es La Liga,Off_MF,28,62,0.7,221.03174603174602,Solid Squad Player,,,,
 Ihlas Bebou,Hannover 96,de Bundesliga,FW,24,1066,11.8,449.56975031067043,Top Starter,,,,
+Uffe Bech,Hannover 96,de Bundesliga,FW,25,19,0.2,224.48979591836738,Solid Squad Player,,,,
 Andreas Beck,Stuttgart,de Bundesliga,DF,31,1776,19.7,,,,,340.0290913408733,Solid Squad Player
 Jan Bednarek,Southampton,eng Premier League,DF,22,2151,23.9,,,,,593.0790714582831,Top Starter
 Andrea Beghetto,Frosinone,it Serie A,DF,23,2226,24.7,,,,,234.41528616043848,Solid Squad Player
@@ -179,6 +218,7 @@ Ishak Belfodil,Hoffenheim,de Bundesliga,FW,26,1863,20.7,659.1149086580419,Top St
 Stefan Bell,Mainz 05,de Bundesliga,DF,26,2250,25.0,,,,,452.87485380116965,Top Starter
 Karim Bellarabi,Leverkusen,de Bundesliga,FW,28,1057,11.7,544.9087802262405,Top Starter,,,,
 Héctor Bellerín,Arsenal,eng Premier League,DF,23,1533,17.0,,,,,286.22536733991836,Solid Squad Player
+Nicky Beloko,Fiorentina,it Serie A,FW,18,45,0.5,0.0,Below Big-5 Level,,,,
 Andrea Belotti,Torino,it Serie A,FW,24,3299,36.7,417.05297286943846,Top Starter,,,,
 Fran Beltrán,Celta Vigo,es La Liga,MF,19,1517,16.9,,,250.01972386587772,Solid Squad Player,,
 Hatem Ben Arfa,Rennes,fr Ligue 1,FW,31,2033,22.6,403.7494899631435,Top Starter,,,,
@@ -187,51 +227,66 @@ Marco Benassi,Fiorentina,it Serie A,Off_MF,23,2282,25.4,331.25648981377327,Solid
 Medhi Benatia,Juventus,it Serie A,DF,31,450,5.0,,,,,581.4028404344193,Top Starter
 Lars Bender,Leverkusen,de Bundesliga,MF,29,1361,15.1,,,531.0816777041944,Top Starter,,
 Sven Bender,Leverkusen,de Bundesliga,DF,29,1991,22.1,,,,,492.96786460873136,Top Starter
+László Bénes,Gladbach,de Bundesliga,FW,20,27,0.3,22.675736961451246,Below Big-5 Level,,,,
 Nicolas Benezet,Guingamp,fr Ligue 1,FW,27,1666,18.5,308.45207452350314,Solid Squad Player,,,,
 Ismaël Bennacer,Empoli,it Serie A,MF,20,2961,32.9,,,445.49138804457954,Top Starter,,
 Joe Bennett,Cardiff City,eng Premier League,DF,28,2639,29.3,,,,,373.19460612437075,Solid Squad Player
 Ryan Bennett,Wolves,eng Premier League,DF,28,3060,34.0,,,,,371.4401690500761,Solid Squad Player
+Yassine Benrahou,Bordeaux,fr Ligue 1,FW,19,177,2.0,160.22108843537416,Below Big-5 Level,,,,
 Ramy Bensebaini,Rennes,fr Ligue 1,DF,23,2152,23.9,,,,,424.027432598232,Top Starter
 Nabil Bentaleb,Schalke 04,de Bundesliga,MF,23,1792,19.9,,,329.81574539363487,Solid Squad Player,,
 Rodrigo Bentancur,Juventus,it Serie A,MF,21,2003,22.3,,,458.6547085201794,Top Starter,,
 Christian Benteke,Crystal Palace,eng Premier League,FW,27,814,9.0,252.63168724279834,Solid Squad Player,,,,
 Karim Benzema,Real Madrid,es La Liga,FW,30,2953,32.8,605.0775399590731,Top Starter,,,,
+Yassine Benzia,Lille,fr Ligue 1,MF,23,160,1.8,,,804.4444444444446,World Class,,
 Domenico Berardi,Sassuolo,it Serie A,FW,23,2875,31.9,381.08537047699616,Solid Squad Player,,,,
 Yuri Berchiche,Athletic Club,es La Liga,FW,28,3120,34.7,130.31199287271744,Below Big-5 Level,,,,
 Álex Berenguer,Torino,it Serie A,Off_MF,23,1486,16.5,305.0940115440115,Solid Squad Player,,,,
 Bartosz Bereszyński,Sampdoria,it Serie A,DF,26,2200,24.4,,,,,332.9484914471972,Solid Squad Player
 Jóhann Berg Guðmundsson,Burnley,eng Premier League,Off_MF,27,1752,19.5,355.4056776556777,Solid Squad Player,,,,
+Markel Bergara,Getafe,es La Liga,MF,32,53,0.6,,,173.33333333333337,Below Big-5 Level,,
 Robert Berić,Saint-Étienne,fr Ligue 1,FW,27,1175,13.1,524.1746118294647,Top Starter,,,,
+Valon Berisha,Lazio,it Serie A,FW,25,198,2.2,129.373840445269,Below Big-5 Level,,,,
 Bernard,Everton,eng Premier League,FW,25,2116,23.5,221.13553979511428,Solid Squad Player,,,,
 Federico Bernardeschi,Juventus,it Serie A,FW,24,1473,16.4,338.7093265490478,Solid Squad Player,,,,
 Bernardo,Brighton,eng Premier League,DF,23,1752,19.5,,,,,489.59424201529464,Top Starter
 Juan Bernat,Paris S-G,fr Ligue 1,MF,25,1836,20.4,,,408.7581699346406,Top Starter,,
+Antoine Bernede,Paris S-G,fr Ligue 1,MF,19,169,1.9,,,292.6315789473684,Solid Squad Player,,
 Ryan Bertrand,Southampton,eng Premier League,DF,28,2160,24.0,,,,,307.2211083263714,Solid Squad Player
 Daniel Bessa,Genoa,it Serie A,Off_MF,25,2441,27.1,233.05697299830138,Solid Squad Player,,,,
 Jordan Beyer,Gladbach,de Bundesliga,DF,18,720,8.0,,,,,482.5497076023393,Top Starter
 Jonathan Biabiany,Parma,it Serie A,FW,30,1069,11.9,83.05064883096095,Below Big-5 Level,,,,
+Giulian Biancone,Monaco,fr Ligue 1,DF,18,90,1.0,,,,,469.11278195488717,Top Starter
 Ermin Bičakčić,Hoffenheim,de Bundesliga,DF,28,1790,19.9,,,,,521.1299605798416,Top Starter
 Pedro Bigas,Eibar,es La Liga,DF,27,585,6.5,,,,,300.54932202300625,Solid Squad Player
 Lucas Biglia,Milan,it Serie A,MF,32,1114,12.4,,,304.1397849462366,Solid Squad Player,,
 Philip Billing,Huddersfield,eng Premier League,MF,22,2188,24.3,,,321.0699588477366,Solid Squad Player,,
 Cristiano Biraghi,Fiorentina,it Serie A,DF,25,3194,35.5,,,,,328.8871945121018,Solid Squad Player
 Davide Biraschi,Genoa,it Serie A,DF,24,2841,31.6,,,,,391.2917314383003,Solid Squad Player
+Valter Birsa,Cagliari,it Serie A,FW,31,353,3.9,222.10186638758069,Solid Squad Player,,,,
 Valter Birsa,Chievo,it Serie A,FW,31,1101,12.2,315.45508221503536,Solid Squad Player,,,,
 Yves Bissouma,Brighton,eng Premier League,MF,21,1774,19.7,,,283.24873096446703,Solid Squad Player,,
 Leonardo Bittencourt,Hoffenheim,de Bundesliga,Off_MF,24,1069,11.9,367.12862478324666,Solid Squad Player,,,,
+Alejandro Blanco,Alavés,es La Liga,FW,19,16,0.2,0.0,Below Big-5 Level,,,,
 Ludovic Blas,Guingamp,fr Ligue 1,FW,20,2372,26.4,210.89811951716717,Solid Squad Player,,,,
 Pablo de Blasis,Eibar,es La Liga,Off_MF,30,1520,16.9,204.7238494411571,Solid Squad Player,,,,
+Pablo de Blasis,Mainz 05,de Bundesliga,FW,30,90,1.0,81.9727891156463,Below Big-5 Level,,,,
 Alexis Blin,Amiens,fr Ligue 1,MF,21,1990,22.1,,,223.19758672699848,Solid Squad Player,,
 Emmanuel Boateng,Levante,es La Liga,FW,22,699,7.8,135.42806752330563,Below Big-5 Level,,,,
 Jérôme Boateng,Bayern Munich,de Bundesliga,DF,29,1693,18.8,,,,,310.3581649158357,Solid Squad Player
 Kevin-Prince Boateng,Sassuolo,it Serie A,FW,31,938,10.4,386.2828943543228,Solid Squad Player,,,,
+Kevin-Prince Boateng,Barcelona,es La Liga,FW,31,239,2.7,65.10443436633912,Below Big-5 Level,,,,
 Antonin Bobichon,Nîmes,fr Ligue 1,MF,22,2153,23.9,,,445.55090655509065,Top Starter,,
+Yann Bodiger,Toulouse,fr Ligue 1,MF,23,13,0.1,,,200.0,Solid Squad Player,,
 Mathieu Bodmer,Amiens,fr Ligue 1,FW,35,1073,11.9,168.14667136695948,Below Big-5 Level,,,,
 Adam Bodzek,Düsseldorf,de Bundesliga,Def_MF,32,1596,17.7,,,,,391.96784846748,Solid Squad Player
 Jean-Paul Boëtius,Mainz 05,de Bundesliga,Off_MF,24,2127,23.6,347.2379943502825,Solid Squad Player,,,,
+Sacha Boey,Rennes,fr Ligue 1,DF,17,14,0.2,,,,,38.095238095238095,Below Big-5 Level
 Jeremie Boga,Sassuolo,it Serie A,FW,21,1443,16.0,260.0725623582767,Solid Squad Player,,,,
 Willy Boly,Wolves,eng Premier League,DF,27,3167,35.2,,,,,495.83086504139135,Top Starter
+Léo Bonatini,Wolves,eng Premier League,FW,24,135,1.5,466.24489795918356,Top Starter,,,,
 Giacomo Bonaventura,Milan,it Serie A,Off_MF,28,646,7.2,515.4772927689594,Top Starter,,,,
+Daniele Bonera,Villarreal,es La Liga,DF,37,230,2.6,,,,,438.3728552149604,Top Starter
 Gaëtan Bong,Brighton,eng Premier League,DF,30,1808,20.1,,,,,297.6705445205052,Solid Squad Player
 Kevin Bonifazi,SPAL,it Serie A,DF,22,2301,25.6,,,,,421.2805451127819,Top Starter
 Leonardo Bonucci,Juventus,it Serie A,DF,31,2472,27.5,,,,,359.1111111111111,Solid Squad Player
@@ -244,19 +299,28 @@ Denis Bouanga,Nîmes,fr Ligue 1,FW,23,2633,29.3,318.3902574302379,Solid Squad Pl
 Ryad Boudebouz,Celta Vigo,es La Liga,FW,28,717,8.0,330.58692365835225,Solid Squad Player,,,,
 Ryad Boudebouz,Betis,es La Liga,FW,28,539,6.0,179.61564625850343,Below Big-5 Level,,,,
 Sofiane Boufal,Celta Vigo,es La Liga,FW,24,2085,23.2,294.414105872234,Solid Squad Player,,,,
+Nassim Boujellab,Schalke 04,de Bundesliga,Off_MF,19,378,4.2,222.12297808012096,Solid Squad Player,,,,
+Arnold Bouka Moutou,Dijon,fr Ligue 1,FW,29,66,0.7,66.07968901846453,Below Big-5 Level,,,,
 Mehdi Bourabia,Sassuolo,it Serie A,MF,26,2010,22.3,,,340.7174887892376,Solid Squad Player,,
 Benjamin Bourigeaud,Rennes,fr Ligue 1,FW,24,2425,26.9,315.46819496075994,Solid Squad Player,,,,
+Bilal Boutobba,Montpellier,fr Ligue 1,FW,19,32,0.4,295.57823129251705,Solid Squad Player,,,,
 Umut Bozok,Nîmes,fr Ligue 1,FW,21,1235,13.7,275.55918588035377,Solid Squad Player,,,,
 Filip Bradarić,Cagliari,it Serie A,MF,26,1494,16.6,,,332.8112449799197,Solid Squad Player,,
 Robbie Brady,Burnley,eng Premier League,Off_MF,26,720,8.0,195.15873015873015,Below Big-5 Level,,,,
 Martin Braithwaite,Leganés,es La Liga,FW,27,1402,15.6,345.8024109928872,Solid Squad Player,,,,
 Julian Brandt,Leverkusen,de Bundesliga,FW,22,2666,29.6,473.11784233212813,Top Starter,,,,
 Darko Brašanac,Alavés,es La Liga,MF,26,1580,17.6,,,265.79545454545456,Solid Squad Player,,
+Pedro Brazão,Nice,fr Ligue 1,FW,15,14,0.2,142.8571428571429,Below Big-5 Level,,,,
 Josip Brekalo,Wolfsburg,de Bundesliga,FW,20,1415,15.7,313.0162990886376,Solid Squad Player,,,,
+Gleison Bremer,Torino,it Serie A,DF,21,183,2.0,,,,,586.5396825396825,Top Starter
 Joshua Brenet,Hoffenheim,de Bundesliga,DF,24,906,10.1,,,,,316.0442360025476,Solid Squad Player
+Rajko Brežančić,Huesca,es La Liga,DF,28,67,0.7,,,,,69.9237270665842,Below Big-5 Level
 Anthony Briançon,Nîmes,fr Ligue 1,DF,23,2924,32.5,,,,,496.3574063363536,Top Starter
 Jimmy Briand,Bordeaux,fr Ligue 1,FW,32,2495,27.7,294.5136559236611,Solid Squad Player,,,,
 Nicolò Brighenti,Frosinone,it Serie A,DF,28,990,11.0,,,,,497.7322093111567,Top Starter
+Matteo Brighi,Empoli,it Serie A,MF,37,231,2.6,,,332.6153846153846,Solid Squad Player,,
+Enrico Brignola,Sassuolo,it Serie A,FW,19,175,1.9,429.38264311572584,Top Starter,,,,
+Miguel Britos,Watford,eng Premier League,DF,33,185,2.1,,,,,364.63076884129515,Solid Squad Player
 David Brooks,Bournemouth,eng Premier League,FW,21,2261,25.1,351.52619604725464,Solid Squad Player,,,,
 John Brooks,Wolfsburg,de Bundesliga,DF,25,2610,29.0,,,,,377.92919079307455,Solid Squad Player
 Daniel Brosinski,Mainz 05,de Bundesliga,DF,30,2203,24.5,,,,,291.65376025096754,Solid Squad Player
@@ -266,20 +330,26 @@ Jeffrey Bruma,Schalke 04,de Bundesliga,DF,26,624,6.9,,,,,404.1349751189568,Top S
 Bruno,Brighton,eng Premier League,DF,37,1131,12.6,,,,,295.26461656787467,Solid Squad Player
 Jacob Bruun Larsen,Dortmund,de Bundesliga,FW,19,1265,14.1,278.8475391732738,Solid Squad Player,,,,
 Joe Bryan,Fulham,eng Premier League,MF,24,2345,26.1,,,368.32694763729245,Solid Squad Player,,
+Niko Bungert,Mainz 05,de Bundesliga,DF,31,284,3.2,,,,,496.17433735854775,Top Starter
 Guido Burgstaller,Schalke 04,de Bundesliga,FW,29,1526,17.0,260.59499355297675,Solid Squad Player,,,,
 Burgui,Alavés,es La Liga,FW,24,555,6.2,241.23636407968203,Solid Squad Player,,,,
+Jonathan Burkardt,Mainz 05,de Bundesliga,FW,18,259,2.9,186.10133708655877,Below Big-5 Level,,,,
 Patrick Burner,Nice,fr Ligue 1,DF,22,1352,15.0,,,,,403.4544138123086,Top Starter
 Sergio Busquets,Barcelona,es La Liga,MF,30,2715,30.2,,,286.99779249448125,Solid Squad Player,,
+Gaëtan Bussmann,Mainz 05,de Bundesliga,DF,27,90,1.0,,,,,232.43441938178782,Solid Squad Player
 Unai Bustinza,Leganés,es La Liga,DF,26,2023,22.5,,,,,487.9763854079644,Top Starter
+Jakub Błaszczykowski,Wolfsburg,de Bundesliga,Off_MF,32,13,0.1,0.0,Below Big-5 Level,,,,
 Erick Cabaco,Levante,es La Liga,DF,23,1632,18.1,,,,,415.06417978648267,Top Starter
 Rémy Cabella,Saint-Étienne,fr Ligue 1,FW,28,2997,33.3,399.05397801429547,Solid Squad Player,,,,
 Gustavo Cabral,Celta Vigo,es La Liga,DF,32,1897,21.1,,,,,445.7196704240854,Top Starter
 Leandro Cabrera,Getafe,es La Liga,DF,27,2794,31.0,,,,,434.01902605977307,Top Starter
 Fabrizio Cacciatore,Cagliari,it Serie A,DF,31,580,6.4,,,,,329.9989557226399,Solid Squad Player
 Fabrizio Cacciatore,Chievo,it Serie A,DF,31,497,5.5,,,,,335.8177261335155,Solid Squad Player
+Martín Cáceres,Lazio,it Serie A,DF,31,307,3.4,,,,,267.9365079365079,Solid Squad Player
 Martín Cáceres,Juventus,it Serie A,DF,31,628,7.0,,,,,246.5611648168039,Solid Squad Player
 Anthony Caci,Strasbourg,fr Ligue 1,DF,21,2298,25.5,,,,,360.6986092682687,Solid Squad Player
 Mathieu Cafaro,Reims,fr Ligue 1,FW,21,2095,23.3,342.52553372326514,Solid Squad Player,,,,
+Gary Cahill,Chelsea,eng Premier League,DF,32,24,0.3,,,,,137.989417989418,Below Big-5 Level
 Yannick Cahuzac,Toulouse,fr Ligue 1,Def_MF,33,1431,15.9,,,,,402.2924072554918,Top Starter
 Felipe Caicedo,Lazio,it Serie A,FW,29,1371,15.2,492.34146875124316,Top Starter,,,,
 Tom Cairney,Fulham,eng Premier League,FW,27,2194,24.4,187.075784047681,Below Big-5 Level,,,,
@@ -292,9 +362,15 @@ Hakan Çalhanoğlu,Milan,it Serie A,FW,24,2884,32.0,343.719954648526,Solid Squad
 Daniel Caligiuri,Schalke 04,de Bundesliga,FW,30,2756,30.6,335.7668301888656,Solid Squad Player,,,,
 José Callejón,Napoli,it Serie A,FW,31,2650,29.4,351.495665386336,Solid Squad Player,,,,
 Jonathan Calleri,Alavés,es La Liga,FW,24,2869,31.9,300.3374384236453,Solid Squad Player,,,,
+Jan-Ingwer Callsen-Bracker,Augsburg,de Bundesliga,DF,33,7,0.1,,,,,60.95238095238095,Below Big-5 Level
 Dominic Calvert-Lewin,Everton,eng Premier League,FW,21,1784,19.8,298.82372477610573,Solid Squad Player,,,,
 Ignacio Camacho,Wolfsburg,de Bundesliga,MF,28,540,6.0,,,246.66666666666669,Solid Squad Player,,
+Juanjo Camacho,Huesca,es La Liga,Off_MF,37,37,0.4,339.44444444444446,Solid Squad Player,,,,
+Mahdi Camara,Saint-Étienne,fr Ligue 1,FW,20,10,0.1,0.0,Below Big-5 Level,,,,
+Souleymane Camara,Montpellier,fr Ligue 1,FW,35,137,1.5,679.3650793650794,Top Starter,,,,
 Víctor Camarasa,Cardiff City,eng Premier League,Off_MF,24,2569,28.5,292.63996797549436,Solid Squad Player,,,,
+Eduardo Camavinga,Rennes,fr Ligue 1,MF,15,364,4.0,,,225.66666666666669,Solid Squad Player,,
+Sergio Camello,Atlético Madrid,es La Liga,FW,17,45,0.5,714.2857142857144,Top Starter,,,,
 José Campaña,Levante,es La Liga,MF,25,3210,35.7,,,635.9103641456583,Top Starter,,
 Joel Campbell,Frosinone,it Serie A,FW,26,891,9.9,204.2293341579056,Solid Squad Player,,,,
 Emre Can,Juventus,it Serie A,MF,24,1811,20.1,,,407.5290215588722,Top Starter,,
@@ -302,6 +378,7 @@ Sergio Canales,Betis,es La Liga,Off_MF,27,2655,29.5,390.38731503900993,Solid Squ
 João Cancelo,Juventus,it Serie A,DF,24,1968,21.9,,,,,256.8054840297089,Solid Squad Player
 Antonio Candreva,Inter,it Serie A,FW,31,502,5.6,376.25245653817086,Solid Squad Player,,,,
 Ander Capa,Athletic Club,es La Liga,FW,26,1642,18.2,102.73854376915602,Below Big-5 Level,,,,
+Luan Capanni,Lazio,it Serie A,FW,18,9,0.1,28.57142857142857,Below Big-5 Level,,,,
 Pierrick Capelle,Angers,fr Ligue 1,MF,31,1842,20.5,,,492.4878048780488,Top Starter,,
 Leonardo Capezzi,Empoli,it Serie A,MF,23,772,8.6,,,244.72868217054264,Solid Squad Player,,
 Étienne Capoue,Watford,eng Premier League,MF,30,2944,32.7,,,276.2691131498471,Solid Squad Player,,
@@ -310,6 +387,8 @@ Marco Capuano,Frosinone,it Serie A,DF,26,2307,25.6,,,,,448.7714076858813,Top Sta
 Francesco Caputo,Empoli,it Serie A,FW,30,3420,38.0,418.3878545570274,Top Starter,,,,
 Marc Cardona,Eibar,es La Liga,FW,23,604,6.7,438.44798118252277,Top Starter,,,,
 Diego Carlos,Nantes,fr Ligue 1,DF,25,3148,35.0,,,,,444.0781954887218,Top Starter
+Jonas Carls,Schalke 04,de Bundesliga,FW,21,90,1.0,89.79591836734696,Below Big-5 Level,,,,
+Louis Carnot,Guingamp,fr Ligue 1,Off_MF,17,8,0.1,220.0,Solid Squad Player,,,,
 Lionel Carole,Strasbourg,fr Ligue 1,FW,27,1727,19.2,157.33248299319726,Below Big-5 Level,,,,
 Daniel Carriço,Sevilla,es La Liga,DF,29,2130,23.7,,,,,357.30253904804204,Solid Squad Player
 Guido Carrillo,Leganés,es La Liga,FW,27,1992,22.1,309.5402417377207,Solid Squad Player,,,,
@@ -318,6 +397,7 @@ Dani Carvajal,Real Madrid,es La Liga,DF,26,2107,23.4,,,,,322.12154317417475,Soli
 William Carvalho,Betis,es La Liga,MF,26,2385,26.5,,,458.54088050314465,Top Starter,,
 Casemiro,Real Madrid,es La Liga,MF,26,2312,25.7,,,251.07652399481196,Solid Squad Player,,
 Santiago Cáseres,Villarreal,es La Liga,MF,21,1588,17.6,,,314.1666666666667,Solid Squad Player,,
+Moreto Cassamã,Reims,fr Ligue 1,MF,20,59,0.7,,,163.80952380952382,Below Big-5 Level,,
 Francesco Cassata,Frosinone,it Serie A,MF,21,1124,12.5,,,419.84000000000003,Top Starter,,
 Timothy Castagne,Atalanta,it Serie A,DF,22,2006,22.3,,,,,360.7589976435857,Solid Squad Player
 Samu Castillejo,Milan,it Serie A,FW,23,1023,11.4,401.5897415496413,Top Starter,,,,
@@ -325,12 +405,14 @@ Gonzalo Castro,Stuttgart,de Bundesliga,MF,31,1692,18.8,,,555.6028368794326,Top S
 Jonny Castro,Wolves,eng Premier League,MF,24,2771,30.8,,,322.6017316017316,Solid Squad Player,,
 Lucas Castro,Cagliari,it Serie A,Off_MF,29,896,10.0,313.1031746031746,Solid Squad Player,,,,
 Danilo Cataldi,Lazio,it Serie A,FW,23,578,6.4,366.89417989417984,Solid Squad Player,,,,
+Catena,Rayo Vallecano,es La Liga,DF,23,176,2.0,,,,,656.7619047619048,Top Starter
 Craig Cathcart,Watford,eng Premier League,DF,29,3096,34.4,,,,,395.32668881506095,Solid Squad Player
 Ivan Cavaleiro,Wolves,eng Premier League,FW,24,693,7.7,457.84602585623,Top Starter,,,,
 Edinson Cavani,Paris S-G,fr Ligue 1,FW,31,1671,18.6,711.2382781069416,Top Starter,,,,
 Santi Cazorla,Villarreal,es La Liga,FW,33,2647,29.4,361.26812644937036,Solid Squad Player,,,,
 Dani Ceballos,Real Madrid,es La Liga,FW,21,1248,13.9,290.8424199415977,Solid Squad Player,,,,
 Federico Ceccherini,Fiorentina,it Serie A,DF,26,994,11.0,,,,,390.16267942583727,Solid Squad Player
+Žan Celar,Roma,it Serie A,FW,19,5,0.1,0.0,Below Big-5 Level,,,,
 Zeki Çelik,Lille,fr Ligue 1,DF,21,2971,33.0,,,,,336.55532771322237,Solid Squad Player
 Luca Ceppitelli,Cagliari,it Serie A,DF,28,2051,22.8,,,,,422.447346436266,Top Starter
 Fabio Ceravolo,Parma,it Serie A,FW,31,1185,13.2,198.52970750589802,Below Big-5 Level,,,,
@@ -338,11 +420,14 @@ Alberto Cerri,Cagliari,it Serie A,FW,22,670,7.4,163.95780474351903,Below Big-5 L
 Boštjan Cesar,Chievo,it Serie A,DF,36,1079,12.0,,,,,390.6588187640819,Solid Squad Player
 Nacer Chadli,Monaco,fr Ligue 1,Off_MF,28,691,7.7,111.5121572871573,Below Big-5 Level,,,,
 Fouad Chafik,Dijon,fr Ligue 1,DF,31,1847,20.5,,,,,350.32459196772413,Solid Squad Player
+Nathaniel Chalobah,Watford,eng Premier League,MF,23,270,3.0,,,196.22222222222223,Below Big-5 Level,,
 Calum Chambers,Fulham,eng Premier League,MF,23,2588,28.8,,,251.9675925925926,Solid Squad Player,,
+Timothy Chandler,Eint Frankfurt,de Bundesliga,DF,28,17,0.2,,,,,5.714285714285714,Below Big-5 Level
 Kwon Chang-hoon,Dijon,fr Ligue 1,FW,24,938,10.4,234.9265073550788,Solid Squad Player,,,,
 Charles,Eibar,es La Liga,FW,34,1739,19.3,561.271866029083,Top Starter,,,,
 Xavier Chavalerin,Reims,fr Ligue 1,MF,27,3240,36.0,,,374.0370370370371,Solid Squad Player,,
 Pablo Chavarría,Reims,fr Ligue 1,FW,30,1973,21.9,277.9245522663657,Solid Squad Player,,,,
+Chechu,Rayo Vallecano,es La Liga,DF,36,90,1.0,,,,,308.5513784461152,Solid Squad Player
 Pape Cheikh Diop,Lyon,fr Ligue 1,MF,20,454,5.0,,,182.66666666666669,Below Big-5 Level,,
 Chema,Levante,es La Liga,DF,26,1254,13.9,,,,,448.17340932448843,Top Starter
 Denis Cheryshev,Valencia,es La Liga,Off_MF,27,1706,19.0,325.4781119465331,Solid Squad Player,,,,
@@ -350,23 +435,30 @@ Raman Chibsah,Frosinone,it Serie A,MF,25,2622,29.1,,,250.8591065292096,Solid Squ
 Giorgio Chiellini,Juventus,it Serie A,DF,33,1991,22.1,,,,,391.61463235766644,Solid Squad Player
 Federico Chiesa,Fiorentina,it Serie A,FW,20,3034,33.7,334.6986582961572,Solid Squad Player,,,,
 Ben Chilwell,Leicester City,eng Premier League,DF,21,3240,36.0,,,,,322.1940035273368,Solid Squad Player
+Vlad Chiricheș,Napoli,it Serie A,DF,28,147,1.6,,,,,299.31913116123644,Solid Squad Player
+Tahith Chong,Manchester Utd,eng Premier League,FW,18,38,0.4,333.3333333333333,Solid Squad Player,,,,
 Hamza Choudhury,Leicester City,eng Premier League,MF,20,595,6.6,,,234.04040404040404,Solid Squad Player,,
 Andreas Christensen,Chelsea,eng Premier League,DF,22,617,6.9,,,,,291.0270846197619,Solid Squad Player
 Cyrus Christie,Fulham,eng Premier League,MF,25,1948,21.6,,,333.6728395061728,Solid Squad Player,,
 Samuel Chukwueze,Villarreal,es La Liga,FW,19,1706,19.0,351.7880813143971,Solid Squad Player,,,,
 Camillo Ciano,Frosinone,it Serie A,FW,28,2454,27.3,374.4155654121639,Solid Squad Player,,,,
+Amato Ciciretti,Parma,it Serie A,FW,24,139,1.5,108.49773242630387,Below Big-5 Level,,,,
 Luca Cigarini,Cagliari,it Serie A,MF,32,1682,18.7,,,522.8163992869876,Top Starter,,
 Per Ciljan Skjelbred,Hertha BSC,de Bundesliga,MF,31,997,11.1,,,328.6486486486487,Solid Squad Player,,
 Laurent Ciman,Dijon,fr Ligue 1,DF,32,717,8.0,,,,,422.1578947368421,Top Starter
 Daniel Ciofani,Frosinone,it Serie A,FW,33,1618,18.0,301.84698076761566,Solid Squad Player,,,,
 Thiago Cionek,SPAL,it Serie A,DF,32,2542,28.2,,,,,486.0166965878052,Top Starter
+Ibrahima Cissé,Fulham,eng Premier League,Def_MF,24,88,1.0,,,,,389.8888888888889,Solid Squad Player
+Till Cissokho,Bordeaux,fr Ligue 1,DF,18,78,0.9,,,,,299.8783153169118,Solid Squad Player
 Ciaran Clark,Newcastle Utd,eng Premier League,DF,28,858,9.5,,,,,441.3270496816203,Top Starter
 Tom Cleverley,Watford,eng Premier League,MF,28,478,5.3,,,224.9056603773585,Solid Squad Player,,
 Nathaniel Clyne,Bournemouth,eng Premier League,DF,27,1143,12.7,,,,,331.2559614258743,Solid Squad Player
+Nathaniel Clyne,Liverpool,eng Premier League,DF,27,111,1.2,,,,,334.057365636313,Solid Squad Player
 Conor Coady,Wolves,eng Premier League,DF,25,3420,38.0,,,,,331.180055401662,Solid Squad Player
 Marcus Coco,Guingamp,fr Ligue 1,FW,22,1840,20.4,168.912905903102,Below Big-5 Level,,,,
 Coke,Levante,es La Liga,DF,31,1817,20.2,,,,,387.6023391812865,Solid Squad Player
 Séamus Coleman,Everton,eng Premier League,DF,29,2558,28.4,,,,,267.7574217233224,Solid Squad Player
+Álex Collado,Barcelona,es La Liga,FW,19,85,0.9,80.90249433106577,Below Big-5 Level,,,,
 Omar Colley,Sampdoria,it Serie A,DF,25,1762,19.6,,,,,404.925579254258,Top Starter
 Racine Coly,Nice,fr Ligue 1,MF,22,503,5.6,,,387.73809523809524,Solid Squad Player,,
 Kingsley Coman,Bayern Munich,de Bundesliga,FW,22,1378,15.3,476.2996013220103,Top Starter,,,,
@@ -377,12 +469,15 @@ Lewis Cook,Bournemouth,eng Premier League,MF,21,723,8.0,,,232.66666666666669,Sol
 Steve Cook,Bournemouth,eng Premier League,DF,27,2786,31.0,,,,,448.9587409383673,Top Starter
 Duje Čop,Valladolid,es La Liga,FW,28,687,7.6,180.97064088793414,Below Big-5 Level,,,,
 Francis Coquelin,Valencia,es La Liga,MF,27,1761,19.6,,,328.80952380952385,Solid Squad Player,,
+Gabriele Corbo,Bologna,it Serie A,DF,18,5,0.1,,,,,68.91774891774891,Below Big-5 Level
 Iñigo Córdoba,Athletic Club,es La Liga,FW,21,1321,14.7,203.03156092368917,Solid Squad Player,,,,
 Sergio Córdova,Augsburg,de Bundesliga,FW,20,531,5.9,331.5029017256621,Solid Squad Player,,,,
 Benjamin Corgnet,Strasbourg,fr Ligue 1,FW,31,671,7.5,271.8716301335349,Solid Squad Player,,,,
+Ante Ćorić,Roma,it Serie A,Off_MF,21,24,0.3,117.03703703703705,Below Big-5 Level,,,,
 Jack Cork,Burnley,eng Premier League,MF,29,3312,36.8,,,243.93115942028987,Solid Squad Player,,
 Andreas Cornelius,Bordeaux,fr Ligue 1,FW,25,792,8.8,318.2073799216656,Solid Squad Player,,,,
 Maxwel Cornet,Lyon,fr Ligue 1,FW,21,1281,14.2,591.0570832401819,Top Starter,,,,
+Quentin Cornette,Amiens,fr Ligue 1,FW,24,209,2.3,92.21191955042887,Below Big-5 Level,,,,
 Ángel Correa,Atlético Madrid,es La Liga,FW,23,1919,21.3,259.4361619452162,Solid Squad Player,,,,
 Joaquín Correa,Lazio,it Serie A,FW,23,1927,21.4,486.65904097880076,Top Starter,,,,
 Danny da Costa,Eint Frankfurt,de Bundesliga,FW,25,3033,33.7,172.1903943245613,Below Big-5 Level,,,,
@@ -394,6 +489,7 @@ Jaume Costa,Villarreal,es La Liga,DF,30,1495,16.6,,,,,333.0873368159354,Solid Sq
 Nuno da Costa,Strasbourg,fr Ligue 1,FW,27,2052,22.8,347.9769595947541,Solid Squad Player,,,,
 David Costas,Celta Vigo,es La Liga,DF,23,1173,13.0,,,,,404.4794036372983,Top Starter
 Kalifa Coulibaly,Nantes,fr Ligue 1,FW,26,1751,19.5,415.27054867531047,Top Starter,,,,
+Senou Coulibaly,Dijon,fr Ligue 1,DF,23,411,4.6,,,,,502.5433148087611,Top Starter
 Philippe Coutinho,Barcelona,es La Liga,FW,26,2018,22.4,385.4025483209157,Solid Squad Player,,,,
 Nicolas Cozza,Montpellier,fr Ligue 1,DF,19,984,10.9,,,,,422.9583132142282,Top Starter
 Aaron Cresswell,West Ham,eng Premier League,DF,28,1589,17.7,,,,,365.4537473627572,Solid Squad Player
@@ -402,9 +498,12 @@ Lorenzo Crisetig,Frosinone,it Serie A,MF,25,507,5.6,,,141.42857142857144,Below B
 Bryan Cristante,Roma,it Serie A,MF,23,2425,26.9,,,460.29739776951675,Top Starter,,
 Sebastián Cristóforo,Getafe,es La Liga,MF,24,450,5.0,,,566.08,Top Starter,,
 Enzo Crivelli,Caen,fr Ligue 1,FW,23,2260,25.1,209.8890244012611,Solid Squad Player,,,,
+Peter Crouch,Burnley,eng Premier League,FW,37,92,1.0,207.97278911564626,Solid Squad Player,,,,
+Alessio da Cruz,Parma,it Serie A,FW,21,144,1.6,33.76530612244898,Below Big-5 Level,,,,
 Juan Cuadrado,Juventus,it Serie A,Off_MF,30,1220,13.6,316.7847805788983,Solid Squad Player,,,,
 Cucho,Huesca,es La Liga,FW,19,2150,23.9,342.45089769985174,Solid Squad Player,,,,
 Marc Cucurella,Eibar,es La Liga,FW,20,2354,26.2,147.44379244488297,Below Big-5 Level,,,,
+Mickaël Cuisance,Gladbach,de Bundesliga,Off_MF,18,279,3.1,309.689912954429,Solid Squad Player,,,,
 Matheus Cunha,RB Leipzig,de Bundesliga,FW,19,853,9.5,305.7305366591081,Solid Squad Player,,,,
 Greg Cunningham,Cardiff City,eng Premier League,DF,27,630,7.0,,,,,393.2397226833317,Solid Squad Player
 Patrick Cutrone,Milan,it Serie A,FW,20,1457,16.2,251.9074773942499,Solid Squad Player,,,,
@@ -413,19 +512,30 @@ Marco D'Alessandro,Udinese,it Serie A,DF,27,1495,16.6,,,,,335.9173032984066,Soli
 Danilo D'Ambrosio,Inter,it Serie A,DF,29,2579,28.7,,,,,284.23369690195284,Solid Squad Player
 Damien Da Silva,Rennes,fr Ligue 1,DF,30,2874,31.9,,,,,394.72327632037246,Solid Squad Player
 Kouadio-Yves Dabila,Lille,fr Ligue 1,DF,21,782,8.7,,,,,389.0262751968741,Solid Squad Player
+Abdoulaye Dabo,Nantes,fr Ligue 1,FW,17,116,1.3,149.65986394557822,Below Big-5 Level,,,,
 Bryan Dabo,Fiorentina,it Serie A,MF,26,831,9.2,,,463.84057971014494,Top Starter,,
+Christoph Daferner,Freiburg,de Bundesliga,FW,20,25,0.3,0.0,Below Big-5 Level,,,,
 Colin Dagba,Paris S-G,fr Ligue 1,MF,19,918,10.2,,,505.75163398692814,Top Starter,,
 Mahmoud Dahoud,Dortmund,de Bundesliga,MF,22,697,7.7,,,406.75324675324674,Top Starter,,
+Leon Dajaku,Stuttgart,de Bundesliga,Off_MF,17,27,0.3,29.629629629629633,Below Big-5 Level,,,,
 Felipe dal Belo,SPAL,it Serie A,DF,34,2361,26.2,,,,,329.718443691927,Solid Squad Player
+Nicola Dalmonte,Genoa,it Serie A,FW,20,44,0.5,251.7006802721089,Solid Squad Player,,,,
 Diogo Dalot,Manchester Utd,eng Premier League,FW,19,1013,11.3,191.60824152669915,Below Big-5 Level,,,,
+Matty Daly,Huddersfield,eng Premier League,MF,17,75,0.8,,,79.33333333333334,Below Big-5 Level,,
+Loïc Damour,Cardiff City,eng Premier League,Off_MF,27,23,0.3,59.629629629629626,Below Big-5 Level,,,,
 Charlie Daniels,Bournemouth,eng Premier League,DF,31,1585,17.6,,,,,307.8890407837776,Solid Squad Player
 Danilo,Manchester City,eng Premier League,DF,27,807,9.0,,,,,330.4453726909867,Solid Squad Player
 Scott Dann,Crystal Palace,eng Premier League,DF,31,663,7.4,,,,,418.23666455245393,Top Starter
 Kevin Danso,Augsburg,de Bundesliga,DF,19,1247,13.9,,,,,468.872901678657,Top Starter
 Dante,Nice,fr Ligue 1,DF,34,3226,35.8,,,,,448.2362330407023,Top Starter
+Palkó Dárdai,Hertha BSC,de Bundesliga,FW,19,113,1.3,125.54683411826268,Below Big-5 Level,,,,
 Sergi Darder,Espanyol,es La Liga,MF,24,2709,30.1,,,442.87929125138425,Top Starter,,
+Vladimír Darida,Hertha BSC,de Bundesliga,MF,27,376,4.2,,,638.4126984126983,Top Starter,,
+Matteo Darmian,Manchester Utd,eng Premier League,DF,28,443,4.9,,,,,463.93125671321155,Top Starter
+Alphonso Davies,Bayern Munich,de Bundesliga,FW,17,80,0.9,452.3813303099017,Top Starter,,,,
 Ben Davies,Tottenham,eng Premier League,DF,25,1844,20.5,,,,,356.1544511685718,Solid Squad Player
 Tom Davies,Everton,eng Premier League,MF,20,980,10.9,,,246.42201834862388,Solid Squad Player,,
+Steven Davis,Southampton,eng Premier League,MF,33,98,1.1,,,744.2424242424242,Top Starter,,
 Kevin De Bruyne,Manchester City,eng Premier League,Off_MF,27,975,10.8,509.5054232804234,Top Starter,,,,
 Bobby De Cordova-Reid,Cardiff City,eng Premier League,FW,25,1424,15.8,300.6113455227379,Solid Squad Player,,,,
 Sebastien De Maio,Udinese,it Serie A,DF,31,1173,13.0,,,,,427.9068300120932,Top Starter
@@ -437,13 +547,16 @@ Lorenzo De Silvestri,Torino,it Serie A,DF,30,2415,26.8,,,,,302.42247409568694,So
 Lucas Deaux,Guingamp,fr Ligue 1,MF,29,1188,13.2,,,418.1313131313131,Top Starter,,
 Mathieu Debuchy,Saint-Étienne,fr Ligue 1,DF,33,1941,21.6,,,,,375.3367987870911,Solid Squad Player
 Troy Deeney,Watford,eng Premier League,FW,30,2545,28.3,379.93631162712427,Solid Squad Player,,,,
+Jermain Defoe,Bournemouth,eng Premier League,FW,35,25,0.3,124.12698412698411,Below Big-5 Level,,,,
 Steven Defour,Burnley,eng Premier League,MF,30,448,5.0,,,209.6,Solid Squad Player,,
 Grégoire Defrel,Sampdoria,it Serie A,FW,27,2339,26.0,374.9318274318274,Solid Squad Player,,,,
 Alessandro Deiola,Cagliari,it Serie A,MF,22,450,5.0,,,169.52,Below Big-5 Level,,
 Alessandro Deiola,Parma,it Serie A,FW,22,545,6.1,100.90509646481543,Below Big-5 Level,,,,
 Romain Del Castillo,Rennes,fr Ligue 1,FW,22,1343,14.9,215.63635118476924,Solid Squad Player,,,,
 Thomas Delaney,Dortmund,de Bundesliga,MF,26,2283,25.4,,,443.2020997375328,Top Starter,,
+Moisés Delgado,Valladolid,es La Liga,DF,24,270,3.0,,,,,315.85914280651116,Solid Squad Player
 Cristian Dell'Orco,Empoli,it Serie A,DF,24,1035,11.5,,,,,382.22396571137983,Solid Squad Player
+Cristian Dell'Orco,Sassuolo,it Serie A,DF,24,110,1.2,,,,,286.0763018657755,Solid Squad Player
 Andy Delort,Montpellier,fr Ligue 1,FW,26,3115,34.6,477.8881308464297,Top Starter,,,,
 Fabian Delph,Manchester City,eng Premier League,DF,28,725,8.1,,,,,320.61883102818774,Solid Squad Player
 Mousa Dembélé,Tottenham,eng Premier League,MF,31,515,5.7,,,134.15204678362574,Below Big-5 Level,,
@@ -457,13 +570,20 @@ Jason Denayer,Lyon,fr Ligue 1,DF,23,2754,30.6,,,,,353.8331667949831,Solid Squad 
 Leander Dendoncker,Wolves,eng Premier League,MF,23,1467,16.3,,,240.1226993865031,Solid Squad Player,,
 Fabio Depaoli,Chievo,it Serie A,DF,21,2468,27.4,,,,,397.20883717810347,Solid Squad Player
 Laurent Depoitre,Huddersfield,eng Premier League,FW,29,1068,11.9,145.20605385011146,Below Big-5 Level,,,,
+Clément Depres,Nîmes,fr Ligue 1,FW,23,441,4.9,572.8047881284032,Top Starter,,,,
+Kiril Despodov,Cagliari,it Serie A,FW,21,105,1.2,15.873015873015875,Below Big-5 Level,,,,
+Daniele Dessena,Cagliari,it Serie A,MF,31,352,3.9,,,212.30769230769235,Solid Squad Player,,
 Mattia Destro,Bologna,it Serie A,FW,27,493,5.5,525.9024599738885,Top Starter,,,,
 Gerard Deulofeu,Watford,eng Premier League,FW,24,2066,23.0,469.4367708436032,Top Starter,,,,
+Jacopo Dezi,Parma,it Serie A,MF,26,90,1.0,,,167.33333333333337,Below Big-5 Level,,
 Federico Di Francesco,Sassuolo,it Serie A,FW,24,1074,11.9,284.16291913590834,Solid Squad Player,,,,
 Antonio Di Gaudio,Parma,it Serie A,FW,28,699,7.8,148.5404674690389,Below Big-5 Level,,,,
 Giovanni Di Lorenzo,Empoli,it Serie A,FW,24,3330,37.0,221.6009581009581,Solid Squad Player,,,,
 Ángel Di María,Paris S-G,fr Ligue 1,FW,30,2324,25.8,594.3480110390409,Top Starter,,,,
+Franco Di Santo,Rayo Vallecano,es La Liga,FW,29,172,1.9,5.012531328320802,Below Big-5 Level,,,,
+Franco Di Santo,Schalke 04,de Bundesliga,FW,29,245,2.7,127.78306878306877,Below Big-5 Level,,,,
 Boulaye Dia,Reims,fr Ligue 1,FW,21,747,8.3,358.1013168319537,Solid Squad Player,,,,
+Fousseni Diabaté,Leicester City,eng Premier League,FW,22,54,0.6,74.82993197278913,Below Big-5 Level,,,,
 Moussa Diaby,Paris S-G,fr Ligue 1,Off_MF,19,1141,12.7,435.52680602424704,Top Starter,,,,
 Adama Diakhaby,Huddersfield,eng Premier League,FW,22,552,6.1,112.95449983271999,Below Big-5 Level,,,,
 Mouctar Diakhaby,Valencia,es La Liga,DF,21,1580,17.6,,,,,402.1583573258215,Top Starter
@@ -472,63 +592,90 @@ Abdou Diallo,Dortmund,de Bundesliga,DF,22,2379,26.4,,,,,350.5336573757626,Solid 
 Mustapha Diallo,Nîmes,fr Ligue 1,MF,32,455,5.1,,,301.69934640522877,Solid Squad Player,,
 Mohamed Diamé,Newcastle Utd,eng Premier League,MF,31,2166,24.1,,,137.89764868603044,Below Big-5 Level,,
 Grady Diangana,West Ham,eng Premier League,FW,20,609,6.8,195.53421368547419,Below Big-5 Level,,,,
+Lassana Diarra,Paris S-G,fr Ligue 1,MF,33,159,1.8,,,219.62962962962962,Solid Squad Player,,
 Amadou Diawara,Napoli,it Serie A,MF,21,661,7.3,,,258.8127853881278,Solid Squad Player,,
+Brahim Díaz,Real Madrid,es La Liga,FW,18,376,4.2,394.69877263074545,Solid Squad Player,,,,
 Bakaye Dibassy,Amiens,fr Ligue 1,DF,28,2942,32.7,,,,,345.8687493453306,Solid Squad Player
+Lorenzo Dickmann,SPAL,it Serie A,Def_MF,21,175,1.9,,,,,258.8304093567251,Solid Squad Player
 Daniel Didavi,Stuttgart,de Bundesliga,FW,28,956,10.6,359.2043668620488,Solid Squad Player,,,,
 Étienne Didot,Guingamp,fr Ligue 1,MF,35,2105,23.4,,,331.93732193732194,Solid Squad Player,,
 Adrián Diéguez,Huesca,es La Liga,DF,22,749,8.3,,,,,397.0188340511739,Solid Squad Player
 Eric Dier,Tottenham,eng Premier League,MF,24,1506,16.7,,,280.6387225548902,Solid Squad Player,,
+Tim Dierßen,Hannover 96,de Bundesliga,Def_MF,22,16,0.2,,,,,152.2222222222222,Below Big-5 Level
 Lucas Digne,Everton,eng Premier League,DF,25,2965,32.9,,,,,406.87514124724174,Top Starter
 Mitchell Dijks,Bologna,it Serie A,DF,25,2023,22.5,,,,,263.1601225285435,Solid Squad Player
 Javairô Dilrosun,Hertha BSC,de Bundesliga,FW,20,898,10.0,288.4996220710506,Solid Squad Player,,,,
 Federico Dimarco,Parma,it Serie A,MF,20,892,9.9,,,331.99999999999994,Solid Squad Player,,
 Tristan Dingomé,Reims,fr Ligue 1,MF,27,1344,14.9,,,581.4765100671142,Top Starter,,
 Ismaël Diomandé,Caen,fr Ligue 1,Def_MF,25,1293,14.4,,,,,322.1806226516372,Solid Squad Player
+Federico Dionisi,Frosinone,it Serie A,FW,31,204,2.3,479.54043839758117,Top Starter,,,,
 Lois Diony,Saint-Étienne,fr Ligue 1,FW,25,1591,17.7,340.5048468853958,Solid Squad Player,,,,
 Issa Diop,West Ham,eng Premier League,DF,21,2970,33.0,,,,,484.09792157160575,Top Starter
 Papakouli Diop,Eibar,es La Liga,MF,32,2352,26.1,,,274.3039591315453,Solid Squad Player,,
 Sofiane Diop,Monaco,fr Ligue 1,FW,18,741,8.2,116.61962833914053,Below Big-5 Level,,,,
 Assane Dioussé,Chievo,it Serie A,MF,20,892,9.9,,,213.46801346801348,Solid Squad Player,,
+Assane Dioussé,Saint-Étienne,fr Ligue 1,MF,20,217,2.4,,,351.94444444444446,Solid Squad Player,,
+Axel Disasi,Reims,fr Ligue 1,DF,20,159,1.8,,,,,433.6332413525395,Top Starter
 Djené,Getafe,es La Liga,DF,26,2976,33.1,,,,,420.2068110861242,Top Starter
 Koffi Djidji,Torino,it Serie A,DF,25,1387,15.4,,,,,477.2550423678243,Top Starter
+Koffi Djidji,Nantes,fr Ligue 1,DF,25,90,1.0,,,,,352.9423558897243,Solid Squad Player
 Alexander Djiku,Caen,fr Ligue 1,DF,23,2754,30.6,,,,,573.893339012018,Top Starter
+Papy Djilobodji,Guingamp,fr Ligue 1,DF,29,175,1.9,,,,,362.43943191311604,Solid Squad Player
 Berat Djimsiti,Atalanta,it Serie A,DF,25,1807,20.1,,,,,451.4779486028503,Top Starter
+Johan Djourou,SPAL,it Serie A,DF,31,279,3.1,,,,,423.3469303757928,Top Starter
 Matt Doherty,Wolves,eng Premier League,MF,26,3144,34.9,,,466.26552053486154,Top Starter,,
+Keagan Dolly,Montpellier,fr Ligue 1,FW,25,88,1.0,118.85034013605443,Below Big-5 Level,,,,
 Giulio Donati,Mainz 05,de Bundesliga,DF,28,625,6.9,,,,,407.06209969367865,Top Starter
 Ji Dong-won,Augsburg,de Bundesliga,FW,27,891,9.9,358.28103407468484,Solid Squad Player,,,,
 Anastasios Donis,Stuttgart,de Bundesliga,FW,21,962,10.7,401.5911126652116,Top Starter,,,,
+Godfred Donsah,Bologna,it Serie A,MF,22,153,1.7,,,262.3529411764706,Solid Squad Player,,
+Riccardo Doratiotto,Cagliari,it Serie A,FW,19,78,0.9,18.140589569160998,Below Big-5 Level,,,,
 Mathieu Dossevi,Toulouse,fr Ligue 1,FW,30,2469,27.4,260.145610231116,Solid Squad Player,,,,
 Abdoulaye Doucouré,Watford,eng Premier League,MF,25,3062,34.0,,,522.5294117647059,Top Starter,,
+Cheick Doukouré,Levante,es La Liga,MF,25,318,3.5,,,136.0,Below Big-5 Level,,
 Moussa Doumbia,Reims,fr Ligue 1,FW,23,1600,17.8,241.08314861525136,Solid Squad Player,,,,
 Seydou Doumbia,Girona,es La Liga,FW,30,541,6.0,300.33383723859913,Solid Squad Player,,,,
 Souleyman Doumbia,Rennes,fr Ligue 1,DF,21,605,6.7,,,,,283.3581466103068,Solid Squad Player
 Aleksandar Dragović,Leverkusen,de Bundesliga,DF,27,1335,14.8,,,,,398.9234347129084,Solid Squad Player
 Julian Draxler,Paris S-G,fr Ligue 1,FW,24,2046,22.7,359.1741636449,Solid Squad Player,,,,
+Josip Drmić,Gladbach,de Bundesliga,FW,25,222,2.5,548.48828420257,Top Starter,,,,
 Óscar Duarte,Espanyol,es La Liga,Def_MF,29,660,7.3,,,,,426.9399774998346,Top Starter
 Rubén Duarte,Alavés,es La Liga,DF,22,2772,30.8,,,,,426.11420325706035,Top Starter
 Leo Dubois,Lyon,fr Ligue 1,DF,23,2044,22.7,,,,,314.89413695766575,Solid Squad Player
 Marvin Ducksch,Düsseldorf,de Bundesliga,FW,24,823,9.1,265.0311521433971,Solid Squad Player,,,,
 Ondrej Duda,Hertha BSC,de Bundesliga,MF,23,2563,28.5,,,596.7251461988304,Top Starter,,
 Shane Duffy,Brighton,eng Premier League,DF,26,3087,34.3,,,,,440.73580009746956,Top Starter
+Demeaco Duhaney,Huddersfield,eng Premier League,DF,19,45,0.5,,,,,429.31328320802004,Top Starter
 Paul Dummett,Newcastle Utd,eng Premier League,DF,26,1990,22.1,,,,,423.54423010769756,Top Starter
 Alfred Duncan,Sassuolo,it Serie A,MF,25,1848,20.5,,,588.7479674796749,Top Starter,,
 Lewis Dunk,Brighton,eng Premier League,DF,26,3151,35.0,,,,,435.9305883757011,Top Starter
 Erik Durm,Huddersfield,eng Premier League,DF,26,2055,22.8,,,,,330.9677703029503,Solid Squad Player
 Jimmy Durmaz,Toulouse,fr Ligue 1,FW,29,1899,21.1,310.80499045326405,Solid Squad Player,,,,
+Riza Durmisi,Lazio,it Serie A,DF,24,326,3.6,,,,,181.46106005755126,Below Big-5 Level
+Hugo Duro,Getafe,es La Liga,FW,18,417,4.6,72.62658976634131,Below Big-5 Level,,,,
+Raphael Dwamena,Levante,es La Liga,FW,22,222,2.5,275.3401360544217,Solid Squad Player,,,,
 Paulo Dybala,Juventus,it Serie A,FW,24,2137,23.7,366.6946700855682,Solid Squad Player,,,,
 Edin Džeko,Roma,it Serie A,FW,32,2579,28.7,462.47912963094643,Top Starter,,,,
 Blerim Džemaili,Bologna,it Serie A,MF,32,1750,19.4,,,376.9759450171822,Solid Squad Player,,
 Félix Eboa Eboa,Guingamp,fr Ligue 1,DF,21,2426,27.0,,,,,433.2577121816888,Top Starter
+Dennis Eckert,Celta Vigo,es La Liga,FW,21,216,2.4,174.86281179138322,Below Big-5 Level,,,,
 Bruno Ecuele Manga,Cardiff City,eng Premier League,DF,30,3376,37.5,,,,,469.363858130174,Top Starter
+Simone Edera,Torino,it Serie A,Off_MF,21,77,0.9,179.9098765432099,Below Big-5 Level,,,,
+Simone Edera,Bologna,it Serie A,FW,21,196,2.2,188.1413110698825,Below Big-5 Level,,,,
 Johannes Eggestein,Werder Bremen,de Bundesliga,FW,20,1113,12.4,368.0782800575426,Solid Squad Player,,,,
 Maximilian Eggestein,Werder Bremen,de Bundesliga,MF,21,3052,33.9,,,510.95378564405115,Top Starter,,
 Albin Ekdal,Sampdoria,it Serie A,MF,29,2646,29.4,,,241.51927437641726,Solid Squad Player,,
 Josip Elez,Hannover 96,de Bundesliga,DF,24,646,7.2,,,,,351.29676041956736,Solid Squad Player
+Harvey Elliott,Fulham,eng Premier League,Off_MF,15,20,0.2,296.66666666666674,Solid Squad Player,,,,
+Mohamed Elneny,Arsenal,eng Premier League,MF,26,380,4.2,,,351.90476190476187,Solid Squad Player,,
 Aritz Elustondo,Real Sociedad,es La Liga,DF,24,2254,25.0,,,,,438.7678529657477,Top Starter
+Gorka Elustondo,Rayo Vallecano,es La Liga,Def_MF,31,285,3.2,,,,,499.14553140096626,Top Starter
 Nico Elvedi,Gladbach,de Bundesliga,DF,21,2623,29.1,,,,,411.2749227019438,Top Starter
+Rodrigo Ely,Alavés,es La Liga,DF,24,430,4.8,,,,,481.80957444115336,Top Starter
 Mohamed Elyounoussi,Southampton,eng Premier League,Off_MF,23,793,8.8,209.2618686868687,Solid Squad Player,,,,
 Adri Embarba,Rayo Vallecano,es La Liga,FW,26,2282,25.4,370.4113265603705,Solid Squad Player,,,,
 Breel Embolo,Schalke 04,de Bundesliga,FW,21,1345,14.9,337.98183404607187,Solid Squad Player,,,,
+Emerson,Betis,es La Liga,FW,19,317,3.5,116.02672497570457,Below Big-5 Level,,,,
 Youssef En-Nesyri,Leganés,es La Liga,FW,21,2106,23.4,345.7421943136229,Solid Squad Player,,,,
 Björn Engels,Reims,fr Ligue 1,DF,23,2970,33.0,,,,,371.4568330836273,Solid Squad Player
 Sergi Enrich,Eibar,es La Liga,FW,28,2582,28.7,310.8564449395709,Solid Squad Player,,,,
@@ -544,9 +691,14 @@ Xabier Etxeita,Huesca,es La Liga,DF,30,2677,29.7,,,,,395.1214430321288,Solid Squ
 Lucas Evangelista,Nantes,fr Ligue 1,FW,23,720,8.0,159.45767195767195,Below Big-5 Level,,,,
 Jonny Evans,Leicester City,eng Premier League,DF,30,1996,22.2,,,,,452.291690186427,Top Starter
 Ewerton,Nürnberg,de Bundesliga,DF,29,1341,14.9,,,,,516.1155481748912,Top Starter
+Valentin Eysseric,Fiorentina,it Serie A,FW,26,358,4.0,248.71088435374153,Solid Squad Player,,,,
+Valentin Eysseric,Nantes,fr Ligue 1,FW,26,209,2.3,521.0766702816393,Top Starter,,,,
+Marco Fabián,Eint Frankfurt,de Bundesliga,FW,29,62,0.7,71.58163265306122,Below Big-5 Level,,,,
 Fabinho,Liverpool,eng Premier League,MF,24,2017,22.4,,,371.1904761904762,Solid Squad Player,,
 Fábio,Nantes,fr Ligue 1,FW,28,1276,14.2,133.76980933218357,Below Big-5 Level,,,,
+Cesc Fàbregas,Chelsea,eng Premier League,MF,31,180,2.0,,,444.00000000000006,Top Starter,,
 Cesc Fàbregas,Monaco,fr Ligue 1,MF,31,966,10.7,,,472.89719626168227,Top Starter,,
+Romain Faivre,Monaco,fr Ligue 1,MF,20,90,1.0,,,378.0,Solid Squad Player,,
 Fayçal Fajr,Caen,fr Ligue 1,MF,29,3240,36.0,,,511.5925925925926,Top Starter,,
 Radamel Falcao,Monaco,fr Ligue 1,FW,32,2557,28.4,450.3570789818275,Top Starter,,,,
 Diego Falcinelli,Bologna,it Serie A,FW,27,703,7.8,136.61180882609455,Below Big-5 Level,,,,
@@ -556,11 +708,14 @@ Paolo Faragò,Cagliari,it Serie A,MF,25,1703,18.9,,,363.4567901234568,Solid Squa
 Mohamed Fares,SPAL,it Serie A,DF,22,2949,32.8,,,,,375.8642541312631,Solid Squad Player
 Diego Farias,Empoli,it Serie A,FW,28,1193,13.3,448.8281360998869,Top Starter,,,,
 Diego Farias,Cagliari,it Serie A,FW,28,700,7.8,344.4150241293099,Solid Squad Player,,,,
+Andrea Favilli,Genoa,it Serie A,FW,21,170,1.9,345.56444683136414,Solid Squad Player,,,,
 Federico Fazio,Roma,it Serie A,DF,31,2806,31.2,,,,,451.24670650986445,Top Starter
 Zouhair Feddal,Betis,es La Liga,DF,29,1702,18.9,,,,,454.62368443153747,Top Starter
 Nabil Fekir,Lyon,fr Ligue 1,Off_MF,25,1988,22.1,625.6913021618905,Top Starter,,,,
+Yassin Fekir,Lyon,fr Ligue 1,FW,21,12,0.1,219.04761904761904,Solid Squad Player,,,,
 Felipe,Hannover 96,de Bundesliga,DF,31,1095,12.2,,,,,557.5720722571457,Top Starter
 Luiz Felipe,Lazio,it Serie A,DF,21,1289,14.3,,,,,491.1617037932827,Top Starter
+Ohis Felix Uduokhai,Wolfsburg,de Bundesliga,DF,20,244,2.7,,,,,550.1952411893932,Top Starter
 Marouane Fellaini,Manchester Utd,eng Premier League,MF,30,752,8.4,,,298.8888888888889,Solid Squad Player,,
 Kiko Femenía,Watford,eng Premier League,DF,27,2049,22.8,,,,,366.7232408506646,Solid Squad Player
 Edimilson Fernandes,Fiorentina,it Serie A,MF,22,1970,21.9,,,333.66818873668194,Solid Squad Player,,
@@ -573,7 +728,9 @@ Fernandinho,Manchester City,eng Premier League,MF,33,2377,26.4,,,468.63636363636
 Juan Ferney Otero,Amiens,fr Ligue 1,FW,23,2175,24.2,211.7724024412336,Solid Squad Player,,,,
 Alex Ferrari,Sampdoria,it Serie A,DF,24,540,6.0,,,,,429.13840155945417,Top Starter
 David Ferreiro,Huesca,es La Liga,FW,30,2280,25.3,239.51814208335944,Solid Squad Player,,,,
+Facundo Ferreyra,Espanyol,es La Liga,FW,27,211,2.3,259.0890926418877,Solid Squad Player,,,,
 Jordan Ferri,Nîmes,fr Ligue 1,MF,26,1874,20.8,,,473.2371794871795,Top Starter,,
+Jordan Ferri,Lyon,fr Ligue 1,MF,26,116,1.3,,,278.46153846153845,Solid Squad Player,,
 Oliver Fink,Düsseldorf,de Bundesliga,MF,36,1055,11.7,,,297.948717948718,Solid Squad Player,,
 Alfreð Finnbogason,Augsburg,de Bundesliga,FW,29,1335,14.8,587.3603705746563,Top Starter,,,,
 Roberto Firmino,Liverpool,eng Premier League,FW,26,2607,29.0,489.2268746579092,Top Starter,,,,
@@ -581,14 +738,19 @@ Junior Firpo,Betis,es La Liga,FW,21,1937,21.5,238.14765596160944,Solid Squad Pla
 Mathieu Flamini,Getafe,es La Liga,MF,34,453,5.0,,,142.1866666666667,Below Big-5 Level,,
 Sergio Floccari,SPAL,it Serie A,FW,36,976,10.8,254.16784244562018,Solid Squad Player,,,,
 Alessandro Florenzi,Roma,it Serie A,FW,27,2180,24.2,255.3529731451809,Solid Squad Player,,,,
+Phil Foden,Manchester City,eng Premier League,Off_MF,18,335,3.7,514.6396396396395,Top Starter,,,,
+Guessouma Fofana,Amiens,fr Ligue 1,MF,25,186,2.1,,,108.06349206349205,Below Big-5 Level,,
 Guessouma Fofana,Guingamp,fr Ligue 1,MF,25,479,5.3,,,150.21383647798743,Below Big-5 Level,,
 Seko Fofana,Udinese,it Serie A,MF,23,2639,29.3,,,440.0455062571104,Top Starter,,
+Wesley Fofana,Saint-Étienne,fr Ligue 1,DF,17,161,1.8,,,,,545.7272811658777,Top Starter
 Youssouf Fofana,Strasbourg,fr Ligue 1,MF,19,912,10.1,,,354.4554455445545,Solid Squad Player,,
 Thomas Foket,Reims,fr Ligue 1,DF,23,2880,32.0,,,,,357.19298245614027,Solid Squad Player
+Thomas Fontaine,Reims,fr Ligue 1,Def_MF,27,420,4.7,,,,,437.3851372186248,Top Starter
 José Fonte,Lille,fr Ligue 1,DF,34,3110,34.6,,,,,342.9436790434661,Solid Squad Player
 Rui Fonte,Lille,fr Ligue 1,FW,28,627,7.0,165.35735881654247,Below Big-5 Level,,,,
 Pablo Fornals,Villarreal,es La Liga,FW,22,2479,27.5,247.0255273826702,Solid Squad Player,,,,
 Emil Forsberg,RB Leipzig,de Bundesliga,FW,26,1249,13.9,531.1616203635731,Top Starter,,,,
+Steven Fortes,Toulouse,fr Ligue 1,DF,26,136,1.5,,,,,384.887066150224,Solid Squad Player
 Iver Fossum,Hannover 96,de Bundesliga,MF,22,455,5.1,,,386.66666666666674,Solid Squad Player,,
 Timothy Fosu-Mensah,Fulham,eng Premier League,DF,20,793,8.8,,,,,355.2677147413989,Solid Squad Player
 Dimitri Foulquier,Getafe,es La Liga,MF,25,1799,20.0,,,335.43333333333334,Solid Squad Player,,
@@ -600,25 +762,33 @@ Ryan Fraser,Bournemouth,eng Premier League,FW,24,3166,35.2,408.5568095925239,Top
 Fred,Manchester Utd,eng Premier League,MF,25,1041,11.6,,,422.7011494252874,Top Starter,,
 Ryan Fredericks,West Ham,eng Premier League,DF,25,1086,12.1,,,,,411.65392820895215,Top Starter
 Remo Freuler,Atalanta,it Serie A,MF,26,3022,33.6,,,571.25,Top Starter,,
+Nicolas Frey,Chievo,it Serie A,DF,34,227,2.5,,,,,517.990977443609,Top Starter
 Marco Friedl,Werder Bremen,de Bundesliga,DF,20,474,5.3,,,,,496.47136709698776,Top Starter
 Alexander Fuchs,Nürnberg,de Bundesliga,FW,21,655,7.3,183.54079044098614,Below Big-5 Level,,,,
+Christian Fuchs,Leicester City,eng Premier League,DF,32,207,2.3,,,,,317.3324615887544,Solid Squad Player
+Javi Fuego,Villarreal,es La Liga,MF,34,233,2.6,,,130.0,Below Big-5 Level,,
 Angelo Fulgini,Angers,fr Ligue 1,FW,21,1635,18.2,314.0119940528104,Solid Squad Player,,,,
 Niclas Füllkrug,Hannover 96,de Bundesliga,FW,25,1112,12.4,279.00583961183037,Solid Squad Player,,,,
 Ramiro Funes Mori,Villarreal,es La Liga,Def_MF,27,2627,29.2,,,,,436.5842763549732,Top Starter
 Manolo Gabbiadini,Southampton,eng Premier League,FW,26,476,5.3,231.62895934054967,Solid Squad Player,,,,
 Manolo Gabbiadini,Sampdoria,it Serie A,FW,26,812,9.0,438.3336272780718,Top Starter,,,,
 Mijat Gaćinović,Eint Frankfurt,de Bundesliga,Off_MF,23,1626,18.1,160.3636806103657,Below Big-5 Level,,,,
+Gianluca Gaetano,Napoli,it Serie A,FW,18,8,0.1,219.04761904761904,Solid Squad Player,,,,
 Roberto Gagliardini,Inter,it Serie A,MF,24,1087,12.1,,,470.24793388429754,Top Starter,,
 Riccardo Gagliolo,Parma,it Serie A,DF,28,3045,33.8,,,,,532.3557414245674,Top Starter
+Milan Gajić,Bordeaux,fr Ligue 1,DF,22,90,1.0,,,,,336.30743525480375,Solid Squad Player
 Javi Galán,Huesca,es La Liga,FW,23,1440,16.0,126.9200680272109,Below Big-5 Level,,,,
+Sam Gallagher,Southampton,eng Premier League,FW,22,34,0.4,0.0,Below Big-5 Level,,,,
 Álex Gallar,Huesca,es La Liga,FW,26,1009,11.2,439.45340675952923,Top Starter,,,,
 Enric Gallego,Huesca,es La Liga,FW,31,1539,17.1,284.1951549950714,Solid Squad Player,,,,
 Álex Gálvez,Rayo Vallecano,es La Liga,DF,29,1412,15.7,,,,,508.76254523589427,Top Starter
 Kévin Gameiro,Valencia,es La Liga,FW,31,1612,17.9,403.74023613169675,Top Starter,,,,
 Idrissa Gana Gueye,Everton,eng Premier League,MF,28,2822,31.4,,,323.7154989384289,Solid Squad Player,,
 Ignatius Ganago,Nice,fr Ligue 1,FW,19,1036,11.5,226.7540339807421,Solid Squad Player,,,,
+Cristian Ganea,Athletic Club,es La Liga,DF,26,49,0.5,,,,,367.64517353991033,Solid Squad Player
 Ganso,Amiens,fr Ligue 1,FW,28,520,5.8,269.48956134177814,Solid Squad Player,,,,
 Ezequiel Garay,Valencia,es La Liga,DF,31,2136,23.7,,,,,385.6874253143407,Solid Squad Player
+Borja Garcés,Atlético Madrid,es La Liga,FW,18,20,0.2,666.6666666666669,Top Starter,,,,
 Aleix García,Girona,es La Liga,MF,21,1663,18.5,,,476.1801801801802,Top Starter,,
 Álvaro García,Rayo Vallecano,es La Liga,FW,25,1766,19.6,270.7495796504543,Solid Squad Player,,,,
 Borja García,Girona,es La Liga,FW,27,2629,29.2,179.2806407189969,Below Big-5 Level,,,,
@@ -627,25 +797,32 @@ Javi García,Betis,es La Liga,Def_MF,31,524,5.8,,,,,342.2572047309679,Solid Squa
 Manu García,Alavés,es La Liga,MF,32,2330,25.9,,,240.51480051480056,Solid Squad Player,,
 Manu García,Toulouse,fr Ligue 1,MF,20,1843,20.5,,,499.77235772357733,Top Starter,,
 Raúl García,Athletic Club,es La Liga,FW,32,2369,26.3,368.1383176844882,Solid Squad Player,,,,
+Raúl García,Leganés,es La Liga,DF,29,381,4.2,,,,,440.5408904657025,Top Starter
 Raúl García,Girona,es La Liga,DF,29,850,9.4,,,,,383.2844522654153,Solid Squad Player
 Sergio García,Espanyol,es La Liga,FW,35,1486,16.5,260.6268581506677,Solid Squad Player,,,,
 Mario Gaspar,Villarreal,es La Liga,DF,27,2599,28.9,,,,,411.93248403592605,Top Starter
 Marcello Gazzola,Parma,it Serie A,MF,33,921,10.2,,,223.0980392156863,Solid Squad Player,,
 Jean-Philippe Gbamin,Mainz 05,de Bundesliga,MF,22,2672,29.7,,,334.5230078563412,Solid Squad Player,,
 Theodor Gebre Selassie,Werder Bremen,de Bundesliga,DF,31,2814,31.3,,,,,396.8763228625343,Solid Squad Player
+Dennis Geiger,Hoffenheim,de Bundesliga,MF,20,246,2.7,,,748.8888888888889,Top Starter,,
 Jérémy Gélin,Rennes,fr Ligue 1,Def_MF,21,1278,14.2,,,,,359.96802068449347,Solid Squad Player
+Romain Genevois,Caen,fr Ligue 1,DF,30,357,4.0,,,,,417.3767752715121,Top Starter
 Christian Gentner,Stuttgart,de Bundesliga,FW,32,2018,22.4,181.04348882410108,Below Big-5 Level,,,,
 Yannick Gerhardt,Wolfsburg,de Bundesliga,MF,24,2455,27.3,,,389.2844932844933,Solid Squad Player,,
 Valère Germain,Marseille,fr Ligue 1,FW,28,2170,24.1,283.3159391926435,Solid Squad Player,,,,
 Gerson,Fiorentina,it Serie A,FW,21,2426,27.0,236.73523977492232,Solid Squad Player,,,,
 Gervinho,Parma,it Serie A,FW,31,2304,25.6,385.09769463340893,Solid Squad Player,,,,
+Willem Geubbels,Monaco,fr Ligue 1,Off_MF,16,8,0.1,0.0,Below Big-5 Level,,,,
+Lamine Ghezali,Saint-Étienne,fr Ligue 1,FW,19,44,0.5,645.93537414966,Top Starter,,,,
 Rachid Ghezzal,Leicester City,eng Premier League,FW,26,743,8.3,274.8585543990019,Solid Squad Player,,,,
 Paolo Ghiglione,Frosinone,it Serie A,DF,21,514,5.7,,,,,262.2911345349018,Solid Squad Player
 Saman Ghoddos,Amiens,fr Ligue 1,FW,24,1827,20.3,294.2161753590325,Solid Squad Player,,,,
 Faouzi Ghoulam,Napoli,it Serie A,DF,27,1154,12.8,,,,,186.0354010025063,Below Big-5 Level
 Emanuele Giaccherini,Chievo,it Serie A,FW,33,2009,22.3,264.80660036809945,Solid Squad Player,,,,
 Morgan Gibbs-White,Wolves,eng Premier League,FW,18,663,7.4,187.7364405221548,Below Big-5 Level,,,,
+Ben Gibson,Burnley,eng Premier League,DF,25,62,0.7,,,,,299.68253968253964,Solid Squad Player
 Niko Gießelmann,Düsseldorf,de Bundesliga,DF,26,2593,28.8,,,,,327.40369442123824,Solid Squad Player
+Bryan Gil,Sevilla,es La Liga,FW,17,167,1.9,596.0179814615904,Top Starter,,,,
 Daniel Ginczek,Wolfsburg,de Bundesliga,FW,27,1276,14.2,380.4935485931462,Solid Squad Player,,,,
 Matthias Ginter,Gladbach,de Bundesliga,DF,24,2379,26.4,,,,,323.26675274043686,Solid Squad Player
 Andrei Girotto,Nantes,fr Ligue 1,MF,26,1475,16.4,,,237.19512195121953,Solid Squad Player,,
@@ -655,10 +832,12 @@ Serge Gnabry,Bayern Munich,de Bundesliga,FW,23,1762,19.6,578.4756428648558,Top S
 Joris Gnagnon,Sevilla,es La Liga,Def_MF,21,446,5.0,,,,,417.22512077294687,Top Starter
 Eddy Gnahoré,Amiens,fr Ligue 1,MF,24,2243,24.9,,,418.714859437751,Top Starter,,
 Massimo Gobbi,Parma,it Serie A,DF,37,1183,13.1,,,,,297.596408323608,Solid Squad Player
+Kevin Goden,Nürnberg,de Bundesliga,Def_MF,19,273,3.0,,,,,390.49114331723024,Solid Squad Player
 Diego Godín,Atlético Madrid,es La Liga,DF,32,2509,27.9,,,,,414.1331061987542,Top Starter
 Edoardo Goldaniga,Frosinone,it Serie A,DF,24,2610,29.0,,,,,405.84126984126976,Top Starter
 Aleksandr Golovin,Monaco,fr Ligue 1,FW,22,2290,25.4,244.6951006124234,Solid Squad Player,,,,
 André Gomes,Everton,eng Premier League,MF,25,1980,22.0,,,305.78787878787875,Solid Squad Player,,
+Angel Gomes,Manchester Utd,eng Premier League,FW,17,27,0.3,219.9546485260771,Solid Squad Player,,,,
 Ibai Gómez,Athletic Club,es La Liga,FW,28,580,6.4,248.74489795918362,Solid Squad Player,,,,
 Ibai Gómez,Alavés,es La Liga,FW,28,1449,16.1,270.8620512387149,Solid Squad Player,,,,
 Joe Gomez,Liverpool,eng Premier League,DF,21,1063,11.8,,,,,342.2748962802486,Solid Squad Player
@@ -672,18 +851,24 @@ Anthony Gonçalves,Strasbourg,fr Ligue 1,FW,32,1058,11.8,385.5627874501967,Solid
 Jérôme Gondorf,Freiburg,de Bundesliga,FW,30,1296,14.4,240.36982447299908,Solid Squad Player,,,,
 Álvaro González,Villarreal,es La Liga,DF,28,2964,32.9,,,,,398.38502030151363,Solid Squad Player
 Bruno González,Getafe,es La Liga,DF,28,1701,18.9,,,,,319.05076142335963,Solid Squad Player
+Cristo González,Real Madrid,es La Liga,FW,20,45,0.5,123.12925170068029,Below Big-5 Level,,,,
 Giancarlo González,Bologna,it Serie A,DF,30,746,8.3,,,,,439.7024690239655,Top Starter
 Nicolás González,Stuttgart,de Bundesliga,FW,20,2162,24.0,245.63277903754093,Solid Squad Player,,,,
 Jon Gorenc Stanković,Huddersfield,eng Premier League,Def_MF,22,715,7.9,,,,,487.3986424509264,Top Starter
 Leon Goretzka,Bayern Munich,de Bundesliga,MF,23,2023,22.5,,,525.7481481481482,Top Starter,,
+Mirko Gori,Frosinone,it Serie A,MF,25,329,3.7,,,274.5945945945946,Solid Squad Player,,
 Andoni Gorosabel,Real Sociedad,es La Liga,DF,21,455,5.1,,,,,348.3768244139761,Solid Squad Player
 Robin Gosens,Atalanta,it Serie A,Off_MF,24,1942,21.6,266.2088330393886,Solid Squad Player,,,,
 Dan Gosling,Bournemouth,eng Premier League,MF,28,1739,19.3,,,321.62348877374785,Solid Squad Player,,
+Felix Götze,Augsburg,de Bundesliga,Def_MF,20,126,1.4,,,,,442.7432712215321,Top Starter
 Mario Götze,Dortmund,de Bundesliga,FW,26,1674,18.6,489.5546249563147,Top Starter,,,,
 Prince-Désir Gouano,Amiens,fr Ligue 1,DF,24,2620,29.1,,,,,401.684811842164,Top Starter
+Yoann Gourcuff,Dijon,fr Ligue 1,FW,32,134,1.5,267.60544217687067,Solid Squad Player,,,,
 Jeffrey Gouweleeuw,Augsburg,de Bundesliga,DF,27,2092,23.2,,,,,518.2899778181085,Top Starter
+Paolo Gozzi Iweru,Juventus,it Serie A,DF,17,90,1.0,,,,,416.7953216374268,Top Starter
 Max Gradel,Toulouse,fr Ligue 1,FW,30,3240,36.0,430.9861006130848,Top Starter,,,,
 Jonathan Gradit,Caen,fr Ligue 1,DF,25,2010,22.3,,,,,457.18241792822863,Top Starter
+Samuel Grandsir,Strasbourg,fr Ligue 1,FW,21,237,2.6,80.11669283097855,Below Big-5 Level,,,,
 Samuel Grandsir,Monaco,fr Ligue 1,FW,21,469,5.2,184.80141287284147,Below Big-5 Level,,,,
 Álex Granell,Girona,es La Liga,MF,29,2391,26.6,,,589.37343358396,Top Starter,,
 Esteban Granero,Espanyol,es La Liga,MF,31,2013,22.4,,,407.5595238095238,Top Starter,,
@@ -691,19 +876,28 @@ Karlan Grant,Huddersfield,eng Premier League,FW,20,877,9.7,354.04578784549324,So
 Alberto Grassi,Parma,it Serie A,MF,23,462,5.1,,,144.83660130718957,Below Big-5 Level,,
 Andre Gray,Watford,eng Premier League,FW,27,1366,15.2,394.54312368222145,Solid Squad Player,,,,
 Demarai Gray,Leicester City,eng Premier League,FW,22,1985,22.1,240.3496595219284,Solid Squad Player,,,,
+Mason Greenwood,Manchester Utd,eng Premier League,FW,16,117,1.3,332.28676085818944,Solid Squad Player,,,,
 Michael Gregoritsch,Augsburg,de Bundesliga,FW,24,2487,27.6,308.39094285057007,Solid Squad Player,,,,
 Clément Grenier,Rennes,fr Ligue 1,MF,27,2668,29.6,,,608.8738738738739,Top Starter,,
 Antoine Griezmann,Atlético Madrid,es La Liga,FW,27,3198,35.5,501.60617674299766,Top Starter,,,,
+Vincenzo Grifo,Hoffenheim,de Bundesliga,FW,25,335,3.7,556.953524953525,Top Starter,,,,
 Vincenzo Grifo,Freiburg,de Bundesliga,FW,25,1427,15.9,449.24767181505723,Top Starter,,,,
 Florian Grillitsch,Hoffenheim,de Bundesliga,MF,22,2394,26.6,,,436.51629072681703,Top Starter,,
+Jérémy Grimm,Strasbourg,fr Ligue 1,MF,31,168,1.9,,,184.56140350877192,Below Big-5 Level,,
 Pascal Groß,Brighton,eng Premier League,FW,27,1864,20.7,318.69564121945075,Solid Squad Player,,,,
+Sergej Grubac,Chievo,it Serie A,FW,18,157,1.7,54.23269307723089,Below Big-5 Level,,,,
 Marko Grujić,Hertha BSC,de Bundesliga,MF,22,1780,19.8,,,406.1952861952862,Top Starter,,
 Andrés Guardado,Betis,es La Liga,MF,31,2335,25.9,,,491.4800514800515,Top Starter,,
 Sergi Guardiola,Valladolid,es La Liga,FW,27,1514,16.8,254.9703055825505,Solid Squad Player,,,,
+Sergi Guardiola,Getafe,es La Liga,FW,27,30,0.3,155.5555555555556,Below Big-5 Level,,,,
+Metehan Güçlü,Paris S-G,fr Ligue 1,Off_MF,19,17,0.2,676.9444444444445,Top Starter,,,,
 Gonçalo Guedes,Valencia,es La Liga,FW,21,1465,16.3,376.33385965156333,Solid Squad Player,,,,
 Mattéo Guendouzi,Arsenal,eng Premier League,MF,19,2149,23.9,,,358.41004184100416,Solid Squad Player,,
+Javi Guerra,Rayo Vallecano,es La Liga,FW,36,236,2.6,263.96938775510205,Solid Squad Player,,,,
 Raphaël Guerreiro,Dortmund,de Bundesliga,FW,24,1527,17.0,363.8133030990174,Solid Squad Player,,,,
 Francis Guerrero,Betis,es La Liga,FW,22,1778,19.8,97.14866350580637,Below Big-5 Level,,,,
+Ander Guevara,Real Sociedad,es La Liga,MF,21,90,1.0,,,220.0,Solid Squad Player,,
+Makhtar Gueye,Saint-Étienne,fr Ligue 1,FW,20,50,0.6,813.8321995464853,World Class,,,,
 John Guidetti,Alavés,es La Liga,FW,26,631,7.0,300.7900334737069,Solid Squad Player,,,,
 Josuha Guilavogui,Wolfsburg,de Bundesliga,Def_MF,27,1570,17.4,,,,,448.024321172747,Top Starter
 Frederic Guilbert,Caen,fr Ligue 1,DF,23,2916,32.4,,,,,489.35466237610484,Top Starter
@@ -716,36 +910,49 @@ Aron Gunnarsson,Cardiff City,eng Premier League,MF,29,2266,25.2,,,270.6243386243
 Christian Günter,Freiburg,de Bundesliga,Off_MF,25,2879,32.0,191.53799603174605,Below Big-5 Level,,,,
 Koray Günter,Genoa,it Serie A,DF,23,835,9.3,,,,,413.4163365402754,Top Starter
 Serdar Gürler,Huesca,es La Liga,FW,26,482,5.4,190.88548752834467,Below Big-5 Level,,,,
+Ahmet Gürleyen,Mainz 05,de Bundesliga,DF,19,13,0.1,,,,,249.6969696969697,Solid Squad Player
+Gorka Guruzeta,Athletic Club,es La Liga,FW,21,50,0.6,170.45351473922904,Below Big-5 Level,,,,
 Luiz Gustavo,Marseille,fr Ligue 1,Def_MF,31,2436,27.1,,,,,391.7986701606146,Solid Squad Player
 Jonathan de Guzmán,Eint Frankfurt,de Bundesliga,MF,30,1564,17.4,,,726.7816091954024,Top Starter,,
 Janik Haberer,Freiburg,de Bundesliga,FW,24,2340,26.0,178.43804872376302,Below Big-5 Level,,,,
 Alexander Hack,Mainz 05,de Bundesliga,DF,24,1020,11.3,,,,,650.1504498709902,Top Starter
+Munir El Haddadi,Barcelona,es La Liga,FW,22,152,1.7,638.4828820417055,Top Starter,,,,
 Munir El Haddadi,Sevilla,es La Liga,FW,22,1042,11.6,410.1854979539709,Top Starter,,,,
 Oussama Haddadi,Dijon,fr Ligue 1,DF,26,2674,29.7,,,,,340.4412265230979,Solid Squad Player
 Florent Hadergjonaj,Huddersfield,eng Premier League,MF,24,1842,20.5,,,315.219512195122,Solid Squad Player,,
+Benjamin Hadžić,Hannover 96,de Bundesliga,FW,19,25,0.3,238.09523809523807,Solid Squad Player,,,,
 André Hahn,Augsburg,de Bundesliga,FW,27,2052,22.8,251.83282279773505,Solid Squad Player,,,,
+Amadou Haidara,RB Leipzig,de Bundesliga,MF,20,378,4.2,,,478.0952380952381,Top Starter,,
 Oualid El Hajjam,Amiens,fr Ligue 1,Def_MF,27,544,6.0,,,,,489.5652173913044,Top Starter
 Achraf Hakimi,Dortmund,de Bundesliga,DF,19,1740,19.3,,,,,358.21505404270596,Solid Squad Player
 Sébastien Haller,Eint Frankfurt,de Bundesliga,FW,24,2182,24.2,608.6412361087686,Top Starter,,,,
+Emil Hallfreðsson,Udinese,it Serie A,Def_MF,34,137,1.5,,,,,349.3752012882448,Solid Squad Player
+Emil Hallfreðsson,Frosinone,it Serie A,MF,34,392,4.4,,,236.36363636363635,Solid Squad Player,,
 Marcel Halstenberg,RB Leipzig,de Bundesliga,FW,26,2414,26.8,289.6923207093783,Solid Squad Player,,,,
 Romain Hamouma,Saint-Étienne,fr Ligue 1,FW,31,1586,17.6,353.3673812959527,Solid Squad Player,,,,
 Marek Hamšík,Napoli,it Serie A,MF,31,916,10.2,,,424.1176470588236,Top Starter,,
+Dávid Hancko,Fiorentina,it Serie A,DF,20,282,3.1,,,,,353.6410919772549,Solid Squad Player
 Genki Haraguchi,Hannover 96,de Bundesliga,MF,27,2133,23.7,,,425.01265822784814,Top Starter,,
+Féthi Harek,Nîmes,fr Ligue 1,DF,35,177,2.0,,,,,279.31677679046095,Solid Squad Player
 Amine Harit,Schalke 04,de Bundesliga,FW,21,1082,12.0,240.633912824389,Solid Squad Player,,,,
 Martin Harnik,Werder Bremen,de Bundesliga,FW,31,828,9.2,518.6951263597227,Top Starter,,,,
+Kadeem Harris,Cardiff City,eng Premier League,Off_MF,25,375,4.2,259.35978835978835,Solid Squad Player,,,,
 Makoto Hasebe,Eint Frankfurt,de Bundesliga,Def_MF,34,2520,28.0,,,,,453.648033126294,Top Starter
 Hans Hateboer,Atalanta,it Serie A,DF,24,2973,33.0,,,,,233.54568238778765,Solid Squad Player
 Kai Havertz,Leverkusen,de Bundesliga,FW,19,2894,32.2,488.41608099416436,Top Starter,,,,
 Isaac Hayden,Newcastle Utd,eng Premier League,MF,23,1859,20.7,,,429.37198067632846,Top Starter,,
 Eden Hazard,Chelsea,eng Premier League,FW,27,2923,32.5,637.6050351764637,Top Starter,,,,
 Thorgan Hazard,Gladbach,de Bundesliga,FW,25,2873,31.9,491.64943002627734,Top Starter,,,,
+Rhys Healey,Cardiff City,eng Premier League,FW,23,52,0.6,118.93310657596373,Below Big-5 Level,,,,
 Dominique Heintz,Freiburg,de Bundesliga,DF,24,3053,33.9,,,,,433.80604904591866,Top Starter
 Filip Helander,Bologna,it Serie A,DF,25,1713,19.0,,,,,386.4988787758871,Solid Squad Player
 Jordan Henderson,Liverpool,eng Premier League,MF,28,1987,22.1,,,428.3257918552036,Top Starter,,
 Jeff Hendrick,Burnley,eng Premier League,FW,26,2063,22.9,131.1111952786937,Below Big-5 Level,,,,
 Rouwen Hennings,Düsseldorf,de Bundesliga,FW,30,1833,20.4,408.6032264757755,Top Starter,,,,
 Benjamin Henrichs,Monaco,fr Ligue 1,MF,21,1824,20.3,,,442.20032840722496,Top Starter,,
+Benjamin Henrichs,Leverkusen,de Bundesliga,DF,21,63,0.7,,,,,475.5555555555555,Top Starter
 Dalbert Henrique,Inter,it Serie A,DF,24,778,8.6,,,,,373.67838200151544,Solid Squad Player
+Uche Henry Agbo,Rayo Vallecano,es La Liga,MF,22,372,4.1,,,184.22764227642278,Below Big-5 Level,,
 Christophe Hérelle,Nice,fr Ligue 1,DF,25,2937,32.6,,,,,497.58568199640195,Top Starter
 Mario Hermoso,Espanyol,es La Liga,DF,23,2806,31.2,,,,,417.47081378660323,Top Starter
 Javier Hernández,West Ham,eng Premier League,FW,30,1334,14.8,391.26381483524335,Solid Squad Player,,,,
@@ -754,6 +961,8 @@ Theo Hernández,Real Sociedad,es La Liga,DF,20,1976,22.0,,,,,338.69491911597174,
 Ander Herrera,Manchester Utd,eng Premier League,MF,28,1403,15.6,,,498.5897435897436,Top Starter,,
 Yangel Herrera,Huesca,es La Liga,MF,20,1154,12.8,,,185.3125,Below Big-5 Level,,
 Patrick Herrmann,Gladbach,de Bundesliga,FW,27,1079,12.0,343.7747543461829,Solid Squad Player,,,,
+Pablo Hervías,Valladolid,es La Liga,Off_MF,25,160,1.8,127.14074074074072,Below Big-5 Level,,,,
+Pablo Hervías,Eibar,es La Liga,Off_MF,25,180,2.0,349.80158730158735,Solid Squad Player,,,,
 Përparim Hetemaj,Chievo,it Serie A,MF,31,2156,24.0,,,268.55555555555554,Solid Squad Player,,
 Son Heung-min,Tottenham,eng Premier League,FW,26,2039,22.7,535.4027740317861,Top Starter,,,,
 Gonzalo Higuaín,Chelsea,eng Premier League,FW,30,1085,12.1,383.1981846916912,Solid Squad Player,,,,
@@ -762,6 +971,7 @@ Oscar Hiljemark,Genoa,it Serie A,MF,26,1196,13.3,,,286.5263157894737,Solid Squad
 Vitorino Hilton,Montpellier,fr Ligue 1,DF,40,3232,35.9,,,,,409.7901206125806,Top Starter
 Martin Hinteregger,Augsburg,de Bundesliga,DF,25,1575,17.5,,,,,460.09805466046066,Top Starter
 Martin Hinteregger,Eint Frankfurt,de Bundesliga,DF,25,1142,12.7,,,,,449.2785770199777,Top Starter
+Andrew Hjulsager,Celta Vigo,es La Liga,FW,23,359,4.0,281.9727891156462,Solid Squad Player,,,,
 Wesley Hoedt,Southampton,eng Premier League,DF,24,1170,13.0,,,,,475.14221451063554,Top Starter
 Wesley Hoedt,Celta Vigo,es La Liga,DF,24,893,9.9,,,,,456.83029121625606,Top Starter
 André Hoffmann,Düsseldorf,de Bundesliga,Def_MF,25,1049,11.7,,,,,461.8196457326893,Top Starter
@@ -772,73 +982,108 @@ Junior Hoilett,Cardiff City,eng Premier League,FW,28,2141,23.8,188.4500847958231
 Rob Holding,Arsenal,eng Premier League,DF,22,807,9.0,,,,,413.8420124385036,Top Starter
 José Holebas,Watford,eng Premier League,DF,34,2393,26.6,,,,,334.78860057411697,Solid Squad Player
 Lucas Höler,Freiburg,de Bundesliga,FW,24,1006,11.2,320.18712881978183,Solid Squad Player,,,,
+Mason Holgate,Everton,eng Premier League,DF,21,408,4.5,,,,,356.77638540796437,Solid Squad Player
+Gerrit Holtmann,Mainz 05,de Bundesliga,FW,23,145,1.6,130.8809523809524,Below Big-5 Level,,,,
+Justin Hoogma,Hoffenheim,de Bundesliga,MF,20,111,1.2,,,219.44444444444443,Solid Squad Player,,
+Branimir Hrgota,Eint Frankfurt,de Bundesliga,FW,25,5,0.1,0.0,Below Big-5 Level,,,,
 Benjamin Hübner,Hoffenheim,de Bundesliga,DF,29,813,9.0,,,,,563.1018286456883,Top Starter
+Tomáš Hubočan,Marseille,fr Ligue 1,DF,32,69,0.8,,,,,492.64449001291104,Top Starter
+Callum Hudson-Odoi,Chelsea,eng Premier League,FW,17,393,4.4,271.3045763760049,Solid Squad Player,,,,
 Will Hughes,Watford,eng Premier League,Off_MF,23,2418,26.9,214.36055053991856,Solid Squad Player,,,,
 Vitor Hugo,Fiorentina,it Serie A,DF,27,2470,27.4,,,,,512.5438901389728,Top Starter
 Mats Hummels,Bayern Munich,de Bundesliga,DF,29,1775,19.7,,,,,386.29806326306453,Solid Squad Player
 Adrien Hunou,Rennes,fr Ligue 1,FW,24,1240,13.8,438.404838585998,Top Starter,,,,
+Emerson Hyndman,Bournemouth,eng Premier League,Def_MF,22,38,0.4,,,,,514.7222222222223,Top Starter
 Elseid Hysaj,Napoli,it Serie A,DF,24,2107,23.4,,,,,273.01644424451445,Solid Squad Player
 Suk Hyun-jun,Reims,fr Ligue 1,FW,27,793,8.8,320.10719439290864,Solid Squad Player,,,,
 Pierre Højbjerg,Southampton,eng Premier League,MF,22,2760,30.7,,,424.56026058631926,Top Starter,,
 Simone Iacoponi,Parma,it Serie A,DF,31,3346,37.2,,,,,372.46019904763534,Solid Squad Player
+Robert Ibáñez,Getafe,es La Liga,Off_MF,25,76,0.8,143.75,Below Big-5 Level,,,,
 Jordon Ibe,Bournemouth,eng Premier League,Off_MF,22,797,8.9,247.17694845728553,Solid Squad Player,,,,
 Vedad Ibišević,Hertha BSC,de Bundesliga,FW,33,1807,20.1,465.16301899421995,Top Starter,,,,
+Vicente Iborra,Leicester City,eng Premier League,MF,30,229,2.5,,,246.66666666666666,Solid Squad Player,,
 Vicente Iborra,Villarreal,es La Liga,MF,30,1665,18.5,,,270.8828828828829,Solid Squad Player,,
 Didier Ibrahim Ndong,Guingamp,fr Ligue 1,MF,24,744,8.3,,,217.02811244979915,Solid Squad Player,,
 Mauro Icardi,Inter,it Serie A,FW,25,2267,25.2,472.1231088555351,Top Starter,,,,
+Edgar Ié,Lille,fr Ligue 1,DF,24,239,2.7,,,,,472.1433212661282,Top Starter
 Edgar Ié,Nantes,fr Ligue 1,DF,24,776,8.6,,,,,332.30518155854753,Solid Squad Player
 Borja Iglesias,Espanyol,es La Liga,FW,25,3075,34.2,446.192043159044,Top Starter,,,,
 Kelechi Iheanacho,Leicester City,eng Premier League,FW,21,941,10.5,257.8971313393082,Solid Squad Player,,,,
 Jordan Ikoko,Guingamp,fr Ligue 1,DF,24,1707,19.0,,,,,294.1159917337202,Solid Squad Player
 Jonathan Ikone,Lille,fr Ligue 1,FW,20,2796,31.1,304.40927153283604,Solid Squad Player,,,,
+Ivo Iličević,Nürnberg,de Bundesliga,MF,31,39,0.4,,,208.33333333333331,Solid Squad Player,,
 Josip Iličić,Atalanta,it Serie A,FW,30,2145,23.8,644.7357990815375,Top Starter,,,,
 Asier Illarramendi,Real Sociedad,es La Liga,MF,28,1821,20.2,,,323.6963696369637,Solid Squad Player,,
 Stefan Ilsanker,RB Leipzig,de Bundesliga,Def_MF,29,933,10.4,,,,,458.63340765514675,Top Starter
 Giannelli Imbula,Rayo Vallecano,es La Liga,MF,25,1732,19.2,,,395.1736111111111,Solid Squad Player,,
 Ciro Immobile,Lazio,it Serie A,FW,28,2859,31.8,528.3587757954335,Top Starter,,,,
 Emmanuel Imorou,Caen,fr Ligue 1,DF,29,1119,12.4,,,,,407.7295389010159,Top Starter
+Svante Ingelsson,Udinese,it Serie A,MF,20,97,1.1,,,126.18181818181817,Below Big-5 Level,,
 Roberto Inglese,Parma,it Serie A,FW,26,1965,21.8,334.8641952193721,Solid Squad Player,,,,
 Danny Ings,Southampton,eng Premier League,FW,26,1651,18.3,455.3480188675349,Top Starter,,,,
 Lorenzo Insigne,Napoli,it Serie A,FW,27,2073,23.0,572.00657267738,Top Starter,,,,
 Emiliano Insúa,Stuttgart,de Bundesliga,DF,29,2114,23.5,,,,,342.3927193871203,Solid Squad Player
 Pablo Insua,Huesca,es La Liga,DF,24,776,8.6,,,,,322.68140400331345,Solid Squad Player
 Takashi Inui,Alavés,es La Liga,FW,30,828,9.2,224.05208846823757,Solid Squad Player,,,,
+Takashi Inui,Betis,es La Liga,Off_MF,30,377,4.2,173.06084656084656,Below Big-5 Level,,,,
 Artur Ioniță,Cagliari,it Serie A,MF,27,2968,33.0,,,277.0707070707071,Solid Squad Player,,
+Carlos Isaac,Atlético Madrid,es La Liga,DF,20,90,1.0,,,,,288.8153717627401,Solid Squad Player
 Isco,Real Madrid,es La Liga,FW,26,1192,13.2,413.0882635882636,Top Starter,,,,
 Mikael Ishak,Nürnberg,de Bundesliga,FW,25,1917,21.3,245.63066937781895,Solid Squad Player,,,,
+Wilson Isidor,Monaco,fr Ligue 1,FW,17,42,0.5,95.23809523809523,Below Big-5 Level,,,,
+Abass Issah,Mainz 05,de Bundesliga,FW,19,9,0.1,28.57142857142857,Below Big-5 Level,,,,
+Gian-Luca Itter,Wolfsburg,de Bundesliga,DF,19,94,1.0,,,,,399.29156223893057,Solid Squad Player
+Manuel Iturra,Villarreal,es La Liga,MF,34,74,0.8,,,220.83333333333334,Solid Squad Player,,
+Ander Iturraspe,Athletic Club,es La Liga,MF,29,98,1.1,,,141.8181818181818,Below Big-5 Level,,
+Ivi,Valladolid,es La Liga,FW,24,20,0.2,195.2380952380952,Below Big-5 Level,,,,
 Alex Iwobi,Arsenal,eng Premier League,FW,22,1970,21.9,361.53234139926906,Solid Squad Player,,,,
 José Izquierdo,Brighton,eng Premier League,FW,26,795,8.8,119.74087816944956,Below Big-5 Level,,,,
 Armando Izzo,Torino,it Serie A,DF,26,3271,36.3,,,,,484.5338322850285,Top Starter
 Koo Ja-cheol,Augsburg,de Bundesliga,MF,29,1640,18.2,,,371.7582417582418,Solid Squad Player,,
+Lukas Jäger,Nürnberg,de Bundesliga,FW,24,27,0.3,23.785714285714285,Below Big-5 Level,,,,
+Phil Jagielka,Everton,eng Premier League,DF,35,331,3.7,,,,,313.95425500688657,Solid Squad Player
 Alireza Jahanbakhsh,Brighton,eng Premier League,FW,24,1020,11.3,75.81412919149962,Below Big-5 Level,,,,
 Christophe Jallet,Nice,fr Ligue 1,DF,34,885,9.8,,,,,473.2736603413294,Top Starter
+Christoph Janker,Augsburg,de Bundesliga,FW,33,72,0.8,0.0,Below Big-5 Level,,,,
+Marko Janković,SPAL,it Serie A,Off_MF,23,54,0.6,276.6074074074075,Solid Squad Player,,,,
 Jakub Jankto,Sampdoria,it Serie A,Off_MF,22,963,10.7,166.99078400830734,Below Big-5 Level,,,,
 Daryl Janmaat,Watford,eng Premier League,DF,29,1520,16.9,,,,,423.19447534022424,Top Starter
+Vincent Janssen,Tottenham,eng Premier League,FW,24,39,0.4,261.9047619047619,Solid Squad Player,,,,
 Tony Jantschke,Gladbach,de Bundesliga,DF,28,933,10.4,,,,,494.8885033095559,Top Starter
 Adnan Januzaj,Real Sociedad,es La Liga,FW,23,1254,13.9,314.42202428533363,Solid Squad Player,,,,
 Paweł Jaroszyński,Chievo,it Serie A,DF,23,1348,15.0,,,,,362.9723196881091,Solid Squad Player
 Jason,Levante,es La Liga,FW,24,2330,25.9,222.79758475676846,Solid Squad Player,,,,
+Dennis Jastrzembski,Hertha BSC,de Bundesliga,FW,18,61,0.7,132.04859086491737,Below Big-5 Level,,,,
+Assil Jaziri,Nice,fr Ligue 1,FW,18,37,0.4,433.673469387755,Top Starter,,,,
 Corentin Jean,Toulouse,fr Ligue 1,FW,23,629,7.0,166.40233236151607,Below Big-5 Level,,,,
 Benjamin Jeannot,Dijon,fr Ligue 1,FW,26,1436,16.0,183.29950869236586,Below Big-5 Level,,,,
 Tin Jedvaj,Leverkusen,de Bundesliga,DF,22,1121,12.5,,,,,461.74743525480363,Top Starter
 Jemerson,Monaco,fr Ligue 1,Def_MF,25,2224,24.7,,,,,437.01030726202356,Top Starter
+Carl Jenkinson,Arsenal,eng Premier League,DF,26,166,1.8,,,,,291.56966490299817,Solid Squad Player
+Fredrik Jensen,Augsburg,de Bundesliga,FW,20,207,2.3,115.3535936113576,Below Big-5 Level,,,,
+Mathias Jensen,Celta Vigo,es La Liga,FW,22,235,2.6,62.95159602302459,Below Big-5 Level,,,,
 Jesé,Betis,es La Liga,FW,25,779,8.7,284.03084247747637,Solid Squad Player,,,,
 Gabriel Jesus,Manchester City,eng Premier League,FW,21,1036,11.5,679.0773768444577,Top Starter,,,,
 Juan Jesus,Roma,it Serie A,DF,27,1403,15.6,,,,,390.5554484501852,Solid Squad Player
 Raúl Jiménez,Wolves,eng Premier League,FW,27,3111,34.6,437.85623626457647,Top Starter,,,,
 Joaquín,Betis,es La Liga,FW,37,1696,18.8,368.0926810440488,Solid Squad Player,,,,
 Joelinton,Hoffenheim,de Bundesliga,FW,21,2130,23.7,411.18998982621645,Top Starter,,,,
+Stefan Johansen,Fulham,eng Premier League,MF,27,417,4.6,,,248.26086956521743,Solid Squad Player,,
 Jakob Johansson,Rennes,fr Ligue 1,MF,28,712,7.9,,,256.0337552742616,Solid Squad Player,,
+Ben Johnson,West Ham,eng Premier League,DF,18,62,0.7,,,,,291.2328440147989,Solid Squad Player
 Fabian Johnson,Gladbach,de Bundesliga,FW,30,1012,11.2,123.72972681135947,Below Big-5 Level,,,,
 Jonathas,Hannover 96,de Bundesliga,FW,29,607,6.7,354.1782583680239,Solid Squad Player,,,,
 Phil Jones,Manchester Utd,eng Premier League,DF,26,1263,14.0,,,,,434.03795202291434,Top Starter
 Jony,Alavés,es La Liga,FW,27,2971,33.0,360.32088458278935,Solid Squad Player,,,,
 Joan Jordán,Eibar,es La Liga,MF,24,2875,31.9,,,566.8756530825497,Top Starter,,
+Bruno Jordão,Lazio,it Serie A,MF,19,88,1.0,,,262.0,Solid Squad Player,,
 Jorginho,Chelsea,eng Premier League,MF,26,3156,35.1,,,363.87464387464394,Solid Squad Player,,
 Willian José,Real Sociedad,es La Liga,FW,26,2367,26.3,431.9056140411382,Top Starter,,,,
 Joselu,Newcastle Utd,eng Premier League,FW,28,596,6.6,231.37182482420582,Solid Squad Player,,,,
+Evens Joseph,Caen,fr Ligue 1,FW,19,340,3.8,77.2203723594701,Below Big-5 Level,,,,
 Diogo Jota,Wolves,eng Premier League,FW,21,2355,26.2,412.3222204912499,Top Starter,,,,
 Vukašin Jovanović,Bordeaux,fr Ligue 1,DF,22,1377,15.3,,,,,552.9383371282237,Top Starter
+Stevan Jovetić,Monaco,fr Ligue 1,FW,28,399,4.4,451.5418126846698,Top Starter,,,,
 Luka Jović,Eint Frankfurt,de Bundesliga,FW,20,2243,24.9,603.4081981744059,Top Starter,,,,
 Jozabed,Celta Vigo,es La Liga,MF,27,1155,12.8,,,260.20833333333337,Solid Squad Player,,
 Miguel Juan Llambrich,Villarreal,es La Liga,FW,22,544,6.0,68.45691609977325,Below Big-5 Level,,,,
@@ -847,15 +1092,21 @@ Juanfran,Atlético Madrid,es La Liga,DF,33,1609,17.9,,,,,292.85093553249976,Soli
 Juanmi,Real Sociedad,es La Liga,FW,25,1523,16.9,328.0208554164598,Solid Squad Player,,,,
 Juanpe,Girona,es La Liga,DF,27,2767,30.7,,,,,417.36828499043474,Top Starter
 Juanpi,Huesca,es La Liga,FW,24,670,7.4,350.29347715061994,Solid Squad Player,,,,
+Nathaël Julan,Guingamp,fr Ligue 1,FW,22,434,4.8,200.54875283446708,Solid Squad Player,,,,
 Christopher Jullien,Toulouse,fr Ligue 1,DF,25,3015,33.5,,,,,419.7764061896034,Top Starter
 David Juncà,Celta Vigo,es La Liga,DF,24,1754,19.5,,,,,409.67512799091736,Top Starter
+Sebastian Jung,Wolfsburg,de Bundesliga,DF,28,56,0.6,,,,,101.37566137566138,Below Big-5 Level
 Hamed Junior Traorè,Empoli,it Serie A,MF,18,2259,25.1,,,439.94687915006637,Top Starter,,
 Vinicius Júnior,Real Madrid,es La Liga,FW,18,869,9.7,349.9440665154951,Solid Squad Player,,,,
+Musa Juwara,Chievo,it Serie A,FW,16,12,0.1,0.0,Below Big-5 Level,,,,
 Mathias Jørgensen,Huddersfield,eng Premier League,DF,28,2147,23.9,,,,,481.2913734825208,Top Starter
+Sory Kaba,Dijon,fr Ligue 1,FW,23,232,2.6,77.44636316064887,Below Big-5 Level,,,,
 Ozan Kabak,Stuttgart,de Bundesliga,DF,18,1350,15.0,,,,,387.2989139515455,Solid Squad Player
 Christian Kabasele,Watford,eng Premier League,DF,27,1586,17.6,,,,,469.0712317985044,Top Starter
 Elias Kachunga,Huddersfield,eng Premier League,FW,26,1182,13.1,74.27743158332035,Below Big-5 Level,,,,
 Pavel Kadeřábek,Hoffenheim,de Bundesliga,DF,26,2509,27.9,,,,,309.6333426157987,Solid Squad Player
+Shinji Kagawa,Dortmund,de Bundesliga,Off_MF,29,98,1.1,173.2323232323232,Below Big-5 Level,,,,
+Florian Kainz,Werder Bremen,de Bundesliga,FW,25,373,4.1,255.9546208727394,Solid Squad Player,,,,
 Gaël Kakuta,Rayo Vallecano,es La Liga,FW,27,717,8.0,171.61073318216174,Below Big-5 Level,,,,
 Nikola Kalinić,Atlético Madrid,es La Liga,FW,30,642,7.1,223.8150277325328,Solid Squad Player,,,,
 Salomon Kalou,Hertha BSC,de Bundesliga,FW,32,2317,25.7,370.7486507789454,Solid Squad Player,,,,
@@ -867,15 +1118,20 @@ Hassane Kamara,Reims,fr Ligue 1,FW,24,926,10.3,96.13040750280695,Below Big-5 Lev
 Marcin Kamiński,Düsseldorf,de Bundesliga,DF,26,2430,27.0,,,,,354.7426141110352,Solid Squad Player
 Kevin Kampl,RB Leipzig,de Bundesliga,MF,27,2113,23.5,,,702.581560283688,Top Starter,,
 Harry Kane,Tottenham,eng Premier League,FW,25,2424,26.9,564.9392250911105,Top Starter,,,,
+Lee Kang-in,Valencia,es La Liga,FW,17,24,0.3,214.99433106575967,Solid Squad Player,,,,
 Wilfried Kanga,Angers,fr Ligue 1,FW,20,493,5.5,339.3802652374081,Solid Squad Player,,,,
 N'Golo Kanté,Chelsea,eng Premier League,Off_MF,27,3092,34.4,245.33835363602807,Solid Squad Player,,,,
 Wilfrid Kaptoum,Betis,es La Liga,MF,22,773,8.6,,,186.4341085271318,Below Big-5 Level,,
 Kenan Karaman,Düsseldorf,de Bundesliga,FW,24,919,10.2,359.52225334578276,Solid Squad Player,,,,
+Yann Karamoh,Inter,it Serie A,FW,20,5,0.1,47.61904761904761,Below Big-5 Level,,,,
 Yann Karamoh,Bordeaux,fr Ligue 1,FW,20,1224,13.6,361.46011738028545,Solid Squad Player,,,,
+Ibrahim Karamoko,Chievo,it Serie A,Off_MF,17,65,0.7,157.85873015873017,Below Big-5 Level,,,,
 Rick Karsdorp,Roma,it Serie A,DF,23,593,6.6,,,,,311.9394445710235,Solid Squad Player
+Grigoris Kastanos,Juventus,it Serie A,Off_MF,20,60,0.7,24.603174603174605,Below Big-5 Level,,,,
 Beram Kayal,Brighton,eng Premier League,Def_MF,30,940,10.4,,,,,430.9573578595318,Top Starter
 Moise Kean,Juventus,it Serie A,FW,18,541,6.0,620.5476190476189,Top Starter,,,,
 Michael Keane,Everton,eng Premier League,DF,25,2969,33.0,,,,,408.09275714538865,Top Starter
+Neeskens Kebano,Fulham,eng Premier League,FW,26,108,1.2,96.06462585034014,Below Big-5 Level,,,,
 Thilo Kehrer,Paris S-G,fr Ligue 1,DF,21,1902,21.1,,,,,459.4120372020097,Top Starter
 Jules Keita,Dijon,fr Ligue 1,FW,20,456,5.1,486.7371541209077,Top Starter,,,,
 Naby Keïta,Liverpool,eng Premier League,FW,23,1390,15.4,233.6101883754945,Solid Squad Player,,,,
@@ -891,6 +1147,7 @@ Saîf-Eddine Khaoui,Caen,fr Ligue 1,FW,23,1353,15.0,216.21050642479216,Solid Squ
 Wahbi Khazri,Saint-Étienne,fr Ligue 1,FW,27,2817,31.3,495.45467146745096,Top Starter,,,,
 Rani Khedira,Augsburg,de Bundesliga,Def_MF,24,2624,29.2,,,,,526.0154854079809,Top Starter
 Sami Khedira,Juventus,it Serie A,MF,31,706,7.8,,,427.8632478632479,Top Starter,,
+Isaac Kiese Thelin,Leverkusen,de Bundesliga,FW,26,180,2.0,84.18367346938776,Below Big-5 Level,,,,
 Kiké,Eibar,es La Liga,FW,28,1298,14.4,279.5265810027714,Solid Squad Player,,,,
 Joshua Kimmich,Bayern Munich,de Bundesliga,MF,23,3060,34.0,,,803.4117647058825,World Class,,
 Presnel Kimpembe,Paris S-G,fr Ligue 1,DF,22,2005,22.3,,,,,349.4661916375392,Solid Squad Player
@@ -898,17 +1155,23 @@ Joshua King,Bournemouth,eng Premier League,FW,26,2961,32.9,396.1158564743019,Sol
 Sofian Kiyine,Chievo,it Serie A,MF,20,816,9.1,,,432.23443223443223,Top Starter,,
 Simon Kjær,Sevilla,es La Liga,DF,29,2008,22.3,,,,,464.1800724123122,Top Starter
 Davy Klaassen,Werder Bremen,de Bundesliga,MF,25,2816,31.3,,,460.80937167199147,Top Starter,,
+Felix Klaus,Wolfsburg,de Bundesliga,FW,25,443,4.9,367.36453175374453,Solid Squad Player,,,,
 Ragnar Klavan,Cagliari,it Serie A,DF,32,1230,13.7,,,,,370.3785009970181,Solid Squad Player
+Tim Kleindienst,Freiburg,de Bundesliga,FW,22,200,2.2,140.64162028447743,Below Big-5 Level,,,,
 Lukas Klostermann,RB Leipzig,de Bundesliga,DF,22,2003,22.3,,,,,379.3477715214792,Solid Squad Player
 Justin Kluivert,Roma,it Serie A,FW,19,1341,14.9,324.7892399316176,Solid Squad Player,,,,
 Lukas Klünter,Hertha BSC,de Bundesliga,DF,22,592,6.6,,,,,362.79081542239436,Solid Squad Player
 Robin Knoche,Wolfsburg,de Bundesliga,DF,26,2790,31.0,,,,,439.8383054410218,Top Starter
 Anthony Knockaert,Brighton,eng Premier League,FW,26,1837,20.4,272.50408311472745,Solid Squad Player,,,,
+Törles Knöll,Nürnberg,de Bundesliga,FW,20,370,4.1,214.86265508913593,Solid Squad Player,,,,
 Robin Koch,Freiburg,de Bundesliga,Def_MF,22,1901,21.1,,,,,415.5951645030565,Top Starter
+Kenan Kodro,Athletic Club,es La Liga,FW,24,161,1.8,334.3424876123288,Solid Squad Player,,,,
 Dominik Kohr,Leverkusen,de Bundesliga,MF,24,973,10.8,,,455.1851851851852,Top Starter,,
+Djégui Koita,Guingamp,fr Ligue 1,DF,18,173,1.9,,,,,481.23946229209383,Top Starter
 Koke,Atlético Madrid,es La Liga,MF,26,2586,28.7,,,597.096399535424,Top Starter,,
 Aleksandar Kolarov,Roma,it Serie A,DF,32,2906,32.3,,,,,300.8511992054439,Solid Squad Player
 Sead Kolašinac,Arsenal,eng Premier League,Off_MF,25,1887,21.0,234.63541194255484,Solid Squad Player,,,,
+Randal Kolo Muani,Nantes,fr Ligue 1,FW,19,122,1.4,147.71185617103984,Below Big-5 Level,,,,
 Timothée Kolodziejczak,Saint-Étienne,fr Ligue 1,DF,26,3184,35.4,,,,,329.58951049941237,Solid Squad Player
 Vincent Kompany,Manchester City,eng Premier League,DF,32,1224,13.6,,,,,365.3850312054646,Solid Squad Player
 Ghislain Konan,Reims,fr Ligue 1,DF,22,1800,20.0,,,,,388.6720133667501,Solid Squad Player
@@ -916,9 +1179,11 @@ Ibrahima Konaté,RB Leipzig,de Bundesliga,DF,19,2431,27.0,,,,,427.7973947213713,
 Moussa Konaté,Amiens,fr Ligue 1,FW,25,1876,20.8,332.39807546950396,Solid Squad Player,,,,
 Geoffrey Kondogbia,Valencia,es La Liga,MF,25,1245,13.8,,,320.5314009661836,Solid Squad Player,,
 Lamine Koné,Strasbourg,fr Ligue 1,DF,29,2152,23.9,,,,,315.40357169073314,Solid Squad Player
+Manu Koné,Toulouse,fr Ligue 1,MF,17,68,0.8,,,285.00000000000006,Solid Squad Player,,
 Youssouf Koné,Lille,fr Ligue 1,DF,23,1709,19.0,,,,,448.81150244031124,Top Starter
 Terence Kongolo,Huddersfield,eng Premier League,DF,24,2716,30.2,,,,,455.85774591002894,Top Starter
 Yevhen Konoplyanka,Schalke 04,de Bundesliga,FW,28,656,7.3,285.1863500346866,Solid Squad Player,,,,
+Pascal Köpke,Hertha BSC,de Bundesliga,FW,22,74,0.8,172.84353741496597,Below Big-5 Level,,,,
 Julian Korb,Hannover 96,de Bundesliga,DF,26,1006,11.2,,,,,486.14154433703317,Top Starter
 Laurent Koscielny,Arsenal,eng Premier League,DF,32,1331,14.8,,,,,477.04531599268444,Top Starter
 Filip Kostić,Eint Frankfurt,de Bundesliga,FW,25,2956,32.8,349.50658149438647,Solid Squad Player,,,,
@@ -927,6 +1192,7 @@ Kalidou Koulibaly,Napoli,it Serie A,DF,27,3132,34.8,,,,,422.9623868099367,Top St
 Jules Koundé,Bordeaux,fr Ligue 1,DF,19,3330,37.0,,,,,418.8693355009144,Top Starter
 Cheikhou Kouyaté,Crystal Palace,eng Premier League,MF,28,1899,21.1,,,315.3554502369668,Solid Squad Player,,
 Mateo Kovačić,Chelsea,eng Premier League,MF,24,1735,19.3,,,482.4179620034542,Top Starter,,
+Dawid Kownacki,Sampdoria,it Serie A,FW,21,168,1.9,715.1017623423637,Top Starter,,,,
 Dawid Kownacki,Düsseldorf,de Bundesliga,FW,21,575,6.4,409.9907407407407,Top Starter,,,,
 Emil Krafth,Amiens,fr Ligue 1,DF,23,2974,33.0,,,,,282.6115794536847,Solid Squad Player
 Luka Krajnc,Frosinone,it Serie A,DF,23,788,8.8,,,,,408.2801356007097,Top Starter
@@ -941,28 +1207,39 @@ Max Kruse,Werder Bremen,de Bundesliga,FW,30,2832,31.5,502.7518506520774,Top Star
 Lukas Kübler,Freiburg,de Bundesliga,Def_MF,25,1184,13.2,,,,,484.27170253257214,Top Starter
 Yuya Kubo,Nürnberg,de Bundesliga,FW,24,1357,15.1,149.88332757679967,Below Big-5 Level,,,,
 Juraj Kucka,Parma,it Serie A,MF,31,1535,17.1,,,464.0155945419103,Top Starter,,
+Dejan Kulusevski,Atalanta,it Serie A,Off_MF,18,105,1.2,150.5351851851852,Below Big-5 Level,,,,
 Pierre Kunde,Mainz 05,de Bundesliga,MF,23,1909,21.2,,,280.4402515723271,Solid Squad Player,,
 Jasmin Kurtić,SPAL,it Serie A,MF,29,2557,28.4,,,544.1079812206574,Top Starter,,
 Layvin Kurzawa,Paris S-G,fr Ligue 1,Off_MF,25,1010,11.2,239.10116213151932,Solid Squad Player,,,,
+Rafał Kurzawa,Amiens,fr Ligue 1,FW,25,239,2.7,270.55901290557375,Solid Squad Player,,,,
+Ahmed Kutucu,Schalke 04,de Bundesliga,FW,18,425,4.7,338.6222238304305,Solid Squad Player,,,,
 Enock Kwateng,Nantes,fr Ligue 1,DF,21,2040,22.7,,,,,492.322730467873,Top Starter
 Antonino La Gumina,Empoli,it Serie A,FW,22,1090,12.1,255.35267017734554,Solid Squad Player,,,,
+Rajiv van La Parra,Huddersfield,eng Premier League,FW,27,405,4.5,104.67838246409674,Below Big-5 Level,,,,
+Gaëtan Laborde,Bordeaux,fr Ligue 1,FW,24,90,1.0,57.14285714285715,Below Big-5 Level,,,,
 Gaëtan Laborde,Montpellier,fr Ligue 1,FW,24,2895,32.2,379.38571522466816,Solid Squad Player,,,,
 Alexandre Lacazette,Arsenal,eng Premier League,FW,27,2502,27.8,486.52693899302324,Top Starter,,,,
 Víctor Laguardia,Alavés,es La Liga,DF,28,3240,36.0,,,,,433.4226306507008,Top Starter
 Konrad Laimer,RB Leipzig,de Bundesliga,Off_MF,21,1874,20.8,183.38551587301586,Below Big-5 Level,,,,
+Diego Lainez,Betis,es La Liga,FW,18,353,3.9,233.25806732949593,Solid Squad Player,,,,
 Kenny Lala,Strasbourg,fr Ligue 1,FW,26,3060,34.0,306.43639678093456,Solid Squad Player,,,,
 Adam Lallana,Liverpool,eng Premier League,FW,30,468,5.2,167.09157509157512,Below Big-5 Level,,,,
 Érik Lamela,Tottenham,eng Premier League,FW,26,974,10.8,442.80832003583333,Top Starter,,,,
+Mohamed Lamine Diaby,Nice,fr Ligue 1,FW,17,162,1.8,68.39720332577474,Below Big-5 Level,,,,
 Loïck Landre,Nîmes,fr Ligue 1,DF,26,1591,17.7,,,,,416.8399083653321,Top Starter
 Michael Lang,Gladbach,de Bundesliga,DF,27,1255,13.9,,,,,300.2282685130091,Solid Squad Player
 Sebastian Langkamp,Werder Bremen,de Bundesliga,DF,30,1414,15.7,,,,,396.8571109301917,Solid Squad Player
 Manuel Lanzini,West Ham,eng Premier League,MF,25,686,7.6,,,438.33333333333337,Top Starter,,
+Gianluca Lapadula,Genoa,it Serie A,FW,28,404,4.5,318.9950449315529,Solid Squad Player,,,,
 Aymeric Laporte,Manchester City,eng Premier League,DF,24,3057,34.0,,,,,300.68504594820376,Solid Squad Player
 Danilo Larangeira,Bologna,it Serie A,DF,34,3077,34.2,,,,,422.8927093562366,Top Starter
+Johan Larsson,Guingamp,fr Ligue 1,DF,28,90,1.0,,,,,179.48203842940686,Below Big-5 Level
 Kevin Lasagna,Udinese,it Serie A,FW,25,2453,27.3,264.22219315076455,Solid Squad Player,,,,
 Jamaal Lascelles,Newcastle Utd,eng Premier League,DF,24,2745,30.5,,,,,444.22742897980174,Top Starter
 Paul Lasne,Montpellier,fr Ligue 1,MF,29,1789,19.9,,,356.28140703517585,Solid Squad Player,,
+Toni Lato,Valencia,es La Liga,DF,20,270,3.0,,,,,550.0328599275967,Top Starter
 Danny Latza,Mainz 05,de Bundesliga,MF,28,1863,20.7,,,448.59903381642516,Top Starter,,
+Alexandre Lauray,Bordeaux,fr Ligue 1,DF,21,257,2.9,,,,,429.67418546365917,Top Starter
 Vincent Laurini,Fiorentina,it Serie A,DF,29,920,10.2,,,,,302.10362507576133,Solid Squad Player
 Wesley Lautoa,Dijon,fr Ligue 1,Def_MF,30,3024,33.6,,,,,518.9150563607086,Top Starter
 Diego Laxalt,Milan,it Serie A,MF,25,651,7.2,,,339.4444444444444,Solid Squad Player,,
@@ -970,7 +1247,9 @@ Miguel Layún,Villarreal,es La Liga,Off_MF,30,506,5.6,241.25493197278914,Solid S
 Valentino Lazaro,Hertha BSC,de Bundesliga,FW,22,2741,30.5,246.14813575703505,Solid Squad Player,,,,
 Darko Lazović,Genoa,it Serie A,FW,27,2542,28.2,247.23157395345842,Solid Squad Player,,,,
 Manuel Lazzari,SPAL,it Serie A,DF,24,2835,31.5,,,,,209.83591253265436,Solid Squad Player
+Mickaël Le Bihan,Nice,fr Ligue 1,FW,28,204,2.3,369.1399651648099,Solid Squad Player,,,,
 Maxime Le Marchand,Fulham,eng Premier League,DF,28,2250,25.0,,,,,511.5212030075188,Top Starter
+Robin Le Normand,Real Sociedad,es La Liga,DF,21,284,3.2,,,,,358.796992481203,Solid Squad Player
 Damien Le Tallec,Montpellier,fr Ligue 1,MF,28,2805,31.2,,,247.84188034188034,Solid Squad Player,,
 James Lea Siliki,Rennes,fr Ligue 1,FW,22,1220,13.6,215.5592236894758,Solid Squad Player,,,,
 Rafael Leão,Lille,fr Ligue 1,FW,19,1287,14.3,452.3070395213252,Top Starter,,,,
@@ -981,10 +1260,13 @@ Wu Lei,Espanyol,es La Liga,FW,26,1061,11.8,333.55584380644916,Solid Squad Player
 Tim Leibold,Nürnberg,de Bundesliga,DF,24,2765,30.7,,,,,303.14047877565787,Solid Squad Player
 Lucas Leiva,Lazio,it Serie A,MF,31,1987,22.1,,,445.2790346907994,Top Starter,,
 Florian Lejeune,Newcastle Utd,eng Premier League,DF,27,1054,11.7,,,,,462.0794150618711,Top Starter
+Iñigo Lekue,Athletic Club,es La Liga,DF,25,211,2.3,,,,,449.23032218226723,Top Starter
 Thomas Lemar,Atlético Madrid,es La Liga,Off_MF,22,1817,20.2,320.752369165488,Solid Squad Player,,,,
 Mario Lemina,Southampton,eng Premier League,MF,24,1613,17.9,,,351.28491620111737,Solid Squad Player,,
+Mauricio Lemos,Sassuolo,it Serie A,DF,22,179,2.0,,,,,389.39621781727044,Solid Squad Player
 Clément Lenglet,Barcelona,es La Liga,DF,23,1933,21.5,,,,,409.44904897903666,Top Starter
 Aaron Lennon,Burnley,eng Premier League,Off_MF,31,1215,13.5,123.7550705467372,Below Big-5 Level,,,,
+Pedro León,Eibar,es La Liga,FW,31,425,4.7,240.39603737476077,Solid Squad Player,,,,
 Sergio León,Betis,es La Liga,FW,29,638,7.1,118.25797643000863,Below Big-5 Level,,,,
 Lukas Lerager,Genoa,it Serie A,MF,25,1122,12.5,,,341.792,Solid Squad Player,,
 Lukas Lerager,Bordeaux,fr Ligue 1,MF,25,1298,14.4,,,304.25925925925924,Solid Squad Player,,
@@ -1002,10 +1284,12 @@ Victor Lindelöf,Manchester Utd,eng Premier League,DF,24,2601,28.9,,,,,341.17473
 Karol Linetty,Sampdoria,it Serie A,MF,23,2507,27.9,,,440.78853046594986,Top Starter,,
 Jesse Lingard,Manchester Utd,eng Premier League,FW,25,1663,18.5,282.6817021102736,Solid Squad Player,,,,
 Pol Lirola,Sassuolo,it Serie A,MF,20,2975,33.1,,,535.5287009063444,Top Starter,,
+Adem Ljajić,Torino,it Serie A,Off_MF,26,30,0.3,242.59259259259264,Solid Squad Player,,,,
 Diego Llorente,Real Sociedad,es La Liga,DF,24,1752,19.5,,,,,417.9727952359531,Top Starter
 Fernando Llorente,Tottenham,eng Premier League,FW,33,694,7.7,408.13991715012116,Top Starter,,,,
 Marcos Llorente,Real Madrid,es La Liga,MF,23,540,6.0,,,223.11111111111111,Solid Squad Player,,
 Giovani Lo Celso,Betis,es La Liga,FW,22,2397,26.6,416.5638842002967,Top Starter,,,,
+Giovani Lo Celso,Paris S-G,fr Ligue 1,MF,22,11,0.1,,,240.00000000000003,Solid Squad Player,,
 Stanislav Lobotka,Celta Vigo,es La Liga,MF,23,2489,27.7,,,283.0324909747293,Solid Squad Player,,
 Jürgen Locadia,Brighton,eng Premier League,FW,24,1236,13.7,189.45414094267065,Below Big-5 Level,,,,
 Manuel Locatelli,Sassuolo,it Serie A,MF,20,1847,20.5,,,630.6991869918699,Top Starter,,
@@ -1017,16 +1301,24 @@ Samuele Longo,Huesca,es La Liga,FW,26,556,6.2,301.3061468314924,Solid Squad Play
 Sean Longstaff,Newcastle Utd,eng Premier League,MF,20,687,7.6,,,247.80701754385967,Solid Squad Player,,
 Ademola Lookman,Everton,eng Premier League,FW,20,618,6.9,273.61643497978906,Solid Squad Player,,,,
 Rony Lopes,Monaco,fr Ligue 1,FW,22,1849,20.5,299.05606253341443,Solid Squad Player,,,,
+Álex López,Espanyol,es La Liga,MF,21,112,1.2,,,231.66666666666669,Solid Squad Player,,
+Cristian López,Angers,fr Ligue 1,FW,29,372,4.1,397.5210626255923,Solid Squad Player,,,,
 David López,Espanyol,es La Liga,DF,28,1819,20.2,,,,,386.66534322605185,Solid Squad Player
 Javi López,Espanyol,es La Liga,DF,32,1948,21.6,,,,,446.45409820848414,Top Starter
 Lluis López,Espanyol,es La Liga,DF,21,521,5.8,,,,,357.7716496046804,Solid Squad Player
 Maxime Lopez,Marseille,fr Ligue 1,MF,20,2180,24.2,,,614.6280991735538,Top Starter,,
 Pedro López Muñoz,Levante,es La Liga,DF,34,465,5.2,,,,,339.37407621618144,Solid Squad Player
+Roberto López,Real Sociedad,es La Liga,Def_MF,18,29,0.3,,,,,514.4444444444446,Top Starter
+Unai López,Athletic Club,es La Liga,MF,22,328,3.6,,,367.2222222222222,Solid Squad Player,,
+Albert Lottin,Bordeaux,fr Ligue 1,FW,16,22,0.2,47.61904761904761,Below Big-5 Level,,,,
+Imran Louza,Nantes,fr Ligue 1,MF,19,88,1.0,,,204.00000000000003,Solid Squad Player,,
+Davor Lovren,Düsseldorf,de Bundesliga,Off_MF,19,46,0.5,75.15555555555557,Below Big-5 Level,,,,
 Dejan Lovren,Liverpool,eng Premier League,DF,29,986,11.0,,,,,371.2396141869825,Solid Squad Player
 Chris Löwe,Huddersfield,eng Premier League,MF,29,2057,22.9,,,344.448326055313,Solid Squad Player,,
 Eduard Löwen,Nürnberg,de Bundesliga,FW,21,1623,18.0,259.80939783320736,Solid Squad Player,,,,
 Matthew Lowton,Burnley,eng Premier League,DF,29,1750,19.4,,,,,446.6609823527892,Top Starter
 Anthony Lozano,Girona,es La Liga,FW,25,730,8.1,156.946837994457,Below Big-5 Level,,,,
+Derrick Luckassen,Hertha BSC,de Bundesliga,DF,23,250,2.8,,,,,251.70068027210885,Solid Squad Player
 Filipe Luís,Atlético Madrid,es La Liga,DF,32,2030,22.6,,,,,371.1112589733921,Solid Squad Player
 José Luis Gayà,Valencia,es La Liga,DF,23,3137,34.9,,,,,379.6319834926379,Solid Squad Player
 José Luis Morales,Levante,es La Liga,FW,31,3195,35.5,395.00324167225574,Solid Squad Player,,,,
@@ -1034,6 +1326,8 @@ José Luis Palomino,Atalanta,it Serie A,DF,28,2261,25.1,,,,,487.3794046870163,To
 Luisinho,Huesca,es La Liga,DF,33,507,5.6,,,,,463.327366034133,Top Starter
 David Luiz,Chelsea,eng Premier League,DF,31,3238,36.0,,,,,361.89325164763756,Solid Squad Player
 Douglas Luiz,Girona,es La Liga,MF,20,1490,16.6,,,257.02811244979915,Solid Squad Player,,
+Everton Luiz,SPAL,it Serie A,MF,30,317,3.5,,,164.0,Below Big-5 Level,,
+Jordan Lukaku,Lazio,it Serie A,Off_MF,24,175,1.9,88.30409356725147,Below Big-5 Level,,,,
 Romelu Lukaku,Manchester Utd,eng Premier League,FW,25,2136,23.7,422.77128122697746,Top Starter,,,,
 Dodi Lukebakio,Düsseldorf,de Bundesliga,FW,20,1972,21.9,477.25785798845163,Top Starter,,,,
 Saša Lukić,Torino,it Serie A,MF,21,989,11.0,,,362.3636363636363,Solid Squad Player,,
@@ -1041,12 +1335,14 @@ Senad Lulić,Lazio,it Serie A,FW,32,2923,32.5,225.99427292284437,Solid Squad Pla
 Antonio Luna,Levante,es La Liga,FW,27,1258,14.0,118.59037900874635,Below Big-5 Level,,,,
 Sebastiano Luperto,Napoli,it Serie A,DF,21,728,8.1,,,,,370.6599832915622,Solid Squad Player
 Fabian Lustenberger,Hertha BSC,de Bundesliga,Def_MF,30,2172,24.1,,,,,488.12375969691504,Top Starter
+Lyanco,Torino,it Serie A,DF,21,90,1.0,,,,,556.7215007215007,Top Starter
 Lyanco,Bologna,it Serie A,DF,21,1119,12.4,,,,,525.0615786778775,Top Starter
 Hervé Lybohy,Nîmes,fr Ligue 1,DF,35,1480,16.4,,,,,324.5808905115709,Solid Squad Player
 Charalampos Lykogiannis,Cagliari,it Serie A,DF,24,830,9.2,,,,,436.94962042788126,Top Starter
 Yann M'Vila,Saint-Étienne,fr Ligue 1,MF,28,3258,36.2,,,265.48802946593,Solid Squad Player,,
 Darwin Machís,Udinese,it Serie A,FW,25,463,5.1,290.24309723889564,Solid Squad Player,,,,
 James Maddison,Leicester City,eng Premier League,FW,21,2831,31.5,403.99353321575535,Top Starter,,,,
+Gary Madine,Cardiff City,eng Premier League,FW,27,37,0.4,47.61904761904761,Below Big-5 Level,,,,
 Pablo Maffeo,Stuttgart,de Bundesliga,MF,21,597,6.6,,,226.06060606060603,Solid Squad Player,,
 Gabriel Magalhães,Lille,fr Ligue 1,DF,20,1066,11.8,,,,,425.353779930051,Top Starter
 Francesco Magnanelli,Sassuolo,it Serie A,MF,33,1859,20.7,,,204.83091787439616,Solid Squad Player,,
@@ -1059,6 +1355,7 @@ Arne Maier,Hertha BSC,de Bundesliga,MF,19,2064,22.9,,,286.66666666666674,Solid S
 Domenico Maietta,Empoli,it Serie A,DF,35,1714,19.0,,,,,364.0441454513477,Solid Squad Player
 Linton Maina,Hannover 96,de Bundesliga,FW,19,1414,15.7,215.58933325630326,Solid Squad Player,,,,
 Ainsley Maitland-Niles,Arsenal,eng Premier League,DF,20,987,11.0,,,,,425.6507936507936,Top Starter
+Josh Maja,Bordeaux,fr Ligue 1,FW,19,198,2.2,344.0591287019858,Solid Squad Player,,,,
 Abdul Majeed Waris,Nantes,fr Ligue 1,FW,26,2246,25.0,270.1390778533635,Solid Squad Player,,,,
 Jean-Victor Makengo,Nice,fr Ligue 1,FW,20,1029,11.4,182.17592924109212,Below Big-5 Level,,,,
 Nemanja Maksimović,Getafe,es La Liga,MF,23,3209,35.7,,,151.88795518207283,Below Big-5 Level,,
@@ -1067,8 +1364,10 @@ Malcom,Barcelona,es La Liga,FW,21,614,6.8,345.4333955804544,Solid Squad Player,,
 Kévin Malcuit,Napoli,it Serie A,DF,27,1805,20.1,,,,,412.42376255730534,Top Starter
 Yunus Mallı,Wolfsburg,de Bundesliga,FW,26,701,7.8,313.5810415334225,Solid Squad Player,,,,
 Hugo Mallo,Celta Vigo,es La Liga,DF,27,3092,34.4,,,,,380.70525150084507,Solid Squad Player
+Antonio Mance,Nantes,fr Ligue 1,FW,22,50,0.6,15.873015873015875,Below Big-5 Level,,,,
 Vincent Manceau,Angers,fr Ligue 1,DF,29,2790,31.0,,,,,407.6334923329829,Top Starter
 Gianluca Mancini,Atalanta,it Serie A,DF,22,2246,25.0,,,,,376.83408521303255,Solid Squad Player
+Reinildo Mandava,Lille,fr Ligue 1,DF,24,97,1.1,,,,,312.0832383990278,Solid Squad Player
 Aïssa Mandi,Betis,es La Liga,DF,26,3059,34.0,,,,,371.672318050027,Solid Squad Player
 Rolando Mandragora,Udinese,it Serie A,MF,21,2918,32.4,,,325.63786008230454,Solid Squad Player,,
 Mario Mandžukić,Juventus,it Serie A,FW,32,2014,22.4,404.1321671525754,Top Starter,,,,
@@ -1077,6 +1376,9 @@ Thomas Mangani,Angers,fr Ligue 1,MF,31,1598,17.8,,,478.4269662921348,Top Starter
 Kostas Manolas,Roma,it Serie A,DF,27,2324,25.8,,,,,455.34663532215546,Top Starter
 Javier Manquillo,Newcastle Utd,eng Premier League,DF,24,1101,12.2,,,,,371.69421317825106,Solid Squad Player
 Martín Mantovani,Huesca,es La Liga,DF,34,701,7.8,,,,,491.418055628582,Top Starter
+Juan Manuel Valencia,Bologna,it Serie A,FW,20,28,0.3,22.928571428571427,Below Big-5 Level,,,,
+Harrison Manzala,Angers,fr Ligue 1,FW,24,74,0.8,236.7448979591836,Solid Squad Player,,,,
+Fran Manzanara,Levante,es La Liga,Def_MF,21,157,1.7,,,,,500.633702756465,Top Starter
 Myziane Maolida,Nice,fr Ligue 1,FW,19,952,10.6,282.77204466692336,Solid Squad Player,,,,
 Faitout Maouassa,Nîmes,fr Ligue 1,DF,20,2137,23.7,,,,,310.50932535276297,Solid Squad Player
 Fernando Marçal,Lyon,fr Ligue 1,DF,29,878,9.8,,,,,493.43222000579675,Top Starter
@@ -1087,12 +1389,16 @@ Solly March,Brighton,eng Premier League,FW,24,2463,27.4,200.14646264020612,Solid
 Gian Marco Ferrari,Sassuolo,it Serie A,DF,26,2790,31.0,,,,,365.05543428463625,Solid Squad Player
 Óscar de Marcos,Athletic Club,es La Liga,FW,29,2421,26.9,140.72763124250116,Below Big-5 Level,,,,
 Georg Margreitter,Nürnberg,de Bundesliga,DF,29,2064,22.9,,,,,443.20758227446345,Top Starter
+Miguel Marí,Eibar,es La Liga,MF,21,69,0.8,,,152.5,Below Big-5 Level,,
 José María Giménez,Atlético Madrid,es La Liga,DF,23,1772,19.7,,,,,500.0735649306315,Top Starter
 Mariano,Real Madrid,es La Liga,FW,24,447,5.0,493.24716553287976,Top Starter,,,,
+Mariano,Lyon,fr Ligue 1,FW,24,143,1.6,95.13265306122449,Below Big-5 Level,,,,
 Adrian Mariappa,Watford,eng Premier League,DF,31,1927,21.4,,,,,407.89169184643845,Top Starter
 Jordan Marié,Dijon,fr Ligue 1,MF,26,1803,20.0,,,305.6333333333334,Solid Squad Player,,
+Adrián Marín,Alavés,es La Liga,Def_MF,21,290,3.2,,,,,464.7765700483092,Top Starter
 João Mário,Inter,it Serie A,FW,25,1082,12.0,265.63504661123704,Solid Squad Player,,,,
 Guillermo Maripán,Alavés,es La Liga,DF,24,2008,22.3,,,,,488.7590902790335,Top Starter
+Lazar Marković,Fulham,eng Premier League,MF,24,45,0.5,,,416.00000000000006,Top Starter,,
 Marlon,Sassuolo,it Serie A,DF,22,1508,16.8,,,,,384.558618769145,Solid Squad Player
 Marquinhos,Paris S-G,fr Ligue 1,Def_MF,24,2693,29.9,,,,,428.62116879130116,Top Starter
 Roger Martí,Levante,es La Liga,FW,27,1887,21.0,497.6447647842205,Top Starter,,,,
@@ -1104,41 +1410,57 @@ Iñigo Martínez,Athletic Club,es La Liga,DF,27,2902,32.2,,,,,404.219866436277,T
 Javi Martínez,Bayern Munich,de Bundesliga,MF,29,1309,14.5,,,261.7471264367816,Solid Squad Player,,
 Lautaro Martínez,Inter,it Serie A,FW,20,1344,14.9,461.148670653944,Top Starter,,,,
 Pablo Martinez,Strasbourg,fr Ligue 1,DF,29,2815,31.3,,,,,412.004238498269,Top Starter
+Gelson Martins,Atlético Madrid,es La Liga,FW,23,229,2.5,138.0578231292517,Below Big-5 Level,,,,
 Gelson Martins,Monaco,fr Ligue 1,FW,23,1389,15.4,331.9114271971415,Solid Squad Player,,,,
 Adam Marušić,Lazio,it Serie A,DF,25,2111,23.5,,,,,247.83674208086302,Solid Squad Player
 Omar Mascarell,Schalke 04,de Bundesliga,MF,25,993,11.0,,,328.48484848484844,Solid Squad Player,,
 Andrea Masiello,Atalanta,it Serie A,DF,32,1836,20.4,,,,,382.80439661244617,Solid Squad Player
 Adam Masina,Watford,eng Premier League,DF,24,1004,11.2,,,,,417.8475951784223,Top Starter
+Han-Noah Massengo,Monaco,fr Ligue 1,MF,17,61,0.7,,,266.0952380952381,Solid Squad Player,,
 Arthur Masuaku,West Ham,eng Premier League,DF,24,1759,19.5,,,,,427.87892808945446,Top Starter
 Jaime Mata,Getafe,es La Liga,FW,29,2432,27.0,461.38299599675247,Top Starter,,,,
 Juan Mata,Manchester Utd,eng Premier League,FW,30,1289,14.3,307.6185798328655,Solid Squad Player,,,,
+Luca Matarese,Frosinone,it Serie A,FW,20,16,0.2,47.61904761904761,Below Big-5 Level,,,,
 Jean-Philippe Mateta,Mainz 05,de Bundesliga,FW,21,2483,27.6,461.46305607589244,Top Starter,,,,
 Nemanja Matić,Manchester Utd,eng Premier League,MF,29,2436,27.1,,,262.16482164821645,Solid Squad Player,,
 Joël Matip,Liverpool,eng Premier League,DF,26,1537,17.1,,,,,432.3733309882894,Top Starter
+Rabbi Matondo,Schalke 04,de Bundesliga,FW,17,189,2.1,174.48769031422094,Below Big-5 Level,,,,
 Alessandro Matri,Sassuolo,it Serie A,FW,33,603,6.7,334.4218138333277,Solid Squad Player,,,,
 Federico Mattiello,Bologna,it Serie A,FW,23,1333,14.8,174.46526117954693,Below Big-5 Level,,,,
 Blaise Matuidi,Juventus,it Serie A,MF,31,2418,26.9,,,376.6790582403965,Solid Squad Player,,
+José Mauri,Milan,it Serie A,MF,22,208,2.3,,,267.24637681159425,Solid Squad Player,,
+Stephy Mavididi,Juventus,it Serie A,FW,20,22,0.2,47.61904761904761,Below Big-5 Level,,,,
+Konstantinos Mavropanos,Arsenal,eng Premier League,DF,20,148,1.6,,,,,437.85714285714283,Top Starter
 Alfie Mawson,Fulham,eng Premier League,DF,24,1131,12.6,,,,,438.9518770471151,Top Starter
 Philipp Max,Augsburg,de Bundesliga,MF,24,2569,28.5,,,503.84093567251466,Top Starter,,
 Alexandru Maxim,Mainz 05,de Bundesliga,FW,28,579,6.4,348.417328042328,Solid Squad Player,,,,
 Eric Maxim Choupo-Moting,Paris S-G,fr Ligue 1,FW,29,802,8.9,345.1574689801014,Solid Squad Player,,,,
 Borja Mayoral,Levante,es La Liga,FW,21,1621,18.0,261.38309397833206,Solid Squad Player,,,,
+Róbert Mazáň,Celta Vigo,es La Liga,DF,24,90,1.0,,,,,519.906432748538,Top Starter
+Luca Mazzitelli,Genoa,it Serie A,MF,22,323,3.6,,,302.77777777777777,Solid Squad Player,,
 Kylian Mbappé,Paris S-G,fr Ligue 1,FW,19,2343,26.0,833.2810047095762,World Class,,,,
 Ibrahima Mbaye,Bologna,it Serie A,DF,23,2010,22.3,,,,,323.71271976653145,Solid Squad Player
+Loïc Mbe Soh,Paris S-G,fr Ligue 1,DF,17,180,2.0,,,,,323.82623224728485,Solid Squad Player
+Nolan Mbemba,Reims,fr Ligue 1,MF,23,357,4.0,,,238.33333333333334,Solid Squad Player,,
 Adama Mbengue,Caen,fr Ligue 1,DF,24,739,8.2,,,,,486.5497076023392,Top Starter
 Isaac Mbenza,Huddersfield,eng Premier League,FW,22,986,11.0,159.164639593211,Below Big-5 Level,,,,
 Stéphane Mbia,Toulouse,fr Ligue 1,Def_MF,32,446,5.0,,,,,402.44637681159423,Top Starter
 Kara Mbodji,Nantes,fr Ligue 1,DF,28,506,5.6,,,,,407.6309822174485,Top Starter
+Jordi Mboula,Monaco,fr Ligue 1,FW,19,276,3.1,186.43438665788895,Below Big-5 Level,,,,
 James McArthur,Crystal Palace,eng Premier League,MF,30,3058,34.0,,,445.5882352941176,Top Starter,,
+James McCarthy,Everton,eng Premier League,MF,27,15,0.2,,,76.66666666666666,Below Big-5 Level,,
 Kevin McDonald,Fulham,eng Premier League,MF,29,841,9.3,,,189.3189964157706,Below Big-5 Level,,
+Levan Mchedlidze,Empoli,it Serie A,FW,28,208,2.3,221.71709553386574,Solid Squad Player,,,,
 Weston McKennie,Schalke 04,de Bundesliga,FW,19,1746,19.4,200.67224988506283,Solid Squad Player,,,,
 Dwight McNeil,Burnley,eng Premier League,Off_MF,18,1591,17.7,337.79948435117916,Solid Squad Player,,,,
 Scott McTominay,Manchester Utd,eng Premier League,MF,21,867,9.6,,,198.2638888888889,Below Big-5 Level,,
+Iuri Medeiros,Genoa,it Serie A,FW,24,106,1.2,147.63038548752837,Below Big-5 Level,,,,
 Álvaro Medrán,Rayo Vallecano,es La Liga,MF,24,1149,12.8,,,495.46875000000006,Top Starter,,
 Ben Mee,Burnley,eng Premier League,DF,28,3420,38.0,,,,,439.54957569361994,Top Starter
 Riccardo Meggiorini,Chievo,it Serie A,FW,32,1548,17.2,212.4452881927965,Solid Squad Player,,,,
 Admir Mehmedi,Wolfsburg,de Bundesliga,FW,27,1692,18.8,400.2741110628648,Top Starter,,,,
 Soualiho Meïté,Torino,it Serie A,MF,24,2659,29.5,,,451.2994350282485,Top Starter,,
+Farid El Melali,Angers,fr Ligue 1,FW,21,328,3.6,214.05291005291005,Solid Squad Player,,,,
 Óscar Melendo,Espanyol,es La Liga,FW,20,1997,22.2,191.9793773365202,Below Big-5 Level,,,,
 Gonzalo Melero,Huesca,es La Liga,MF,24,1345,14.9,,,477.0022371364653,Top Starter,,
 Arthur Melo,Barcelona,es La Liga,MF,21,1430,15.9,,,376.68763102725364,Solid Squad Player,,
@@ -1157,22 +1479,30 @@ Chris Mepham,Bournemouth,eng Premier League,DF,20,850,9.4,,,,,428.15122913667136
 Gabriel Mercado,Sevilla,es La Liga,DF,31,1738,19.3,,,,,384.86683028815554,Solid Squad Player
 Mehdi Merghem,Guingamp,fr Ligue 1,FW,21,721,8.0,164.11564625850338,Below Big-5 Level,,,,
 Mikel Merino,Real Sociedad,es La Liga,MF,22,2055,22.8,,,420.35087719298247,Top Starter,,
+Sabin Merino,Leganés,es La Liga,FW,26,295,3.3,190.020202020202,Below Big-5 Level,,,,
+Martín Merquelanz,Real Sociedad,es La Liga,Off_MF,23,6,0.1,0.0,Below Big-5 Level,,,,
 Dries Mertens,Napoli,it Serie A,FW,31,2252,25.0,687.3620559334844,Top Starter,,,,
 Roque Mesa,Sevilla,es La Liga,MF,29,1746,19.4,,,428.2817869415808,Top Starter,,
 Lionel Messi,Barcelona,es La Liga,FW,31,2713,30.1,942.6853797997605,Exceptional,,,,
+Romain Métanire,Reims,fr Ligue 1,DF,28,313,3.5,,,,,497.49343054606203,Top Starter
 Thomas Meunier,Paris S-G,fr Ligue 1,DF,26,1610,17.9,,,,,298.15731134166884,Solid Squad Player
 Mexer,Rennes,fr Ligue 1,DF,29,2469,27.4,,,,,361.95403350224706,Solid Squad Player
 Max Meyer,Crystal Palace,eng Premier League,Off_MF,22,1416,15.7,254.0559422707512,Solid Squad Player,,,,
 Matt Miazga,Nantes,fr Ligue 1,DF,23,720,8.0,,,,,449.3817878028404,Top Starter
 Míchel,Valladolid,es La Liga,MF,30,2553,28.4,,,514.3192488262911,Top Starter,,
+Clément Michelin,Toulouse,fr Ligue 1,DF,21,90,1.0,,,,,514.954051796157,Top Starter
+Miguel,Valladolid,es La Liga,FW,18,12,0.1,238.09523809523807,Solid Squad Player,,,,
 Florian Miguel,Nîmes,fr Ligue 1,DF,21,1117,12.4,,,,,401.4060076878413,Top Starter
 Nikola Milenković,Fiorentina,it Serie A,DF,20,3008,33.4,,,,,395.4727137204288,Solid Squad Player
 Arkadiusz Milik,Napoli,it Serie A,FW,24,2396,26.6,554.6259981018304,Top Starter,,,,
 Sergej Milinković-Savić,Lazio,it Serie A,Off_MF,23,2396,26.6,384.2040965509011,Solid Squad Player,,,,
 Luka Milivojević,Crystal Palace,eng Premier League,MF,27,3420,38.0,,,474.85964912280696,Top Starter,,
+Pere Milla,Eibar,es La Liga,FW,25,341,3.8,76.31471535982814,Below Big-5 Level,,,,
 James Milner,Liverpool,eng Premier League,MF,32,1789,19.9,,,723.4840871021777,Top Starter,,
 Santi Mina,Valencia,es La Liga,FW,22,1852,20.6,384.6909238344744,Solid Squad Player,,,,
 Yerry Mina,Everton,eng Premier League,DF,23,892,9.9,,,,,387.67828662565495,Solid Squad Player
+Tyrone Mings,Bournemouth,eng Premier League,DF,25,143,1.6,,,,,732.5020885547202,Top Starter
+Ignasi Miquel,Getafe,es La Liga,DF,25,316,3.5,,,,,371.96836246460305,Solid Squad Player
 Kevin Mirallas,Fiorentina,it Serie A,FW,30,1299,14.4,281.384563702024,Solid Squad Player,,,,
 Jorge Miramón,Huesca,es La Liga,DF,29,2492,27.7,,,,,401.5243885888005,Top Starter
 Miranda,Inter,it Serie A,DF,33,1158,12.9,,,,,340.8282981355196,Solid Squad Player
@@ -1186,45 +1516,67 @@ Henrikh Mkhitaryan,Arsenal,eng Premier League,FW,29,1641,18.2,443.2828112930154,
 Luka Modrić,Real Madrid,es La Liga,MF,32,2608,29.0,,,675.4482758620691,Top Starter,,
 Kevin Möhwald,Werder Bremen,de Bundesliga,MF,25,873,9.7,,,457.04467353951895,Top Starter,,
 Niklas Moisander,Werder Bremen,de Bundesliga,DF,32,2637,29.3,,,,,424.62287687364034,Top Starter
+Johan Mojica,Girona,es La Liga,FW,25,20,0.2,81.63265306122449,Below Big-5 Level,,,,
+Hakim El Mokeddem,Toulouse,fr Ligue 1,FW,19,25,0.3,165.53287981859413,Below Big-5 Level,,,,
 Jorge Molina,Getafe,es La Liga,FW,36,2648,29.4,458.36494310498205,Top Starter,,,,
 Cristian Molinaro,Frosinone,it Serie A,Def_MF,35,1159,12.9,,,,,340.11384488634235,Solid Squad Player
+Victor Mollejo,Atlético Madrid,es La Liga,FW,17,65,0.7,121.82653061224488,Below Big-5 Level,,,,
 Florent Mollet,Montpellier,fr Ligue 1,Off_MF,26,2564,28.5,404.59732664995823,Top Starter,,,,
+Gabriele Moncini,SPAL,it Serie A,Off_MF,22,8,0.1,120.0,Below Big-5 Level,,,,
 Thomas Monconduit,Amiens,fr Ligue 1,MF,27,2818,31.3,,,334.9520766773163,Solid Squad Player,,
 Kévin Monnet-Paquet,Saint-Étienne,fr Ligue 1,MF,29,1482,16.5,,,356.3474747474748,Solid Squad Player,,
 Nacho Monreal,Arsenal,eng Premier League,DF,32,1861,20.7,,,,,360.42667054108693,Solid Squad Player
+Javi Montero,Atlético Madrid,es La Liga,DF,19,404,4.5,,,,,427.5315899175548,Top Starter
+Cristóbal Montiel,Fiorentina,it Serie A,FW,18,6,0.1,266.6666666666667,Solid Squad Player,,,,
 Martín Montoya,Brighton,eng Premier League,DF,27,2167,24.1,,,,,418.6272042485189,Top Starter
 Aaron Mooy,Huddersfield,eng Premier League,FW,27,2330,25.9,233.24995841322368,Solid Squad Player,,,,
+Emre Mor,Celta Vigo,es La Liga,FW,21,369,4.1,131.27584204413472,Below Big-5 Level,,,,
 Alfredo Morales,Düsseldorf,de Bundesliga,MF,28,1532,17.0,,,269.72549019607845,Solid Squad Player,,
 Álvaro Morata,Chelsea,eng Premier League,FW,25,941,10.5,424.38345391066474,Top Starter,,,,
 Álvaro Morata,Atlético Madrid,es La Liga,FW,25,1083,12.0,435.8000755857898,Top Starter,,,,
 Jan Morávek,Augsburg,de Bundesliga,MF,28,757,8.4,,,434.8412698412699,Top Starter,,
 Steven Moreira,Toulouse,fr Ligue 1,MF,23,863,9.6,,,221.87500000000003,Solid Squad Player,,
 Jérémy Morel,Lyon,fr Ligue 1,DF,34,1064,11.8,,,,,414.9322458689095,Top Starter
+Alberto Moreno,Liverpool,eng Premier League,DF,26,154,1.7,,,,,237.22443363310236,Solid Squad Player
 Álex Moreno,Rayo Vallecano,es La Liga,DF,25,3136,34.8,,,,,322.5870842204781,Solid Squad Player
 Gerard Moreno,Villarreal,es La Liga,FW,26,2315,25.7,389.68532194546657,Solid Squad Player,,,,
 Héctor Moreno,Real Sociedad,es La Liga,DF,30,1933,21.5,,,,,400.20112296244486,Top Starter
+Sergio Moreno,Rayo Vallecano,es La Liga,FW,19,14,0.2,238.09523809523807,Solid Squad Player,,,,
 Emiliano Moretti,Torino,it Serie A,DF,37,2010,22.3,,,,,304.0620984449164,Solid Squad Player
 Wes Morgan,Leicester City,eng Premier League,DF,34,1925,21.4,,,,,397.3029146073907,Solid Squad Player
 Manu Morlanes,Villarreal,es La Liga,MF,19,610,6.8,,,648.0392156862746,Top Starter,,
 Loren Morón,Betis,es La Liga,FW,24,1957,21.7,283.85199640532113,Solid Squad Player,,,,
 Sean Morrison,Cardiff City,eng Premier League,DF,27,3039,33.8,,,,,408.4438099012998,Top Starter
+Victor Moses,Chelsea,eng Premier League,FW,27,28,0.3,149.65986394557822,Below Big-5 Level,,,,
 Lebo Mothiba,Strasbourg,fr Ligue 1,FW,22,1771,19.7,377.67321040091167,Solid Squad Player,,,,
+Lebo Mothiba,Lille,fr Ligue 1,FW,22,253,2.8,206.97721628333872,Solid Squad Player,,,,
 François Moubandje,Toulouse,fr Ligue 1,DF,28,1935,21.5,,,,,329.42262633327493,Solid Squad Player
 Steve Mounié,Huddersfield,eng Premier League,FW,23,1778,19.8,245.11810088794218,Solid Squad Player,,,,
 Lucas Moura,Tottenham,eng Premier League,FW,25,2121,23.6,362.22023008826875,Solid Squad Player,,,,
+Herman Moussaki,Caen,fr Ligue 1,FW,19,204,2.3,229.48181011535056,Solid Squad Player,,,,
+Lys Mousset,Bournemouth,eng Premier League,FW,22,368,4.1,295.4227181387461,Solid Squad Player,,,,
 João Moutinho,Wolves,eng Premier League,MF,31,3032,33.7,,,645.4203758654797,Top Starter,,
 Samuel Moutoussamy,Nantes,fr Ligue 1,FW,21,1648,18.3,223.2569586425948,Solid Squad Player,,,,
+Toni Moya,Atlético Madrid,es La Liga,DF,20,90,1.0,,,,,243.8095238095238,Solid Squad Player
 Javi Moyano,Valladolid,es La Liga,DF,32,2098,23.3,,,,,310.0457868562679,Solid Squad Player
+Samuel Mráz,Empoli,it Serie A,FW,21,170,1.9,396.51529617695036,Solid Squad Player,,,,
 Ndombe Mubele,Toulouse,fr Ligue 1,FW,24,465,5.2,199.12587941159367,Below Big-5 Level,,,,
 Lukas Mühl,Nürnberg,de Bundesliga,DF,21,2790,31.0,,,,,466.49548602689515,Top Starter
 Nordi Mukiele,RB Leipzig,de Bundesliga,DF,20,1225,13.6,,,,,389.26335446459285,Solid Squad Player
 Nicolai Müller,Hannover 96,de Bundesliga,FW,30,899,10.0,292.42630385487536,Solid Squad Player,,,,
+Nicolai Müller,Eint Frankfurt,de Bundesliga,FW,30,217,2.4,487.6928697404888,Top Starter,,,,
 Thomas Müller,Bayern Munich,de Bundesliga,FW,28,2378,26.4,459.82945097230805,Top Starter,,,,
 Iker Muniain,Athletic Club,es La Liga,FW,25,2383,26.5,332.167451047505,Solid Squad Player,,,,
 Marc Muniesa,Girona,es La Liga,Def_MF,26,1406,15.6,,,,,533.3345720302243,Top Starter
 Aihen Muñoz,Real Sociedad,es La Liga,DF,20,951,10.6,,,,,315.27939345218385,Solid Squad Player
+Ezequiel Muñoz,Leganés,es La Liga,DF,27,211,2.3,,,,,343.4877047691693,Solid Squad Player
 Alessandro Murgia,SPAL,it Serie A,MF,21,1072,11.9,,,537.4229691876751,Top Starter,,
+Alessandro Murgia,Lazio,it Serie A,MF,21,9,0.1,,,93.33333333333333,Below Big-5 Level,,
 Luis Muriel,Fiorentina,it Serie A,FW,27,1441,16.0,339.2454648526077,Solid Squad Player,,,,
+Luis Muriel,Sevilla,es La Liga,FW,27,123,1.4,640.2338300399524,Top Starter,,,,
+Jeison Murillo,Barcelona,es La Liga,DF,26,113,1.3,,,,,281.4163614163614,Solid Squad Player
+Jeison Murillo,Valencia,es La Liga,DF,26,90,1.0,,,,,394.9467608414977,Solid Squad Player
+Jacob Murphy,Newcastle Utd,eng Premier League,Off_MF,23,302,3.4,172.86858076563962,Below Big-5 Level,,,,
 Josh Murphy,Cardiff City,eng Premier League,FW,23,1817,20.2,247.34042792034307,Solid Squad Player,,,,
 Glenn Murray,Brighton,eng Premier League,FW,34,2508,27.9,355.2906490354007,Solid Squad Player,,,,
 Nicola Murru,Sampdoria,it Serie A,DF,23,2934,32.6,,,,,402.9691816453198,Top Starter
@@ -1233,22 +1585,36 @@ Florent Muslija,Hannover 96,de Bundesliga,FW,20,679,7.5,329.1094734189972,Solid 
 Shkodran Mustafi,Arsenal,eng Premier League,DF,26,2611,29.0,,,,,513.9241206464436,Top Starter
 Damián Musto,Huesca,es La Liga,Def_MF,31,1686,18.7,,,,,483.8975432070061,Top Starter
 Yoshinori Mutō,Newcastle Utd,eng Premier League,FW,26,524,5.8,186.2741288086116,Below Big-5 Level,,,,
+Phillipp Mwene,Mainz 05,de Bundesliga,MF,24,274,3.0,,,317.3333333333333,Solid Squad Player,,
 Obite N'Dicka,Eint Frankfurt,de Bundesliga,DF,18,2304,25.6,,,,,366.9950918964076,Solid Squad Player
+Kévin N'Doram,Monaco,fr Ligue 1,Def_MF,22,195,2.2,,,,,449.7760210803688,Top Starter
+Abdallah N'dour,Strasbourg,fr Ligue 1,DF,24,292,3.2,,,,,393.25814536340846,Solid Squad Player
 Cheikh N'Doye,Angers,fr Ligue 1,MF,32,2334,25.9,,,326.1776061776062,Solid Squad Player,,
+Nathan N'Goumou,Toulouse,fr Ligue 1,FW,18,70,0.8,9.214285714285714,Below Big-5 Level,,,,
+Clinton N'Jie,Marseille,fr Ligue 1,FW,24,364,4.0,665.4365079365077,Top Starter,,,,
+Georges-Kévin N'Koudou,Tottenham,eng Premier League,FW,23,5,0.1,285.7142857142858,Solid Squad Player,,,,
+Georges-Kévin N'Koudou,Monaco,fr Ligue 1,FW,23,23,0.3,177.58843537414964,Below Big-5 Level,,,,
 Stanley N'Soki,Paris S-G,fr Ligue 1,DF,19,698,7.8,,,,,442.0932673564252,Top Starter
 Nacho,Valladolid,es La Liga,DF,29,3150,35.0,,,,,394.2528702709153,Solid Squad Player
 Nacho,Real Madrid,es La Liga,DF,28,1698,18.9,,,,,383.44149615661735,Solid Squad Player
 Ádám Nagy,Bologna,it Serie A,MF,23,975,10.8,,,266.6666666666667,Solid Squad Player,,
 Radja Nainggolan,Inter,it Serie A,Off_MF,30,1967,21.9,403.5898564905415,Top Starter,,,,
 Naldo,Espanyol,es La Liga,DF,29,1362,15.1,,,,,470.8492081095775,Top Starter
+Naldo,Monaco,fr Ligue 1,DF,35,301,3.3,,,,,463.03435356066933,Top Starter
 Naldo,Schalke 04,de Bundesliga,DF,35,630,7.0,,,,,412.27926960257776,Top Starter
+Samir Nasri,West Ham,eng Premier League,Off_MF,31,245,2.7,406.7818930041152,Top Starter,,,,
 Matija Nastasić,Schalke 04,de Bundesliga,DF,25,2449,27.2,,,,,380.24276377217546,Solid Squad Player
+Marc Navarro,Watford,eng Premier League,DF,23,84,0.9,,,,,272.3745390412057,Solid Squad Player
 Ximo Navarro,Alavés,es La Liga,DF,28,2533,28.1,,,,,406.42261320290913,Top Starter
 Jesús Navas,Sevilla,es La Liga,FW,32,2712,30.1,231.68018672954605,Solid Squad Player,,,,
 Raúl Navas,Real Sociedad,es La Liga,DF,30,1310,14.6,,,,,438.8120987400006,Top Starter
 Wilfred Ndidi,Leicester City,eng Premier League,MF,21,3296,36.6,,,266.1020036429873,Solid Squad Player,,
+Aly Ndom,Caen,fr Ligue 1,MF,22,45,0.5,,,61.333333333333336,Below Big-5 Level,,
+Aly Ndom,Reims,fr Ligue 1,MF,22,363,4.0,,,238.50000000000006,Solid Squad Player,,
 Tanguy Ndombele,Lyon,fr Ligue 1,MF,21,2690,29.9,,,639.5763656633222,Top Starter,,
+Angelo Ndrecka,Chievo,it Serie A,DF,16,90,1.0,,,,,363.1746031746032,Solid Squad Player
 Reiss Nelson,Hoffenheim,de Bundesliga,FW,18,643,7.1,695.530612244898,Top Starter,,,,
+Pedro Neto,Lazio,it Serie A,FW,18,46,0.5,136.44897959183677,Below Big-5 Level,,,,
 Florian Neuhaus,Gladbach,de Bundesliga,MF,21,2062,22.9,,,630.1310043668122,Top Starter,,
 Rúben Neves,Wolves,eng Premier League,MF,21,3007,33.4,,,359.121756487026,Solid Squad Player,,
 Neymar,Paris S-G,fr Ligue 1,FW,26,1439,16.0,902.3843537414966,Exceptional,,,,
@@ -1256,56 +1622,79 @@ Yeni Ngbakoto,Guingamp,fr Ligue 1,FW,26,566,6.3,259.9409590996893,Solid Squad Pl
 Moussa Niakhate,Mainz 05,de Bundesliga,DF,22,2789,31.0,,,,,422.73231465761177,Top Starter
 M'Baye Niang,Rennes,fr Ligue 1,FW,23,1793,19.9,480.383856166699,Top Starter,,,,
 Oumar Niasse,Cardiff City,eng Premier League,FW,28,931,10.3,150.1223168879202,Below Big-5 Level,,,,
+Oumar Niasse,Everton,eng Premier League,FW,28,63,0.7,328.87657920310977,Solid Squad Player,,,,
+Hans Nicolussi Caviglia,Juventus,it Serie A,Off_MF,18,57,0.6,143.32777777777778,Below Big-5 Level,,,,
 Florian Niederlechner,Freiburg,de Bundesliga,FW,27,970,10.8,377.4240922706531,Solid Squad Player,,,,
 Saúl Ñíguez,Atlético Madrid,es La Liga,MF,23,2925,32.5,,,284.5948717948718,Solid Squad Player,,
+Dimitris Nikolaou,Empoli,it Serie A,DF,19,348,3.9,,,,,308.8445277918962,Solid Squad Player
 Casimir Ninga,Caen,fr Ligue 1,FW,25,2468,27.4,266.1948292699074,Solid Squad Player,,,,
+Eddie Nketiah,Arsenal,eng Premier League,FW,19,67,0.7,604.9873663751214,Top Starter,,,,
 Nicolas Nkoulou,Torino,it Serie A,DF,28,3214,35.7,,,,,436.58747071396334,Top Starter
 Christopher Nkunku,Paris S-G,fr Ligue 1,FW,20,1156,12.8,339.452097505669,Solid Squad Player,,,,
 Mark Noble,West Ham,eng Premier League,MF,31,2291,25.5,,,510.3006535947713,Top Starter,,
 Peru Nolaskoain,Athletic Club,es La Liga,DF,19,464,5.2,,,,,521.0796221322537,Top Starter
+Nolito,Sevilla,es La Liga,FW,31,76,0.8,241.60204081632648,Solid Squad Player,,,,
 Arnaud Nordin,Saint-Étienne,fr Ligue 1,FW,20,1050,11.7,355.7836017597923,Solid Squad Player,,,,
+Håvard Nordtveit,Fulham,eng Premier League,DF,28,362,4.0,,,,,438.4561403508771,Top Starter
 Håvard Nordtveit,Hoffenheim,de Bundesliga,MF,28,470,5.2,,,220.12820512820514,Solid Squad Player,,
 Kasim Nuhu,Hoffenheim,de Bundesliga,DF,23,904,10.0,,,,,444.33884711779444,Top Starter
 Unai Núñez,Athletic Club,es La Liga,DF,21,1064,11.8,,,,,502.44594537190426,Top Starter
+Hans Nunoo Sarpei,Stuttgart,de Bundesliga,FW,19,42,0.5,19.04761904761905,Below Big-5 Level,,,,
 Bram Nuytinck,Udinese,it Serie A,DF,28,2127,23.6,,,,,479.76536101424585,Top Starter
 Gerzino Nyamsi,Rennes,fr Ligue 1,DF,21,539,6.0,,,,,300.4165970481759,Solid Squad Player
 Allan Nyom,Leganés,es La Liga,FW,30,1708,19.0,129.4540716871544,Below Big-5 Level,,,,
 Steven Nzonzi,Roma,it Serie A,MF,29,2617,29.1,,,350.0114547537228,Solid Squad Player,,
+Christian Nørgaard,Fiorentina,it Serie A,MF,24,323,3.6,,,239.62962962962965,Solid Squad Player,,
+Michael Obafemi,Southampton,eng Premier League,FW,18,137,1.5,772.6041824137063,World Class,,,,
+Dimitri Oberlin,Empoli,it Serie A,FW,20,139,1.5,40.816326530612244,Below Big-5 Level,,,,
 Joel Obi,Chievo,it Serie A,MF,27,659,7.3,,,286.39269406392697,Solid Squad Player,,
 Pedro Obiang,West Ham,eng Premier League,MF,26,1128,12.5,,,311.68,Solid Squad Player,,
 Lucas Ocampos,Marseille,fr Ligue 1,FW,24,2708,30.1,272.58833116118353,Solid Squad Player,,,,
 Bastian Oczipka,Schalke 04,de Bundesliga,FW,29,1875,20.8,233.98058026629454,Solid Squad Player,,,,
+Jens Odgaard,Sassuolo,it Serie A,FW,19,16,0.2,0.0,Below Big-5 Level,,,,
 Denis Odoi,Fulham,eng Premier League,DF,30,2594,28.8,,,,,468.6626287942077,Top Starter
 Álvaro Odriozola,Real Madrid,es La Liga,DF,22,1178,13.1,,,,,292.83539637898815,Solid Squad Player
 Angelo Ogbonna,West Ham,eng Premier League,DF,30,1874,20.8,,,,,419.91292333397587,Top Starter
+Dani Ojeda,Leganés,es La Liga,Off_MF,23,193,2.1,123.50833333333333,Below Big-5 Level,,,,
 Sheyi Ojo,Reims,fr Ligue 1,FW,21,468,5.2,158.314233385662,Below Big-5 Level,,,,
+Stefano Okaka,Watford,eng Premier League,FW,28,24,0.3,391.38321995464855,Solid Squad Player,,,,
 Stefano Okaka,Udinese,it Serie A,FW,28,970,10.8,439.3171663727219,Top Starter,,,,
+Shinji Okazaki,Leicester City,eng Premier League,FW,32,288,3.2,171.00680272108843,Below Big-5 Level,,,,
+Chima Okoroji,Freiburg,de Bundesliga,Def_MF,21,104,1.2,,,,,110.00000000000001,Below Big-5 Level
+Orji Okwonkwo,Bologna,it Serie A,FW,20,257,2.9,112.89878020173587,Below Big-5 Level,,,,
 Lucas Olaza,Celta Vigo,es La Liga,DF,24,897,10.0,,,,,324.4237259816207,Solid Squad Player
 Kiko Olivas,Valladolid,es La Liga,DF,29,3100,34.4,,,,,403.1464319714014,Top Starter
 Paulo Oliveira,Eibar,es La Liga,DF,26,2245,24.9,,,,,407.885040580031,Top Starter
 Mathías Olivera,Getafe,es La Liga,Off_MF,20,1007,11.2,126.91913265306127,Below Big-5 Level,,,,
+Stephane Omeonga,Genoa,it Serie A,Def_MF,22,57,0.6,,,,,306.5861513687601,Solid Squad Player
 Kenneth Omeruo,Leganés,es La Liga,DF,24,2433,27.0,,,,,406.2877958082636,Top Starter
 Prince Oniangué,Caen,fr Ligue 1,MF,29,2343,26.0,,,179.10256410256412,Below Big-5 Level,,
 Karim Onisiwo,Mainz 05,de Bundesliga,FW,26,1161,12.9,537.5207802328509,Top Starter,,,,
 Nicholas Opoku,Udinese,it Serie A,DF,20,910,10.1,,,,,357.08412946557814,Solid Squad Player
 Willi Orban,RB Leipzig,de Bundesliga,DF,25,2049,22.8,,,,,455.0161954594087,Top Starter
 Fabián Orellana,Eibar,es La Liga,FW,32,2733,30.4,294.031029955842,Solid Squad Player,,,,
+Divock Origi,Liverpool,eng Premier League,FW,23,371,4.1,611.9260273214977,Top Starter,,,,
 Riccardo Orsolini,Bologna,it Serie A,FW,21,1964,21.8,387.59981831672525,Solid Squad Player,,,,
 Yuya Osako,Werder Bremen,de Bundesliga,FW,28,1346,15.0,279.26266061980346,Solid Squad Player,,,,
 Matthias Ostrzolek,Hannover 96,de Bundesliga,DF,28,1468,16.3,,,,,373.3173424358441,Solid Squad Player
 Nicolás Otamendi,Manchester City,eng Premier League,DF,30,1236,13.7,,,,,410.7538920293434,Top Starter
 Otávio,Bordeaux,fr Ligue 1,MF,24,2875,31.9,,,234.10658307210034,Solid Squad Player,,
+David Otto,Hoffenheim,de Bundesliga,FW,19,28,0.3,235.82766439909298,Solid Squad Player,,,,
 Remi Oudin,Reims,fr Ligue 1,FW,21,2612,29.0,342.98163786587435,Solid Squad Player,,,,
 Adam Ounas,Napoli,it Serie A,FW,21,538,6.0,503.4417989417989,Top Starter,,,,
 Reece Oxford,Augsburg,de Bundesliga,DF,19,505,5.6,,,,,569.5381310418904,Top Starter
+Alex Oxlade-Chamberlain,Liverpool,eng Premier League,MF,24,21,0.2,,,590.0000000000001,Top Starter,,
 Mikel Oyarzabal,Real Sociedad,es La Liga,FW,21,3153,35.0,372.23107655760714,Solid Squad Player,,,,
 Ambroise Oyongo,Montpellier,fr Ligue 1,DF,27,2136,23.7,,,,,318.47297568816555,Solid Squad Player
+Berkay Özcan,Stuttgart,de Bundesliga,MF,20,51,0.6,,,82.22222222222223,Below Big-5 Level,,
 Mesut Özil,Arsenal,eng Premier League,FW,29,1735,19.3,350.2302918864724,Solid Squad Player,,,,
 Levin Öztunalı,Mainz 05,de Bundesliga,FW,22,921,10.2,130.530879018274,Below Big-5 Level,,,,
 Pablo,Bordeaux,fr Ligue 1,DF,27,1936,21.5,,,,,476.7012103903168,Top Starter
+Gonçalo Paciência,Eint Frankfurt,de Bundesliga,FW,23,390,4.3,609.3641301481832,Top Starter,,,,
 Simone Padoin,Cagliari,it Serie A,MF,34,1915,21.3,,,350.923317683881,Solid Squad Player,,
 Luca Paganini,Frosinone,it Serie A,Off_MF,25,1123,12.5,219.8,Solid Squad Player,,,,
 Marko Pajač,Empoli,it Serie A,FW,25,738,8.2,286.99240454989587,Solid Squad Player,,,,
+Marko Pajač,Cagliari,it Serie A,DF,25,100,1.1,,,,,273.0644793802688,Solid Squad Player
 Vincent Pajot,Angers,fr Ligue 1,MF,27,713,7.9,,,231.2236286919831,Solid Squad Player,,
 Rodrigo Palacio,Bologna,it Serie A,FW,36,2329,25.9,300.8840298023971,Solid Squad Player,,,,
 Federico Palacios Martínez,Nürnberg,de Bundesliga,FW,23,942,10.5,168.52879458661775,Below Big-5 Level,,,,
@@ -1314,12 +1703,15 @@ Nicolas Pallois,Nantes,fr Ligue 1,DF,30,2160,24.0,,,,,464.3455861876914,Top Star
 Emerson Palmieri,Chelsea,eng Premier League,DF,23,663,7.4,,,,,318.7021608074239,Solid Squad Player
 Alberto Paloschi,SPAL,it Serie A,FW,28,863,9.6,203.92038296800206,Solid Squad Player,,,,
 Goran Pandev,Genoa,it Serie A,FW,35,1122,12.5,383.98374905517755,Solid Squad Player,,,,
+Mickaël Panos,Saint-Étienne,fr Ligue 1,DF,21,25,0.3,,,,,491.18351434140914,Top Starter
 Sokratis Papastathopoulos,Arsenal,eng Premier League,DF,30,2198,24.4,,,,,422.0502074859279,Top Starter
+Elhadji Pape Diaw,Angers,fr Ligue 1,DF,23,15,0.2,,,,,293.3333333333333,Solid Squad Player
 Lucas Paquetá,Milan,it Serie A,MF,20,842,9.4,,,427.8014184397163,Top Starter,,
 Gaëtan Paquiez,Nîmes,fr Ligue 1,DF,24,1329,14.8,,,,,430.77016866490544,Top Starter
 Rubén Pardo,Real Sociedad,es La Liga,FW,25,1368,15.2,254.10840593547363,Solid Squad Player,,,,
 Leandro Paredes,Paris S-G,fr Ligue 1,MF,24,1249,13.9,,,517.6019184652279,Top Starter,,
 Daniel Parejo,Valencia,es La Liga,MF,29,3061,34.0,,,716.0392156862745,Top Starter,,
+Vittorio Parigini,Torino,it Serie A,Off_MF,22,377,4.2,245.98822751322749,Solid Squad Player,,,,
 Marco Parolo,Lazio,it Serie A,MF,33,2563,28.5,,,418.4842105263158,Top Starter,,
 Thomas Partey,Atlético Madrid,es La Liga,MF,25,2070,23.0,,,467.7101449275362,Top Starter,,
 Mario Pašalić,Atalanta,it Serie A,MF,23,1618,18.0,,,529.5555555555555,Top Starter,,
@@ -1327,31 +1719,41 @@ Manuel Pasqual,Empoli,it Serie A,DF,36,1342,14.9,,,,,252.45664496812498,Solid Sq
 Javier Pastore,Roma,it Serie A,FW,29,597,6.6,517.1268466982752,Top Starter,,,,
 Callum Paterson,Cardiff City,eng Premier League,FW,23,1998,22.2,236.22724425105378,Solid Squad Player,,,,
 Patric,Lazio,it Serie A,DF,25,1085,12.1,,,,,306.5255425064037,Solid Squad Player
+Paulinho,Leverkusen,de Bundesliga,FW,18,180,2.0,161.22448979591834,Below Big-5 Level,,,,
 Gabriel Paulista,Valencia,es La Liga,DF,27,2623,29.1,,,,,488.49822149876405,Top Starter
 Benjamin Pavard,Stuttgart,de Bundesliga,DF,22,2610,29.0,,,,,441.0343099127127,Top Starter
 Mateo Pavlović,Angers,fr Ligue 1,DF,28,2490,27.7,,,,,377.818674242767,Solid Squad Player
 Leonardo Pavoletti,Cagliari,it Serie A,FW,29,2734,30.4,394.70648844333056,Solid Squad Player,,,,
 Dimitri Payet,Marseille,fr Ligue 1,FW,31,1904,21.2,407.70167144425903,Top Starter,,,,
+Nehuén Paz,Bologna,it Serie A,DF,25,114,1.3,,,,,275.20035520035515,Solid Squad Player
 Alfonso Pedraza,Villarreal,es La Liga,FW,22,2095,23.3,249.20575068367833,Solid Squad Player,,,,
 Pedro,Chelsea,eng Premier League,FW,31,1778,19.8,420.0389190468555,Top Starter,,,,
 João Pedro,Cagliari,it Serie A,FW,26,2555,28.4,288.7400008516708,Solid Squad Player,,,,
 Adrià Pedrosa,Espanyol,es La Liga,DF,20,763,8.5,,,,,315.47889331171064,Solid Squad Player
+Stef Peeters,Caen,fr Ligue 1,MF,26,407,4.5,,,270.51851851851853,Solid Squad Player,,
 Jordan Pefok,Rennes,fr Ligue 1,FW,22,608,6.8,431.06309190342796,Top Starter,,,,
+Peter Pekarík,Hertha BSC,de Bundesliga,DF,31,217,2.4,,,,,195.9482038429407,Below Big-5 Level
 Pelé,Monaco,fr Ligue 1,MF,26,469,5.2,,,239.74358974358978,Solid Squad Player,,
+Maxime Pélican,Nice,fr Ligue 1,FW,20,91,1.0,9.523809523809526,Below Big-5 Level,,,,
+Pietro Pellegri,Monaco,fr Ligue 1,FW,17,82,0.9,504.34996220710514,Top Starter,,,,
 Lorenzo Pellegrini,Roma,it Serie A,Off_MF,22,1821,20.2,368.5024516737388,Solid Squad Player,,,,
 Luca Pellegrini,Cagliari,it Serie A,DF,19,940,10.4,,,,,395.09864404601245,Solid Squad Player
+Luca Pellegrini,Roma,it Serie A,DF,19,161,1.8,,,,,284.8862897985705,Solid Squad Player
 Théo Pellenard,Angers,fr Ligue 1,DF,24,495,5.5,,,,,309.243411559201,Solid Squad Player
 Sergio Pellissier,Chievo,it Serie A,FW,39,953,10.6,404.9121350846419,Top Starter,,,,
+Andy Pelmard,Nice,fr Ligue 1,DF,18,275,3.1,,,,,242.63238742016333,Solid Squad Player
 Lee Peltier,Cardiff City,eng Premier League,DF,31,1544,17.2,,,,,334.92155335484586,Solid Squad Player
 Federico Peluso,Sassuolo,it Serie A,DF,34,1356,15.1,,,,,362.19644032819355,Solid Squad Player
 Rubén Peña,Eibar,es La Liga,DF,27,2674,29.7,,,,,318.81882033928815,Solid Squad Player
 Nicolas Pépé,Lille,fr Ligue 1,FW,23,3324,36.9,640.7121820122206,Top Starter,,,,
+Pepín,Parma,it Serie A,MF,21,77,0.9,,,511.2592592592593,Top Starter,,
 Andreas Pereira,Manchester Utd,eng Premier League,MF,22,599,6.7,,,506.7661691542289,Top Starter,,
 Matheus Pereira,Nürnberg,de Bundesliga,FW,22,1232,13.7,300.74197659599116,Solid Squad Player,,,,
 Pedro Pereira,Genoa,it Serie A,FW,20,1384,15.4,101.39323261772242,Below Big-5 Level,,,,
 Ricardo Pereira,Leicester City,eng Premier League,FW,24,3123,34.7,192.45788869502329,Below Big-5 Level,,,,
 Roberto Pereyra,Watford,eng Premier League,Off_MF,27,2815,31.3,275.0536246767078,Solid Squad Player,,,,
 Ayoze Pérez,Newcastle Utd,eng Premier League,FW,25,2917,32.4,345.4794378656813,Solid Squad Player,,,,
+Carles Pérez,Barcelona,es La Liga,FW,20,18,0.2,229.2517006802721,Solid Squad Player,,,,
 Hernán Pérez,Espanyol,es La Liga,FW,29,795,8.8,293.2187865045008,Solid Squad Player,,,,
 Lucas Pérez,West Ham,eng Premier League,FW,29,475,5.3,395.9853891242031,Solid Squad Player,,,,
 Rubén Pérez,Leganés,es La Liga,MF,29,2474,27.5,,,220.36363636363635,Solid Squad Player,,
@@ -1359,36 +1761,50 @@ Stipe Perica,Frosinone,it Serie A,FW,23,480,5.3,85.83808240277246,Below Big-5 Le
 Ivan Perišić,Inter,it Serie A,FW,29,2701,30.0,405.527840765936,Top Starter,,,,
 Diego Perotti,Roma,it Serie A,FW,30,668,7.4,611.9693060407348,Top Starter,,,,
 Loïc Perrin,Saint-Étienne,fr Ligue 1,DF,32,2700,30.0,,,,,425.03079922027285,Top Starter
+Matteo Pessina,Atalanta,it Serie A,FW,21,235,2.6,214.0834641548927,Solid Squad Player,,,,
 Andrea Petagna,SPAL,it Serie A,FW,23,3031,33.7,404.44293497154877,Top Starter,,,,
 Nils Petersen,Freiburg,de Bundesliga,FW,29,1929,21.4,394.68253615049355,Solid Squad Player,,,,
 Ondřej Petrák,Nürnberg,de Bundesliga,MF,26,1624,18.0,,,154.1851851851852,Below Big-5 Level,,
 Germán Pezzella,Fiorentina,it Serie A,DF,27,2850,31.7,,,,,465.56011479803607,Top Starter
+Giuseppe Pezzella,Udinese,it Serie A,DF,20,184,2.0,,,,,352.07290954659373,Solid Squad Player
+Giuseppe Pezzella,Genoa,it Serie A,Def_MF,20,112,1.2,,,,,295.97826086956525,Solid Squad Player
+Matthias Phaeton,Guingamp,fr Ligue 1,FW,18,56,0.6,160.99773242630386,Below Big-5 Level,,,,
 Maximilian Philipp,Dortmund,de Bundesliga,FW,24,758,8.4,161.8388582946406,Below Big-5 Level,,,,
 Lebogang Phiri,Guingamp,fr Ligue 1,MF,23,1928,21.4,,,255.38940809968852,Solid Squad Player,,
 Krzysztof Piątek,Genoa,it Serie A,FW,23,1593,17.7,541.7456815745758,Top Starter,,,,
 Krzysztof Piątek,Milan,it Serie A,FW,23,1373,15.3,443.4993775287891,Top Starter,,,,
 Pablo Piatti,Espanyol,es La Liga,FW,29,743,8.3,233.8874864537515,Solid Squad Player,,,,
+Lucas Piazon,Chievo,it Serie A,FW,24,84,0.9,101.73356009070297,Below Big-5 Level,,,,
 Cristiano Piccini,Valencia,es La Liga,DF,25,1868,20.8,,,,,352.34657155709783,Solid Squad Player
+Roberto Piccoli,Atalanta,it Serie A,FW,17,48,0.5,74.4047619047619,Below Big-5 Level,,,,
 Jérémy Pied,Lille,fr Ligue 1,DF,29,469,5.2,,,,,339.0257695520853,Solid Squad Player
+Ronaël Pierre-Gabriel,Monaco,fr Ligue 1,DF,20,355,3.9,,,,,363.73669215774476,Solid Squad Player
 Erik Pieters,Amiens,fr Ligue 1,DF,29,1261,14.0,,,,,420.3370330588375,Top Starter
 Tomás Pina Isla,Alavés,es La Liga,MF,30,2340,26.0,,,274.2307692307692,Solid Squad Player,,
 Andrea Pinamonti,Frosinone,it Serie A,FW,19,1625,18.1,332.3412301691701,Solid Squad Player,,,,
+Virgile Pinson,Reims,fr Ligue 1,Off_MF,22,5,0.1,0.0,Below Big-5 Level,,,,
 Gerard Piqué,Barcelona,es La Liga,DF,31,3150,35.0,,,,,399.08991526435136,Solid Squad Player
+Facundo Píriz,Montpellier,fr Ligue 1,FW,28,116,1.3,36.630036630036635,Below Big-5 Level,,,,
 Fabio Pisacane,Cagliari,it Serie A,DF,32,2266,25.2,,,,,380.71899325032155,Solid Squad Player
 Łukasz Piszczek,Dortmund,de Bundesliga,DF,33,1756,19.5,,,,,448.2762461709829,Top Starter
 Claudio Pizarro,Werder Bremen,de Bundesliga,FW,39,692,7.7,555.1294382110708,Top Starter,,,,
 Marko Pjaca,Fiorentina,it Serie A,FW,23,750,8.3,283.79085503009765,Solid Squad Player,,,,
 Miralem Pjanić,Juventus,it Serie A,MF,28,2280,25.3,,,690.4347826086956,Top Starter,,
+Carles Planas,Girona,es La Liga,DF,27,419,4.7,,,,,271.1431059919302,Solid Squad Player
 Óscar Plano,Valladolid,es La Liga,FW,27,2693,29.9,215.5232103989868,Solid Squad Player,,,,
 Jaroslav Plašil,Bordeaux,fr Ligue 1,MF,36,1443,16.0,,,332.0416666666667,Solid Squad Player,,
 Marvin Plattenhardt,Hertha BSC,de Bundesliga,DF,26,1924,21.4,,,,,235.05680088070648,Solid Squad Player
+Stiven Plaza,Valladolid,es La Liga,FW,19,38,0.4,23.809523809523807,Below Big-5 Level,,,,
 Alassane Pléa,Gladbach,de Bundesliga,FW,25,2503,27.8,431.08336188192305,Top Starter,,,,
+Morgan Poaty,Montpellier,fr Ligue 1,MF,21,90,1.0,,,306.0,Solid Squad Player,,
 Paul Pogba,Manchester Utd,eng Premier League,MF,25,3006,33.4,,,750.8982035928144,World Class,,
+Denis-Will Poha,Rennes,fr Ligue 1,MF,21,29,0.3,,,240.00000000000003,Solid Squad Player,,
 Andrea Poli,Bologna,it Serie A,MF,28,1932,21.5,,,325.82945736434107,Solid Squad Player,,
 Matteo Politano,Inter,it Serie A,FW,24,2549,28.3,374.72853083125676,Solid Squad Player,,,,
 Pierre-Yves Polomat,Saint-Étienne,fr Ligue 1,DF,24,950,10.6,,,,,312.1274885326523,Solid Squad Player
 Pere Pons,Girona,es La Liga,MF,25,2792,31.0,,,294.96774193548384,Solid Squad Player,,
 Pedro Porro,Girona,es La Liga,DF,18,2211,24.6,,,,,364.7614972390325,Solid Squad Player
+Manolo Portanova,Juventus,it Serie A,MF,18,33,0.4,,,195.0,Below Big-5 Level,,
 Francisco Portillo,Getafe,es La Liga,Off_MF,28,1994,22.2,220.5546510796511,Solid Squad Player,,,,
 Portu,Girona,es La Liga,FW,26,2821,31.3,307.9606072460933,Solid Squad Player,,,,
 Stefan Posch,Hoffenheim,de Bundesliga,DF,21,1402,15.6,,,,,470.57258530942744,Top Starter
@@ -1400,16 +1816,26 @@ Dennis Praet,Sampdoria,it Serie A,MF,24,2890,32.1,,,457.6947040498442,Top Starte
 Sanjin Prcić,Levante,es La Liga,MF,24,532,5.9,,,205.9887005649717,Solid Squad Player,,
 Sanjin Prcić,Strasbourg,fr Ligue 1,MF,24,1053,11.7,,,543.0199430199432,Top Starter,,
 Nicolas de Préville,Bordeaux,fr Ligue 1,FW,27,1271,14.1,347.7450748620961,Solid Squad Player,,,,
+Edgar Prib,Hannover 96,de Bundesliga,Off_MF,28,202,2.2,442.37189754689746,Top Starter,,,,
 Alex Pritchard,Huddersfield,eng Premier League,FW,25,2081,23.1,198.86694774109736,Below Big-5 Level,,,,
+Sebastian Prödl,Watford,eng Premier League,DF,31,13,0.1,,,,,40.17316017316017,Below Big-5 Level
 Quincy Promes,Sevilla,es La Liga,FW,26,1583,17.6,297.77846492132204,Solid Squad Player,,,,
 Davy Pröpper,Brighton,eng Premier League,MF,26,2546,28.3,,,303.51001177856295,Solid Squad Player,,
+Javi Puado,Espanyol,es La Liga,FW,20,359,4.0,163.50680272108846,Below Big-5 Level,,,,
+Manuel Pucciarelli,Chievo,it Serie A,FW,27,302,3.4,28.553421368547415,Below Big-5 Level,,,,
+Riqui Puig,Barcelona,es La Liga,MF,18,156,1.7,,,520.0,Top Starter,,
 Erick Pulgar,Bologna,it Serie A,MF,24,2357,26.2,,,535.7506361323155,Top Starter,,
 Jorge Pulido,Huesca,es La Liga,DF,27,2785,30.9,,,,,435.78291615082617,Top Starter
 Christian Pulisic,Dortmund,de Bundesliga,FW,19,932,10.4,535.7883888598174,Top Starter,,,,
+Jason Puncheon,Crystal Palace,eng Premier League,MF,32,13,0.1,,,100.0,Below Big-5 Level,,
+Jason Puncheon,Huddersfield,eng Premier League,MF,32,382,4.2,,,364.2857142857143,Solid Squad Player,,
 Ignacio Pussetto,Udinese,it Serie A,FW,22,2178,24.2,274.5341229237334,Solid Squad Player,,,,
 Fabio Quagliarella,Sampdoria,it Serie A,FW,35,3199,35.5,616.8873292666049,Top Starter,,,,
 Robin Quaison,Mainz 05,de Bundesliga,FW,24,2194,24.4,323.1539409935194,Solid Squad Player,,,,
+Collin Quaner,Huddersfield,eng Premier League,FW,27,39,0.4,159.8639455782313,Below Big-5 Level,,,,
+Domingos Quina,Watford,eng Premier League,MF,18,338,3.8,,,320.5263157894737,Solid Squad Player,,
 Xavi Quintillà,Villarreal,es La Liga,DF,21,627,7.0,,,,,268.360424871703,Solid Squad Player
+Dani Raba,Villarreal,es La Liga,FW,22,191,2.1,288.8652413346291,Solid Squad Player,,,,
 Adrien Rabiot,Paris S-G,fr Ligue 1,MF,23,1063,11.8,,,458.24858757062145,Top Starter,,
 Nemanja Radonjić,Marseille,fr Ligue 1,FW,22,681,7.6,122.36322950232723,Below Big-5 Level,,,,
 Ivan Radovanović,Genoa,it Serie A,MF,29,1278,14.2,,,217.65258215962444,Solid Squad Player,,
@@ -1417,9 +1843,11 @@ Ivan Radovanović,Chievo,it Serie A,MF,29,1706,19.0,,,224.87719298245614,Solid S
 Ștefan Radu,Lazio,it Serie A,DF,31,2243,24.9,,,,,355.68143920712083,Solid Squad Player
 Rafael,Lyon,fr Ligue 1,DF,28,1023,11.4,,,,,390.62451450263075,Solid Squad Player
 Raffael,Gladbach,de Bundesliga,FW,33,543,6.0,444.456286218191,Top Starter,,,,
+Rafinha,Barcelona,es La Liga,FW,25,223,2.5,109.7312925170068,Below Big-5 Level,,,,
 Rafinha,Bayern Munich,de Bundesliga,DF,32,901,10.0,,,,,296.67301587301586,Solid Squad Player
 Andrea Raggi,Monaco,fr Ligue 1,DF,34,494,5.5,,,,,272.27584111794636,Solid Squad Player
 Baba Rahman,Reims,fr Ligue 1,DF,24,964,10.7,,,,,450.28021767815187,Top Starter
+Baba Rahman,Schalke 04,de Bundesliga,DF,24,162,1.8,,,,,267.7842755035737,Solid Squad Player
 Ivan Rakitić,Barcelona,es La Liga,MF,30,2643,29.4,,,475.66893424036283,Top Starter,,
 Joe Ralls,Cardiff City,eng Premier League,MF,24,1959,21.8,,,381.3761467889908,Solid Squad Player,,
 Jonás Ramalho,Girona,es La Liga,DF,25,1619,18.0,,,,,343.1374733129119,Solid Squad Player
@@ -1428,33 +1856,44 @@ Adil Rami,Marseille,fr Ligue 1,DF,32,1412,15.7,,,,,331.708251520521,Solid Squad 
 Gastón Ramírez,Sampdoria,it Serie A,Off_MF,27,1578,17.5,358.37477324263045,Solid Squad Player,,,,
 Sandro Ramírez,Real Sociedad,es La Liga,FW,23,1055,11.7,199.42316413744982,Below Big-5 Level,,,,
 Iván Ramis,Eibar,es La Liga,DF,33,1677,18.6,,,,,279.3758590023445,Solid Squad Player
+Chris Ramos,Valladolid,es La Liga,FW,21,63,0.7,9.718172983479105,Below Big-5 Level,,,,
 Sergio Ramos,Real Madrid,es La Liga,DF,32,2474,27.5,,,,,399.2730918204602,Solid Squad Player
 Aaron Ramsey,Arsenal,eng Premier League,Off_MF,27,1331,14.8,482.95143715143706,Top Starter,,,,
+Kayne Ramsey,Southampton,eng Premier League,DF,17,90,1.0,,,,,203.52092352092353,Solid Squad Player
+Andrea Ranocchia,Inter,it Serie A,FW,30,62,0.7,78.25558794946551,Below Big-5 Level,,,,
 Marcus Rashford,Manchester Utd,eng Premier League,FW,20,2334,25.9,467.68681801334867,Top Starter,,,,
 Milot Rashica,Werder Bremen,de Bundesliga,FW,22,1550,17.2,565.8651320993515,Top Starter,,,,
 Jacob Rasmussen,Empoli,it Serie A,Def_MF,21,1016,11.3,,,,,453.4432046513616,Top Starter
+Yoric Ravet,Freiburg,de Bundesliga,FW,28,75,0.8,123.3673469387755,Below Big-5 Level,,,,
 Tim Ream,Fulham,eng Premier League,DF,30,2047,22.7,,,,,322.1510457494691,Solid Squad Player
 Ante Rebić,Eint Frankfurt,de Bundesliga,FW,24,1978,22.0,476.417439703154,Top Starter,,,,
 Pedro Rebocho,Guingamp,fr Ligue 1,DF,23,3240,36.0,,,,,320.0982084841733,Solid Squad Player
+Arkadiusz Reca,Atalanta,it Serie A,DF,23,49,0.5,,,,,294.4761904761904,Solid Squad Player
 Recio,Leganés,es La Liga,MF,27,1285,14.3,,,232.44755244755245,Solid Squad Player,,
 Nathan Redmond,Southampton,eng Premier League,FW,24,3270,36.3,299.6360887789459,Solid Squad Player,,,,
+Vasco Regini,SPAL,it Serie A,FW,27,81,0.9,77.8533635676493,Below Big-5 Level,,,,
 Sergio Reguilón,Real Madrid,es La Liga,DF,21,1119,12.4,,,,,354.45387662705144,Solid Squad Player
 Jeff Reine-Adélaïde,Angers,fr Ligue 1,FW,20,2556,28.4,260.3527035227237,Solid Squad Player,,,,
 Karim Rekik,Hertha BSC,de Bundesliga,DF,23,2068,23.0,,,,,393.5089898659692,Solid Squad Player
 Loïc Rémy,Lille,fr Ligue 1,FW,31,1204,13.4,445.67004546428853,Top Starter,,,,
 Marco Reus,Dortmund,de Bundesliga,FW,29,2316,25.7,663.8756922570153,Top Starter,,,,
 Elvis Rexhbeçaj,Wolfsburg,de Bundesliga,MF,20,1144,12.7,,,411.32808398950135,Top Starter,,
+Diego Reyes,Leganés,es La Liga,DF,25,320,3.6,,,,,447.29973080850266,Top Starter
 Simon Rhein,Nürnberg,de Bundesliga,Def_MF,20,494,5.5,,,,,331.4018445322793,Solid Squad Player
 Franck Ribéry,Bayern Munich,de Bundesliga,FW,35,1174,13.0,512.2369614512472,Top Starter,,,,
 Declan Rice,West Ham,eng Premier League,MF,19,3003,33.4,,,185.34930139720564,Below Big-5 Level,,
+Jazz Richards,Cardiff City,eng Premier League,MF,27,132,1.5,,,92.44444444444444,Below Big-5 Level,,
 Richarlison,Everton,eng Premier League,FW,21,2665,29.6,377.79943208514635,Solid Squad Player,,,,
 Marco Richter,Augsburg,de Bundesliga,FW,20,1426,15.8,393.70971707951816,Solid Squad Player,,,,
 Diego Rico,Bournemouth,eng Premier League,MF,25,612,6.8,,,416.47058823529414,Top Starter,,
+Mikel Rico,Athletic Club,es La Liga,MF,33,242,2.7,,,174.5679012345679,Below Big-5 Level,,
 Emiliano Rigoni,Atalanta,it Serie A,FW,25,522,5.8,469.50207209320513,Top Starter,,,,
 Luca Rigoni,Parma,it Serie A,Def_MF,33,1761,19.6,,,,,311.69353248545787,Solid Squad Player
 Nicola Rigoni,Chievo,it Serie A,MF,27,1951,21.7,,,231.1520737327189,Solid Squad Player,,
+Kévin Rimane,Paris S-G,fr Ligue 1,Def_MF,27,5,0.1,,,,,175.55555555555554,Below Big-5 Level
 Tomás Rincón,Torino,it Serie A,MF,30,2799,31.1,,,338.5637727759914,Solid Squad Player,,
 Renaud Ripart,Nîmes,fr Ligue 1,FW,25,3006,33.4,276.5458832901091,Solid Squad Player,,,,
+Mihailo Ristić,Montpellier,fr Ligue 1,MF,22,326,3.6,,,295.0,Solid Squad Player,,
 Matt Ritchie,Newcastle Utd,eng Premier League,Off_MF,28,2928,32.5,281.61706349206355,Solid Squad Player,,,,
 Cristian Rivera,Huesca,es La Liga,MF,21,1692,18.8,,,255.4609929078014,Solid Squad Player,,
 Arjen Robben,Bayern Munich,de Bundesliga,FW,34,567,6.3,644.6746991565584,Top Starter,,,,
@@ -1469,11 +1908,17 @@ Ronny Rodelin,Guingamp,fr Ligue 1,FW,28,788,8.8,156.24242424242425,Below Big-5 L
 Rodri,Atlético Madrid,es La Liga,MF,22,2735,30.4,,,290.2850877192983,Solid Squad Player,,
 Rodrigo,Valencia,es La Liga,FW,27,2528,28.1,427.33208119151175,Top Starter,,,,
 Kévin Rodrigues,Real Sociedad,es La Liga,DF,24,484,5.4,,,,,496.3049599306909,Top Starter
+Alejandro Rodríguez,Empoli,it Serie A,Off_MF,27,25,0.3,113.33333333333336,Below Big-5 Level,,,,
 Ángel Rodríguez,Getafe,es La Liga,FW,31,1819,20.2,414.86703636350023,Top Starter,,,,
 Óscar Rodríguez Arnaiz,Leganés,es La Liga,Off_MF,20,2504,27.8,302.5655104487838,Solid Squad Player,,,,
 James Rodríguez,Bayern Munich,de Bundesliga,Off_MF,27,1138,12.6,726.6528722600152,Top Starter,,,,
 Ricardo Rodríguez,Milan,it Serie A,DF,25,3047,33.9,,,,,303.0650372243293,Solid Squad Player
+Marko Rog,Napoli,it Serie A,MF,23,333,3.7,,,195.85585585585585,Below Big-5 Level,,
+Marko Rog,Sevilla,es La Liga,MF,23,357,4.0,,,321.0,Solid Squad Player,,
 Rogério,Sassuolo,it Serie A,MF,20,2672,29.7,,,332.3456790123456,Solid Squad Player,,
+Marcos Rojo,Manchester Utd,eng Premier League,DF,28,212,2.4,,,,,478.3876357560569,Top Starter
+Diego Rolán,Leganés,es La Liga,FW,25,215,2.4,119.09523809523809,Below Big-5 Level,,,,
+Diego Rolán,Alavés,es La Liga,FW,25,298,3.3,179.87487116058549,Below Big-5 Level,,,,
 Rolando,Marseille,fr Ligue 1,DF,32,804,8.9,,,,,337.07339509823237,Solid Squad Player
 Esteban Rolón,Genoa,it Serie A,MF,23,1046,11.6,,,255.10344827586206,Solid Squad Player,,
 Filippo Romagna,Cagliari,it Serie A,DF,21,1474,16.4,,,,,375.9441100904516,Solid Squad Player
@@ -1495,21 +1940,32 @@ Valentin Rosier,Dijon,fr Ligue 1,MF,21,1460,16.2,,,453.7860082304527,Top Starter
 Luca Rossettini,Chievo,it Serie A,DF,33,1823,20.3,,,,,443.9327008370306,Top Starter
 Jérôme Roussillon,Wolfsburg,de Bundesliga,DF,25,2461,27.3,,,,,342.90855343486913,Solid Squad Player
 Nolan Roux,Guingamp,fr Ligue 1,FW,30,1536,17.1,186.40740519729653,Below Big-5 Level,,,,
+Aaron Rowe,Huddersfield,eng Premier League,FW,17,69,0.8,8.503401360544219,Below Big-5 Level,,,,
 Waldo Rubio,Valladolid,es La Liga,Off_MF,22,492,5.5,264.2121212121212,Solid Squad Player,,,,
 Antonio Rüdiger,Chelsea,eng Premier League,DF,25,2871,31.9,,,,,306.2883960161637,Solid Squad Player
 Sebastian Rudy,Schalke 04,de Bundesliga,MF,28,1356,15.1,,,270.55187637969095,Solid Squad Player,,
 Daniele Rugani,Juventus,it Serie A,DF,24,1350,15.0,,,,,348.0274018379282,Solid Squad Player
 Mário Rui,Napoli,it Serie A,DF,27,1417,15.7,,,,,322.9428135093572,Solid Squad Player
+Abel Ruiz,Barcelona,es La Liga,FW,18,22,0.2,462.5850340136055,Top Starter,,,,
 Fabián Ruiz Peña,Napoli,it Serie A,MF,22,1992,22.1,,,713.5444947209655,Top Starter,,
 Víctor Ruiz,Villarreal,es La Liga,DF,29,1975,21.9,,,,,400.5914329202001,Top Starter
+Lukas Rupp,Hoffenheim,de Bundesliga,Off_MF,27,25,0.3,177.40740740740742,Below Big-5 Level,,,,
+Marco Russ,Eint Frankfurt,de Bundesliga,DF,32,380,4.2,,,,,274.68541483579077,Solid Squad Player
+Idriss Saadi,Strasbourg,fr Ligue 1,FW,26,10,0.1,0.0,Below Big-5 Level,,,,
 Youssouf Sabaly,Bordeaux,fr Ligue 1,DF,25,1908,21.2,,,,,324.048801248404,Solid Squad Player
+Abdelhamid Sabiri,Huddersfield,eng Premier League,FW,21,48,0.5,0.0,Below Big-5 Level,,,,
 Marcel Sabitzer,RB Leipzig,de Bundesliga,Off_MF,24,2352,26.1,325.7087620872104,Solid Squad Player,,,,
+Ihsan Sacko,Nice,fr Ligue 1,FW,21,442,4.9,172.77370540052752,Below Big-5 Level,,,,
 Nuri Şahin,Werder Bremen,de Bundesliga,MF,29,1476,16.4,,,357.60162601626024,Solid Squad Player,,
 Wesley Saïd,Dijon,fr Ligue 1,FW,23,2253,25.0,246.2826908541194,Solid Squad Player,,,,
 Allan Saint-Maximin,Nice,fr Ligue 1,FW,21,2900,32.2,328.3521429275644,Solid Squad Player,,,,
 Romain Saïss,Wolves,eng Premier League,Def_MF,28,1149,12.8,,,,,570.877868357488,Top Starter
+Samuel Sáiz,Getafe,es La Liga,Off_MF,27,305,3.4,284.8781045751634,Solid Squad Player,,,,
+Bukayo Saka,Arsenal,eng Premier League,FW,16,8,0.1,0.0,Below Big-5 Level,,,,
 Hiroki Sakai,Marseille,fr Ligue 1,DF,28,2374,26.4,,,,,340.4068251436672,Solid Squad Player
+Diafra Sakho,Rennes,fr Ligue 1,FW,28,144,1.6,35.465986394557824,Below Big-5 Level,,,,
 Mamadou Sakho,Crystal Palace,eng Premier League,DF,28,2416,26.8,,,,,411.865733986708,Top Starter
+Bakary Sako,Crystal Palace,eng Premier League,FW,30,29,0.3,47.61904761904761,Below Big-5 Level,,,,
 Emiliano Sala,Nantes,fr Ligue 1,FW,27,1369,15.2,579.6012650674303,Top Starter,,,,
 Jacopo Sala,Sampdoria,it Serie A,DF,26,1518,16.9,,,,,321.6712392420895,Solid Squad Player
 Mohamed Salah,Liverpool,eng Premier League,FW,26,3250,36.1,634.2195411251604,Top Starter,,,,
@@ -1517,7 +1973,9 @@ Bartosz Salamon,Frosinone,it Serie A,DF,27,1725,19.2,,,,,455.53574593048273,Top 
 Carlos Salcedo,Eint Frankfurt,de Bundesliga,DF,24,460,5.1,,,,,407.58890690779236,Top Starter
 William Saliba,Saint-Étienne,fr Ligue 1,DF,17,1277,14.2,,,,,414.1720498429171,Top Starter
 Yannis Salibur,Saint-Étienne,fr Ligue 1,FW,27,885,9.8,362.3148842303361,Solid Squad Player,,,,
+Yannis Salibur,Guingamp,fr Ligue 1,Off_MF,27,16,0.2,0.0,Below Big-5 Level,,,,
 Roland Sallai,Freiburg,de Bundesliga,Off_MF,21,527,5.9,338.6681261770245,Solid Squad Player,,,,
+Edgar Salli,Nürnberg,de Bundesliga,FW,25,116,1.3,83.6436420722135,Below Big-5 Level,,,,
 Junior Sambia,Montpellier,fr Ligue 1,FW,21,926,10.3,242.57922198005414,Solid Squad Player,,,,
 Paolo Sammarco,Frosinone,it Serie A,MF,35,553,6.1,,,376.72131147540983,Solid Squad Player,,
 Frédéric Sammaritano,Dijon,fr Ligue 1,FW,32,538,6.0,149.18027210884355,Below Big-5 Level,,,,
@@ -1526,7 +1984,9 @@ Antonio Sanabria,Genoa,it Serie A,FW,22,766,8.5,394.859277044151,Solid Squad Pla
 Antonio Sanabria,Betis,es La Liga,FW,22,811,9.0,218.85974636768287,Solid Squad Player,,,,
 Renato Sanches,Bayern Munich,de Bundesliga,Off_MF,20,577,6.4,339.6133432539683,Solid Squad Player,,,,
 Alexis Sánchez,Manchester Utd,eng Premier League,FW,29,880,9.8,346.8341123297391,Solid Squad Player,,,,
+Carlos Sánchez,West Ham,eng Premier League,MF,32,245,2.7,,,239.7530864197531,Solid Squad Player,,
 Davinson Sánchez,Tottenham,eng Premier League,DF,22,1942,21.6,,,,,403.75444784801505,Top Starter
+Javi Sánchez,Real Madrid,es La Liga,DF,21,46,0.5,,,,,230.07215007215004,Solid Squad Player
 Víctor Sánchez,Espanyol,es La Liga,MF,30,1265,14.1,,,342.4113475177305,Solid Squad Player,,
 Jadon Sancho,Dortmund,de Bundesliga,FW,18,2461,27.3,572.6861943800719,Top Starter,,,,
 Sandro,Udinese,it Serie A,MF,29,594,6.6,,,182.82828282828288,Below Big-5 Level,,
@@ -1541,6 +2001,7 @@ Baissama Sankoh,Caen,fr Ligue 1,FW,26,651,7.2,52.77588813303099,Below Big-5 Leve
 Yaya Sanogo,Toulouse,fr Ligue 1,FW,25,1243,13.8,310.05011666502344,Solid Squad Player,,,,
 Morgan Sanson,Marseille,fr Ligue 1,MF,23,2403,26.7,,,447.19101123595505,Top Starter,,
 Nicola Sansone,Bologna,it Serie A,FW,26,1139,12.7,317.5528386332661,Solid Squad Player,,,,
+Nicola Sansone,Villarreal,es La Liga,FW,26,37,0.4,726.8809523809525,Top Starter,,,,
 Baptiste Santamaria,Angers,fr Ligue 1,MF,23,3245,36.1,,,194.31209602954755,Below Big-5 Level,,
 Federico Santander,Bologna,it Serie A,FW,27,2065,22.9,391.1705812844303,Solid Squad Player,,,,
 Davide Santon,Roma,it Serie A,DF,27,1009,11.2,,,,,298.0534670008353,Solid Squad Player
@@ -1549,17 +2010,24 @@ Samir Santos,Udinese,it Serie A,DF,23,1797,20.0,,,,,432.7766081871344,Top Starte
 Riccardo Saponara,Sampdoria,it Serie A,Off_MF,26,905,10.1,473.9821153543926,Top Starter,,,,
 Pablo Sarabia,Sevilla,es La Liga,FW,26,2724,30.3,575.6698472568345,Top Starter,,,,
 Marcelo Saracchi,RB Leipzig,de Bundesliga,DF,20,653,7.3,,,,,371.36127991210907,Solid Squad Player
+Josh Sargent,Werder Bremen,de Bundesliga,FW,18,212,2.4,579.0375409423028,Top Starter,,,,
 Bouna Sarr,Marseille,fr Ligue 1,MF,26,2242,24.9,,,409.04953145917,Top Starter,,
 Ismaila Sarr,Rennes,fr Ligue 1,FW,20,2788,31.0,348.7628434886498,Solid Squad Player,,,,
 Malang Sarr,Nice,fr Ligue 1,DF,19,2994,33.3,,,,,414.65324974096904,Top Starter
+Lluís Sastre,Huesca,es La Liga,MF,32,120,1.3,,,306.1538461538462,Solid Squad Player,,
+Marco Sau,Sampdoria,it Serie A,FW,30,55,0.6,65.75963718820863,Below Big-5 Level,,,,
 Marco Sau,Cagliari,it Serie A,FW,30,558,6.2,208.40390851681173,Solid Squad Player,,,,
 Téji Savanier,Nîmes,fr Ligue 1,MF,26,2864,31.8,,,793.9622641509434,World Class,,
 Stefan Savić,Atlético Madrid,es La Liga,DF,27,1398,15.5,,,,,349.48705096073525,Solid Squad Player
 Fabian Schär,Newcastle Utd,eng Premier League,DF,26,1999,22.2,,,,,623.3331075436338,Top Starter
+Ezequiel Schelotto,Chievo,it Serie A,DF,29,143,1.6,,,,,343.71762740183794,Solid Squad Player
+Nicolás Schiappacasse,Parma,it Serie A,FW,19,81,0.9,7.928571428571429,Below Big-5 Level,,,,
 Pasquale Schiattarella,SPAL,it Serie A,MF,31,1841,20.5,,,580.6504065040651,Top Starter,,
 Patrik Schick,Roma,it Serie A,FW,22,1314,14.6,273.0444351256485,Solid Squad Player,,,,
+Julian Schieber,Augsburg,de Bundesliga,FW,29,258,2.9,266.9627544504392,Solid Squad Player,,,,
 Christopher Schindler,Huddersfield,eng Premier League,DF,28,3260,36.2,,,,,462.1843408118488,Top Starter
 Keven Schlotterbeck,Freiburg,de Bundesliga,DF,21,773,8.6,,,,,483.78698684696235,Top Starter
+Nico Schlotterbeck,Freiburg,de Bundesliga,DF,18,226,2.5,,,,,495.649791144528,Top Starter
 Jeffrey Schlupp,Crystal Palace,eng Premier League,FW,25,1670,18.6,242.91434016856442,Solid Squad Player,,,,
 Marcel Schmelzer,Dortmund,de Bundesliga,DF,30,566,6.3,,,,,319.02825847688007,Solid Squad Player
 Jonathan Schmid,Augsburg,de Bundesliga,DF,28,2520,28.0,,,,,305.3655567490154,Solid Squad Player
@@ -1569,59 +2037,90 @@ Nico Schulz,Hoffenheim,de Bundesliga,DF,25,2537,28.2,,,,,244.4809423084899,Solid
 André Schürrle,Fulham,eng Premier League,FW,27,1641,18.2,309.31521766215644,Solid Squad Player,,,,
 Pirmin Schwegler,Hannover 96,de Bundesliga,MF,31,2075,23.1,,,427.6479076479077,Top Starter,,
 Matteo Scozzarella,Parma,it Serie A,MF,30,1459,16.2,,,466.7078189300412,Top Starter,,
+Stanley Segarel,Amiens,fr Ligue 1,FW,24,15,0.2,0.0,Below Big-5 Level,,,,
 Davie Selke,Hertha BSC,de Bundesliga,FW,23,1739,19.3,295.70704827699643,Solid Squad Player,,,,
 Ole Selnæs,Saint-Étienne,fr Ligue 1,MF,24,1669,18.5,,,540.4324324324324,Top Starter,,
 Ken Sema,Watford,eng Premier League,FW,24,754,8.4,232.31974588777305,Solid Squad Player,,,,
+Alfa Semedo,Espanyol,es La Liga,MF,20,45,0.5,,,464.0,Top Starter,,
 Nélson Semedo,Barcelona,es La Liga,DF,24,1600,17.8,,,,,332.91430824251637,Solid Squad Player
 Rúben Semedo,Huesca,es La Liga,DF,24,850,9.4,,,,,472.34792332216745,Top Starter
 Stefano Sensi,Sassuolo,it Serie A,MF,22,1972,21.9,,,639.5129375951294,Top Starter,,
 Suat Serdar,Schalke 04,de Bundesliga,MF,21,1729,19.2,,,332.66666666666674,Solid Squad Player,,
 Jean Seri,Fulham,eng Premier League,MF,27,2244,24.9,,,533.6813922356092,Top Starter,,
+Leonardo Sernicola,Sassuolo,it Serie A,FW,21,6,0.1,0.0,Below Big-5 Level,,,,
+Julien Serrano,Monaco,fr Ligue 1,MF,20,119,1.3,,,266.46153846153845,Solid Squad Player,,
+Grégory Sertic,Marseille,fr Ligue 1,MF,28,108,1.2,,,82.77777777777779,Below Big-5 Level,,
 Ryan Sessegnon,Fulham,eng Premier League,FW,18,2300,25.6,233.58408919123204,Solid Squad Player,,,,
+Paik Seung-ho,Girona,es La Liga,FW,21,60,0.7,64.1642371234208,Below Big-5 Level,,,,
 Stephan El Shaarawy,Roma,it Serie A,FW,25,2104,23.4,485.3891343811979,Top Starter,,,,
 Xherdan Shaqiri,Liverpool,eng Premier League,FW,26,1064,11.8,519.0437757023711,Top Starter,,,,
 Luke Shaw,Manchester Utd,eng Premier League,DF,23,2591,28.8,,,,,325.8017729508957,Solid Squad Player
 Jonjo Shelvey,Newcastle Utd,eng Premier League,MF,26,948,10.5,,,555.936507936508,Top Starter,,
+Gaku Shibasaki,Getafe,es La Liga,FW,26,389,4.3,90.5876443600696,Below Big-5 Level,,,,
 Gen Shoji,Toulouse,fr Ligue 1,DF,25,1620,18.0,,,,,339.06766917293237,Solid Squad Player
 Djibril Sidibé,Monaco,fr Ligue 1,MF,26,2076,23.1,,,453.1024531024531,Top Starter,,
 Kalidou Sidibé,Toulouse,fr Ligue 1,MF,19,1259,14.0,,,181.7142857142857,Below Big-5 Level,,
 Sidnei,Betis,es La Liga,DF,28,1742,19.4,,,,,437.69113505413014,Top Starter
+Francisco Sierralta,Parma,it Serie A,DF,21,269,3.0,,,,,502.83223209538994,Top Starter
 Gylfi Sigurðsson,Everton,eng Premier League,Off_MF,28,3117,34.6,483.1006147352968,Top Starter,,,,
 Luca Siligardi,Parma,it Serie A,FW,30,1639,18.2,175.86077678934822,Below Big-5 Level,,,,
+Adrien Silva,Leicester City,eng Premier League,MF,29,88,1.0,,,240.00000000000003,Solid Squad Player,,
 Adrien Silva,Monaco,fr Ligue 1,MF,29,1184,13.2,,,270.65656565656565,Solid Squad Player,,
 André Silva,Sevilla,es La Liga,FW,22,2159,24.0,389.02040816326524,Solid Squad Player,,,,
 Bernardo Silva,Manchester City,eng Premier League,FW,23,2854,31.7,403.40272442660915,Top Starter,,,,
 David Silva,Manchester City,eng Premier League,Off_MF,32,2401,26.7,545.7352104512217,Top Starter,,,,
 Gabriel Silva,Saint-Étienne,fr Ligue 1,DF,27,1429,15.9,,,,,289.85041219400705,Solid Squad Player
 Jonathan Silva,Leganés,es La Liga,FW,24,2700,30.0,219.87792894935754,Solid Squad Player,,,,
+Matheus Pereira da Silva,Juventus,it Serie A,Off_MF,20,92,1.0,207.1,Solid Squad Player,,,,
 Thiago Silva,Paris S-G,fr Ligue 1,DF,33,2077,23.1,,,,,407.22585684991697,Top Starter
+Xande Silva,West Ham,eng Premier League,FW,21,18,0.2,242.85714285714286,Solid Squad Player,,,,
 Matías Silvestre,Empoli,it Serie A,DF,33,3060,34.0,,,,,329.9340508133078,Solid Squad Player
 Giovanni Simeone,Fiorentina,it Serie A,FW,23,2454,27.3,310.78508717284234,Solid Squad Player,,,,
+Lorenco Šimić,SPAL,it Serie A,DF,22,238,2.6,,,,,601.3675213675215,Top Starter
 Moses Simon,Levante,es La Liga,Off_MF,23,785,8.7,242.44669312169313,Solid Squad Player,,,,
+Danny Simpson,Leicester City,eng Premier League,DF,31,292,3.2,,,,,513.235171261487,Top Starter
+Jack Simpson,Bournemouth,eng Premier League,DF,21,403,4.5,,,,,489.5319780933816,Top Starter
+Josh Sims,Southampton,eng Premier League,MF,21,212,2.4,,,431.33333333333337,Top Starter,,
+Giovanni Sio,Montpellier,fr Ligue 1,FW,29,63,0.7,128.2798833819242,Below Big-5 Level,,,,
 Dimitris Siovas,Leganés,es La Liga,DF,29,2962,32.9,,,,,414.5254727497569,Top Starter
 Ibrahima Sissoko,Strasbourg,fr Ligue 1,MF,20,2665,29.6,,,364.34684684684686,Solid Squad Player,,
 Moussa Sissoko,Tottenham,eng Premier League,FW,28,2330,25.9,139.00252147190923,Below Big-5 Level,,,,
 Pione Sisto,Celta Vigo,es La Liga,FW,23,844,9.4,279.9832424695647,Solid Squad Player,,,,
 Ellyes Skhiri,Montpellier,fr Ligue 1,MF,23,3090,34.3,,,321.3605442176871,Solid Squad Player,,
+Oliver Skipp,Tottenham,eng Premier League,MF,17,220,2.4,,,196.3888888888889,Below Big-5 Level,,
 Milan Škriniar,Inter,it Serie A,DF,23,3150,35.0,,,,,397.0262799856785,Solid Squad Player
 Steven Skrzybski,Schalke 04,de Bundesliga,FW,25,664,7.4,390.67812710669847,Solid Squad Player,,,,
 Petar Škuletić,Montpellier,fr Ligue 1,FW,28,603,6.7,352.48189889554493,Solid Squad Player,,,,
+Callum Slattery,Southampton,eng Premier League,MF,19,112,1.2,,,131.11111111111111,Below Big-5 Level,,
 Naïm Sliti,Dijon,fr Ligue 1,FW,26,2286,25.4,346.5133286910565,Solid Squad Player,,,,
 Chris Smalling,Manchester Utd,eng Premier League,DF,28,2127,23.6,,,,,401.4847854098523,Top Starter
 Adam Smith,Bournemouth,eng Premier League,MF,27,2066,23.0,,,316.4057971014493,Solid Squad Player,,
+Emile Smith Rowe,RB Leipzig,de Bundesliga,Off_MF,18,29,0.3,249.62962962962965,Solid Squad Player,,,,
 Tommy Smith,Huddersfield,eng Premier League,DF,26,1141,12.7,,,,,314.76644366822563,Solid Squad Player
 Robert Snodgrass,West Ham,eng Premier League,Off_MF,30,2220,24.7,320.83784461152885,Solid Squad Player,,,,
 Cédric Soares,Southampton,eng Premier League,DF,26,1495,16.6,,,,,362.35045444937634,Solid Squad Player
+Cédric Soares,Inter,it Serie A,DF,26,259,2.9,,,,,316.9717396940627,Solid Squad Player
+Ramadan Sobhi,Huddersfield,eng Premier League,FW,21,79,0.9,187.45275888133028,Below Big-5 Level,,,,
 Marcel Sobottka,Düsseldorf,de Bundesliga,Def_MF,24,942,10.5,,,,,451.92960662525877,Top Starter
 Rubén Sobrino,Alavés,es La Liga,FW,26,965,10.7,278.5713755907348,Solid Squad Player,,,,
+Rubén Sobrino,Valencia,es La Liga,FW,26,193,2.1,110.09718172983479,Below Big-5 Level,,,,
+Danilo Soddimo,Frosinone,it Serie A,FW,30,252,2.8,294.6423712342079,Solid Squad Player,,,,
+Alex Sola,Real Sociedad,es La Liga,DF,19,90,1.0,,,,,309.13283208020044,Solid Squad Player
+Dominic Solanke,Bournemouth,eng Premier League,FW,20,347,3.9,269.8928135356707,Solid Squad Player,,,,
+Andrés Solano,Atlético Madrid,es La Liga,DF,20,45,0.5,,,,,534.8571428571428,Top Starter
 Carlos Soler,Valencia,es La Liga,Off_MF,21,2460,27.3,275.5307648700506,Solid Squad Player,,,,
+Oumar Solet,Lyon,fr Ligue 1,DF,18,59,0.7,,,,,137.687074829932,Below Big-5 Level
+Kévin Soni,Girona,es La Liga,FW,20,82,0.9,226.50037792894938,Solid Squad Player,,,,
 Jérémy Sorbon,Guingamp,fr Ligue 1,DF,34,2647,29.4,,,,,337.7143539119909,Solid Squad Player
 Oliver Sorg,Hannover 96,de Bundesliga,DF,28,1580,17.6,,,,,431.70539986329453,Top Starter
 Roberto Soriano,Torino,it Serie A,Off_MF,27,468,5.2,270.36938339438336,Solid Squad Player,,,,
 Roberto Soriano,Bologna,it Serie A,Off_MF,27,1489,16.5,298.4946608946609,Solid Squad Player,,,,
 Borna Sosa,Stuttgart,de Bundesliga,Def_MF,20,616,6.8,,,,,376.7945439045183,Solid Squad Player
+Sebastian Soto,Hannover 96,de Bundesliga,FW,18,29,0.3,95.23809523809523,Below Big-5 Level,,,,
+Riccardo Sottil,Fiorentina,it Serie A,FW,19,20,0.2,195.2380952380952,Below Big-5 Level,,,,
 Adama Soumaoro,Lille,fr Ligue 1,DF,26,1723,19.1,,,,,366.30494211094924,Solid Squad Player
 Boubakary Soumaré,Lille,fr Ligue 1,MF,19,564,6.3,,,486.2433862433863,Top Starter,,
+Çağlar Söyüncü,Leicester City,eng Premier League,DF,22,372,4.1,,,,,481.8257024675511,Top Starter
 Leonardo Spinazzola,Juventus,it Serie A,DF,25,601,6.7,,,,,190.14002668362448,Below Big-5 Level
 Nicolás Spolli,Genoa,it Serie A,DF,35,538,6.0,,,,,431.1715652768283,Top Starter
 Mattia Sprocati,Parma,it Serie A,FW,25,644,7.2,208.75946921978667,Solid Squad Player,,,,
@@ -1631,7 +2130,9 @@ Kostas Stafylidis,Augsburg,de Bundesliga,DF,24,920,10.2,,,,,400.0039313971202,To
 Benjamin Stambouli,Schalke 04,de Bundesliga,Def_MF,27,1763,19.6,,,,,503.6971310263235,Top Starter
 Junior Stanislas,Bournemouth,eng Premier League,FW,28,1031,11.5,352.81836406060006,Solid Squad Player,,,,
 Niklas Stark,Hertha BSC,de Bundesliga,DF,23,1868,20.8,,,,,531.7861962598805,Top Starter
+Timo Stavitski,Caen,fr Ligue 1,FW,19,14,0.2,0.0,Below Big-5 Level,,,,
 Renato Steffen,Wolfsburg,de Bundesliga,FW,26,1503,16.7,280.5980736938821,Solid Squad Player,,,,
+Marc Stendera,Eint Frankfurt,de Bundesliga,MF,22,110,1.2,,,389.44444444444446,Solid Squad Player,,
 Pascal Stenzel,Freiburg,de Bundesliga,Def_MF,22,1449,16.1,,,,,446.43232214120684,Top Starter
 Dale Stephens,Brighton,eng Premier League,MF,29,2485,27.6,,,272.6811594202899,Solid Squad Player,,
 Jack Stephens,Southampton,eng Premier League,DF,24,1700,18.9,,,,,439.7855308465167,Top Starter
@@ -1641,12 +2142,16 @@ Lars Stindl,Gladbach,de Bundesliga,FW,29,1508,16.8,249.47775618183778,Solid Squa
 Kevin Stöger,Düsseldorf,de Bundesliga,MF,24,2118,23.5,,,733.6737588652483,Top Starter,,
 John Stones,Manchester City,eng Premier League,DF,24,1764,19.6,,,,,311.89436175472684,Solid Squad Player
 Tobias Strobl,Gladbach,de Bundesliga,Def_MF,28,2293,25.5,,,,,337.4786397650848,Solid Squad Player
+Kevin Strootman,Roma,it Serie A,MF,28,90,1.0,,,386.0,Solid Squad Player,,
 Kevin Strootman,Marseille,fr Ligue 1,MF,28,1942,21.6,,,510.21604938271605,Top Starter,,
 Jens Stryger Larsen,Udinese,it Serie A,DF,27,3234,35.9,,,,,246.43037491593424,Solid Squad Player
 Cristhian Stuani,Girona,es La Liga,FW,31,2729,30.3,434.16945560769227,Top Starter,,,,
 Leo Štulac,Parma,it Serie A,MF,23,1452,16.1,,,420.0,Top Starter,,
+Stefano Sturaro,Genoa,it Serie A,FW,25,213,2.4,298.85777273872515,Solid Squad Player,,,,
 Daniel Sturridge,Liverpool,eng Premier League,FW,28,509,5.7,388.27490684382906,Solid Squad Player,,,,
 Damián Suárez,Getafe,es La Liga,DF,30,3240,36.0,,,,,340.99248120300757,Solid Squad Player
+Denis Suárez,Arsenal,eng Premier League,FW,24,71,0.8,44.21768707482994,Below Big-5 Level,,,,
+Denis Suárez,Barcelona,es La Liga,MF,24,19,0.2,,,600.0000000000001,Top Starter,,
 Leonardo Suárez,Valladolid,es La Liga,FW,22,517,5.7,277.9662781291853,Solid Squad Player,,,,
 Luis Suárez,Barcelona,es La Liga,FW,31,2827,31.4,659.8194606929823,Top Starter,,,,
 Mario Suárez,Rayo Vallecano,es La Liga,MF,31,1026,11.4,,,308.88888888888886,Solid Squad Player,,
@@ -1656,29 +2161,41 @@ Isaac Success,Watford,eng Premier League,FW,22,1052,11.7,286.22351428700637,Soli
 Niklas Süle,Bayern Munich,de Bundesliga,DF,22,2654,29.5,,,,,359.92829531455754,Solid Squad Player
 Ki Sung-yueng,Newcastle Utd,eng Premier League,MF,29,1302,14.5,,,358.3448275862069,Solid Squad Player,,
 Andrew Surman,Bournemouth,eng Premier League,MF,31,1439,16.0,,,240.25000000000006,Solid Squad Player,,
+Sam Surridge,Bournemouth,eng Premier League,FW,20,13,0.1,333.3333333333334,Solid Squad Player,,,,
 Markel Susaeta,Athletic Club,es La Liga,FW,30,1379,15.3,231.12343702913262,Solid Squad Player,,,,
 Suso,Milan,it Serie A,FW,24,3018,33.5,419.15154950869237,Top Starter,,,,
 Markus Suttner,Düsseldorf,de Bundesliga,Def_MF,31,489,5.4,,,,,384.78439792449456,Solid Squad Player
 Mattias Svanberg,Bologna,it Serie A,MF,19,1176,13.1,,,446.2290076335878,Top Starter,,
 Issiaga Sylla,Toulouse,fr Ligue 1,MF,24,1994,22.2,,,315.4054054054054,Solid Squad Player,,
 Moussa Sylla,Monaco,fr Ligue 1,FW,18,769,8.5,164.13185274109648,Below Big-5 Level,,,,
+Eddy Sylvestre,Nice,fr Ligue 1,FW,18,266,3.0,201.2925170068027,Solid Squad Player,,,,
 Ádám Szalai,Hoffenheim,de Bundesliga,FW,30,1627,18.1,431.40112877563547,Top Starter,,,,
+Alexander Sørloth,Crystal Palace,eng Premier League,FW,22,185,2.1,206.1559766763848,Solid Squad Player,,,,
+Franck Tabanou,Guingamp,fr Ligue 1,DF,29,180,2.0,,,,,503.2715121136173,Top Starter
 Jonathan Tah,Leverkusen,de Bundesliga,DF,22,2937,32.6,,,,,404.1131458503108,Top Starter
 Flavien Tait,Angers,fr Ligue 1,FW,25,2985,33.2,377.0519857206603,Solid Squad Player,,,,
 Adrien Tameze,Nice,fr Ligue 1,MF,24,2942,32.7,,,329.96941896024464,Solid Squad Player,,
+Strahinja Tanasijević,Chievo,it Serie A,Off_MF,21,17,0.2,155.0,Below Big-5 Level,,,,
 Matt Targett,Southampton,eng Premier League,DF,22,1186,13.2,,,,,412.48069669122293,Top Starter
 Rodrigo Tarín,Leganés,es La Liga,DF,22,1429,15.9,,,,,387.7768367937186,Solid Squad Player
 James Tarkowski,Burnley,eng Premier League,DF,25,3086,34.3,,,,,496.35868095895717,Top Starter
 Júlio Tavares,Dijon,fr Ligue 1,FW,29,2805,31.2,245.10995794329128,Solid Squad Player,,,,
+Júnior Tavares,Sampdoria,it Serie A,DF,21,184,2.0,,,,,182.65664160401,Below Big-5 Level
+Taleb Tawatha,Eint Frankfurt,de Bundesliga,FW,26,125,1.4,33.04178814382896,Below Big-5 Level,,,,
 Charlie Taylor,Burnley,eng Premier League,DF,24,3243,36.0,,,,,395.1669915529564,Solid Squad Player
 Malik Tchokounté,Caen,fr Ligue 1,FW,29,1473,16.4,116.21453459432556,Below Big-5 Level,,,,
 Aurélien Tchouaméni,Bordeaux,fr Ligue 1,MF,18,704,7.8,,,174.10256410256412,Below Big-5 Level,,
+Georg Teigl,Augsburg,de Bundesliga,FW,27,296,3.3,40.044320758606474,Below Big-5 Level,,,,
 Cristian Tello,Betis,es La Liga,FW,26,1573,17.5,384.1424252240579,Solid Squad Player,,,,
+Łukasz Teodorczyk,Udinese,it Serie A,FW,27,400,4.4,279.48086305229157,Solid Squad Player,,,,
 Hidde ter Avest,Udinese,it Serie A,FW,21,973,10.8,89.15091962711011,Below Big-5 Level,,,,
 Marco Terrazzino,Freiburg,de Bundesliga,FW,27,517,5.7,253.33986421079146,Solid Squad Player,,,,
 Martin Terrier,Lyon,fr Ligue 1,FW,21,1486,16.5,433.6736755308183,Top Starter,,,,
 Kenny Tete,Lyon,fr Ligue 1,DF,22,1048,11.6,,,,,372.2230864517616,Solid Squad Player
+Cedric Teuchert,Schalke 04,de Bundesliga,FW,21,160,1.8,49.01587301587302,Below Big-5 Level,,,,
 Florian Thauvin,Marseille,fr Ligue 1,FW,25,2613,29.0,577.4745614720983,Top Starter,,,,
+Cyril Théréau,Fiorentina,it Serie A,FW,35,30,0.3,123.46938775510203,Below Big-5 Level,,,,
+Cyril Théréau,Cagliari,it Serie A,FW,35,131,1.5,56.497732426303855,Below Big-5 Level,,,,
 Sada Thioub,Nîmes,fr Ligue 1,FW,23,2476,27.5,264.4929911358483,Solid Squad Player,,,,
 Romain Thomas,Angers,fr Ligue 1,DF,30,2394,26.6,,,,,390.78272121406263,Solid Squad Player
 Adrien Thomasson,Strasbourg,fr Ligue 1,FW,24,2479,27.5,312.7572321858036,Solid Squad Player,,,,
@@ -1686,65 +2203,91 @@ Erik Thommy,Stuttgart,de Bundesliga,FW,23,794,8.8,276.37246615818043,Solid Squad
 Marcus Thuram,Guingamp,fr Ligue 1,FW,20,2571,28.6,362.5149136577708,Solid Squad Player,,,,
 Youri Tielemans,Leicester City,eng Premier League,MF,21,1086,12.1,,,693.8842975206612,Top Starter,,
 Youri Tielemans,Monaco,fr Ligue 1,MF,21,1680,18.7,,,470.55258467023174,Top Starter,,
+Timmy Tillman,Nürnberg,de Bundesliga,FW,19,206,2.3,111.69372966577937,Below Big-5 Level,,,,
 Cheick Timite,Amiens,fr Ligue 1,FW,20,1456,16.2,168.1267415059302,Below Big-5 Level,,,,
+David Timor,Girona,es La Liga,MF,28,163,1.8,,,147.037037037037,Below Big-5 Level,,
+George Timotheou,Schalke 04,de Bundesliga,DF,21,90,1.0,,,,,453.89473684210526,Top Starter
 Marcel Tisserand,Wolfsburg,de Bundesliga,DF,25,886,9.8,,,,,439.40940787342504,Top Starter
 Tito,Rayo Vallecano,es La Liga,DF,33,1098,12.2,,,,,375.86425079091174,Solid Squad Player
+Jean-Clair Todibo,Barcelona,es La Liga,DF,18,157,1.7,,,,,406.9664356970858,Top Starter
 Jean-Clair Todibo,Toulouse,fr Ligue 1,DF,18,834,9.3,,,,,523.965109907385,Top Starter
 Karl Toko Ekambi,Villarreal,es La Liga,FW,25,2144,23.8,413.2500778089013,Top Starter,,,,
+Corentin Tolisso,Bayern Munich,de Bundesliga,Off_MF,23,52,0.6,529.0592592592593,Top Starter,,,,
 Rafael Tolói,Atalanta,it Serie A,DF,27,1746,19.4,,,,,391.9089820771861,Solid Squad Player
 Raúl de Tomás,Rayo Vallecano,es La Liga,FW,23,2813,31.3,405.55178351070634,Top Starter,,,,
 James Tomkins,Crystal Palace,eng Premier League,DF,29,2560,28.4,,,,,395.8854027942241,Solid Squad Player
 Nenad Tomović,Chievo,it Serie A,DF,30,739,8.2,,,,,360.89002995293106,Solid Squad Player
 Lorenzo Tonelli,Sampdoria,it Serie A,DF,28,1655,18.4,,,,,454.55559187824633,Top Starter
 Toño,Levante,es La Liga,FW,28,1763,19.6,152.93003686735466,Below Big-5 Level,,,,
+Ömer Toprak,Dortmund,de Bundesliga,DF,29,236,2.6,,,,,214.40781440781439,Solid Squad Player
 Lucas Torreira,Arsenal,eng Premier League,MF,22,2382,26.5,,,335.2704402515723,Solid Squad Player,,
+Daniel Torres,Alavés,es La Liga,Def_MF,28,71,0.8,,,,,303.0555555555556,Solid Squad Player
 Ferrán Torres,Valencia,es La Liga,Off_MF,18,850,9.4,326.8376899696048,Solid Squad Player,,,,
 Lucas Torró,Eint Frankfurt,de Bundesliga,MF,24,560,6.2,,,189.6774193548387,Below Big-5 Level,,
 Jordan Torunarigha,Hertha BSC,de Bundesliga,DF,20,1158,12.9,,,,,515.4198156890935,Top Starter
 Cenk Tosun,Everton,eng Premier League,FW,27,1059,11.8,370.43702678811644,Solid Squad Player,,,,
 Abdoulaye Touré,Nantes,fr Ligue 1,MF,24,2749,30.5,,,326.62295081967216,Solid Squad Player,,
+Almamy Touré,Monaco,fr Ligue 1,DF,22,346,3.8,,,,,453.38785560392205,Top Starter
 Almamy Touré,Eint Frankfurt,de Bundesliga,Def_MF,22,519,5.8,,,,,450.0624687656172,Top Starter
 Lucas Tousart,Lyon,fr Ligue 1,MF,21,1727,19.2,,,222.50000000000003,Solid Squad Player,,
 Andros Townsend,Crystal Palace,eng Premier League,FW,27,3009,33.4,295.75912121335557,Solid Squad Player,,,,
 Adama Traoré,Wolves,eng Premier League,FW,22,902,10.0,265.7634164777022,Solid Squad Player,,,,
+Adama Traoré,Monaco,fr Ligue 1,MF,23,240,2.7,,,619.2592592592594,Top Starter,,
 Bertrand Traoré,Lyon,fr Ligue 1,FW,22,2117,23.5,356.59091201492413,Solid Squad Player,,,,
 Charles Traore,Nantes,fr Ligue 1,FW,26,1163,12.9,77.44982334018879,Below Big-5 Level,,,,
 Cheick Traoré,Guingamp,fr Ligue 1,DF,23,1508,16.8,,,,,306.8944728343224,Solid Squad Player
+Gaoussou Traoré,Amiens,fr Ligue 1,MF,18,107,1.2,,,115.0,Below Big-5 Level,,
 Hamari Traoré,Rennes,fr Ligue 1,DF,26,2972,33.0,,,,,332.61962988278776,Solid Squad Player
 Ibrahima Traoré,Gladbach,de Bundesliga,FW,30,552,6.1,312.58508977361436,Solid Squad Player,,,,
 Ismaël Traoré,Angers,fr Ligue 1,DF,31,2636,29.3,,,,,336.12084819557424,Solid Squad Player
 Óscar Trejo,Rayo Vallecano,es La Liga,FW,30,1764,19.6,253.09566230120163,Solid Squad Player,,,,
+Driss Trichard,Bordeaux,fr Ligue 1,DF,23,90,1.0,,,,,375.2453861927545,Solid Squad Player
 Manu Trigueros,Villarreal,es La Liga,MF,26,1547,17.2,,,354.4573643410853,Solid Squad Player,,
 Kieran Trippier,Tottenham,eng Premier League,DF,27,2276,25.3,,,,,356.848907512523,Solid Squad Player
 William Troost-Ekong,Udinese,it Serie A,DF,24,3064,34.0,,,,,407.8170828139868,Top Starter
+Marcello Trotta,Frosinone,it Serie A,FW,25,398,4.4,110.15924551638837,Below Big-5 Level,,,,
+Marcello Trotta,Sassuolo,it Serie A,Off_MF,25,6,0.1,0.0,Below Big-5 Level,,,,
+Marco Tumminello,Atalanta,it Serie A,FW,19,9,0.1,76.19047619047619,Below Big-5 Level,,,,
+Patrick Twumasi,Alavés,es La Liga,FW,24,170,1.9,132.80218403150735,Below Big-5 Level,,,,
+Salih Uçan,Empoli,it Serie A,Off_MF,24,259,2.9,601.0695812807884,Top Starter,,,,
 Anthony Ujah,Mainz 05,de Bundesliga,FW,27,735,8.2,462.96962741736263,Top Starter,,,,
 Samuel Umtiti,Barcelona,es La Liga,DF,24,1189,13.2,,,,,307.9420774157616,Solid Squad Player
 Enes Ünal,Valladolid,es La Liga,FW,21,2148,23.9,296.5161766240667,Solid Squad Player,,,,
 Cengiz Ünder,Roma,it Serie A,FW,21,1375,15.3,405.03055296192554,Top Starter,,,,
+Joel Untersee,Empoli,it Serie A,DF,24,126,1.4,,,,,371.64816803914545,Solid Squad Player
 Dayot Upamecano,RB Leipzig,de Bundesliga,DF,19,1293,14.4,,,,,441.30418639190566,Top Starter
 Takashi Usami,Düsseldorf,de Bundesliga,FW,26,879,9.8,270.1659185216036,Solid Squad Player,,,,
 Mark Uth,Schalke 04,de Bundesliga,FW,26,1407,15.6,233.07912281721806,Solid Squad Player,,,,
+Valentín Vada,Bordeaux,fr Ligue 1,MF,22,36,0.4,,,405.0,Top Starter,,
+Valentín Vada,Saint-Étienne,fr Ligue 1,MF,22,404,4.5,,,579.8518518518518,Top Starter,,
+William Vainqueur,Monaco,fr Ligue 1,MF,29,80,0.9,,,223.70370370370372,Solid Squad Player,,
 Mirko Valdifiori,SPAL,it Serie A,MF,32,668,7.4,,,610.7207207207208,Top Starter,,
+Pierrick Valdivia,Nîmes,fr Ligue 1,Def_MF,30,31,0.3,,,,,581.1111111111111,Top Starter
 Antonio Valencia,Manchester Utd,eng Premier League,DF,32,466,5.2,,,,,314.84994537626113,Solid Squad Player
 Enrico Valentini,Nürnberg,de Bundesliga,DF,29,1299,14.4,,,,,388.434512206442,Solid Squad Player
 Borja Valero,Inter,it Serie A,MF,33,1231,13.7,,,507.98053527980534,Top Starter,,
 Yan Valery,Southampton,eng Premier League,DF,19,1712,19.0,,,,,363.30091576628973,Solid Squad Player
+Jesús Vallejo,Real Madrid,es La Liga,DF,21,311,3.5,,,,,460.44583319771283,Top Starter
 Theo Valls,Nîmes,fr Ligue 1,MF,22,1770,19.7,,,277.4280879864636,Solid Squad Player,,
 Mattia Valoti,SPAL,it Serie A,MF,24,1222,13.6,,,308.9705882352941,Solid Squad Player,,
 Federico Valverde,Real Madrid,es La Liga,MF,20,656,7.3,,,384.1095890410959,Solid Squad Player,,
 Luca Valzania,Frosinone,it Serie A,MF,22,897,10.0,,,439.9733333333333,Top Starter,,
+Luca Valzania,Atalanta,it Serie A,MF,22,73,0.8,,,100.83333333333333,Below Big-5 Level,,
 Virgil van Dijk,Liverpool,eng Premier League,DF,27,3384,37.6,,,,,372.46147283101374,Solid Squad Player
 Raphaël Varane,Real Madrid,es La Liga,DF,25,2754,30.6,,,,,341.31952976122216,Solid Squad Player
 Jamie Vardy,Leicester City,eng Premier League,FW,31,2726,30.3,529.0780180058824,Top Starter,,,,
 Franco Vázquez,Sevilla,es La Liga,MF,29,2280,25.3,,,545.1119894598155,Top Starter,,
+Kevin Vázquez,Celta Vigo,es La Liga,DF,25,220,2.4,,,,,509.7800055694792,Top Starter
 Lucas Vázquez,Real Madrid,es La Liga,FW,27,1510,16.8,276.87504949069574,Solid Squad Player,,,,
 Matías Vecino,Inter,it Serie A,MF,26,2015,22.4,,,383.63095238095235,Solid Squad Player,,
 Emiliano Velázquez,Rayo Vallecano,es La Liga,DF,24,1277,14.2,,,,,695.3345805829126,Top Starter
 Miloš Veljković,Werder Bremen,de Bundesliga,DF,22,1877,20.9,,,,,414.237827423423,Top Starter
 Miguel Veloso,Genoa,it Serie A,MF,32,1257,14.0,,,459.23809523809524,Top Starter,,
 Daniele Verde,Valladolid,es La Liga,FW,22,657,7.3,334.7602222015138,Solid Squad Player,,,,
+Francesco Verde,Cagliari,it Serie A,FW,19,12,0.1,0.0,Below Big-5 Level,,,,
 Simone Verdi,Napoli,it Serie A,FW,26,704,7.8,514.9024652596082,Top Starter,,,,
 Jordan Veretout,Fiorentina,it Serie A,MF,25,2941,32.7,,,613.0275229357798,Top Starter,,
+Paul Verhaegh,Wolfsburg,de Bundesliga,DF,34,180,2.0,,,,,330.43943191311604,Solid Squad Player
 Thomas Vermaelen,Barcelona,es La Liga,DF,32,587,6.5,,,,,295.62932973459283,Solid Squad Player
 Marco Verratti,Paris S-G,fr Ligue 1,MF,25,1879,20.9,,,538.9792663476875,Top Starter,,
 Jan Vertonghen,Tottenham,eng Premier League,DF,31,1911,21.2,,,,,388.58624548793364,Solid Squad Player
@@ -1752,6 +2295,7 @@ Freddie Veseli,Empoli,it Serie A,DF,25,2539,28.2,,,,,326.83837252706235,Solid Sq
 Mikel Vesga,Leganés,es La Liga,MF,25,2070,23.0,,,282.3478260869565,Solid Squad Player,,
 Jannik Vestergaard,Southampton,eng Premier League,DF,25,2027,22.5,,,,,516.5304372041215,Top Starter
 Rúben Vezo,Levante,es La Liga,DF,24,1339,14.9,,,,,445.94439117929056,Top Starter
+Rúben Vezo,Valencia,es La Liga,DF,24,196,2.2,,,,,294.30546062125,Solid Squad Player
 Francesco Vicari,SPAL,it Serie A,DF,23,2335,25.9,,,,,425.5900310035648,Top Starter
 Aleix Vidal,Sevilla,es La Liga,Off_MF,28,528,5.9,226.67321092278718,Solid Squad Player,,,,
 Arturo Vidal,Barcelona,es La Liga,MF,31,1929,21.4,,,598.8785046728973,Top Starter,,
@@ -1764,54 +2308,80 @@ Toni Villa,Valladolid,es La Liga,FW,23,1762,19.6,225.371180218119,Solid Squad Pl
 Rúben Vinagre,Wolves,eng Premier League,MF,19,710,7.9,,,325.31645569620247,Solid Squad Player,,
 Carlos Vinícius,Monaco,fr Ligue 1,FW,23,523,5.8,404.69134933666953,Top Starter,,,,
 Vitolo,Atlético Madrid,es La Liga,FW,28,753,8.4,180.41658568189183,Below Big-5 Level,,,,
+Federico Viviani,Frosinone,it Serie A,MF,26,337,3.7,,,298.9189189189189,Solid Squad Player,,
+Felipe Vizeu,Udinese,it Serie A,FW,21,32,0.4,174.83333333333334,Below Big-5 Level,,,,
+Dušan Vlahović,Fiorentina,it Serie A,FW,18,160,1.8,324.1541950113379,Solid Squad Player,,,,
+Rai Vloet,Frosinone,it Serie A,Off_MF,23,122,1.4,235.00793650793653,Solid Squad Player,,,,
 Kevin Vogt,Hoffenheim,de Bundesliga,DF,26,2391,26.6,,,,,378.88957983932255,Solid Squad Player
 Sam Vokes,Burnley,eng Premier League,FW,28,915,10.2,253.870525988173,Solid Squad Player,,,,
 Kevin Volland,Leverkusen,de Bundesliga,FW,26,2814,31.3,506.3457458240662,Top Starter,,,,
 Stefan de Vrij,Inter,it Serie A,DF,26,2520,28.0,,,,,339.6939968970044,Solid Squad Player
 Šime Vrsaljko,Inter,it Serie A,DF,26,727,8.1,,,,,357.82295244283546,Solid Squad Player
 Nikola Vukčević,Levante,es La Liga,Def_MF,26,670,7.4,,,,,484.0462201331767,Top Starter
+Matěj Vydra,Burnley,eng Premier League,FW,26,318,3.5,377.1325990713746,Solid Squad Player,,,,
+Paul Wade,Nice,fr Ligue 1,Def_MF,18,8,0.1,,,,,144.44444444444446,Below Big-5 Level
+Sandro Wagner,Bayern Munich,de Bundesliga,FW,30,143,1.6,161.55442176870747,Below Big-5 Level,,,,
+Molla Wagué,Udinese,it Serie A,DF,27,95,1.1,,,,,499.3574846206425,Top Starter
+Moussa Wagué,Barcelona,es La Liga,FW,19,225,2.5,154.421768707483,Below Big-5 Level,,,,
 Wakaso,Alavés,es La Liga,MF,28,1669,18.5,,,262.23423423423424,Solid Squad Player,,
 Walace,Hannover 96,de Bundesliga,MF,23,1996,22.2,,,279.72972972972974,Solid Squad Player,,
 Theo Walcott,Everton,eng Premier League,FW,29,2119,23.5,266.7961676396327,Solid Squad Player,,,,
 Luca Waldschmidt,Freiburg,de Bundesliga,FW,22,1717,19.1,446.50311642981796,Top Starter,,,,
 Kyle Walker,Manchester City,eng Premier League,DF,28,2779,30.9,,,,,262.98929632603625,Solid Squad Player
+Kyle Walker-Peters,Tottenham,eng Premier League,DF,21,376,4.2,,,,,272.5528105979234,Solid Squad Player
 Wallace,Lazio,it Serie A,DF,23,1233,13.7,,,,,432.40997871808474,Top Starter
+Anthony Walongwa,Nantes,fr Ligue 1,DF,24,90,1.0,,,,,383.23384218121055,Solid Squad Player
 Rémi Walter,Nice,fr Ligue 1,MF,23,833,9.3,,,338.494623655914,Solid Squad Player,,
 Aaron Wan-Bissaka,Crystal Palace,eng Premier League,DF,20,3134,34.8,,,,,538.6986623647241,Top Starter
 Victor Wanyama,Tottenham,eng Premier League,MF,27,516,5.7,,,275.20467836257313,Solid Squad Player,,
+Danny Ward,Cardiff City,eng Premier League,FW,26,445,4.9,227.60616718342663,Solid Squad Player,,,,
 Joel Ward,Crystal Palace,eng Premier League,DF,28,552,6.1,,,,,380.29061725351625,Solid Squad Player
+Stephen Ward,Burnley,eng Premier League,DF,32,228,2.5,,,,,399.4760233918128,Solid Squad Player
 James Ward-Prowse,Southampton,eng Premier League,Off_MF,23,1945,21.6,331.5013374485597,Solid Squad Player,,,,
 Daniel Wass,Valencia,es La Liga,MF,29,2354,26.2,,,458.85496183206106,Top Starter,,
+Timothy Weah,Paris S-G,fr Ligue 1,FW,18,54,0.6,689.0918367346939,Top Starter,,,,
 Wout Weghorst,Wolfsburg,de Bundesliga,FW,25,2925,32.5,474.11465782894356,Top Starter,,,,
 Julian Weigl,Dortmund,de Bundesliga,Def_MF,22,1455,16.2,,,,,403.84207073418025,Top Starter
 Mitchell Weiser,Leverkusen,de Bundesliga,DF,24,2111,23.5,,,,,341.14619883040933,Solid Squad Player
+Danny Welbeck,Arsenal,eng Premier League,FW,27,153,1.7,709.9854830821216,Top Starter,,,,
 Wendell,Leverkusen,de Bundesliga,DF,25,2277,25.3,,,,,413.2716508002549,Top Starter
 Oscar Wendt,Gladbach,de Bundesliga,DF,32,2731,30.3,,,,,297.10932998061713,Solid Squad Player
 Timo Werner,RB Leipzig,de Bundesliga,FW,22,2509,27.9,604.3688965829263,Top Starter,,,,
 Ashley Westwood,Burnley,eng Premier League,MF,28,2824,31.4,,,542.0169851380043,Top Starter,,
 Hendrik Weydandt,Hannover 96,de Bundesliga,FW,23,1723,19.1,373.5873253315287,Solid Squad Player,,,,
+Connor Wickham,Crystal Palace,eng Premier League,FW,25,67,0.7,444.6375121477162,Top Starter,,,,
 Georginio Wijnaldum,Liverpool,eng Premier League,MF,27,2725,30.3,,,322.57425742574253,Solid Squad Player,,
 Jetro Willems,Eint Frankfurt,de Bundesliga,Off_MF,24,730,8.1,238.9267293748775,Solid Squad Player,,,,
 William,Wolfsburg,de Bundesliga,DF,23,2675,29.7,,,,,527.7742054350241,Top Starter
+Danny Williams,Huddersfield,eng Premier League,MF,29,96,1.1,,,208.96969696969697,Solid Squad Player,,
 Iñaki Williams,Athletic Club,es La Liga,FW,24,3025,33.6,385.4394413850195,Solid Squad Player,,,,
 Willian,Chelsea,eng Premier League,FW,29,2097,23.3,386.4723268420387,Solid Squad Player,,,,
+Joe Willock,Arsenal,eng Premier League,FW,18,64,0.7,63.80320699708456,Below Big-5 Level,,,,
+Ben Wilmot,Watford,eng Premier League,Def_MF,18,28,0.3,,,,,313.70370370370375,Solid Squad Player
+Ben Wilmot,Udinese,it Serie A,Def_MF,18,199,2.2,,,,,334.6025472112429,Solid Squad Player
+Jack Wilshere,West Ham,eng Premier League,MF,26,392,4.4,,,513.939393939394,Top Starter,,
 Callum Wilson,Bournemouth,eng Premier League,FW,26,2528,28.1,506.83145982790126,Top Starter,,,,
 Kevin Wimmer,Hannover 96,de Bundesliga,DF,25,1683,18.7,,,,,460.2207836882759,Top Starter
 Harry Winks,Tottenham,eng Premier League,MF,22,1597,17.7,,,304.63276836158195,Solid Squad Player,,
 Axel Witsel,Dortmund,de Bundesliga,MF,29,2873,31.9,,,342.5496342737722,Solid Squad Player,,
 Maximilian Wöber,Sevilla,es La Liga,DF,20,536,6.0,,,,,343.787245892509,Solid Squad Player
 Marius Wolf,Dortmund,de Bundesliga,FW,23,828,9.2,173.55384665943674,Below Big-5 Level,,,,
+Jeong Woo-yeong,Bayern Munich,de Bundesliga,FW,18,5,0.1,142.85714285714286,Below Big-5 Level,,,,
 Bobby Wood,Hannover 96,de Bundesliga,FW,25,1182,13.1,251.02477886829033,Solid Squad Player,,,,
 Chris Wood,Burnley,eng Premier League,FW,26,2588,28.8,304.1549088771311,Solid Squad Player,,,,
+Haji Wright,Schalke 04,de Bundesliga,FW,20,197,2.2,333.0356283927711,Solid Squad Player,,,,
 Xeka,Lille,fr Ligue 1,MF,23,2260,25.1,,,251.1819389110226,Solid Squad Player,,
 Granit Xhaka,Arsenal,eng Premier League,MF,25,2498,27.8,,,513.3333333333333,Top Starter,,
 Cédric Yamberé,Dijon,fr Ligue 1,DF,27,2805,31.2,,,,,422.40494398389126,Top Starter
 Andriy Yarmolenko,West Ham,eng Premier League,FW,28,459,5.1,346.5143983519334,Solid Squad Player,,,,
+John Yeboah,Wolfsburg,de Bundesliga,FW,18,55,0.6,245.0204081632653,Solid Squad Player,,,,
 DeAndre Yedlin,Newcastle Utd,eng Premier League,DF,25,2473,27.5,,,,,330.0024386033955,Solid Squad Player
 Okay Yokuşlu,Celta Vigo,es La Liga,MF,24,2198,24.4,,,239.4535519125683,Solid Squad Player,,
 Maya Yoshida,Southampton,eng Premier League,DF,29,1518,16.9,,,,,505.18406469823486,Top Starter
+Elie Youan,Nantes,fr Ligue 1,FW,19,19,0.2,0.0,Below Big-5 Level,,,,
 Amin Younes,Napoli,it Serie A,FW,24,498,5.5,570.2584003298289,Top Starter,,,,
 Ashley Young,Manchester Utd,eng Premier League,DF,33,2569,28.5,,,,,384.04080376379545,Solid Squad Player
+Zaydou Youssouf,Bordeaux,fr Ligue 1,FW,19,422,4.7,89.77854971775943,Below Big-5 Level,,,,
 Pablo Zabaleta,West Ham,eng Premier League,DF,33,2092,23.2,,,,,448.3974303575029,Top Starter
 Dan-Axel Zagadou,Dortmund,de Bundesliga,DF,19,1267,14.1,,,,,448.7180125254033,Top Starter
 Wilfried Zaha,Crystal Palace,eng Premier League,FW,25,3036,33.7,371.0607445088157,Solid Squad Player,,,,
@@ -1824,6 +2394,7 @@ Francesco Zampano,Frosinone,it Serie A,MF,24,2102,23.4,,,273.44159544159544,Soli
 Nicolò Zaniolo,Roma,it Serie A,FW,19,1766,19.6,271.954286022799,Solid Squad Player,,,,
 Cristián Zapata,Milan,it Serie A,DF,31,1026,11.4,,,,,427.12746779228775,Top Starter
 Duván Zapata,Atalanta,it Serie A,FW,27,2896,32.2,676.1416130289244,Top Starter,,,,
+Davide Zappacosta,Chelsea,eng Premier League,DF,26,128,1.4,,,,,315.57942475235706,Solid Squad Player
 Simone Zaza,Torino,it Serie A,FW,27,1437,16.0,347.3030990173846,Solid Squad Player,,,,
 Marvin Zeegelaar,Udinese,it Serie A,DF,27,956,10.6,,,,,416.6960568946666,Top Starter
 Mehdi Zeffane,Rennes,fr Ligue 1,MF,26,1214,13.5,,,306.81481481481484,Solid Squad Player,,
@@ -1840,7 +2411,9 @@ Adam Zreľák,Nürnberg,de Bundesliga,FW,24,941,10.5,246.6434690278227,Solid Squ
 Igor Zubeldia,Real Sociedad,es La Liga,MF,21,2549,28.3,,,194.44051825677266,Below Big-5 Level,,
 Steven Zuber,Hoffenheim,de Bundesliga,FW,26,571,6.3,230.67314544865567,Solid Squad Player,,,,
 Steven Zuber,Stuttgart,de Bundesliga,FW,26,1051,11.7,375.46866742898493,Solid Squad Player,,,,
+Martín Zubimendi,Real Sociedad,es La Liga,Def_MF,19,7,0.1,,,,,81.11111111111111,Below Big-5 Level
 Ervin Zukanović,Genoa,it Serie A,DF,31,1960,21.8,,,,,326.3142565894859,Solid Squad Player
+Bongani Zungu,Amiens,fr Ligue 1,MF,25,230,2.6,,,242.05128205128204,Solid Squad Player,,
 David Zurutuza,Real Sociedad,es La Liga,MF,32,1222,13.6,,,297.7450980392157,Solid Squad Player,,
 Filip Đorđević,Chievo,it Serie A,FW,30,634,7.0,269.6022567757262,Solid Squad Player,,,,
 Filip Đuričić,Sassuolo,it Serie A,FW,26,1252,13.9,238.36736869008195,Solid Squad Player,,,,

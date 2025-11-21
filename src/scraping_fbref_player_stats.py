@@ -50,7 +50,7 @@ OUTPUT_FOLDER = (PROJECT_ROOT / "Data" / "Raw").resolve()
 # "players" oder "squads"
 # - "players": individuelle Spieler-Statistiken
 # - "squads": Team-/Squad-Statistiken
-STATS_LEVEL = "players"  # oder "players"
+STATS_LEVEL = "players"  
 
 # FBref-Basis-URLs für die gewählte Saison
 BASE_URL = f"https://fbref.com/en/comps/Big5/{SEASON}"

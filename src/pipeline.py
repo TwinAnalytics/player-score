@@ -98,7 +98,7 @@ def build_feature_table(season: str, raw_dir: Path) -> pd.DataFrame:
     df = prepare_positions(df)
 
     # Minutenfilter (für alle Rollen gleich – Defensiv kannst du später separat strenger machen)
-    df = filter_by_90s(df, min_90s=5.0)
+    df = filter_by_90s(df, min_90s=0.0)
 
     # per90-Spalten (nutzt DEFAULT_PER90_COLS aus processing.add_standard_per90)
     df = add_standard_per90(df)
