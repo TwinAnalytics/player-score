@@ -595,7 +595,7 @@ def main():
         # ----- Minutes filter -----
         min_90s = st.sidebar.slider(
             "Minimum 90s played",
-            5.0,
+            1.0,
             40.0,
             5.0,
             0.5,
