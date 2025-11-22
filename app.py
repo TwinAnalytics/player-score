@@ -393,7 +393,17 @@ def main():
                 display_cols.append("Band")
 
             df_scores_display = df_scores[display_cols].rename(columns={"MainScore": "Score"})
+
+            # 👉 Score als Integer ohne Nachkommastellen anzeigen
+            if "Score" in df_scores_display.columns:
+                df_scores_display["Score"] = (
+                    df_scores_display["Score"]
+                    .round()
+                    .astype("Int64")  # nullable int, falls doch mal NaN auftaucht
+                )
+
             st.dataframe(df_scores_display, use_container_width=True)
+
         else:
             st.info("No season-level data available for this player and view.")
 
@@ -415,6 +425,9 @@ def main():
 
         with col3:
             st.metric("Total 90s", f"{total_90s:.1f}")
+
+        with col3:
+            st.metric("Average Score", f"{total_90s:.1f}")
 
         # Average scores based on current view
         off_mean = mean_or_na(df_player.get("OffScore_abs", pd.Series(dtype=float)))
@@ -712,6 +725,14 @@ def main():
 
         # Anzeige: MainScore als "Score" benennen
         df_top_display = df_top[display_cols].rename(columns={"MainScore": "Score"})
+        
+        # 👉 Score als Integer ohne Nachkommastellen anzeigen
+        if "Score" in df_top_display.columns:
+            df_top_display["Score"] = (
+                df_top_display["Score"]
+                .round()
+                .astype("Int64")
+            )
         st.dataframe(df_top_display, use_container_width=True)
 
         # Band-Verteilung (gefilterte Spieler)
