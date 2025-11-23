@@ -442,6 +442,19 @@ def run_pipeline(output_folder=OUTPUT_FOLDER):
     df_cleaned = remove_unwanted_columns(merged_df)
     df_cleaned_fixed_age = fix_age_format(df_cleaned)
 
+    # ---------------------------------------------
+    # Comp-Spalte sicherstellen (wichtig für 2.BL)
+    # ---------------------------------------------
+    if "Comp" not in df_cleaned_fixed_age.columns:
+        # BASE_URL wird in run_scraping_for_season / run_scraping_for_2_bundesliga
+        # dynamisch gesetzt (Big-5 vs. 2. Bundesliga).
+        if "/comps/33/" in str(BASE_URL):
+            df_cleaned_fixed_age["Comp"] = "2. Bundesliga"
+        else:
+            df_cleaned_fixed_age["Comp"] = "Unknown"
+    # ---------------------------------------------
+
+
     # Spalten, die in der "light"-Version enthalten sein sollen
     keep_columns = [
         "Rk", "Player", "Nation", "Pos", "Squad", "Comp", "Age", "Born", "MP", "Starts", "Min", "90s",

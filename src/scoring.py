@@ -91,6 +91,9 @@ def compute_score_absolute(
         # Verhältnis zum Benchmark (z.B. 0.8 Tore/90 bei Benchmark 1.0 -> 0.8)
         ratio = (df[col].astype(float) / bench).clip(lower=0.0, upper=1.0)
 
+        # WICHTIG: NaN-Ratios als 0 behandeln, sonst wird der gesamte Score NaN
+        ratio = ratio.fillna(0.0)
+
         scores += w * ratio
         weight_sum += w
 
@@ -103,6 +106,53 @@ def compute_score_absolute(
 
     df[score_name] = max_score * normalized
     return df
+
+def add_light_derived_metrics(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Fügt einfache abgeleitete Metriken für die Light-Scores hinzu,
+    z.B. Finishing_Rate = Gls_Per90 / Sh/90.
+    """
+    df = df.copy()
+
+    # Finishing_Rate: wie viele Tore pro Schuss
+    if "Finishing_Rate" not in df.columns:
+        if "Gls_Per90" in df.columns and "Sh/90" in df.columns:
+            gls = df["Gls_Per90"].astype(float)
+            shots = df["Sh/90"].astype(float)
+            denom = shots.where(shots > 0.0, other=1.0)
+            df["Finishing_Rate"] = (gls / denom).clip(lower=0.0)
+
+    return df
+
+
+def _choose_weight_set_for_league(
+    df_pos: pd.DataFrame,
+    full_weights: dict[str, float],
+    full_benchmarks: dict[str, float],
+    light_weights: dict[str, float],
+    light_benchmarks: dict[str, float],
+    min_full_features: int = 5,
+    min_light_features: int = 3,
+) -> tuple[dict[str, float], dict[str, float]]:
+    """
+    Wählt je nach verfügbaren Spalten die "volle" oder die "Light"-Variante.
+
+    - full_weights / full_benchmarks: Big-5-Score-Set
+    - light_weights / light_benchmarks: vereinfachtes Set für Ligen mit weniger Metriken
+    """
+    available_full = [col for col in full_weights.keys() if col in df_pos.columns]
+    if len(available_full) >= min_full_features:
+        return full_weights, full_benchmarks
+
+    available_light = [col for col in light_weights.keys() if col in df_pos.columns]
+    if len(available_light) >= min_light_features:
+        return light_weights, light_benchmarks
+
+    # Fallback: Voll-Set – compute_score_absolute ignoriert fehlende Spalten ohnehin
+    return full_weights, full_benchmarks
+
+
+
 
 def score_band_5(score: float) -> str:
     """
@@ -250,39 +300,155 @@ DEF_DM_BENCHMARKS_ABS = {
     "Mid 3rd_stats_possession_Per90": 30.0,
 }
 
+# ------------------------------------------------------------------
+# Light-Varianten für Ligen mit weniger Metriken (z.B. 2. Bundesliga)
+# ------------------------------------------------------------------
+
+# === OFFENSIVE LIGHT: FW / Off_MF ================================
+
+OFF_FW_WEIGHTS_ABS_LIGHT = {
+    "Gls_Per90": 0.40,
+    "Ast_Per90": 0.20,
+    "Finishing_Rate": 0.20,  # Tore pro Schuss
+    "SoT/90": 0.10,
+    "Sh/90": 0.10,
+}
+
+OFF_FW_BENCHMARKS_ABS_LIGHT = {
+    "Gls_Per90": 0.70,
+    "Ast_Per90": 0.50,
+    "Finishing_Rate": 0.25,  # ~ jedes 4. Schuss ein Tor
+    "SoT/90": 1.80,
+    "Sh/90": 3.50,
+}
+
+# Für Off_MF verwenden wir dasselbe Light-Set wie für FW
+OFF_AM_WEIGHTS_ABS_LIGHT = OFF_FW_WEIGHTS_ABS_LIGHT
+OFF_AM_BENCHMARKS_ABS_LIGHT = OFF_FW_BENCHMARKS_ABS_LIGHT
+
+
+# === MIDFIELD LIGHT: MF ==========================================
+
+MF_WEIGHTS_ABS_LIGHT = {
+    "Ast_Per90": 0.30,
+    "Gls_Per90": 0.15,
+    "Finishing_Rate": 0.15,
+    "SoT/90": 0.10,
+    "Sh/90": 0.10,
+    "Int_Per90": 0.20,  # defensives Arbeiten
+}
+
+MF_BENCHMARKS_ABS_LIGHT = {
+    "Ast_Per90": 0.25,
+    "Gls_Per90": 0.25,
+    "Finishing_Rate": 0.20,
+    "SoT/90": 1.20,
+    "Sh/90": 2.00,
+    "Int_Per90": 1.50,
+}
+
+
+# === DEFENSIVE LIGHT: DF / Def_MF ================================
+
+DEF_DF_WEIGHTS_ABS_LIGHT = {
+    "TklW_Per90": 0.60,
+    "Int_Per90": 0.40,
+    # Fouls / Karten kannst du später optional negativ einbauen
+}
+
+DEF_DF_BENCHMARKS_ABS_LIGHT = {
+    "TklW_Per90": 4.0,
+    "Int_Per90": 2.5,
+}
+
+# Für Def_MF (Sechser) die gleiche Light-Logik
+DEF_DM_WEIGHTS_ABS_LIGHT = DEF_DF_WEIGHTS_ABS_LIGHT
+DEF_DM_BENCHMARKS_ABS_LIGHT = DEF_DF_BENCHMARKS_ABS_LIGHT
+
+
 
 def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
     """
     Offensiv-Score:
-    - FW   mit FW-Weights/Benchmarks
+    - FW     mit FW-Weights/Benchmarks
     - Off_MF mit eigenen Off-MF-Weights/Benchmarks
+
+    WICHTIG:
+    Wir entscheiden das Score-Set (voll vs. Light) PRO WETTBEWERB (Comp),
+    damit Ligen mit weniger Metriken (z.B. 2. Bundesliga) automatisch
+    die Light-Variante nutzen, auch wenn Big-5-Spieler im selben DataFrame sind.
     """
-    df_fw = df[df["Pos"] == "FW"].copy()
-    df_am = df[df["Pos"] == "Off_MF"].copy()
+    df = add_light_derived_metrics(df)
 
     frames: list[pd.DataFrame] = []
 
-    if not df_fw.empty:
-        df_fw = compute_score_absolute(
-            df_fw,
-            feature_weights=OFF_FW_WEIGHTS_ABS,
-            feature_benchmarks=OFF_FW_BENCHMARKS_ABS,
-            score_name="OffScore_abs",
-            max_score=1000.0,
-        )
-        df_fw["OffBand"] = df_fw["OffScore_abs"].apply(score_band_5)
-        frames.append(df_fw)
+    # Helper-Funktion: pro Pos und pro Comp scoren
+    def _score_pos(
+        df_all: pd.DataFrame,
+        pos_label: str,
+        full_weights: dict[str, float],
+        full_benchmarks: dict[str, float],
+        light_weights: dict[str, float],
+        light_benchmarks: dict[str, float],
+    ) -> list[pd.DataFrame]:
+        df_pos = df_all[df_all["Pos"] == pos_label].copy()
+        if df_pos.empty:
+            return []
 
-    if not df_am.empty:
-        df_am = compute_score_absolute(
-            df_am,
-            feature_weights=OFF_AM_WEIGHTS_ABS,
-            feature_benchmarks=OFF_AM_BENCHMARKS_ABS,
-            score_name="OffScore_abs",
-            max_score=1000.0,
+        if "Comp" in df_pos.columns:
+            groups = df_pos.groupby("Comp", dropna=False)
+        else:
+            # Falls aus irgendeinem Grund keine Comp-Spalte existiert
+            groups = [("ALL", df_pos)]
+
+        out_frames: list[pd.DataFrame] = []
+
+        for _, df_comp in groups:
+            weights, bench = _choose_weight_set_for_league(
+                df_comp,
+                full_weights=full_weights,
+                full_benchmarks=full_benchmarks,
+                light_weights=light_weights,
+                light_benchmarks=light_benchmarks,
+                min_full_features=5,
+                min_light_features=3,
+            )
+
+            df_scored = compute_score_absolute(
+                df_comp,
+                feature_weights=weights,
+                feature_benchmarks=bench,
+                score_name="OffScore_abs",
+                max_score=1000.0,
+            )
+            df_scored["OffBand"] = df_scored["OffScore_abs"].apply(score_band_5)
+            out_frames.append(df_scored)
+
+        return out_frames
+
+    # FW
+    frames.extend(
+        _score_pos(
+            df_all=df,
+            pos_label="FW",
+            full_weights=OFF_FW_WEIGHTS_ABS,
+            full_benchmarks=OFF_FW_BENCHMARKS_ABS,
+            light_weights=OFF_FW_WEIGHTS_ABS_LIGHT,
+            light_benchmarks=OFF_FW_BENCHMARKS_ABS_LIGHT,
         )
-        df_am["OffBand"] = df_am["OffScore_abs"].apply(score_band_5)
-        frames.append(df_am)
+    )
+
+    # Offensives Mittelfeld
+    frames.extend(
+        _score_pos(
+            df_all=df,
+            pos_label="Off_MF",
+            full_weights=OFF_AM_WEIGHTS_ABS,
+            full_benchmarks=OFF_AM_BENCHMARKS_ABS,
+            light_weights=OFF_AM_WEIGHTS_ABS_LIGHT,
+            light_benchmarks=OFF_AM_BENCHMARKS_ABS_LIGHT,
+        )
+    )
 
     if frames:
         return pd.concat(frames, axis=0)
@@ -291,38 +457,84 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
     return df[df["Pos"].isin(["FW", "Off_MF"])].copy()
 
 
+
+
 def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
     """
     Defensiv-Score:
     - DF     mit Defender-Weights/Benchmarks
     - Def_MF mit eigenen DM-Weights/Benchmarks
-    """
-    df_df = df[df["Pos"] == "DF"].copy()
-    df_dm = df[df["Pos"] == "Def_MF"].copy()
 
+    Für Ligen mit wenigen Metriken wird automatisch eine Light-Variante
+    verwendet (TklW_Per90, Int_Per90) – PRO WETTBEWERB (Comp).
+    """
     frames: list[pd.DataFrame] = []
 
-    if not df_df.empty:
-        df_df = compute_score_absolute(
-            df_df,
-            feature_weights=DEF_DF_WEIGHTS_ABS,
-            feature_benchmarks=DEF_DF_BENCHMARKS_ABS,
-            score_name="DefScore_abs",
-            max_score=1000.0,
-        )
-        df_df["DefBand"] = df_df["DefScore_abs"].apply(score_band_5)
-        frames.append(df_df)
+    def _score_pos(
+        df_all: pd.DataFrame,
+        pos_label: str,
+        full_weights: dict[str, float],
+        full_benchmarks: dict[str, float],
+        light_weights: dict[str, float],
+        light_benchmarks: dict[str, float],
+    ) -> list[pd.DataFrame]:
+        df_pos = df_all[df_all["Pos"] == pos_label].copy()
+        if df_pos.empty:
+            return []
 
-    if not df_dm.empty:
-        df_dm = compute_score_absolute(
-            df_dm,
-            feature_weights=DEF_DM_WEIGHTS_ABS,
-            feature_benchmarks=DEF_DM_BENCHMARKS_ABS,
-            score_name="DefScore_abs",
-            max_score=1000.0,
+        if "Comp" in df_pos.columns:
+            groups = df_pos.groupby("Comp", dropna=False)
+        else:
+            groups = [("ALL", df_pos)]
+
+        out_frames: list[pd.DataFrame] = []
+
+        for _, df_comp in groups:
+            weights, bench = _choose_weight_set_for_league(
+                df_comp,
+                full_weights=full_weights,
+                full_benchmarks=full_benchmarks,
+                light_weights=light_weights,
+                light_benchmarks=light_benchmarks,
+                min_full_features=4,
+                min_light_features=2,
+            )
+
+            df_scored = compute_score_absolute(
+                df_comp,
+                feature_weights=weights,
+                feature_benchmarks=bench,
+                score_name="DefScore_abs",
+                max_score=1000.0,
+            )
+            df_scored["DefBand"] = df_scored["DefScore_abs"].apply(score_band_5)
+            out_frames.append(df_scored)
+
+        return out_frames
+
+    # DF (Innen-/Außenverteidiger)
+    frames.extend(
+        _score_pos(
+            df_all=df,
+            pos_label="DF",
+            full_weights=DEF_DF_WEIGHTS_ABS,
+            full_benchmarks=DEF_DF_BENCHMARKS_ABS,
+            light_weights=DEF_DF_WEIGHTS_ABS_LIGHT,
+            light_benchmarks=DEF_DF_BENCHMARKS_ABS_LIGHT,
         )
-        df_dm["DefBand"] = df_dm["DefScore_abs"].apply(score_band_5)
-        frames.append(df_dm)
+    )
+
+    # Defensives Mittelfeld
+    frames.extend(
+        _score_pos(
+            df_all=df,
+            pos_label="Def_MF",
+            full_weights=DEF_DM_WEIGHTS_ABS,
+            full_benchmarks=DEF_DM_BENCHMARKS_ABS,
+            light_weights=DEF_DM_WEIGHTS_ABS_LIGHT,
+            light_benchmarks=DEF_DM_BENCHMARKS_ABS_LIGHT,
+        )
+    )
 
     if frames:
         return pd.concat(frames, axis=0)
@@ -331,14 +543,54 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
     return df[df["Pos"].isin(["DF", "Def_MF"])].copy()
 
 
+
+
 def compute_mid_scores(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Zentrales Mittelfeld (MF):
+    - Standard: mf_weights_abs / mf_benchmarks_abs
+    - Fallback: MF_WEIGHTS_ABS_LIGHT / MF_BENCHMARKS_ABS_LIGHT
+      (Gls, Ast, Sh/90, SoT/90, Finishing_Rate, Int_Per90)
+
+    Auch hier: Entscheidung voll vs. Light PRO WETTBEWERB (Comp),
+    damit z.B. 2. Bundesliga die Light-Variante nutzt.
+    """
+    df = add_light_derived_metrics(df)
+
     df_mf = df[df["Pos"] == "MF"].copy()
-    df_mf = compute_score_absolute(
-        df_mf,
-        feature_weights=mf_weights_abs,
-        feature_benchmarks=mf_benchmarks_abs,
-        score_name="MidScore_abs",
-        max_score=1000.0,
-    )
-    df_mf["MidBand"] = df_mf["MidScore_abs"].apply(score_band_5)
-    return df_mf
+    if df_mf.empty:
+        return df[df["Pos"] == "MF"].copy()
+
+    frames: list[pd.DataFrame] = []
+
+    if "Comp" in df_mf.columns:
+        groups = df_mf.groupby("Comp", dropna=False)
+    else:
+        groups = [("ALL", df_mf)]
+
+    for _, df_comp in groups:
+        mf_weights, mf_bench = _choose_weight_set_for_league(
+            df_comp,
+            full_weights=mf_weights_abs,
+            full_benchmarks=mf_benchmarks_abs,
+            light_weights=MF_WEIGHTS_ABS_LIGHT,
+            light_benchmarks=MF_BENCHMARKS_ABS_LIGHT,
+            min_full_features=5,
+            min_light_features=3,
+        )
+
+        df_scored = compute_score_absolute(
+            df_comp,
+            feature_weights=mf_weights,
+            feature_benchmarks=mf_bench,
+            score_name="MidScore_abs",
+            max_score=1000.0,
+        )
+        df_scored["MidBand"] = df_scored["MidScore_abs"].apply(score_band_5)
+        frames.append(df_scored)
+
+    if frames:
+        return pd.concat(frames, axis=0)
+
+    return df[df["Pos"] == "MF"].copy()
+
