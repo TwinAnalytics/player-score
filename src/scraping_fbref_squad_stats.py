@@ -40,7 +40,7 @@ OUTPUT_FOLDER = (PROJECT_ROOT / "Data" / "Raw").resolve()
 # "players" oder "squads"
 # - "players": individuelle Spieler-Statistiken
 # - "squads": Team-/Squad-Statistiken
-STATS_LEVEL = "squads"  # oder "players"
+STATS_LEVEL = "players"  # oder "players"
 
 # FBref-Basis-URLs für die gewählte Saison
 BASE_URL = f"https://fbref.com/en/comps/Big5/{SEASON}"
@@ -76,6 +76,7 @@ elif STATS_LEVEL == "squads":
         f"{BASE_URL}/keepers/squads/{SEASON_TAG}": "stats_teams_keeper_for",
         f"{BASE_URL}/keepersadv/squads/{SEASON_TAG}": "stats_teams_keeper_adv_for",
     }
+
 else:
     raise ValueError("STATS_LEVEL must be 'players' or 'squads'")
 

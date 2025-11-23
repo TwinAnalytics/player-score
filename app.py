@@ -285,7 +285,7 @@ def main():
         st.sidebar.markdown("---")
         profile_view = st.sidebar.radio(
             "Profile view",
-            ["Per season", "Career (aggregated)"],
+            ["Per season", "Career"],
         )
 
         # ---------- Player profile ----------
@@ -426,19 +426,19 @@ def main():
         with col3:
             st.metric("Total 90s", f"{total_90s:.1f}")
 
-        with col3:
-            st.metric("Average Score", f"{total_90s:.1f}")
+        # 👉 Average Score nur in der Career-Ansicht anzeigen
+        if profile_view == "Career":
+            avg_score = None
+            if "MainScore" in df_player.columns and df_player["MainScore"].notna().any():
+                avg_score = df_player["MainScore"].mean()
 
-        # Average scores based on current view
-        off_mean = mean_or_na(df_player.get("OffScore_abs", pd.Series(dtype=float)))
-        mid_mean = mean_or_na(df_player.get("MidScore_abs", pd.Series(dtype=float)))
-        def_mean = mean_or_na(df_player.get("DefScore_abs", pd.Series(dtype=float)))
+            with col4:
+                if avg_score is not None:
+                    # gerundet, ohne Nachkommastellen
+                    st.metric("Average score (career)", f"{avg_score:.0f}")
+                else:
+                    st.metric("Average score (career)", "n/a")
 
-        with col4:
-            st.write("Avg scores (view):")
-            st.write(f"• Off: {off_mean}")
-            st.write(f"• Mid: {mid_mean}")
-            st.write(f"• Def: {def_mean}")
 
         # Squad score + verbal assessment for the primary dimension
         if primary_squad_info is not None:
@@ -618,6 +618,7 @@ def main():
             df_view = df_view[df_view["90s"] >= min_90s]
 
         # ----- Age filter (optional, persistent) -----
+                # ----- Age filter (optional, persistent) -----
         if "Age" in df_view.columns:
             st.sidebar.markdown("**Age filter**")
             use_age_filter = st.sidebar.checkbox(
@@ -631,15 +632,30 @@ def main():
                 if age_numeric.notna().any():
                     min_age = int(age_numeric.min())
                     max_age = int(age_numeric.max())
+
+                    # ---- Session-State für max Age initialisieren / clampen ----
+                    if "top_age_max" not in st.session_state:
+                        # Startwert nur beim allerersten Mal
+                        st.session_state["top_age_max"] = min(23, max_age)
+                    else:
+                        # Falls sich der Altersbereich mit der Season ändert:
+                        current = st.session_state["top_age_max"]
+                        if current < min_age:
+                            st.session_state["top_age_max"] = min_age
+                        elif current > max_age:
+                            st.session_state["top_age_max"] = max_age
+
                     max_age_selected = st.sidebar.slider(
                         "Maximum age",
                         min_value=min_age,
                         max_value=max_age,
-                        value=min(23, max_age),
+                        value=st.session_state["top_age_max"],
                         step=1,
                         key="top_age_max",
                     )
+
                     df_view = df_view[age_numeric <= max_age_selected]
+
 
         # ----- Primary score & band je Spieler bestimmen -----
         if df_view.empty:
@@ -725,7 +741,7 @@ def main():
 
         # Anzeige: MainScore als "Score" benennen
         df_top_display = df_top[display_cols].rename(columns={"MainScore": "Score"})
-        
+
         # 👉 Score als Integer ohne Nachkommastellen anzeigen
         if "Score" in df_top_display.columns:
             df_top_display["Score"] = (

@@ -543,3 +543,51 @@ def run_scraping_for_season(season: str, output_folder: Path | None = None):
 
     # Bestehende Pipeline mit neuer Konfiguration ausführen
     return run_pipeline(output_folder=OUTPUT_FOLDER)
+
+from pathlib import Path
+
+from pathlib import Path
+
+def run_scraping_for_2_bundesliga(
+    season: str = "2024-2025",
+    output_folder: Path | None = None,
+):
+    """
+    Scraping nur für die 2. Bundesliga (FBref comp 33) für eine Saison.
+    Schreibt eine players_data_light-<Season>.csv in output_folder,
+    genau wie run_scraping_for_season – nur mit anderen URLs.
+    """
+    global SEASON, BASE_URL, SEASON_TAG, URLS, OUTPUT_FOLDER
+
+    SEASON = season
+
+    if output_folder is not None:
+        OUTPUT_FOLDER = Path(output_folder).resolve()
+
+    # 2. Bundesliga (Comp 33) – URL-Schema wie im funktionierenden Test
+    BASE_URL = f"https://fbref.com/en/comps/33/{SEASON}"
+    SEASON_TAG = f"{SEASON}-2-Bundesliga-Stats"
+
+    if STATS_LEVEL != "players":
+        raise ValueError("run_scraping_for_2_bundesliga erwartet STATS_LEVEL='players'")
+
+    URLS = {
+        f"{BASE_URL}/stats/{SEASON_TAG}": "stats_standard",
+        f"{BASE_URL}/shooting/{SEASON_TAG}": "stats_shooting",
+        f"{BASE_URL}/passing/{SEASON_TAG}": "stats_passing",
+        f"{BASE_URL}/passing_types/{SEASON_TAG}": "stats_passing_types",
+        f"{BASE_URL}/gca/{SEASON_TAG}": "stats_gca",
+        f"{BASE_URL}/defense/{SEASON_TAG}": "stats_defense",
+        f"{BASE_URL}/possession/{SEASON_TAG}": "stats_possession",
+        f"{BASE_URL}/playingtime/{SEASON_TAG}": "stats_playing_time",
+        f"{BASE_URL}/misc/{SEASON_TAG}": "stats_misc",
+        f"{BASE_URL}/keepers/{SEASON_TAG}": "stats_keeper",
+        f"{BASE_URL}/keepersadv/{SEASON_TAG}": "stats_keeper_adv",
+    }
+
+    print(f"Scraping 2. Bundesliga {SEASON} -> {OUTPUT_FOLDER}")
+    # nutzt die bestehende Pipeline, die am Ende players_data_light-<SEASON>.csv schreibt
+    return run_pipeline(output_folder=OUTPUT_FOLDER)
+
+
+
