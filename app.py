@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from pathlib import Path
 
+PRIMARY_COLOR = "#1f77b4"  # main brand color (used for headline & band chart)
 
 # -------------------------------------------------------------------
 # Band labels and icons (English)
@@ -186,29 +187,6 @@ def main():
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        '<div class="ps-title">PlayerScore</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="ps-subtitle">Multi-season Big-5 League player rating – offensive, midfield and defensive profiles</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-    """
-    <div style="font-size:0.85rem; color:#9CA3AF; margin-bottom:1.4rem;">
-      Score scale (0–1000): 
-      🟣 <b>Exceptional</b> ≥ 900 &nbsp;·&nbsp;
-      🟢 <b>World Class</b> ≥ 750 &nbsp;·&nbsp;
-      🔵 <b>Top Starter</b> ≥ 400 &nbsp;·&nbsp;
-      🟡 <b>Solid Squad Player</b> ≥ 200 &nbsp;·&nbsp;
-      ⚪️ <b>Below Big-5 Level</b> &lt; 200
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
     df_all, df_agg, df_squad = load_data()
 
     # ---- Simplify positions to FW / MF / DF ----
@@ -227,12 +205,95 @@ def main():
         st.info("No processed data found yet. Run the pipeline locally and push the CSVs or Kaggle sync.")
         st.stop()
 
-    # ===================== Sidebar: View selection =====================
+        # ===================== Sidebar: View selection =====================
     st.sidebar.header("View")
     mode = st.sidebar.radio(
         "Select mode",
-        ["Player profile", "Top lists"],
+        ["Home", "Player profile", "Top lists"],
     )
+
+    if mode in ("Player profile", "Top lists"):
+        st.markdown(
+        "Score scale (0–1000): 🟣 Exceptional ≥ 900  ·  🟢 World Class ≥ 750  ·  🔵 Top Starter ≥ 400  ·  🟡 Solid Squad Player ≥ 200  ·  ⚪️ Below Big-5 Level < 200"
+    )
+
+
+    # ==================================================================
+    # MODE 0: HOME / LANDING PAGE
+    # ==================================================================
+    if mode == "Home":
+        # Hero section
+        st.markdown(
+            f"""
+            <h1 style="color:{PRIMARY_COLOR}; margin-bottom:0.25rem;">PlayerScore</h1>
+            <p style="font-size:1.05rem; margin-top:0;">
+                Advanced football player analytics across leagues and seasons
+            </p>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        # What is PlayerScore?
+        st.markdown(
+             f"""
+             <h3 style="color:{PRIMARY_COLOR};">What is PlayerScore?</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+        # Intro sections
+        st.markdown(
+            """
+            PlayerScore is built on a self-developed, data-driven scoring framework that makes it possible 
+            to compare football players across different leagues — regardless of country, competition level, 
+            or data availability.
+
+            Our analysis engine continuously processes the latest publicly available performance data from FBref 
+            and combines it with a custom scoring logic that uses comprehensive Big-5 metrics as well as reduced 
+            “Light” metrics for leagues with fewer statistical features.
+            """
+        )
+
+        # What does PlayerScore deliver?
+        st.markdown(
+             f"""
+            <h3 style="color:{PRIMARY_COLOR};">What does PlayerScore deliver?</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+
+
+        st.markdown(
+            """
+            Through this approach, PlayerScore provides:
+
+            - ⚽ **Quantifiable player performance** with a unified scoring scale  
+            - 🌍 **Comparability across leagues and countries**
+            - 🔍 **Transparent and structured stats**, tailored to attacker, midfield, and defender roles  
+            - 🧠 **Insights powered by modern analytical methods** instead of pure gut feeling  
+            - 📈 A **continuously growing global football database**, updated via automated pipelines  
+            """
+        )
+
+        st.markdown(
+            """
+            The PlayerScore database already contains several thousand players from Europe’s top leagues, 
+            the 2. Bundesliga, and multiple historical seasons — and it grows with every pipeline run.
+            """
+        )
+
+        st.info(
+            "Use the sidebar to switch to **Player profile** to explore an individual player, "
+            "or to **Top lists** to see ranked players by role and season."
+        )
+
+        st.stop()
+
+
+
+        st.info("Wechsle links im Sidebar auf **Player profile**, um mit einem Spielerprofil zu starten.")
+        st.stop()
+
+
 
     # ==================================================================
     # MODE 1: PLAYER PROFILE
@@ -246,24 +307,31 @@ def main():
             st.warning("No players found in the dataset.")
             return
 
-        # Session-State für Player-Auswahl
-        if "selected_player" not in st.session_state:
-            st.session_state["selected_player"] = players_all[0]
+        # Placeholder/Leere Auswahl
+        placeholder = "Select a player..."
+        player_options = [placeholder] + players_all
 
-        if st.session_state["selected_player"] not in players_all:
-            st.session_state["selected_player"] = players_all[0]
-
-        default_index = players_all.index(st.session_state["selected_player"])
+        # aktuellen Wert aus Session-State holen (oder Placeholder)
+        current_selection = st.session_state.get("selected_player", placeholder)
+        if current_selection not in player_options:
+            current_selection = placeholder
 
         player = st.sidebar.selectbox(
             "Player",
-            players_all,
-            index=default_index,
+            player_options,
+            index=player_options.index(current_selection),
         )
         st.session_state["selected_player"] = player
 
-        # Alle Saisons dieses Spielers (für Season-Filter)
+        # Solange kein Spieler ausgewählt ist -> Hinweis anzeigen und abbrechen
+        if player == placeholder:
+            st.subheader("Player profile")
+            st.info("Bitte links im Sidebar einen Spieler auswählen, um das Profil zu sehen.")
+            return
+
+        # Ab hier ist 'player' ein echter Spielername
         df_player_all = df_all[df_all["Player"] == player].copy()
+
 
         if "Season" in df_player_all.columns:
             seasons = sorted(df_player_all["Season"].dropna().unique())
@@ -775,19 +843,19 @@ def main():
             # Schritt 3: Altair-Bar-Chart mit fixer Sortierung
             chart = (
                 alt.Chart(band_counts)
-                .mark_bar(size=30)  # <--- hier wird der Balken schmaler/breiter
-                .encode(
-                    x=alt.X(
+                 .mark_bar(size=30)
+                 .encode(
+                     x=alt.X(
                         "Band:N",
                         sort=BAND_ORDER,
                         title="Band",
-                        scale=alt.Scale(paddingInner=0.4, paddingOuter=0.2),  # mehr Abstand
-                    ),
+                         scale=alt.Scale(paddingInner=0.4, paddingOuter=0.2),
+                ),
                     y=alt.Y("Count:Q", title="Number of players"),
                     tooltip=["Band", "Count"],
+                    color=alt.value(PRIMARY_COLOR),  # <- same color as Home headline
                 )
-            )
-
+             )
             st.altair_chart(chart, use_container_width=True)
 
 if __name__ == "__main__":
