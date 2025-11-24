@@ -484,6 +484,26 @@ def main():
         st.markdown(
         "Score scale (0–1000): 🟣 Exceptional ≥ 900  ·  🟢 World Class ≥ 750  ·  🔵 Top Starter ≥ 400  ·  🟡 Solid Squad Player ≥ 200  ·  ⚪️ Below Big-5 Level < 200"
     )
+        
+    # ---- Global Footer (appears on all modes) ----
+    st.markdown(
+        """
+        <style>
+        .footer {
+            position: fixed;
+            right: 15px;
+            bottom: 10px;
+            padding: 5px 10px;
+            opacity: 0.75;
+            font-size: 13px;
+        }
+        </style>
+        <div class="footer">
+            Data Source: Fbref | Created by <b>TwinAnalytics</b>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 
     # ==================================================================
@@ -1162,6 +1182,7 @@ def main():
                 )
              )
             st.altair_chart(chart, use_container_width=True)
+
 
 if __name__ == "__main__":
     main()

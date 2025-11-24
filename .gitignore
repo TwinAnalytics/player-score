@@ -12,4 +12,4 @@ __pycache__/
 *.ipynb_checkpoints
 
 # Rohdaten nicht ins Repo
-Data/Raw/
+# Data/Raw/
