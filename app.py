@@ -2,8 +2,36 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")   # verhindert GUI-Fehler im Browser
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from mplsoccer import PyPizza
+
+plt.rcParams["figure.dpi"] = 200      # höhere Render-Auflösung
+plt.rcParams["savefig.dpi"] = 200
+
+
+from src.processing import prepare_positions, add_standard_per90
+
+
 
 PRIMARY_COLOR = "#1f77b4"  # main brand color (used for headline & band chart)
+# Brand / Theme colors
+APP_BG = "#020617"            # sehr dunkles Blau, App- & Chart-Background
+GRID_COLOR = "#374151"
+TEXT_COLOR = "#e5e7eb"
+SLICE_COLOR = "cornflowerblue"
+PRIMARY_COLOR = "#1f77b4"   # gleiche Farbe wie Band-Distribution-Balken
+
+# drei Töne davon für die Pizza-Gruppen
+COLOR_POSSESSION = "#93c5fd"  # hell
+COLOR_ATTACKING = "#3b82f6"   # mittel
+COLOR_DEFENDING = "#1d4ed8"   # dunkel
+
+
+
 
 # -------------------------------------------------------------------
 # Band labels and icons (English)
@@ -24,6 +52,13 @@ BAND_ORDER = [
     "Below Big-5 Level",
 ]
 
+BIG5_COMPS = {
+    "eng Premier League",
+    "es La Liga",
+    "de Bundesliga",
+    "it Serie A",
+    "fr Ligue 1",
+}
 
 # -------------------------------------------------------------------
 # Data loading (cached)
@@ -146,6 +181,239 @@ def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
 
     st.altair_chart(chart, use_container_width=True)
 
+
+
+def render_pizza_chart(
+    df_all: pd.DataFrame,
+    df_player: pd.DataFrame,
+    role: str,
+    season: str | None,
+):
+    """
+    PyPizza-Chart (StatsBomb-Style) für Big-5-Spieler.
+
+    - Werte = Perzentil-Rank (0–100) vs Big-5-Peers gleicher Rolle + Season.
+    - Slices kleiner (Donut-Style) über inner_circle_size.
+    - Drei Farben (Possession / Attacking / Defending) in Tönen der Hauptfarbe.
+    """
+    if df_player.empty or role is None:
+        st.info("No data available for pizza chart.")
+        return
+
+    row = df_player.iloc[0]
+
+    comp = row["Comp"] if "Comp" in row.index else None
+    if comp not in BIG5_COMPS:
+        st.info("Pizza chart is currently only available for Big-5 competitions.")
+        return
+
+    # Vergleichsgruppe: Big-5, gleiche Rolle, gleiche Season
+    df_comp = df_all.copy()
+    if "Comp" in df_comp.columns:
+        df_comp = df_comp[df_comp["Comp"].isin(BIG5_COMPS)]
+    if "Pos" in df_comp.columns and role is not None:
+        df_comp = df_comp[df_comp["Pos"] == role]
+    if season is not None and "Season" in df_comp.columns:
+        df_comp = df_comp[df_comp["Season"] == season]
+
+    if df_comp.empty:
+        st.info("No comparison group available for pizza chart.")
+        return
+
+    # Helper: erste vorhandene Spalte aus Kandidaten
+    def resolve_metric_column(df: pd.DataFrame, row_s: pd.Series, candidates: list[str]) -> str | None:
+        for c in candidates:
+            if c in df.columns and c in row_s.index:
+                return c
+        return None
+
+    # --------- Metriken inkl. Gruppenzugehörigkeit ---------
+    metric_defs = [
+        # (Group, [Candidate columns], Label)
+        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\ncompleted"),
+        ("Possession", ["Cmp%"], "Pass\ncompletion"),
+        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\ncarries"),
+        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\npasses"),
+        ("Possession", ["TB_Per90", "TB/90"], "Through\nballs"),
+
+        ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
+        ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
+        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "npxG"),
+        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
+
+        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
+        ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
+        ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
+        ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
+    ]
+
+    params: list[str] = []
+    values: list[int] = []
+    groups: list[str] = []
+
+    for group, candidates, label in metric_defs:
+        col = resolve_metric_column(df_comp, row, candidates)
+        if col is None:
+            continue
+
+        val = row[col]
+        if pd.isna(val):
+            continue
+
+        peers = pd.to_numeric(df_comp[col], errors="coerce").dropna()
+        if peers.empty:
+            continue
+
+        # Perzentil-Rank (0–100)
+        percentile = (peers <= val).mean() * 100.0
+        percentile = int(round(percentile))
+
+        params.append(label)
+        values.append(percentile)
+        groups.append(group)
+
+    if len(params) < 3:
+        st.info("Not enough metrics available to build a pizza chart for this player (Big-5 only).")
+        return
+
+    values = np.array(values)
+
+    # Slice-Farben je Gruppe
+    group_color_map = {
+        "Possession": COLOR_POSSESSION,
+        "Attacking": COLOR_ATTACKING,
+        "Defending": COLOR_DEFENDING,
+    }
+    slice_colors = [group_color_map[g] for g in groups]
+
+    # ---------- PyPizza: kleiner, dunkler Hintergrund, Donut ----------
+    baker = PyPizza(
+        params=params,
+        background_color=APP_BG,  # <- dunkler Hintergrund
+        straight_line_color="#4b5563",
+        straight_line_lw=0.1,
+        last_circle_color="#9ca3af",
+        last_circle_lw=0.1,
+        other_circle_color="#4b5563",
+        other_circle_lw=0.1,
+        other_circle_ls="--",
+        inner_circle_size=20.0,      # <- größerer innerer Kreis = kleinere Slices
+        straight_line_limit=100.0,   # Percentiles bis 100
+    )
+
+    fig, ax = baker.make_pizza(
+        values,
+        figsize=(4.5, 4.5),          # kleineres Chart
+        param_location=118,          # Labels näher an der Pizza, ringförmig verteilt
+        slice_colors=slice_colors,
+        color_blank_space="same",    # „leerer“ Bereich in gleicher Slice-Farbe
+        blank_alpha=0.15,
+        kwargs_slices=dict(
+            edgecolor=APP_BG,
+            zorder=2,
+            linewidth=0.1,
+        ),
+        kwargs_params=dict(
+            color=TEXT_COLOR,
+            fontsize=7,
+            va="center",
+        ),
+        kwargs_values=dict(
+            color="#000000",
+            fontsize=7,
+            zorder=9,
+            bbox=dict(
+                edgecolor="#000000",
+                facecolor=PRIMARY_COLOR,  # gleiche Farbe wie Band-Balken
+                boxstyle="round,pad=0.2",
+                lw=0.5,
+            ),
+        ),
+    )
+
+    # Sicherheitshalber Background setzen
+    fig.set_facecolor(APP_BG)
+    ax.set_facecolor(APP_BG)
+
+    # Titel / Subtitel
+    player_name = row.get("Player", "")
+    squad_name = row.get("Squad", "")
+    season_txt = season or ""
+
+    fig.text(
+        0.5, 1.05,
+        f"{player_name} | {squad_name}",
+        size=8,
+        ha="center",
+        color=TEXT_COLOR,
+    )
+
+    fig.text(
+        0.5, 1.02,
+        f"Season {season} | Stats Per 90",
+        size=6,
+        ha="center",
+        color=TEXT_COLOR,
+    )
+
+    # ---------- Legende unten (mit Text) ----------
+    import matplotlib.patches as mpatches
+
+    handles = [
+        mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
+        mpatches.Patch(color=COLOR_ATTACKING,  label="Attacking"),
+        mpatches.Patch(color=COLOR_DEFENDING,  label="Defending"),
+    ]
+    leg = fig.legend(
+        handles=handles,
+        loc="lower center",
+        bbox_to_anchor=(0.5, -0.09),
+        ncol=4,
+        frameon=False,
+        fontsize=8,
+    )
+    for text in leg.get_texts():
+        text.set_color(TEXT_COLOR)
+        text.set_fontweight("bold")
+
+    return fig
+    #st.pyplot(fig)
+
+@st.cache_data
+def load_feature_table_for_season(season: str) -> pd.DataFrame:
+    """
+    Loads the players_data_light-<Season>.csv from Data/Raw,
+    applies position logic and per-90 metric calculation,
+    and returns a feature table for the pizza chart.
+    """
+    from pathlib import Path
+    from src.processing import prepare_positions, add_standard_per90
+
+    root = Path(__file__).resolve().parent
+    raw_dir = root / "Data" / "Raw"
+
+    # the Season value may contain "/", so normalize it for filenames
+    season_safe = season.replace("/", "-")
+    csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+
+    if not csv_path.exists():
+        raise FileNotFoundError(f"No feature file found for season: {season}")
+
+    df = pd.read_csv(csv_path)
+
+    # Apply position logic to get FW/MF/DF/etc
+    df = prepare_positions(df)
+
+    # Add per-90 metrics (Succ_Per90, TB_Per90, etc)
+    df = add_standard_per90(df)
+
+    return df
+
+
+
+
+
 # -------------------------------------------------------------------
 # Main app
 # -------------------------------------------------------------------
@@ -192,9 +460,9 @@ def main():
     # ---- Simplify positions to FW / MF / DF ----
     pos_map = {
         "FW": "FW",
-        "Off_MF": "MF",
+        "Off_MF": "FW",  # Offensiver Mittelfeldspieler -> Offensivrolle
         "MF": "MF",
-        "Def_MF": "MF",
+        "Def_MF": "DF",  # Defensiver Mittelfeldspieler -> Defensivrolle
         "DF": "DF",
     }
 
@@ -326,7 +594,7 @@ def main():
         # Solange kein Spieler ausgewählt ist -> Hinweis anzeigen und abbrechen
         if player == placeholder:
             st.subheader("Player profile")
-            st.info("Bitte links im Sidebar einen Spieler auswählen, um das Profil zu sehen.")
+            st.info("Please select a player in the sidebar on the left to view their profile.")
             return
 
         # Ab hier ist 'player' ein echter Spielername
@@ -465,10 +733,12 @@ def main():
             # 👉 Score als Integer ohne Nachkommastellen anzeigen
             if "Score" in df_scores_display.columns:
                 df_scores_display["Score"] = (
-                    df_scores_display["Score"]
+                     df_scores_display["Score"]
                     .round()
-                    .astype("Int64")  # nullable int, falls doch mal NaN auftaucht
+                    .astype(float)     # ← lässt auch NaN zu und bricht nicht
                 )
+
+
 
             st.dataframe(df_scores_display, use_container_width=True)
 
@@ -581,6 +851,41 @@ def main():
                                     value=f"{player_def:.0f}",
                                     delta=f"{diff_def:+.0f} vs squad",
                                 )
+
+                 # --- Pizza chart for key metrics ---
+        st.markdown("### Role metrics")
+
+        if profile_view == "Per season":
+            # 1) Feature-Tabelle für diese Season laden
+            try:
+                df_features_season = load_feature_table_for_season(season)
+            except FileNotFoundError:
+                st.info("No raw feature data found for this season.")
+                df_features_season = pd.DataFrame()
+
+            # 2) Spielerzeilen aus Feature-Tabelle ziehen
+            if not df_features_season.empty:
+                df_feat_player = df_features_season[
+                    df_features_season["Player"] == player
+                ].copy()
+            else:
+                df_feat_player = pd.DataFrame()
+
+            if role is not None and not df_feat_player.empty:
+                # hier benutzen wir die Feature-Tabelle, nicht df_all (Scores)
+                col1, col2 = st.columns([1, 1])
+                with col1:
+                     fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
+                     if fig is not None:
+                        st.pyplot(fig)
+
+            else:
+                st.info("Not enough metrics available to build a pizza chart for this player (Big-5 only).")
+
+        else:
+            st.info("Pizza chart is currently only available in the 'Per season' view.")
+
+
 
 
         # Score trend

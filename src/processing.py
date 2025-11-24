@@ -55,6 +55,11 @@ DEFAULT_PER90_COLS: list[str] = [
     "PrgP",
     "PrgC",
     "Mis",
+    "G-PK",    # NEW: non-penalty goals
+    "npxG",    # NEW: non-penalty xG
+    "SoT",     # NEW: shots on target
+    "Succ",    # NEW: dribbles completed
+    "TB",      # NEW: through balls
 
     # Defensiv
     "TklW",                    # gewonnene Tackles
