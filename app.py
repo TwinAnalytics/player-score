@@ -854,7 +854,7 @@ def main():
 
 
 
-        # ==================================================================
+    # ==================================================================
     # MODE 1: PLAYER PROFILE
     # ==================================================================
     if mode == "Player profile":
@@ -1104,7 +1104,7 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Age (last season)</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Age</div>
                         <div style="font-size: 1.45rem; font-weight: 600; color: #ffffff;">{age_value}</div>
                     </div>
                     """,
@@ -1122,7 +1122,7 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">90s played (career)</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">90s Played (Career)</div>
                         <div style="font-size: 1.45rem; font-weight: 600; color: #ffffff;">{n_90s_value}</div>
                     </div>
                     """,
@@ -1140,8 +1140,8 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Average score (career)</div>
-                        <div style="font-size: 2.1rem; font-weight: 600; color: {VALUE_COLOR};">{score_value}</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Score Career Avg</div>
+                        <div style="font-size: 2.5rem; font-weight: 600; color: {VALUE_COLOR};">{score_value}</div>
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -1158,7 +1158,7 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem; color: #ffffff;">Band (career avg)</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem; color: #ffffff;">Band (Career Avg)</div>
                         <div style="font-size: 1.25rem; font-weight: 600; color: #ffffff;">{band_value}</div>
                     </div>
                     """,
@@ -1209,32 +1209,159 @@ def main():
 
         # ===================== SCORE TREND =====================
         if profile_view == "Career":
-            st.markdown("### Score trend")
 
-            score_options = []
-            label_to_col = {}
+            st.markdown("### Career Score Trend")
 
-            if "OffScore_abs" in df_player_all.columns and df_player_all["OffScore_abs"].notna().any():
-                score_options.append("Offensive score")
-                label_to_col["Offensive score"] = "OffScore_abs"
-
-            if "MidScore_abs" in df_player_all.columns and df_player_all["MidScore_abs"].notna().any():
-                score_options.append("Midfield score")
-                label_to_col["Midfield score"] = "MidScore_abs"
-
-            if "DefScore_abs" in df_player_all.columns and df_player_all["DefScore_abs"].notna().any():
-                score_options.append("Defensive score")
-                label_to_col["Defensive score"] = "DefScore_abs"
-
-            if not score_options:
-                st.info("No scores available for this player.")
+            # automatische Score-Spalte basierend auf Rolle
+            if role == "FW":
+                score_col = "OffScore_abs"
+                score_label = "Offensive score"
+            elif role == "MF":
+                score_col = "MidScore_abs"
+                score_label = "Midfield score"
+            elif role == "DF":
+                score_col = "DefScore_abs"
+                score_label = "Defensive score"
             else:
-                selected_label = st.selectbox(
-                    "Select score for trend",
-                    score_options,
+                st.info("No primary role score available for this player.")
+                return
+
+            # Daten vorbereiten
+            plot_df = (
+                df_player_all[["Season", score_col]]
+                .dropna()
+                .sort_values("Season")
+            )
+
+            if plot_df.empty:
+                st.info("No score data available for trend chart.")
+                return
+
+            # feste Y-Achse + Ticks 0 / 500 / 1000
+            y_enc = alt.Y(
+                f"{score_col}:Q",
+                title="Score",
+                scale=alt.Scale(domain=[0, 1100]),
+                axis=alt.Axis(values=[0, 500, 1000]),
+            )
+
+            # smoothe Kurve
+            line = (
+                alt.Chart(plot_df)
+                .mark_line(
+                    point=False,
+                    strokeWidth=2,
+                    interpolate="monotone",   # smooth curve
+                    color=VALUE_COLOR,
                 )
-                score_col = label_to_col[selected_label]
-                score_trend_chart(df_player_all, score_col, selected_label)
+                .encode(
+                    x=alt.X("Season:O", title="Season"),
+                    y=y_enc,
+                )
+            )
+
+            # Punkte (exakte Werte)
+            points = (
+                alt.Chart(plot_df)
+                .mark_point(
+                    filled=True,
+                    size=70,
+                    color=VALUE_COLOR,
+                )
+                .encode(
+                    x="Season:O",
+                    y=f"{score_col}:Q",
+                )
+            )
+
+            # Labels über den Punkten
+            labels = (
+                alt.Chart(plot_df)
+                .mark_text(
+                    dy=-10,
+                    color="#e5e7eb",
+                    fontSize=12,
+                    fontWeight="bold",
+                )
+                .encode(
+                    x="Season:O",
+                    y=f"{score_col}:Q",
+                    text=alt.Text(f"{score_col}:Q", format=".0f"),
+                )
+            )
+
+            # ----------------- Dezente Band-Linien + Labels rechts -----------------
+            # letzte Saison als Anker für die Label-X-Position
+            last_season = plot_df["Season"].iloc[-1]
+
+            band_data = pd.DataFrame(
+                {
+                    "y": [200, 400, 750, 900],
+                    "label": [
+                        "200  •  Solid squad",
+                        "400  •  Top starter",
+                        "750  •  World class",
+                        "900  •  Exceptional",
+                    ],
+                    "x": [last_season] * 4,   # alle Labels an der letzten Season verankern
+                }
+            )
+
+            band_lines = (
+                alt.Chart(band_data)
+                .mark_rule(
+                    strokeDash=[4, 4],
+                    strokeWidth=0.6,
+                    opacity=0.4,
+                    color="#6b7280",   # dezentes Grau
+                )
+                .encode(
+                    y="y:Q",
+                )
+            )
+
+            # Labels RECHTS von der Kurve (an der letzten Saison, mit dx nach rechts)
+            band_labels = (
+                alt.Chart(band_data)
+                .mark_text(
+                    align="left",          # Text linksbündig
+                    baseline="middle",
+                    dx=30,                  # Abstand nach rechts von der letzten Saison-Position
+                    color="#e5e7eb",       # helles Grau
+                    fontSize=9,
+                )
+                .encode(
+                    x="x:O",               # an letzter Season verankert
+                    y="y:Q",
+                    text="label:N",
+                )
+            )
+
+            chart = (
+                (line + points + labels + band_lines + band_labels)
+                .properties(
+                    height=280,
+                    title="",
+                )
+                .configure_title(
+                    color="#e5e7eb",
+                    fontSize=16,
+                )
+                .configure_axis(
+                    grid=False,
+                    ticks=True,
+                    tickColor="#6b7280",
+                    tickSize=4,
+                    domain=True,
+                    domainColor="#6b7280",
+                    labelColor="#e5e7eb",
+                    titleColor="#e5e7eb",
+                )
+                .configure_view(strokeWidth=0)
+            )
+
+            st.altair_chart(chart, use_container_width=True)
+
 
 
 
