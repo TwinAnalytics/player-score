@@ -266,19 +266,19 @@ def render_pizza_chart(
     # --------- Metriken inkl. Gruppenzugehörigkeit ---------
     metric_defs = [
         # (Group, [Candidate columns], Label)
-        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\ncompleted"),
-        ("Possession", ["Cmp%"], "Pass\ncompletion"),
-        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\ncarries"),
-        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\npasses"),
-        ("Possession", ["TB_Per90", "TB/90"], "Through\nballs"),
+        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\nCompleted"),
+        ("Possession", ["Cmp%"], "Pass\nCompletion"),
+        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\nCarries"),
+        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\nPasses"),
+        ("Possession", ["TB_Per90", "TB/90"], "Through\nBalls"),
 
         ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
-        ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
-        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
-        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-penalty\nxG"),
-        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
+        ("Attacking", ["KP_Per90", "KP/90"], "Key\nPasses"),
+        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-Penalty\nGoals"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-Penalty\nxG"),
+        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\nTarget"),
 
-        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
+        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nWon"),
         ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
         ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
         ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
@@ -488,19 +488,19 @@ def render_career_pizza_chart(
 
     # Metrik-Definition wie im Season-Pizza
     metric_defs = [
-        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\ncompleted"),
-        ("Possession", ["Cmp%"], "Pass\ncompletion"),
-        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\ncarries"),
-        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\npasses"),
-        ("Possession", ["TB_Per90", "TB/90"], "Through\nballs"),
+        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\nCompleted"),
+        ("Possession", ["Cmp%"], "Pass\nCompletion"),
+        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\nCarries"),
+        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\nPasses"),
+        ("Possession", ["TB_Per90", "TB/90"], "Through\nBalls"),
 
         ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
-        ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
-        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
-        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-penalty\nxG"),
-        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
+        ("Attacking", ["KP_Per90", "KP/90"], "Key\nPasses"),
+        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-Penalty\nGoals"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-Penalty\nxG"),
+        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\nTarget"),
 
-        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
+        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nWon"),
         ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
         ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
         ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
