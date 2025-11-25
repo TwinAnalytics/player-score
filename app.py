@@ -24,14 +24,32 @@ GRID_COLOR = "#374151"
 TEXT_COLOR = "#e5e7eb"
 SLICE_COLOR = "cornflowerblue"
 PRIMARY_COLOR = "#1f77b4"   # gleiche Farbe wie Band-Distribution-Balken
+VALUE_COLOR = "#00B8A9"
 
 # drei Töne davon für die Pizza-Gruppen
-COLOR_POSSESSION = "#93c5fd"  # hell
-COLOR_ATTACKING = "#3b82f6"   # mittel
-COLOR_DEFENDING = "#1d4ed8"   # dunkel
+COLOR_POSSESSION = "#80F5E3"   # helles Türkis
+COLOR_ATTACKING  = "#00B8A9"   # dein Originalfarbton
+COLOR_DEFENDING  = "#006058"   # dunkles Petrolgrün
 
+# Metric-specific weights (lower weight = more smoothing due to high variance)
+METRIC_WEIGHTS = {
+    "Dribbles completed": 0.7,
+    "Pass completion": 1.0,
+    "Prog. carries": 0.85,
+    "Prog. passes": 0.9,
+    "Through balls": 1.0,
 
+    "Assists": 1.0,
+    "Key passes": 0.9,
+    "Non-penalty goals": 0.6,
+    "npxG": 0.8,
+    "Shots on target": 0.7,
 
+    "Tackles won": 0.9,
+    "Interceptions": 1.0,
+    "Blocks": 1.0,
+    "Clearances": 1.0,
+}
 
 # -------------------------------------------------------------------
 # Band labels and icons (English)
@@ -141,6 +159,26 @@ def get_primary_score_and_band(row):
 
     return float("nan"), None
 
+def band_from_score(score: float | None) -> str | None:
+    """Map a numeric score to a band label (using the same scale as in the UI)."""
+    if score is None or pd.isna(score):
+        return None
+
+    if score >= 900:
+        band = "Exceptional"
+    elif score >= 750:
+        band = "World Class"
+    elif score >= 400:
+        band = "Top Starter"
+    elif score >= 200:
+        band = "Solid Squad Player"
+    else:
+        band = "Below Big-5 Level"
+
+    # mit Icon/Text aus BAND_ICONS kombinieren
+    return BAND_ICONS.get(band, band)
+
+
 
 def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
     """
@@ -180,8 +218,6 @@ def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
     )
 
     st.altair_chart(chart, use_container_width=True)
-
-
 
 def render_pizza_chart(
     df_all: pd.DataFrame,
@@ -325,7 +361,7 @@ def render_pizza_chart(
             zorder=9,
             bbox=dict(
                 edgecolor="#000000",
-                facecolor=PRIMARY_COLOR,  # gleiche Farbe wie Band-Balken
+                facecolor=VALUE_COLOR,  # gleiche Farbe wie Band-Balken
                 boxstyle="round,pad=0.2",
                 lw=0.5,
             ),
@@ -380,6 +416,245 @@ def render_pizza_chart(
     return fig
     #st.pyplot(fig)
 
+def render_career_pizza_chart(
+    player: str,
+    role: str,
+    seasons: list[str],
+) -> plt.Figure | None:
+    """
+    Career-Pizza-Chart:
+
+    - Aggregiert die Per-90-Metriken des Spielers über alle Saisons (minuten-gewichtet).
+    - Vergleichsgruppe: alle Big-5-Spieler gleicher Rolle über alle Saisons.
+    """
+    if not seasons or role is None:
+        st.info("Not enough data available for a career pizza chart.")
+        return None
+
+    root = Path(__file__).resolve().parent
+    raw_dir = root / "Data" / "Raw"
+
+    df_features_all_list = []
+    df_player_feat_list = []
+
+    # Alle Seasons des Spielers laden (Feature-Table pro Season)
+    for s in seasons:
+        season_safe = s.replace("/", "-")
+        csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+        if not csv_path.exists():
+            continue
+
+        df_season = pd.read_csv(csv_path)
+        df_season = prepare_positions(df_season)
+        df_season = add_standard_per90(df_season)
+        df_season["Season"] = s
+
+        df_features_all_list.append(df_season)
+
+        df_p = df_season[df_season["Player"] == player].copy()
+        if not df_p.empty:
+            df_player_feat_list.append(df_p)
+
+    if not df_player_feat_list:
+        st.info("No raw feature data found across seasons for this player.")
+        return None
+
+    df_features_all = pd.concat(df_features_all_list, ignore_index=True)
+    df_player_all_feat = pd.concat(df_player_feat_list, ignore_index=True)
+
+    # Nur Big-5 für Vergleichsgruppe
+    if "Comp" in df_player_all_feat.columns:
+        player_comps = set(df_player_all_feat["Comp"].dropna().unique())
+        if not (player_comps & BIG5_COMPS):
+            st.info("Career pizza chart is currently only available for Big-5 competitions.")
+            return None
+
+    df_comp = df_features_all.copy()
+    if "Comp" in df_comp.columns:
+        df_comp = df_comp[df_comp["Comp"].isin(BIG5_COMPS)]
+    if "Pos" in df_comp.columns and role is not None:
+        df_comp = df_comp[df_comp["Pos"] == role]
+
+    if df_comp.empty:
+        st.info("No comparison group available for career pizza chart.")
+        return None
+
+    # Helper: erste vorhandene Spalte aus Kandidaten
+    def resolve_metric_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
+        for c in candidates:
+            if c in df.columns:
+                return c
+        return None
+
+    # Metrik-Definition wie im Season-Pizza
+    metric_defs = [
+        ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\ncompleted"),
+        ("Possession", ["Cmp%"], "Pass\ncompletion"),
+        ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\ncarries"),
+        ("Possession", ["PrgP_Per90", "PrgP/90"], "Prog.\npasses"),
+        ("Possession", ["TB_Per90", "TB/90"], "Through\nballs"),
+
+        ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
+        ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
+        ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "npxG"),
+        ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
+
+        ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
+        ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
+        ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
+        ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
+    ]
+
+    params: list[str] = []
+    values: list[int] = []
+    groups: list[str] = []
+
+    # Minuten als Gewicht
+    mins = pd.to_numeric(df_player_all_feat.get("Min", pd.Series(dtype=float)), errors="coerce")
+    total_min = mins.sum() if mins.notna().any() else None
+
+    for group, candidates, label in metric_defs:
+        col = resolve_metric_column(df_comp, candidates)
+        if col is None or col not in df_player_all_feat.columns:
+            continue
+
+        # Spieler: minuten-gewichtete Per-90-Aggregation (oder Mittelwert als Fallback)
+        vals_player = pd.to_numeric(df_player_all_feat[col], errors="coerce")
+        if vals_player.notna().any():
+            # 1) Minuten-Gewichtung (wie bisher)
+            if total_min is not None and total_min > 0:
+                num_min = (vals_player * mins).sum()
+                denom_min = total_min
+                base_value = num_min / denom_min
+            else:
+                base_value = vals_player.mean()
+
+            # 2) Metrik-Gewichtung (neu)
+            metric_weight = METRIC_WEIGHTS.get(label.replace("\n"," ").strip(), 1.0)
+
+            # Glättung durch Mischung aus basierten und glattem Wert
+            # Weight <1 → mehr smoothing
+            player_val = base_value * metric_weight + base_value.mean() * (1 - metric_weight)
+        else:
+            continue
+
+        if pd.isna(player_val):
+            continue
+
+        # Vergleichsverteilung
+        peers = pd.to_numeric(df_comp[col], errors="coerce").dropna()
+        if peers.empty:
+            continue
+
+        percentile = (peers <= player_val).mean() * 100.0
+        percentile = int(round(percentile))
+
+        params.append(label)
+        values.append(percentile)
+        groups.append(group)
+
+    if len(params) < 3:
+        st.info("Not enough metrics available to build a career pizza chart for this player (Big-5 only).")
+        return None
+
+    values = np.array(values)
+
+    group_color_map = {
+        "Possession": COLOR_POSSESSION,
+        "Attacking": COLOR_ATTACKING,
+        "Defending": COLOR_DEFENDING,
+    }
+    slice_colors = [group_color_map[g] for g in groups]
+
+    baker = PyPizza(
+        params=params,
+        background_color=APP_BG,
+        straight_line_color="#4b5563",
+        straight_line_lw=0.1,
+        last_circle_color="#9ca3af",
+        last_circle_lw=0.1,
+        other_circle_color="#4b5563",
+        other_circle_lw=0.1,
+        other_circle_ls="--",
+        inner_circle_size=20.0,
+        straight_line_limit=100.0,
+    )
+
+    fig, ax = baker.make_pizza(
+        values,
+        figsize=(4.5, 4.5),
+        param_location=118,
+        slice_colors=slice_colors,
+        color_blank_space="same",
+        blank_alpha=0.15,
+        kwargs_slices=dict(
+            edgecolor=APP_BG,
+            zorder=2,
+            linewidth=0.1,
+        ),
+        kwargs_params=dict(
+            color=TEXT_COLOR,
+            fontsize=7,
+            va="center",
+        ),
+        kwargs_values=dict(
+            color="#000000",
+            fontsize=7,
+            zorder=9,
+            bbox=dict(
+                edgecolor="#000000",
+                facecolor=VALUE_COLOR,
+                boxstyle="round,pad=0.2",
+                lw=0.5,
+            ),
+        ),
+    )
+
+    fig.set_facecolor(APP_BG)
+    ax.set_facecolor(APP_BG)
+
+    # Titel / Subtitle
+    first_season = min(seasons)
+    last_season = max(seasons)
+
+    fig.text(
+        0.5, 1.05,
+        f"{player}",
+        size=8,
+        ha="center",
+        color=TEXT_COLOR,
+    )
+
+    fig.text(
+        0.5, 1.02,
+        f"Career stats per 90 | Seasons {first_season} – {last_season}",
+        size=6,
+        ha="center",
+        color=TEXT_COLOR,
+    )
+
+    handles = [
+        mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
+        mpatches.Patch(color=COLOR_ATTACKING,  label="Attacking"),
+        mpatches.Patch(color=COLOR_DEFENDING,  label="Defending"),
+    ]
+    leg = fig.legend(
+        handles=handles,
+        loc="lower center",
+        bbox_to_anchor=(0.5, -0.09),
+        ncol=4,
+        frameon=False,
+        fontsize=8,
+    )
+    for text in leg.get_texts():
+        text.set_color(TEXT_COLOR)
+        text.set_fontweight("bold")
+
+    return fig
+
+
+
 @st.cache_data
 def load_feature_table_for_season(season: str) -> pd.DataFrame:
     """
@@ -409,10 +684,6 @@ def load_feature_table_for_season(season: str) -> pd.DataFrame:
     df = add_standard_per90(df)
 
     return df
-
-
-
-
 
 # -------------------------------------------------------------------
 # Main app
@@ -473,7 +744,7 @@ def main():
         st.info("No processed data found yet. Run the pipeline locally and push the CSVs or Kaggle sync.")
         st.stop()
 
-        # ===================== Sidebar: View selection =====================
+    # ===================== Sidebar: View selection =====================
     st.sidebar.header("View")
     mode = st.sidebar.radio(
         "Select mode",
@@ -513,7 +784,7 @@ def main():
         # Hero section
         st.markdown(
             f"""
-            <h1 style="color:{PRIMARY_COLOR}; margin-bottom:0.25rem;">PlayerScore</h1>
+            <h1 style="color:{VALUE_COLOR}; margin-bottom:0.25rem;">PlayerScore</h1>
             <p style="font-size:1.05rem; margin-top:0;">
                 Advanced football player analytics across leagues and seasons
             </p>
@@ -524,7 +795,7 @@ def main():
         # What is PlayerScore?
         st.markdown(
              f"""
-             <h3 style="color:{PRIMARY_COLOR};">What is PlayerScore?</h3>
+             <h3 style="color:{VALUE_COLOR};">What is PlayerScore?</h3>
             """,
             unsafe_allow_html=True,
         )
@@ -544,7 +815,7 @@ def main():
         # What does PlayerScore deliver?
         st.markdown(
              f"""
-            <h3 style="color:{PRIMARY_COLOR};">What does PlayerScore deliver?</h3>
+            <h3 style="color:{VALUE_COLOR};">What does PlayerScore deliver?</h3>
             """,
             unsafe_allow_html=True,
         )
@@ -620,7 +891,7 @@ def main():
         # Ab hier ist 'player' ein echter Spielername
         df_player_all = df_all[df_all["Player"] == player].copy()
 
-
+        # ----- Seasons für diesen Spieler -----
         if "Season" in df_player_all.columns:
             seasons = sorted(df_player_all["Season"].dropna().unique())
         else:
@@ -630,11 +901,13 @@ def main():
             st.warning("No seasons found for this player.")
             return
 
-        # ----- Season unterhalb Player -----
+        # immer letzte (aktuellste) Saison als Default
+        default_season_idx = len(seasons) - 1 if seasons else 0
         season = st.sidebar.selectbox(
             "Season",
             seasons,
-            key="profile_season",
+            index=default_season_idx,
+            key=f"profile_season_{player}",  # key pro Spieler, damit der Default bei neuem Spieler greift
         )
 
         # Aktuelle Ansicht (Per season vs Career) etwas weiter unten
@@ -642,6 +915,7 @@ def main():
         profile_view = st.sidebar.radio(
             "Profile view",
             ["Per season", "Career"],
+            key="profile_view",
         )
 
         # ---------- Player profile ----------
@@ -649,7 +923,6 @@ def main():
             st.subheader(f"Player Profile – {player}")
         else:
             st.subheader(f"Player Profile – {player}")
-
 
         # DataFrames für diese Ansicht
         # df_player_all bleibt alle Saisons des Spielers (für Rolle + Trend)
@@ -661,15 +934,11 @@ def main():
         # Alle Saisons dieses Spielers (für Rolle + Trend)
         df_player_all = df_all[df_all["Player"] == player].copy()
 
-        if profile_view == "Per season":
-            df_player = df_player_all[df_player_all["Season"] == season].copy()
-        else:
-            df_player = df_player_all.copy()
-
         # Typical role (based on all seasons)
         typical_pos = df_player_all["Pos"].dropna().mode()
         typical_pos = typical_pos.iloc[0] if not typical_pos.empty else None
 
+        # Caption unter dem Titel
         if profile_view == "Per season" and not df_player.empty:
             pos_txt = df_player["Pos"].iloc[0] if "Pos" in df_player.columns else None
             squad_txt = df_player["Squad"].iloc[0] if "Squad" in df_player.columns else None
@@ -677,9 +946,8 @@ def main():
             if details:
                 st.caption(details)
         else:
-            # Fallback: typische Rolle (für Career-View)
             st.caption(get_role_label(typical_pos))
-
+            
 
         # Decide primary score dimension based on role (for squad assessment)
         role = typical_pos or (df_player["Pos"].iloc[0] if not df_player.empty and "Pos" in df_player.columns else None)
@@ -732,8 +1000,17 @@ def main():
                         "squad_name": squad_name,
                     }
 
-        # # Scores for current view (primary role score, same logic as Top Lists)
-        st.markdown(f"Season:  {season}")
+        # Season / Seasons label
+        if profile_view == "Per season":
+            st.markdown(f"Season: {season}")
+        else:
+            if "Season" in df_player_all.columns and not df_player_all.empty:
+                first_season = df_player_all["Season"].min()
+                last_season = df_player_all["Season"].max()
+                st.markdown(f"Seasons: {first_season} – {last_season}")
+            else:
+                st.markdown("Seasons: n/a")
+
 
         # Ensure primary score + band exist for this view
         if not df_player.empty:
@@ -744,42 +1021,7 @@ def main():
                 result_type="expand",
             )
 
-        cols_show = [
-            "Season", "Squad", "Comp", "Pos", "Age", "Min", "90s",
-            "MainScore", "MainBand",
-        ]
-        existing_cols = [c for c in cols_show if c in df_player.columns]
-
-        # if existing_cols and not df_player.empty:
-        #     df_scores = df_player[existing_cols].sort_values("Season")
-
-        #     # Replace band with icons (like in Top Lists)
-        #     display_cols = [c for c in cols_show if c not in ("MainBand",)]
-        #     display_cols = [c for c in display_cols if c in df_scores.columns]
-
-        #     if "MainBand" in df_scores.columns:
-        #         df_scores["Band"] = df_scores["MainBand"].map(BAND_ICONS).fillna(df_scores["MainBand"])
-        #         display_cols.append("Band")
-
-        #     df_scores_display = df_scores[display_cols].rename(columns={"MainScore": "Score"})
-
-        #     # 👉 Score als Integer ohne Nachkommastellen anzeigen
-        #     if "Score" in df_scores_display.columns:
-        #         df_scores_display["Score"] = (
-        #              df_scores_display["Score"]
-        #             .round()
-        #             .astype(float)     # ← lässt auch NaN zu und bricht nicht
-        #         )
-
-
-
-        #     st.dataframe(df_scores_display, use_container_width=True)
-
-        # else:
-        #     st.info("No season-level data available for this player and view.")
-
-
-        # Summary metrics
+        # ===================== SUMMARY =====================
         st.markdown("### Summary")
 
         col1, col2, col3, col4 = st.columns(4)
@@ -804,119 +1046,270 @@ def main():
 
             band_icon = BAND_ICONS.get(main_band, main_band) if main_band is not None else None
 
+            # ---- Age card ----
             with col1:
                 if isinstance(age, (int, float)) and not pd.isna(age):
-                    st.metric("Age", f"{age:.0f}")
+                    age_value = f"{age:.0f}"
                 else:
-                    st.metric("Age", "n/a")
+                    age_value = "n/a"
 
+                st.markdown(
+                    f"""
+                    <div style="
+                        border-radius: 0.5rem;
+                        padding: 0.4rem 0.5rem;
+                        text-align: left;
+                        background-color: rgba(15, 23, 42, 0.35);
+                    ">
+                        <div style="
+                            font-size: 0.85rem;
+                            opacity: 0.9;
+                            margin-bottom: 0.1rem;
+                            color: #ffffff;
+                        ">Age</div>
+                        <div style="
+                            font-size: 1.45rem;
+                            font-weight: 600;
+                            color: #ffffff;
+                        ">{age_value}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            # ---- 90s played card ----
             with col2:
                 if isinstance(n_90s, (int, float)) and not pd.isna(n_90s):
-                    st.metric("90s played", f"{n_90s:.1f}")
+                    n_90s_value = f"{n_90s:.1f}"
                 else:
-                    st.metric("90s played", "n/a")
+                    n_90s_value = "n/a"
 
+                st.markdown(
+                    f"""
+                    <div style="
+                        border-radius: 0.5rem;
+                        padding: 0.4rem 0.5rem;
+                        text-align: left;
+                        background-color: rgba(15, 23, 42, 0.35);
+                    ">
+                        <div style="
+                            font-size: 0.85rem;
+                            opacity: 0.9;
+                            margin-bottom: 0.1rem;
+                            color: #ffffff;
+                        ">90s played</div>
+                        <div style="
+                            font-size: 1.45rem;
+                            font-weight: 600;
+                            color: #ffffff;
+                        ">{n_90s_value}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            # ---- Score card ----
             with col3:
                 if main_score is not None and not pd.isna(main_score):
-                    st.metric("Score", f"{main_score:.0f}")
+                    score_value = f"{main_score:.0f}"
                 else:
-                    st.metric("Score", "n/a")
+                    score_value = "n/a"
 
+                st.markdown(
+                    f"""
+                    <div style="
+                        border-radius: 0.5rem;
+                        padding: 0.4rem 0.5rem;
+                        text-align: left;
+                        background-color: rgba(15, 23, 42, 0.35);
+                    ">
+                        <div style="
+                            font-size: 0.85rem;
+                            opacity: 0.9;
+                            margin-bottom: 0.1rem;
+                            color: #ffffff;
+                        ">Score</div>
+                        <div style="
+                            font-size: 2.5rem;
+                            font-weight: 600;
+                            color: {VALUE_COLOR};
+                        ">{score_value}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            # ---- Band card ----
             with col4:
-                st.metric("Band", band_icon if band_icon is not None else "n/a")
+                band_label = "Band"
+                band_value = band_icon if band_icon is not None else "n/a"
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        border-radius: 0.5rem;
+                        padding: 0.4rem 0.5rem;
+                        text-align: left;
+                        background-color: rgba(15, 23, 42, 0.35);
+                    ">
+                        <div style="
+                            font-size: 0.85rem;
+                            opacity: 0.9;
+                            margin-bottom: 0.5rem;
+                            color: #ffffff;
+                        ">{band_label}</div>
+                        <div style="
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            color: #ffffff;
+                        ">{band_value}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
 
         else:
-            # Career / Multi-season Summary (alter Stil)
-            total_seasons = df_player["Season"].nunique() if "Season" in df_player.columns else 0
-            total_minutes = int(df_player["Min"].sum()) if "Min" in df_player.columns else 0
-            total_90s = float(df_player["90s"].sum()) if "90s" in df_player.columns else 0.0
+                    # Career / Multi-season Summary: Age, total 90s, avg Score, Band
 
-            with col1:
-                st.metric("Seasons in view", total_seasons)
+                    # Age: nehme das Alter aus der letzten Saison (falls vorhanden)
+                    if "Season" in df_player_all.columns and "Age" in df_player_all.columns:
+                        df_sorted = df_player_all.sort_values("Season")
+                        age_career = df_sorted["Age"].iloc[-1]
+                    else:
+                        age_career = None
 
-            with col2:
-                st.metric("Total minutes", total_minutes)
+                    # Total 90s über alle Saisons
+                    total_90s = float(df_player_all["90s"].sum()) if "90s" in df_player_all.columns else 0.0
 
-            with col3:
-                st.metric("Total 90s", f"{total_90s:.1f}")
+                    # Average MainScore über alle Saisons
+                    avg_score = None
+                    if "MainScore" in df_player.columns and df_player["MainScore"].notna().any():
+                        avg_score = df_player["MainScore"].mean()
 
-            avg_score = None
-            if "MainScore" in df_player.columns and df_player["MainScore"].notna().any():
-                avg_score = df_player["MainScore"].mean()
+                    # Band aus dem durchschnittlichen Score ableiten
+                    avg_band_label = band_from_score(avg_score) if avg_score is not None else None
 
-            with col4:
-                if avg_score is not None:
-                    st.metric("Average score (career)", f"{avg_score:.0f}")
-                else:
-                    st.metric("Average score (career)", "n/a")
+                    # ---- Age card (Career) ----
+                    with col1:
+                        if isinstance(age_career, (int, float)) and not pd.isna(age_career):
+                            age_value = f"{age_career:.0f}"
+                        else:
+                            age_value = "n/a"
+
+                        st.markdown(
+                            f"""
+                            <div style="
+                                border-radius: 0.5rem;
+                                padding: 0.4rem 0.5rem;
+                                text-align: left;
+                                background-color: rgba(15, 23, 42, 0.35);
+                            ">
+                                <div style="
+                                    font-size: 0.85rem;
+                                    opacity: 0.9;
+                                    margin-bottom: 0.1rem;
+                                    color: #ffffff;
+                                ">Age</div>
+                                <div style="
+                                    font-size: 1.45rem;
+                                    font-weight: 600;
+                                    color: #ffffff;
+                                ">{age_value}</div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
+
+                    # ---- 90s played (Career total) ----
+                    with col2:
+                        n_90s_value = f"{total_90s:.1f}" if total_90s > 0 else "n/a"
+
+                        st.markdown(
+                            f"""
+                            <div style="
+                                border-radius: 0.5rem;
+                                padding: 0.4rem 0.5rem;
+                                text-align: left;
+                                background-color: rgba(15, 23, 42, 0.35);
+                            ">
+                                <div style="
+                                    font-size: 0.85rem;
+                                    opacity: 0.9;
+                                    margin-bottom: 0.1rem;
+                                    color: #ffffff;
+                                ">90s played (career)</div>
+                                <div style="
+                                    font-size: 1.45rem;
+                                    font-weight: 600;
+                                    color: #ffffff;
+                                ">{n_90s_value}</div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
+
+                    # ---- Average Score (Career) ----
+                    with col3:
+                        if avg_score is not None and not pd.isna(avg_score):
+                            score_value = f"{avg_score:.0f}"
+                        else:
+                            score_value = "n/a"
+
+                        st.markdown(
+                            f"""
+                            <div style="
+                                border-radius: 0.5rem;
+                                padding: 0.4rem 0.5rem;
+                                text-align: left;
+                                background-color: rgba(15, 23, 42, 0.35);
+                            ">
+                                <div style="
+                                    font-size: 0.85rem;
+                                    opacity: 0.9;
+                                    margin-bottom: 0.1rem;
+                                    color: #ffffff;
+                                ">Score (career avg)</div>
+                                <div style="
+                                    font-size: 2.5rem;
+                                    font-weight: 600;
+                                    color: {VALUE_COLOR};
+                                ">{score_value}</div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
+
+                    # ---- Band (derived from avg score) ----
+                    with col4:
+                        band_label = "Band (career avg)"
+                        band_value = avg_band_label if avg_band_label is not None else "n/a"
+
+                        st.markdown(
+                            f"""
+                            <div style="
+                                border-radius: 0.5rem;
+                                padding: 0.4rem 0.5rem;
+                                text-align: left;
+                                background-color: rgba(15, 23, 42, 0.35);
+                            ">
+                                <div style="
+                                    font-size: 0.85rem;
+                                    opacity: 0.9;
+                                    margin-bottom: 0.5rem;
+                                    color: #ffffff;
+                                ">{band_label}</div>
+                                <div style="
+                                    font-size: 1.25rem;
+                                    font-weight: 600;
+                                    color: #ffffff;
+                                ">{band_value}</div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True,
+                        )
 
 
-
-       #Squad score + verbal assessment for the primary dimension
-        # Squad comparison (this season)
-        if profile_view == "Per season" and not df_player.empty and not df_squad.empty:
-            squad_name = df_player["Squad"].iloc[0] if "Squad" in df_player.columns else None
-
-            if squad_name is not None:
-                df_squad_row = df_squad[
-                    (df_squad["Season"] == season) & (df_squad["Squad"] == squad_name)
-                ]
-
-                if not df_squad_row.empty:
-                    srow = df_squad_row.iloc[0]
-
-                    st.markdown(f"### Squad comparison – {squad_name} ({season})")
-                    col_a, col_b, col_c = st.columns(3)
-
-                    # Offensive comparison
-                    if (
-                        "OffScore_abs" in df_player.columns
-                        and "OffScore_squad" in df_squad_row.columns
-                    ):
-                        player_off = df_player["OffScore_abs"].iloc[0]
-                        squad_off = srow.get("OffScore_squad")
-                        if pd.notna(player_off) and pd.notna(squad_off):
-                            diff_off = player_off - squad_off
-                            with col_a:
-                                st.metric(
-                                    "Offensive",
-                                    value=f"{player_off:.0f}",
-                                    delta=f"{diff_off:+.0f} vs squad",
-                                )
-
-                    # Midfield comparison
-                    if (
-                        "MidScore_abs" in df_player.columns
-                        and "MidScore_squad" in df_squad_row.columns
-                    ):
-                        player_mid = df_player["MidScore_abs"].iloc[0]
-                        squad_mid = srow.get("MidScore_squad")
-                        if pd.notna(player_mid) and pd.notna(squad_mid):
-                            diff_mid = player_mid - squad_mid
-                            with col_b:
-                                st.metric(
-                                    "Midfield",
-                                    value=f"{player_mid:.0f}",
-                                    delta=f"{diff_mid:+.0f} vs squad",
-                                )
-
-                    # Defensive comparison
-                    if (
-                        "DefScore_abs" in df_player.columns
-                        and "DefScore_squad" in df_squad_row.columns
-                    ):
-                        player_def = df_player["DefScore_abs"].iloc[0]
-                        squad_def = srow.get("DefScore_squad")
-                        if pd.notna(player_def) and pd.notna(squad_def):
-                            diff_def = player_def - squad_def
-                            with col_c:
-                                st.metric(
-                                    "Defensive",
-                                    value=f"{player_def:.0f}",
-                                    delta=f"{diff_def:+.0f} vs squad",
-                                )
-
-        # --- Pizza chart for key metrics ---
+                # ===================== PIZZA CHART =====================
         st.markdown("### Role metrics")
 
         if profile_view == "Per season":
@@ -936,23 +1329,32 @@ def main():
                 df_feat_player = pd.DataFrame()
 
             if role is not None and not df_feat_player.empty:
-                # hier benutzen wir die Feature-Tabelle, nicht df_all (Scores)
-                col1, col2 = st.columns([1, 1])
-                with col1:
-                     fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
-                     if fig is not None:
+                col_chart, _ = st.columns([1, 1])
+                with col_chart:
+                    fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
+                    if fig is not None:
                         st.pyplot(fig)
-
             else:
                 st.info("Not enough metrics available to build a pizza chart for this player (Big-5 only).")
 
         else:
-            st.info("Pizza chart is currently only available in the 'Per season' view.")
+            # Career-Pizza über alle Saisons des Spielers
+            if "Season" in df_player_all.columns:
+                player_seasons = sorted(df_player_all["Season"].dropna().unique())
+            else:
+                player_seasons = []
+
+            if not player_seasons or role is None:
+                st.info("Not enough career data available to build a pizza chart for this player.")
+            else:
+                col_chart, _ = st.columns([1, 1])
+                with col_chart:
+                    fig = render_career_pizza_chart(player, role, player_seasons)
+                    if fig is not None:
+                        st.pyplot(fig)
 
 
-
-
-        # Score trend
+        # ===================== SCORE TREND =====================
         st.markdown("### Score trend (all seasons)")
 
         score_options = []
@@ -979,6 +1381,7 @@ def main():
             )
             score_col = label_to_col[selected_label]
             score_trend_chart(df_player_all, score_col, selected_label)
+
 
     # ==================================================================
     # MODE 2: TOP LISTS
@@ -1055,7 +1458,6 @@ def main():
             df_view = df_view[df_view["90s"] >= min_90s]
 
         # ----- Age filter (optional, persistent) -----
-                # ----- Age filter (optional, persistent) -----
         if "Age" in df_view.columns:
             st.sidebar.markdown("**Age filter**")
             use_age_filter = st.sidebar.checkbox(
