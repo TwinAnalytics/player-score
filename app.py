@@ -19,7 +19,7 @@ from src.processing import prepare_positions, add_standard_per90
 
 PRIMARY_COLOR = "#1f77b4"  # main brand color (used for headline & band chart)
 # Brand / Theme colors
-APP_BG = "#020617"            # sehr dunkles Blau, App- & Chart-Background
+APP_BG = "#000000"            # sehr dunkles Blau, App- & Chart-Background
 GRID_COLOR = "#374151"
 TEXT_COLOR = "#e5e7eb"
 SLICE_COLOR = "cornflowerblue"
@@ -690,7 +690,7 @@ def load_feature_table_for_season(season: str) -> pd.DataFrame:
 # -------------------------------------------------------------------
 def main():
     st.set_page_config(
-        page_title="PlayerScore – Big-5 Player Rating",
+        page_title="PlayerScore",
         layout="wide",
         page_icon="⚽",
     )
@@ -806,7 +806,7 @@ def main():
             to compare football players across different leagues — regardless of country, competition level, 
             or data availability.
 
-            Our analysis engine continuously processes the latest publicly available performance data from FBref 
+            The analysis engine continuously processes the latest publicly available performance data from FBref 
             and combines it with a custom scoring logic that uses comprehensive Big-5 metrics as well as reduced 
             “Light” metrics for leagues with fewer statistical features.
             """
