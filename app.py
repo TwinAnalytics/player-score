@@ -645,7 +645,11 @@ def main():
         )
 
         # ---------- Player profile ----------
-        st.subheader(f"Player profile – {player}")
+        if profile_view == "Per season":
+            st.subheader(f"Player Profile – {player}")
+        else:
+            st.subheader(f"Player Profile – {player}")
+
 
         # DataFrames für diese Ansicht
         # df_player_all bleibt alle Saisons des Spielers (für Rolle + Trend)
@@ -657,7 +661,6 @@ def main():
         # Alle Saisons dieses Spielers (für Rolle + Trend)
         df_player_all = df_all[df_all["Player"] == player].copy()
 
-        # Aktuelle Ansicht
         if profile_view == "Per season":
             df_player = df_player_all[df_player_all["Season"] == season].copy()
         else:
@@ -666,7 +669,17 @@ def main():
         # Typical role (based on all seasons)
         typical_pos = df_player_all["Pos"].dropna().mode()
         typical_pos = typical_pos.iloc[0] if not typical_pos.empty else None
-        st.caption(get_role_label(typical_pos))
+
+        if profile_view == "Per season" and not df_player.empty:
+            pos_txt = df_player["Pos"].iloc[0] if "Pos" in df_player.columns else None
+            squad_txt = df_player["Squad"].iloc[0] if "Squad" in df_player.columns else None
+            details = " | ".join(x for x in [pos_txt, squad_txt] if x)
+            if details:
+                st.caption(details)
+        else:
+            # Fallback: typische Rolle (für Career-View)
+            st.caption(get_role_label(typical_pos))
+
 
         # Decide primary score dimension based on role (for squad assessment)
         role = typical_pos or (df_player["Pos"].iloc[0] if not df_player.empty and "Pos" in df_player.columns else None)
@@ -719,8 +732,8 @@ def main():
                         "squad_name": squad_name,
                     }
 
-        # Scores for current view (primary role score, same logic as Top Lists)
-        st.markdown("### Scores")
+        # # Scores for current view (primary role score, same logic as Top Lists)
+        st.markdown(f"Season:  {season}")
 
         # Ensure primary score + band exist for this view
         if not df_player.empty:
@@ -737,33 +750,33 @@ def main():
         ]
         existing_cols = [c for c in cols_show if c in df_player.columns]
 
-        if existing_cols and not df_player.empty:
-            df_scores = df_player[existing_cols].sort_values("Season")
+        # if existing_cols and not df_player.empty:
+        #     df_scores = df_player[existing_cols].sort_values("Season")
 
-            # Replace band with icons (like in Top Lists)
-            display_cols = [c for c in cols_show if c not in ("MainBand",)]
-            display_cols = [c for c in display_cols if c in df_scores.columns]
+        #     # Replace band with icons (like in Top Lists)
+        #     display_cols = [c for c in cols_show if c not in ("MainBand",)]
+        #     display_cols = [c for c in display_cols if c in df_scores.columns]
 
-            if "MainBand" in df_scores.columns:
-                df_scores["Band"] = df_scores["MainBand"].map(BAND_ICONS).fillna(df_scores["MainBand"])
-                display_cols.append("Band")
+        #     if "MainBand" in df_scores.columns:
+        #         df_scores["Band"] = df_scores["MainBand"].map(BAND_ICONS).fillna(df_scores["MainBand"])
+        #         display_cols.append("Band")
 
-            df_scores_display = df_scores[display_cols].rename(columns={"MainScore": "Score"})
+        #     df_scores_display = df_scores[display_cols].rename(columns={"MainScore": "Score"})
 
-            # 👉 Score als Integer ohne Nachkommastellen anzeigen
-            if "Score" in df_scores_display.columns:
-                df_scores_display["Score"] = (
-                     df_scores_display["Score"]
-                    .round()
-                    .astype(float)     # ← lässt auch NaN zu und bricht nicht
-                )
+        #     # 👉 Score als Integer ohne Nachkommastellen anzeigen
+        #     if "Score" in df_scores_display.columns:
+        #         df_scores_display["Score"] = (
+        #              df_scores_display["Score"]
+        #             .round()
+        #             .astype(float)     # ← lässt auch NaN zu und bricht nicht
+        #         )
 
 
 
-            st.dataframe(df_scores_display, use_container_width=True)
+        #     st.dataframe(df_scores_display, use_container_width=True)
 
-        else:
-            st.info("No season-level data available for this player and view.")
+        # else:
+        #     st.info("No season-level data available for this player and view.")
 
 
         # Summary metrics
@@ -771,44 +784,75 @@ def main():
 
         col1, col2, col3, col4 = st.columns(4)
 
-        total_seasons = df_player["Season"].nunique() if "Season" in df_player.columns else 0
-        total_minutes = int(df_player["Min"].sum()) if "Min" in df_player.columns else 0
-        total_90s = float(df_player["90s"].sum()) if "90s" in df_player.columns else 0.0
+        if profile_view == "Per season":
 
-        with col1:
-            st.metric("Seasons in view", total_seasons)
+            # Single-season Snapshot: Age, 90s, Score, Band
+            age = None
+            n_90s = None
+            main_score = None
+            main_band = None
 
-        with col2:
-            st.metric("Total minutes", total_minutes)
+            if not df_player.empty:
+                if "Age" in df_player.columns:
+                    age = df_player["Age"].iloc[0]
+                if "90s" in df_player.columns:
+                    n_90s = df_player["90s"].iloc[0]
+                if "MainScore" in df_player.columns:
+                    main_score = df_player["MainScore"].iloc[0]
+                if "MainBand" in df_player.columns:
+                    main_band = df_player["MainBand"].iloc[0]
 
-        with col3:
-            st.metric("Total 90s", f"{total_90s:.1f}")
+            band_icon = BAND_ICONS.get(main_band, main_band) if main_band is not None else None
 
-        # 👉 Average Score nur in der Career-Ansicht anzeigen
-        if profile_view == "Career":
+            with col1:
+                if isinstance(age, (int, float)) and not pd.isna(age):
+                    st.metric("Age", f"{age:.0f}")
+                else:
+                    st.metric("Age", "n/a")
+
+            with col2:
+                if isinstance(n_90s, (int, float)) and not pd.isna(n_90s):
+                    st.metric("90s played", f"{n_90s:.1f}")
+                else:
+                    st.metric("90s played", "n/a")
+
+            with col3:
+                if main_score is not None and not pd.isna(main_score):
+                    st.metric("Score", f"{main_score:.0f}")
+                else:
+                    st.metric("Score", "n/a")
+
+            with col4:
+                st.metric("Band", band_icon if band_icon is not None else "n/a")
+
+        else:
+            # Career / Multi-season Summary (alter Stil)
+            total_seasons = df_player["Season"].nunique() if "Season" in df_player.columns else 0
+            total_minutes = int(df_player["Min"].sum()) if "Min" in df_player.columns else 0
+            total_90s = float(df_player["90s"].sum()) if "90s" in df_player.columns else 0.0
+
+            with col1:
+                st.metric("Seasons in view", total_seasons)
+
+            with col2:
+                st.metric("Total minutes", total_minutes)
+
+            with col3:
+                st.metric("Total 90s", f"{total_90s:.1f}")
+
             avg_score = None
             if "MainScore" in df_player.columns and df_player["MainScore"].notna().any():
                 avg_score = df_player["MainScore"].mean()
 
             with col4:
                 if avg_score is not None:
-                    # gerundet, ohne Nachkommastellen
                     st.metric("Average score (career)", f"{avg_score:.0f}")
                 else:
                     st.metric("Average score (career)", "n/a")
 
 
-        # Squad score + verbal assessment for the primary dimension
-        if primary_squad_info is not None:
-            dim = primary_squad_info["dimension"]
-            st.markdown(
-                f"**Squad fit ({dim}):** "
-                f"{primary_squad_info['player_score']:.0f} vs squad average "
-                f"{primary_squad_info['squad_score']:.0f} "
-                f"({primary_squad_info['diff']:+.0f}) → "
-                f"{primary_squad_info['assessment']}."
-            )
 
+       #Squad score + verbal assessment for the primary dimension
         # Squad comparison (this season)
         if profile_view == "Per season" and not df_player.empty and not df_squad.empty:
             squad_name = df_player["Squad"].iloc[0] if "Squad" in df_player.columns else None
@@ -872,7 +916,7 @@ def main():
                                     delta=f"{diff_def:+.0f} vs squad",
                                 )
 
-                 # --- Pizza chart for key metrics ---
+        # --- Pizza chart for key metrics ---
         st.markdown("### Role metrics")
 
         if profile_view == "Per season":
