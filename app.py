@@ -275,7 +275,7 @@ def render_pizza_chart(
         ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
         ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
         ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
-        ("Attacking", ["npxG_Per90", "npxG/90"], "npxG"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-penalty\nxG"),
         ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
 
         ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
@@ -497,7 +497,7 @@ def render_career_pizza_chart(
         ("Attacking", ["Ast_Per90", "Ast/90"], "Assists"),
         ("Attacking", ["KP_Per90", "KP/90"], "Key\npasses"),
         ("Attacking", ["G-PK_Per90", "G-PK/90"], "Non-penalty\ngoals"),
-        ("Attacking", ["npxG_Per90", "npxG/90"], "npxG"),
+        ("Attacking", ["npxG_Per90", "npxG/90"], "Non-penalty\nxG"),
         ("Attacking", ["SoT_Per90", "SoT/90"], "Shots\non\ntarget"),
 
         ("Defending", ["TklW_Per90", "TklW/90"], "Tackles\nwon"),
