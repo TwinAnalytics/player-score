@@ -679,6 +679,7 @@ def render_role_scatter(
 
     row = df_player.iloc[0]
 
+
     # ---- Helper: Spaltennamen auflösen ----
     def resolve_col(candidates: list[str]) -> str | None:
         for c in candidates:
@@ -729,23 +730,65 @@ def render_role_scatter(
     # markiere ausgewählten Spieler
     plot_df["is_player"] = plot_df["Player"] == row.get("Player")
 
-    # ---- Skalen: für FW fix gezoomt, sonst dynamisch ----
+    
+    # ---- Outlier nur für Peers filtern, Spieler immer behalten ----
+    s_x = pd.to_numeric(plot_df[x_col], errors="coerce")
+    s_y = pd.to_numeric(plot_df[y_col], errors="coerce")
+
+    qx = s_x.quantile(0.99)
+    qy = s_y.quantile(0.99)
+
+    player_name = row.get("Player")
+    player_mask = plot_df["Player"] == player_name
+
+    if np.isfinite(qx) and np.isfinite(qy):
+        # Nur Peers oberhalb des 99%-Quantils rausschneiden,
+        # der aktuelle Spieler (player_mask) bleibt IMMER drin.
+        plot_df = plot_df[((s_x <= qx) & (s_y <= qy)) | player_mask]
+
+    if plot_df.empty:
+        st.info("No comparison data available for role scatter plot.")
+        return None
+
+    # markiere ausgewählten Spieler (nach dem Filtern neu berechnen)
+    plot_df["is_player"] = plot_df["Player"] == row.get("Player")
+
+    # ---- Hilfsfunktion für robuste Skalen ----
+    def compute_domain(series, default_max: float = 1.0, q: float = 0.99) -> tuple[float, float]:
+        s = pd.to_numeric(series, errors="coerce").dropna()
+        if s.empty:
+            return (0.0, default_max)
+
+        try:
+            qv = s.quantile(q)
+        except Exception:
+            qv = s.max()
+
+        if not np.isfinite(qv) or qv <= 0:
+            qv = s.max()
+
+        if not np.isfinite(qv) or qv <= 0:
+            qv = default_max
+
+        upper = float(qv) * 1.05
+        if upper <= 0:
+            upper = default_max
+
+        # Sicherstellen, dass max > min
+        if upper <= 0.0:
+            upper = default_max
+
+        return (0.0, upper)
+
+    # ---- Skalen: FW feste Range, MF/DF dynamisch ----
     if role in ("FW", "Off_MF"):
-        # Fester Zoom für FW: cluster um 0.5/0.8 wird groß angezeigt
-        x_domain = (0.0, 1.2)   # xG per 90
-        y_domain = (0.0, 1.5)   # Goals per 90
+        # feste, stabile Skala für Stürmer
+        x_domain = (0.0, 0.9)   # xG per 90
+        y_domain = (0.0, 1.3)   # Goals per 90
     else:
-        # Dynamisch aus Daten (MF & DF)
-        max_x = float(plot_df[x_col].max())
-        max_y = float(plot_df[y_col].max())
-
-        if not np.isfinite(max_x) or max_x <= 0:
-            max_x = 1.0
-        if not np.isfinite(max_y) or max_y <= 0:
-            max_y = 1.0
-
-        x_domain = (0.0, max_x * 1.05)
-        y_domain = (0.0, max_y * 1.05)
+        # MF / DF: quantilbasiert, aber robust
+        x_domain = compute_domain(plot_df[x_col], default_max=1.0, q=0.99)
+        y_domain = compute_domain(plot_df[y_col], default_max=1.0, q=0.99)
 
     base = alt.Chart(plot_df)
 
@@ -754,7 +797,7 @@ def render_role_scatter(
         alt.datum.is_player == False
     ).mark_circle(
         size=35,
-        opacity=0.25,
+        opacity=0.18,
     ).encode(
         x=alt.X(
             f"{x_col}:Q",
@@ -769,11 +812,15 @@ def render_role_scatter(
         tooltip=["Player", "Squad"] + (["Season"] if "Season" in plot_df.columns else []),
     )
 
-    # Ausgewählter Spieler
+    
+    # Selected Player
     player_layer = base.transform_filter(
         alt.datum.is_player == True
     ).mark_circle(
-        size=90,
+        size=140,          # größer
+        opacity=1.0,       # volle Deckkraft
+        stroke="#F9FAFB",  # dünne helle Umrandung
+        strokeWidth=1.5,
     ).encode(
         x=alt.X(f"{x_col}:Q"),
         y=alt.Y(f"{y_col}:Q"),
@@ -781,8 +828,22 @@ def render_role_scatter(
         tooltip=["Player", "Squad"] + (["Season"] if "Season" in plot_df.columns else []),
     )
 
-    chart = (peers + player_layer).properties(
-        height=260,
+    player_label = base.transform_filter(
+        alt.datum.is_player == True
+    ).mark_text(
+        dx=30,              # leichte Verschiebung nach rechts
+        dy=-15,             # leichte Verschiebung nach oben
+        fontSize=11,
+        fontWeight="bold",
+        color="#E5E7EB",
+    ).encode(
+        x=alt.X(f"{x_col}:Q"),
+        y=alt.Y(f"{y_col}:Q"),
+        text="Player",
+    )
+
+    chart = (peers + player_layer + player_label).properties(
+        height=550,
         title=chart_title,
     ).configure_axis(
         grid=True,
