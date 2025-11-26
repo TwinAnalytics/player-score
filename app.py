@@ -863,6 +863,134 @@ def render_role_scatter(
 
     return chart
 
+def render_score_age_scatter(
+    df_all_filtered: pd.DataFrame,
+    df_top: pd.DataFrame,
+):
+    """
+    Scatterplot: Score vs Age für alle gefilterten Spieler.
+    - x = Age
+    - y = MainScore
+    - Top-N-Spieler aus df_top werden hervorgehoben.
+    """
+
+    if "MainScore" not in df_all_filtered.columns or "Age" not in df_all_filtered.columns:
+        st.info("Score vs Age Scatter: benötige Spalten 'MainScore' und 'Age'.")
+        return None
+
+    df_scatter = df_all_filtered[["Player", "Squad", "Pos", "Age", "MainScore", "90s"]].copy()
+
+    # Age numerisch erzwingen
+    df_scatter["Age_num"] = pd.to_numeric(df_scatter["Age"], errors="coerce")
+    df_scatter = df_scatter.dropna(subset=["Age_num", "MainScore"])
+
+    if df_scatter.empty:
+        st.info("Keine gültigen Daten für Score-vs-Age verfügbar.")
+        return None
+    
+    # ------ SKALEN BERECHNEN ------
+    age_min = float(df_scatter["Age_num"].min())
+    age_max = float(df_scatter["Age_num"].max())
+    score_min = float(df_scatter["MainScore"].min())
+    score_max = float(df_scatter["MainScore"].max())
+
+    # optional ein bisschen Puffer
+    age_domain = (max(15, age_min - 1), age_max + 1)
+    score_domain = (max(0, score_min - 20), score_max + 20)
+
+    # Top-N markieren
+    top_players = set(df_top["Player"].unique())
+    df_scatter["is_top"] = df_scatter["Player"].isin(top_players)
+
+    # Punktgröße nach 90s (falls vorhanden)
+    if "90s" in df_scatter.columns:
+        df_scatter["MinutesFactor"] = pd.to_numeric(df_scatter["90s"], errors="coerce").fillna(0)
+    else:
+        df_scatter["MinutesFactor"] = 0.0
+
+    base = alt.Chart(df_scatter)
+
+    # Peers (alle übrigen Spieler)
+    peers = base.transform_filter(
+        alt.datum.is_top == False
+    ).mark_circle(
+        opacity=0.25
+    ).encode(
+        x=alt.X(
+            "Age_num:Q",
+            title="Age",
+            scale=alt.Scale(domain=age_domain),
+        ),
+        y=alt.Y(
+            "MainScore:Q",
+            title="Primary role score",
+            scale=alt.Scale(domain=score_domain),
+        ),
+        size=alt.Size(
+            "MinutesFactor:Q",
+            title="90s played",
+            legend=None,
+        ),
+        color=alt.value("#6b7280"),  # graue Peers
+        tooltip=[
+            "Player",
+            "Squad",
+            "Pos",
+            alt.Tooltip("Age_num:Q", title="Age"),
+            alt.Tooltip("MainScore:Q", title="Score", format=".1f"),
+            alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
+        ],
+    )
+
+    # Top-N hervorgehoben
+    tops = base.transform_filter(
+        alt.datum.is_top == True
+    ).mark_circle(
+        opacity=1.0,
+        stroke="#F9FAFB",
+        strokeWidth=1.2,
+    ).encode(
+        x="Age_num:Q",
+        y="MainScore:Q",
+        size=alt.Size(
+            "MinutesFactor:Q",
+            title="90s played",
+            legend=None,
+        ),
+        color=alt.value(VALUE_COLOR),
+        tooltip=[
+            "Player",
+            "Squad",
+            "Pos",
+            alt.Tooltip("Age_num:Q", title="Age"),
+            alt.Tooltip("MainScore:Q", title="Score", format=".1f"),
+            alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
+        ],
+    )
+
+    chart = (
+        (peers + tops)
+        .properties(
+            height=320,
+            title="Score vs Age",
+        )
+        .configure_axis(
+            grid=True,
+            gridOpacity=0.1,
+            gridColor="#4b5563",
+            labelColor="#E5E7EB",
+            titleColor="#E5E7EB",
+        )
+        .configure_title(
+            color="#E5E7EB",
+            fontSize=20,
+            anchor="start",
+        )
+        .configure_view(strokeWidth=0)
+    )
+
+    return chart
+
 @st.cache_data
 def load_feature_table_for_season(season: str) -> pd.DataFrame:
     """
@@ -1907,6 +2035,16 @@ def main():
 
         if chart_main is not None:
             st.altair_chart(chart_main, use_container_width=True)
+
+        
+                # ---- Scatter: Score vs Age (für alle gefilterten Spieler) ----
+        chart_scatter = render_score_age_scatter(
+            df_all_filtered=df_view,
+            df_top=df_top,
+        )
+
+        if chart_scatter is not None:
+            st.altair_chart(chart_scatter, use_container_width=True)
 
     
 
