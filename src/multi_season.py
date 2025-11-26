@@ -12,7 +12,7 @@ def load_all_seasons(processed_dir: Path) -> pd.DataFrame:
 
     Wichtig:
     - Ignoriert eine eventuell vorhandene player_scores_all_seasons_long.csv,
-      damit immer der aktuelle Stand (inkl. neuer Ligen wie 2. Bundesliga)
+      damit immer der aktuelle Stand
       verwendet wird.
     """
     processed_dir = Path(processed_dir)

@@ -13,3 +13,6 @@ __pycache__/
 
 # Rohdaten nicht ins Repo
 # Data/Raw/
+
+#API Token sportmonks
+*.env

@@ -301,7 +301,7 @@ DEF_DM_BENCHMARKS_ABS = {
 }
 
 # ------------------------------------------------------------------
-# Light-Varianten für Ligen mit weniger Metriken (z.B. 2. Bundesliga)
+#Light-Varianten für Wettbewerbe mit weniger verfügbaren Metriken
 # ------------------------------------------------------------------
 
 # === OFFENSIVE LIGHT: FW / Off_MF ================================
@@ -375,11 +375,9 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
 
     WICHTIG:
     Wir entscheiden das Score-Set (voll vs. Light) PRO WETTBEWERB (Comp),
-    damit Ligen mit weniger Metriken (z.B. 2. Bundesliga) automatisch
+    damit Wettbewerbe mit weniger verfügbaren Metriken automatisch
     die Light-Variante nutzen, auch wenn Big-5-Spieler im selben DataFrame sind.
     """
-    df = add_light_derived_metrics(df)
-
     frames: list[pd.DataFrame] = []
 
     # Helper-Funktion: pro Pos und pro Comp scoren

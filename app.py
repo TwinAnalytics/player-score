@@ -653,7 +653,154 @@ def render_career_pizza_chart(
 
     return fig
 
+def render_role_scatter(
+    df_comp: pd.DataFrame,
+    df_player: pd.DataFrame,
+    role: str,
+):
+    """
+    Scatter plot for role-specific attacking/creation metrics.
 
+    FW / Off_MF:
+        y = Goals per 90      (Gls_Per90 / Gls/90)
+        x = xG per 90         (xG_Per90 / xG/90)
+
+    MF:
+        y = Assists per 90    (Ast_Per90 / Ast/90)
+        x = xAG per 90        (xAG_Per90 / xAG/90 / xA_Per90 / xA/90)
+
+    DF / Def_MF:
+        y = Tackles won per 90      (TklW_Per90 / TklW/90)
+        x = Interceptions per 90    (Int_Per90 / Int/90)
+    """
+    if df_player.empty or role is None:
+        st.info("No data available for role scatter plot.")
+        return None
+
+    row = df_player.iloc[0]
+
+    # ---- Helper: Spaltennamen auflösen ----
+    def resolve_col(candidates: list[str]) -> str | None:
+        for c in candidates:
+            if c in df_comp.columns and c in row.index:
+                return c
+        return None
+
+    # ---- Rollen-spezifische Definition ----
+    if role in ("FW", "Off_MF"):
+        y_candidates = ["Gls_Per90", "Gls/90"]
+        x_candidates = ["xG_Per90", "xG/90"]
+        y_label = "Goals per 90"
+        x_label = "xG per 90"
+        chart_title = "Big-5 comparison – FW metrics"
+    elif role == "MF":
+        y_candidates = ["Ast_Per90", "Ast/90"]
+        x_candidates = ["xAG_Per90", "xAG/90", "xA_Per90", "xA/90"]
+        y_label = "Assists per 90"
+        x_label = "xAG per 90"
+        chart_title = "Big-5 comparison – MF metrics"
+    else:
+        # Default: Defender-Metriken
+        y_candidates = ["TklW_Per90", "TklW/90"]
+        x_candidates = ["Int_Per90", "Int/90"]
+        y_label = "Tackles won per 90"
+        x_label = "Interceptions per 90"
+        chart_title = "Big-5 comparison – DF metrics"
+
+    x_col = resolve_col(x_candidates)
+    y_col = resolve_col(y_candidates)
+
+    if x_col is None or y_col is None:
+        st.info("Not enough data available to build the role scatter plot for this player.")
+        return None
+
+    # ---- Vergleichsgruppe vorbereiten ----
+    cols_needed = ["Player", "Squad", x_col, y_col]
+    if "Season" in df_comp.columns:
+        cols_needed.append("Season")
+
+    plot_df = df_comp[cols_needed].copy()
+    plot_df = plot_df.dropna(subset=[x_col, y_col])
+
+    if plot_df.empty:
+        st.info("No comparison data available for role scatter plot.")
+        return None
+
+    # markiere ausgewählten Spieler
+    plot_df["is_player"] = plot_df["Player"] == row.get("Player")
+
+    # ---- Skalen: für FW fix gezoomt, sonst dynamisch ----
+    if role in ("FW", "Off_MF"):
+        # Fester Zoom für FW: cluster um 0.5/0.8 wird groß angezeigt
+        x_domain = (0.0, 1.2)   # xG per 90
+        y_domain = (0.0, 1.5)   # Goals per 90
+    else:
+        # Dynamisch aus Daten (MF & DF)
+        max_x = float(plot_df[x_col].max())
+        max_y = float(plot_df[y_col].max())
+
+        if not np.isfinite(max_x) or max_x <= 0:
+            max_x = 1.0
+        if not np.isfinite(max_y) or max_y <= 0:
+            max_y = 1.0
+
+        x_domain = (0.0, max_x * 1.05)
+        y_domain = (0.0, max_y * 1.05)
+
+    base = alt.Chart(plot_df)
+
+    # Peers
+    peers = base.transform_filter(
+        alt.datum.is_player == False
+    ).mark_circle(
+        size=35,
+        opacity=0.25,
+    ).encode(
+        x=alt.X(
+            f"{x_col}:Q",
+            title=x_label,
+            scale=alt.Scale(domain=list(x_domain)),
+        ),
+        y=alt.Y(
+            f"{y_col}:Q",
+            title=y_label,
+            scale=alt.Scale(domain=list(y_domain)),
+        ),
+        tooltip=["Player", "Squad"] + (["Season"] if "Season" in plot_df.columns else []),
+    )
+
+    # Ausgewählter Spieler
+    player_layer = base.transform_filter(
+        alt.datum.is_player == True
+    ).mark_circle(
+        size=90,
+    ).encode(
+        x=alt.X(f"{x_col}:Q"),
+        y=alt.Y(f"{y_col}:Q"),
+        color=alt.value(VALUE_COLOR),
+        tooltip=["Player", "Squad"] + (["Season"] if "Season" in plot_df.columns else []),
+    )
+
+    chart = (peers + player_layer).properties(
+        height=260,
+        title=chart_title,
+    ).configure_axis(
+        grid=True,
+        gridOpacity=0.15,
+        gridColor="#4b5563",
+        domain=True,
+        domainColor="#4b5563",
+        labelColor="#E5E7EB",
+        titleColor="#E5E7EB",
+    ).configure_title(
+        color="#E5E7EB",
+        fontSize=13,
+        anchor="start",
+    ).configure_view(
+        strokeWidth=0
+    )
+
+    return chart
 
 @st.cache_data
 def load_feature_table_for_season(season: str) -> pd.DataFrame:
@@ -684,6 +831,7 @@ def load_feature_table_for_season(season: str) -> pd.DataFrame:
     df = add_standard_per90(df)
 
     return df
+
 
 # -------------------------------------------------------------------
 # Main app
@@ -835,8 +983,8 @@ def main():
 
         st.markdown(
             """
-            The PlayerScore database already contains several thousand players from Europe’s top leagues, 
-            the 2. Bundesliga, and multiple historical seasons — and it grows with every pipeline run.
+            The PlayerScore database already contains several thousand players from Europe’s top-5 leagues
+            and multiple historical seasons — and it grows with every pipeline run.
             """
         )
 
@@ -924,7 +1072,7 @@ def main():
 
         # ----- Header -----
         if profile_view == "Per season" and season is not None:
-            st.subheader(f"Player Profile – {player}, {season}")
+            st.subheader(f"Player Profile – {player}")
         else:
             st.subheader(f"Player Profile – {player}")
 
@@ -1140,7 +1288,7 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Score Career Avg</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Score (Career Avg)</div>
                         <div style="font-size: 2.5rem; font-weight: 600; color: {VALUE_COLOR};">{score_value}</div>
                     </div>
                     """,
@@ -1165,16 +1313,18 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-        # ===================== PIZZA CHART =====================
+        # ===================== ROLE METRICS =====================
         st.markdown("### Role metrics")
 
-        if profile_view == "Per season" and season is not None:
+        if profile_view == "Per season":
+            # 1) Feature-Tabelle für diese Season laden
             try:
                 df_features_season = load_feature_table_for_season(season)
             except FileNotFoundError:
                 st.info("No raw feature data found for this season.")
                 df_features_season = pd.DataFrame()
 
+            # 2) Spielerzeilen aus Feature-Tabelle ziehen
             if not df_features_season.empty:
                 df_feat_player = df_features_season[
                     df_features_season["Player"] == player
@@ -1183,13 +1333,20 @@ def main():
                 df_feat_player = pd.DataFrame()
 
             if role is not None and not df_feat_player.empty:
-                col_chart, _ = st.columns([1, 1])
-                with col_chart:
+                col_pizza, col_scatter = st.columns(2)
+
+                # --- links: Pizza-Chart ---
+                with col_pizza:
                     fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
                     if fig is not None:
-                        st.pyplot(fig)
-            else:
-                st.info("Not enough metrics available to build a pizza chart for this player (Big-5 only).")
+                        st.pyplot(fig, use_container_width=True)
+
+                # --- rechts: Scatter-Plot ---
+                with col_scatter:
+                    scatter_chart = render_role_scatter(df_features_season, df_feat_player, role)
+                    if scatter_chart is not None:
+                        st.altair_chart(scatter_chart, use_container_width=True)
+                    
 
         else:
             # Career-Pizza
@@ -1206,6 +1363,7 @@ def main():
                     fig = render_career_pizza_chart(player, role, player_seasons)
                     if fig is not None:
                         st.pyplot(fig)
+
 
         # ===================== SCORE TREND =====================
         if profile_view == "Career":
@@ -1226,16 +1384,14 @@ def main():
                 st.info("No primary role score available for this player.")
                 return
 
-            # Daten vorbereiten
+            # Daten vorbereiten: Season, Squad, Score
             plot_df = (
-                df_player_all[["Season", score_col]]
-                .dropna()
+                df_player_all[["Season", "Squad", score_col]]
+                .dropna(subset=[score_col])
                 .sort_values("Season")
             )
 
-            if plot_df.empty:
-                st.info("No score data available for trend chart.")
-                return
+
 
             # feste Y-Achse + Ticks 0 / 500 / 1000
             y_enc = alt.Y(
@@ -1251,14 +1407,20 @@ def main():
                 .mark_line(
                     point=False,
                     strokeWidth=2,
-                    interpolate="monotone",   # smooth curve
+                    interpolate="monotone",
                     color=VALUE_COLOR,
                 )
                 .encode(
                     x=alt.X("Season:O", title="Season"),
                     y=y_enc,
+                    tooltip=[
+                        alt.Tooltip("Season:O", title="Season"),
+                        alt.Tooltip("Squad:N", title="Squad"),
+                        alt.Tooltip(f"{score_col}:Q", title="Score", format=".0f"),
+                    ],
                 )
             )
+    
 
             # Punkte (exakte Werte)
             points = (
@@ -1271,6 +1433,11 @@ def main():
                 .encode(
                     x="Season:O",
                     y=f"{score_col}:Q",
+                    tooltip=[
+                        alt.Tooltip("Season:O", title="Season"),
+                        alt.Tooltip("Squad:N", title="Squad"),
+                        alt.Tooltip(f"{score_col}:Q", title="Score", format=".0f"),
+                    ],
                 )
             )
 
@@ -1289,6 +1456,8 @@ def main():
                     text=alt.Text(f"{score_col}:Q", format=".0f"),
                 )
             )
+
+      
 
             # ----------------- Dezente Band-Linien + Labels rechts -----------------
             # letzte Saison als Anker für die Label-X-Position

@@ -2,10 +2,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.pipeline import run_full_pipeline
-from src.scraping_fbref_player_stats import (
-    run_scraping_for_season,
-    run_scraping_for_2_bundesliga,
-)
+from src.scraping_fbref_player_stats import run_scraping_for_season
 
 from src.multi_season import (
     load_all_seasons,
@@ -26,25 +23,6 @@ SEASONS = [
     "2025-2026",
 ]
 
-# Für welche Saisons sollen zusätzlich 2.-Bundesliga-Spieler gescrapt werden?
-SEASONS_WITH_2BL = {
-    "2017-2018",
-    "2018-2019",
-    "2019-2020",
-    "2020-2021",
-    "2021-2022",
-    "2022-2023",
-    "2023-2024",
-    "2024-2025",
-    "2025-2026",
-}
-
-
-# Für welche Saisons sollen zusätzlich 2.-Bundesliga-Spieler gescrapt werden?
-SEASONS_WITH_2BL = set(SEASONS)
-
-
-
 if __name__ == "__main__":
     root = Path(__file__).resolve().parent
     raw_dir = root / "Data" / "Raw"
@@ -59,37 +37,8 @@ if __name__ == "__main__":
         # 1a) Big-5 scrapen -> players_data_light-<Season>.csv
         run_scraping_for_season(season, output_folder=raw_dir)
 
-        # 1b) Optional: 2. Bundesliga dazunehmen
-        if season in SEASONS_WITH_2BL:
-            print(f"--- Adding 2. Bundesliga for {season} ---")
 
-            light_path = raw_dir / f"players_data_light-{season}.csv"
-            backup_path = raw_dir / f"players_data_light-{season}-big5.csv"
-
-            # Big-5-Light-File sichern
-            if light_path.exists():
-                light_path.rename(backup_path)
-            else:
-                raise FileNotFoundError(
-                    f"Erwarte {light_path}, aber Datei existiert nicht. "
-                    "Ist run_scraping_for_season fehlgeschlagen?"
-                )
-
-            # 2. Bundesliga scrapen -> überschreibt players_data_light-<Season>.csv
-            run_scraping_for_2_bundesliga(season, output_folder=raw_dir)
-
-            # Big-5 + 2BL mergen
-            df_big5 = pd.read_csv(backup_path)
-            df_2bl = pd.read_csv(light_path)
-            df_merged = pd.concat([df_big5, df_2bl], ignore_index=True)
-
-            df_merged.to_csv(light_path, index=False)
-            print(f"Merged Big-5 + 2. Bundesliga → {light_path.name}")
-
-            # Backup optional löschen
-            backup_path.unlink(missing_ok=True)
-
-        # 1c) Scoring-Pipeline: aus players_data_light-<Season>.csv -> player_scores-<Season>.csv
+        # 1b) Scoring-Pipeline: aus players_data_light-<Season>.csv -> player_scores-<Season>.csv
         out = run_full_pipeline(season, raw_dir, processed_dir)
         print(f"Fertiger Score-Export: {out}")
 
