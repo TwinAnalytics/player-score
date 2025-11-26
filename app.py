@@ -1869,10 +1869,10 @@ def main():
         # ----- Top N -----
         top_n = st.sidebar.slider(
             "Top N players",
-            10,
+            3,
             50,
             10,
-            5,
+            1,
             key="top_topn",
         )
 
