@@ -893,6 +893,123 @@ def load_feature_table_for_season(season: str) -> pd.DataFrame:
 
     return df
 
+def render_toplist_bar(
+    df: pd.DataFrame,
+    metric_col: str,
+    metric_label: str,
+    title: str,
+    top_n: int,
+    ascending: bool = False,  # False = beste zuerst
+):
+    if metric_col not in df.columns:
+        st.info(f"Keine Spalte '{metric_col}' gefunden.")
+        return None
+
+    df_plot = (
+        df[["Player", "Squad", metric_col]]
+        .dropna(subset=[metric_col])
+        .copy()
+    )
+
+    if df_plot.empty:
+        st.info(f"Keine gültigen Werte für {metric_label}.")
+        return None
+
+    # sort ascending/descending
+    df_plot = df_plot.sort_values(metric_col, ascending=ascending).head(top_n)
+    df_plot["Player_order"] = df_plot["Player"]
+
+    # explizite Reihenfolge der Y-Achse (damit oben/unten passt)
+    y_order = df_plot["Player_order"].tolist()
+
+    max_val = float(df_plot[metric_col].max())
+    x_scale = alt.Scale(domain=(0, max_val * 1.05))
+
+    # --- Layer 1: Balken ---
+    bars = (
+        alt.Chart(df_plot)
+        .mark_bar(cornerRadiusTopRight=6, cornerRadiusBottomRight=6)
+        .encode(
+            x=alt.X(
+                f"{metric_col}:Q",
+                scale=x_scale,
+                axis=None,          # x-Achse komplett ausblenden
+            ),
+            y=alt.Y(
+                "Player_order:N",
+                sort=y_order,
+                axis=alt.Axis(
+                    labels=False,     # keine Namen links
+                    ticks=False,
+                    title=None,
+                    domain=False,
+                    grid=False,       # oder True, wenn du horizontale Linien magst
+                ),
+            ),
+            tooltip=[
+                "Player",
+                "Squad",
+                alt.Tooltip(f"{metric_col}:Q", title=metric_label, format=".2f"),
+            ],
+            color=alt.value(VALUE_COLOR),
+        )
+    )
+
+    # --- Layer 2: Score im Balken (rechts) ---
+    score_text = (
+        alt.Chart(df_plot)
+        .mark_text(
+            align="right",
+            baseline="middle",
+            dx=-6,               # ein bisschen nach links, in den Balken hinein
+            fontSize=15,
+            color="#0f172a",     # dunkler, damit im türkis gut lesbar
+            fontWeight="bold",
+        )
+        .encode(
+            x=alt.X(f"{metric_col}:Q", scale=x_scale),
+            y=alt.Y("Player_order:N", sort=y_order),
+            text=alt.Text(f"{metric_col}:Q", format=".2f"),
+        )
+    )
+
+    # --- Layer 3: Spielername rechts vom Balken ---
+    name_text = (
+        alt.Chart(df_plot)
+        .mark_text(
+            align="left",
+            baseline="middle",
+            dx=6,                # ein paar Pixel rechts vom Balken
+            fontSize=12,
+            color="#E5E7EB",
+        )
+        .encode(
+            x=alt.X(f"{metric_col}:Q", scale=x_scale),
+            y=alt.Y("Player_order:N", sort=y_order),
+            text="Player",
+        )
+    )
+
+    chart = (
+        (bars + score_text + name_text)
+        .properties(
+            height=26 * len(df_plot) + 20,
+            title=title,
+        )
+        .configure_axis(
+            labelColor="#E5E7EB",
+            titleColor="#E5E7EB",
+        )
+        .configure_title(
+            color="#E5E7EB",
+            fontSize=20,
+            anchor="start",
+        )
+        .configure_view(strokeWidth=0)
+    )
+
+    return chart
+
 
 # -------------------------------------------------------------------
 # Main app
@@ -1614,6 +1731,29 @@ def main():
         # Ausgangsbasis für Toplists (eine Saison)
         df_view = df_all[df_all["Season"] == season].copy()
 
+
+        # ----- League Filter -----
+        if "Comp" in df_view.columns:
+            nations = sorted(df_view["Comp"].dropna().unique())
+            nation_options = ["All"] + nations
+
+            if "toplists_nation" not in st.session_state:
+                st.session_state["toplists_nation"] = "All"
+
+            # Falls gespeicherte Nation in dieser Saison nicht vorkommt -> auf "All"
+            if st.session_state["toplists_nation"] not in nation_options:
+                st.session_state["toplists_nation"] = "All"
+
+            nation_sel = st.sidebar.selectbox(
+                "League",
+                nation_options,
+                index=nation_options.index(st.session_state["toplists_nation"]),
+                key="toplists_nation",
+            )
+
+            if nation_sel != "All":
+                df_view = df_view[df_view["Comp"] == nation_sel]
+
         # ----- Club filter (persistent across seasons) -----
         if "Squad" in df_view.columns:
             clubs = sorted(df_view["Squad"].dropna().unique())
@@ -1673,7 +1813,7 @@ def main():
         if "Age" in df_view.columns:
             st.sidebar.markdown("**Age filter**")
             use_age_filter = st.sidebar.checkbox(
-                "Enable age filter (e.g. U23)",
+                "Enable Age Filter",
                 value=False,
                 key="top_use_age_filter",
             )
@@ -1687,7 +1827,7 @@ def main():
                     # ---- Session-State für max Age initialisieren / clampen ----
                     if "top_age_max" not in st.session_state:
                         # Startwert nur beim allerersten Mal
-                        st.session_state["top_age_max"] = min(23, max_age)
+                        st.session_state["top_age_max"] = min(20, max_age)
                     else:
                         # Falls sich der Altersbereich mit der Season ändert:
                         current = st.session_state["top_age_max"]
@@ -1726,121 +1866,49 @@ def main():
             st.warning("No players with a primary score found for the selected filters.")
             return
 
-        # ----- Bands: Checkbox-Gruppe (Standard: alle an, persistent) -----
-        if "MainBand" in df_view.columns:
-            bands_available = list(df_view["MainBand"].dropna().unique())
-            bands_sorted = [b for b in BAND_ORDER if b in bands_available] + [
-                b for b in bands_available if b not in BAND_ORDER
-            ]
-
-            st.sidebar.markdown("**Bands**")
-
-            selected_bands = []
-            for b in bands_sorted:
-                label = BAND_ICONS.get(b, b)
-                checked = st.sidebar.checkbox(
-                    label,
-                    value=True,               # beim ersten Laden: alle aktiv
-                    key=f"top_band_{b}",      # persistent über Seasons
-                )
-                if checked:
-                    selected_bands.append(b)
-
-            if selected_bands:
-                df_view = df_view[df_view["MainBand"].isin(selected_bands)]
-
-        if df_view.empty:
-            st.warning("No players found after applying band filters.")
-            return
-
         # ----- Top N -----
         top_n = st.sidebar.slider(
             "Top N players",
             10,
-            200,
-            50,
+            500,
             10,
+            5,
             key="top_topn",
         )
 
-        st.markdown(f"### Top {top_n} players by primary role score – Season {season}")
+        sort_mode = st.sidebar.radio(
+            "Sort order",
+            ("Highest score first", "Lowest score first"),
+            index=0,
+            key="top_sort_order",
+        )
+        ascending = sort_mode == "Lowest score first"
 
-        # Spalten für die Tabelle
-        cols_top = [
-            "Player",
-            "Squad",
-            "Age",
-            "Pos",
-            "Min",
-            "90s",
-            "MainScore",
-            "MainBand",
-        ]
-        cols_top = [c for c in cols_top if c in df_view.columns]
+        #st.markdown(f"### Top {top_n} players by primary role score – Season {season}")
+
+        # ---- Toplist-Bar-Chart für MainScore ----
+        # nach allen Filtern (Club, Pos, Age, Band, Min 90s) ist df_view ready
 
         df_top = (
-            df_view[cols_top]
-            .sort_values("MainScore", ascending=False)
+            df_view
+            .sort_values("MainScore", ascending=ascending)
             .head(top_n)
+            .copy()
         )
 
-        # Band mit Icons ersetzen
-        display_cols = [c for c in cols_top if c not in ("MainBand",)]
-        if "MainBand" in df_top.columns:
-            df_top["Band"] = df_top["MainBand"].map(BAND_ICONS).fillna(df_top["MainBand"])
-            display_cols.append("Band")
+        chart_main = render_toplist_bar(
+            df=df_top,
+            metric_col="MainScore",
+            metric_label="Primary role score",
+            title=f"Top {len(df_top)} Players by Primary Role Score",
+            top_n=len(df_top),
+            ascending=ascending,
+        )
 
-        # Anzeige: MainScore als "Score" benennen
-        df_top_display = df_top[display_cols].rename(columns={"MainScore": "Score"})
+        if chart_main is not None:
+            st.altair_chart(chart_main, use_container_width=True)
 
-        # 👉 Score als Integer ohne Nachkommastellen anzeigen
-        if "Score" in df_top_display.columns:
-            df_top_display["Score"] = (
-                df_top_display["Score"]
-                .round()
-                .astype("Int64")
-            )
-        st.dataframe(df_top_display, use_container_width=True)
-
-        # Band-Verteilung (gefilterte Spieler)
-        if "MainBand" in df_view.columns:
-            st.markdown("### Band distribution (filtered players)")
-
-            # Schritt 1: Counts berechnen und in DataFrame umwandeln
-            band_counts = (
-                df_view["MainBand"]
-                .value_counts()
-                .reindex(BAND_ORDER, fill_value=0)
-            )
-
-            band_counts = band_counts.reset_index()
-            band_counts.columns = ["Band", "Count"]  # sorgt garantiert für die Spaltennamen
-
-            # Schritt 2: Kategorie-Reihenfolge explizit setzen
-            band_counts["Band"] = pd.Categorical(
-                band_counts["Band"],
-                categories=BAND_ORDER,
-                ordered=True,
-            )
-
-            # Schritt 3: Altair-Bar-Chart mit fixer Sortierung
-            chart = (
-                alt.Chart(band_counts)
-                 .mark_bar(size=30)
-                 .encode(
-                     x=alt.X(
-                        "Band:N",
-                        sort=BAND_ORDER,
-                        title="Band",
-                         scale=alt.Scale(paddingInner=0.4, paddingOuter=0.2),
-                ),
-                    y=alt.Y("Count:Q", title="Number of players"),
-                    tooltip=["Band", "Count"],
-                    color=alt.value(PRIMARY_COLOR),  # <- same color as Home headline
-                )
-             )
-            st.altair_chart(chart, use_container_width=True)
-
+    
 
 if __name__ == "__main__":
     main()
