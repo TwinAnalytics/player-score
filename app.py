@@ -661,18 +661,6 @@ def render_role_scatter(
 ):
     """
     Scatter plot for role-specific attacking/creation metrics.
-
-    FW / Off_MF:
-        y = Goals per 90      (Gls_Per90 / Gls/90)
-        x = xG per 90         (xG_Per90 / xG/90)
-
-    MF:
-        y = Assists per 90    (Ast_Per90 / Ast/90)
-        x = xAG per 90        (xAG_Per90 / xAG/90 / xA_Per90 / xA/90)
-
-    DF / Def_MF:
-        y = Tackles won per 90      (TklW_Per90 / TklW/90)
-        x = Interceptions per 90    (Int_Per90 / Int/90)
     """
     if df_player.empty or role is None:
         st.info("No data available for role scatter plot.")
@@ -680,6 +668,9 @@ def render_role_scatter(
 
     row = df_player.iloc[0]
 
+    # eindeutige Identität des Spielers
+    player_name = row.get("Player")
+    player_squad = row.get("Squad")
 
     # ---- Helper: Spaltennamen auflösen ----
     def resolve_col(candidates: list[str]) -> str | None:
@@ -728,10 +719,18 @@ def render_role_scatter(
         st.info("No comparison data available for role scatter plot.")
         return None
 
-    # markiere ausgewählten Spieler
-    plot_df["is_player"] = plot_df["Player"] == row.get("Player")
+    # Player+Squad-Maske
+    if "Squad" in plot_df.columns and player_squad is not None:
+        player_mask = (
+            (plot_df["Player"] == player_name) &
+            (plot_df["Squad"] == player_squad)
+        )
+    else:
+        player_mask = (plot_df["Player"] == player_name)
 
-    
+    # markiere ausgewählten Spieler
+    plot_df["is_player"] = player_mask
+
     # ---- Outlier nur für Peers filtern, Spieler immer behalten ----
     s_x = pd.to_numeric(plot_df[x_col], errors="coerce")
     s_y = pd.to_numeric(plot_df[y_col], errors="coerce")
@@ -739,20 +738,23 @@ def render_role_scatter(
     qx = s_x.quantile(0.99)
     qy = s_y.quantile(0.99)
 
-    player_name = row.get("Player")
-    player_mask = plot_df["Player"] == player_name
-
     if np.isfinite(qx) and np.isfinite(qy):
         # Nur Peers oberhalb des 99%-Quantils rausschneiden,
-        # der aktuelle Spieler (player_mask) bleibt IMMER drin.
+        # der aktuelle Spieler bleibt IMMER drin.
         plot_df = plot_df[((s_x <= qx) & (s_y <= qy)) | player_mask]
 
     if plot_df.empty:
         st.info("No comparison data available for role scatter plot.")
         return None
 
-    # markiere ausgewählten Spieler (nach dem Filtern neu berechnen)
-    plot_df["is_player"] = plot_df["Player"] == row.get("Player")
+    # nach dem Filtern: is_player neu setzen (wieder Player+Squad)
+    if "Squad" in plot_df.columns and player_squad is not None:
+        plot_df["is_player"] = (
+            (plot_df["Player"] == player_name) &
+            (plot_df["Squad"] == player_squad)
+        )
+    else:
+        plot_df["is_player"] = (plot_df["Player"] == player_name)
 
     # ---- Hilfsfunktion für robuste Skalen ----
     def compute_domain(series, default_max: float = 1.0, q: float = 0.99) -> tuple[float, float]:
@@ -775,11 +777,7 @@ def render_role_scatter(
         if upper <= 0:
             upper = default_max
 
-        # Sicherstellen, dass max > min
-        if upper <= 0.0:
-            upper = default_max
-
-        return (0.0, upper)
+        return (0.0, upper)    
 
     # ---- Skalen: FW feste Range, MF/DF dynamisch ----
     if role in ("FW", "Off_MF"):
@@ -1500,33 +1498,56 @@ def main():
     if mode == "Player profile":
         st.sidebar.subheader("Profile filters")
 
-        # ----- Player-Auswahl -----
-        players_all = sorted(df_all["Player"].dropna().unique())
-        if not players_all:
+                # ----- Player-Auswahl (Player + Squad) -----
+        df_player_options = (
+            df_all[["Player", "Squad"]]
+            .dropna()
+            .drop_duplicates()
+            .sort_values(["Player", "Squad"])
+            .reset_index(drop=True)
+        )
+
+        if df_player_options.empty:
             st.warning("No players found in the dataset.")
             return
 
-        placeholder = "Select a player..."
-        player_options = [placeholder] + players_all
+        # Lesbare Labels, z.B. "Vitinha (Paris S-G)"
+        labels = [
+            f"{row.Player} ({row.Squad})"
+            for _, row in df_player_options.iterrows()
+        ]
 
-        current_selection = st.session_state.get("selected_player", placeholder)
-        if current_selection not in player_options:
+        placeholder = "Select a player..."
+        options = [placeholder] + labels
+
+        current_selection = st.session_state.get("selected_player_label", placeholder)
+        if current_selection not in options:
             current_selection = placeholder
 
-        player = st.sidebar.selectbox(
+        player_label = st.sidebar.selectbox(
             "Player",
-            player_options,
-            index=player_options.index(current_selection),
+            options,
+            index=options.index(current_selection),
+            key="player_profile_player",
         )
-        st.session_state["selected_player"] = player
+        st.session_state["selected_player_label"] = player_label
 
-        if player == placeholder:
+        if player_label == placeholder:
             st.subheader("Player profile")
             st.info("Please select a player in the sidebar on the left to view their profile.")
             return
 
-        # Alle Saisons dieses Spielers (für Filter & Career)
-        df_player_all = df_all[df_all["Player"] == player].copy()
+        # Label -> Player + Squad zurückübersetzen
+        label_idx = labels.index(player_label)
+        sel_row = df_player_options.iloc[label_idx]
+        player = sel_row["Player"]          # Name
+        player_squad = sel_row["Squad"]     # Club
+
+        # Alle Saisons dieses Spielers BEI DIESEM CLUB
+        df_player_all = df_all[
+            (df_all["Player"] == player) &
+            (df_all["Squad"] == player_squad)
+        ].copy()
 
         if "Season" in df_player_all.columns:
             seasons = sorted(df_player_all["Season"].dropna().unique())
@@ -1553,7 +1574,7 @@ def main():
                 "Season",
                 seasons,
                 index=default_season_idx,
-                key=f"profile_season_{player}",
+                key=f"profile_season_{player}_{player_squad}",
             )
 
         # ----- Player-View-Daten -----
@@ -1818,9 +1839,16 @@ def main():
 
             # 2) Spielerzeilen aus Feature-Tabelle ziehen
             if not df_features_season.empty:
-                df_feat_player = df_features_season[
-                    df_features_season["Player"] == player
-                ].copy()
+                if "Squad" in df_features_season.columns:
+                    df_feat_player = df_features_season[
+                        (df_features_season["Player"] == player) &
+                        (df_features_season["Squad"] == player_squad)
+                    ].copy()
+                else:
+                    # Fallback, falls Squad in dieser Tabelle nicht existiert
+                    df_feat_player = df_features_season[
+                        df_features_season["Player"] == player
+                    ].copy()
             else:
                 df_feat_player = pd.DataFrame()
 
