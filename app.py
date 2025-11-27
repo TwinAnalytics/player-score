@@ -8,6 +8,7 @@ matplotlib.use("Agg")   # verhindert GUI-Fehler im Browser
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from mplsoccer import PyPizza
+import numpy as np
 
 plt.rcParams["figure.dpi"] = 200      # höhere Render-Auflösung
 plt.rcParams["savefig.dpi"] = 200
@@ -863,164 +864,6 @@ def render_role_scatter(
 
     return chart
 
-def render_score_age_scatter(
-    df_all_filtered: pd.DataFrame,
-    df_top: pd.DataFrame,
-):
-    """
-    Scatterplot: Score vs Age für alle gefilterten Spieler.
-    - x = Age
-    - y = MainScore
-    - Top-N-Spieler aus df_top werden hervorgehoben.
-    """
-
-    if "MainScore" not in df_all_filtered.columns or "Age" not in df_all_filtered.columns:
-        st.info("Score vs Age Scatter: benötige Spalten 'MainScore' und 'Age'.")
-        return None
-
-    df_scatter = df_all_filtered[["Player", "Squad", "Pos", "Age", "MainScore", "90s"]].copy()
-
-    # Age numerisch erzwingen
-    df_scatter["Age_num"] = pd.to_numeric(df_scatter["Age"], errors="coerce")
-    df_scatter = df_scatter.dropna(subset=["Age_num", "MainScore"])
-
-    if df_scatter.empty:
-        st.info("Keine gültigen Daten für Score-vs-Age verfügbar.")
-        return None
-    
-    # ------ SKALEN BERECHNEN ------
-    age_min = float(df_scatter["Age_num"].min())
-    age_max = float(df_scatter["Age_num"].max())
-    score_min = float(df_scatter["MainScore"].min())
-    score_max = float(df_scatter["MainScore"].max())
-
-    # optional ein bisschen Puffer
-    age_domain = (max(15, age_min - 1), age_max + 1)
-    score_domain = (max(0, score_min - 20), score_max + 20)
-
-    # Top-N markieren
-    top_players = set(df_top["Player"].unique())
-    df_scatter["is_top"] = df_scatter["Player"].isin(top_players)
-
-    # Punktgröße nach 90s (falls vorhanden)
-    if "90s" in df_scatter.columns:
-        df_scatter["MinutesFactor"] = pd.to_numeric(df_scatter["90s"], errors="coerce").fillna(0)
-    else:
-        df_scatter["MinutesFactor"] = 0.0
-
-    base = alt.Chart(df_scatter)
-
-    # Peers (alle übrigen Spieler)
-    peers = base.transform_filter(
-        alt.datum.is_top == False
-    ).mark_circle(
-        opacity=0.25
-    ).encode(
-        x=alt.X(
-            "Age_num:Q",
-            title="Age",
-            scale=alt.Scale(domain=age_domain),
-        ),
-        y=alt.Y(
-            "MainScore:Q",
-            title="Primary role score",
-            scale=alt.Scale(domain=score_domain),
-        ),
-        size=alt.Size(
-            "MinutesFactor:Q",
-            title="90s played",
-            legend=None,
-        ),
-        color=alt.value("#6b7280"),  # graue Peers
-        tooltip=[
-            "Player",
-            "Squad",
-            "Pos",
-            alt.Tooltip("Age_num:Q", title="Age"),
-            alt.Tooltip("MainScore:Q", title="Score", format=".1f"),
-            alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
-        ],
-    )
-
-    # Top-N hervorgehoben
-    tops = base.transform_filter(
-        alt.datum.is_top == True
-    ).mark_circle(
-        opacity=1.0,
-        stroke="#F9FAFB",
-        strokeWidth=1.2,
-    ).encode(
-        x="Age_num:Q",
-        y="MainScore:Q",
-        size=alt.Size(
-            "MinutesFactor:Q",
-            title="90s played",
-            legend=None,
-        ),
-        color=alt.value(VALUE_COLOR),
-        tooltip=[
-            "Player",
-            "Squad",
-            "Pos",
-            alt.Tooltip("Age_num:Q", title="Age"),
-            alt.Tooltip("MainScore:Q", title="Score", format=".1f"),
-            alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
-        ],
-    )
-
-    chart = (
-        (peers + tops)
-        .properties(
-            height=320,
-            title="Score vs Age",
-        )
-        .configure_axis(
-            grid=True,
-            gridOpacity=0.1,
-            gridColor="#4b5563",
-            labelColor="#E5E7EB",
-            titleColor="#E5E7EB",
-        )
-        .configure_title(
-            color="#E5E7EB",
-            fontSize=20,
-            anchor="start",
-        )
-        .configure_view(strokeWidth=0)
-    )
-
-    return chart
-
-@st.cache_data
-def load_feature_table_for_season(season: str) -> pd.DataFrame:
-    """
-    Loads the players_data_light-<Season>.csv from Data/Raw,
-    applies position logic and per-90 metric calculation,
-    and returns a feature table for the pizza chart.
-    """
-    from pathlib import Path
-    from src.processing import prepare_positions, add_standard_per90
-
-    root = Path(__file__).resolve().parent
-    raw_dir = root / "Data" / "Raw"
-
-    # the Season value may contain "/", so normalize it for filenames
-    season_safe = season.replace("/", "-")
-    csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
-
-    if not csv_path.exists():
-        raise FileNotFoundError(f"No feature file found for season: {season}")
-
-    df = pd.read_csv(csv_path)
-
-    # Apply position logic to get FW/MF/DF/etc
-    df = prepare_positions(df)
-
-    # Add per-90 metrics (Succ_Per90, TB_Per90, etc)
-    df = add_standard_per90(df)
-
-    return df
-
 def render_toplist_bar(
     df: pd.DataFrame,
     metric_col: str,
@@ -1077,7 +920,7 @@ def render_toplist_bar(
             tooltip=[
                 "Player",
                 "Squad",
-                alt.Tooltip(f"{metric_col}:Q", title=metric_label, format=".2f"),
+                alt.Tooltip(f"{metric_col}:Q", title=metric_label, format=".0f"),
             ],
             color=alt.value(VALUE_COLOR),
         )
@@ -1097,7 +940,7 @@ def render_toplist_bar(
         .encode(
             x=alt.X(f"{metric_col}:Q", scale=x_scale),
             y=alt.Y("Player_order:N", sort=y_order),
-            text=alt.Text(f"{metric_col}:Q", format=".2f"),
+            text=alt.Text(f"{metric_col}:Q", format=".0f"),
         )
     )
 
@@ -1137,6 +980,349 @@ def render_toplist_bar(
     )
 
     return chart
+
+def render_score_age_beeswarm(
+    df_all_filtered: pd.DataFrame,
+    df_top: pd.DataFrame,
+):
+    """
+    Beeswarm/Jitter-Plot:
+    x = MainScore (0–1000)
+    y = Age (mit Jitter, in Python berechnet)
+    Top-N Spieler aus df_top werden hervorgehoben.
+    """
+
+    # 1) Basis-Checks
+    if "MainScore" not in df_all_filtered.columns:
+        st.info("Beeswarm: Spalte 'MainScore' nicht gefunden.")
+        return None
+    if "Age" not in df_all_filtered.columns:
+        st.info("Beeswarm: Spalte 'Age' nicht gefunden.")
+        return None
+
+    cols = ["Player", "Squad", "Pos", "MainScore", "Age"]
+    if "90s" in df_all_filtered.columns:
+        cols.append("90s")
+
+    df_plot = df_all_filtered[cols].copy()
+
+        # 2) Age numerisch erzwingen
+    df_plot["Age_num"] = pd.to_numeric(df_plot["Age"], errors="coerce")
+    df_plot = df_plot.dropna(subset=["Age_num", "MainScore"])
+
+    if df_plot.empty:
+        st.info("Beeswarm: Keine gültigen Daten (Age & MainScore) nach Filter.")
+        return None
+
+    # 3) Minuten als Größenfaktor (falls du später wieder Größe nutzen willst)
+    if "90s" in df_plot.columns:
+        df_plot["MinutesFactor"] = pd.to_numeric(df_plot["90s"], errors="coerce").fillna(0)
+    else:
+        df_plot["MinutesFactor"] = 0.0
+
+    # 4) Top-N markieren – eindeutig über Player + Squad
+    df_top = df_top.copy()
+    df_plot = df_plot.copy()
+
+    df_top["ps_key"] = df_top["Player"].astype(str) + " | " + df_top["Squad"].astype(str)
+    df_plot["ps_key"] = df_plot["Player"].astype(str) + " | " + df_plot["Squad"].astype(str)
+
+    top_keys = set(df_top["ps_key"].unique())
+    df_plot["is_top"] = df_plot["ps_key"].isin(top_keys)
+
+    # 5) Jitter in Python berechnen
+    #    -> pro Spieler ein kleiner Offset zwischen -0.4 und +0.4 Jahren
+    jitter = np.random.uniform(-0.4, 0.4, size=len(df_plot))
+    df_plot["Age_jitter"] = df_plot["Age_num"] + jitter
+
+    # 6) Skalen
+    score_domain = (0, 1000)
+    age_min = float(df_plot["Age_num"].min())
+    age_max = float(df_plot["Age_num"].max())
+    age_domain = (max(15, age_min - 1), age_max + 1)
+
+    base = alt.Chart(df_plot)
+
+    # ---- Peers (nicht Top-N) ----
+    peers = (
+        base.transform_filter(alt.datum.is_top == False)
+        .mark_circle(
+            size = 40,
+            opacity=1.0,
+            fillOpacity=0,        # keine Füllung
+            stroke="#F9FAFB",     # weißer Rand
+            strokeWidth=1.0,
+        )
+        .encode(
+            x=alt.X(
+                "MainScore:Q",
+                title="Score",
+                scale=alt.Scale(domain=score_domain),
+                axis=alt.Axis(format=".0f"),
+            ),
+            y=alt.Y(
+                "Age_jitter:Q",
+                title="Age",
+                scale=alt.Scale(domain=age_domain),
+            ),
+
+            # keine color-Encode nötig, wird durch stroke geregelt
+            tooltip=[
+                "Player",
+                "Squad",
+                "Pos",
+                alt.Tooltip("Age_num:Q", title="Age"),
+                alt.Tooltip("MainScore:Q", title="Score", format=".0f"),
+                alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
+            ],
+        )
+    )
+
+    # ---- Top-N hervorgehoben ----
+    tops = (
+        base.transform_filter(alt.datum.is_top == True)
+        .mark_circle(
+            size = 200,
+            opacity=1.0,
+            fillOpacity=1.0,
+            stroke="#F9FAFB",
+            strokeWidth=1.2,
+        )
+        .encode(
+            x=alt.X(
+                "MainScore:Q",
+                scale=alt.Scale(domain=score_domain),
+                axis=alt.Axis(format=".0f"),
+            ),
+            y=alt.Y(
+                "Age_jitter:Q",
+                scale=alt.Scale(domain=age_domain),
+            ),
+
+            color=alt.value(VALUE_COLOR),  # gefüllte Punkte für Top N
+            tooltip=[
+                "Player",
+                "Squad",
+                "Pos",
+                alt.Tooltip("Age_num:Q", title="Age"),
+                alt.Tooltip("MainScore:Q", title="Score", format=".0f"),
+                alt.Tooltip("MinutesFactor:Q", title="90s played", format=".1f"),
+            ],
+        )
+    )
+
+    chart = (
+        (peers + tops)
+        .properties(
+            height=320,
+            title="Score vs Age",
+        )
+        .configure_axis(
+            grid=True,
+            gridOpacity=0.1,
+            gridColor="#4b5563",
+            labelColor="#E5E7EB",
+            titleColor="#E5E7EB",
+        )
+        .configure_title(
+            color="#E5E7EB",
+            fontSize=20,
+            anchor="start",
+        )
+        .configure_view(strokeWidth=0)
+    )
+
+    return chart
+
+def render_band_histogram(df: pd.DataFrame, season: str | None = None):
+    """
+    Histogramm:
+    x = MainBand (alle 5 Bands immer sichtbar)
+    y = Anzahl Spieler (Skala abhängig vom Filter-Level)
+    """
+
+    if "MainBand" not in df.columns:
+        st.info("Band-Histogramm: Spalte 'MainBand' nicht gefunden.")
+        return None
+
+    # ----- Bands definieren -----
+    if "BAND_ORDER" in globals():
+        all_bands = BAND_ORDER
+    else:
+        all_bands = sorted(df["MainBand"].dropna().unique().tolist())
+
+    if not all_bands:
+        st.info("Band-Histogramm: Keine Bands verfügbar.")
+        return None
+
+    # ----- Counts je Band berechnen -----
+    df_hist = df[["MainBand"]].dropna().copy()
+    df_counts = (
+        df_hist
+        .groupby("MainBand")
+        .size()
+        .reset_index(name="Count")
+    )
+
+    base_bands = pd.DataFrame({"MainBand": all_bands})
+    df_counts = base_bands.merge(df_counts, on="MainBand", how="left")
+    df_counts["Count"] = df_counts["Count"].fillna(0).astype(int)
+
+    # ---------- Dynamischer Titel + Info, ob All/Liga/Club ----------
+    comp_name = None
+    squad_name = None
+
+    if "Comp" in df.columns:
+        comps = sorted(df["Comp"].dropna().unique())
+        if len(comps) == 1:
+            comp_name = comps[0]
+
+    if "Squad" in df.columns:
+        squads = sorted(df["Squad"].dropna().unique())
+        if len(squads) == 1:
+            squad_name = squads[0]
+
+    if squad_name is not None:
+        base_title = f"Band distribution – {squad_name}"
+    elif comp_name is not None:
+        base_title = f"Band distribution – {comp_name}"
+    else:
+        base_title = "Band distribution – All Big-5 leagues"
+
+    if season is not None:
+        title = f"{base_title} (Season {season})"
+    else:
+        title = base_title
+    # ---------------------------------------------------------------
+
+    # ----- Y-Achse: Skala je nach Filter-Level -----
+    # All Big-5  -> 0–1200
+    # eine Liga  -> 0–300
+    # ein Club   -> 0–50
+    if squad_name is not None:
+        y_max = 20
+        step = 5
+    elif comp_name is not None:
+        y_max = 250
+        step = 25
+    else:
+        y_max = 1200
+        step = 100
+
+    y_scale = alt.Scale(domain=(0, y_max), nice=False)
+    y_axis = alt.Axis(
+        title=None,  # kein Achsentitel
+        values=list(range(0, y_max + 1, step)),
+        labelColor="#E5E7EB",
+    )
+
+    # ----- Layer 1: Balken -----
+    bars = (
+        alt.Chart(df_counts)
+        .mark_bar(
+            cornerRadiusTopLeft=6,
+            cornerRadiusTopRight=6,
+        )
+        .encode(
+            x=alt.X(
+                "MainBand:N",
+                title=None,
+                sort=all_bands,
+                axis=alt.Axis(
+                    labelColor="#E5E7EB",
+                ),
+            ),
+            y=alt.Y(
+                "Count:Q",
+                scale=y_scale,
+                axis=y_axis,
+            ),
+            tooltip=[
+                alt.Tooltip("MainBand:N", title="Band"),
+                alt.Tooltip("Count:Q", title="Players", format=".0f"),
+            ],
+            color=alt.value(VALUE_COLOR),
+        )
+    )
+
+    # ----- Layer 2: Zahlen über den Balken -----
+    labels = (
+        alt.Chart(df_counts)
+        .mark_text(
+            align="center",
+            baseline="bottom",
+            dy=-8,
+            fontSize=11,
+            color="#E5E7EB",
+            fontWeight="bold",
+        )
+        .encode(
+            x=alt.X("MainBand:N", sort=all_bands),
+            y=alt.Y("Count:Q", scale=y_scale),
+            text=alt.Text("Count:Q", format=".0f"),
+        )
+    )
+
+    # ----- Kombiniertes Chart -----
+    chart = (
+        (bars + labels)
+        .properties(
+            width=900,
+            height=450,
+            title=title,
+            padding={
+                "top": 40,
+                "left": 40,
+                "right": 20,
+                "bottom": 40,
+            },
+        )
+        .configure_axis(
+            grid=True,
+            gridOpacity=0.1,
+            gridColor="#4b5563",
+        )
+        .configure_title(
+            color="#E5E7EB",
+            fontSize=20,
+            anchor="start",
+        )
+        .configure_view(
+            strokeWidth=0,
+        )
+    )
+
+    return chart
+
+@st.cache_data
+def load_feature_table_for_season(season: str) -> pd.DataFrame:
+    """
+    Loads the players_data_light-<Season>.csv from Data/Raw,
+    applies position logic and per-90 metric calculation,
+    and returns a feature table for the pizza chart.
+    """
+    from pathlib import Path
+    from src.processing import prepare_positions, add_standard_per90
+
+    root = Path(__file__).resolve().parent
+    raw_dir = root / "Data" / "Raw"
+
+    # the Season value may contain "/", so normalize it for filenames
+    season_safe = season.replace("/", "-")
+    csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+
+    if not csv_path.exists():
+        raise FileNotFoundError(f"No feature file found for season: {season}")
+
+    df = pd.read_csv(csv_path)
+
+    # Apply position logic to get FW/MF/DF/etc
+    df = prepare_positions(df)
+
+    # Add per-90 metrics (Succ_Per90, TB_Per90, etc)
+    df = add_standard_per90(df)
+
+    return df
 
 
 # -------------------------------------------------------------------
@@ -2036,17 +2222,21 @@ def main():
         if chart_main is not None:
             st.altair_chart(chart_main, use_container_width=True)
 
-        
-                # ---- Scatter: Score vs Age (für alle gefilterten Spieler) ----
-        chart_scatter = render_score_age_scatter(
+        # ---- Beeswarm Score vs Age ----
+        beeswarm_chart = render_score_age_beeswarm(
             df_all_filtered=df_view,
             df_top=df_top,
         )
 
-        if chart_scatter is not None:
-            st.altair_chart(chart_scatter, use_container_width=True)
+        if beeswarm_chart is not None:
+            st.altair_chart(beeswarm_chart, use_container_width=True)  
 
-    
+
+        # ---- Band-Histogramm (nach all deinen Filtern) ----
+        band_hist = render_band_histogram(df_view, season=season)
+        if band_hist is not None:
+            st.altair_chart(band_hist, use_container_width=False)
+
 
 if __name__ == "__main__":
     main()
