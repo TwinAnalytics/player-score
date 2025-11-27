@@ -1194,7 +1194,7 @@ def render_score_age_beeswarm(
     chart = (
         (peers + tops + labels)
         .properties(
-            height=500,
+            height=450,
             title="Score vs Age",
         )
         .configure_axis(
