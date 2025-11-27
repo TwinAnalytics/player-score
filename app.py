@@ -1580,102 +1580,41 @@ def main():
     if mode == "Player profile":
         st.sidebar.subheader("Profile filters")
 
-                # ----- Player-Auswahl mit "echten" Doppelgängern -----
-        # Basis für Disambiguierung: Player + Squad + Season
-        cols_for_players = ["Player"]
-        if "Squad" in df_all.columns:
-            cols_for_players.append("Squad")
-        if "Season" in df_all.columns:
-            cols_for_players.append("Season")
-
-        df_players_raw = (
-            df_all[cols_for_players]
-            .dropna(subset=["Player"])
-            .drop_duplicates()
+                # ----- Player-Auswahl: genau EIN Profil pro Spieler -----
+        players_all = (
+            df_all["Player"]
+            .dropna()
+            .sort_values()
+            .unique()
         )
 
-        if df_players_raw.empty:
+        if len(players_all) == 0:
             st.warning("No players found in the dataset.")
             return
 
-        # Spieler finden, die in EINER Saison für mehrere Clubs gelistet sind
-        ambiguous_players = set()
-        if "Season" in df_players_raw.columns and "Squad" in df_players_raw.columns:
-            for name, grp in df_players_raw.groupby("Player"):
-                # Wie viele unterschiedliche Clubs pro Season?
-                max_clubs_per_season = grp.groupby("Season")["Squad"].nunique().max()
-                if max_clubs_per_season > 1:
-                    ambiguous_players.add(name)
-        elif "Squad" in df_players_raw.columns:
-            # Fallback falls keine Season-Spalte: Mehrere Clubs = potenziell doppelt
-            for name, grp in df_players_raw.groupby("Player"):
-                if grp["Squad"].nunique() > 1:
-                    ambiguous_players.add(name)
-
-        # Optionen bauen:
-        # - normale Spieler: ein Eintrag "Name"
-        # - mehrdeutige Spieler: je Club ein Eintrag "Name (Club)"
-        options_meta = []
-        for name, grp in df_players_raw.groupby("Player"):
-            if name in ambiguous_players and "Squad" in df_players_raw.columns:
-                squads = sorted(grp["Squad"].dropna().unique())
-                for sq in squads:
-                    options_meta.append(
-                        {
-                            "label": f"{name} ({sq})",
-                            "player": name,
-                            "squad": sq,
-                        }
-                    )
-            else:
-                options_meta.append(
-                    {
-                        "label": name,
-                        "player": name,
-                        "squad": None,   # kein spezieller Club
-                    }
-                )
-
-        # schön sortieren
-        options_meta = sorted(options_meta, key=lambda x: x["label"])
-        labels = [o["label"] for o in options_meta]
-
         placeholder = "Select a player..."
-        options_with_placeholder = [placeholder] + labels
+        options = [placeholder] + list(players_all)
 
         current_selection = st.session_state.get("selected_player_label", placeholder)
-        if current_selection not in options_with_placeholder:
+        if current_selection not in options:
             current_selection = placeholder
 
-        player_label = st.sidebar.selectbox(
+        player = st.sidebar.selectbox(
             "Player",
-            options_with_placeholder,
-            index=options_with_placeholder.index(current_selection),
+            options,
+            index=options.index(current_selection),
             key="player_profile_player",
         )
-        st.session_state["selected_player_label"] = player_label
+        st.session_state["selected_player_label"] = player
 
-        if player_label == placeholder:
+        if player == placeholder:
             st.subheader("Player profile")
             st.info("Please select a player in the sidebar on the left to view their profile.")
             return
 
-        # Auswahl zurück auf Player + optional Squad mappen
-        label_idx = labels.index(player_label)
-        sel_meta = options_meta[label_idx]
-        player = sel_meta["player"]
-        player_squad = sel_meta["squad"]
-
-        # Alle Saisons dieses Spielers:
-        # - bei eindeutigen Spielern: kompletter Career, egal welcher Club
-        # - bei echten Doppelgängern (Vitinha PSG/Genoa): nur dieser Club
-        if player_squad is not None and "Squad" in df_all.columns:
-            df_player_all = df_all[
-                (df_all["Player"] == player) &
-                (df_all["Squad"] == player_squad)
-            ].copy()
-        else:
-            df_player_all = df_all[df_all["Player"] == player].copy()
+        # Für ein Profil pro Spieler: alle Saisons und Clubs dieses Spielers
+        player_squad = None  # kein spezieller Club mehr
+        df_player_all = df_all[df_all["Player"] == player].copy()
 
         if "Season" in df_player_all.columns:
             seasons = sorted(df_player_all["Season"].dropna().unique())
