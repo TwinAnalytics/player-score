@@ -1194,7 +1194,7 @@ def render_score_age_beeswarm(
     chart = (
         (peers + tops + labels)
         .properties(
-            height=320,
+            height=500,
             title="Score vs Age",
         )
         .configure_axis(
@@ -1347,8 +1347,8 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
     chart = (
         (bars + labels)
         .properties(
-            width=900,
-            height=450,
+            width=450,
+            height=600,
             title=title,
             padding={
                 "top": 40,
