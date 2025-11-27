@@ -1109,11 +1109,35 @@ def render_score_age_beeswarm(
         )
     )
 
+    # ----- Labels für Top-N-Spieler -----
+    labels = (
+        base.transform_filter(alt.datum.is_top == True)
+        .mark_text(
+            align="left",
+            baseline="middle",
+            dx=15,              # etwas rechts neben dem Punkt
+            dy=-2,
+            fontSize=10,
+            color="#E5E7EB",
+        )
+        .encode(
+            x=alt.X(
+                "MainScore:Q",
+                scale=alt.Scale(domain=score_domain),
+            ),
+            y=alt.Y(
+                "Age_jitter:Q",
+                scale=alt.Scale(domain=age_domain),
+            ),
+            text="Player:N",   # oder Player + Squad, siehe Hinweis unten
+        )
+    )
+
     chart = (
-        (peers + tops)
+        (peers + tops + labels)
         .properties(
             height=320,
-            title="Score vs Age",
+            title="Score vs Age – Beeswarm / Jitter",
         )
         .configure_axis(
             grid=True,
