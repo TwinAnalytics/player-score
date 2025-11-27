@@ -866,16 +866,23 @@ def render_toplist_bar(
     df: pd.DataFrame,
     metric_col: str,
     metric_label: str,
-    title: str,
+    base_title: str,        # z.B. "Top 50 players by primary role score"
     top_n: int,
+    season: str | None = None,
     ascending: bool = False,  # False = beste zuerst
 ):
     if metric_col not in df.columns:
         st.info(f"Keine Spalte '{metric_col}' gefunden.")
         return None
 
+    # Basis-Spalten, die wir gern hätten
+    base_cols = ["Player", "Squad", metric_col, "Pos", "Comp"]
+
+    # Nur Spalten verwenden, die im df wirklich existieren
+    cols_available = [c for c in base_cols if c in df.columns]
+
     df_plot = (
-        df[["Player", "Squad", metric_col]]
+        df[cols_available]
         .dropna(subset=[metric_col])
         .copy()
     )
@@ -888,11 +895,62 @@ def render_toplist_bar(
     df_plot = df_plot.sort_values(metric_col, ascending=ascending).head(top_n)
     df_plot["Player_order"] = df_plot["Player"]
 
-    # explizite Reihenfolge der Y-Achse (damit oben/unten passt)
+    # explizite Reihenfolge der Y-Achse
     y_order = df_plot["Player_order"].tolist()
 
     max_val = float(df_plot[metric_col].max())
     x_scale = alt.Scale(domain=(0, max_val * 1.05))
+
+    # ---- Dynamischer Titel ----
+    pos_label = None
+    comp_label = None
+    squad_label = None
+
+    # Position
+    if "Pos" in df_plot.columns:
+        pos_vals = sorted(df_plot["Pos"].dropna().unique())
+        if len(pos_vals) == 1:
+            pos_map = {
+                "FW": "Forwards",
+                "Off_MF": "Offensive midfielders",
+                "MF": "Midfielders",
+                "DF": "Defenders",
+                "Def_MF": "Defensive midfielders",
+            }
+            pos_label = pos_map.get(pos_vals[0], pos_vals[0])
+
+    # League (Comp)
+    if "Comp" in df_plot.columns:
+        comps = sorted(df_plot["Comp"].dropna().unique())
+        if len(comps) == 1:
+            comp_label = comps[0]
+
+    # Club (Squad)
+    if "Squad" in df_plot.columns:
+        squads = sorted(df_plot["Squad"].dropna().unique())
+        if len(squads) == 1:
+            squad_label = squads[0]
+
+    parts: list[str] = []
+
+    # Reihenfolge im Titel: Position > League > Club
+    if pos_label is not None:
+        parts.append(pos_label)
+
+    if squad_label is not None:
+        parts.append(squad_label)
+    elif comp_label is not None:
+        parts.append(comp_label)
+
+    if not parts:
+        context = "All Big-5 leagues"
+    else:
+        context = " – ".join(parts)
+
+    full_title = f"{base_title} – {context}"
+    if season is not None:
+        full_title += f" (Season {season})"
+    # ---------------------------------------
 
     # --- Layer 1: Balken ---
     bars = (
@@ -902,17 +960,17 @@ def render_toplist_bar(
             x=alt.X(
                 f"{metric_col}:Q",
                 scale=x_scale,
-                axis=None,          # x-Achse komplett ausblenden
+                axis=None,
             ),
             y=alt.Y(
                 "Player_order:N",
                 sort=y_order,
                 axis=alt.Axis(
-                    labels=False,     # keine Namen links
+                    labels=False,
                     ticks=False,
                     title=None,
                     domain=False,
-                    grid=False,       # oder True, wenn du horizontale Linien magst
+                    grid=False,
                 ),
             ),
             tooltip=[
@@ -930,9 +988,9 @@ def render_toplist_bar(
         .mark_text(
             align="right",
             baseline="middle",
-            dx=-6,               # ein bisschen nach links, in den Balken hinein
+            dx=-6,
             fontSize=15,
-            color="#0f172a",     # dunkler, damit im türkis gut lesbar
+            color="#0f172a",
             fontWeight="bold",
         )
         .encode(
@@ -948,7 +1006,7 @@ def render_toplist_bar(
         .mark_text(
             align="left",
             baseline="middle",
-            dx=6,                # ein paar Pixel rechts vom Balken
+            dx=6,
             fontSize=12,
             color="#E5E7EB",
         )
@@ -963,7 +1021,7 @@ def render_toplist_bar(
         (bars + score_text + name_text)
         .properties(
             height=26 * len(df_plot) + 20,
-            title=title,
+            title=full_title,
         )
         .configure_axis(
             labelColor="#E5E7EB",
@@ -1137,7 +1195,7 @@ def render_score_age_beeswarm(
         (peers + tops + labels)
         .properties(
             height=320,
-            title="Score vs Age – Beeswarm / Jitter",
+            title="Score vs Age",
         )
         .configure_axis(
             grid=True,
@@ -2262,12 +2320,14 @@ def main():
             .copy()
         )
 
+
         chart_main = render_toplist_bar(
             df=df_top,
             metric_col="MainScore",
             metric_label="Primary role score",
-            title=f"Top {len(df_top)} Players by Primary Role Score",
+            base_title=f"Top {len(df_top)} Players",
             top_n=len(df_top),
+            season=season,
             ascending=ascending,
         )
 
