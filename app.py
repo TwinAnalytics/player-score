@@ -2237,7 +2237,7 @@ def main():
             "Top N players",
             3,
             50,
-            10,
+            5,
             1,
             key="top_topn",
         )
