@@ -1347,7 +1347,7 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
     chart = (
         (bars + labels)
         .properties(
-            width=450,
+            width=550,
             height=600,
             title=title,
             padding={
