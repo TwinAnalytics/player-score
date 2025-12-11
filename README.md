@@ -1,62 +1,78 @@
-# PlayerScore
+What PlayerScore Does
 
-PlayerScore is an interpretable rating model for football players in the Big-5 European leagues (FBref data). It collects multi-season player stats, engineers role-specific features (per 90, positional logic), and computes offensive, midfield, and defensive scores (0–1000) with clear performance bands.
+PlayerScore transforms raw FBref data into interpretable, role-aware insights, making it easier to compare players across leagues, seasons, and clubs.
 
-**Score scale & tiers (0–1000)**  
+⸻
 
-- **900–1000** → Exceptional  
-- **750–899** → World Class  
-- **400–749** → Top Starter (Big-5 regular)  
-- **200–399** → Solid Squad Player  
-- **0–199** → Below Big-5 Level
+📦 Data Acquisition
+	•	Automated scraping of Big-5 player stats (FBref) using Playwright
+	•	Multi-season dataset from 2017/18 to 2025/26
+	•	Robust handling of missing or league-limited stats
 
+⸻
 
-**Live demo:** https://twinanalytics-player-score.streamlit.app/
+🧠 Feature Engineering
+	•	Per-90 normalization for all relevant metrics
+	•	Minutes thresholds and data quality filters
+	•	Unified positional logic to classify players into:
+	•	FW / Off_MF (offensive roles)
+	•	MF (midfield roles)
+	•	DF / Def_MF (defensive roles)
 
-PlayerScore is an interpretable rating model for football players in the Big-5 European leagues (FBref data). It collects multi-season player stats, engineers role-specific features (per 90, positional logic), and computes offensive, midfield, and defensive scores (0–1000) with clear performance bands.
+⸻
 
-## Features
+📊 Role-Specific Scoring
 
-- Web scraping of FBref Big-5 player stats with Playwright
-- Feature engineering (per-90 metrics, minutes filter, positional refinement)
-- Role-specific scores:
-  - Offensive (FW, Off_MF)
-  - Midfield (MF)
-  - Defensive (DF, Def_MF)
-- Multi-season support (from 2017/2018 to 2025/2026)
-- Streamlit app for interactive exploration (player profiles & toplists)
+Each player receives up to three interpretable scores:
+	•	Offensive Score (FW, Off_MF)
+	•	Midfield Score (MF)
+	•	Defensive Score (DF, Def_MF)
 
-## Project Structure
+These scores are built using:
+	•	Distribution-aware normalization
+	•	Multi-season benchmarking
+	•	Transparent performance tiering
 
-```text
-src/
-  scraping_fbref_player_stats.py  # scraping & light CSV
-  processing.py                   # per90 + positions + filters
-  scoring.py                      # score functions, weights, bands
-  pipeline.py                     # end-to-end pipeline
-notebooks/
-  01_feature_dev_2024_25.ipynb
-  02_scoring_analysis_2024_2025.ipynb
-Data/
-  Raw/       # not in repo
-  Processed/ # scored CSVs per season
-app.py       # Streamlit app
-run_pipeline.py
+⸻
 
-## Installation
+🖥️ App Features (Streamlit UI)
 
-```bash
-git clone https://github.com/TwinAnalytics/player-score.git
-cd player-score
+The included Streamlit app allows fully interactive exploration of all data.
 
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
+⸻
 
-pip install -r requirements.txt
+👤 Player Profiles
+	•	Per-season and career views
+	•	Pizza charts vs Big-5 role peers
+	•	Role-based scatter plots (e.g., xG vs G, xAG vs A)
+	•	Career score trend lines
+	•	Summary tiles (age, minutes, score, band)
 
-## Documentation
+⸻
 
-A more detailed project report is available in:
+📊 Top Lists
+	•	Season, league, club, position, minutes, and age filters
+	•	Top-N bar charts by primary role score
+	•	Score vs age beeswarm plot
+	•	Band distribution visualizations for filtered sets
 
-- `docs/PlayerScore_Documentation_EN.pdf`
+⸻
+
+🟦 NEW: Team Scores
+	•	Squad-level offense, midfield, and defense rankings
+	•	Comparison of squad strength within a league
+	•	Identification of top contributors per club
+	•	Multi-season squad trends and development analysis
+
+⸻
+
+❓ Why PlayerScore?
+
+Modern football recruitment needs transparent, interpretable, reproducible metrics — not black-box models.
+
+PlayerScore is built around:
+	•	Consistency across leagues and competitions
+	•	Role-aware evaluation based on real positional behavior
+	•	Reproducible scoring logic using open data
+	•	Explorable analytics for scouting, recruitment, and squad planning
 
