@@ -129,29 +129,25 @@ def _choose_weight_set_for_league(
     df_pos: pd.DataFrame,
     full_weights: dict[str, float],
     full_benchmarks: dict[str, float],
-    light_weights: dict[str, float],
-    light_benchmarks: dict[str, float],
+    light_weights: dict[str, float] | None = None,
+    light_benchmarks: dict[str, float] | None = None,
     min_full_features: int = 5,
     min_light_features: int = 3,
 ) -> tuple[dict[str, float], dict[str, float]]:
-    """
-    Wählt je nach verfügbaren Spalten die "volle" oder die "Light"-Variante.
-
-    - full_weights / full_benchmarks: Big-5-Score-Set
-    - light_weights / light_benchmarks: vereinfachtes Set für Ligen mit weniger Metriken
-    """
+    # 1) Full-Set: welche Features sind tatsächlich vorhanden?
     available_full = [col for col in full_weights.keys() if col in df_pos.columns]
     if len(available_full) >= min_full_features:
         return full_weights, full_benchmarks
 
-    available_light = [col for col in light_weights.keys() if col in df_pos.columns]
-    if len(available_light) >= min_light_features:
-        return light_weights, light_benchmarks
+    # 2) Optional: Light-Set, falls übergeben
+    if light_weights is not None and light_benchmarks is not None:
+        available_light = [col for col in light_weights.keys() if col in df_pos.columns]
+        if len(available_light) >= min_light_features:
+            return light_weights, light_benchmarks
 
-    # Fallback: Voll-Set – compute_score_absolute ignoriert fehlende Spalten ohnehin
+    # 3) Fallback: Full-Set, auch wenn viele Spalten fehlen –
+    # compute_score_absolute kommt damit klar.
     return full_weights, full_benchmarks
-
-
 
 
 def score_band_5(score: float) -> str:
@@ -300,72 +296,6 @@ DEF_DM_BENCHMARKS_ABS = {
     "Mid 3rd_stats_possession_Per90": 30.0,
 }
 
-# ------------------------------------------------------------------
-#Light-Varianten für Wettbewerbe mit weniger verfügbaren Metriken
-# ------------------------------------------------------------------
-
-# === OFFENSIVE LIGHT: FW / Off_MF ================================
-
-OFF_FW_WEIGHTS_ABS_LIGHT = {
-    "Gls_Per90": 0.40,
-    "Ast_Per90": 0.20,
-    "Finishing_Rate": 0.20,  # Tore pro Schuss
-    "SoT/90": 0.10,
-    "Sh/90": 0.10,
-}
-
-OFF_FW_BENCHMARKS_ABS_LIGHT = {
-    "Gls_Per90": 0.70,
-    "Ast_Per90": 0.50,
-    "Finishing_Rate": 0.25,  # ~ jedes 4. Schuss ein Tor
-    "SoT/90": 1.80,
-    "Sh/90": 3.50,
-}
-
-# Für Off_MF verwenden wir dasselbe Light-Set wie für FW
-OFF_AM_WEIGHTS_ABS_LIGHT = OFF_FW_WEIGHTS_ABS_LIGHT
-OFF_AM_BENCHMARKS_ABS_LIGHT = OFF_FW_BENCHMARKS_ABS_LIGHT
-
-
-# === MIDFIELD LIGHT: MF ==========================================
-
-MF_WEIGHTS_ABS_LIGHT = {
-    "Ast_Per90": 0.30,
-    "Gls_Per90": 0.15,
-    "Finishing_Rate": 0.15,
-    "SoT/90": 0.10,
-    "Sh/90": 0.10,
-    "Int_Per90": 0.20,  # defensives Arbeiten
-}
-
-MF_BENCHMARKS_ABS_LIGHT = {
-    "Ast_Per90": 0.25,
-    "Gls_Per90": 0.25,
-    "Finishing_Rate": 0.20,
-    "SoT/90": 1.20,
-    "Sh/90": 2.00,
-    "Int_Per90": 1.50,
-}
-
-
-# === DEFENSIVE LIGHT: DF / Def_MF ================================
-
-DEF_DF_WEIGHTS_ABS_LIGHT = {
-    "TklW_Per90": 0.60,
-    "Int_Per90": 0.40,
-    # Fouls / Karten kannst du später optional negativ einbauen
-}
-
-DEF_DF_BENCHMARKS_ABS_LIGHT = {
-    "TklW_Per90": 4.0,
-    "Int_Per90": 2.5,
-}
-
-# Für Def_MF (Sechser) die gleiche Light-Logik
-DEF_DM_WEIGHTS_ABS_LIGHT = DEF_DF_WEIGHTS_ABS_LIGHT
-DEF_DM_BENCHMARKS_ABS_LIGHT = DEF_DF_BENCHMARKS_ABS_LIGHT
-
-
 
 def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -386,8 +316,6 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
         pos_label: str,
         full_weights: dict[str, float],
         full_benchmarks: dict[str, float],
-        light_weights: dict[str, float],
-        light_benchmarks: dict[str, float],
     ) -> list[pd.DataFrame]:
         df_pos = df_all[df_all["Pos"] == pos_label].copy()
         if df_pos.empty:
@@ -406,8 +334,6 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
                 df_comp,
                 full_weights=full_weights,
                 full_benchmarks=full_benchmarks,
-                light_weights=light_weights,
-                light_benchmarks=light_benchmarks,
                 min_full_features=5,
                 min_light_features=3,
             )
@@ -431,8 +357,6 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
             pos_label="FW",
             full_weights=OFF_FW_WEIGHTS_ABS,
             full_benchmarks=OFF_FW_BENCHMARKS_ABS,
-            light_weights=OFF_FW_WEIGHTS_ABS_LIGHT,
-            light_benchmarks=OFF_FW_BENCHMARKS_ABS_LIGHT,
         )
     )
 
@@ -443,8 +367,6 @@ def compute_off_scores(df: pd.DataFrame) -> pd.DataFrame:
             pos_label="Off_MF",
             full_weights=OFF_AM_WEIGHTS_ABS,
             full_benchmarks=OFF_AM_BENCHMARKS_ABS,
-            light_weights=OFF_AM_WEIGHTS_ABS_LIGHT,
-            light_benchmarks=OFF_AM_BENCHMARKS_ABS_LIGHT,
         )
     )
 
@@ -473,8 +395,6 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
         pos_label: str,
         full_weights: dict[str, float],
         full_benchmarks: dict[str, float],
-        light_weights: dict[str, float],
-        light_benchmarks: dict[str, float],
     ) -> list[pd.DataFrame]:
         df_pos = df_all[df_all["Pos"] == pos_label].copy()
         if df_pos.empty:
@@ -492,8 +412,6 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
                 df_comp,
                 full_weights=full_weights,
                 full_benchmarks=full_benchmarks,
-                light_weights=light_weights,
-                light_benchmarks=light_benchmarks,
                 min_full_features=4,
                 min_light_features=2,
             )
@@ -517,8 +435,6 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
             pos_label="DF",
             full_weights=DEF_DF_WEIGHTS_ABS,
             full_benchmarks=DEF_DF_BENCHMARKS_ABS,
-            light_weights=DEF_DF_WEIGHTS_ABS_LIGHT,
-            light_benchmarks=DEF_DF_BENCHMARKS_ABS_LIGHT,
         )
     )
 
@@ -529,8 +445,6 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
             pos_label="Def_MF",
             full_weights=DEF_DM_WEIGHTS_ABS,
             full_benchmarks=DEF_DM_BENCHMARKS_ABS,
-            light_weights=DEF_DM_WEIGHTS_ABS_LIGHT,
-            light_benchmarks=DEF_DM_BENCHMARKS_ABS_LIGHT,
         )
     )
 
@@ -539,8 +453,6 @@ def compute_def_scores(df: pd.DataFrame) -> pd.DataFrame:
 
     # Fallback: keine DF / Def_MF
     return df[df["Pos"].isin(["DF", "Def_MF"])].copy()
-
-
 
 
 def compute_mid_scores(df: pd.DataFrame) -> pd.DataFrame:
@@ -571,8 +483,6 @@ def compute_mid_scores(df: pd.DataFrame) -> pd.DataFrame:
             df_comp,
             full_weights=mf_weights_abs,
             full_benchmarks=mf_benchmarks_abs,
-            light_weights=MF_WEIGHTS_ABS_LIGHT,
-            light_benchmarks=MF_BENCHMARKS_ABS_LIGHT,
             min_full_features=5,
             min_light_features=3,
         )

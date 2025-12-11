@@ -50,23 +50,44 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
     - OffScore_abs / MidScore_abs / DefScore_abs (sofern vorhanden)
     """
 
-    required_cols = ["Season", "Squad", "Player", "Min"]
-    missing = [c for c in required_cols if c not in df_all.columns]
-    if missing:
-        raise ValueError(f"compute_squad_scores: missing required columns: {missing}")
-
     def _agg(group: pd.DataFrame) -> pd.Series:
-        result: dict[str, float | int | None] = {
-            "n_players": group["Player"].nunique(),
-            "minutes_total": float(
-                pd.to_numeric(group["Min"], errors="coerce").fillna(0).sum()
-            ),
-        }
+        result: dict[str, float | int | str] = {}
 
+        # --- Basis-Meta-Infos ---
+        result["Season"] = group["Season"].iloc[0]
+        result["Squad"] = group["Squad"].iloc[0]
+
+        # Minuten gesamt
+        mins = pd.to_numeric(group.get("Min", 0), errors="coerce").fillna(0)
+        result["Min_squad"] = float(mins.sum())
+
+        # 90s gesamt (falls vorhanden)
+        if "90s" in group.columns:
+            nineties = pd.to_numeric(group["90s"], errors="coerce").fillna(0)
+            result["90s_squad"] = float(nineties.sum())
+
+        # Durchschnittsalter (minuten-gewichtet)
+        if "Age" in group.columns:
+            result["Age_squad_mean"] = _weighted_mean(group, "Age")
+
+        # Anzahl unterschiedlicher Spieler
+        result["NumPlayers_squad"] = int(group["Player"].nunique())
+
+        # --- Score-Aggregate (minuten-gewichtet) ---
         for col in SQUAD_SCORE_COLS:
             if col in group.columns:
                 squad_col = col.replace("_abs", "_squad")
                 result[squad_col] = _weighted_mean(group, col)
+
+        # --- Overall-Squad-Score (Mittelwert aus Off/Mid/Def) ---
+        comp_scores = [
+            result.get("OffScore_squad"),
+            result.get("MidScore_squad"),
+            result.get("DefScore_squad"),
+        ]
+        comp_scores = [v for v in comp_scores if v is not None]
+        if comp_scores:
+            result["OverallScore_squad"] = float(sum(comp_scores) / len(comp_scores))
 
         return pd.Series(result)
 
@@ -74,7 +95,7 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
         df_all
         .groupby(["Season", "Squad"])
         .apply(_agg)
-        .reset_index()
+        .reset_index(drop=True)
     )
 
     return df_squad

@@ -17,49 +17,55 @@ from src.scoring import (
 # Spaltenauswahl aus der players_data_light-CSV
 # ---------------------------------------------------------------------------
 
-SCORE_INPUT_COLS: List[str] = [
-    "Rk",
-    "Player",
-    "Pos",
-    "Squad",
-    "Comp",  # falls vorhanden
-    "Age",
-    "MP",
-    "Min",
-    "90s",
+# SCORE_INPUT_COLS: List[str] = [
+#     "Rk",
+#     "Player",
+#     "Pos",
+#     "Squad",
+#     "Comp",  # falls vorhanden
+#     "Age",
+#     "MP",
+#     "Min",
+#     "90s",
 
-    # Offensiv-Stats
-    "Gls",
-    "Ast",
-    "xG",
-    "xAG",
-    "Sh/90",
-    "SoT/90",
-    "KP",
-    "SCA90",
-    "1/3",
-    "PPA",
-    "PrgC",
-    "PrgP",
-    "Mis",
+#     # Offensiv-Stats
+#     "Gls",
+#     "npxG",
+#     "G-PK",
+#     "SoT",
+#     "TB",
+#     "Ast",
+#     "xG",
+#     "xAG",
+#     "Sh/90",
+#     "SoT/90",
+#     "KP",
+#     "SCA90",
+#     "1/3",
+#     "PPA",
+#     "PrgC",
+#     "PrgP",
+#     "Mis",
+#     "Succ",
 
-    # Defensiv-Stats
-    "Tkl",
-    "TklW",
-    "Int",
-    "Clr",
-    "Blocks_stats_defense",
-    "Tkl%",
-    "Err",
-    "Fls",
+#     # Defensiv-Stats
+#     "Tkl",
+#     "TklW",
+#     "Int",
+#     "Clr",
+#     "Blocks",
+#     "Tkl%",
+#     "Err",
+#     "Fls",
+#     "Won%",
 
-    # Zonen-Touches
-    "Def Pen",
-    "Def 3rd_stats_possession",
-    "Mid 3rd_stats_possession",
-    "Att 3rd_stats_possession",
-    "Att Pen",
-]
+#     # Zonen-Touches
+#     "Def Pen",
+#     "Def 3rd_stats_possession",
+#     "Mid 3rd_stats_possession",
+#     "Att 3rd_stats_possession",
+#     "Att Pen",
+# ]
 
 
 # ---------------------------------------------------------------------------
@@ -68,20 +74,16 @@ SCORE_INPUT_COLS: List[str] = [
 
 def load_raw_for_scoring(season: str, raw_dir: Path) -> pd.DataFrame:
     """
-    Lädt die 'players_data_light-Season.csv' aus Data/Raw
-    und reduziert auf SCORE_INPUT_COLS.
+    Lädt die komplette players_data-Season.csv aus Data/Raw,
+    ohne Spalten auf SCORE_INPUT_COLS zu reduzieren.
     """
     season_safe = season.replace("/", "-")
-    csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+    csv_path = raw_dir / f"players_data-{season_safe}.csv"
     if not csv_path.exists():
-        raise FileNotFoundError(f"Light-Input nicht gefunden: {csv_path}")
+        raise FileNotFoundError(f"Raw file not found: {csv_path}")
 
-    df_light = pd.read_csv(csv_path)
-
-    existing_cols = [c for c in SCORE_INPUT_COLS if c in df_light.columns]
-    df_score = df_light[existing_cols].copy()
-
-    return df_score
+    df = pd.read_csv(csv_path)
+    return df
 
 
 def build_feature_table(season: str, raw_dir: Path) -> pd.DataFrame:
@@ -93,6 +95,10 @@ def build_feature_table(season: str, raw_dir: Path) -> pd.DataFrame:
     - rechnet per90-Spalten (Standardliste aus processing.DEFAULT_PER90_COLS)
     """
     df = load_raw_for_scoring(season, raw_dir)
+
+    # Blocks-Alias für die Per90-Logik:
+    if "Blocks" not in df.columns and "Blocks_stats_defense" in df.columns:
+        df["Blocks"] = df["Blocks_stats_defense"]
 
     # Positionslogik aus processing.py (FW / MF / DF / Off_MF / Def_MF, GK raus)
     df = prepare_positions(df)

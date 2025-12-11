@@ -3,53 +3,116 @@ import pandas as pd
 import altair as alt
 from pathlib import Path
 import numpy as np
-import matplotlib
-matplotlib.use("Agg")   # verhindert GUI-Fehler im Browser
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+from matplotlib.patches import Polygon
 from mplsoccer import PyPizza
-import numpy as np
+from streamlit.components.v1 import html as st_html
 
+from src.processing import prepare_positions, add_standard_per90, add_squad_per90
+from src.scoring import score_band_5
+
+import matplotlib
+matplotlib.use("Agg")
+
+# -------------------------------------------------------------------
+# Global Matplotlib + Theme
+# -------------------------------------------------------------------
 plt.rcParams["figure.dpi"] = 200      # höhere Render-Auflösung
 plt.rcParams["savefig.dpi"] = 200
 
-
-from src.processing import prepare_positions, add_standard_per90
-
-
-
-PRIMARY_COLOR = "#1f77b4"  # main brand color (used for headline & band chart)
-# Brand / Theme colors
-APP_BG = "#000000"            # sehr dunkles Blau, App- & Chart-Background
+PRIMARY_COLOR = "#1f77b4"  # main brand color
+APP_BG = "#000000"
 GRID_COLOR = "#374151"
 TEXT_COLOR = "#e5e7eb"
 SLICE_COLOR = "cornflowerblue"
-PRIMARY_COLOR = "#1f77b4"   # gleiche Farbe wie Band-Distribution-Balken
-VALUE_COLOR = "#00B8A9"
+VALUE_COLOR = "#00B8A9"  #f57f17
 
 # drei Töne davon für die Pizza-Gruppen
-COLOR_POSSESSION = "#80F5E3"   # helles Türkis
-COLOR_ATTACKING  = "#00B8A9"   # dein Originalfarbton
-COLOR_DEFENDING  = "#006058"   # dunkles Petrolgrün
+COLOR_POSSESSION = "#80F5E3"   
+COLOR_ATTACKING  = "#00B8A9"   
+COLOR_DEFENDING  = "#006058"   
 
-# Metric-specific weights (lower weight = more smoothing due to high variance)
-METRIC_WEIGHTS = {
-    "Dribbles completed": 0.7,
-    "Pass completion": 1.0,
-    "Prog. carries": 0.85,
-    "Prog. passes": 0.9,
-    "Through balls": 1.0,
+BIG5_COMPS = {
+    "eng Premier League",
+    "es La Liga",
+    "de Bundesliga",
+    "it Serie A",
+    "fr Ligue 1",
+}
 
-    "Assists": 1.0,
-    "Key passes": 0.9,
-    "Non-penalty goals": 0.6,
-    "npxG": 0.8,
-    "Shots on target": 0.7,
 
-    "Tackles won": 0.9,
-    "Interceptions": 1.0,
-    "Blocks": 1.0,
-    "Clearances": 1.0,
+OFFENSE_PRESETS = {
+        "Core Offense": [
+            "Gls/90",
+            "xG/90",
+            "npxG/90",
+            "Shots on target/90",
+            "xAG/90",
+            "KP/90",
+        ],
+        "Chance Creation": [
+            "xAG/90",
+            "KP/90",
+            "Prog Passes/90",
+            "Prog Carries/90",
+            "Att 3rd/90",
+            "Att Pen/90",
+        ],
+        "Box Presence": [
+            "Att 3rd/90",
+            "Att Pen/90",
+            "Shots on target/90",
+            "npxG/90",
+        ],
+        "Custom": None,  # frei wählbar nur über Multiselect
+    }
+
+DEFENSE_PRESETS = {
+        "Core Defense": [
+            "TklW/90",
+            "Int/90",
+            "Clr/90",
+            "Blocks/90",
+            "Fouls/90",
+        ],
+        "Box Defense": [
+            "Clr/90",
+            "Blocks/90",
+            "GA/90",
+            "PSxG+/- /90",
+        ],
+        "Custom": None,
+    }
+
+# Welche Spalten werden für das Radar benutzt?
+# label (Radar) -> (Spaltenname im df_raw, invert: weniger = besser?)
+
+OFFENSE_METRICS_CONFIG: dict[str, tuple[str, bool]] = {
+    # label        # Spalte in df_raw           invert?
+    "npxG":                      ("npxG/90",             False),
+    "npxG/Shot":                 ("npxG/Sh",             False),
+    "Shots":                     ("Sh/90",               False),
+    "Shots \non \nTarget":       ("SoT/90",              False),
+    "xAG":                       ("xAG/90",              False),
+    "Passes \nto \nPA":          ("PPA/90",              False),
+    "Carries \nto \nPA":         ("CPA/90",              False),
+    "Touches \nin \nPA":         ("Att Pen/90",          False),
+    "Pass \ncompletion %":       ("Cmp%",                False),
+    "Goal \nCreation \nAction":  ("GCA90",               False),
+    "Shot \nCreation \nAction":  ("SCA90",               False),
+    "Key \nPasses":              ("KP/90",               False),
+}
+
+DEFENSE_METRICS_CONFIG: dict[str, tuple[str, bool]] = {
+    # defensiv: teilweise invertiert (weniger = besser)
+    "xG \nAllowed":             ("onxGA/90",            True),   # weniger xG conceded besser
+    "Goals \nAllowed":          ("GA90",                True),   # weniger Gegentore besser
+    "SoT \nAllowed":            ("SoTA/90",             True),   # weniger Schüsse aufs Tor besser
+    "Clearances":               ("Clr/90",              False),  # mehr Clearances = aktiver Verteidiger
+    "Tackles+Interc.":          ("Tkl+Int/90",          False),
+    "PSxG-GA":                  ("PSxG+/-/90",          False),  # höher = besser (mehr gehalten als erwartet)
+    "Clean \nSheets %":         ("CS%",                 False),  # höher = mehr Clean Sheets
+    "Crosses Faced":            ("Opp/90",              True),   # mehr Flanken gegen dich ist eher schlecht
 }
 
 # -------------------------------------------------------------------
@@ -71,13 +134,428 @@ BAND_ORDER = [
     "Below Big-5 Level",
 ]
 
-BIG5_COMPS = {
-    "eng Premier League",
-    "es La Liga",
-    "de Bundesliga",
-    "it Serie A",
-    "fr Ligue 1",
-}
+# ---------- kleine Helper statt externem utils-Modul ----------
+
+# ---------- kleine Helper statt externem utils-Modul ----------
+
+def _get_coordinates(n: int) -> np.ndarray:
+    """
+    Erzeugt n gleichmäßig verteilte Winkel um den Kreis.
+    Rückgabe: (n, 3) -> wir benutzen nur Spalte 2 (Winkel in Rad).
+    """
+    angles = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    coords = np.zeros((n, 3), dtype=float)
+    coords[:, 2] = angles
+    return coords
+
+
+def _get_indices_between(range_list: np.ndarray,
+                         coord_list: np.ndarray,
+                         value: float,
+                         reverse: bool = False) -> tuple[float, float]:
+    """
+    Vereinfacht: wir suchen den Range-Punkt, der am nächsten am Wert liegt.
+    (Statt Interpolation – optisch reicht das völlig für den Radar.)
+    """
+    diffs = np.abs(range_list - value)
+    idx = int(diffs.argmin())
+    x_coord, y_coord = coord_list[idx]
+    return float(x_coord), float(y_coord)
+
+
+class Radar:
+    """
+    StatsBomb-ähnliche Radar-Chart-Klasse mit konzentrischen Ringen.
+    """
+
+    def __init__(
+        self,
+        background_color: str = "#FFFFFF",
+        patch_color: str = "#D6D6D6",
+        fontfamily: str = "DejaVu Sans",
+
+        # Label (Metriknamen außen)
+        label_fontsize: float = 7,
+        label_color: str = "#000000",
+        label_weight: str = "bold",
+
+        # Range-Werte (Zahlen auf den Ringen)
+        range_fontsize: float = 7,
+        range_color: str = "#000000",
+        range_weight: str = "normal",
+    ):
+        self.background_color = background_color
+        self.patch_color = patch_color
+        self.fontfamily = fontfamily
+
+        self.label_fontsize = label_fontsize
+        self.label_color = label_color
+        self.label_weight = label_weight
+
+        self.range_fontsize = range_fontsize
+        self.range_color = range_color
+        self.range_weight = range_weight
+
+    def plot_radar(
+        self,
+        ranges,
+        params,
+        values,
+        radar_color,
+        filename: str | None = None,
+        dpi: int = 300,
+        title: dict = dict(),
+        alphas=[0.6, 0.6],
+        compare: bool = False,
+        endnote: str | None = None,
+        end_size: int = 9,
+        end_color: str = "#95919B",
+        image=None,
+        image_coord=None,
+        figax=None,
+        **kwargs,
+    ):
+        """
+        ranges: list[(min,max)] pro Metrik (in REALEN Einheiten)
+        params: Label-Liste (Strings)
+        values:
+          - single team: list[float]
+          - compare: [list[float], list[float]]
+        radar_color:
+          - single: "#hex"
+          - compare: ["#color_team1", "#color_team2"]
+        """
+
+        assert len(ranges) >= 3, "Length of ranges should be >= 3"
+        assert len(params) >= 3, "Length of params should be >= 3"
+
+        if compare:
+            assert (
+                len(values) == len(radar_color) == len(alphas)
+            ), "Length for values, radar_color and alphas must match"
+        else:
+            assert len(values) >= 3, "Length of values should be >= 3"
+            assert len(ranges) == len(params) == len(values), \
+                "Length of ranges, params, values must match"
+
+        if figax:
+            fig, ax = figax
+        else:
+            fig, ax = plt.subplots(
+                figsize=(10, 10),
+                facecolor=self.background_color,
+            )
+            ax.set_facecolor(self.background_color)
+
+        ax.set_aspect("equal")
+        ax.set(xlim=(-22, 22), ylim=(-23, 25))
+
+        if isinstance(radar_color, str):
+            radar_color = [radar_color, "#D6D6D6"]
+
+        # äußere Labels (Metrik-Namen)
+        ax = self.__add_labels(params=params, ax=ax)
+
+        # numerische Ringe
+        ax, xy, range_values = self.__add_ranges(ranges=ranges, ax=ax)
+
+        if compare:
+            for i in range(len(values)):
+                val = values[i]
+                vertices = self.__get_vertices(val, xy, range_values)
+                ax = self.__plot_circles(
+                    ax=ax,
+                    radar_color=radar_color[i],
+                    vertices=vertices,
+                    alpha=alphas[i],
+                    compare=True,
+                )
+        else:
+            vertices = self.__get_vertices(values, xy, range_values)
+            ax = self.__plot_circles(
+                ax=ax,
+                radar_color=radar_color,
+                vertices=vertices,
+            )
+
+        # Endnote
+        if endnote is not None:
+            y_add = -22.5
+            for note in endnote.split("\n"):
+                ax.text(
+                    22,
+                    y_add,
+                    note,
+                    fontfamily=self.fontfamily,
+                    ha="right",
+                    fontdict={"color": end_color},
+                    fontsize=end_size,
+                )
+                y_add -= 1
+
+        ax.axis("off")
+
+        if len(title) > 0:
+            ax = self.__plot_titles(ax, title)
+
+        if filename:
+            fig.savefig(filename, dpi=dpi, bbox_inches="tight")
+
+        return fig, ax
+
+    # ---------- Titel ----------
+
+    def __plot_titles(self, ax, title):
+        if title.get("title_color") is None:
+            title["title_color"] = "#000000"
+        if title.get("subtitle_color") is None:
+            title["subtitle_color"] = "#000000"
+        if title.get("title_fontsize") is None:
+            title["title_fontsize"] = 20
+        if title.get("subtitle_fontsize") is None:
+            title["subtitle_fontsize"] = 15
+        if title.get("title_fontsize_2") is None:
+            title["title_fontsize_2"] = title["title_fontsize"]
+        if title.get("subtitle_fontsize_2") is None:
+            title["subtitle_fontsize_2"] = title["subtitle_fontsize"]
+
+        if title.get("title_name"):
+            ax.text(
+                -22,
+                24,
+                title["title_name"],
+                fontsize=title["title_fontsize"],
+                fontweight="bold",
+                fontdict={"color": title["title_color"]},
+                fontfamily=self.fontfamily,
+            )
+
+        if title.get("subtitle_name"):
+            ax.text(
+                -22,
+                22,
+                title["subtitle_name"],
+                fontsize=title["subtitle_fontsize"],
+                fontdict={"color": title["subtitle_color"]},
+                fontfamily=self.fontfamily,
+            )
+
+        if title.get("title_color_2") is None:
+            title["title_color_2"] = "#000000"
+        if title.get("subtitle_color_2") is None:
+            title["subtitle_color_2"] = "#000000"
+
+        if title.get("title_name_2"):
+            ax.text(
+                22,
+                24,
+                title["title_name_2"],
+                fontsize=title["title_fontsize_2"],
+                fontweight="bold",
+                fontdict={"color": title["title_color_2"]},
+                ha="right",
+                fontfamily=self.fontfamily,
+            )
+
+        if title.get("subtitle_name_2"):
+            ax.text(
+                22,
+                22,
+                title["subtitle_name_2"],
+                fontsize=title["subtitle_fontsize_2"],
+                fontdict={"color": title["subtitle_color_2"]},
+                ha="right",
+                fontfamily=self.fontfamily,
+            )
+
+        return ax
+
+    # ---------- Polygon + Kreise ----------
+
+    def __plot_circles(self, ax, radar_color, vertices, alpha=None, compare=False):
+        """
+        Polygon + Kreise zeichnen.
+        """
+
+        radius = [3.35, 6.7, 10.05, 13.4, 16.75]
+        lw_circle, zorder_circle = 18, 1
+
+        # Polygon
+        if compare:
+            radar_1 = Polygon(
+                vertices,
+                fc=radar_color,
+                ec="None",
+                lw=0,
+                alpha=alpha if alpha is not None else 0.7,
+                zorder=zorder_circle,
+            )
+            ax.add_patch(radar_1)
+        else:
+            radar_1 = Polygon(
+                vertices,
+                fc=radar_color[0],
+                alpha=alpha if alpha is not None else 0.7,
+                zorder=zorder_circle,
+            )
+            ax.add_patch(radar_1)
+
+        # konzentrische Kreise
+        for rad in radius:
+            circle_1 = plt.Circle(
+                xy=(0, 0),
+                radius=rad,
+                fc="none",
+                ec=self.patch_color,
+                lw=lw_circle,
+                alpha=0.7,
+                zorder=zorder_circle - 1,
+            )
+            ax.add_patch(circle_1)
+
+            if not compare:
+                circle_2 = plt.Circle(
+                    xy=(0, 0),
+                    radius=rad,
+                    fc="none",
+                    ec=radar_color[1],
+                    lw=lw_circle,
+                    alpha=0.7,
+                    zorder=zorder_circle,
+                )
+                circle_2.set_clip_path(radar_1)
+                ax.add_patch(circle_2)
+
+        return ax
+
+    # ---------- Labels & Ranges ----------
+
+    def __add_labels(self, params, ax, return_list=False, radius=20, range_val=False):
+        coord = _get_coordinates(n=len(params))
+
+        if return_list:
+            x_y = []
+
+        for i in range(len(params)):
+            rot = coord[i, 2]
+            x, y = (radius * np.sin(rot), radius * np.cos(rot))
+
+            if return_list:
+                x_y.append((x, y))
+
+            if y < 0:
+                rot += np.pi
+
+            if isinstance(params[i], np.floating):
+                p = round(params[i], 2)
+            else:
+                p = params[i]
+
+            if range_val:
+                size = self.range_fontsize
+                color = self.range_color
+                weight = self.range_weight
+            else:
+                size = self.label_fontsize
+                color = self.label_color
+                weight = self.label_weight
+
+            ax.text(
+                x,
+                y,
+                p,
+                rotation=-np.rad2deg(rot),
+                ha="center",
+                va="center",
+                fontsize=size,
+                fontfamily=self.fontfamily,
+                fontweight=weight,
+                color=color,
+                zorder=10,  # immer vor Polygon & Kreisen
+            )
+
+        if return_list:
+            return ax, x_y
+        else:
+            return ax
+
+    def __add_ranges(self, ranges, ax):
+        radius = [2.5, 4.1, 5.8, 7.5, 9.2, 10.9, 12.6, 14.3, 15.9, 17.6]
+        x_y = []
+        range_values = np.array([])
+
+        for rng in ranges:
+            value = np.linspace(start=rng[0], stop=rng[1], num=10)
+            range_values = np.append(range_values, value)
+
+        range_values = range_values.reshape((len(ranges), 10))
+
+        for i in range(len(radius)):
+            params = range_values[:, i]
+            ax, xy = self.__add_labels(
+                params=params,
+                ax=ax,
+                return_list=True,
+                radius=radius[i],
+                range_val=True,
+            )
+            x_y.append(xy)
+
+        return ax, np.array(x_y), range_values
+
+    # ---------- Vertices ----------
+
+    def __get_vertices(self, values, xy, range_values):
+        vertices = []
+
+        for i in range(len(range_values)):
+            range_list = range_values[i, :]
+            coord_list = xy[:, i]
+
+            if range_list[0] > range_list[-1]:
+                if values[i] >= range_list[0]:
+                    x_coord, y_coord = coord_list[0, 0], coord_list[0, 1]
+                elif values[i] <= range_list[-1]:
+                    x_coord, y_coord = coord_list[-1, 0], coord_list[-1, 1]
+                else:
+                    x_coord, y_coord = _get_indices_between(
+                        range_list=range_list,
+                        coord_list=coord_list,
+                        value=values[i],
+                        reverse=True,
+                    )
+            else:
+                if values[i] >= range_list[-1]:
+                    x_coord, y_coord = coord_list[-1, 0], coord_list[-1, 1]
+                elif values[i] <= range_list[0]:
+                    x_coord, y_coord = coord_list[0, 0], coord_list[0, 1]
+                else:
+                    x_coord, y_coord = _get_indices_between(
+                        range_list=range_list,
+                        coord_list=coord_list,
+                        value=values[i],
+                        reverse=False,
+                    )
+
+            vertices.append([x_coord, y_coord])
+
+        return vertices
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}("
+            f"background_color={self.background_color}, "
+            f"patch_color={self.patch_color}, "
+            f"fontfamily={self.fontfamily}, "
+            f"label_fontsize={self.label_fontsize}, "
+            f"label_color={self.label_color}, "
+            f"label_weight={self.label_weight}, "
+            f"range_fontsize={self.range_fontsize}, "
+            f"range_color={self.range_color}, "
+            f"range_weight={self.range_weight})"
+        )
+
+    __str__ = __repr__
 
 # -------------------------------------------------------------------
 # Data loading (cached)
@@ -107,14 +585,10 @@ def load_data():
         st.exception(e)
         return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
-
 # -------------------------------------------------------------------
 # Helper functions
 # -------------------------------------------------------------------
 def get_role_label(pos: str | None) -> str:
-    """
-    Map internal Pos labels to a human-readable role.
-    """
     if pos is None:
         return "Unknown role"
     if pos in ("FW", "Off_MF"):
@@ -125,16 +599,14 @@ def get_role_label(pos: str | None) -> str:
         return "Defensive player"
     return f"Role: {pos}"
 
+
 def mean_or_na(series: pd.Series | None) -> str:
-    """Format a mean value as string or 'n/a' if no data."""
     if series is None or series.empty or series.notna().sum() == 0:
         return "n/a"
     return f"{series.mean():.1f}"
 
+
 def assess_diff(diff: float) -> str:
-    """
-    Map the difference between player score and squad score to a verbal assessment.
-    """
     if diff >= 100:
         return "clearly above squad level (strong upgrade)"
     elif diff >= 30:
@@ -145,23 +617,28 @@ def assess_diff(diff: float) -> str:
         return "below squad level"
     else:
         return "around squad level"
-    
-def get_primary_score_and_band(row):
-    pos = row.get("Pos")
 
-    if pos == "FW":
+
+def get_primary_score_and_band(row: pd.Series) -> tuple[float | None, str | None]:
+    """
+    Wählt den passenden Score + Band basierend auf der Roh-Position.
+    - FW und Off_MF -> OffScore_abs / OffBand
+    - MF           -> MidScore_abs / MidBand
+    - DF und Def_MF -> DefScore_abs / DefBand
+    """
+    pos_raw = row.get("Pos_raw") or row.get("Pos")
+
+    if pos_raw in ("FW", "Off_MF"):
         return row.get("OffScore_abs"), row.get("OffBand")
-
-    if pos == "MF":
+    if pos_raw in ("MF",):
         return row.get("MidScore_abs"), row.get("MidBand")
-
-    if pos == "DF":
+    if pos_raw in ("DF", "Def_MF"):
         return row.get("DefScore_abs"), row.get("DefBand")
 
-    return float("nan"), None
+    return (None, None)
+
 
 def band_from_score(score: float | None) -> str | None:
-    """Map a numeric score to a band label (using the same scale as in the UI)."""
     if score is None or pd.isna(score):
         return None
 
@@ -176,16 +653,10 @@ def band_from_score(score: float | None) -> str | None:
     else:
         band = "Below Big-5 Level"
 
-    # mit Icon/Text aus BAND_ICONS kombinieren
     return BAND_ICONS.get(band, band)
 
 
-
 def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
-    """
-    Build a clean line chart (no grid, just one petrol line)
-    for the selected score over seasons.
-    """
     if "Season" not in df_player_all.columns or score_col not in df_player_all.columns:
         return
 
@@ -220,19 +691,15 @@ def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
 
     st.altair_chart(chart, use_container_width=True)
 
+# -------------------------------------------------------------------
+# Pizza charts (per season)
+# -------------------------------------------------------------------
 def render_pizza_chart(
     df_all: pd.DataFrame,
     df_player: pd.DataFrame,
     role: str,
     season: str | None,
 ):
-    """
-    PyPizza-Chart (StatsBomb-Style) für Big-5-Spieler.
-
-    - Werte = Perzentil-Rank (0–100) vs Big-5-Peers gleicher Rolle + Season.
-    - Slices kleiner (Donut-Style) über inner_circle_size.
-    - Drei Farben (Possession / Attacking / Defending) in Tönen der Hauptfarbe.
-    """
     if df_player.empty or role is None:
         st.info("No data available for pizza chart.")
         return
@@ -244,7 +711,6 @@ def render_pizza_chart(
         st.info("Pizza chart is currently only available for Big-5 competitions.")
         return
 
-    # Vergleichsgruppe: Big-5, gleiche Rolle, gleiche Season
     df_comp = df_all.copy()
     if "Comp" in df_comp.columns:
         df_comp = df_comp[df_comp["Comp"].isin(BIG5_COMPS)]
@@ -257,16 +723,13 @@ def render_pizza_chart(
         st.info("No comparison group available for pizza chart.")
         return
 
-    # Helper: erste vorhandene Spalte aus Kandidaten
     def resolve_metric_column(df: pd.DataFrame, row_s: pd.Series, candidates: list[str]) -> str | None:
         for c in candidates:
             if c in df.columns and c in row_s.index:
                 return c
         return None
 
-    # --------- Metriken inkl. Gruppenzugehörigkeit ---------
     metric_defs = [
-        # (Group, [Candidate columns], Label)
         ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\nCompleted"),
         ("Possession", ["Cmp%"], "Pass\nCompletion"),
         ("Possession", ["PrgC_Per90", "PrgC/90"], "Prog.\nCarries"),
@@ -302,7 +765,6 @@ def render_pizza_chart(
         if peers.empty:
             continue
 
-        # Perzentil-Rank (0–100)
         percentile = (peers <= val).mean() * 100.0
         percentile = int(round(percentile))
 
@@ -316,7 +778,6 @@ def render_pizza_chart(
 
     values = np.array(values)
 
-    # Slice-Farben je Gruppe
     group_color_map = {
         "Possession": COLOR_POSSESSION,
         "Attacking": COLOR_ATTACKING,
@@ -324,10 +785,9 @@ def render_pizza_chart(
     }
     slice_colors = [group_color_map[g] for g in groups]
 
-    # ---------- PyPizza: kleiner, dunkler Hintergrund, Donut ----------
     baker = PyPizza(
         params=params,
-        background_color=APP_BG,  # <- dunkler Hintergrund
+        background_color=APP_BG,
         straight_line_color="#4b5563",
         straight_line_lw=0.1,
         last_circle_color="#9ca3af",
@@ -335,16 +795,16 @@ def render_pizza_chart(
         other_circle_color="#4b5563",
         other_circle_lw=0.1,
         other_circle_ls="--",
-        inner_circle_size=20.0,      # <- größerer innerer Kreis = kleinere Slices
-        straight_line_limit=100.0,   # Percentiles bis 100
+        inner_circle_size=20.0,
+        straight_line_limit=100.0,
     )
 
     fig, ax = baker.make_pizza(
         values,
-        figsize=(4.5, 4.5),          # kleineres Chart
-        param_location=118,          # Labels näher an der Pizza, ringförmig verteilt
+        figsize=(4.5, 4.5),
+        param_location=118,
         slice_colors=slice_colors,
-        color_blank_space="same",    # „leerer“ Bereich in gleicher Slice-Farbe
+        color_blank_space="same",
         blank_alpha=0.15,
         kwargs_slices=dict(
             edgecolor=APP_BG,
@@ -362,21 +822,18 @@ def render_pizza_chart(
             zorder=9,
             bbox=dict(
                 edgecolor="#000000",
-                facecolor=VALUE_COLOR,  # gleiche Farbe wie Band-Balken
+                facecolor=VALUE_COLOR,
                 boxstyle="round,pad=0.2",
                 lw=0.5,
             ),
         ),
     )
 
-    # Sicherheitshalber Background setzen
     fig.set_facecolor(APP_BG)
     ax.set_facecolor(APP_BG)
 
-    # Titel / Subtitel
     player_name = row.get("Player", "")
     squad_name = row.get("Squad", "")
-    season_txt = season or ""
 
     fig.text(
         0.5, 1.05,
@@ -394,13 +851,11 @@ def render_pizza_chart(
         color=TEXT_COLOR,
     )
 
-    # ---------- Legende unten (mit Text) ----------
     import matplotlib.patches as mpatches
-
     handles = [
         mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
-        mpatches.Patch(color=COLOR_ATTACKING,  label="Attacking"),
-        mpatches.Patch(color=COLOR_DEFENDING,  label="Defending"),
+        mpatches.Patch(color=COLOR_ATTACKING, label="Attacking"),
+        mpatches.Patch(color=COLOR_DEFENDING, label="Defending"),
     ]
     leg = fig.legend(
         handles=handles,
@@ -415,19 +870,15 @@ def render_pizza_chart(
         text.set_fontweight("bold")
 
     return fig
-    #st.pyplot(fig)
 
+# -------------------------------------------------------------------
+# Career Pizza chart
+# -------------------------------------------------------------------
 def render_career_pizza_chart(
     player: str,
     role: str,
     seasons: list[str],
 ) -> plt.Figure | None:
-    """
-    Career-Pizza-Chart:
-
-    - Aggregiert die Per-90-Metriken des Spielers über alle Saisons (minuten-gewichtet).
-    - Vergleichsgruppe: alle Big-5-Spieler gleicher Rolle über alle Saisons.
-    """
     if not seasons or role is None:
         st.info("Not enough data available for a career pizza chart.")
         return None
@@ -438,10 +889,9 @@ def render_career_pizza_chart(
     df_features_all_list = []
     df_player_feat_list = []
 
-    # Alle Seasons des Spielers laden (Feature-Table pro Season)
     for s in seasons:
         season_safe = s.replace("/", "-")
-        csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+        csv_path = raw_dir / f"players_data-{season_safe}.csv"
         if not csv_path.exists():
             continue
 
@@ -463,7 +913,6 @@ def render_career_pizza_chart(
     df_features_all = pd.concat(df_features_all_list, ignore_index=True)
     df_player_all_feat = pd.concat(df_player_feat_list, ignore_index=True)
 
-    # Nur Big-5 für Vergleichsgruppe
     if "Comp" in df_player_all_feat.columns:
         player_comps = set(df_player_all_feat["Comp"].dropna().unique())
         if not (player_comps & BIG5_COMPS):
@@ -480,14 +929,12 @@ def render_career_pizza_chart(
         st.info("No comparison group available for career pizza chart.")
         return None
 
-    # Helper: erste vorhandene Spalte aus Kandidaten
     def resolve_metric_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
         for c in candidates:
             if c in df.columns:
                 return c
         return None
 
-    # Metrik-Definition wie im Season-Pizza
     metric_defs = [
         ("Possession", ["Succ_Per90", "Succ/90"], "Dribbles\nCompleted"),
         ("Possession", ["Cmp%"], "Pass\nCompletion"),
@@ -511,7 +958,6 @@ def render_career_pizza_chart(
     values: list[int] = []
     groups: list[str] = []
 
-    # Minuten als Gewicht
     mins = pd.to_numeric(df_player_all_feat.get("Min", pd.Series(dtype=float)), errors="coerce")
     total_min = mins.sum() if mins.notna().any() else None
 
@@ -520,30 +966,20 @@ def render_career_pizza_chart(
         if col is None or col not in df_player_all_feat.columns:
             continue
 
-        # Spieler: minuten-gewichtete Per-90-Aggregation (oder Mittelwert als Fallback)
         vals_player = pd.to_numeric(df_player_all_feat[col], errors="coerce")
-        if vals_player.notna().any():
-            # 1) Minuten-Gewichtung (wie bisher)
-            if total_min is not None and total_min > 0:
-                num_min = (vals_player * mins).sum()
-                denom_min = total_min
-                base_value = num_min / denom_min
-            else:
-                base_value = vals_player.mean()
-
-            # 2) Metrik-Gewichtung (neu)
-            metric_weight = METRIC_WEIGHTS.get(label.replace("\n"," ").strip(), 1.0)
-
-            # Glättung durch Mischung aus basierten und glattem Wert
-            # Weight <1 → mehr smoothing
-            player_val = base_value * metric_weight + base_value.mean() * (1 - metric_weight)
-        else:
+        if not vals_player.notna().any():
             continue
+
+        if total_min is not None and total_min > 0 and mins.notna().any():
+            num_min = (vals_player * mins).sum()
+            denom_min = total_min
+            player_val = num_min / denom_min
+        else:
+            player_val = vals_player.mean()
 
         if pd.isna(player_val):
             continue
 
-        # Vergleichsverteilung
         peers = pd.to_numeric(df_comp[col], errors="coerce").dropna()
         if peers.empty:
             continue
@@ -615,7 +1051,6 @@ def render_career_pizza_chart(
     fig.set_facecolor(APP_BG)
     ax.set_facecolor(APP_BG)
 
-    # Titel / Subtitle
     first_season = min(seasons)
     last_season = max(seasons)
 
@@ -635,10 +1070,11 @@ def render_career_pizza_chart(
         color=TEXT_COLOR,
     )
 
+    import matplotlib.patches as mpatches
     handles = [
         mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
-        mpatches.Patch(color=COLOR_ATTACKING,  label="Attacking"),
-        mpatches.Patch(color=COLOR_DEFENDING,  label="Defending"),
+        mpatches.Patch(color=COLOR_ATTACKING, label="Attacking"),
+        mpatches.Patch(color=COLOR_DEFENDING, label="Defending"),
     ]
     leg = fig.legend(
         handles=handles,
@@ -654,32 +1090,29 @@ def render_career_pizza_chart(
 
     return fig
 
+# -------------------------------------------------------------------
+# Role scatter
+# -------------------------------------------------------------------
 def render_role_scatter(
     df_comp: pd.DataFrame,
     df_player: pd.DataFrame,
     role: str,
 ):
-    """
-    Scatter plot for role-specific attacking/creation metrics.
-    """
     if df_player.empty or role is None:
         st.info("No data available for role scatter plot.")
         return None
 
     row = df_player.iloc[0]
 
-    # eindeutige Identität des Spielers
     player_name = row.get("Player")
     player_squad = row.get("Squad")
 
-    # ---- Helper: Spaltennamen auflösen ----
     def resolve_col(candidates: list[str]) -> str | None:
         for c in candidates:
             if c in df_comp.columns and c in row.index:
                 return c
         return None
 
-    # ---- Rollen-spezifische Definition ----
     if role in ("FW", "Off_MF"):
         y_candidates = ["Gls_Per90", "Gls/90"]
         x_candidates = ["xG_Per90", "xG/90"]
@@ -693,7 +1126,6 @@ def render_role_scatter(
         x_label = "xAG per 90"
         chart_title = "Big-5 comparison – MF metrics"
     else:
-        # Default: Defender-Metriken
         y_candidates = ["TklW_Per90", "TklW/90"]
         x_candidates = ["Int_Per90", "Int/90"]
         y_label = "Tackles won per 90"
@@ -707,7 +1139,6 @@ def render_role_scatter(
         st.info("Not enough data available to build the role scatter plot for this player.")
         return None
 
-    # ---- Vergleichsgruppe vorbereiten ----
     cols_needed = ["Player", "Squad", x_col, y_col]
     if "Season" in df_comp.columns:
         cols_needed.append("Season")
@@ -719,7 +1150,6 @@ def render_role_scatter(
         st.info("No comparison data available for role scatter plot.")
         return None
 
-    # Player+Squad-Maske
     if "Squad" in plot_df.columns and player_squad is not None:
         player_mask = (
             (plot_df["Player"] == player_name) &
@@ -728,10 +1158,8 @@ def render_role_scatter(
     else:
         player_mask = (plot_df["Player"] == player_name)
 
-    # markiere ausgewählten Spieler
     plot_df["is_player"] = player_mask
 
-    # ---- Outlier nur für Peers filtern, Spieler immer behalten ----
     s_x = pd.to_numeric(plot_df[x_col], errors="coerce")
     s_y = pd.to_numeric(plot_df[y_col], errors="coerce")
 
@@ -739,15 +1167,12 @@ def render_role_scatter(
     qy = s_y.quantile(0.99)
 
     if np.isfinite(qx) and np.isfinite(qy):
-        # Nur Peers oberhalb des 99%-Quantils rausschneiden,
-        # der aktuelle Spieler bleibt IMMER drin.
         plot_df = plot_df[((s_x <= qx) & (s_y <= qy)) | player_mask]
 
     if plot_df.empty:
         st.info("No comparison data available for role scatter plot.")
         return None
 
-    # nach dem Filtern: is_player neu setzen (wieder Player+Squad)
     if "Squad" in plot_df.columns and player_squad is not None:
         plot_df["is_player"] = (
             (plot_df["Player"] == player_name) &
@@ -756,7 +1181,6 @@ def render_role_scatter(
     else:
         plot_df["is_player"] = (plot_df["Player"] == player_name)
 
-    # ---- Hilfsfunktion für robuste Skalen ----
     def compute_domain(series, default_max: float = 1.0, q: float = 0.99) -> tuple[float, float]:
         s = pd.to_numeric(series, errors="coerce").dropna()
         if s.empty:
@@ -777,21 +1201,17 @@ def render_role_scatter(
         if upper <= 0:
             upper = default_max
 
-        return (0.0, upper)    
+        return (0.0, upper)
 
-    # ---- Skalen: FW feste Range, MF/DF dynamisch ----
     if role in ("FW", "Off_MF"):
-        # feste, stabile Skala für Stürmer
-        x_domain = (0.0, 0.9)   # xG per 90
-        y_domain = (0.0, 1.3)   # Goals per 90
+        x_domain = (0.0, 0.9)
+        y_domain = (0.0, 1.3)
     else:
-        # MF / DF: quantilbasiert, aber robust
         x_domain = compute_domain(plot_df[x_col], default_max=1.0, q=0.99)
         y_domain = compute_domain(plot_df[y_col], default_max=1.0, q=0.99)
 
     base = alt.Chart(plot_df)
 
-    # Peers
     peers = base.transform_filter(
         alt.datum.is_player == False
     ).mark_circle(
@@ -811,14 +1231,12 @@ def render_role_scatter(
         tooltip=["Player", "Squad"] + (["Season"] if "Season" in plot_df.columns else []),
     )
 
-    
-    # Selected Player
     player_layer = base.transform_filter(
         alt.datum.is_player == True
     ).mark_circle(
-        size=140,          # größer
-        opacity=1.0,       # volle Deckkraft
-        stroke="#F9FAFB",  # dünne helle Umrandung
+        size=140,
+        opacity=1.0,
+        stroke="#F9FAFB",
         strokeWidth=1.5,
     ).encode(
         x=alt.X(f"{x_col}:Q"),
@@ -830,8 +1248,8 @@ def render_role_scatter(
     player_label = base.transform_filter(
         alt.datum.is_player == True
     ).mark_text(
-        dx=30,              # leichte Verschiebung nach rechts
-        dy=-15,             # leichte Verschiebung nach oben
+        dx=30,
+        dy=-15,
         fontSize=11,
         fontWeight="bold",
         color="#E5E7EB",
@@ -862,23 +1280,23 @@ def render_role_scatter(
 
     return chart
 
+# -------------------------------------------------------------------
+# Top list charts
+# -------------------------------------------------------------------
 def render_toplist_bar(
     df: pd.DataFrame,
     metric_col: str,
     metric_label: str,
-    base_title: str,        # z.B. "Top 50 players by primary role score"
+    base_title: str,
     top_n: int,
     season: str | None = None,
-    ascending: bool = False,  # False = beste zuerst
+    ascending: bool = False,
 ):
     if metric_col not in df.columns:
         st.info(f"Keine Spalte '{metric_col}' gefunden.")
         return None
 
-    # Basis-Spalten, die wir gern hätten
     base_cols = ["Player", "Squad", metric_col, "Pos", "Comp"]
-
-    # Nur Spalten verwenden, die im df wirklich existieren
     cols_available = [c for c in base_cols if c in df.columns]
 
     df_plot = (
@@ -891,22 +1309,17 @@ def render_toplist_bar(
         st.info(f"Keine gültigen Werte für {metric_label}.")
         return None
 
-    # sort ascending/descending
     df_plot = df_plot.sort_values(metric_col, ascending=ascending).head(top_n)
     df_plot["Player_order"] = df_plot["Player"]
-
-    # explizite Reihenfolge der Y-Achse
     y_order = df_plot["Player_order"].tolist()
 
     max_val = float(df_plot[metric_col].max())
     x_scale = alt.Scale(domain=(0, max_val * 1.05))
 
-    # ---- Dynamischer Titel ----
     pos_label = None
     comp_label = None
     squad_label = None
 
-    # Position
     if "Pos" in df_plot.columns:
         pos_vals = sorted(df_plot["Pos"].dropna().unique())
         if len(pos_vals) == 1:
@@ -919,24 +1332,19 @@ def render_toplist_bar(
             }
             pos_label = pos_map.get(pos_vals[0], pos_vals[0])
 
-    # League (Comp)
     if "Comp" in df_plot.columns:
         comps = sorted(df_plot["Comp"].dropna().unique())
         if len(comps) == 1:
             comp_label = comps[0]
 
-    # Club (Squad)
     if "Squad" in df_plot.columns:
         squads = sorted(df_plot["Squad"].dropna().unique())
         if len(squads) == 1:
             squad_label = squads[0]
 
     parts: list[str] = []
-
-    # Reihenfolge im Titel: Position > League > Club
     if pos_label is not None:
         parts.append(pos_label)
-
     if squad_label is not None:
         parts.append(squad_label)
     elif comp_label is not None:
@@ -950,9 +1358,7 @@ def render_toplist_bar(
     full_title = f"{base_title} – {context}"
     if season is not None:
         full_title += f" (Season {season})"
-    # ---------------------------------------
 
-    # --- Layer 1: Balken ---
     bars = (
         alt.Chart(df_plot)
         .mark_bar(cornerRadiusTopRight=6, cornerRadiusBottomRight=6)
@@ -982,7 +1388,6 @@ def render_toplist_bar(
         )
     )
 
-    # --- Layer 2: Score im Balken (rechts) ---
     score_text = (
         alt.Chart(df_plot)
         .mark_text(
@@ -1000,7 +1405,6 @@ def render_toplist_bar(
         )
     )
 
-    # --- Layer 3: Spielername rechts vom Balken ---
     name_text = (
         alt.Chart(df_plot)
         .mark_text(
@@ -1037,18 +1441,13 @@ def render_toplist_bar(
 
     return chart
 
+# -------------------------------------------------------------------
+# Score vs Age Beeswarm
+# -------------------------------------------------------------------
 def render_score_age_beeswarm(
     df_all_filtered: pd.DataFrame,
     df_top: pd.DataFrame,
 ):
-    """
-    Beeswarm/Jitter-Plot:
-    x = MainScore (0–1000)
-    y = Age (mit Jitter, in Python berechnet)
-    Top-N Spieler aus df_top werden hervorgehoben.
-    """
-
-    # 1) Basis-Checks
     if "MainScore" not in df_all_filtered.columns:
         st.info("Beeswarm: Spalte 'MainScore' nicht gefunden.")
         return None
@@ -1062,7 +1461,6 @@ def render_score_age_beeswarm(
 
     df_plot = df_all_filtered[cols].copy()
 
-        # 2) Age numerisch erzwingen
     df_plot["Age_num"] = pd.to_numeric(df_plot["Age"], errors="coerce")
     df_plot = df_plot.dropna(subset=["Age_num", "MainScore"])
 
@@ -1070,13 +1468,11 @@ def render_score_age_beeswarm(
         st.info("Beeswarm: Keine gültigen Daten (Age & MainScore) nach Filter.")
         return None
 
-    # 3) Minuten als Größenfaktor (falls du später wieder Größe nutzen willst)
     if "90s" in df_plot.columns:
         df_plot["MinutesFactor"] = pd.to_numeric(df_plot["90s"], errors="coerce").fillna(0)
     else:
         df_plot["MinutesFactor"] = 0.0
 
-    # 4) Top-N markieren – eindeutig über Player + Squad
     df_top = df_top.copy()
     df_plot = df_plot.copy()
 
@@ -1086,12 +1482,9 @@ def render_score_age_beeswarm(
     top_keys = set(df_top["ps_key"].unique())
     df_plot["is_top"] = df_plot["ps_key"].isin(top_keys)
 
-    # 5) Jitter in Python berechnen
-    #    -> pro Spieler ein kleiner Offset zwischen -0.4 und +0.4 Jahren
     jitter = np.random.uniform(-0.4, 0.4, size=len(df_plot))
     df_plot["Age_jitter"] = df_plot["Age_num"] + jitter
 
-    # 6) Skalen
     score_domain = (0, 1000)
     age_min = float(df_plot["Age_num"].min())
     age_max = float(df_plot["Age_num"].max())
@@ -1099,14 +1492,13 @@ def render_score_age_beeswarm(
 
     base = alt.Chart(df_plot)
 
-    # ---- Peers (nicht Top-N) ----
     peers = (
         base.transform_filter(alt.datum.is_top == False)
         .mark_circle(
-            size = 40,
+            size=40,
             opacity=1.0,
-            fillOpacity=0,        # keine Füllung
-            stroke="#F9FAFB",     # weißer Rand
+            fillOpacity=0,
+            stroke="#F9FAFB",
             strokeWidth=1.0,
         )
         .encode(
@@ -1121,8 +1513,6 @@ def render_score_age_beeswarm(
                 title="Age",
                 scale=alt.Scale(domain=age_domain),
             ),
-
-            # keine color-Encode nötig, wird durch stroke geregelt
             tooltip=[
                 "Player",
                 "Squad",
@@ -1134,11 +1524,10 @@ def render_score_age_beeswarm(
         )
     )
 
-    # ---- Top-N hervorgehoben ----
     tops = (
         base.transform_filter(alt.datum.is_top == True)
         .mark_circle(
-            size = 200,
+            size=200,
             opacity=1.0,
             fillOpacity=1.0,
             stroke="#F9FAFB",
@@ -1154,8 +1543,7 @@ def render_score_age_beeswarm(
                 "Age_jitter:Q",
                 scale=alt.Scale(domain=age_domain),
             ),
-
-            color=alt.value(VALUE_COLOR),  # gefüllte Punkte für Top N
+            color=alt.value(VALUE_COLOR),
             tooltip=[
                 "Player",
                 "Squad",
@@ -1167,13 +1555,12 @@ def render_score_age_beeswarm(
         )
     )
 
-    # ----- Labels für Top-N-Spieler -----
     labels = (
         base.transform_filter(alt.datum.is_top == True)
         .mark_text(
             align="left",
             baseline="middle",
-            dx=15,              # etwas rechts neben dem Punkt
+            dx=15,
             dy=-2,
             fontSize=10,
             color="#E5E7EB",
@@ -1187,7 +1574,7 @@ def render_score_age_beeswarm(
                 "Age_jitter:Q",
                 scale=alt.Scale(domain=age_domain),
             ),
-            text="Player:N",   # oder Player + Squad, siehe Hinweis unten
+            text="Player:N",
         )
     )
 
@@ -1214,18 +1601,14 @@ def render_score_age_beeswarm(
 
     return chart
 
+# -------------------------------------------------------------------
+# Band histogram
+# -------------------------------------------------------------------
 def render_band_histogram(df: pd.DataFrame, season: str | None = None):
-    """
-    Histogramm:
-    x = MainBand (alle 5 Bands immer sichtbar)
-    y = Anzahl Spieler (Skala abhängig vom Filter-Level)
-    """
-
     if "MainBand" not in df.columns:
         st.info("Band-Histogramm: Spalte 'MainBand' nicht gefunden.")
         return None
 
-    # ----- Bands definieren -----
     if "BAND_ORDER" in globals():
         all_bands = BAND_ORDER
     else:
@@ -1235,7 +1618,6 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
         st.info("Band-Histogramm: Keine Bands verfügbar.")
         return None
 
-    # ----- Counts je Band berechnen -----
     df_hist = df[["MainBand"]].dropna().copy()
     df_counts = (
         df_hist
@@ -1248,7 +1630,6 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
     df_counts = base_bands.merge(df_counts, on="MainBand", how="left")
     df_counts["Count"] = df_counts["Count"].fillna(0).astype(int)
 
-    # ---------- Dynamischer Titel + Info, ob All/Liga/Club ----------
     comp_name = None
     squad_name = None
 
@@ -1273,12 +1654,7 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
         title = f"{base_title} (Season {season})"
     else:
         title = base_title
-    # ---------------------------------------------------------------
 
-    # ----- Y-Achse: Skala je nach Filter-Level -----
-    # All Big-5  -> 0–1200
-    # eine Liga  -> 0–300
-    # ein Club   -> 0–50
     if squad_name is not None:
         y_max = 20
         step = 5
@@ -1291,12 +1667,11 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
 
     y_scale = alt.Scale(domain=(0, y_max), nice=False)
     y_axis = alt.Axis(
-        title=None,  # kein Achsentitel
+        title=None,
         values=list(range(0, y_max + 1, step)),
         labelColor="#E5E7EB",
     )
 
-    # ----- Layer 1: Balken -----
     bars = (
         alt.Chart(df_counts)
         .mark_bar(
@@ -1325,7 +1700,6 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
         )
     )
 
-    # ----- Layer 2: Zahlen über den Balken -----
     labels = (
         alt.Chart(df_counts)
         .mark_text(
@@ -1343,7 +1717,6 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
         )
     )
 
-    # ----- Kombiniertes Chart -----
     chart = (
         (bars + labels)
         .properties(
@@ -1374,36 +1747,1459 @@ def render_band_histogram(df: pd.DataFrame, season: str | None = None):
 
     return chart
 
+# -------------------------------------------------------------------
+# FIFA-style rating card
+# -------------------------------------------------------------------
+def render_fifa_card(
+    row: pd.Series,
+    primary_score_col: str,
+    band_col: str,
+    *,
+    title: str | None = None,
+):
+    player_name = str(row.get("Player", "Unknown"))
+    pos_display = str(row.get("Pos", "-"))
+    club = str(row.get("Squad", ""))
+    age = row.get("Age", None)
+
+    try:
+        overall_raw = float(row.get(primary_score_col, 0.0))
+        overall = int(round(overall_raw))
+    except Exception:
+        overall = 0
+
+    band_label = str(row.get(band_col, "") or "")
+    comp = str(row.get("Comp", ""))
+
+    def fmt_int(val) -> str:
+        try:
+            if val is None or pd.isna(val):
+                return "-"
+            return f"{int(round(float(val)))}"
+        except Exception:
+            return "-"
+
+    def pick_value(col_names, decimals: int = 2, is_percent: bool = False) -> str:
+        for c in col_names:
+            if c in row.index:
+                val = row.get(c)
+                if val is None or (isinstance(val, (int, float)) and pd.isna(val)):
+                    continue
+                try:
+                    v = float(val)
+                    if is_percent:
+                        return f"{v:.0f}%"
+                    return f"{v:.{decimals}f}"
+                except Exception:
+                    continue
+        return "-"
+
+    minutes_raw = row.get("Min", row.get("Minutes", None))
+    if (minutes_raw is None or pd.isna(minutes_raw)) and "90s" in row.index:
+        try:
+            minutes_raw = float(row.get("90s")) * 90.0
+        except Exception:
+            minutes_raw = None
+    minutes_str = fmt_int(minutes_raw)
+
+    pass_acc_str = pick_value(
+        ["Cmp%", "Cmp_Pct", "PassCmp_Pct"],
+        decimals=0,
+        is_percent=True,
+    )
+
+    base_attrs = [
+        ("Min", minutes_str),
+        ("Pass Acc", pass_acc_str),
+    ]
+
+    pos_upper = (pos_display or "").upper()
+    if "FW" in pos_upper:
+        role_type = "FW"
+    elif "DF" in pos_upper or "CB" in pos_upper or "FB" in pos_upper:
+        role_type = "DF"
+    elif "MF" in pos_upper:
+        role_type = "MF"
+    else:
+        role_type = "MF"
+
+    if role_type == "FW":
+        g_90 = pick_value(["Gls_Per90", "G_90", "Gls90"])
+        xg_90 = pick_value(["xG_Per90", "xG_90", "xG90"])
+        npxg_90 = pick_value(["npxG_Per90", "npxG_90", "npxG90"])
+        sh_90 = pick_value(["Sh_Per90", "SoT_Per90", "Sh_90"])
+
+        role_attrs = [
+            ("G/90", g_90),
+            ("xG/90", xg_90),
+            ("npxG/90", npxg_90),
+            ("Shots/90", sh_90),
+        ]
+
+    elif role_type == "DF":
+        blk_90 = pick_value(
+            ["Blocks_Per90", "Blocks_stats_defense_Per90", "Blocks_stats_defense_90", "Blocks_90"]
+        )
+        int_90 = pick_value(["Int_Per90", "Tkl+Int_Per90", "Int_90"])
+        clr_90 = pick_value(["Clr_Per90", "Clr_90"])
+        aer_pct = pick_value(
+            ["Won%", "AerialWon_Pct", "AerialDuelsWon_Pct", "AerialDuels_Won%"],
+            decimals=0,
+            is_percent=True,
+        )
+
+        role_attrs = [
+            ("Blocks/90", blk_90),
+            ("Int/90", int_90),
+            ("Clr/90", clr_90),
+            ("Aerials Won", aer_pct),
+        ]
+
+    else:
+        ast_90 = pick_value(["Ast_Per90", "Ast_90", "Ast90"])
+        xag_90 = pick_value(["xAG_Per90", "xA_Per90", "xA_90"])
+        kp_90 = pick_value(["KP_Per90", "KP_90"])
+        sca_90 = pick_value(["SCA_Per90", "SCA90", "SCA_90"])
+
+        role_attrs = [
+            ("Ast/90", xag_90),
+            ("xAG/90", ast_90),
+            ("KP/90", kp_90),
+            ("SCA90", sca_90),
+        ]
+
+    all_attrs = base_attrs + role_attrs
+
+    attr_rows_html = "".join(
+        f'<div><span class="fifa-card-attr-value">{val}</span>'
+        f'<span class="fifa-card-attr-label">{label}</span></div>'
+        for (label, val) in all_attrs
+    )
+
+    if title is not None:
+        st.markdown(f"### {title}")
+
+    card_html = f"""
+    <style>
+    .fifa-card-container {{
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+    }}
+    .fifa-card {{
+        position: relative;
+        width: 260px;
+        height: 360px;
+        border-radius: 22px;
+        padding: 16px 18px;
+        box-sizing: border-box;
+        background: radial-gradient(circle at 0% 0%, #2EF2E0 0%, #00897B 40%, #0B1F1E 100%);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        color: #fff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }}
+    .fifa-card-top-row {{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }}
+    .fifa-card-overall {{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }}
+    .fifa-card-overall-value {{
+        font-size: 46px;
+        font-weight: 800;
+        line-height: 1;
+    }}
+    .fifa-card-pos {{
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-top: 4px;
+    }}
+    .fifa-card-band-pill {{
+        margin-top: 10px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        background: rgba(0,0,0,0.25);
+        border: 1px solid rgba(255,255,255,0.35);
+    }}
+    .fifa-card-meta {{
+        text-align: right;
+        font-size: 11px;
+        opacity: 0.9;
+    }}
+    .fifa-card-meta div {{
+        margin-bottom: 2px;
+    }}
+    .fifa-card-player-name {{
+        margin-top: 28px;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.45);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }}
+    .fifa-card-club {{
+        margin-top: 4px;
+        font-size: 12px;
+        opacity: 0.95;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }}
+    .fifa-card-divider {{
+        width: 60%;
+        height: 1px;
+        margin-top: 18px;
+        margin-bottom: 16px;
+        background: linear-gradient(to right, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    }}
+    .fifa-card-attributes-title {{
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.85;
+        margin-bottom: 6px;
+    }}
+    .fifa-card-attributes {{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 6px;
+        column-gap: 8px;
+        font-size: 12px;
+    }}
+    .fifa-card-attr-label {{
+        opacity: 0.85;
+        font-weight: 500;
+    }}
+    .fifa-card-attr-value {{
+        font-weight: 700;
+        font-size: 13px;
+        margin-right: 4px;
+    }}
+    .fifa-card-footer {{
+        position: absolute;
+        bottom: 10px;
+        left: 18px;
+        right: 18px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        opacity: 0.8;
+    }}
+    </style>
+
+    <div class="fifa-card-container">
+      <div class="fifa-card">
+        <div class="fifa-card-top-row">
+          <div class="fifa-card-overall">
+            <div class="fifa-card-overall-value">{overall}</div>
+            <div class="fifa-card-pos">{pos_display}</div>
+            <div class="fifa-card-band-pill">{band_label}</div>
+          </div>
+          <div class="fifa-card-meta">
+            {"<div>Age: " + str(int(age)) + "</div>" if age is not None else ""}
+            {"<div>" + comp + "</div>" if comp else ""}
+          </div>
+        </div>
+
+        <div class="fifa-card-player-name">{player_name}</div>
+        <div class="fifa-card-club">{club}</div>
+
+        <div class="fifa-card-divider"></div>
+
+        <div class="fifa-card-attributes-title">Key attributes</div>
+        <div class="fifa-card-attributes">
+          {attr_rows_html}
+        </div>
+
+        <div class="fifa-card-footer">
+          <div>PlayerScore</div>
+          <div>FBref Big-5</div>
+        </div>
+      </div>
+    </div>
+    """
+
+    st_html(card_html, height=380)
+
+# -------------------------------------------------------------------
+# Feature-Table Loader & Enrichment
+# -------------------------------------------------------------------
 @st.cache_data
 def load_feature_table_for_season(season: str) -> pd.DataFrame:
-    """
-    Loads the players_data_light-<Season>.csv from Data/Raw,
-    applies position logic and per-90 metric calculation,
-    and returns a feature table for the pizza chart.
-    """
-    from pathlib import Path
-    from src.processing import prepare_positions, add_standard_per90
-
     root = Path(__file__).resolve().parent
     raw_dir = root / "Data" / "Raw"
 
-    # the Season value may contain "/", so normalize it for filenames
     season_safe = season.replace("/", "-")
-    csv_path = raw_dir / f"players_data_light-{season_safe}.csv"
+    csv_path = raw_dir / f"players_data-{season_safe}.csv"
 
     if not csv_path.exists():
-        raise FileNotFoundError(f"No feature file found for season: {season}")
+        raise FileNotFoundError(f"No feature file found for season: {season} ({csv_path})")
 
     df = pd.read_csv(csv_path)
-
-    # Apply position logic to get FW/MF/DF/etc
     df = prepare_positions(df)
 
-    # Add per-90 metrics (Succ_Per90, TB_Per90, etc)
+    if "Blocks" not in df.columns and "Blocks_stats_defense" in df.columns:
+        df["Blocks"] = df["Blocks_stats_defense"]
+
     df = add_standard_per90(df)
 
     return df
 
+@st.cache_data
+def load_squad_raw_for_season(season: str) -> pd.DataFrame:
+    """
+    Lädt die vollständige squads_data-<Season>.csv aus Data/Raw.
+
+    Erwartet Dateien wie:
+      Data/Raw/squads_data-2017-2018.csv
+      Data/Raw/squads_data-2025-2026.csv
+    """
+    root = Path(__file__).resolve().parent
+    raw_dir = root / "Data" / "Raw"
+
+    season_safe = season.replace("/", "-")
+    csv_path = raw_dir / f"squads_data-{season_safe}.csv"
+
+    if not csv_path.exists():
+        raise FileNotFoundError(
+            f"No squad raw file found for season: {season} ({csv_path})"
+        )
+
+    df = pd.read_csv(csv_path)
+
+    # NICHT als Index setzen – wir filtern später über die Spalte "Squad"
+    # ein paar wichtige Spalten sicher numerisch casten
+    num_cols = [
+        "npxG",
+        "Sh",
+        "SoT",
+        "xA",
+        "SCA90",
+        "GCA90",
+        "Poss",
+        "PrgP_stats_teams_passing_for",
+        "PrgC_stats_teams_possession_for",
+        "Att 3rd_stats_teams_possession_for",
+        "GA90",
+        "Sh_stats_teams_defense_for",
+        "PSxG",
+        "/90",
+        "Tkl+Int",
+        "Blocks_stats_teams_defense_for",
+    ]
+    for c in num_cols:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    return df
+
+# =========================
+# TEAM RADAR – HELPERS
+# =========================
+
+def _col(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    """
+    Gibt die erste existierende Spalte aus 'candidates' zurück.
+    """
+    for c in candidates:
+        if c in df.columns:
+            return c
+    return None
+
+
+def prepare_squad_advanced_metrics(df_raw: pd.DataFrame) -> pd.DataFrame:
+    """
+    Erweitert das Squad-DF (pro Season) um abgeleitete Metriken ähnlich deinem Beispiel:
+    - Shots on target%
+    - Passes to PA (per 90)
+    - Carries to PA (per 90)
+    - Touches in PA (per 90)
+    - usw.
+
+    Arbeitet vorsichtig mit Candidate-Listen, weil Spaltennamen je nach FBref-Tabelle leicht variieren können.
+    """
+
+    df = df_raw.copy()
+
+    # --- Minuten & Spiele (für per90) ---
+    col_90s = _col(df, ["90s"])
+    col_games = _col(df, ["MP", "Games", "matches"])
+
+    # Helper per90
+    def per90(col_total_candidates: list[str], new_name: str):
+        col_total = _col(df, col_total_candidates)
+        if col_total is None:
+            return
+        if col_90s and col_90s in df.columns:
+            n90 = pd.to_numeric(df[col_90s], errors="coerce").replace(0, np.nan)
+            df[new_name] = pd.to_numeric(df[col_total], errors="coerce") / n90
+        elif col_games and col_games in df.columns:
+            g = pd.to_numeric(df[col_games], errors="coerce").replace(0, np.nan)
+            df[new_name] = pd.to_numeric(df[col_total], errors="coerce") / g
+        # wenn gar nichts da ist, lassen wir die Metrik einfach weg
+
+    # --- Shots on target% ---
+    col_sh = _col(df, ["Sh", "Shots"])
+    col_sot = _col(df, ["SoT", "Shots on target", "SoTA"])  # SoTA = gegen – zur Sicherheit
+    if col_sh and col_sot:
+        shots = pd.to_numeric(df[col_sh], errors="coerce")
+        sot = pd.to_numeric(df[col_sot], errors="coerce")
+        df["Shots_on_target_pct"] = np.where(
+            shots > 0,
+            (sot / shots) * 100.0,
+            np.nan,
+        )
+
+    # --- Passes to final 3rd% ---
+    col_p_final3 = _col(df, ["1/3", "Passes into final third", "Final3rdPass"])
+    col_p_cmp = _col(df, ["Cmp", "Passes completed"])
+    if col_p_final3 and col_p_cmp:
+        p3 = pd.to_numeric(df[col_p_final3], errors="coerce")
+        pc = pd.to_numeric(df[col_p_cmp], errors="coerce")
+        df["Passes_final3_pct"] = np.where(
+            pc > 0,
+            (p3 / pc) * 100.0,
+            np.nan,
+        )
+
+    # --- Passes to PA (per 90) ---
+    per90(["PPA", "Passes into penalty area"], "Passes_to_PA_per90")
+
+    # --- Box crosses% (Crosses into PA / PPA) ---
+    col_crs_pa = _col(df, ["CrsPA", "Crosses into penalty area"])
+    col_ppa = _col(df, ["PPA", "Passes into penalty area"])
+    if col_crs_pa and col_ppa:
+        crs = pd.to_numeric(df[col_crs_pa], errors="coerce")
+        ppa = pd.to_numeric(df[col_ppa], errors="coerce")
+        df["Box_crosses_pct"] = np.where(
+            ppa > 0,
+            (crs / ppa) * 100.0,
+            np.nan,
+        )
+
+    # --- Carries to final 3rd% ---
+    col_c_final3 = _col(df, ["Carries into final third", "Carries Att 3rd"])
+    col_c_total = _col(df, ["Carries"])
+    if col_c_final3 and col_c_total:
+        c3 = pd.to_numeric(df[col_c_final3], errors="coerce")
+        ct = pd.to_numeric(df[col_c_total], errors="coerce")
+        df["Carries_final3_pct"] = np.where(
+            ct > 0,
+            (c3 / ct) * 100.0,
+            np.nan,
+        )
+
+    # --- Carries to PA (per 90) ---
+    per90(
+        ["Carries into penalty area", "Carries Att Pen"],
+        "Carries_to_PA_per90",
+    )
+
+    # --- Touches final 3rd% ---
+    col_t_att3 = _col(df, ["Att 3rd", "Touches Att 3rd"])
+    col_t_live = _col(df, ["Touches", "Touches_live_ball"])
+    if col_t_att3 and col_t_live:
+        t3 = pd.to_numeric(df[col_t_att3], errors="coerce")
+        tl = pd.to_numeric(df[col_t_live], errors="coerce")
+        df["Touches_final3_pct"] = np.where(
+            tl > 0,
+            (t3 / tl) * 100.0,
+            np.nan,
+        )
+
+    # --- npxG/Shot on target ---
+    col_npxg_per90 = _col(df, ["npxG/90", "npxG_per90"])
+    if col_npxg_per90 and col_sot:
+        npxg90 = pd.to_numeric(df[col_npxg_per90], errors="coerce")
+        sot90 = pd.to_numeric(df[col_sot], errors="coerce")
+        df["npxG_per_SoT"] = np.where(
+            sot90 > 0,
+            npxg90 / sot90,
+            np.nan,
+        )
+
+    # --- xA per 90 (Squad) ---
+    col_xa = _col(df, ["xAG", "xA"])
+    if col_xa:
+        per90([col_xa], "xA_team_per90")
+
+    # --- touches in PA per 90 ---
+    col_t_pen = _col(df, ["Att Pen", "Touches Att Pen"])
+    if col_t_pen:
+        per90([col_t_pen], "Touches_in_PA_per90")
+
+    # --- npxG per 90, Shots per 90, SoT per 90 etc. falls nötig ---
+    per90(["npxG"], "npxG_team_per90")
+    per90(["Sh"], "Shots_team_per90")
+    per90(["SoT"], "SoT_team_per90")
+
+    # --- xG conceded etc. könnten analog ergänzt werden, wenn Spalten vorhanden sind ---
+
+    return df
+
+def enrich_card_row_with_per90(card_row: pd.Series) -> pd.Series:
+    season = card_row.get("Season")
+    player_name = card_row.get("Player")
+    squad_name = card_row.get("Squad")
+
+    if season is None or player_name is None:
+        return card_row
+
+    try:
+        df_feat = load_feature_table_for_season(str(season))
+    except Exception:
+        return card_row
+
+    if df_feat is None or df_feat.empty:
+        return card_row
+
+    mask = df_feat["Player"] == player_name
+    if "Squad" in df_feat.columns and isinstance(squad_name, str):
+        mask = mask & (df_feat["Squad"] == squad_name)
+
+    df_feat_player = df_feat.loc[mask]
+    if df_feat_player.empty:
+        df_feat_player = df_feat[df_feat["Player"] == player_name]
+    if df_feat_player.empty:
+        return card_row
+
+    feat_row = df_feat_player.iloc[0]
+
+    base_cols = [
+        c for c in feat_row.index
+        if c.endswith("_Per90") or c.endswith("90") or c in ("MP", "Min", "90s")
+    ]
+
+    extra_cols = [
+        c for c in ["Cmp%", "Cmp_Pct", "PassCmp_Pct", "Won%"]
+        if c in feat_row.index
+    ]
+
+    cols_to_copy = list(dict.fromkeys(base_cols + extra_cols))
+
+    for c in cols_to_copy:
+        card_row[c] = feat_row[c]
+
+    return card_row
+
+def build_career_card_row(df_player_all: pd.DataFrame, player: str) -> pd.Series | None:
+    if df_player_all.empty or "Season" not in df_player_all.columns:
+        return None
+
+    seasons = sorted(df_player_all["Season"].dropna().unique())
+    if not seasons:
+        return None
+
+    root = Path(__file__).resolve().parent
+    raw_dir = root / "Data" / "Raw"
+
+    feat_rows = []
+    for s in seasons:
+        season_safe = str(s).replace("/", "-")
+        csv_path = raw_dir / f"players_data-{season_safe}.csv"
+        if not csv_path.exists():
+            continue
+
+        df_season = pd.read_csv(csv_path)
+        df_season = prepare_positions(df_season)
+
+        if "Blocks" not in df_season.columns and "Blocks_stats_defense" in df_season.columns:
+            df_season["Blocks"] = df_season["Blocks_stats_defense"]
+
+        df_season = add_standard_per90(df_season)
+        df_season["Season"] = s
+
+        df_p = df_season[df_season["Player"] == player].copy()
+        if df_p.empty:
+            continue
+
+        feat_rows.append(df_p)
+
+    if not feat_rows:
+        return None
+
+    df_feat = pd.concat(feat_rows, ignore_index=True)
+
+    if "90s" in df_feat.columns:
+        weight = pd.to_numeric(df_feat["90s"], errors="coerce").fillna(0.0)
+        total_90s = float(weight.sum())
+    else:
+        weight = None
+        total_90s = 0.0
+
+    career_row = df_player_all.sort_values("Season").iloc[-1].copy()
+
+    if "Min" in df_feat.columns:
+        career_row["Min"] = float(pd.to_numeric(df_feat["Min"], errors="coerce").fillna(0.0).sum())
+    elif total_90s > 0:
+        career_row["Min"] = total_90s * 90.0
+
+    for col in ["Cmp%", "Cmp_Pct", "PassCmp_Pct", "Won%"]:
+        if col in df_feat.columns:
+            career_row[col] = float(pd.to_numeric(df_feat[col], errors="coerce").dropna().mean())
+
+    if total_90s > 0 and weight is not None:
+        for col in df_feat.columns:
+            if col.endswith("_Per90") or col.endswith("90"):
+                vals = pd.to_numeric(df_feat[col], errors="coerce").fillna(0.0)
+                num = float((vals * weight).sum())
+                career_row[col] = num / total_90s if total_90s > 0 else np.nan
+
+    career_row["Season"] = "Career"
+
+    return career_row
+
+def compute_career_main_score(df_player_all: pd.DataFrame) -> tuple[float | None, str | None]:
+    if df_player_all.empty:
+        return None, None
+
+    df = df_player_all.copy()
+
+    df[["MainScore", "MainBand_row"]] = df.apply(
+        get_primary_score_and_band,
+        axis=1,
+        result_type="expand",
+    )
+
+    df = df.dropna(subset=["MainScore"])
+    if df.empty:
+        return None, None
+
+    if "90s" in df.columns:
+        w = pd.to_numeric(df["90s"], errors="coerce").fillna(0.0)
+        total_w = float(w.sum())
+        if total_w > 0:
+            career_score = float((df["MainScore"] * w).sum() / total_w)
+        else:
+            career_score = float(df["MainScore"].mean())
+    else:
+        career_score = float(df["MainScore"].mean())
+
+    try:
+        career_band = score_band_5(career_score)
+    except Exception:
+        bands = df["MainBand_row"].dropna()
+        career_band = bands.mode().iloc[0] if not bands.empty else None
+
+    return career_score, career_band
+
+# =========================================================
+# StatsBomb-style Radar helper (self-contained)
+# =========================================================
+
+def _radar_get_coordinates(n: int) -> np.ndarray:
+    """
+    Liefert für n Parameter einen Winkel pro Achse.
+    Output: (n, 3) – wir nutzen nur [:, 2] als Winkel.
+    """
+    angles = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    coord = np.zeros((n, 3), dtype=float)
+    coord[:, 2] = angles
+    return coord
+
+def _radar_get_indices_between(range_list, coord_list, value, reverse=False):
+    """
+    Hilfsfunktion: findet die zwei Range-Werte, zwischen denen 'value' liegt,
+    und interpoliert die Koordinate linear dazwischen.
+    """
+    rl = np.asarray(range_list, dtype=float)
+    cl = np.asarray(coord_list, dtype=float)
+
+    if reverse:
+        # Werte fallen von groß -> klein
+        for i in range(len(rl) - 1):
+            high_v = rl[i]
+            low_v = rl[i + 1]
+            if high_v >= value >= low_v:
+                # Anteil zwischen den beiden Werten
+                span = high_v - low_v
+                t = 0.0 if span == 0 else (high_v - value) / span
+                x = cl[i, 0] + t * (cl[i + 1, 0] - cl[i, 0])
+                y = cl[i, 1] + t * (cl[i + 1, 1] - cl[i, 1])
+                return x, y
+    else:
+        # Werte steigen von klein -> groß
+        for i in range(len(rl) - 1):
+            low_v = rl[i]
+            high_v = rl[i + 1]
+            if low_v <= value <= high_v:
+                span = high_v - low_v
+                t = 0.0 if span == 0 else (value - low_v) / span
+                x = cl[i, 0] + t * (cl[i + 1, 0] - cl[i, 0])
+                y = cl[i, 1] + t * (cl[i + 1, 1] - cl[i, 1])
+                return x, y
+
+    # Fallback (sollte selten passieren)
+    return cl[-1, 0], cl[-1, 1]
+
+    
+def render_team_radar_statsbomb_pretty(
+    season: str,
+    df_squad_season: pd.DataFrame,
+    primary_team: str,
+    compare_team: str | None = None,
+    radar_type: str = "Offense",   # "Offense" oder "Defense"
+):
+    """
+    StatsBomb-Style Squad-Radar für Offense oder Defense.
+
+    Nutzt Rohwerte + per90 aus squads_data-<Season>.csv.
+    """
+
+    # ---- Raw laden + per90 hinzufügen ----
+    try:
+        df_raw = load_squad_raw_for_season(season)
+        df_raw = add_squad_per90(df_raw)
+    except FileNotFoundError:
+        st.info("Raw squad stats missing for this season.")
+        return
+
+    if "Squad" not in df_raw.columns:
+        st.info("Column 'Squad' not found in squad raw file.")
+        return
+
+    # Nur Teams der aktuellen Liga / Season
+    df_raw = df_raw[df_raw["Squad"].isin(df_squad_season["Squad"])].copy()
+    if df_raw.empty:
+        st.info("No raw squad stats for this league/season.")
+        return
+
+    if primary_team not in df_raw["Squad"].values:
+        st.info(f"Team '{primary_team}' not found in raw squad stats.")
+        return
+
+    if compare_team and compare_team not in df_raw["Squad"].values:
+        st.info(f"Comparison team '{compare_team}' not found in raw squad stats.")
+        compare_team = None
+
+    df_raw = df_raw.drop_duplicates(subset=["Squad"]).set_index("Squad")
+
+    # ---- Metrik-Set je nach Radar-Typ ----
+    radar_type = radar_type.lower()
+    if radar_type == "offense":
+        metrics_config = OFFENSE_METRICS_CONFIG
+        radar_title_suffix = "Attacking radar"
+    elif radar_type == "defense":
+        metrics_config = DEFENSE_METRICS_CONFIG
+        radar_title_suffix = "Defending radar"
+    else:
+        st.warning(f"Unknown radar_type '{radar_type}'. Use 'Offense' or 'Defense'.")
+        return
+
+    # ---- Metrikliste: (Label, Spaltenname, invert) ----
+    METRICS = [
+        (label, col_name, invert)
+        for label, (col_name, invert) in metrics_config.items()
+        if col_name in df_raw.columns
+    ]
+
+    if not METRICS:
+        st.info("No matching metric columns found for this radar.")
+        return
+
+    params = []
+    ranges = []
+    primary_vals = []
+    compare_vals = []
+    invert_flags = []
+
+    for label, col, invert in METRICS:
+        s = pd.to_numeric(df_raw[col], errors="coerce")
+        s = s.replace([np.inf, -np.inf], np.nan).dropna()
+        if s.size < 4:
+            continue
+
+        # etwas konservativer: 10.–90. Perzentil
+        low = float(np.nanpercentile(s, 10))
+        high = float(np.nanpercentile(s, 90))
+
+        if not np.isfinite(low) or not np.isfinite(high) or high <= low:
+            low = float(s.min())
+            high = float(s.max())
+            if not np.isfinite(low) or not np.isfinite(high) or high <= low:
+                continue
+
+        v1 = float(df_raw.loc[primary_team, col])
+        if pd.isna(v1):
+            continue
+
+        # extremwerte in den Bereich clampen (sonst kleben sie 100% außen)
+        v1 = max(min(v1, high), low)
+
+        params.append(label)
+        ranges.append((low, high))
+        primary_vals.append(v1)
+        invert_flags.append(invert)
+
+        if compare_team:
+            v2 = float(df_raw.loc[compare_team, col])
+            v2 = max(min(v2, high), low)
+            compare_vals.append(v2)
+
+    if len(params) < 3:
+        st.info("Not enough metrics for the squad radar.")
+        return
+
+    # Radar-Objekt im StatsBomb-Design
+    radar = Radar(
+        background_color="#020617",
+        patch_color="#1f2937",
+        fontfamily="DejaVu Sans",
+
+        # Labels außen: groß, weiß, fett
+        label_fontsize=10,
+        label_color="#F9FAFB",
+        label_weight="bold",
+
+        # Range-Werte: kleiner, grau, normal
+        range_fontsize=8,
+        range_color="#FFFFFF",
+        range_weight="normal",
+    )
+
+    # Werte vorbereiten (invert ignoriert der Radar selbst – wir lösen das über Ranges)
+    # Eine elegante Möglichkeit wäre: bei invert einfach low/high swapen:
+    for i, inv in enumerate(invert_flags):
+        if inv:
+            lo, hi = ranges[i]
+            ranges[i] = (hi, lo)
+
+    if compare_team:
+        vals = [primary_vals, compare_vals]
+        colors = [VALUE_COLOR, "#4ade80"]
+        # erste Fläche gleich „single team“, zweite leicht transparenter
+        alphas = [0.35, 0.35]
+        compare_flag = True
+    else:
+        vals = primary_vals
+        colors = [VALUE_COLOR, "#0f172a"]
+        alphas = [0.35, 0.35]  # oder weglassen, dann nimmt die Radar-Klasse den Default
+        compare_flag = False
+
+    title_dict = {
+        "title_name": primary_team,
+        "subtitle_name": f"{radar_title_suffix} {season}",
+    }
+    if compare_team:
+        title_dict["title_name_2"] = compare_team
+        title_dict["subtitle_name_2"] = "Comparison squad"
+
+    fig, ax = radar.plot_radar(
+        ranges=ranges,
+        params=params,
+        values=vals,
+        radar_color=colors,
+        compare=compare_flag,
+        alphas=alphas,
+        endnote="\nData: FBref (Big-5)",
+        title=title_dict,
+    )
+
+    # Hintergrund
+    fig.patch.set_facecolor("#020617")
+    ax.set_facecolor("#020617")
+
+    # ---------------- LEGENDEN FÜR TEAMVERGLEICH ---------------- #
+    if compare_team:
+        # Einfache Marker-Handles für beide Teams
+        handles = [
+            plt.Line2D(
+                [0], [0],
+                marker="o",
+                linestyle="",
+                markersize=10,
+                markerfacecolor=colors[0],
+                markeredgecolor="none",
+                label=primary_team,
+            ),
+            plt.Line2D(
+                [0], [0],
+                marker="o",
+                linestyle="",
+                markersize=10,
+                markerfacecolor=colors[1],
+                markeredgecolor="none",
+                label=compare_team,
+            ),
+        ]
+
+        ax.legend(
+            handles=handles,
+            loc="upper right",
+            bbox_to_anchor=(1.25, 1.15),   # etwas außerhalb rechts oben
+            frameon=False,
+            fontsize=11,
+            labelcolor="#E5E7EB",
+        )
+
+    # In Streamlit anzeigen
+    st.pyplot(fig)
+
+# ---------------- TEAM SCORES MAIN VIEW (5 MODULE) ---------------- #
+def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame) -> None:
+    """
+    Main view for 'Team scores' mode.
+
+    Zeigt 5 Bausteine:
+      1) League ranking by squad score (Tabelle)
+      2) Squad radar (Offense / Midfield / Defense / Overall + advanced metrics)
+      3) Team in league context (Bar-Chart)
+      4) Top contributors innerhalb des Squads
+      5) Squad development over seasons (Line-Chart)
+
+    Alle Scores werden auf ganze Zahlen gerundet.
+    Im UI heissen die Dimensionen 'Offense', 'Midfield', 'Defense'.
+    """
+    st.sidebar.subheader("Team score filters")
+
+    if df_squad is None or df_squad.empty:
+        st.info("No squad scores available. Run the multi-season pipeline first.")
+        return
+
+    # ----- Season-Auswahl -----
+    seasons = sorted(df_squad["Season"].dropna().unique())
+    if not seasons:
+        st.info("No seasons found in squad scores.")
+        return
+
+    season_default_idx = len(seasons) - 1
+    season = st.sidebar.selectbox("Season", seasons, index=season_default_idx)
+
+    df_squad_season = df_squad[df_squad["Season"] == season].copy()
+    if df_squad_season.empty:
+        st.info("No squad scores for this season.")
+        return
+    
+    # Default metric (falls kein Sort/Highlight mehr existiert)
+    metric_col = "OverallScore_squad"
+    metric_name = "Overall"
+
+    # ----- Numerisch + Rundung vorbereiten -----
+    for col in ["OverallScore_squad", "OffScore_squad", "MidScore_squad", "DefScore_squad"]:
+        if col in df_squad_season.columns:
+            df_squad_season[col] = pd.to_numeric(df_squad_season[col], errors="coerce")
+
+    df_rank = (
+        df_squad_season
+        .dropna(subset=[metric_col])
+        .sort_values(metric_col, ascending=False)
+        .reset_index(drop=True)
+    )
+    if df_rank.empty:
+        st.info("No valid squad scores to display.")
+        return
+
+    df_rank["Rank"] = df_rank.index + 1
+
+    # ========== 1) LEAGUE RANKING TABLE ==========
+    st.markdown("## Team scores")
+    st.markdown(
+        "League-wide squad ranking using the same 0–1000 scale as the player scores."
+    )
+
+    for src, tgt in [
+        ("OverallScore_squad", "Overall"),
+        ("OffScore_squad",     "Offense"),
+        ("MidScore_squad",     "Midfield"),
+        ("DefScore_squad",     "Defense"),
+    ]:
+        if src in df_rank.columns:
+            df_rank[tgt] = df_rank[src].round().astype("Int64")
+
+    if "Age_squad_mean" in df_rank.columns:
+        df_rank["Age (avg)"] = pd.to_numeric(df_rank["Age_squad_mean"], errors="coerce").round(1)
+
+    if "Min_squad" in df_rank.columns:
+        df_rank["Minutes (total)"] = pd.to_numeric(df_rank["Min_squad"], errors="coerce").round(0).astype("Int64")
+
+    if "NumPlayers_squad" in df_rank.columns:
+        df_rank["Players"] = pd.to_numeric(df_rank["NumPlayers_squad"], errors="coerce").astype("Int64")
+
+    cols_show = [
+        "Rank",
+        "Squad",
+        "Overall",
+        "Offense",
+        "Midfield",
+        "Defense",
+        "Age (avg)",
+        "Minutes (total)",
+        "Players",
+    ]
+    cols_show = [c for c in cols_show if c in df_rank.columns]
+
+    st.markdown("### League ranking by squad score")
+    st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
+
+    # Liste der Teams für alle folgenden Views
+    squads = df_rank["Squad"].tolist()
+    if not squads:
+        return
+
+    # ----- Liste der Teams für alle folgenden Views -----
+    squads = df_rank["Squad"].tolist()
+    if not squads:
+        return
+
+    # ================= TEAM-AUSWAHL IN SIDEBAR =================
+    placeholder_label = "Select a team..."
+    options = [placeholder_label] + squads
+
+    # bisher gewählte Mannschaft aus Session-State holen
+    prev_team = st.session_state.get("team_scores_selected_team", placeholder_label)
+
+    # wenn das vorherige Team in dieser Saison nicht existiert -> zurück auf Placeholder
+    if prev_team not in squads:
+        prev_team = placeholder_label
+
+    team_sel = st.sidebar.selectbox(
+        "Team",
+        options,
+        index=options.index(prev_team),
+        key="team_scores_team_select",
+    )
+
+    # echte Auswahl im Session-State speichern (persistiert über Season-Wechsel)
+    st.session_state["team_scores_selected_team"] = team_sel
+
+    # ----- Squad-Detail-Header im Hauptbereich -----
+    st.markdown("---")
+    st.markdown("### Squad detail")
+
+    # wenn noch kein echtes Team gewählt ist: Hinweis und früh returnen
+    if team_sel == placeholder_label:
+        st.info("Please select a team to see squad details.")
+        return
+
+    # ab hier: es gibt eine gültige Team-Auswahl
+    df_team_row = df_rank[df_rank["Squad"] == team_sel].iloc[0]
+
+    # ---------- Squad Summary Card ----------
+    overall_val = pd.to_numeric(df_team_row.get("OverallScore_squad", np.nan), errors="coerce")
+    off_val     = pd.to_numeric(df_team_row.get("OffScore_squad",     np.nan), errors="coerce")
+    mid_val     = pd.to_numeric(df_team_row.get("MidScore_squad",     np.nan), errors="coerce")
+    def_val     = pd.to_numeric(df_team_row.get("DefScore_squad",     np.nan), errors="coerce")
+
+    rank_val    = pd.to_numeric(df_team_row.get("Rank", np.nan), errors="coerce")
+    age_val     = pd.to_numeric(df_team_row.get("Age_squad_mean", np.nan), errors="coerce")
+    mins_val    = pd.to_numeric(df_team_row.get("Min_squad", np.nan), errors="coerce")
+    players_val = pd.to_numeric(df_team_row.get("NumPlayers_squad", np.nan), errors="coerce")
+
+    def fmt_int(x):
+        return "n/a" if pd.isna(x) else f"{int(round(float(x)))}"
+
+    def fmt_float1(x):
+        return "n/a" if pd.isna(x) else f"{float(x):.1f}"
+
+    def fmt_score(x):
+        return "n/a" if pd.isna(x) else f"{float(x):.0f}"
+
+    summary_html = f"""
+    <div style="
+        border-radius: 0.9rem;
+        padding: 0.8rem 1.0rem;
+        margin: 0.5rem 0 1.0rem 0;
+        background: rgba(15,23,42,0.75);
+        border: 1px solid rgba(148,163,184,0.35);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    ">
+      <div>
+        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">League rank</div>
+        <div style="font-size:1.6rem; font-weight:600; color:{VALUE_COLOR};">
+          {fmt_int(rank_val)}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">Overall score</div>
+        <div style="font-size:1.6rem; font-weight:600; color:{VALUE_COLOR};">
+          {fmt_score(overall_val)}
+        </div>
+        <div style="margin-top:0.15rem; font-size:0.75rem; color:#9CA3AF;">
+          Off {fmt_score(off_val)} · Mid {fmt_score(mid_val)} · Def {fmt_score(def_val)}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">Players used</div>
+        <div style="font-size:1.4rem; font-weight:600; color:#F9FAFB;">
+          {fmt_int(players_val)}
+        </div>
+        <div style="margin-top:0.15rem; font-size:0.75rem; color:#9CA3AF;">
+          Total minutes {fmt_int(mins_val)}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">Avg squad age</div>
+        <div style="font-size:1.4rem; font-weight:600; color:#F9FAFB;">
+          {fmt_float1(age_val)} yrs
+        </div>
+      </div>
+    </div>
+    """
+
+    st.markdown(summary_html, unsafe_allow_html=True)
+
+    st.markdown("#### Team comparison")
+
+    compare_options = ["(no comparison)"] + [s for s in squads if s != team_sel]
+    compare_team_sel = st.selectbox(
+        "Compare with",
+        compare_options,
+        index=0,
+        key="team_compare_select",
+    )
+    compare_team = None if compare_team_sel == "(no comparison)" else compare_team_sel
+
+    # ========== 2) SQUAD RADAR + KPIs ==========
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown(f"#### Attacking radar: {team_sel} ({season})")
+        render_team_radar_statsbomb_pretty(
+            season=season,
+            df_squad_season=df_squad_season,
+            primary_team=team_sel,
+            compare_team=compare_team,
+            radar_type="Offense",
+        )
+
+    with col2:
+        st.markdown(f"#### Defending radar: {team_sel} ({season})")
+        render_team_radar_statsbomb_pretty(
+            season=season,
+            df_squad_season=df_squad_season,
+            primary_team=team_sel,
+            compare_team=compare_team,
+            radar_type="Defense",
+        )
+
+    # ========== 3) TEAM IN LEAGUE CONTEXT (BAR-CHART) ==========
+    st.markdown("#### Team in Big 5 League context")
+
+    metric_values = df_squad_season[["Squad", metric_col]].dropna().copy()
+    if not metric_values.empty:
+        metric_values["Score"] = pd.to_numeric(metric_values[metric_col], errors="coerce").round(0)
+        metric_values["is_selected"] = metric_values["Squad"] == team_sel
+
+        chart = (
+            alt.Chart(metric_values)
+            .mark_bar()
+            .encode(
+                x=alt.X("Squad:N", sort="-y", title=None),
+                y=alt.Y("Score:Q", title=metric_name, axis=alt.Axis(format=".0f")),
+                color=alt.condition(
+                    alt.datum.is_selected,
+                    alt.value(VALUE_COLOR),
+                    alt.value("#4b5563"),
+                ),
+                tooltip=[
+                    "Squad",
+                    alt.Tooltip("Score:Q", title=metric_name, format=".0f"),
+                ],
+            )
+            .properties(height=260)
+            .configure_axis(
+                labelColor="#E5E7EB",
+                titleColor="#E5E7EB",
+            )
+            .configure_view(strokeWidth=0)
+        )
+
+        st.altair_chart(chart, use_container_width=True)
+    else:
+        st.info("Not enough data to show the league context chart.")
+
+    # ========== 4) TOP CONTRIBUTORS WITHIN THE SQUAD ==========
+    st.markdown("#### Top contributors within the squad")
+
+    st.markdown(
+            "<p style='font-size:0.85rem; opacity:0.8; margin-top:0.6rem;'>"
+            "Impact share is the share of minutes-weighted season score within this squad."
+            "</p>",
+            unsafe_allow_html=True,
+        )
+
+    df_team_players = df_all[
+        (df_all["Season"] == season) & (df_all["Squad"] == team_sel)
+    ].copy()
+
+    if df_team_players.empty:
+        st.info("No player-level data found for this squad in this season.")
+    else:
+        # ---------- 1) SeasonScore robust aufbauen ----------
+        df_team_players["SeasonScore"] = np.nan
+
+        if "OverallScore_abs" in df_team_players.columns:
+            df_team_players["SeasonScore"] = pd.to_numeric(
+                df_team_players["OverallScore_abs"], errors="coerce"
+            )
+        else:
+            score_cols = [
+                c for c in ["OffScore_abs", "MidScore_abs", "DefScore_abs"]
+                if c in df_team_players.columns
+            ]
+            if score_cols:
+                df_team_players["SeasonScore"] = pd.to_numeric(
+                    df_team_players[score_cols].mean(axis=1), errors="coerce"
+                )
+
+        df_team_players = df_team_players[df_team_players["SeasonScore"].notna()].copy()
+        if df_team_players.empty:
+            st.info("No players with valid season scores for this squad.")
+            return
+
+        # ---------- 2) ContributionScore & ImpactShare ----------
+        minutes = pd.to_numeric(
+            df_team_players.get("Min", 0), errors="coerce"
+        ).fillna(0.0)
+
+        df_team_players["ContributionScore"] = df_team_players["SeasonScore"] * minutes
+
+        total_contribution = float(df_team_players["ContributionScore"].sum())
+        if total_contribution > 0:
+            df_team_players["ContributionShare"] = (
+                df_team_players["ContributionScore"] / total_contribution * 100.0
+            )
+        else:
+            df_team_players["ContributionShare"] = 0.0
+
+        # ---------- 3) Top N Spieler ----------
+        df_top = (
+            df_team_players
+            .sort_values("ContributionShare", ascending=False)
+            .head(15)
+            .copy()
+        )
+
+        if df_top.empty:
+            st.info("No players with minutes and scores available for contribution chart.")
+            return
+
+        df_top["PlayerLabel"] = df_top["Player"].astype(str)
+
+        # ---------- Balkendiagramm mit abgerundeten Balken & Text im Balken ----------
+
+
+        tooltip_fields = [
+                "PlayerLabel",
+                alt.Tooltip("Min:Q", title="Minutes played", format=".0f"),
+                alt.Tooltip("SeasonScore:Q", title="Season score", format=".0f"),
+                alt.Tooltip(
+                    "ContributionShare:Q",
+                    title="Impact share (%)",
+                    format=".1f",
+                ),
+            ]
+
+        row_height = 24
+        chart_height = max(260, row_height * len(df_top))
+
+        base_chart = alt.Chart(df_top).encode(
+            y=alt.Y(
+                "PlayerLabel:N",
+                sort="-x",
+                title=None,
+                axis=alt.Axis(labelLimit=320, labelOverlap=False),
+            ),
+        )
+
+        bars = base_chart.mark_bar(
+            color=VALUE_COLOR,
+            cornerRadiusEnd=6,     # rechte Seite abgerundet
+        ).encode(
+            x=alt.X(
+                "ContributionShare:Q",
+                title="Impact share (%)",
+                axis=alt.Axis(format=".1f"),
+            ),
+            tooltip=tooltip_fields,
+        )
+
+        # Text im Balken – rechtsbündig & gut lesbar
+        labels = base_chart.mark_text(
+            align="right",
+            baseline="middle",
+            dx=-6,             # nach innen versetzt
+            color="black",
+            fontSize=15,
+            fontWeight="bold",
+        ).encode(
+            x="ContributionShare:Q",
+            text=alt.Text("ContributionShare:Q", format=".1f"),
+        )
+
+        contrib_chart = (
+            (bars + labels)
+            .properties(height=chart_height)
+            .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB")
+            .configure_view(strokeWidth=0)
+        )
+
+        # ---------- 5) Kennzahlen (Top 3 / Top 5 / Rest) ----------
+        top3_share = df_team_players.nlargest(3, "ContributionShare")["ContributionShare"].sum()
+        top5_share = df_team_players.nlargest(5, "ContributionShare")["ContributionShare"].sum()
+        rest_share = max(0.0, 100.0 - top5_share)
+
+        c_top1, c_top2, c_top3 = st.columns(3)
+        with c_top1:
+            st.metric("Top 3 impact share", f"{top3_share:.1f}%")
+        with c_top2:
+            st.metric("Top 5 impact share", f"{top5_share:.1f}%")
+        with c_top3:
+            st.metric("Rest of squad", f"{rest_share:.1f}%")
+
+        # ---------- 6) Core-contributor Board (nur 3 Cards NEBENEINANDER) ---------
+
+        st.markdown("### Top 3 Impact-Players")
+
+        top3 = df_top.head(3).copy()
+        medals = ["🥇", "🥈", "🥉"]
+
+        col1, col2, col3 = st.columns(3)
+
+        for (col, (_, row), medal) in zip((col1, col2, col3), top3.iterrows(), medals):
+            name          = row["Player"]
+            share         = row["ContributionShare"]
+            minutes_val   = row["Min"]
+            season_score  = row["SeasonScore"]
+
+            card_html = f"""
+            <div style="
+                display:flex;
+                flex-direction:column;
+                justify-content:flex-start;
+                align-items:flex-start;
+                height:220px;
+                width:100%;
+                border-radius: 0.9rem;
+                padding: 1rem 1.1rem;
+                background: rgba(15,23,42,0.65);
+                border: 1px solid rgba(255,255,255,0.08);
+                box-sizing:border-box;
+                color:#F9FAFB;
+                font-family: system-ui, sans-serif;
+            ">
+                <div style="font-size:1.6rem; margin-bottom:0.4rem;">{medal}</div>
+
+                <div style="font-size:1.15rem; font-weight:600;">
+                    {name} <span style="opacity:0.7; font-size:0.9rem;">
+                </div>
+
+                <div style="margin-top:0.45rem; font-size:0.9rem; opacity:0.9;">
+                    Impact share:
+                    <span style="font-weight:700; color:{VALUE_COLOR};">{share:.1f}%</span>
+                </div>
+
+                <div style="margin-top:0.25rem; font-size:0.9rem; opacity:0.9;">
+                    Season score:
+                    <span style="font-weight:700;">{season_score:.0f}</span>
+                </div>
+
+                <div style="margin-top:0.25rem; font-size:0.9rem; opacity:0.9;">
+                    Minutes:
+                    <span style="font-weight:700;">{minutes_val:.0f}</span>
+                </div>
+            </div>
+            """
+
+            with col:
+                st_html(card_html, height=240)
+
+        # ---------- 7) EIN gemeinsames Balkendiagramm unter den Cards ---------
+
+        st.altair_chart(contrib_chart, use_container_width=True)
+    
+
+    # ========== 5) SQUAD DEVELOPMENT OVER SEASONS ==========
+    # Vier stark kontrastierende Farben
+    color_domain = ["Team Score", "Offense Score", "Midfield Score", "Defense Score"]
+    color_range = [
+        VALUE_COLOR,   
+        "#61abd2",     
+        "#214642",    
+        "#ffffff",    
+    ]
+
+    st.markdown("#### Squad development over seasons")
+
+    df_team_hist = df_squad[df_squad["Squad"] == team_sel].copy()
+    if df_team_hist.empty:
+        st.info("No historical squad data available for this team yet.")
+        return
+
+    df_team_hist = df_team_hist.sort_values("Season")
+
+    value_cols = [
+        c for c in ["OffScore_squad", "MidScore_squad", "DefScore_squad", "OverallScore_squad"]
+        if c in df_team_hist.columns
+    ]
+    if not value_cols:
+        st.info("No squad score columns available for historical development chart.")
+        return
+
+    rename_map = {
+        "OffScore_squad": "Offense Score",
+        "MidScore_squad": "Midfield Score",
+        "DefScore_squad": "Defense Score",
+        "OverallScore_squad": "Team Score",
+    }
+
+    for src in value_cols:
+        df_team_hist[src] = pd.to_numeric(df_team_hist[src], errors="coerce")
+
+    df_long = df_team_hist.melt(
+        id_vars=["Season"],
+        value_vars=value_cols,
+        var_name="Component_raw",
+        value_name="Score",
+    )
+    df_long["Component"] = df_long["Component_raw"].map(rename_map)
+
+    hist_chart = (
+        alt.Chart(df_long)
+        .mark_line(
+            interpolate="monotone",
+            strokeWidth=3,
+            point=alt.OverlayMarkDef(filled=True, size=55)
+        )
+        .encode(
+            x=alt.X("Season:N", title="Season", sort="ascending"),
+            y=alt.Y("Score:Q",
+                    title="Squad score",
+                    axis=alt.Axis(format=".0f")),
+            color=alt.Color(
+                "Component:N",
+                title="Component",
+                scale=alt.Scale(domain=color_domain, range=color_range),
+                legend=alt.Legend(labelColor="#E5E7EB", titleColor="#E5E7EB")
+            ),
+            tooltip=[
+                "Season:N",
+                "Component:N",
+                alt.Tooltip("Score:Q", format=".0f"),
+            ],
+        )
+        .properties(height=280)
+        .configure_axis(grid=False, domain=True, labelColor="#E5E7EB", titleColor="#E5E7EB")
+        .configure_view(strokeWidth=0)
+    )
+
+    st.altair_chart(hist_chart, use_container_width=True)
 
 # -------------------------------------------------------------------
 # Main app
@@ -1415,29 +3211,24 @@ def main():
         page_icon="⚽",
     )
 
-    # ---- Custom CSS for a more polished look ----
+    # ---- Custom CSS ----
     st.markdown(
         """
         <style>
-        /* Global font tweaks */
         html, body, [class*="css"]  {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
-
-        /* Main title + subtitle */
         .ps-title {
             font-size: 2.4rem;
             font-weight: 700;
-            color: #F9FAFB;  /* near-white, fits dark theme */
+            color: #F9FAFB;
             margin-bottom: 0.15rem;
         }
         .ps-subtitle {
             font-size: 0.95rem;
-            color: #94A3B8;  /* subtle grey for subtitle */
+            color: #94A3B8;
             margin-bottom: 1.6rem;
         }
-
-        /* Dataframe font size */
         .stDataFrame tbody td {
             font-size: 0.9rem;
         }
@@ -1448,35 +3239,30 @@ def main():
 
     df_all, df_agg, df_squad = load_data()
 
-    # ---- Simplify positions to FW / MF / DF ----
-    pos_map = {
-        "FW": "FW",
-        "Off_MF": "FW",  # Offensiver Mittelfeldspieler -> Offensivrolle
-        "MF": "MF",
-        "Def_MF": "DF",  # Defensiver Mittelfeldspieler -> Defensivrolle
-        "DF": "DF",
+    if "Pos_raw" not in df_all.columns:
+        df_all["Pos_raw"] = df_all["Pos"]
+
+    pos_map_display = {
+        "Off_MF": "MF",
+        "Def_MF": "DF",
     }
-
-    df_all["Pos"] = df_all["Pos"].map(pos_map).fillna(df_all["Pos"])
-
+    df_all["Pos"] = df_all["Pos_raw"].map(pos_map_display).fillna(df_all["Pos_raw"])
 
     if df_all.empty:
         st.info("No processed data found yet. Run the pipeline locally and push the CSVs or Kaggle sync.")
         st.stop()
 
-    # ===================== Sidebar: View selection =====================
     st.sidebar.header("View")
     mode = st.sidebar.radio(
         "Select mode",
-        ["Home", "Player profile", "Top lists"],
+        ["Home", "Player profile", "Top lists", "Team scores"],
     )
 
-    if mode in ("Player profile", "Top lists"):
+    if mode in ("Player profile", "Top lists", "Team scores"):
         st.markdown(
-        "Score scale (0–1000): 🟣 Exceptional ≥ 900  ·  🟢 World Class ≥ 750  ·  🔵 Top Starter ≥ 400  ·  🟡 Solid Squad Player ≥ 200  ·  ⚪️ Below Big-5 Level < 200"
-    )
-        
-    # ---- Global Footer (appears on all modes) ----
+            "Score scale (0–1000): 🟣 Exceptional ≥ 900  ·  🟢 World Class ≥ 750  ·  🔵 Top Starter ≥ 400  ·  🟡 Solid Squad Player ≥ 200  ·  ⚪️ Below Big-5 Level < 200"
+        )
+
     st.markdown(
         """
         <style>
@@ -1496,12 +3282,10 @@ def main():
         unsafe_allow_html=True
     )
 
-
     # ==================================================================
-    # MODE 0: HOME / LANDING PAGE
+    # MODE: HOME
     # ==================================================================
     if mode == "Home":
-        # Hero section
         st.markdown(
             f"""
             <h1 style="color:{VALUE_COLOR}; margin-bottom:0.25rem;">PlayerScore</h1>
@@ -1512,14 +3296,12 @@ def main():
             unsafe_allow_html=True,
         )
 
-        # What is PlayerScore?
         st.markdown(
              f"""
              <h3 style="color:{VALUE_COLOR};">What is PlayerScore?</h3>
             """,
             unsafe_allow_html=True,
         )
-        # Intro sections
         st.markdown(
             """
             PlayerScore is built on a self-developed, data-driven scoring framework that makes it possible 
@@ -1532,14 +3314,32 @@ def main():
             """
         )
 
-        # What does PlayerScore deliver?
+        st.markdown(
+             f"""
+             <h3 style="color:{VALUE_COLOR};">Why does PlayerScore matter?</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            """
+           Modern football generates more data than ever — but turning that data into actionable insight remains difficult. Raw stats alone rarely answer crucial questions such as:
+
+            •	Is this player truly performing above league average?
+            •	How does he compare to similar profiles in other countries?
+            •	Would he be an upgrade for our current squad?
+            •	How stable is his performance across seasons?
+
+            PlayerScore bridges this gap by transforming scattered match statistics into a unified analytical model that reveals the actual impact and consistency of a player.
+            """
+        )
+
         st.markdown(
              f"""
             <h3 style="color:{VALUE_COLOR};">What does PlayerScore deliver?</h3>
             """,
             unsafe_allow_html=True,
         )
-
 
         st.markdown(
             """
@@ -1554,9 +3354,76 @@ def main():
         )
 
         st.markdown(
+             f"""
+            <h3 style="color:{VALUE_COLOR};">How PlayerScore works?</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
             """
-            The PlayerScore database already contains several thousand players from Europe’s top-5 leagues
-            and multiple historical seasons — and it grows with every pipeline run.
+            The engine behind PlayerScore integrates:
+
+            🔹 Per-90 standardization
+            Normalizes all performance metrics, enabling fair comparisons regardless of playing time.
+
+            🔹 Role-specific scoring frameworks
+            Attackers, midfielders and defenders are evaluated using metrics that truly matter for their respective roles.
+
+            🔹 Multi-season perspective
+            Performance is measured across seasons, offering deeper insight into development, peaks, and declines.
+
+            🔹 Squad-level analytics
+            Beyond individuals, PlayerScore assesses entire squads to identify strengths, weaknesses, and dependencies on top performers.
+
+            🔹 Cross-league comparability
+            Scores are calibrated to allow interpretation across league boundaries — essential for scouting and recruitment.  
+            """
+        )
+
+        st.markdown(
+             f"""
+            <h3 style="color:{VALUE_COLOR};">What can you do with PlayerScore?</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            """
+            With PlayerScore, you can:
+
+            📊 Explore interactive player profiles with role-based radars, trendlines and detailed metrics
+
+            📈 Track career trajectories and instantly spot breakthroughs or regressions
+
+            🔎 Identify squad leaders with the “Impact Share” model, showing who truly drives team performance
+
+            ⚖️ Compare players across leagues using a consistent scoring scale
+
+            🏗 Evaluate team quality with squad-level scores and historical development charts
+
+            🛠 Build data-driven scouting shortlists and find undervalued profiles
+
+            Whether you’re doing recruitment, tactical analysis, data scouting or performance tracking — PlayerScore gives you an intuitive, modern and transparent framework to understand football through data.  
+            """
+        )
+
+        st.markdown(
+             f"""
+            <h3 style="color:{VALUE_COLOR};">A living system — continuously improving</h3>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            """
+            The PlayerScore database already contains several thousand players from Europe’s top-5 leagues and multiple historical seasons — and it grows with every pipeline run.
+
+            Upcoming developments include:
+
+            📊 Advanced clustering & similarity models
+            🌍 Broader multi-league data coverage
+            ⚽ Expanded radar profiles for team and player roles  
             """
         )
 
@@ -1564,23 +3431,15 @@ def main():
             "Use the sidebar to switch to **Player profile** to explore an individual player, "
             "or to **Top lists** to see ranked players by role and season."
         )
-
-        st.stop()
-
-
-
-        st.info("Wechsle links im Sidebar auf **Player profile**, um mit einem Spielerprofil zu starten.")
-        st.stop()
-
-
+        return
 
     # ==================================================================
-    # MODE 1: PLAYER PROFILE
+    # MODE: PLAYER PROFILE
     # ==================================================================
     if mode == "Player profile":
         st.sidebar.subheader("Profile filters")
 
-                # ----- Player-Auswahl: genau EIN Profil pro Spieler -----
+        # --- Player-Auswahl: ein Profil pro Spieler (keine Club-Duplikate) ---
         players_all = (
             df_all["Player"]
             .dropna()
@@ -1612,8 +3471,8 @@ def main():
             st.info("Please select a player in the sidebar on the left to view their profile.")
             return
 
-        # Für ein Profil pro Spieler: alle Saisons und Clubs dieses Spielers
-        player_squad = None  # kein spezieller Club mehr
+        # alle Saisons & Clubs des Spielers
+        player_squad = None
         df_player_all = df_all[df_all["Player"] == player].copy()
 
         if "Season" in df_player_all.columns:
@@ -1625,7 +3484,6 @@ def main():
             st.warning("No seasons found for this player.")
             return
 
-        # ----- Profile view: Per season vs Career -----
         st.sidebar.markdown("---")
         profile_view = st.sidebar.radio(
             "Profile view",
@@ -1633,7 +3491,6 @@ def main():
             key="profile_view",
         )
 
-        # ----- Season nur im Per-season-Modus -----
         season = None
         if profile_view == "Per season":
             default_season_idx = len(seasons) - 1 if seasons else 0
@@ -1641,22 +3498,16 @@ def main():
                 "Season",
                 seasons,
                 index=default_season_idx,
-                key=f"profile_season_{player}_{player_squad}",
+                key=f"profile_season_{player}",
             )
 
-        # ----- Player-View-Daten -----
         if profile_view == "Per season" and season is not None:
             df_player = df_player_all[df_player_all["Season"] == season].copy()
         else:
             df_player = df_player_all.copy()
 
-        # ----- Header -----
-        if profile_view == "Per season" and season is not None:
-            st.subheader(f"Player Profile – {player}")
-        else:
-            st.subheader(f"Player Profile – {player}")
+        st.subheader(f"Player Profile – {player}")
 
-        # ----- Caption: Position | Squad oder typische Rolle -----
         typical_pos = df_player_all["Pos"].dropna().mode()
         typical_pos = typical_pos.iloc[0] if not typical_pos.empty else None
 
@@ -1669,27 +3520,8 @@ def main():
         else:
             st.caption(get_role_label(typical_pos))
 
-        # ----- Primäre Rolle und Score-Dimension -----
         role = typical_pos or (df_player["Pos"].iloc[0] if not df_player.empty and "Pos" in df_player.columns else None)
 
-        if role in ("FW", "Off_MF"):
-            primary_dim = "Offensive"
-            score_col = "OffScore_abs"
-            squad_col = "OffScore_squad"
-        elif role == "MF":
-            primary_dim = "Midfield"
-            score_col = "MidScore_abs"
-            squad_col = "MidScore_squad"
-        elif role in ("DF", "Def_MF"):
-            primary_dim = "Defensive"
-            score_col = "DefScore_abs"
-            squad_col = "DefScore_squad"
-        else:
-            primary_dim = None
-            score_col = None
-            squad_col = None
-
-        # ----- Season / Seasons Label -----
         if profile_view == "Per season" and season is not None:
             st.markdown(f"Season: {season}")
         else:
@@ -1700,7 +3532,6 @@ def main():
             else:
                 st.markdown("Seasons: n/a")
 
-        # ----- MainScore / MainBand berechnen -----
         if not df_player.empty:
             df_player = df_player.copy()
             df_player[["MainScore", "MainBand"]] = df_player.apply(
@@ -1709,13 +3540,47 @@ def main():
                 result_type="expand",
             )
 
+        # ----- FIFA Card + Score-Logik -----
+        card_row = None
+        main_score = None
+        main_band = None
+
+        if profile_view == "Per season" and not df_player.empty:
+            card_row = df_player.iloc[0].copy()
+            card_row = enrich_card_row_with_per90(card_row)
+            main_score, main_band = get_primary_score_and_band(card_row)
+
+        elif profile_view == "Career" and not df_player_all.empty:
+            card_row = build_career_card_row(df_player_all, player)
+            main_score, main_band = compute_career_main_score(df_player_all)
+
+        elif not df_player_all.empty:
+            if "Season" in df_player_all.columns:
+                card_row = df_player_all.sort_values("Season").iloc[-1].copy()
+            else:
+                card_row = df_player_all.iloc[0].copy()
+            card_row = enrich_card_row_with_per90(card_row)
+            main_score, main_band = get_primary_score_and_band(card_row)
+
+        if card_row is not None and main_score is not None and not pd.isna(main_score):
+            card_row["MainScore"] = main_score
+            card_row["MainBand"] = main_band
+
+            render_fifa_card(
+                card_row,
+                primary_score_col="MainScore",
+                band_col="MainBand",
+                title=None,
+            )
+        elif card_row is not None:
+            st.info("No primary role score available for this player in the selected view.")
+
         # ===================== SUMMARY =====================
         st.markdown("### Summary")
 
         col1, col2, col3, col4 = st.columns(4)
 
         if profile_view == "Per season":
-            # ---- Per-season Summary ----
             age = None
             n_90s = None
             main_score = None
@@ -1733,7 +3598,6 @@ def main():
 
             band_icon = BAND_ICONS.get(main_band, main_band) if main_band is not None else None
 
-            # Age
             with col1:
                 age_value = f"{age:.0f}" if isinstance(age, (int, float)) and not pd.isna(age) else "n/a"
                 st.markdown(
@@ -1751,7 +3615,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # 90s played
             with col2:
                 n_90s_value = f"{n_90s:.1f}" if isinstance(n_90s, (int, float)) and not pd.isna(n_90s) else "n/a"
                 st.markdown(
@@ -1769,7 +3632,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # Score
             with col3:
                 score_value = f"{main_score:.0f}" if main_score is not None and not pd.isna(main_score) else "n/a"
                 st.markdown(
@@ -1787,7 +3649,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # Band
             with col4:
                 band_value = band_icon if band_icon is not None else "n/a"
                 st.markdown(
@@ -1806,7 +3667,6 @@ def main():
                 )
 
         else:
-            # ---- Career Summary ----
             if "Season" in df_player_all.columns and "Age" in df_player_all.columns:
                 df_sorted = df_player_all.sort_values("Season")
                 age_career = df_sorted["Age"].iloc[-1]
@@ -1815,13 +3675,10 @@ def main():
 
             total_90s = float(df_player_all["90s"].sum()) if "90s" in df_player_all.columns else 0.0
 
-            avg_score = None
-            if "MainScore" in df_player.columns and df_player["MainScore"].notna().any():
-                avg_score = df_player["MainScore"].mean()
+            career_score, career_band = compute_career_main_score(df_player_all)
+            avg_score = career_score
+            avg_band_label = career_band
 
-            avg_band_label = band_from_score(avg_score) if avg_score is not None else None
-
-            # Age (last season)
             with col1:
                 age_value = f"{age_career:.0f}" if isinstance(age_career, (int, float)) and not pd.isna(age_career) else "n/a"
                 st.markdown(
@@ -1839,7 +3696,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # 90s played (career)
             with col2:
                 n_90s_value = f"{total_90s:.1f}" if total_90s > 0 else "n/a"
                 st.markdown(
@@ -1857,7 +3713,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # Average score (career)
             with col3:
                 score_value = f"{avg_score:.0f}" if avg_score is not None and not pd.isna(avg_score) else "n/a"
                 st.markdown(
@@ -1875,7 +3730,6 @@ def main():
                     unsafe_allow_html=True,
                 )
 
-            # Band (career avg)
             with col4:
                 band_value = avg_band_label if avg_band_label is not None else "n/a"
                 st.markdown(
@@ -1897,23 +3751,19 @@ def main():
         st.markdown("### Role metrics")
 
         if profile_view == "Per season":
-            # 1) Feature-Tabelle für diese Season laden
             try:
                 df_features_season = load_feature_table_for_season(season)
             except FileNotFoundError:
                 st.info("No raw feature data found for this season.")
                 df_features_season = pd.DataFrame()
 
-            # 2) Spielerzeilen aus Feature-Tabelle ziehen
             if not df_features_season.empty:
                 if "Squad" in df_features_season.columns and player_squad is not None:
-                    # echte Doppelgänger -> präzise Player + Squad
                     df_feat_player = df_features_season[
                         (df_features_season["Player"] == player) &
                         (df_features_season["Squad"] == player_squad)
                     ].copy()
                 else:
-                    # normaler Spieler -> nur nach Namen filtern
                     df_feat_player = df_features_season[
                         df_features_season["Player"] == player
                     ].copy()
@@ -1923,21 +3773,17 @@ def main():
             if role is not None and not df_feat_player.empty:
                 col_pizza, col_scatter = st.columns(2)
 
-                # --- links: Pizza-Chart ---
                 with col_pizza:
                     fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
                     if fig is not None:
                         st.pyplot(fig, use_container_width=True)
 
-                # --- rechts: Scatter-Plot ---
                 with col_scatter:
                     scatter_chart = render_role_scatter(df_features_season, df_feat_player, role)
                     if scatter_chart is not None:
                         st.altair_chart(scatter_chart, use_container_width=True)
-                    
 
         else:
-            # Career-Pizza
             if "Season" in df_player_all.columns:
                 player_seasons = sorted(df_player_all["Season"].dropna().unique())
             else:
@@ -1952,36 +3798,26 @@ def main():
                     if fig is not None:
                         st.pyplot(fig)
 
-
-        # ===================== SCORE TREND =====================
+        # ===================== SCORE TREND (Career) =====================
         if profile_view == "Career":
-
             st.markdown("### Career Score Trend")
 
-            # automatische Score-Spalte basierend auf Rolle
-            if role == "FW":
-                score_col = "OffScore_abs"
-                score_label = "Offensive score"
-            elif role == "MF":
-                score_col = "MidScore_abs"
-                score_label = "Midfield score"
-            elif role == "DF":
-                score_col = "DefScore_abs"
-                score_label = "Defensive score"
-            else:
-                st.info("No primary role score available for this player.")
-                return
+            if "MainScore" not in df_player_all.columns or "MainBand" not in df_player_all.columns:
+                df_player_all = df_player_all.copy()
+                df_player_all[["MainScore", "MainBand"]] = df_player_all.apply(
+                    get_primary_score_and_band,
+                    axis=1,
+                    result_type="expand",
+                )
 
-            # Daten vorbereiten: Season, Squad, Score
+            score_col = "MainScore"
+
             plot_df = (
                 df_player_all[["Season", "Squad", score_col]]
                 .dropna(subset=[score_col])
                 .sort_values("Season")
             )
 
-
-
-            # feste Y-Achse + Ticks 0 / 500 / 1000
             y_enc = alt.Y(
                 f"{score_col}:Q",
                 title="Score",
@@ -1989,7 +3825,6 @@ def main():
                 axis=alt.Axis(values=[0, 500, 1000]),
             )
 
-            # smoothe Kurve
             line = (
                 alt.Chart(plot_df)
                 .mark_line(
@@ -2008,9 +3843,7 @@ def main():
                     ],
                 )
             )
-    
 
-            # Punkte (exakte Werte)
             points = (
                 alt.Chart(plot_df)
                 .mark_point(
@@ -2029,7 +3862,6 @@ def main():
                 )
             )
 
-            # Labels über den Punkten
             labels = (
                 alt.Chart(plot_df)
                 .mark_text(
@@ -2045,10 +3877,6 @@ def main():
                 )
             )
 
-      
-
-            # ----------------- Dezente Band-Linien + Labels rechts -----------------
-            # letzte Saison als Anker für die Label-X-Position
             last_season = plot_df["Season"].iloc[-1]
 
             band_data = pd.DataFrame(
@@ -2060,7 +3888,7 @@ def main():
                         "750  •  World class",
                         "900  •  Exceptional",
                     ],
-                    "x": [last_season] * 4,   # alle Labels an der letzten Season verankern
+                    "x": [last_season] * 4,
                 }
             )
 
@@ -2070,25 +3898,24 @@ def main():
                     strokeDash=[4, 4],
                     strokeWidth=0.6,
                     opacity=0.4,
-                    color="#6b7280",   # dezentes Grau
+                    color="#6b7280",
                 )
                 .encode(
                     y="y:Q",
                 )
             )
 
-            # Labels RECHTS von der Kurve (an der letzten Saison, mit dx nach rechts)
             band_labels = (
                 alt.Chart(band_data)
                 .mark_text(
-                    align="left",          # Text linksbündig
+                    align="left",
                     baseline="middle",
-                    dx=30,                  # Abstand nach rechts von der letzten Saison-Position
-                    color="#e5e7eb",       # helles Grau
+                    dx=30,
+                    color="#e5e7eb",
                     fontSize=9,
                 )
                 .encode(
-                    x="x:O",               # an letzter Season verankert
+                    x="x:O",
                     y="y:Q",
                     text="label:N",
                 )
@@ -2119,16 +3946,14 @@ def main():
 
             st.altair_chart(chart, use_container_width=True)
 
-
-
+        return
 
     # ==================================================================
-    # MODE 2: TOP LISTS
+    # MODE: TOP LISTS
     # ==================================================================
-    else:
+    if mode == "Top lists":
         st.sidebar.subheader("Top list filters")
 
-        # ----- Season filter (default = latest season) -----
         seasons = sorted(df_all["Season"].dropna().unique())
         default_season_idx = len(seasons) - 1 if seasons else 0
         season = st.sidebar.selectbox(
@@ -2138,11 +3963,9 @@ def main():
             key="toplists_season",
         )
 
-        # Ausgangsbasis für Toplists (eine Saison)
         df_view = df_all[df_all["Season"] == season].copy()
 
-
-        # ----- League Filter -----
+        # League filter
         if "Comp" in df_view.columns:
             nations = sorted(df_view["Comp"].dropna().unique())
             nation_options = ["All"] + nations
@@ -2150,7 +3973,6 @@ def main():
             if "toplists_nation" not in st.session_state:
                 st.session_state["toplists_nation"] = "All"
 
-            # Falls gespeicherte Nation in dieser Saison nicht vorkommt -> auf "All"
             if st.session_state["toplists_nation"] not in nation_options:
                 st.session_state["toplists_nation"] = "All"
 
@@ -2164,20 +3986,17 @@ def main():
             if nation_sel != "All":
                 df_view = df_view[df_view["Comp"] == nation_sel]
 
-        # ----- Club filter (persistent across seasons) -----
+        # Club filter
         if "Squad" in df_view.columns:
             clubs = sorted(df_view["Squad"].dropna().unique())
             club_options = ["All"] + clubs
 
-            # Session-State für Club-Auswahl initialisieren
             if "toplists_club" not in st.session_state:
                 st.session_state["toplists_club"] = "All"
 
-            # Falls der aktuell gespeicherte Club in dieser Saison nicht vorkommt -> auf "All" zurück
             if st.session_state["toplists_club"] not in club_options:
                 st.session_state["toplists_club"] = "All"
 
-            # Selectbox: nutzt den gespeicherten Wert als Default
             club_sel = st.sidebar.selectbox(
                 "Club",
                 club_options,
@@ -2185,11 +4004,10 @@ def main():
                 key="toplists_club",
             )
 
-            # Filtern nach Auswahl (außer "All")
             if club_sel != "All":
                 df_view = df_view[df_view["Squad"] == club_sel]
 
-        # ----- Positions: Checkbox-Gruppe (Standard: alle an, persistent) -----
+        # Position filter
         if "Pos" in df_view.columns:
             pos_values = sorted(df_view["Pos"].dropna().unique())
             st.sidebar.markdown("**Positions**")
@@ -2198,8 +4016,8 @@ def main():
             for pos in pos_values:
                 checked = st.sidebar.checkbox(
                     pos,
-                    value=True,              # beim ersten Laden: alle an
-                    key=f"top_pos_{pos}",   # persistent über Seasons
+                    value=True,
+                    key=f"top_pos_{pos}",
                 )
                 if checked:
                     selected_positions.append(pos)
@@ -2207,7 +4025,7 @@ def main():
             if selected_positions:
                 df_view = df_view[df_view["Pos"].isin(selected_positions)]
 
-        # ----- Minutes filter -----
+        # Minutes filter
         min_90s = st.sidebar.slider(
             "Minimum 90s played",
             1.0,
@@ -2219,7 +4037,7 @@ def main():
         if "90s" in df_view.columns:
             df_view = df_view[df_view["90s"] >= min_90s]
 
-        # ----- Age filter (optional, persistent) -----
+        # Age filter
         if "Age" in df_view.columns:
             st.sidebar.markdown("**Age filter**")
             use_age_filter = st.sidebar.checkbox(
@@ -2234,12 +4052,9 @@ def main():
                     min_age = int(age_numeric.min())
                     max_age = int(age_numeric.max())
 
-                    # ---- Session-State für max Age initialisieren / clampen ----
                     if "top_age_max" not in st.session_state:
-                        # Startwert nur beim allerersten Mal
                         st.session_state["top_age_max"] = min(20, max_age)
                     else:
-                        # Falls sich der Altersbereich mit der Season ändert:
                         current = st.session_state["top_age_max"]
                         if current < min_age:
                             st.session_state["top_age_max"] = min_age
@@ -2257,8 +4072,6 @@ def main():
 
                     df_view = df_view[age_numeric <= max_age_selected]
 
-
-        # ----- Primary score & band je Spieler bestimmen -----
         if df_view.empty:
             st.warning("No players found for the selected filters.")
             return
@@ -2269,14 +4082,12 @@ def main():
             result_type="expand",
         )
 
-        # Spieler ohne relevanten Score (z.B. GK) raus
         df_view = df_view[df_view["MainScore"].notna()].copy()
 
         if df_view.empty:
             st.warning("No players with a primary score found for the selected filters.")
             return
 
-        # ----- Top N -----
         top_n = st.sidebar.slider(
             "Top N players",
             3,
@@ -2294,18 +4105,12 @@ def main():
         )
         ascending = sort_mode == "Lowest score first"
 
-        #st.markdown(f"### Top {top_n} players by primary role score – Season {season}")
-
-        # ---- Toplist-Bar-Chart für MainScore ----
-        # nach allen Filtern (Club, Pos, Age, Band, Min 90s) ist df_view ready
-
         df_top = (
             df_view
             .sort_values("MainScore", ascending=ascending)
             .head(top_n)
             .copy()
         )
-
 
         chart_main = render_toplist_bar(
             df=df_top,
@@ -2320,21 +4125,26 @@ def main():
         if chart_main is not None:
             st.altair_chart(chart_main, use_container_width=True)
 
-        # ---- Beeswarm Score vs Age ----
         beeswarm_chart = render_score_age_beeswarm(
             df_all_filtered=df_view,
             df_top=df_top,
         )
 
         if beeswarm_chart is not None:
-            st.altair_chart(beeswarm_chart, use_container_width=True)  
+            st.altair_chart(beeswarm_chart, use_container_width=True)
 
-
-        # ---- Band-Histogramm (nach all deinen Filtern) ----
         band_hist = render_band_histogram(df_view, season=season)
         if band_hist is not None:
             st.altair_chart(band_hist, use_container_width=False)
 
+        return
+
+    # ==================================================================
+    # MODE: TEAM SCORES
+    # ==================================================================
+    if mode == "Team scores":
+        render_team_scores_view(df_all, df_squad)
+        return
 
 if __name__ == "__main__":
     main()

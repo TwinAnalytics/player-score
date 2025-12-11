@@ -1,15 +1,28 @@
+"""
+Multi-season pipeline for PlayerScore.
+
+What it does:
+1) For each season in SEASONS:
+    - scrape FBref *player* stats  -> players_data-<season>.csv
+    - scrape FBref *squad*  stats  -> squads_data-<season>.csv
+2) Afterwards you can plug in your existing processing:
+    - Process Raw -> Processed -> Scores
+"""
+
+from __future__ import annotations
+
 from pathlib import Path
-import pandas as pd
 
-from src.pipeline import run_full_pipeline
-from src.scraping_fbref_player_stats import run_scraping_for_season
+from src.scraping_fbref_player_stats import run_pipeline_for_season as scrape_player_stats
+from src.scraping_fbref_squad_stats import run_pipeline_for_season as scrape_squad_stats
 
-from src.multi_season import (
-    load_all_seasons,
-    aggregate_player_scores,
-)
-from src.squad import compute_squad_scores
+PROJECT_ROOT = Path(__file__).resolve().parent
+RAW_DIR = (PROJECT_ROOT / "Data" / "Raw").resolve()
+PROCESSED_DIR = (PROJECT_ROOT / "Data" / "Processed").resolve()
 
+# -------------------------------------------------------------------
+# Configuration
+# -------------------------------------------------------------------
 
 SEASONS = [
     "2017-2018",
@@ -20,52 +33,66 @@ SEASONS = [
     "2022-2023",
     "2023-2024",
     "2024-2025",
-    "2025-2026",
+    "2025-2026",  # ggf. rausnehmen, falls FBref noch keine Daten hat
 ]
 
-if __name__ == "__main__":
-    root = Path(__file__).resolve().parent
-    raw_dir = root / "Data" / "Raw"
-    processed_dir = root / "Data" / "Processed"
+SCRAPE_PLAYERS = True
+SCRAPE_SQUADS = True
 
-    # ---------------------------------------------------------
-    # 1) Pro Saison: Scraping (Big-5 + ggf. 2. Liga) + Scoring
-    # ---------------------------------------------------------
+
+# -------------------------------------------------------------------
+# Main orchestration
+# -------------------------------------------------------------------
+
+def run_scraping_block() -> None:
+    """
+    Loop over all seasons and scrape player + squad stats.
+    """
+    print("=" * 80)
+    print("STEP 1: FBref scraping for all seasons")
+    print("=" * 80)
+    print(f"Seasons: {', '.join(SEASONS)}")
+    print(f"Scrape players: {SCRAPE_PLAYERS}")
+    print(f"Scrape squads:  {SCRAPE_SQUADS}")
+    print(f"Raw output dir: {RAW_DIR}")
+    print("-" * 80)
+
     for season in SEASONS:
-        print(f"\n=== Saison {season} ===")
+        if SCRAPE_PLAYERS:
+            scrape_player_stats(season, output_folder=RAW_DIR)
 
-        # 1a) Big-5 scrapen -> players_data_light-<Season>.csv
-        run_scraping_for_season(season, output_folder=raw_dir)
+        if SCRAPE_SQUADS:
+            scrape_squad_stats(season, output_folder=RAW_DIR)
+
+    print("=" * 80)
+    print("Scraping finished for all configured seasons.")
+    print("=" * 80)
 
 
-        # 1b) Scoring-Pipeline: aus players_data_light-<Season>.csv -> player_scores-<Season>.csv
-        out = run_full_pipeline(season, raw_dir, processed_dir)
-        print(f"Fertiger Score-Export: {out}")
+def run_processing_block() -> None:
+    """
+    Hook for your existing multi-season processing pipeline.
 
-    # ---------------------------------------------------------
-    # 2) Multi-Season-Tabellen automatisch erzeugen
-    # ---------------------------------------------------------
-    print("\n=== Building multi-season tables ===")
-    df_all = load_all_seasons(processed_dir)
-    df_agg = aggregate_player_scores(df_all)
-    df_squad = compute_squad_scores(df_all)
+    Here you plug in:
+    - load players_data-*.csv / squads_data-*.csv from RAW_DIR
+    - compute scores, roles, per90, aggregates
+    - save to PROCESSED_DIR
 
-    # Lange Tabelle über alle Saisons
-    out_all = processed_dir / "player_scores_all_seasons_long.csv"
-    df_all.to_csv(out_all, index=False)
-    print(f"Gespeichert: {out_all}")
+    For now, this is just a placeholder.
+    """
+    print("=" * 80)
+    print("STEP 2: Processing pipeline (Raw -> Processed -> Scores)")
+    print("=" * 80)
+    print(
+        "TODO: Insert your processing logic here (from Raw -> Processed -> Scores). "
+        "Scraping is already handled above."
+    )
 
-    # Aggregiert pro Spieler
-    out_agg = processed_dir / "player_scores_agg_by_player.csv"
-    df_agg.to_csv(out_agg, index=False)
-    print(f"Gespeichert: {out_agg}")
 
-    # Squad-Scores
-    out_squad = processed_dir / "squad_scores_all_seasons.csv"
-    df_squad.to_csv(out_squad, index=False)
-    print(f"Gespeichert: {out_squad}")
+def main() -> None:
+    run_scraping_block()
+    run_processing_block()
 
-    # Optional: Alias-Datei, wie von dir gewünscht
-    single_out = processed_dir / "player_scores.csv"
-    df_all.to_csv(single_out, index=False)
-    print(f"Gespeichert: {single_out}")
+
+if __name__ == "__main__":
+    main()

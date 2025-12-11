@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Sequence
 import pandas as pd
+import numpy as np
 
 
 # ============================================================================
@@ -94,6 +95,82 @@ def add_standard_per90(
 
     return add_per90_from_90s(df, stats_cols=stats_cols, ninety_col=ninety_col, suffix=suffix)
 
+def add_squad_per90(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Fügt allen Squad-Daten per-90-Metriken hinzu.
+    Erwartet eine Spalte '90s' (Team-Minuten / 90).
+    """
+
+    df = df.copy()
+
+    if "90s" not in df.columns:
+        raise ValueError("Squad dataframe must contain column '90s'.")
+
+    # Sicherheit: 90s = Spiele * 1.0
+    df["90s"] = pd.to_numeric(df["90s"], errors="coerce").replace([np.inf, -np.inf], np.nan)
+
+    # Mapping: neue Spalte → Rohwert-Spalte
+    # processing.py
+import numpy as np
+import pandas as pd
+
+def add_squad_per90(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Fügt wichtige per-90-Stats für Team-Radars hinzu.
+
+    Erwartet:
+      - '90s' (Anzahl 90-Minuten-Einheiten)
+    """
+
+    df = df.copy()
+
+    # 90s als Basis (sonst über Minuten)
+    if "90s" in df.columns:
+        ninety = pd.to_numeric(df["90s"], errors="coerce").replace(0, np.nan)
+    else:
+        minutes = pd.to_numeric(df.get("Min", np.nan), errors="coerce")
+        ninety = (minutes / 90.0).replace(0, np.nan)
+
+    def per90(src_col: str, out_col: str):
+        if src_col in df.columns:
+            num = pd.to_numeric(df[src_col], errors="coerce")
+            df[out_col] = num / ninety
+
+    # ------- OFFENSIVE METRIKEN ------- #
+    per90("npxG",   "npxG/90")
+    per90("Sh",     "Sh/90")       # Shots
+    per90("SoT",    "SoT/90")      # Shots on target
+    per90("xAG",    "xAG/90")
+    per90("PPA",    "PPA/90")      # Passes to penalty area
+    per90("CPA",    "CPA/90")      # Carries to penalty area
+    per90("Att Pen","Att Pen/90")  # Touches in penalty area
+    per90("KP",     "KP/90")       # Key passes
+
+    # SCA / GCA haben meist schon SCA90 / GCA90 in den FBref-Exports
+    # – falls nicht, bauen wir sie:
+    if "SCA" in df.columns and "SCA90" not in df.columns:
+        per90("SCA", "SCA90")
+    if "GCA" in df.columns and "GCA90" not in df.columns:
+        per90("GCA", "GCA90")
+
+    # ------- DEFENSIVE METRIKEN ------- #
+    # onxGA = xG Conceded
+    per90("onxGA",  "onxGA/90")
+
+    # GA90 ist oft schon in der Datei; wenn nicht, bauen wir es
+    if "GA90" not in df.columns and "GA" in df.columns:
+        per90("GA", "GA90")
+
+    per90("SoTA",   "SoTA/90")     # Shots on target conceded
+    per90("Clr",    "Clr/90")      # Clearances
+    per90("Tkl+Int","Tkl+Int/90")  # Tackles + Interceptions
+    per90("PSxG+/-","PSxG+/-/90")  # PSxG-GA per 90
+    per90("CS",     "CS/90")       # Clean sheets per 90 (zusätzlich zu CS%)
+    per90("Opp",    "Opp/90")      # Crosses faced per 90
+
+    # Prozentwerte (Cmp%, CS%) lassen wir so – die sind schon in ihrer finalen Skala
+    return df
+
 
 # ============================================================================
 # Positionslogik
@@ -101,31 +178,45 @@ def add_standard_per90(
 
 def main_pos_from_string(pos: str) -> str | None:
     """
-    Reduziert FBref-Positionsstrings auf eine Hauptposition.
-
-    Beispiele:
-    - "DF,MF" -> "DF" (weil DF in der Prioritätenliste hinter MF kommt? Nein:
-      wir setzen die Priorität explizit:
-        FW > AM > MF > DF > GK
-    - "MF,FW" -> "FW"
-    - "MF" -> "MF"
+    Leitet eine Hauptposition aus einem FBref-Positionsstring ab, z.B.:
+    - "FW, MF" -> FW
+    - "MF, FW" -> MF
+    - "DF,MF"  -> DF (oder MF, je nach Reihenfolge)
+    
+    Logik:
+    1) Erster Positions-Teil hat Vorrang.
+    2) Falls dort nichts erkannt wird, wird über alle Teile mit einer Prioritätsliste gesucht.
     """
 
-    if not isinstance(pos, str):
+    if pos is None:
         return None
 
-    parts = [p.strip() for p in pos.split(",")]
+    # Positionsteile splitten
+    parts = [p.strip() for p in str(pos).split(",") if p.strip()]
+    if not parts:
+        return None
 
-    # Priorität für Hauptposition
+    # Codes, die wir erkennen wollen
+    primary_codes = ["FW", "AM", "MF", "DF", "GK"]
+
+    first_part = parts[0]
+
+    # 1) Zuerst den ERSTEN Teil respektieren
+    for code in primary_codes:
+        if code in first_part:
+            return code
+
+    # 2) Fallback: über alle Teile mit einer Priorität suchen
+    #    (hier kannst du die Reihenfolge festlegen, z.B. MF vor FW
+    #     oder FW vor MF – aber das greift nur, wenn der erste Teil nichts enthält)
     priority = ["FW", "AM", "MF", "DF", "GK"]
 
-    for p in priority:
-        # wenn irgendein Teil den Code enthält (z.B. "FW" in "CF, FW")
-        if any(p in part for part in parts):
-            return p
+    for code in priority:
+        if any(code in part for part in parts):
+            return code
 
-    # Fallback: einfach erster Eintrag
-    return parts[0] if parts else None
+    # 3) Letzter Fallback: erster Teil roh zurückgeben
+    return first_part
 
 
 def refine_mf_with_zones(row: pd.Series) -> str:
