@@ -3439,37 +3439,151 @@ def main():
     if mode == "Player profile":
         st.sidebar.subheader("Profile filters")
 
-        # --- Player-Auswahl: ein Profil pro Spieler (keine Club-Duplikate) ---
-        players_all = (
-            df_all["Player"]
-            .dropna()
-            .sort_values()
-            .unique()
-        )
-
-        if len(players_all) == 0:
-            st.warning("No players found in the dataset.")
+        # --- Required columns check ---
+        required = {"Player", "Season", "Comp", "Squad"}
+        missing = [c for c in required if c not in df_all.columns]
+        if missing:
+            st.warning(f"Missing required columns: {missing}")
             return
 
-        placeholder = "Select a player..."
-        options = [placeholder] + list(players_all)
+        comp_col = "Comp"
+        squad_col = "Squad"
 
-        current_selection = st.session_state.get("selected_player_label", placeholder)
-        if current_selection not in options:
-            current_selection = placeholder
+        # =========================
+        # Current season (filters should ONLY show players currently at club)
+        # =========================
+        seasons_all = sorted(df_all["Season"].dropna().unique())
+        if not seasons_all:
+            st.warning("No seasons found in data.")
+            return
 
-        player = st.sidebar.selectbox(
-            "Player",
-            options,
-            index=options.index(current_selection),
-            key="player_profile_player",
+        CURRENT_SEASON = seasons_all[-1]
+        df_current = df_all[df_all["Season"] == CURRENT_SEASON].copy()
+
+        # =========================
+        # Session state (selection source)
+        # =========================
+        st.session_state.setdefault("pp_selected_player", None)
+        st.session_state.setdefault("pp_source", None)  # "global" | "filtered"
+
+        GLOBAL_PLACEHOLDER = "Search a player..."
+        FILTER_PLACEHOLDER = "Select a player..."
+        LEAGUE_PLACEHOLDER = "All leagues"
+        CLUB_PLACEHOLDER = "All clubs"
+
+        # --- Callbacks: last action wins (no illegal session_state writes) ---
+        def _on_global_change():
+            val = st.session_state.get("pp_global_player_selectbox", GLOBAL_PLACEHOLDER)
+            if val != GLOBAL_PLACEHOLDER:
+                st.session_state["pp_selected_player"] = val
+                st.session_state["pp_source"] = "global"
+
+        def _on_filtered_change():
+            val = st.session_state.get("pp_filtered_player_selectbox", FILTER_PLACEHOLDER)
+            if val != FILTER_PLACEHOLDER:
+                st.session_state["pp_selected_player"] = val
+                st.session_state["pp_source"] = "filtered"
+
+        # =========================
+        # 1) Global player search (ALL seasons)
+        # =========================
+        players_global = (
+            df_all["Player"].dropna().astype(str).sort_values().unique().tolist()
         )
-        st.session_state["selected_player_label"] = player
+        global_options = [GLOBAL_PLACEHOLDER] + players_global
 
-        if player == placeholder:
+        global_default = GLOBAL_PLACEHOLDER
+        if (
+            st.session_state.get("pp_source") == "global"
+            and st.session_state.get("pp_selected_player") in global_options
+        ):
+            global_default = st.session_state["pp_selected_player"]
+
+        st.sidebar.selectbox(
+            "Player (global search)",
+            options=global_options,
+            index=global_options.index(global_default),
+            key="pp_global_player_selectbox",
+            on_change=_on_global_change,
+        )
+
+        st.sidebar.markdown("---")
+        st.sidebar.markdown(f"**Search by League & Club**")
+
+        # =========================
+        # 2) League filter (CURRENT SEASON)
+        # =========================
+        leagues = sorted(df_current[comp_col].dropna().unique().tolist())
+        league_options = [LEAGUE_PLACEHOLDER] + leagues
+
+        prev_league = st.session_state.get("pp_league_selectbox", LEAGUE_PLACEHOLDER)
+        if prev_league not in league_options:
+            prev_league = LEAGUE_PLACEHOLDER
+
+        league_sel = st.sidebar.selectbox(
+            "League / competition",
+            options=league_options,
+            index=league_options.index(prev_league),
+            key="pp_league_selectbox",
+        )
+
+        df_filt = df_current.copy()
+        if league_sel != LEAGUE_PLACEHOLDER:
+            df_filt = df_filt[df_filt[comp_col] == league_sel]
+
+        # =========================
+        # 3) Club filter (CURRENT SEASON, depends on league)
+        # =========================
+        clubs = sorted(df_filt[squad_col].dropna().unique().tolist())
+        club_options = [CLUB_PLACEHOLDER] + clubs
+
+        prev_club = st.session_state.get("pp_club_selectbox", CLUB_PLACEHOLDER)
+        if prev_club not in club_options:
+            prev_club = CLUB_PLACEHOLDER
+
+        club_sel = st.sidebar.selectbox(
+            "Club",
+            options=club_options,
+            index=club_options.index(prev_club),
+            key="pp_club_selectbox",
+        )
+
+        if club_sel != CLUB_PLACEHOLDER:
+            df_filt = df_filt[df_filt[squad_col] == club_sel]
+
+        # =========================
+        # 4) Player list (CURRENT SEASON only + filtered by league/club)
+        # =========================
+        players_filtered = (
+            df_filt["Player"].dropna().astype(str).sort_values().unique().tolist()
+        )
+        filtered_options = [FILTER_PLACEHOLDER] + players_filtered
+
+        filtered_default = FILTER_PLACEHOLDER
+        if (
+            st.session_state.get("pp_source") == "filtered"
+            and st.session_state.get("pp_selected_player") in filtered_options
+        ):
+            filtered_default = st.session_state["pp_selected_player"]
+
+        st.sidebar.selectbox(
+            f"Players at club in {CURRENT_SEASON}",
+            options=filtered_options,
+            index=filtered_options.index(filtered_default),
+            key="pp_filtered_player_selectbox",
+            on_change=_on_filtered_change,
+        )
+
+        # =========================
+        # 5) Final selected player (last action wins)
+        # =========================
+        player = st.session_state.get("pp_selected_player", None)
+        if not player:
             st.subheader("Player profile")
-            st.info("Please select a player in the sidebar on the left to view their profile.")
+            st.info("Select a player via global search or via current league/club filters.")
             return
+
+        st.session_state["selected_player_label"] = player
 
         # alle Saisons & Clubs des Spielers
         player_squad = None

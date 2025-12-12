@@ -5,6 +5,8 @@ from typing import List
 
 import pandas as pd
 
+import numpy as np
+
 
 # Welche Score-Spalten wir pro Squad aggregieren
 SQUAD_SCORE_COLS: List[str] = [
@@ -53,9 +55,15 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
     def _agg(group: pd.DataFrame) -> pd.Series:
         result: dict[str, float | int | str] = {}
 
-        # --- Basis-Meta-Infos ---
-        result["Season"] = group["Season"].iloc[0]
-        result["Squad"] = group["Squad"].iloc[0]
+        if isinstance(group.name, tuple):
+            season_key, squad_key = group.name
+        else:
+            # Falls du irgendwann nur nach "Squad" gruppierst o.ä.
+            season_key, squad_key = (group.get("Season", np.nan), group.name)
+
+        result["Season"] = season_key
+        result["Squad"] = squad_key
+
 
         # Minuten gesamt
         mins = pd.to_numeric(group.get("Min", 0), errors="coerce").fillna(0)
@@ -94,7 +102,7 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
     df_squad = (
         df_all
         .groupby(["Season", "Squad"])
-        .apply(_agg)
+        .apply(_agg, include_groups=False)
         .reset_index(drop=True)
     )
 
