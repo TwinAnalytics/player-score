@@ -2,7 +2,7 @@ name: Weekly PlayerScore Pipeline
 
 on:
   schedule:
-    # Jeden Dienstag um 06:00 UTC (08:00 MEZ / 07:00 CET je nach Sommerzeit)
+    # Dienstag 06:00 UTC = 07:00 Madrid (Winter) / 08:00 Madrid (Sommer)
     - cron: "0 6 * * 2"
   workflow_dispatch:
 
@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+          # Playwright nur für Pipeline-Run
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
       - name: Run multi-season pipeline
         run: |
           python run_multi_season_pipeline.py
@@ -32,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add .
+          git add Data/Processed || true
           git commit -m "Weekly data update" || echo "No changes to commit"
           git push
