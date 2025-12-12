@@ -3520,7 +3520,7 @@ def main():
             prev_league = LEAGUE_PLACEHOLDER
 
         league_sel = st.sidebar.selectbox(
-            "League / competition",
+            "League",
             options=league_options,
             index=league_options.index(prev_league),
             key="pp_league_selectbox",
