@@ -28,8 +28,29 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Run multi-season pipeline
+      - name: Determine current season (Europe football)
+        id: season
         run: |
+          python - << 'PY'
+          from datetime import datetime, timezone
+          now = datetime.now(timezone.utc)
+          y = now.year
+          # Saisonwechsel ab Juli (Monat 7)
+          if now.month >= 8:
+              season = f"{y}-{y+1}"
+          else:
+              season = f"{y-1}-{y}"
+          print("season=", season)
+          with open("season.env", "w") as f:
+              f.write(f"PIPELINE_SEASONS={season}\n")
+          PY
+
+      - name: Run multi-season pipeline
+        env:
+          PIPELINE_SEASONS: ${{ env.PIPELINE_SEASONS }}
+        run: |
+          # env aus Datei laden
+          cat season.env >> $GITHUB_ENV
           python run_multi_season_pipeline.py
 
       - name: Commit updated data
