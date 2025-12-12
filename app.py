@@ -3309,8 +3309,7 @@ def main():
             or data availability.
 
             The analysis engine continuously processes the latest publicly available performance data from FBref 
-            and combines it with a custom scoring logic that uses comprehensive Big-5 metrics as well as reduced 
-            “Light” metrics for leagues with fewer statistical features.
+            and combines it with a custom scoring logic that uses comprehensive Big-5 metrics.
             """
         )
 
