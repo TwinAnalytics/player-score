@@ -16,6 +16,8 @@ from pathlib import Path
 from src.scraping_fbref_player_stats import run_pipeline_for_season as scrape_player_stats
 from src.scraping_fbref_squad_stats import run_pipeline_for_season as scrape_squad_stats
 
+import os
+
 PROJECT_ROOT = Path(__file__).resolve().parent
 RAW_DIR = (PROJECT_ROOT / "Data" / "Raw").resolve()
 PROCESSED_DIR = (PROJECT_ROOT / "Data" / "Processed").resolve()
@@ -36,6 +38,16 @@ SEASONS = [
     "2025-2026",  # ggf. rausnehmen, falls FBref noch keine Daten hat
 ]
 
+DEFAULT_SEASONS = [
+    "2017-2018","2018-2019","2019-2020","2020-2021","2021-2022",
+    "2022-2023","2023-2024","2024-2025","2025-2026"
+]
+
+env_seasons = os.getenv("PIPELINE_SEASONS", "").strip()
+if env_seasons:
+    SEASONS = [s.strip() for s in env_seasons.split(",") if s.strip()]
+else:
+    SEASONS = DEFAULT_SEASONS
 SCRAPE_PLAYERS = True
 SCRAPE_SQUADS = True
 
