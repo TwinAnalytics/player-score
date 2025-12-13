@@ -2,10 +2,13 @@ name: Weekly PlayerScore Pipeline
 
 on:
   schedule:
-    # Dienstag 06:00 UTC = 07:00 Madrid (Winter) / 08:00 Madrid (Sommer)
+    # Dienstag 06:00 UTC (= 07:00/08:00 Madrid je nach Sommerzeit)
     - cron: "0 6 * * 2"
   workflow_dispatch:
-
+  
+permissions:
+  contents: write
+  
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
@@ -13,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,39 +29,34 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-          # Playwright nur für Pipeline-Run
+          # Playwright nur für den Pipeline-Run (nicht für Streamlit Cloud)
           pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Determine current season (Europe football)
-        id: season
+      # >>> HIER: Season automatisch berechnen (UTC, passt für Workflow) <<<
+      - name: Compute current season (TEST MODE)
         run: |
-          python - << 'PY'
-          from datetime import datetime, timezone
-          now = datetime.now(timezone.utc)
-          y = now.year
-          # Saisonwechsel ab Juli (Monat 7)
-          if now.month >= 8:
-              season = f"{y}-{y+1}"
-          else:
-              season = f"{y-1}-{y}"
-          print("season=", season)
-          with open("season.env", "w") as f:
-              f.write(f"PIPELINE_SEASONS={season}\n")
-          PY
+          echo "PIPELINE_SEASONS=2024-2025" >> $GITHUB_ENV
+          echo "Using season (TEST): 2024-2025"
 
-      - name: Run multi-season pipeline
-        env:
-          PIPELINE_SEASONS: ${{ env.PIPELINE_SEASONS }}
+      - name: Debug env
         run: |
-          # env aus Datei laden
-          cat season.env >> $GITHUB_ENV
+          echo "PIPELINE_SEASONS=$PIPELINE_SEASONS"
+          cat $GITHUB_ENV || true
+
+      # >>> HIER: Pipeline laufen lassen <<<
+      - name: Run multi-season pipeline
+        run: |
+          echo "PIPELINE_SEASONS=$PIPELINE_SEASONS"
           python run_multi_season_pipeline.py
 
+      # >>> HIER: NUR die aktualisierten Dateien committen/pushen <<<
       - name: Commit updated data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add Data/Processed || true
+
+          # Nur die Output-Ordner committen (anpassen wenn du andere nutzt)
+          git add Data/Raw Data/Processed || true
           git commit -m "Weekly data update" || echo "No changes to commit"
           git push
