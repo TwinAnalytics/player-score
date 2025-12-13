@@ -11,7 +11,7 @@ permissions:
   
 jobs:
   run-pipeline:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, playerscore]
 
     steps:
       - name: Checkout repository
@@ -28,10 +28,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-          # Playwright nur für den Pipeline-Run (nicht für Streamlit Cloud)
-          pip install playwright
-          python -m playwright install --with-deps chromium
 
       # >>> HIER: Season automatisch berechnen (UTC, passt für Workflow) <<<
       - name: Compute current season (TEST MODE)
