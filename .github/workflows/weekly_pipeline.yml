@@ -2,16 +2,15 @@ name: Weekly PlayerScore Pipeline
 
 on:
   schedule:
-    # Dienstag 06:00 UTC (= 07:00/08:00 Madrid je nach Sommerzeit)
     - cron: "0 6 * * 2"
   workflow_dispatch:
-  
+
 permissions:
   contents: write
-  
+
 jobs:
   run-pipeline:
-    runs-on: [self-hosted, macOS, X64 playerscore]
+    runs-on: [self-hosted, macOS, X64, playerscore]
 
     steps:
       - name: Checkout repository
@@ -19,7 +18,7 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Set up venv
+      - name: Set up venv + deps
         run: |
           python3 -m venv .venv
           source .venv/bin/activate
@@ -28,12 +27,7 @@ jobs:
           pip install playwright
           python -m playwright install chromium
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      # >>> HIER: Season automatisch berechnen (UTC, passt für Workflow) <<<
+      # TEST: feste Season
       - name: Compute current season (TEST MODE)
         run: |
           echo "PIPELINE_SEASONS=2024-2025" >> $GITHUB_ENV
@@ -42,21 +36,16 @@ jobs:
       - name: Debug env
         run: |
           echo "PIPELINE_SEASONS=$PIPELINE_SEASONS"
-          cat $GITHUB_ENV || true
 
-      # >>> HIER: Pipeline laufen lassen <<<
       - name: Run multi-season pipeline
         run: |
           source .venv/bin/activate
           python run_multi_season_pipeline.py
 
-      # >>> HIER: NUR die aktualisierten Dateien committen/pushen <<<
       - name: Commit updated data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
-          # Nur die Output-Ordner committen (anpassen wenn du andere nutzt)
           git add Data/Raw Data/Processed || true
           git commit -m "Weekly data update" || echo "No changes to commit"
           git push
