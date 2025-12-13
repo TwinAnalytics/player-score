@@ -11,7 +11,7 @@ permissions:
   
 jobs:
   run-pipeline:
-    runs-on: [self-hosted, playerscore]
+    runs-on: [self-hosted, macOS, X64 playerscore]
 
     steps:
       - name: Checkout repository
