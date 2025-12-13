@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import pandas as pd
 
 from src.scraping_fbref_player_stats import run_pipeline_for_season as scrape_player_stats
 from src.scraping_fbref_squad_stats import run_pipeline_for_season as scrape_squad_stats
 from src.pipeline import run_full_pipeline
+from src.multi_season import load_all_seasons, aggregate_player_scores
+from src.squad import compute_squad_scores
+
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -65,9 +69,32 @@ def run_processing_block(seasons: list[str]) -> None:
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
     for season in seasons:
-        # Erwartet Raw: Data/Raw/players_data-<season>.csv
-        run_full_pipeline(season)
+        run_full_pipeline(season, RAW_DIR, PROCESSED_DIR)
 
+    export_multi_season_tables()
+
+def export_multi_season_tables() -> None:
+    df_all = load_all_seasons(PROCESSED_DIR)
+    if df_all.empty:
+        print("[WARN] df_all is empty, skipping exports.")
+        return
+
+    # 1) LONG: alle Spieler, alle Saisons
+    out_long = PROCESSED_DIR / "player_scores_all_seasons_long.csv"
+    df_all.to_csv(out_long, index=False)
+    print(f"[SAVE] {out_long}")
+
+    # 2) AGG: je Spieler aggregiert
+    df_agg = aggregate_player_scores(df_all)
+    out_agg = PROCESSED_DIR / "player_scores_agg_by_player.csv"
+    df_agg.to_csv(out_agg, index=False)
+    print(f"[SAVE] {out_agg}")
+
+    # 3) SQUAD SCORES: alle Teams, alle Saisons
+    df_squad = compute_squad_scores(df_all)
+    out_squad = PROCESSED_DIR / "squad_scores_all_seasons.csv"
+    df_squad.to_csv(out_squad, index=False)
+    print(f"[SAVE] {out_squad}")
 
 def main() -> None:
     seasons = _get_seasons()
