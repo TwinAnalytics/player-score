@@ -18,6 +18,7 @@ import time
 from io import StringIO
 from pathlib import Path
 from typing import Dict, List, Optional
+from bs4 import BeautifulSoup, Comment
 
 import pandas as pd
 from playwright.sync_api import (
@@ -101,29 +102,31 @@ def _candidate_table_ids(table_id: str) -> List[str]:
 def scrape_table(page, url: str, table_id: str) -> Optional[pd.DataFrame]:
     """
     Load an FBref page and parse a single table for the given id.
+    Works even if FBref hides tables in HTML comments.
     """
     try:
-        page.goto(url, timeout=0, wait_until="load")
-
-        candidate_ids = _candidate_table_ids(table_id)
-        effective_id = None
-
-        for cid in candidate_ids:
-            try:
-                page.wait_for_selector(f"table#{cid}", timeout=20000)
-                effective_id = cid
-                break
-            except TimeoutError:
-                continue
-            except PlaywrightTimeoutError:
-                continue
-
-        if effective_id is None:
-            print(f"[WARN] Table with any of ids {candidate_ids} not found on {url}")
-            return None
+        page.goto(url, timeout=60000, wait_until="domcontentloaded")
+        # Warten bis irgendwas "stabil" ist (statt table#id, weil oft hidden)
+        page.wait_for_selector("body", timeout=30000)
+        page.wait_for_timeout(1500)
 
         html = page.content()
-        df = pd.read_html(StringIO(html), attrs={"id": effective_id})[0]
+
+        # Try candidate IDs (future-proofing)
+        candidate_ids = _candidate_table_ids(table_id)
+
+        df = None
+        effective_id = None
+        for cid in candidate_ids:
+            df_try = extract_fbref_table_from_html(html, cid)
+            if df_try is not None and not df_try.empty:
+                df = df_try
+                effective_id = cid
+                break
+
+        if df is None:
+            print(f"[WARN] Table with any of ids {candidate_ids} not found (html/comments) on {url}")
+            return None
 
         # Flatten MultiIndex columns if present
         if isinstance(df.columns, pd.MultiIndex):
@@ -195,7 +198,38 @@ def scrape_all_tables(season: str) -> Dict[str, pd.DataFrame]:
 
     return dfs
 
+def extract_fbref_table_from_html(html: str, table_id: str) -> Optional[pd.DataFrame]:
+    """
+    FBref tables are often hidden inside HTML comments.
+    This tries:
+      1) direct <table id=...>
+      2) comment block inside <div id="all_<table_id>">
+    """
+    # 1) direct
+    try:
+        out = pd.read_html(StringIO(html), attrs={"id": table_id})
+        if out:
+            return out[0]
+    except Exception:
+        pass
 
+    # 2) inside comments under div#all_<table_id>
+    soup = BeautifulSoup(html, "lxml")
+    container = soup.find("div", id=f"all_{table_id}")
+    if container is None:
+        return None
+
+    comments = container.find_all(string=lambda t: isinstance(t, Comment))
+    for c in comments:
+        if table_id in c:
+            try:
+                out = pd.read_html(StringIO(c), attrs={"id": table_id})
+                if out:
+                    return out[0]
+            except Exception:
+                continue
+
+    return None
 # -------------------------------------------------------------------
 # Merge / Cleaning
 # -------------------------------------------------------------------
