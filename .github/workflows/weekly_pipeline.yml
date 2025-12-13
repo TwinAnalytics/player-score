@@ -19,10 +19,14 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - name: Set up venv
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install playwright
+          python -m playwright install chromium
 
       - name: Install dependencies
         run: |
@@ -43,7 +47,7 @@ jobs:
       # >>> HIER: Pipeline laufen lassen <<<
       - name: Run multi-season pipeline
         run: |
-          echo "PIPELINE_SEASONS=$PIPELINE_SEASONS"
+          source .venv/bin/activate
           python run_multi_season_pipeline.py
 
       # >>> HIER: NUR die aktualisierten Dateien committen/pushen <<<
