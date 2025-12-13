@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+
 import pandas as pd
 
 from src.scraping_fbref_player_stats import run_pipeline_for_season as scrape_player_stats
@@ -9,7 +10,6 @@ from src.scraping_fbref_squad_stats import run_pipeline_for_season as scrape_squ
 from src.pipeline import run_full_pipeline
 from src.multi_season import load_all_seasons, aggregate_player_scores
 from src.squad import compute_squad_scores
-
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -36,6 +36,27 @@ def _get_seasons() -> list[str]:
     return DEFAULT_SEASONS
 
 
+def export_multi_season_tables() -> None:
+    df_all = load_all_seasons(PROCESSED_DIR)
+    if df_all.empty:
+        print("[WARN] df_all is empty, skipping exports.")
+        return
+
+    out_long = PROCESSED_DIR / "player_scores_all_seasons_long.csv"
+    df_all.to_csv(out_long, index=False)
+    print(f"[SAVE] {out_long}")
+
+    df_agg = aggregate_player_scores(df_all)
+    out_agg = PROCESSED_DIR / "player_scores_agg_by_player.csv"
+    df_agg.to_csv(out_agg, index=False)
+    print(f"[SAVE] {out_agg}")
+
+    df_squad = compute_squad_scores(df_all)
+    out_squad = PROCESSED_DIR / "squad_scores_all_seasons.csv"
+    df_squad.to_csv(out_squad, index=False)
+    print(f"[SAVE] {out_squad}")
+
+
 def run_scraping_block(seasons: list[str], *, scrape_players: bool, scrape_squads: bool) -> None:
     print("=" * 80)
     print("STEP 1: FBref scraping for all seasons")
@@ -49,10 +70,14 @@ def run_scraping_block(seasons: list[str], *, scrape_players: bool, scrape_squad
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     for season in seasons:
-        if scrape_players:
-            scrape_player_stats(season, output_folder=RAW_DIR)
-        if scrape_squads:
-            scrape_squad_stats(season, output_folder=RAW_DIR)
+        try:
+            if scrape_players:
+                scrape_player_stats(season, output_folder=RAW_DIR)
+            if scrape_squads:
+                scrape_squad_stats(season, output_folder=RAW_DIR)
+        except Exception as e:
+            print(f"[ERROR] scraping failed for {season}: {e}")
+            continue
 
     print("=" * 80)
     print("Scraping finished for all configured seasons.")
@@ -73,28 +98,6 @@ def run_processing_block(seasons: list[str]) -> None:
 
     export_multi_season_tables()
 
-def export_multi_season_tables() -> None:
-    df_all = load_all_seasons(PROCESSED_DIR)
-    if df_all.empty:
-        print("[WARN] df_all is empty, skipping exports.")
-        return
-
-    # 1) LONG: alle Spieler, alle Saisons
-    out_long = PROCESSED_DIR / "player_scores_all_seasons_long.csv"
-    df_all.to_csv(out_long, index=False)
-    print(f"[SAVE] {out_long}")
-
-    # 2) AGG: je Spieler aggregiert
-    df_agg = aggregate_player_scores(df_all)
-    out_agg = PROCESSED_DIR / "player_scores_agg_by_player.csv"
-    df_agg.to_csv(out_agg, index=False)
-    print(f"[SAVE] {out_agg}")
-
-    # 3) SQUAD SCORES: alle Teams, alle Saisons
-    df_squad = compute_squad_scores(df_all)
-    out_squad = PROCESSED_DIR / "squad_scores_all_seasons.csv"
-    df_squad.to_csv(out_squad, index=False)
-    print(f"[SAVE] {out_squad}")
 
 def main() -> None:
     seasons = _get_seasons()
