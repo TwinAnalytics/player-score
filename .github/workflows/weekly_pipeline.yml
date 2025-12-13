@@ -27,17 +27,12 @@ jobs:
           pip install playwright
           python -m playwright install chromium
 
-      # TEST: feste Season
       - name: Compute current season (TEST MODE)
         run: |
           echo "PIPELINE_SEASONS=2024-2025" >> $GITHUB_ENV
           echo "Using season (TEST): 2024-2025"
 
-      - name: Debug env
-        run: |
-          echo "PIPELINE_SEASONS=$PIPELINE_SEASONS"
-
-      - name: Run multi-season pipeline
+      - name: Run full pipeline (scrape + process)
         run: |
           source .venv/bin/activate
           python run_multi_season_pipeline.py
