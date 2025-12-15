@@ -2732,7 +2732,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
                 return
 
     # Default metric (sorting)
-    metric_col = "LgRk"
+    metric_col = "OverallScore_squad"
     metric_name = "Squad Score"
 
     # -------------------------------------------------------
@@ -2799,7 +2799,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     df_rank = (
         df_squad_season
         .dropna(subset=[metric_col])
-        .sort_values(metric_col, ascending=True)
+        .sort_values("LgRk", ascending=True)
         .reset_index(drop=True)
     )
     if df_rank.empty:
@@ -3012,10 +3012,13 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     # ========== 3) TEAM IN LEAGUE CONTEXT (BAR) ==========
     st.markdown("#### Team in Big 5 League context")
-    metric_values = df_squad_season[["Squad", metric_col]].dropna().copy()
+
+    metric_values = df_squad_season[["Squad", metric_col]].copy()
+    metric_values[metric_col] = pd.to_numeric(metric_values[metric_col], errors="coerce")
+    metric_values = metric_values.dropna(subset=[metric_col]).copy()
 
     if not metric_values.empty:
-        metric_values["Score"] = pd.to_numeric(metric_values[metric_col], errors="coerce").round(0)
+        metric_values["Score"] = metric_values[metric_col].round(0).astype(float)   # <- wichtig
         metric_values["is_selected"] = metric_values["Squad"] == team_sel
 
         chart = (
@@ -3030,7 +3033,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
                     alt.value("#4b5563"),
                 ),
                 tooltip=[
-                    "Squad",
+                    alt.Tooltip("Squad:N", title="Squad"),
                     alt.Tooltip("Score:Q", title=metric_name, format=".0f"),
                 ],
             )
@@ -3038,6 +3041,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB")
             .configure_view(strokeWidth=0)
         )
+
         st.altair_chart(chart, use_container_width=True)
     else:
         st.info("Not enough data to show the league context chart.")
