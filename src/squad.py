@@ -106,4 +106,14 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
         .reset_index(drop=True)
     )
 
+    # -------------------------------------------------------
+    # Add Comp (league) to squad scores (Season+Squad mapping)
+    # -------------------------------------------------------
+    if "Comp" in df_all.columns:
+        comp_map = (
+            df_all.dropna(subset=["Season", "Squad", "Comp"])
+                .drop_duplicates(subset=["Season", "Squad"])[["Season", "Squad", "Comp"]]
+        )
+        df_squad = df_squad.merge(comp_map, on=["Season", "Squad"], how="left")
+
     return df_squad

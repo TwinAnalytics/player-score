@@ -2716,8 +2716,23 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         st.info("No squad scores for this season.")
         return
 
+    # ----- NEW: League / Comp filter -----
+    if "Comp" not in df_squad_season.columns:
+        st.info("No 'Comp' column found in squad scores (cannot filter by league).")
+        comp_sel = "All"
+    else:
+        comps = sorted(df_squad_season["Comp"].dropna().unique().tolist())
+        comp_options = ["All"] + comps
+        comp_sel = st.sidebar.selectbox("League (Comp)", comp_options, index=0)
+
+        if comp_sel != "All":
+            df_squad_season = df_squad_season[df_squad_season["Comp"] == comp_sel].copy()
+            if df_squad_season.empty:
+                st.info("No teams for this league in this season.")
+                return
+
     # Default metric (sorting)
-    metric_col = "OverallScore_squad"
+    metric_col = "LgRk"
     metric_name = "Squad Score"
 
     # -------------------------------------------------------
@@ -2784,7 +2799,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     df_rank = (
         df_squad_season
         .dropna(subset=[metric_col])
-        .sort_values(metric_col, ascending=False)
+        .sort_values(metric_col, ascending=True)
         .reset_index(drop=True)
     )
     if df_rank.empty:
@@ -3123,6 +3138,68 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         st.metric("Top 5 impact share", f"{top5_share:.1f}%")
     with c_top3:
         st.metric("Rest of squad", f"{rest_share:.1f}%")
+
+    
+    # ---------- 6) Core-contributor Board (Top 3 Cards) ----------
+    st.markdown("### Top 3 Impact-Players")
+
+    top3 = df_top.head(3).copy()
+    medals = ["🥇", "🥈", "🥉"]
+
+    c1, c2, c3 = st.columns(3)
+    cols = [c1, c2, c3]
+
+    for i, (_, row) in enumerate(top3.iterrows()):
+        col = cols[i]
+        medal = medals[i]
+
+        name         = str(row.get("Player", ""))
+        share        = float(row.get("ContributionShare", 0.0))
+        minutes_val  = float(row.get("Min", 0.0))
+        season_score = float(row.get("SeasonScore", 0.0))
+
+        card_html = f"""
+        <div style="
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            align-items:flex-start;
+            height:220px;
+            width:100%;
+            border-radius: 0.9rem;
+            padding: 1rem 1.1rem;
+            background: rgba(15,23,42,0.65);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-sizing:border-box;
+            color:#F9FAFB;
+            font-family: system-ui, sans-serif;
+        ">
+            <div style="font-size:1.6rem; margin-bottom:0.4rem;">{medal}</div>
+
+            <div style="font-size:1.15rem; font-weight:600;">
+                {name}
+            </div>
+
+            <div style="margin-top:0.45rem; font-size:0.9rem; opacity:0.9;">
+                Impact share:
+                <span style="font-weight:700; color:{VALUE_COLOR};">{share:.1f}%</span>
+            </div>
+
+            <div style="margin-top:0.25rem; font-size:0.9rem; opacity:0.9;">
+                Season score:
+                <span style="font-weight:700;">{season_score:.0f}</span>
+            </div>
+
+            <div style="margin-top:0.25rem; font-size:0.9rem; opacity:0.9;">
+                Minutes:
+                <span style="font-weight:700;">{minutes_val:.0f}</span>
+            </div>
+        </div>
+        """
+
+        with col:
+            st_html(card_html, height=240)
+
 
     st.altair_chart(contrib_chart, use_container_width=True)
 
