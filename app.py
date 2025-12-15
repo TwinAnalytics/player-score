@@ -2916,11 +2916,11 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     # show Big5 line only if we actually have values
     big5_line = ""
     if any([pd.notna(lgrk_val), pd.notna(gd_val), pd.notna(xgd_val), pd.notna(ptsmp_val)]):
-        big5_line = f"""
-        <div style="margin-top:0.20rem; font-size:0.75rem; color:#9CA3AF;">
-          LgRk {fmt_int(lgrk_val)} · GD {fmt_int(gd_val)} · xGD {fmt_float2(xgd_val)} · Pts/MP {fmt_float2(ptsmp_val)}
-        </div>
-        """
+        big5_line = (
+            f'<div style="margin-top:0.20rem; font-size:0.75rem; color:#9CA3AF;">'
+            f'LgRk {fmt_int(lgrk_val)} · GD {fmt_int(gd_val)} · xGD {fmt_float2(xgd_val)} · Pts/MP {fmt_float2(ptsmp_val)}'
+            f'</div>'
+        )
 
     summary_html = f"""
     <div style="
