@@ -1,0 +1,99 @@
+Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Attendance,Top Team Scorer,Goalkeeper
+2022-2023,1,Napoli,it ITA,1,38,28,6,4,77,28,+49,90,2.37,64.7,31.8,+33.0,+0.87,46173,Victor Osimhen - 26,Alex Meret
+2022-2023,2,Manchester City,eng ENG,1,38,28,5,5,94,33,+61,89,2.34,78.6,32.1,+46.5,+1.22,53249,Erling Haaland - 36,Ederson
+2022-2023,3,Barcelona,es ESP,1,38,28,4,6,70,20,+50,88,2.32,75.5,33.2,+42.3,+1.11,83498,Robert Lewandowski - 23,Marc-André ter Stegen
+2022-2023,4,Paris S-G,fr FRA,1,38,27,4,7,89,40,+49,85,2.24,78.2,48.3,+29.9,+0.79,46334,Kylian Mbappé - 29,Gianluigi Donnarumma
+2022-2023,5,Arsenal,eng ENG,2,38,26,6,6,88,43,+45,84,2.21,71.6,42.0,+29.6,+0.78,60191,"Martin Ødegaard, Gabriel Martinelli - 15",Aaron Ramsdale
+2022-2023,6,Lens,fr FRA,2,38,25,9,4,68,29,+39,84,2.21,66.7,43.5,+23.2,+0.61,37652,Loïs Openda - 21,Brice Samba
+2022-2023,7,Bayern Munich,de GER,1,34,21,8,5,92,38,+54,71,2.09,75.0,37.1,+37.8,+1.11,75000,Serge Gnabry - 14,Yann Sommer
+2022-2023,8,Dortmund,de GER,2,34,22,5,7,83,44,+39,71,2.09,71.1,43.2,+27.9,+0.82,81228,"Julian Brandt, Donyell Malen... - 9",Gregor Kobel
+2022-2023,9,Real Madrid,es ESP,2,38,24,6,8,75,36,+39,78,2.05,75.5,38.9,+36.6,+0.96,56649,Karim Benzema - 19,Thibaut Courtois
+2022-2023,10,Atlético Madrid,es ESP,3,38,23,8,7,70,33,+37,77,2.03,61.9,41.1,+20.8,+0.55,55800,Antoine Griezmann - 15,Jan Oblak
+2022-2023,11,Manchester Utd,eng ENG,3,38,23,6,9,58,43,+15,75,1.97,67.7,50.4,+17.3,+0.45,73671,Marcus Rashford - 17,David de Gea
+2022-2023,12,Lazio,it ITA,2,38,22,8,8,60,30,+30,74,1.95,51.1,41.3,+9.8,+0.26,44141,Ciro Immobile - 12,Ivan Provedel
+2022-2023,13,RB Leipzig,de GER,3,34,20,6,8,64,41,+23,66,1.94,62.7,37.2,+25.4,+0.75,45961,Christopher Nkunku - 16,Janis Blaswich
+2022-2023,14,Marseille,fr FRA,3,38,22,7,9,67,40,+27,73,1.92,65.3,42.5,+22.8,+0.60,62687,Alexis Sánchez - 14,Pau López
+2022-2023,15,Inter,it ITA,3,38,23,3,12,71,42,+29,72,1.89,68.0,36.5,+31.6,+0.83,72630,Lautaro Martínez - 21,André Onana
+2022-2023,16,Newcastle Utd,eng ENG,4,38,19,14,5,68,33,+35,71,1.87,71.9,39.5,+32.3,+0.85,52127,Callum Wilson - 18,Nick Pope
+2022-2023,17,Real Sociedad,es ESP,4,38,21,8,9,51,35,+16,71,1.87,52.9,33.0,+19.8,+0.52,32189,Alexander Sørloth - 12,Álex Remiro
+2022-2023,18,Milan,it ITA,4,38,20,10,8,64,43,+21,70,1.84,58.8,41.1,+17.7,+0.47,71880,Rafael Leão - 15,Mike Maignan
+2022-2023,19,Union Berlin,de GER,4,34,18,8,8,51,38,+13,62,1.82,37.9,42.6,-4.7,-0.14,21822,Sheraldo Becker - 11,Frederik Rønnow
+2022-2023,20,Rennes,fr FRA,4,38,21,5,12,69,39,+30,68,1.79,61.4,44.1,+17.3,+0.45,27722,Amine Gouiri - 15,Steve Mandanda
+2022-2023,21,Liverpool,eng ENG,5,38,19,10,9,75,47,+28,67,1.76,71.5,50.8,+20.7,+0.55,53163,Mohamed Salah - 19,Alisson
+2022-2023,22,Lille,fr FRA,5,38,19,10,9,65,44,+21,67,1.76,68.7,40.5,+28.2,+0.74,36148,Jonathan David - 24,Lucas Chevalier
+2022-2023,23,Freiburg,de GER,5,34,17,8,9,51,44,+7,59,1.74,47.9,48.8,-0.9,-0.03,34112,Vincenzo Grifo - 15,Mark Flekken
+2022-2023,24,Monaco,fr FRA,6,38,19,8,11,70,58,+12,65,1.71,62.1,53.2,+8.9,+0.23,7095,Wissam Ben Yedder - 19,Alexander Nübel
+2022-2023,25,Villarreal,es ESP,5,38,19,7,12,59,40,+19,64,1.68,61.6,49.9,+11.8,+0.31,16406,Nicolas Jackson - 12,Pepe Reina
+2022-2023,26,Atalanta,it ITA,5,38,19,7,12,66,48,+18,64,1.68,57.7,41.4,+16.3,+0.43,18241,Ademola Lookman - 13,Juan Musso
+2022-2023,27,Roma,it ITA,6,38,18,9,11,50,38,+12,63,1.66,57.7,32.3,+25.4,+0.67,62032,Paulo Dybala - 12,Rui Patrício
+2022-2023,28,Juventus,it ITA,7,38,22,6,10,56,33,+23,62,1.63,55.3,41.6,+13.7,+0.36,37656,Dušan Vlahović - 10,Wojciech Szczęsny
+2022-2023,29,Brighton,eng ENG,6,38,18,8,12,72,53,+19,62,1.63,73.3,50.2,+23.1,+0.61,31477,Alexis Mac Allister - 10,Robert Sánchez
+2022-2023,30,Lyon,fr FRA,7,38,18,8,12,65,47,+18,62,1.63,61.1,51.6,+9.5,+0.25,46058,Alexandre Lacazette - 27,Anthony Lopes
+2022-2023,31,Aston Villa,eng ENG,7,38,18,7,13,51,46,+5,61,1.61,50.3,52.5,-2.2,-0.06,41679,Ollie Watkins - 15,Emiliano Martínez
+2022-2023,32,Tottenham,eng ENG,8,38,18,6,14,70,63,+7,60,1.58,57.0,49.6,+7.4,+0.20,61585,Harry Kane - 30,Hugo Lloris
+2022-2023,33,Betis,es ESP,6,38,17,9,12,46,41,+5,60,1.58,51.3,50.0,+1.3,+0.03,49635,Borja Iglesias - 15,Rui Silva
+2022-2023,34,Brentford,eng ENG,9,38,15,14,9,58,46,+12,59,1.55,56.3,48.8,+7.5,+0.20,17078,Ivan Toney - 20,David Raya
+2022-2023,35,Clermont Foot,fr FRA,8,38,17,8,13,45,49,-4,59,1.55,47.5,58.2,-10.7,-0.28,11270,Grejohn Kyei - 10,Mory Diaw
+2022-2023,36,Nice,fr FRA,9,38,15,13,10,48,37,+11,58,1.53,57.2,44.6,+12.6,+0.33,22286,Gaëtan Laborde - 13,Kasper Schmeichel
+2022-2023,37,Fiorentina,it ITA,8,38,15,11,12,53,43,+10,56,1.47,55.0,43.4,+11.7,+0.31,32200,Arthur Cabral - 8,Pietro Terracciano
+2022-2023,38,Leverkusen,de GER,6,34,14,8,12,57,49,+8,50,1.47,51.4,42.8,+8.6,+0.25,28609,Moussa Diaby - 9,Lukáš Hrádecký
+2022-2023,39,Eint Frankfurt,de GER,7,34,13,11,10,58,52,+6,50,1.47,52.1,43.5,+8.6,+0.25,50100,Randal Kolo Muani - 15,Kevin Trapp
+2022-2023,40,Lorient,fr FRA,10,38,15,10,13,52,53,-1,55,1.45,44.5,58.2,-13.6,-0.36,14992,Terem Moffi - 12,Yvon Mvogo
+2022-2023,41,Wolfsburg,de GER,8,34,13,10,11,57,48,+9,49,1.44,51.3,51.3,0.0,0.00,25394,"Yannick Gerhardt, Jonas Wind - 6",Koen Casteels
+2022-2023,42,Bologna,it ITA,9,38,14,12,12,53,49,+4,54,1.42,43.8,48.7,-4.9,-0.13,22314,Riccardo Orsolini - 11,Łukasz Skorupski
+2022-2023,43,Torino,it ITA,10,38,14,11,13,42,41,+1,53,1.39,41.8,40.0,+1.8,+0.05,19464,Antonio Sanabria - 12,Vanja Milinković-Savić
+2022-2023,44,Osasuna,es ESP,7,38,15,8,15,37,42,-5,53,1.39,39.8,45.7,-5.9,-0.15,19655,"Ante Budimir, Ezequiel Ávila - 8",Aitor Fernández
+2022-2023,45,Fulham,eng ENG,10,38,15,7,16,55,53,+2,52,1.37,46.2,63.6,-17.4,-0.46,23746,Aleksandar Mitrović - 14,Bernd Leno
+2022-2023,46,Monza,it ITA,11,38,14,10,14,48,52,-4,52,1.37,45.9,51.3,-5.4,-0.14,12413,"Patrick Ciurria, Carlos Augusto - 6",Michele Di Gregorio
+2022-2023,47,Mainz 05,de GER,9,34,12,10,12,54,55,-1,46,1.35,47.1,53.6,-6.5,-0.19,29070,"Marcus Ingvartsen, Karim Onisiwo - 10",Robin Zentner
+2022-2023,48,Athletic Club,es ESP,8,38,14,9,15,47,43,+4,51,1.34,54.2,36.9,+17.3,+0.46,43488,"Iñaki Williams, Oihan Sancet - 10",Unai Simón
+2022-2023,49,Reims,fr FRA,11,38,12,15,11,45,45,0,51,1.34,61.5,52.7,+8.9,+0.23,13290,Folarin Balogun - 21,Yehvann Diouf
+2022-2023,50,Montpellier,fr FRA,12,38,15,5,18,65,62,+3,50,1.32,52.2,62.2,-10.0,-0.26,13804,Elye Wahi - 19,Benjamin Lecomte
+2022-2023,51,Mallorca,es ESP,9,38,14,8,16,37,43,-6,50,1.32,35.2,46.4,-11.2,-0.30,14799,Vedat Muriqi - 15,Predrag Rajković
+2022-2023,52,Girona,es ESP,10,38,13,10,15,58,55,+3,49,1.29,50.6,54.9,-4.3,-0.11,11471,Valentín Castellanos - 13,Paulo Gazzaniga
+2022-2023,53,Sevilla,es ESP,12,38,13,10,15,47,54,-7,49,1.29,46.3,54.2,-7.9,-0.21,35566,Youssef En-Nesyri - 8,Yassine Bounou
+2022-2023,54,Rayo Vallecano,es ESP,11,38,13,10,15,45,53,-8,49,1.29,43.9,50.3,-6.4,-0.17,12525,Isaac Palazón Camacho - 9,Stole Dimitrievski
+2022-2023,55,Gladbach,de GER,10,34,11,10,13,52,55,-3,43,1.26,52.1,53.4,-1.3,-0.04,52378,Marcus Thuram - 13,Jonas Omlin
+2022-2023,56,Toulouse,fr FRA,13,38,13,9,16,51,57,-6,48,1.26,52.5,57.0,-4.5,-0.12,23966,Thijs Dallinga - 12,Maxime Dupé
+2022-2023,57,Köln,de GER,11,34,10,12,12,49,54,-5,42,1.24,47.9,42.6,+5.3,+0.16,49765,Ellyes Skhiri - 7,Marvin Schwäbe
+2022-2023,58,Udinese,it ITA,12,38,11,13,14,47,48,-1,46,1.21,46.9,51.8,-4.9,-0.13,21616,Beto - 10,Marco Silvestri
+2022-2023,59,Crystal Palace,eng ENG,11,38,11,12,15,40,49,-9,45,1.18,39.3,48.1,-8.8,-0.23,24952,Eberechi Eze - 10,Vicente Guaita
+2022-2023,60,Sassuolo,it ITA,13,38,12,9,17,47,61,-14,45,1.18,51.6,49.7,+1.9,+0.05,13011,Domenico Berardi - 12,Andrea Consigli
+2022-2023,61,Chelsea,eng ENG,12,38,11,11,16,38,47,-9,44,1.16,49.5,52.5,-3.0,-0.08,40002,Kai Havertz - 7,Kepa Arrizabalaga
+2022-2023,62,Brest,fr FRA,14,38,11,11,16,44,54,-10,44,1.16,43.4,56.1,-12.7,-0.33,12667,Jérémy Le Douaron - 10,Marco Bizot
+2022-2023,63,Celta Vigo,es ESP,13,38,11,10,17,43,53,-10,43,1.13,42.6,45.4,-2.8,-0.07,14425,Iago Aspas - 12,"Agustín Marchesín, Iván Villar"
+2022-2023,64,Empoli,it ITA,14,38,10,13,15,37,49,-12,43,1.13,38.8,58.3,-19.5,-0.51,9808,Nicolò Cambiaghi - 6,Guglielmo Vicario
+2022-2023,65,Valencia,es ESP,16,38,11,9,18,42,45,-3,42,1.11,49.3,43.5,+5.8,+0.15,40602,"Samuel Lino, Justin Kluivert - 6",Giorgi Mamardashvili
+2022-2023,66,Getafe,es ESP,15,38,10,12,16,34,45,-11,42,1.11,36.7,46.0,-9.4,-0.25,11592,Enes Ünal - 14,David Soria
+2022-2023,67,Salernitana,it ITA,15,38,9,15,14,48,62,-14,42,1.11,36.7,67.1,-30.5,-0.80,20082,Boulaye Dia - 16,Guillermo Ochoa
+2022-2023,68,Cádiz,es ESP,14,38,10,12,16,30,53,-23,42,1.11,41.5,61.6,-20.1,-0.53,17741,"Theo Bongonda, Gonzalo Escalante - 4",Jeremías Ledesma
+2022-2023,69,Almería,es ESP,17,38,11,8,19,49,65,-16,41,1.08,45.5,62.5,-17.0,-0.45,12961,El Bilal Touré - 7,Fernando
+2022-2023,70,Wolves,eng ENG,13,38,11,8,19,31,58,-27,41,1.08,36.8,59.9,-23.0,-0.61,31482,"Rúben Neves, Daniel Podence - 6",José Sá
+2022-2023,71,Hoffenheim,de GER,12,34,10,6,18,48,57,-9,36,1.06,48.0,51.1,-3.1,-0.09,24625,Andrej Kramarić - 12,Oliver Baumann
+2022-2023,72,Werder Bremen,de GER,13,34,10,6,18,51,64,-13,36,1.06,41.1,52.9,-11.8,-0.35,41556,Niclas Füllkrug - 16,Jiří Pavlenka
+2022-2023,73,Strasbourg,fr FRA,15,38,9,13,16,51,59,-8,40,1.05,48.5,55.3,-6.7,-0.18,25278,Habib Diallo - 20,Matz Sels
+2022-2023,74,West Ham,eng ENG,14,38,11,7,20,42,55,-13,40,1.05,49.2,53.0,-3.9,-0.10,62462,"Saïd Benrahma, Jarrod Bowen - 6",Łukasz Fabiański
+2022-2023,75,Valladolid,es ESP,18,38,11,7,20,33,63,-30,40,1.05,38.5,65.2,-26.6,-0.70,20943,Cyle Larin - 8,Jordi Masip
+2022-2023,76,Bochum,de GER,14,34,10,5,19,40,72,-32,35,1.03,40.0,65.7,-25.7,-0.76,25318,Philipp Hofmann - 8,Manuel Riemann
+2022-2023,77,Bournemouth,eng ENG,15,38,11,6,21,37,71,-34,39,1.03,38.5,63.8,-25.3,-0.67,10362,Philip Billing - 7,Neto
+2022-2023,78,Augsburg,de GER,15,34,9,7,18,42,63,-21,34,1.00,34.7,58.7,-23.9,-0.70,27956,Mergim Berisha - 9,Rafał Gikiewicz
+2022-2023,79,Nott'ham Forest,eng ENG,16,38,9,11,18,38,68,-30,38,1.00,39.3,64.2,-24.9,-0.66,29188,Taiwo Awoniyi - 10,Dean Henderson
+2022-2023,80,Stuttgart,de GER,16,34,7,12,15,45,57,-12,33,0.97,47.6,45.2,+2.4,+0.07,46541,Serhou Guirassy - 11,Florian Müller
+2022-2023,81,Espanyol,es ESP,19,38,8,13,17,52,69,-17,37,0.97,48.3,59.8,-11.5,-0.30,21601,Joselu - 16,Fernando Pacheco
+2022-2023,82,Lecce,it ITA,16,38,8,12,18,33,46,-13,36,0.95,36.3,42.4,-6.1,-0.16,24654,Gabriel Strefezza - 8,Wladimiro Falcone
+2022-2023,83,Nantes,fr FRA,16,38,7,15,16,37,55,-18,36,0.95,42.8,52.4,-9.7,-0.25,30002,Mostafa Mohamed - 8,Alban Lafont
+2022-2023,84,Everton,eng ENG,17,38,8,12,18,34,57,-23,36,0.95,45.2,65.5,-20.4,-0.54,39243,Dwight McNeil - 7,Jordan Pickford
+2022-2023,85,Auxerre,fr FRA,17,38,8,11,19,35,63,-28,35,0.92,42.8,58.7,-15.9,-0.42,15606,M'Baye Niang - 6,Benoît Costil
+2022-2023,86,Schalke 04,de GER,17,34,7,10,17,35,71,-36,31,0.91,39.6,57.1,-17.6,-0.52,61133,Marius Bülter - 11,Alexander Schwolow
+2022-2023,87,Leicester City,eng ENG,18,38,9,7,22,51,68,-17,34,0.89,50.5,63.3,-12.8,-0.34,31887,Harvey Barnes - 13,Danny Ward
+2022-2023,88,Hertha BSC,de GER,18,34,7,8,19,42,69,-27,29,0.85,39.4,60.0,-20.5,-0.60,53670,Dodi Lukebakio - 11,Oliver Christensen
+2022-2023,89,Hellas Verona,it ITA,18,38,7,10,21,31,59,-28,31,0.82,35.8,49.9,-14.1,-0.37,18752,Simone Verdi - 5,Lorenzo Montipò
+2022-2023,90,Leeds United,eng ENG,19,38,7,10,21,48,78,-30,31,0.82,47.3,67.1,-19.8,-0.52,36566,Rodrigo - 13,Illan Meslier
+2022-2023,91,Spezia,it ITA,17,38,6,13,19,31,62,-31,31,0.82,41.5,59.5,-18.0,-0.47,9258,M'Bala Nzola - 13,Bartłomiej Drągowski
+2022-2023,92,Cremonese,it ITA,19,38,5,12,21,36,69,-33,27,0.71,38.7,66.1,-27.4,-0.72,11978,Daniel Ciofani - 8,Marco Carnesecchi
+2022-2023,93,Ajaccio,fr FRA,18,38,7,5,26,23,74,-51,26,0.68,36.1,53.9,-17.8,-0.47,7369,"Youcef Belaïli, Mounaim El Idrissy - 6",Benjamin Leroy
+2022-2023,94,Southampton,eng ENG,20,38,6,7,25,36,73,-37,25,0.66,37.8,60.8,-23.0,-0.61,30440,James Ward-Prowse - 9,Gavin Bazunu
+2022-2023,95,Elche,es ESP,20,38,5,10,23,30,67,-37,25,0.66,37.5,70.0,-32.6,-0.86,19875,Lucas Boyé - 7,Édgar Badía
+2022-2023,96,Troyes,fr FRA,19,38,4,12,22,45,81,-36,24,0.63,39.1,78.0,-38.9,-1.02,10004,Mama Samba Baldé - 12,Gauthier Gallon
+2022-2023,97,Sampdoria,it ITA,20,38,3,10,25,24,71,-47,19,0.50,34.1,66.3,-32.2,-0.85,20133,Manolo Gabbiadini - 7,Emil Audero
+2022-2023,98,Angers,fr FRA,20,38,4,6,28,33,81,-48,18,0.47,40.9,61.7,-20.8,-0.55,9630,Abdallah Sima - 5,Paul Bernardoni

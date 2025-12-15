@@ -1,0 +1,99 @@
+Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Attendance,Top Team Scorer,Goalkeeper
+2018-2019,1,Manchester City,eng ENG,1,38,32,2,4,95,23,+72,98,2.58,84.3,24.7,+59.6,+1.57,54130,Sergio Agüero - 21,Ederson
+2018-2019,2,Liverpool,eng ENG,2,38,30,7,1,89,22,+67,97,2.55,73.7,28.8,+44.9,+1.18,52983,"Sadio Mané, Mohamed Salah - 22",Alisson
+2018-2019,3,Paris S-G,fr FRA,1,38,29,4,5,105,35,+70,91,2.39,88.9,37.6,+51.3,+1.35,46911,Kylian Mbappé - 33,Alphonse Areola
+2018-2019,4,Juventus,it ITA,1,38,28,6,4,70,30,+40,90,2.37,60.7,35.8,+25.0,+0.66,37799,Cristiano Ronaldo - 21,Wojciech Szczęsny
+2018-2019,5,Bayern Munich,de GER,1,34,24,6,4,88,32,+56,78,2.29,85.6,27.2,+58.4,+1.72,75000,Robert Lewandowski - 22,Manuel Neuer
+2018-2019,6,Barcelona,es ESP,1,38,26,9,3,90,36,+54,87,2.29,75.8,45.3,+30.5,+0.80,76104,Lionel Messi - 36,Marc-André ter Stegen
+2018-2019,7,Dortmund,de GER,2,34,23,7,4,81,44,+37,76,2.24,61.5,39.9,+21.5,+0.63,80841,Paco Alcácer - 18,Roman Bürki
+2018-2019,8,Napoli,it ITA,2,38,24,7,7,74,36,+38,79,2.08,61.8,38.2,+23.5,+0.62,29003,Arkadiusz Milik - 17,David Ospina
+2018-2019,9,Atlético Madrid,es ESP,2,38,22,10,6,55,29,+26,76,2.00,47.3,41.9,+5.4,+0.14,56216,Antoine Griezmann - 15,Jan Oblak
+2018-2019,10,Lille,fr FRA,2,38,22,9,7,68,33,+35,75,1.97,59.5,42.1,+17.4,+0.46,34079,Nicolas Pépé - 22,Mike Maignan
+2018-2019,11,RB Leipzig,de GER,3,34,19,9,6,63,29,+34,66,1.94,65.7,40.5,+25.2,+0.74,38380,Timo Werner - 16,Péter Gulácsi
+2018-2019,12,Chelsea,eng ENG,3,38,21,9,8,63,39,+24,72,1.89,58.6,36.4,+22.2,+0.58,40437,Eden Hazard - 16,Kepa Arrizabalaga
+2018-2019,13,Lyon,fr FRA,3,38,21,9,8,70,47,+23,72,1.89,73.7,43.9,+29.8,+0.78,49079,Moussa Dembélé - 15,Anthony Lopes
+2018-2019,14,Tottenham,eng ENG,4,38,23,2,13,67,39,+28,71,1.87,54.9,47.1,+7.8,+0.20,54216,Harry Kane - 17,Hugo Lloris
+2018-2019,15,Arsenal,eng ENG,5,38,21,7,10,73,51,+22,70,1.84,60.1,54.2,+5.8,+0.15,59899,Pierre-Emerick Aubameyang - 22,Bernd Leno
+2018-2019,16,Atalanta,it ITA,3,38,20,9,9,77,46,+31,69,1.82,72.2,41.1,+31.1,+0.82,18301,Duván Zapata - 23,Pierluigi Gollini
+2018-2019,17,Inter,it ITA,4,38,20,9,9,57,33,+24,69,1.82,63.8,38.3,+25.6,+0.67,57405,Mauro Icardi - 11,Samir Handanović
+2018-2019,18,Milan,it ITA,5,38,19,11,8,55,36,+19,68,1.79,48.8,41.2,+7.6,+0.20,54651,Krzysztof Piątek - 9,Gianluigi Donnarumma
+2018-2019,19,Real Madrid,es ESP,3,38,21,5,12,63,46,+17,68,1.79,66.7,47.1,+19.6,+0.52,61040,Karim Benzema - 21,Thibaut Courtois
+2018-2019,20,Roma,it ITA,6,38,18,12,8,66,48,+18,66,1.74,64.4,52.1,+12.2,+0.32,38622,Stephan El Shaarawy - 11,Robin Olsen
+2018-2019,21,Saint-Étienne,fr FRA,4,38,19,9,10,59,41,+18,66,1.74,56.7,50.4,+6.3,+0.17,28400,Wahbi Khazri - 13,Stéphane Ruffier
+2018-2019,22,Manchester Utd,eng ENG,6,38,19,9,10,65,54,+11,66,1.74,61.4,50.6,+10.8,+0.29,74498,Paul Pogba - 13,David de Gea
+2018-2019,23,Leverkusen,de GER,4,34,18,4,12,69,52,+17,58,1.71,58.3,44.0,+14.3,+0.42,27990,Kai Havertz - 17,Lukáš Hrádecký
+2018-2019,24,Torino,it ITA,7,38,16,15,7,52,37,+15,63,1.66,46.6,47.7,-1.1,-0.03,21323,Andrea Belotti - 15,Salvatore Sirigu
+2018-2019,25,Gladbach,de GER,5,34,16,7,11,55,42,+13,55,1.62,52.2,52.3,0.0,0.00,49668,Alassane Pléa - 12,Yann Sommer
+2018-2019,26,Wolfsburg,de GER,6,34,16,7,11,62,50,+12,55,1.62,47.6,48.3,-0.7,-0.02,24479,Wout Weghorst - 17,Koen Casteels
+2018-2019,27,Valencia,es ESP,4,38,15,16,7,51,35,+16,61,1.61,60.7,42.9,+17.8,+0.47,39504,Daniel Parejo - 9,Neto
+2018-2019,28,Marseille,fr FRA,5,38,18,7,13,60,52,+8,61,1.61,52.7,45.6,+7.1,+0.19,50140,Florian Thauvin - 16,Steve Mandanda
+2018-2019,29,Eint Frankfurt,de GER,7,34,15,9,10,60,48,+12,54,1.59,57.2,50.7,+6.6,+0.19,49794,Luka Jović - 17,Kevin Trapp
+2018-2019,30,Werder Bremen,de GER,8,34,14,11,9,58,49,+9,53,1.56,49.8,56.1,-6.4,-0.19,41403,Max Kruse - 11,Jiří Pavlenka
+2018-2019,31,Sevilla,es ESP,6,38,17,8,13,62,47,+15,59,1.55,66.6,45.4,+21.3,+0.56,35993,Wissam Ben Yedder - 18,Tomáš Vaclík
+2018-2019,32,Getafe,es ESP,5,38,15,14,9,48,35,+13,59,1.55,46.2,43.6,+2.6,+0.07,11000,"Jorge Molina, Jaime Mata - 14",David Soria
+2018-2019,33,Montpellier,fr FRA,6,38,15,14,9,53,42,+11,59,1.55,50.1,41.8,+8.2,+0.22,13829,Andy Delort - 14,Benjamin Lecomte
+2018-2019,34,Lazio,it ITA,8,38,17,8,13,56,46,+10,59,1.55,60.4,47.0,+13.4,+0.35,33997,Ciro Immobile - 15,Thomas Strakosha
+2018-2019,35,Hoffenheim,de GER,9,34,13,12,9,70,52,+18,51,1.50,75.9,52.5,+23.4,+0.69,28456,Andrej Kramarić - 17,Oliver Baumann
+2018-2019,36,Wolves,eng ENG,7,38,16,9,13,47,46,+1,57,1.50,52.1,42.1,+10.1,+0.26,31030,Raúl Jiménez - 13,Rui Patrício
+2018-2019,37,Nice,fr FRA,7,38,15,11,12,30,35,-5,56,1.47,46.3,50.0,-3.7,-0.10,19126,"Allan Saint-Maximin, Youcef Atal - 6",Walter Benítez
+2018-2019,38,Reims,fr FRA,8,38,13,16,9,39,42,-3,55,1.45,38.1,45.0,-6.9,-0.18,14342,Remi Oudin - 10,Edouard Mendy
+2018-2019,39,Everton,eng ENG,8,38,15,9,14,54,46,+8,54,1.42,49.7,45.7,+4.0,+0.10,39043,"Gylfi Sigurðsson, Richarlison - 13",Jordan Pickford
+2018-2019,40,Sampdoria,it ITA,9,38,15,8,15,60,51,+9,53,1.39,50.5,55.0,-4.5,-0.12,20263,Fabio Quagliarella - 26,Emil Audero
+2018-2019,41,Nîmes,fr FRA,9,38,15,8,15,57,58,-1,53,1.39,50.0,56.5,-6.5,-0.17,13994,"Denis Bouanga, Renaud Ripart - 8",Paul Bernardoni
+2018-2019,42,Espanyol,es ESP,7,38,14,11,13,48,50,-2,53,1.39,48.9,53.8,-4.9,-0.13,19388,Borja Iglesias - 17,Diego López
+2018-2019,43,Athletic Club,es ESP,8,38,13,14,11,41,45,-4,53,1.39,43.4,45.7,-2.3,-0.06,40664,Iñaki Williams - 13,Iago Herrerín
+2018-2019,44,Leicester City,eng ENG,9,38,15,7,16,51,48,+3,52,1.37,52.4,43.7,+8.7,+0.23,31851,Jamie Vardy - 18,Kasper Schmeichel
+2018-2019,45,Rennes,fr FRA,10,38,13,13,12,55,52,+3,52,1.37,55.6,47.6,+8.0,+0.21,23675,M'Baye Niang - 11,Tomáš Koubek
+2018-2019,46,West Ham,eng ENG,10,38,15,7,16,52,55,-3,52,1.37,47.6,61.9,-14.3,-0.38,58336,Marko Arnautović - 10,Łukasz Fabiański
+2018-2019,47,Real Sociedad,es ESP,9,38,13,11,14,45,46,-1,50,1.32,49.7,48.6,+1.1,+0.03,22310,Mikel Oyarzabal - 13,Gerónimo Rulli
+2018-2019,48,Watford,eng ENG,11,38,14,8,16,52,59,-7,50,1.32,48.2,59.2,-11.0,-0.29,20016,Gerard Deulofeu - 10,Ben Foster
+2018-2019,49,Betis,es ESP,10,38,14,8,16,44,52,-8,50,1.32,47.1,49.4,-2.4,-0.06,44525,Giovani Lo Celso - 9,Pau López
+2018-2019,50,Alavés,es ESP,11,38,13,11,14,39,50,-11,50,1.32,41.1,53.2,-12.1,-0.32,17295,Jonathan Calleri - 9,Fernando Pacheco
+2018-2019,51,Strasbourg,fr FRA,11,38,11,16,11,58,48,+10,49,1.29,41.3,51.2,-9.9,-0.26,25216,"Ludovic Ajorque, Lebo Mothiba - 9",Matz Sels
+2018-2019,52,Crystal Palace,eng ENG,12,38,14,7,17,51,53,-2,49,1.29,47.6,50.1,-2.5,-0.07,25455,Luka Milivojević - 12,Vicente Guaita
+2018-2019,53,Düsseldorf,de GER,10,34,13,5,16,49,65,-16,44,1.29,47.1,62.4,-15.3,-0.45,43869,"Dodi Lukebakio, Benito Raman - 10",Michael Rensing
+2018-2019,54,Nantes,fr FRA,12,38,13,9,16,48,48,0,48,1.26,49.1,47.0,+2.1,+0.05,25185,Emiliano Sala - 12,Ciprian Tătărușanu
+2018-2019,55,Hertha BSC,de GER,11,34,11,10,13,49,57,-8,43,1.26,51.0,61.4,-10.5,-0.31,49258,Ondrej Duda - 11,Rune Jarstein
+2018-2019,56,Mainz 05,de GER,12,34,12,7,15,46,57,-11,43,1.26,51.2,59.2,-8.0,-0.24,26246,Jean-Philippe Mateta - 14,Florian Müller
+2018-2019,57,Eibar,es ESP,12,38,11,14,13,46,50,-4,47,1.24,54.8,45.9,+9.0,+0.24,4896,Charles - 14,Marko Dmitrović
+2018-2019,58,Angers,fr FRA,13,38,10,16,12,44,49,-5,46,1.21,50.7,47.9,+2.8,+0.07,11189,Stéphane Bahoken - 11,Ludovic Butelle
+2018-2019,59,Newcastle Utd,eng ENG,13,38,12,9,17,42,48,-6,45,1.18,39.1,53.6,-14.5,-0.38,51121,Ayoze Pérez - 12,Martin Dúbravka
+2018-2019,60,Leganés,es ESP,13,38,11,12,15,37,43,-6,45,1.18,40.6,41.2,-0.6,-0.02,10416,Youssef En-Nesyri - 9,Iván Cuéllar
+2018-2019,61,Bournemouth,eng ENG,14,38,13,6,19,56,70,-14,45,1.18,53.3,57.2,-3.9,-0.10,10532,Callum Wilson - 14,Asmir Begović
+2018-2019,62,Villarreal,es ESP,14,38,10,14,14,49,52,-3,44,1.16,53.9,55.0,-1.1,-0.03,16732,Karl Toko Ekambi - 10,Sergio Asenjo
+2018-2019,63,Levante,es ESP,15,38,11,11,16,59,66,-7,44,1.16,53.9,76.2,-22.3,-0.59,20216,Roger Martí - 13,Oier Olazábal
+2018-2019,64,Bologna,it ITA,10,38,11,11,16,48,56,-8,44,1.16,46.8,49.0,-2.2,-0.06,21237,"Federico Santander, Riccardo Orsolini - 8",Łukasz Skorupski
+2018-2019,65,Sassuolo,it ITA,11,38,9,16,13,53,60,-7,43,1.13,48.5,57.4,-8.9,-0.23,12369,Domenico Berardi - 8,Andrea Consigli
+2018-2019,66,Udinese,it ITA,12,38,11,10,17,39,53,-14,43,1.13,42.5,59.7,-17.2,-0.45,20414,Rodrigo De Paul - 9,Juan Musso
+2018-2019,67,SPAL,it ITA,13,38,11,9,18,44,56,-12,42,1.11,43.9,51.3,-7.3,-0.19,14745,Andrea Petagna - 16,Alfred Gomis
+2018-2019,68,Fiorentina,it ITA,16,38,8,17,13,47,45,+2,41,1.08,54.0,41.0,+13.0,+0.34,31178,Marco Benassi - 7,Alban Lafont
+2018-2019,69,Bordeaux,fr FRA,14,38,10,11,17,34,42,-8,41,1.08,39.7,53.5,-13.7,-0.36,20838,François Kamano - 10,Benoît Costil
+2018-2019,70,Celta Vigo,es ESP,17,38,10,11,17,53,62,-9,41,1.08,46.5,60.9,-14.4,-0.38,17603,Iago Aspas - 20,Rubén Blanco
+2018-2019,71,Cagliari,it ITA,15,38,10,11,17,36,54,-18,41,1.08,42.1,62.1,-20.0,-0.53,15396,Leonardo Pavoletti - 16,Alessio Cragno
+2018-2019,72,Valladolid,es ESP,16,38,10,11,17,32,51,-19,41,1.08,41.1,58.5,-17.5,-0.46,18992,Enes Ünal - 6,Jordi Masip
+2018-2019,73,Parma,it ITA,14,38,10,11,17,41,61,-20,41,1.08,40.2,65.3,-25.1,-0.66,16522,Gervinho - 11,Luigi Sepe
+2018-2019,74,Freiburg,de GER,13,34,8,12,14,46,61,-15,36,1.06,40.9,61.1,-20.2,-0.60,23894,Nils Petersen - 10,Alexander Schwolow
+2018-2019,75,Burnley,eng ENG,15,38,11,7,20,45,68,-23,40,1.05,44.4,62.1,-17.7,-0.46,20534,Ashley Barnes - 12,"Tom Heaton, Joe Hart"
+2018-2019,76,Southampton,eng ENG,16,38,9,12,17,45,65,-20,39,1.03,46.9,55.1,-8.2,-0.22,30139,"Danny Ings, James Ward-Prowse - 7",Alex McCarthy
+2018-2019,77,Genoa,it ITA,17,38,8,14,16,39,57,-18,38,1.00,46.9,53.3,-6.4,-0.17,20950,Krzysztof Piątek - 13,Ionuț Radu
+2018-2019,78,Empoli,it ITA,18,38,10,8,20,51,70,-19,38,1.00,52.4,63.6,-11.3,-0.30,9620,Francesco Caputo - 16,Ivan Provedel
+2018-2019,79,Amiens,fr FRA,15,38,9,11,18,31,52,-21,38,1.00,35.4,49.8,-14.5,-0.38,11043,Moussa Konaté - 7,Régis Gurtner
+2018-2019,80,Toulouse,fr FRA,16,38,8,14,16,35,57,-22,38,1.00,45.7,56.4,-10.7,-0.28,16224,Max Gradel - 11,Baptiste Reynet
+2018-2019,81,Girona,es ESP,18,38,9,10,19,37,53,-16,37,0.97,43.5,52.7,-9.2,-0.24,10948,Cristhian Stuani - 19,Yassine Bounou
+2018-2019,82,Schalke 04,de GER,14,34,8,9,17,37,55,-18,33,0.97,45.6,50.1,-4.5,-0.13,60941,Daniel Caligiuri - 7,Alexander Nübel
+2018-2019,83,Monaco,fr FRA,17,38,8,12,18,38,57,-19,36,0.95,47.4,50.2,-2.8,-0.07,8447,Radamel Falcao - 15,Diego Benaglio
+2018-2019,84,Brighton,eng ENG,17,38,9,9,20,35,60,-25,36,0.95,35.3,59.1,-23.8,-0.63,30426,Glenn Murray - 13,Mathew Ryan
+2018-2019,85,Augsburg,de GER,15,34,8,8,18,51,71,-20,32,0.94,45.3,61.1,-15.8,-0.46,28623,Alfreð Finnbogason - 10,Gregor Kobel
+2018-2019,86,Dijon,fr FRA,18,38,9,7,22,31,60,-29,34,0.89,39.8,58.2,-18.5,-0.49,13044,Júlio Tavares - 5,Rúnar Alex Rúnarsson
+2018-2019,87,Cardiff City,eng ENG,18,38,10,4,24,34,69,-35,34,0.89,42.4,61.5,-19.1,-0.50,31408,"Bobby De Cordova-Reid, Víctor Camarasa - 5",Neil Etheridge
+2018-2019,88,Huesca,es ESP,19,38,7,12,19,43,65,-22,33,0.87,50.8,60.2,-9.4,-0.25,6605,Ezequiel Ávila - 10,Roberto Santamaría
+2018-2019,89,Caen,fr FRA,19,38,7,12,19,29,54,-25,33,0.87,31.0,63.8,-32.8,-0.86,16654,"Enzo Crivelli, Casimir Ninga - 6",Brice Samba
+2018-2019,90,Rayo Vallecano,es ESP,20,38,8,8,22,41,70,-29,32,0.84,48.7,60.0,-11.3,-0.30,11928,Raúl de Tomás - 14,Stole Dimitrievski
+2018-2019,91,Stuttgart,de GER,16,34,7,7,20,32,70,-38,28,0.82,38.0,58.2,-20.1,-0.59,54577,Mario Gómez - 7,Ron-Robert Zieler
+2018-2019,92,Guingamp,fr FRA,20,38,5,12,21,28,68,-40,27,0.71,40.4,53.4,-12.9,-0.34,14731,Marcus Thuram - 9,Marc-Aurèle Caillard
+2018-2019,93,Fulham,eng ENG,19,38,7,5,26,34,81,-47,26,0.68,41.3,68.2,-26.8,-0.71,24371,Aleksandar Mitrović - 11,Sergio Rico
+2018-2019,94,Frosinone,it ITA,19,38,5,10,23,29,69,-40,25,0.66,38.9,62.0,-23.1,-0.61,12656,Camillo Ciano - 7,Marco Sportiello
+2018-2019,95,Hannover 96,de GER,17,34,5,6,23,31,71,-40,21,0.62,37.2,67.8,-30.6,-0.90,38365,Hendrik Weydandt - 6,Michael Esser
+2018-2019,96,Nürnberg,de GER,18,34,3,10,21,26,68,-42,19,0.56,35.7,52.9,-17.2,-0.51,40372,"Mikael Ishak, Hanno Behrens - 4",Christian Mathenia
+2018-2019,97,Chievo,it ITA,20,38,2,14,22,25,75,-50,17,0.45,36.0,60.3,-24.3,-0.64,12142,Mariusz Stępiński - 6,Stefano Sorrentino
+2018-2019,98,Huddersfield,eng ENG,20,38,3,7,28,22,76,-54,16,0.42,28.8,60.9,-32.2,-0.85,23203,Karlan Grant - 4,Jonas Lössl
