@@ -566,9 +566,9 @@ def load_data():
         from src.multi_season import load_all_seasons, aggregate_player_scores
         from src.squad import compute_squad_scores
     except Exception as e:
-        st.error("Error importing data loading functions (src.multi_season / src.squad).")
+        st.error("Error importing data loading functions.")
         st.exception(e)
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
     try:
         root = Path(__file__).resolve().parent
@@ -578,49 +578,19 @@ def load_data():
         df_agg = aggregate_player_scores(df_all)
         df_squad = compute_squad_scores(df_all)
 
-        # ---------- BIG5 TABLE ----------
         df_big5 = pd.DataFrame()
         big5_path = processed_dir / "big5_table_all_seasons.csv"
         if big5_path.exists():
             df_big5 = pd.read_csv(big5_path)
 
-            # Country -> Comp (matcht deine df_all Comp Werte)
-            country2comp = {
-                "eng": "eng Premier League",
-                "es":  "es La Liga",
-                "fr":  "fr Ligue 1",
-                "it":  "it Serie A",
-                "de":  "de Bundesliga",
-            }
-            if "Country" in df_big5.columns and "Comp" not in df_big5.columns:
-                df_big5["Comp"] = (
-                    df_big5["Country"].astype(str).str.split().str[0].map(country2comp)
-                )
-
-            # Keys normalisieren (gegen Whitespace)
-            for c in ("Season", "Squad", "Comp"):
-                if c in df_big5.columns:
-                    df_big5[c] = df_big5[c].astype(str).str.strip()
-                if c in df_all.columns:
-                    df_all[c] = df_all[c].astype(str).str.strip()
-                if c in df_squad.columns:
-                    df_squad[c] = df_squad[c].astype(str).str.strip()
-
-            # Nur sinnvolle Team-Kontext-Spalten mergen (du kannst erweitern)
-            big5_cols = [c for c in [
-                "Season","Squad","Comp","LgRk","Pts","Pts/MP","xGD/90","xG","xGA","xGD","Attendance"
-            ] if c in df_big5.columns]
-
-            df_all = df_all.merge(df_big5[big5_cols], on=["Season","Squad","Comp"], how="left")
-            if not df_squad.empty and all(c in df_squad.columns for c in ["Season","Squad","Comp"]):
-                df_squad = df_squad.merge(df_big5[big5_cols], on=["Season","Squad","Comp"], how="left")
-
         return df_all, df_agg, df_squad, df_big5
 
     except Exception as e:
-        st.error("Error loading processed score files from Data/Processed.")
+        st.error("Error loading processed data.")
         st.exception(e)
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+
+
 
 # -------------------------------------------------------------------
 # Helper functions
@@ -2716,24 +2686,30 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         st.info("No squad scores for this season.")
         return
 
-    # ----- NEW: League / Comp filter -----
-    if "Comp" not in df_squad_season.columns:
-        st.info("No 'Comp' column found in squad scores (cannot filter by league).")
-        comp_sel = "All"
-    else:
+
+    # ----- League / Comp filter (NOW safe) -----
+    if "Comp" in df_squad_season.columns:
         comps = sorted(df_squad_season["Comp"].dropna().unique().tolist())
         comp_options = ["All"] + comps
-        comp_sel = st.sidebar.selectbox("League (Comp)", comp_options, index=0)
+        comp_sel = st.sidebar.selectbox(
+            "League (Comp)",
+            comp_options,
+            index=0,
+            key="team_scores_league_filter",
+        )
 
         if comp_sel != "All":
             df_squad_season = df_squad_season[df_squad_season["Comp"] == comp_sel].copy()
             if df_squad_season.empty:
                 st.info("No teams for this league in this season.")
                 return
+    else:
+        st.sidebar.caption("League filter disabled (no 'Comp' column in squad scores).")
+
 
     # Default metric (sorting)
     metric_col = "OverallScore_squad"
-    metric_name = "Squad Score"
+    metric_name = "Overall"
 
     # -------------------------------------------------------
     # Big5 Table merge (optional) -> add: LgRk, GD, xGD, Pts/MP
@@ -2754,6 +2730,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         col_xgd   = pick_col(df_big5_season, ["xGD", "xGD/90", "xGDiff", "xG_Diff"])
         col_ptsmp = pick_col(df_big5_season, ["Pts/MP", "Pts_per_MP", "Pts per MP"])
         col_pts = pick_col(df_big5_season, ["Pts", "Points"])
+
 
         if col_squad is None:
             st.warning("Big5 table loaded, but no Squad column found -> skipping Big5 merge.")
@@ -2777,6 +2754,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
                 keep_cols.append(col_pts)
                 rename_map[col_pts] = "Pts"
 
+
             df_big5_season = df_big5_season[keep_cols].rename(columns=rename_map)
 
             # Make sure numeric where it should be numeric
@@ -2799,7 +2777,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     df_rank = (
         df_squad_season
         .dropna(subset=[metric_col])
-        .sort_values("LgRk", ascending=True)
+        .sort_values("LeagueRank", ascending=True)
         .reset_index(drop=True)
     )
     if df_rank.empty:
@@ -2819,6 +2797,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         ("MidScore_squad",     "Midfield"),
         ("DefScore_squad",     "Defense"),
     ]:
+
         if src in df_rank.columns:
             df_rank[tgt] = (
                 pd.to_numeric(df_rank[src], errors="coerce")
@@ -2835,6 +2814,8 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         df_rank["xGD"] = pd.to_numeric(df_rank["xGD"], errors="coerce").round(2)
     if "Pts/MP" in df_rank.columns:
         df_rank["Pts/MP"] = pd.to_numeric(df_rank["Pts/MP"], errors="coerce").round(2)
+    if "Pts" in df_rank.columns:
+        df_rank["Pts"] = pd.to_numeric(df_rank["Pts"], errors="coerce").round(0).astype("Int64")
 
     # Existing extras
     if "Age_squad_mean" in df_rank.columns:
@@ -2846,18 +2827,15 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     if "NumPlayers_squad" in df_rank.columns:
         df_rank["Players"] = pd.to_numeric(df_rank["NumPlayers_squad"], errors="coerce").astype("Int64")
 
-    if "Pts" in df_rank.columns:
-        df_rank["Pts"] = pd.to_numeric(df_rank["Pts"], errors="coerce").round(0).astype("Int64")
-
     # ---- Your desired table columns (Scores + Big5 context) ----
     cols_show = [
         "Rank",
         "Squad",
-        "LeagueRank",   
+        "LeagueRank",   # Big5
+        "GD",           # Big5
+        "xGD",          # Big5
         "Pts",
-        "Pts/MP",
-        "GD",           
-        "xGD",          
+        "Pts/MP",       # Big5
         "Squad Score",
         "Offense",
         "Midfield",
@@ -2868,6 +2846,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     ]
     cols_show = [c for c in cols_show if c in df_rank.columns]
 
+    st.markdown("### League ranking by squad score")
     st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
 
     squads = df_rank["Squad"].tolist()
@@ -3012,13 +2991,10 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     # ========== 3) TEAM IN LEAGUE CONTEXT (BAR) ==========
     st.markdown("#### Team in Big 5 League context")
-
-    metric_values = df_squad_season[["Squad", metric_col]].copy()
-    metric_values[metric_col] = pd.to_numeric(metric_values[metric_col], errors="coerce")
-    metric_values = metric_values.dropna(subset=[metric_col]).copy()
+    metric_values = df_squad_season[["Squad", metric_col]].dropna().copy()
 
     if not metric_values.empty:
-        metric_values["Score"] = metric_values[metric_col].round(0).astype(float)   # <- wichtig
+        metric_values["Score"] = pd.to_numeric(metric_values[metric_col], errors="coerce").round(0)
         metric_values["is_selected"] = metric_values["Squad"] == team_sel
 
         chart = (
@@ -3033,7 +3009,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
                     alt.value("#4b5563"),
                 ),
                 tooltip=[
-                    alt.Tooltip("Squad:N", title="Squad"),
+                    "Squad",
                     alt.Tooltip("Score:Q", title=metric_name, format=".0f"),
                 ],
             )
@@ -3041,7 +3017,6 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB")
             .configure_view(strokeWidth=0)
         )
-
         st.altair_chart(chart, use_container_width=True)
     else:
         st.info("Not enough data to show the league context chart.")
@@ -3143,7 +3118,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     with c_top3:
         st.metric("Rest of squad", f"{rest_share:.1f}%")
 
-    
+
     # ---------- 6) Core-contributor Board (Top 3 Cards) ----------
     st.markdown("### Top 3 Impact-Players")
 
@@ -3204,7 +3179,6 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         with col:
             st_html(card_html, height=240)
 
-
     st.altair_chart(contrib_chart, use_container_width=True)
 
     # ========== 5) SQUAD DEVELOPMENT OVER SEASONS ==========
@@ -3264,44 +3238,147 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     st.altair_chart(hist_chart, use_container_width=True)
 
-def merge_big5_into_squad(
-    df_squad: pd.DataFrame,
-    df_big5: pd.DataFrame,
-) -> pd.DataFrame:
-    if df_squad.empty or df_big5.empty:
-        return df_squad
 
-    needed = {"Season", "Squad"}
-    if not needed.issubset(df_squad.columns) or not needed.issubset(df_big5.columns):
-        return df_squad
+def render_team_score_vs_rank_scatter(
+    df_rank: pd.DataFrame,
+    *,
+    season: str,
+    league: str | None,
+    selected_team: str | None = None,
+    x_domain=(250, 600),
+    y_domain=(1, 20),
+):
+    # --- Guard rails ---
+    required_cols = {"Squad", "TeamScore", "LgRk"}
+    missing = required_cols - set(df_rank.columns)
+    if missing:
+        st.info(
+            "No league rank information available for scatterplot "
+            "(Big5 merge missing)."
+        )
+        return
 
-    keep_cols = [
-        "Season",
-        "Squad",
-        "LgRk",
-        "MP",
-        "Pts",
-        "Pts/MP",
-        "GD",
-        "xGD",
-        "xGD/90",
-    ]
-    keep_cols = [c for c in keep_cols if c in df_big5.columns]
+    df_plot = df_rank.copy()
 
-    big5_small = df_big5[keep_cols].copy()
+    df_plot["TeamScore"] = pd.to_numeric(df_plot["TeamScore"], errors="coerce")
+    df_plot["LgRk"]      = pd.to_numeric(df_plot["LgRk"], errors="coerce")
+    df_plot = df_plot.dropna(subset=["TeamScore", "LgRk"])
 
-    # numeric safety
-    for c in keep_cols:
-        if c not in ("Season", "Squad"):
-            big5_small[c] = pd.to_numeric(big5_small[c], errors="coerce")
+    if selected_team:
+        df_plot["is_selected"] = df_plot["Squad"] == selected_team
+    else:
+        df_plot["is_selected"] = False
 
-    df_out = df_squad.merge(
-        big5_small,
-        on=["Season", "Squad"],
-        how="left",
+    # Label: Team (Score)
+    df_plot["Label"] = (
+        df_plot["Squad"].astype(str)
+        + " ("
+        + df_plot["TeamScore"].round(0).astype(int).astype(str)
+        + ")"
     )
 
-    return df_out
+    base = alt.Chart(df_plot)
+
+    points = base.mark_circle(
+        size=95,
+        opacity=0.35,
+    ).encode(
+        x=alt.X("TeamScore:Q", title="Squad Score",
+                scale=alt.Scale(domain=list(x_domain), nice=False, zero=False)),
+        y=alt.Y("LgRk:Q", title="League Rank",
+                scale=alt.Scale(domain=list(y_domain), nice=False, zero=False, reverse=True)),
+        color=alt.condition(
+            alt.datum.is_selected,
+            alt.value(VALUE_COLOR),
+            alt.value("#9CA3AF"),
+        ),
+        tooltip=[
+            "Squad:N",
+            alt.Tooltip("TeamScore:Q", title="Squad Score", format=".0f"),
+            alt.Tooltip("LgRk:Q", title="League Rank", format=".0f"),
+        ],
+    )
+
+    labels = base.mark_text(
+        dx=10,
+        dy=-10,
+        fontSize=8,
+        fontWeight="bold",
+        color=TEXT_COLOR,
+    ).encode(
+        x="TeamScore:Q",
+        y="LgRk:Q",
+        text="Label:N",
+    )
+
+    hi = base.transform_filter(
+        alt.datum.is_selected == True
+    ).mark_circle(
+        size=220,
+        opacity=1.0,
+        stroke="#F9FAFB",
+        strokeWidth=1.5,
+    ).encode(
+        x="TeamScore:Q",
+        y="LgRk:Q",
+        color=alt.value(VALUE_COLOR),
+    )
+
+    labels = base.transform_filter(
+        alt.datum.is_selected == True
+    ).mark_text(
+        dx=10,
+        dy=-10,
+        fontSize=9,
+        fontWeight="bold",
+        color=TEXT_COLOR,
+    ).encode(
+        x="TeamScore:Q",
+        y="LgRk:Q",
+        text="Label:N",
+    )
+
+    footnote = alt.Chart(
+        pd.DataFrame({
+            "label": ["Creator: TwinAnalytics • Data: FBref / Big-5 Leagues"]
+        })
+    ).mark_text(
+        align="left",
+        baseline="top",
+        fontSize=10.5,
+        color=TEXT_COLOR,
+        opacity=0.75,
+    ).encode(
+        x=alt.value(6),
+        y=alt.value(585),
+        text="label:N",
+    )
+
+    chart = (
+        points
+        + hi
+        + labels
+        + footnote
+    ).properties(
+        height=600,
+        width=550,
+        title=f"Season: ({season})"
+        + (f" — {league}" if league else ""),
+    ).configure_axis(
+        grid=True,
+        gridOpacity=0.15,
+        gridColor=GRID_COLOR,
+        domain=True,
+        domainColor=GRID_COLOR,
+        labelColor=TEXT_COLOR,
+        titleColor=TEXT_COLOR,
+    ).configure_title(
+        color=TEXT_COLOR,
+        fontSize=14,
+        anchor="start",
+    ).configure_view(strokeWidth=0)
+
+    st.altair_chart(chart, use_container_width=True)
 
 # -------------------------------------------------------------------
 # Main app
@@ -4357,7 +4434,6 @@ def main():
     # ==================================================================
     # MODE: TEAM SCORES
     # ==================================================================
-
     elif mode == "Team scores":
 
         # ------------------------------------------------------------------
@@ -4371,16 +4447,22 @@ def main():
             df_all, df_agg, df_squad = load_data()
             df_big5 = pd.DataFrame()
 
-
+        # ------------------------------------------------------------------
+        # Guardrails
+        # ------------------------------------------------------------------
         if df_squad is None or df_squad.empty:
             st.info("No squad score data available. Run the pipeline first.")
             return
-        
+
+        # ------------------------------------------------------------------
+        # View rendern
+        # ------------------------------------------------------------------
         render_team_scores_view(
             df_all=df_all,
             df_squad=df_squad,
             df_big5=df_big5,
         )
+
 
 if __name__ == "__main__":
     main()
