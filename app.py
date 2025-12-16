@@ -2831,11 +2831,11 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     cols_show = [
         "Rank",
         "Squad",
-        "LeagueRank",   # Big5
-        "GD",           # Big5
-        "xGD",          # Big5
+        "LeagueRank", 
         "Pts",
-        "Pts/MP",       # Big5
+        "Pts/MP",  
+        "GD",           
+        "xGD",                 
         "Squad Score",
         "Offense",
         "Midfield",
