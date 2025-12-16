@@ -11,6 +11,12 @@ from streamlit.components.v1 import html as st_html
 from src.processing import prepare_positions, add_standard_per90, add_squad_per90
 from src.scoring import score_band_5
 
+from src.charts.team_scatter import (
+    render_team_scatter_under_table,
+    render_big5_facet_scatter,
+    render_scatter_linkedin_optimized,
+)
+
 import matplotlib
 matplotlib.use("Agg")
 
@@ -2847,9 +2853,21 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     cols_show = [c for c in cols_show if c in df_rank.columns]
 
     st.markdown("### League ranking by squad score")
+
     st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
 
+    # Standard scatter (unter der Tabelle)
     render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
+
+    # Optional: Big-5 facet (nur sinnvoll wenn League=All)
+    # render_big5_facet_scatter(df_rank, value_color=VALUE_COLOR)
+
+    # Optional: LinkedIn-Optimized (für Screenshot-Modus)
+    
+    # render_scatter_linkedin_optimized(df_rank, value_color=VALUE_COLOR, show_axis_titles=False)
+    # st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
+
+    # render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
 
     squads = df_rank["Squad"].tolist()
     if not squads:
