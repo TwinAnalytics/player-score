@@ -2692,7 +2692,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         comps = sorted(df_squad_season["Comp"].dropna().unique().tolist())
         comp_options = ["All"] + comps
         comp_sel = st.sidebar.selectbox(
-            "League (Comp)",
+            "League",
             comp_options,
             index=0,
             key="team_scores_league_filter",
