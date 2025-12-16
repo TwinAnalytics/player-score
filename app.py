@@ -2849,6 +2849,8 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     st.markdown("### League ranking by squad score")
     st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
 
+    render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
+
     squads = df_rank["Squad"].tolist()
     if not squads:
         return
@@ -3238,147 +3240,151 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     st.altair_chart(hist_chart, use_container_width=True)
 
-
-def render_team_score_vs_rank_scatter(
+def render_team_scatter_under_table(
     df_rank: pd.DataFrame,
     *,
-    season: str,
-    league: str | None,
-    selected_team: str | None = None,
-    x_domain=(250, 600),
-    y_domain=(1, 20),
+    value_color: str = "#00B8A9",
 ):
-    # --- Guard rails ---
-    required_cols = {"Squad", "TeamScore", "LgRk"}
-    missing = required_cols - set(df_rank.columns)
-    if missing:
-        st.info(
-            "No league rank information available for scatterplot "
-            "(Big5 merge missing)."
-        )
+    """
+    Scatter: Squad Score vs Team Context (default: Pts/MP).
+    Uses df_rank (already season+league filtered and Big5-merged).
+
+    Fine-tuned:
+    - x-axis fixed: 250..600
+    - y-axis fixed: 0..3
+    - labels in value_color
+    - labels only for top 3 teams by x (squad score)
+    """
+
+    # --- pick x/y columns safely ---
+    x_col = None
+    for c in ["OverallScore_squad", "Squad Score"]:
+        if c in df_rank.columns:
+            x_col = c
+            break
+
+    # prefer Pts/MP, else fallback
+    y_candidates = ["Pts/MP", "Pts", "xGD", "GD"]
+    y_col = next((c for c in y_candidates if c in df_rank.columns), None)
+
+    if x_col is None or y_col is None:
+        st.info("Scatter not available (need squad score + at least one of: Pts/MP, Pts, xGD, GD).")
         return
 
-    df_plot = df_rank.copy()
+    keep_cols = ["Squad", x_col, y_col]
+    for c in ["Comp", "LeagueRank", "Rank"]:
+        if c in df_rank.columns:
+            keep_cols.append(c)
 
-    df_plot["TeamScore"] = pd.to_numeric(df_plot["TeamScore"], errors="coerce")
-    df_plot["LgRk"]      = pd.to_numeric(df_plot["LgRk"], errors="coerce")
-    df_plot = df_plot.dropna(subset=["TeamScore", "LgRk"])
+    df = df_rank[keep_cols].copy()
+    df[x_col] = pd.to_numeric(df[x_col], errors="coerce")
+    df[y_col] = pd.to_numeric(df[y_col], errors="coerce")
+    df = df.dropna(subset=[x_col, y_col])
 
-    if selected_team:
-        df_plot["is_selected"] = df_plot["Squad"] == selected_team
-    else:
-        df_plot["is_selected"] = False
+    if df.empty:
+        st.info("Not enough data to render the scatter.")
+        return
 
-    # Label: Team (Score)
-    df_plot["Label"] = (
-        df_plot["Squad"].astype(str)
-        + " ("
-        + df_plot["TeamScore"].round(0).astype(int).astype(str)
-        + ")"
+    # highlight currently selected team (if set already)
+    selected_team = st.session_state.get("team_scores_selected_team", None)
+    df["is_selected"] = (df["Squad"] == selected_team) if selected_team else False
+
+    # top 3 by squad score (x)
+    top3 = set(df.nlargest(3, x_col)["Squad"].astype(str).tolist())
+    df["label_top3"] = df["Squad"].astype(str).apply(lambda s: s if s in top3 else "")
+
+    # axis labels
+    x_title = "Squad Score"
+    y_title_map = {"Pts/MP": "Points per Match", "Pts": "Points", "xGD": "xG difference", "GD": "Goal difference"}
+    y_title = y_title_map.get(y_col, y_col)
+
+    # tooltips
+    tooltip = [
+        alt.Tooltip("Squad:N", title="Team"),
+        alt.Tooltip(f"{x_col}:Q", title="Squad score", format=".0f"),
+        alt.Tooltip(f"{y_col}:Q", title=y_title, format=".2f" if y_col in ["Pts/MP", "xGD"] else ".0f"),
+    ]
+    if "Comp" in df.columns:
+        tooltip.insert(1, alt.Tooltip("Comp:N", title="League"))
+    if "LeagueRank" in df.columns:
+        tooltip.append(alt.Tooltip("LeagueRank:Q", title="LeagueRank", format=".0f"))
+
+    base = alt.Chart(df).encode(
+        x=alt.X(
+            f"{x_col}:Q",
+            title=x_title,
+            scale=alt.Scale(domain=[250, 600]),
+            axis=alt.Axis(format=".0f"),
+        ),
+        y=alt.Y(
+            f"{y_col}:Q",
+            title=y_title,
+            scale=alt.Scale(domain=[0, 3]),
+            axis=alt.Axis(format=".2f" if y_col in ["Pts/MP"] else ".0f"),
+        ),
+        tooltip=tooltip,
     )
 
-    base = alt.Chart(df_plot)
-
-    points = base.mark_circle(
-        size=95,
-        opacity=0.35,
-    ).encode(
-        x=alt.X("TeamScore:Q", title="Squad Score",
-                scale=alt.Scale(domain=list(x_domain), nice=False, zero=False)),
-        y=alt.Y("LgRk:Q", title="League Rank",
-                scale=alt.Scale(domain=list(y_domain), nice=False, zero=False, reverse=True)),
+    # points
+    points = base.mark_circle(size=120, opacity=0.9).encode(
         color=alt.condition(
             alt.datum.is_selected,
-            alt.value(VALUE_COLOR),
-            alt.value("#9CA3AF"),
+            alt.value(value_color),
+            alt.value(value_color),
         ),
-        tooltip=[
-            "Squad:N",
-            alt.Tooltip("TeamScore:Q", title="Squad Score", format=".0f"),
-            alt.Tooltip("LgRk:Q", title="League Rank", format=".0f"),
-        ],
+        stroke=alt.condition(
+            alt.datum.is_selected,
+            alt.value("#FFFFFF"),
+            alt.value("transparent"),
+        ),
+        strokeWidth=alt.condition(alt.datum.is_selected, alt.value(1.5), alt.value(0)),
     )
 
+    # labels ONLY for top 3, in value_color
     labels = base.mark_text(
-        dx=10,
-        dy=-10,
-        fontSize=8,
-        fontWeight="bold",
-        color=TEXT_COLOR,
-    ).encode(
-        x="TeamScore:Q",
-        y="LgRk:Q",
-        text="Label:N",
-    )
-
-    hi = base.transform_filter(
-        alt.datum.is_selected == True
-    ).mark_circle(
-        size=220,
-        opacity=1.0,
-        stroke="#F9FAFB",
-        strokeWidth=1.5,
-    ).encode(
-        x="TeamScore:Q",
-        y="LgRk:Q",
-        color=alt.value(VALUE_COLOR),
-    )
-
-    labels = base.transform_filter(
-        alt.datum.is_selected == True
-    ).mark_text(
-        dx=10,
-        dy=-10,
-        fontSize=9,
-        fontWeight="bold",
-        color=TEXT_COLOR,
-    ).encode(
-        x="TeamScore:Q",
-        y="LgRk:Q",
-        text="Label:N",
-    )
-
-    footnote = alt.Chart(
-        pd.DataFrame({
-            "label": ["Creator: TwinAnalytics • Data: FBref / Big-5 Leagues"]
-        })
-    ).mark_text(
         align="left",
-        baseline="top",
-        fontSize=10.5,
-        color=TEXT_COLOR,
-        opacity=0.75,
+        dx=8,
+        dy=-10,
+        fontSize=12,
+        fontWeight="bold",
+        color="#FFFFFF",
     ).encode(
-        x=alt.value(6),
-        y=alt.value(585),
-        text="label:N",
+        text="label_top3:N"
+    )
+
+    # trend line (still useful)
+    trend = (
+        base
+        .transform_regression(x_col, y_col)
+        .mark_line(
+            strokeDash=[6, 6],
+            strokeWidth=1.5,
+            opacity=0.45,
+            color="#E5E7EB",
+        )
     )
 
     chart = (
-        points
-        + hi
-        + labels
-        + footnote
-    ).properties(
-        height=600,
-        width=550,
-        title=f"Season: ({season})"
-        + (f" — {league}" if league else ""),
-    ).configure_axis(
-        grid=True,
-        gridOpacity=0.15,
-        gridColor=GRID_COLOR,
-        domain=True,
-        domainColor=GRID_COLOR,
-        labelColor=TEXT_COLOR,
-        titleColor=TEXT_COLOR,
-    ).configure_title(
-        color=TEXT_COLOR,
-        fontSize=14,
-        anchor="start",
-    ).configure_view(strokeWidth=0)
+        (trend + points + labels)
+        .properties(height=320)
+        .configure_view(strokeWidth=0)
+        .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", grid=False, domain=True)
+    )
 
+    st.markdown("### Squad Score vs Pts/MP")
+    st.markdown(
+        "<p style='font-size:0.85rem; opacity:0.8;'>",
+        unsafe_allow_html=True,
+    )
     st.altair_chart(chart, use_container_width=True)
+
+    st.markdown(
+        "<div style='margin-top:-0.4rem; font-size:0.75rem; color:#9CA3AF; text-align:right;'>"
+        "Creator: <b>TwinAnalytics</b> • Data: FBref / Big-5 Leagues"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
 
 # -------------------------------------------------------------------
 # Main app
