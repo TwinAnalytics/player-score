@@ -13,6 +13,16 @@ jobs:
     runs-on: [self-hosted, macOS, X64, playerscore]
 
     steps:
+
+    
+      - name: Debug git changes
+          run:|
+            git status --porcelain
+            echo "---- diff names ----"
+            git diff --name-only
+            echo "---- diff processed ----"
+            git diff -- Data/Processed | head -n 40
+            
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
