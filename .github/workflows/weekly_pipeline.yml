@@ -28,10 +28,19 @@ jobs:
           pip install playwright
           python -m playwright install chromium
 
-      - name: Compute current season (TEST MODE)
+      - name: Compute current season
         run: |
-          echo "PIPELINE_SEASONS=2024-2025" >> $GITHUB_ENV
-          echo "Using season (TEST): 2024-2025"
+          YEAR=$(date +%Y)
+          MONTH=$(date +%m)
+          if [ "$MONTH" -ge 7 ]; then
+            NEXT=$((YEAR+1))
+            SEASON="${YEAR}-${NEXT}"
+          else
+            PREV=$((YEAR-1))
+            SEASON="${PREV}-${YEAR}"
+          fi
+          echo "PIPELINE_SEASONS=$SEASON" >> $GITHUB_ENV
+          echo "Using season: $SEASON"
 
       - name: Run full pipeline (scrape + process)
         run: |
