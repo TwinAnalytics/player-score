@@ -39,31 +39,49 @@ OUTPUT_FOLDER = (PROJECT_ROOT / "Data" / "Raw").resolve()
 # Fixed: this script is for PLAYER stats
 STATS_LEVEL = "players"
 
+def is_current_season(season: str) -> bool:
+    year = time.localtime().tm_year
+    month = time.localtime().tm_mon
 
+    if month >= 7:
+        current = f"{year}-{year+1}"
+    else:
+        current = f"{year-1}-{year}"
+
+    return season == current
 # -------------------------------------------------------------------
 # URL construction
 # -------------------------------------------------------------------
 
 def build_urls_for_season(season: str) -> Dict[str, str]:
     """
-    Build all FBref URLs (Big-5) for a given season for PLAYER stats.
+    Build all FBref URLs (Big-5) for PLAYER stats.
+    Handles historical vs current season correctly.
     """
-    base_url = f"https://fbref.com/en/comps/Big5/{season}"
-    season_tag = f"{season}-Big-5-European-Leagues-Stats"
+
+    if is_current_season(season):
+        # LIVE season → no season in URL
+        base = "https://fbref.com/en/comps/Big5"
+        season_tag = "Big-5-European-Leagues-Stats"
+    else:
+        # Historical season
+        base = f"https://fbref.com/en/comps/Big5/{season}"
+        season_tag = f"{season}-Big-5-European-Leagues-Stats"
 
     urls = {
-        f"{base_url}/stats/players/{season_tag}": "stats_standard",
-        f"{base_url}/shooting/players/{season_tag}": "stats_shooting",
-        f"{base_url}/passing/players/{season_tag}": "stats_passing",
-        f"{base_url}/passing_types/players/{season_tag}": "stats_passing_types",
-        f"{base_url}/gca/players/{season_tag}": "stats_gca",
-        f"{base_url}/defense/players/{season_tag}": "stats_defense",
-        f"{base_url}/possession/players/{season_tag}": "stats_possession",
-        f"{base_url}/playingtime/players/{season_tag}": "stats_playing_time",
-        f"{base_url}/misc/players/{season_tag}": "stats_misc",
-        f"{base_url}/keepers/players/{season_tag}": "stats_keeper",
-        f"{base_url}/keepersadv/players/{season_tag}": "stats_keeper_adv",
+        f"{base}/stats/players/{season_tag}": "stats_standard",
+        f"{base}/shooting/players/{season_tag}": "stats_shooting",
+        f"{base}/passing/players/{season_tag}": "stats_passing",
+        f"{base}/passing_types/players/{season_tag}": "stats_passing_types",
+        f"{base}/gca/players/{season_tag}": "stats_gca",
+        f"{base}/defense/players/{season_tag}": "stats_defense",
+        f"{base}/possession/players/{season_tag}": "stats_possession",
+        f"{base}/playingtime/players/{season_tag}": "stats_playing_time",
+        f"{base}/misc/players/{season_tag}": "stats_misc",
+        f"{base}/keepers/players/{season_tag}": "stats_keeper",
+        f"{base}/keepersadv/players/{season_tag}": "stats_keeper_adv",
     }
+
     return urls
 
 

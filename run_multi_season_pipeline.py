@@ -19,7 +19,6 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 RAW_DIR = (PROJECT_ROOT / "Data" / "Raw").resolve()
 PROCESSED_DIR = (PROJECT_ROOT / "Data" / "Processed").resolve()
 
-# Fallback, falls du die Auto-Season-Logik NICHT nutzen willst (oder für Debug)
 DEFAULT_START_SEASON = "2017-2018"
 
 

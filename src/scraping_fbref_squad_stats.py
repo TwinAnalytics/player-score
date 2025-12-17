@@ -32,6 +32,17 @@ OUTPUT_FOLDER = (PROJECT_ROOT / "Data" / "Raw").resolve()
 # This scraper is fixed to squad-level stats
 STATS_LEVEL = "squads"
 
+def is_current_season(season: str) -> bool:
+    year = time.localtime().tm_year
+    month = time.localtime().tm_mon
+
+    if month >= 7:
+        current = f"{year}-{year+1}"
+    else:
+        current = f"{year-1}-{year}"
+
+    return season == current
+
 
 # -------------------------------------------------------------------
 # URL construction
@@ -40,9 +51,17 @@ STATS_LEVEL = "squads"
 def build_urls_for_season(season: str) -> Dict[str, str]:
     """
     Build all FBref URLs (Big-5) for a given season for SQUAD stats.
+    Handles historical vs current season correctly.
     """
-    base_url = f"https://fbref.com/en/comps/Big5/{season}"
-    season_tag = f"{season}-Big-5-European-Leagues-Stats"
+
+    if is_current_season(season):
+        # LIVE season → no season in URL
+        base_url = "https://fbref.com/en/comps/Big5"
+        season_tag = "Big-5-European-Leagues-Stats"
+    else:
+        # Historical season
+        base_url = f"https://fbref.com/en/comps/Big5/{season}"
+        season_tag = f"{season}-Big-5-European-Leagues-Stats"
 
     urls = {
         f"{base_url}/stats/squads/{season_tag}": "stats_teams_standard_for",
