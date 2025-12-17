@@ -140,7 +140,7 @@ BAND_ORDER = [
     "Below Big-5 Level",
 ]
 
-VERSION_FILE = Path("Data/Processed/_last_update.txt")
+VERSION_FILE = Path(__file__).resolve().parent / "Data" / "Processed" / "_last_update.txt"
 
 def get_data_version() -> str:
     if VERSION_FILE.exists():
@@ -571,33 +571,22 @@ class Radar:
 # -------------------------------------------------------------------
 @st.cache_data
 def load_data(version: str):
-    try:
-        from src.multi_season import load_all_seasons, aggregate_player_scores
-        from src.squad import compute_squad_scores
-    except Exception as e:
-        st.error("Error importing data loading functions.")
-        st.exception(e)
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    from src.multi_season import load_all_seasons, aggregate_player_scores
+    from src.squad import compute_squad_scores
 
-    try:
-        root = Path(__file__).resolve().parent
-        processed_dir = root / "Data" / "Processed"
+    root = Path(__file__).resolve().parent
+    processed_dir = root / "Data" / "Processed"
 
-        df_all = load_all_seasons(processed_dir)
-        df_agg = aggregate_player_scores(df_all)
-        df_squad = compute_squad_scores(df_all)
+    df_all = load_all_seasons(processed_dir)
+    df_agg = aggregate_player_scores(df_all)
+    df_squad = compute_squad_scores(df_all)
 
-        df_big5 = pd.DataFrame()
-        big5_path = processed_dir / "big5_table_all_seasons.csv"
-        if big5_path.exists():
-            df_big5 = pd.read_csv(big5_path)
+    df_big5 = pd.DataFrame()
+    big5_path = processed_dir / "big5_table_all_seasons.csv"
+    if big5_path.exists():
+        df_big5 = pd.read_csv(big5_path)
 
-        return df_all, df_agg, df_squad, df_big5
-
-    except Exception as e:
-        st.error("Error loading processed data.")
-        st.exception(e)
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
+    return df_all, df_agg, df_squad, df_big5
 
 
 
@@ -3444,7 +3433,9 @@ def main():
     )
 
     data_version = get_data_version()
-    df_all, df_agg, df_squad, df_big5 = load_data(data_version)
+    st.caption(f"🕒 Data version: {data_version}")
+
+    df_all, df_agg, df_squad, df_big5 = load_data(data_version) 
 
     st.caption(f"🕒 Data last updated: {data_version}")
 
@@ -4470,8 +4461,8 @@ def main():
         # Daten laden (robust gegen alte / neue load_data-Versionen)
         # ------------------------------------------------------------------
         try:
-            # neue Version (mit Big5)
-            df_all, df_agg, df_squad, df_big5 = load_data()
+            data_version = get_data_version()
+            df_all, df_agg, df_squad, df_big5 = load_data(data_version)
         except ValueError:
             # Fallback: alte Version ohne Big5
             df_all, df_agg, df_squad = load_data()
