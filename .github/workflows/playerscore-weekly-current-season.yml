@@ -62,19 +62,15 @@ jobs:
           git status --porcelain
           echo "Changed files:"
           git diff --name-only
-
-      - name: Commit & push (only if there are changes)
+          
+      - name: Commit & push (always)
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add Data/Raw Data/Processed
-          git commit -m "Update data (${PIPELINE_SEASONS})"
+          git add Data/Raw Data/Processed || true
+
+          git commit -m "Weekly run (${PIPELINE_SEASONS}) $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty || true
           git push
 
