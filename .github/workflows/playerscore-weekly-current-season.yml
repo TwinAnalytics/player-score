@@ -55,6 +55,12 @@ jobs:
           source .venv/bin/activate
           python run_multi_season_pipeline.py
 
+      - name: Write data version file
+        shell: bash
+        run: |
+          mkdir -p Data/Processed
+          echo "$(date -u +'%Y-%m-%d %H:%M:%S UTC')" > Data/Processed/_last_update.txt
+
       - name: Debug changes
         shell: bash
         run: |
@@ -63,19 +69,14 @@ jobs:
           echo "Changed files:"
           git diff --name-only
 
-      - name: Write data version file
-        shell: bash
-        run: |
-          echo "$(date -u +'%Y-%m-%d %H:%M:%S UTC')" > Data/Processed/_last_update.txt
-          
       - name: Commit & push (always)
         shell: bash
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add Data/Raw Data/Processed || true
+          git add Data/Raw Data/Processed
+          git add Data/Processed/_last_update.txt
 
-          git commit -m "Weekly run (${PIPELINE_SEASONS}) $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty || true
+          git commit -m "Weekly run (${PIPELINE_SEASONS}) $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty
           git push
-
