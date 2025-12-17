@@ -1,73 +1,73 @@
 Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Attendance,Top Team Scorer,Goalkeeper
-2017-2018,1,Manchester City,eng ENG,1,38,32,4,2,106,27,+79,100,2.63,78.6,23.8,+54.8,+1.44,53812,Sergio Agüero - 21,Ederson
-2017-2018,2,Juventus,it ITA,1,38,30,5,3,86,24,+62,95,2.50,55.3,27.4,+27.9,+0.73,38919,Paulo Dybala - 22,Gianluigi Buffon
-2017-2018,3,Bayern Munich,de GER,1,34,27,3,4,92,28,+64,84,2.47,75.8,31.7,+44.1,+1.30,75000,Robert Lewandowski - 29,Sven Ulreich
-2017-2018,4,Paris S-G,fr FRA,1,38,29,6,3,108,29,+79,93,2.45,86.1,34.3,+51.7,+1.36,46930,Edinson Cavani - 28,Alphonse Areola
-2017-2018,5,Barcelona,es ESP,1,38,28,9,1,99,29,+70,93,2.45,83.5,41.9,+41.6,+1.09,67142,Lionel Messi - 34,Marc-André ter Stegen
-2017-2018,6,Napoli,it ITA,2,38,28,7,3,77,29,+48,91,2.39,67.1,27.1,+40.1,+1.05,42633,Dries Mertens - 18,Pepe Reina
-2017-2018,7,Manchester Utd,eng ENG,2,38,25,6,7,68,28,+40,81,2.13,55.7,40.7,+15.0,+0.40,74976,Romelu Lukaku - 16,David de Gea
-2017-2018,8,Monaco,fr FRA,2,38,24,8,6,85,45,+40,80,2.11,62.3,48.5,+13.8,+0.36,9243,Radamel Falcao - 18,Danijel Subašić
-2017-2018,9,Atlético Madrid,es ESP,2,38,23,10,5,58,22,+36,79,2.08,50.2,35.8,+14.4,+0.38,52707,Antoine Griezmann - 19,Jan Oblak
-2017-2018,10,Lyon,fr FRA,3,38,23,9,6,87,43,+44,78,2.05,63.4,40.1,+23.3,+0.61,44047,Memphis - 19,Anthony Lopes
-2017-2018,11,Tottenham,eng ENG,3,38,23,8,7,74,36,+38,77,2.03,64.7,33.9,+30.8,+0.81,67496,Harry Kane - 30,Hugo Lloris
-2017-2018,12,Roma,it ITA,3,38,23,8,7,61,28,+33,77,2.03,63.4,37.2,+26.2,+0.69,37451,Edin Džeko - 16,Alisson
-2017-2018,13,Marseille,fr FRA,4,38,22,11,5,80,47,+33,77,2.03,78.1,41.8,+36.3,+0.96,46616,Florian Thauvin - 22,Steve Mandanda
-2017-2018,14,Real Madrid,es ESP,3,38,22,10,6,94,44,+50,76,2.00,85.4,43.2,+42.2,+1.11,66863,Cristiano Ronaldo - 26,Keylor Navas
-2017-2018,15,Liverpool,eng ENG,4,38,21,12,5,84,38,+46,75,1.97,72.9,33.8,+39.1,+1.03,53049,Mohamed Salah - 32,"Loris Karius, Simon Mignolet"
-2017-2018,16,Valencia,es ESP,4,38,22,7,9,65,38,+27,73,1.92,56.0,48.3,+7.7,+0.20,38607,Rodrigo - 16,Neto
-2017-2018,17,Lazio,it ITA,5,38,21,9,8,89,49,+40,72,1.89,63.7,43.9,+19.9,+0.52,32123,Ciro Immobile - 29,Thomas Strakosha
-2017-2018,18,Inter,it ITA,4,38,20,12,6,66,30,+36,72,1.89,56.7,37.2,+19.6,+0.52,57529,Mauro Icardi - 29,Samir Handanović
-2017-2018,19,Schalke 04,de GER,2,34,18,9,7,53,37,+16,63,1.85,46.7,40.2,+6.6,+0.19,61297,Guido Burgstaller - 11,Ralf Fährmann
-2017-2018,20,Chelsea,eng ENG,5,38,21,7,10,62,38,+24,70,1.84,54.4,33.8,+20.6,+0.54,41282,Eden Hazard - 12,Thibaut Courtois
-2017-2018,21,Milan,it ITA,6,38,18,10,10,56,42,+14,64,1.68,51.2,36.9,+14.3,+0.38,52690,Patrick Cutrone - 10,Gianluigi Donnarumma
-2017-2018,22,Arsenal,eng ENG,6,38,19,6,13,74,51,+23,63,1.66,68.3,47.8,+20.5,+0.54,59323,Alexandre Lacazette - 14,Petr Čech
-2017-2018,23,Hoffenheim,de GER,3,34,15,10,9,66,48,+18,55,1.62,50.5,47.2,+3.3,+0.10,28716,Mark Uth - 14,Oliver Baumann
-2017-2018,24,Dortmund,de GER,4,34,15,10,9,64,47,+17,55,1.62,66.0,42.2,+23.8,+0.70,79496,Pierre-Emerick Aubameyang - 13,Roman Bürki
-2017-2018,25,Leverkusen,de GER,5,34,15,10,9,58,44,+14,55,1.62,57.5,38.9,+18.6,+0.55,28415,Kevin Volland - 14,Bernd Leno
-2017-2018,26,Villarreal,es ESP,5,38,18,7,13,57,50,+7,61,1.61,53.3,53.4,-0.1,0.00,16779,Carlos Bacca - 15,Sergio Asenjo
-2017-2018,27,Atalanta,it ITA,7,38,16,12,10,57,39,+18,60,1.58,64.1,36.6,+27.5,+0.72,17923,Josip Iličić - 11,Etrit Berisha
+2017-2018,1,Manchester City,eng ENG,1,38,32,4,2,106,27,79,100,2.63,78.6,23.8,54.8,1.44,53812,Sergio Agüero - 21,Ederson
+2017-2018,2,Juventus,it ITA,1,38,30,5,3,86,24,62,95,2.5,55.3,27.4,27.9,0.73,38919,Paulo Dybala - 22,Gianluigi Buffon
+2017-2018,3,Bayern Munich,de GER,1,34,27,3,4,92,28,64,84,2.47,75.8,31.7,44.1,1.3,75000,Robert Lewandowski - 29,Sven Ulreich
+2017-2018,4,Paris S-G,fr FRA,1,38,29,6,3,108,29,79,93,2.45,86.1,34.3,51.7,1.36,46930,Edinson Cavani - 28,Alphonse Areola
+2017-2018,5,Barcelona,es ESP,1,38,28,9,1,99,29,70,93,2.45,83.5,41.9,41.6,1.09,67142,Lionel Messi - 34,Marc-André ter Stegen
+2017-2018,6,Napoli,it ITA,2,38,28,7,3,77,29,48,91,2.39,67.1,27.1,40.1,1.05,42633,Dries Mertens - 18,Pepe Reina
+2017-2018,7,Manchester Utd,eng ENG,2,38,25,6,7,68,28,40,81,2.13,55.7,40.7,15.0,0.4,74976,Romelu Lukaku - 16,David de Gea
+2017-2018,8,Monaco,fr FRA,2,38,24,8,6,85,45,40,80,2.11,62.3,48.5,13.8,0.36,9243,Radamel Falcao - 18,Danijel Subašić
+2017-2018,9,Atlético Madrid,es ESP,2,38,23,10,5,58,22,36,79,2.08,50.2,35.8,14.4,0.38,52707,Antoine Griezmann - 19,Jan Oblak
+2017-2018,10,Lyon,fr FRA,3,38,23,9,6,87,43,44,78,2.05,63.4,40.1,23.3,0.61,44047,Memphis - 19,Anthony Lopes
+2017-2018,11,Tottenham,eng ENG,3,38,23,8,7,74,36,38,77,2.03,64.7,33.9,30.8,0.81,67496,Harry Kane - 30,Hugo Lloris
+2017-2018,12,Roma,it ITA,3,38,23,8,7,61,28,33,77,2.03,63.4,37.2,26.2,0.69,37451,Edin Džeko - 16,Alisson
+2017-2018,13,Marseille,fr FRA,4,38,22,11,5,80,47,33,77,2.03,78.1,41.8,36.3,0.96,46616,Florian Thauvin - 22,Steve Mandanda
+2017-2018,14,Real Madrid,es ESP,3,38,22,10,6,94,44,50,76,2.0,85.4,43.2,42.2,1.11,66863,Cristiano Ronaldo - 26,Keylor Navas
+2017-2018,15,Liverpool,eng ENG,4,38,21,12,5,84,38,46,75,1.97,72.9,33.8,39.1,1.03,53049,Mohamed Salah - 32,"Loris Karius, Simon Mignolet"
+2017-2018,16,Valencia,es ESP,4,38,22,7,9,65,38,27,73,1.92,56.0,48.3,7.7,0.2,38607,Rodrigo - 16,Neto
+2017-2018,17,Lazio,it ITA,5,38,21,9,8,89,49,40,72,1.89,63.7,43.9,19.9,0.52,32123,Ciro Immobile - 29,Thomas Strakosha
+2017-2018,18,Inter,it ITA,4,38,20,12,6,66,30,36,72,1.89,56.7,37.2,19.6,0.52,57529,Mauro Icardi - 29,Samir Handanović
+2017-2018,19,Schalke 04,de GER,2,34,18,9,7,53,37,16,63,1.85,46.7,40.2,6.6,0.19,61297,Guido Burgstaller - 11,Ralf Fährmann
+2017-2018,20,Chelsea,eng ENG,5,38,21,7,10,62,38,24,70,1.84,54.4,33.8,20.6,0.54,41282,Eden Hazard - 12,Thibaut Courtois
+2017-2018,21,Milan,it ITA,6,38,18,10,10,56,42,14,64,1.68,51.2,36.9,14.3,0.38,52690,Patrick Cutrone - 10,Gianluigi Donnarumma
+2017-2018,22,Arsenal,eng ENG,6,38,19,6,13,74,51,23,63,1.66,68.3,47.8,20.5,0.54,59323,Alexandre Lacazette - 14,Petr Čech
+2017-2018,23,Hoffenheim,de GER,3,34,15,10,9,66,48,18,55,1.62,50.5,47.2,3.3,0.1,28716,Mark Uth - 14,Oliver Baumann
+2017-2018,24,Dortmund,de GER,4,34,15,10,9,64,47,17,55,1.62,66.0,42.2,23.8,0.7,79496,Pierre-Emerick Aubameyang - 13,Roman Bürki
+2017-2018,25,Leverkusen,de GER,5,34,15,10,9,58,44,14,55,1.62,57.5,38.9,18.6,0.55,28415,Kevin Volland - 14,Bernd Leno
+2017-2018,26,Villarreal,es ESP,5,38,18,7,13,57,50,7,61,1.61,53.3,53.4,-0.1,0.0,16779,Carlos Bacca - 15,Sergio Asenjo
+2017-2018,27,Atalanta,it ITA,7,38,16,12,10,57,39,18,60,1.58,64.1,36.6,27.5,0.72,17923,Josip Iličić - 11,Etrit Berisha
 2017-2018,28,Betis,es ESP,6,38,18,6,14,60,61,-1,60,1.58,46.0,49.0,-3.1,-0.08,46781,Sergio León - 11,Antonio Adán
-2017-2018,29,RB Leipzig,de GER,6,34,15,8,11,57,53,+4,53,1.56,51.9,46.7,+5.2,+0.15,39397,Timo Werner - 13,Péter Gulácsi
-2017-2018,30,Rennes,fr FRA,5,38,16,10,12,50,44,+6,58,1.53,49.8,49.3,+0.5,+0.01,23111,Benjamin Bourigeaud - 10,Tomáš Koubek
-2017-2018,31,Sevilla,es ESP,7,38,17,7,14,49,58,-9,58,1.53,59.5,54.4,+5.2,+0.14,33006,Wissam Ben Yedder - 9,Sergio Rico
-2017-2018,32,Fiorentina,it ITA,8,38,16,9,13,54,46,+8,57,1.50,54.5,40.8,+13.7,+0.36,26092,Giovanni Simeone - 14,Marco Sportiello
-2017-2018,33,Stuttgart,de GER,7,34,15,6,13,36,36,0,51,1.50,40.3,43.5,-3.1,-0.09,56366,Mario Gómez - 8,Ron-Robert Zieler
-2017-2018,34,Getafe,es ESP,8,38,15,10,13,42,33,+9,55,1.45,48.2,39.7,+8.5,+0.22,10428,Ángel Rodríguez - 13,Vicente Guaita
-2017-2018,35,Bordeaux,fr FRA,6,38,16,7,15,53,48,+5,55,1.45,51.0,43.6,+7.5,+0.20,26048,Malcom - 12,Benoît Costil
+2017-2018,29,RB Leipzig,de GER,6,34,15,8,11,57,53,4,53,1.56,51.9,46.7,5.2,0.15,39397,Timo Werner - 13,Péter Gulácsi
+2017-2018,30,Rennes,fr FRA,5,38,16,10,12,50,44,6,58,1.53,49.8,49.3,0.5,0.01,23111,Benjamin Bourigeaud - 10,Tomáš Koubek
+2017-2018,31,Sevilla,es ESP,7,38,17,7,14,49,58,-9,58,1.53,59.5,54.4,5.2,0.14,33006,Wissam Ben Yedder - 9,Sergio Rico
+2017-2018,32,Fiorentina,it ITA,8,38,16,9,13,54,46,8,57,1.5,54.5,40.8,13.7,0.36,26092,Giovanni Simeone - 14,Marco Sportiello
+2017-2018,33,Stuttgart,de GER,7,34,15,6,13,36,36,0,51,1.5,40.3,43.5,-3.1,-0.09,56366,Mario Gómez - 8,Ron-Robert Zieler
+2017-2018,34,Getafe,es ESP,8,38,15,10,13,42,33,9,55,1.45,48.2,39.7,8.5,0.22,10428,Ángel Rodríguez - 13,Vicente Guaita
+2017-2018,35,Bordeaux,fr FRA,6,38,16,7,15,53,48,5,55,1.45,51.0,43.6,7.5,0.2,26048,Malcom - 12,Benoît Costil
 2017-2018,36,Saint-Étienne,fr FRA,7,38,15,10,13,47,50,-3,55,1.45,51.0,54.1,-3.1,-0.08,27563,"Jonathan Bamba, Rémy Cabella... - 7",Stéphane Ruffier
-2017-2018,37,Eint Frankfurt,de GER,8,34,14,7,13,45,45,0,49,1.44,42.2,41.7,+0.5,+0.01,49159,Sébastien Haller - 9,Lukáš Hrádecký
-2017-2018,38,Torino,it ITA,9,38,13,15,10,54,46,+8,54,1.42,46.0,47.0,-1.0,-0.03,18375,Iago Falque - 12,Salvatore Sirigu
-2017-2018,39,Nice,fr FRA,8,38,15,9,14,53,52,+1,54,1.42,49.2,49.5,-0.3,-0.01,22876,Mario Balotelli - 18,Walter Benítez
-2017-2018,40,Burnley,eng ENG,7,38,14,12,12,36,39,-3,54,1.42,32.3,51.2,-18.9,-0.50,20688,Chris Wood - 10,Nick Pope
+2017-2018,37,Eint Frankfurt,de GER,8,34,14,7,13,45,45,0,49,1.44,42.2,41.7,0.5,0.01,49159,Sébastien Haller - 9,Lukáš Hrádecký
+2017-2018,38,Torino,it ITA,9,38,13,15,10,54,46,8,54,1.42,46.0,47.0,-1.0,-0.03,18375,Iago Falque - 12,Salvatore Sirigu
+2017-2018,39,Nice,fr FRA,8,38,15,9,14,53,52,1,54,1.42,49.2,49.5,-0.3,-0.01,22876,Mario Balotelli - 18,Walter Benítez
+2017-2018,40,Burnley,eng ENG,7,38,14,12,12,36,39,-3,54,1.42,32.3,51.2,-18.9,-0.5,20688,Chris Wood - 10,Nick Pope
 2017-2018,41,Sampdoria,it ITA,10,38,16,6,16,56,60,-4,54,1.42,53.5,60.3,-6.8,-0.18,20065,Fabio Quagliarella - 19,Emiliano Viviano
 2017-2018,42,Gladbach,de GER,9,34,13,8,13,47,52,-5,47,1.38,51.1,52.0,-0.8,-0.02,50986,Thorgan Hazard - 10,Yann Sommer
-2017-2018,43,Nantes,fr FRA,9,38,14,10,14,36,41,-5,52,1.37,41.8,38.1,+3.7,+0.10,24559,Emiliano Sala - 12,Ciprian Tătărușanu
-2017-2018,44,Montpellier,fr FRA,10,38,11,18,9,36,33,+3,51,1.34,42.6,39.0,+3.6,+0.10,13458,Giovanni Sio - 10,Benjamin Lecomte
+2017-2018,43,Nantes,fr FRA,9,38,14,10,14,36,41,-5,52,1.37,41.8,38.1,3.7,0.1,24559,Emiliano Sala - 12,Ciprian Tătărușanu
+2017-2018,44,Montpellier,fr FRA,10,38,11,18,9,36,33,3,51,1.34,42.6,39.0,3.6,0.1,13458,Giovanni Sio - 10,Benjamin Lecomte
 2017-2018,45,Eibar,es ESP,9,38,14,9,15,44,50,-6,51,1.34,40.9,44.4,-3.5,-0.09,5338,"Charles, Kiké - 8",Marko Dmitrović
-2017-2018,46,Girona,es ESP,10,38,14,9,15,50,59,-9,51,1.34,50.6,50.4,+0.2,+0.01,10424,Cristhian Stuani - 21,Yassine Bounou
-2017-2018,47,Real Sociedad,es ESP,12,38,14,7,17,66,59,+7,49,1.29,53.7,50.5,+3.1,+0.08,19793,Willian José - 15,Gerónimo Rulli
+2017-2018,46,Girona,es ESP,10,38,14,9,15,50,59,-9,51,1.34,50.6,50.4,0.2,0.01,10424,Cristhian Stuani - 21,Yassine Bounou
+2017-2018,47,Real Sociedad,es ESP,12,38,14,7,17,66,59,7,49,1.29,53.7,50.5,3.1,0.08,19793,Willian José - 15,Gerónimo Rulli
 2017-2018,48,Celta Vigo,es ESP,13,38,13,10,15,59,60,-1,49,1.29,55.0,55.3,-0.3,-0.01,16195,Iago Aspas - 22,Rubén Blanco
 2017-2018,49,Espanyol,es ESP,11,38,12,13,13,36,42,-6,49,1.29,41.1,52.3,-11.1,-0.29,17882,Gerard Moreno - 16,Pau López
 2017-2018,50,Everton,eng ENG,8,38,13,10,15,44,58,-14,49,1.29,40.5,52.4,-11.9,-0.31,38797,Wayne Rooney - 10,Jordan Pickford
 2017-2018,51,Hertha BSC,de GER,10,34,10,13,11,43,46,-3,43,1.26,39.2,44.3,-5.1,-0.15,45319,Salomon Kalou - 12,Rune Jarstein
 2017-2018,52,Dijon,fr FRA,11,38,13,9,16,55,73,-18,48,1.26,41.6,63.8,-22.2,-0.58,12228,Júlio Tavares - 12,Baptiste Reynet
 2017-2018,53,Werder Bremen,de GER,11,34,10,12,12,37,40,-3,42,1.24,38.9,45.1,-6.2,-0.18,40870,Max Kruse - 6,Jiří Pavlenka
-2017-2018,54,Leicester City,eng ENG,9,38,12,11,15,56,60,-4,47,1.24,50.0,48.1,+1.9,+0.05,31583,Jamie Vardy - 20,Kasper Schmeichel
+2017-2018,54,Leicester City,eng ENG,9,38,12,11,15,56,60,-4,47,1.24,50.0,48.1,1.9,0.05,31583,Jamie Vardy - 20,Kasper Schmeichel
 2017-2018,55,Alavés,es ESP,14,38,15,2,21,40,50,-10,47,1.24,38.5,55.9,-17.4,-0.46,18845,Munir El Haddadi - 10,Fernando Pacheco
 2017-2018,56,Guingamp,fr FRA,12,38,12,11,15,48,59,-11,47,1.24,45.5,49.0,-3.5,-0.09,14502,Jimmy Briand - 11,Karl-Johan Johnsson
-2017-2018,57,Augsburg,de GER,12,34,10,11,13,43,46,-3,41,1.21,44.7,41.4,+3.3,+0.10,28238,Michael Gregoritsch - 13,Marwin Hitz
-2017-2018,58,Levante,es ESP,15,38,11,13,14,44,58,-14,46,1.21,44.7,63.6,-18.8,-0.50,18534,José Luis Morales - 10,Oier Olazábal
+2017-2018,57,Augsburg,de GER,12,34,10,11,13,43,46,-3,41,1.21,44.7,41.4,3.3,0.1,28238,Michael Gregoritsch - 13,Marwin Hitz
+2017-2018,58,Levante,es ESP,15,38,11,13,14,44,58,-14,46,1.21,44.7,63.6,-18.8,-0.5,18534,José Luis Morales - 10,Oier Olazábal
 2017-2018,59,Amiens,fr FRA,13,38,12,9,17,37,42,-5,45,1.18,32.8,54.9,-22.1,-0.58,9521,Moussa Konaté - 13,Régis Gurtner
 2017-2018,60,Newcastle Utd,eng ENG,10,38,12,8,18,39,47,-8,44,1.16,41.6,52.4,-10.8,-0.28,51992,Ayoze Pérez - 8,Rob Elliot
-2017-2018,61,Crystal Palace,eng ENG,11,38,11,11,16,45,55,-10,44,1.16,53.5,48.2,+5.2,+0.14,25063,Luka Milivojević - 10,Wayne Hennessey
+2017-2018,61,Crystal Palace,eng ENG,11,38,11,11,16,45,55,-10,44,1.16,53.5,48.2,5.2,0.14,25063,Luka Milivojević - 10,Wayne Hennessey
 2017-2018,62,Bournemouth,eng ENG,12,38,11,11,16,45,61,-16,44,1.16,38.8,59.2,-20.4,-0.54,10641,"Joshua King, Callum Wilson - 8",Asmir Begović
 2017-2018,63,Hannover 96,de GER,13,34,10,9,15,44,54,-10,39,1.15,44.6,55.6,-11.0,-0.32,42706,Niclas Füllkrug - 14,Philipp Tschauner
 2017-2018,64,Athletic Club,es ESP,16,38,10,13,15,41,49,-8,43,1.13,49.7,50.3,-0.6,-0.02,37246,Raúl García - 10,Kepa Arrizabalaga
-2017-2018,65,Leganés,es ESP,17,38,12,7,19,34,51,-17,43,1.13,39.9,47.6,-7.6,-0.20,9969,Gabriel - 5,Iván Cuéllar
+2017-2018,65,Leganés,es ESP,17,38,12,7,19,34,51,-17,43,1.13,39.9,47.6,-7.6,-0.2,9969,Gabriel - 5,Iván Cuéllar
 2017-2018,66,Sassuolo,it ITA,11,38,11,10,17,29,59,-30,43,1.13,46.3,48.9,-2.6,-0.07,11004,Matteo Politano - 10,Andrea Consigli
 2017-2018,67,West Ham,eng ENG,13,38,10,12,16,48,68,-20,42,1.11,36.7,55.1,-18.4,-0.48,56885,Marko Arnautović - 11,"Joe Hart, Adrián"
-2017-2018,68,Genoa,it ITA,12,38,11,8,19,33,43,-10,41,1.08,43.5,42.6,+0.9,+0.02,20731,Gianluca Lapadula - 6,Mattia Perin
-2017-2018,69,Angers,fr FRA,14,38,9,14,15,42,52,-10,41,1.08,47.6,45.8,+1.8,+0.05,11065,Karl Toko Ekambi - 17,Ludovic Butelle
+2017-2018,68,Genoa,it ITA,12,38,11,8,19,33,43,-10,41,1.08,43.5,42.6,0.9,0.02,20731,Gianluca Lapadula - 6,Mattia Perin
+2017-2018,69,Angers,fr FRA,14,38,9,14,15,42,52,-10,41,1.08,47.6,45.8,1.8,0.05,11065,Karl Toko Ekambi - 17,Ludovic Butelle
 2017-2018,70,Watford,eng ENG,14,38,11,8,19,44,64,-20,41,1.08,45.0,51.8,-6.8,-0.18,20231,Abdoulaye Doucouré - 7,Heurelho Gomes
 2017-2018,71,Mainz 05,de GER,14,34,9,9,16,38,52,-14,36,1.06,35.4,47.9,-12.5,-0.37,28766,Yoshinori Mutō - 8,Robin Zentner
 2017-2018,72,Freiburg,de GER,15,34,8,12,14,32,56,-24,36,1.06,39.6,46.1,-6.6,-0.19,23894,Nils Petersen - 15,Alexander Schwolow
@@ -76,10 +76,10 @@ Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Atte
 2017-2018,75,Chievo,it ITA,13,38,10,10,18,36,59,-23,40,1.05,34.1,55.2,-21.2,-0.56,11436,Roberto Inglese - 12,Stefano Sorrentino
 2017-2018,76,Bologna,it ITA,15,38,11,6,21,40,52,-12,39,1.03,36.6,51.4,-14.8,-0.39,22556,Simone Verdi - 10,Antonio Mirante
 2017-2018,77,Cagliari,it ITA,16,38,11,6,21,33,61,-28,39,1.03,39.7,59.2,-19.5,-0.51,14651,Leonardo Pavoletti - 11,Alessio Cragno
-2017-2018,78,SPAL,it ITA,17,38,8,14,16,39,59,-20,38,1.00,35.8,57.7,-21.9,-0.58,12065,Mirco Antenucci - 11,Alfred Gomis
-2017-2018,79,Strasbourg,fr FRA,15,38,9,11,18,44,67,-23,38,1.00,45.5,58.4,-12.9,-0.34,24064,Stéphane Bahoken - 7,Bingourou Kamara
-2017-2018,80,Caen,fr FRA,16,38,10,8,20,27,52,-25,38,1.00,42.8,48.0,-5.2,-0.14,17187,Ivan Santini - 11,Rémy Vercoutre
-2017-2018,81,Lille,fr FRA,17,38,10,8,20,41,67,-26,38,1.00,36.4,57.9,-21.5,-0.57,31453,Nicolas Pépé - 13,Mike Maignan
+2017-2018,78,SPAL,it ITA,17,38,8,14,16,39,59,-20,38,1.0,35.8,57.7,-21.9,-0.58,12065,Mirco Antenucci - 11,Alfred Gomis
+2017-2018,79,Strasbourg,fr FRA,15,38,9,11,18,44,67,-23,38,1.0,45.5,58.4,-12.9,-0.34,24064,Stéphane Bahoken - 7,Bingourou Kamara
+2017-2018,80,Caen,fr FRA,16,38,10,8,20,27,52,-25,38,1.0,42.8,48.0,-5.2,-0.14,17187,Ivan Santini - 11,Rémy Vercoutre
+2017-2018,81,Lille,fr FRA,17,38,10,8,20,41,67,-26,38,1.0,36.4,57.9,-21.5,-0.57,31453,Nicolas Pépé - 13,Mike Maignan
 2017-2018,82,Wolfsburg,de GER,16,34,6,15,13,36,48,-12,33,0.97,34.2,52.0,-17.8,-0.52,25712,Daniel Didavi - 9,Koen Casteels
 2017-2018,83,Toulouse,fr FRA,18,38,9,10,19,38,54,-16,37,0.97,45.5,52.1,-6.6,-0.17,16929,Max Gradel - 8,Alban Lafont
 2017-2018,84,Huddersfield,eng ENG,16,38,9,10,19,28,58,-30,37,0.97,31.3,48.5,-17.2,-0.45,24040,Steve Mounié - 7,Jonas Lössl
@@ -89,7 +89,7 @@ Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Atte
 2017-2018,88,Troyes,fr FRA,19,38,9,6,23,32,59,-27,33,0.87,38.0,52.0,-14.0,-0.37,11723,Adama Niane - 8,Mamadou Samassa
 2017-2018,89,Swansea City,eng ENG,18,38,8,9,21,28,56,-28,33,0.87,31.6,58.6,-27.0,-0.71,20623,Jordan Ayew - 7,Łukasz Fabiański
 2017-2018,90,Stoke City,eng ENG,19,38,7,12,19,35,68,-33,33,0.87,36.5,62.5,-26.0,-0.69,29280,Xherdan Shaqiri - 8,Jack Butland
-2017-2018,91,West Brom,eng ENG,20,38,6,13,19,31,56,-25,31,0.82,36.5,47.9,-11.4,-0.30,24520,"Jay Rodriguez, Salomón Rondón - 7",Ben Foster
+2017-2018,91,West Brom,eng ENG,20,38,6,13,19,31,56,-25,31,0.82,36.5,47.9,-11.4,-0.3,24520,"Jay Rodriguez, Salomón Rondón - 7",Ben Foster
 2017-2018,92,La Coruña,es ESP,18,38,6,11,21,38,76,-38,29,0.76,51.6,58.7,-7.1,-0.19,20542,Adrián López - 9,Rubén
 2017-2018,93,Metz,fr FRA,20,38,6,8,24,34,76,-42,26,0.68,40.3,71.3,-31.0,-0.81,14844,Nolan Roux - 15,Eiji Kawashima
 2017-2018,94,Hellas Verona,it ITA,19,38,7,4,27,30,78,-48,25,0.66,33.0,70.2,-37.1,-0.98,17432,"Moise Kean, Giampaolo Pazzini - 4",Nícolas Andrade

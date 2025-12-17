@@ -1,66 +1,66 @@
 Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Attendance,Top Team Scorer,Goalkeeper
-2021-2022,1,Manchester City,eng ENG,1,38,29,6,3,99,26,+73,93,2.45,88.7,24.6,+64.0,+1.68,52774,Kevin De Bruyne - 15,Ederson
-2021-2022,2,Liverpool,eng ENG,2,38,28,8,2,94,26,+68,92,2.42,88.7,33.8,+54.9,+1.45,53352,Mohamed Salah - 23,Alisson
-2021-2022,3,Bayern Munich,de GER,1,34,24,5,5,97,37,+60,77,2.26,89.0,36.3,+52.7,+1.55,33176,Robert Lewandowski - 35,Manuel Neuer
-2021-2022,4,Paris S-G,fr FRA,1,38,26,8,4,90,36,+54,86,2.26,76.7,39.8,+36.9,+0.97,41589,Kylian Mbappé - 28,Keylor Navas
-2021-2022,5,Real Madrid,es ESP,1,38,26,8,4,80,31,+49,86,2.26,71.7,43.9,+27.8,+0.73,41235,Karim Benzema - 27,Thibaut Courtois
-2021-2022,6,Milan,it ITA,1,38,26,8,4,69,31,+38,86,2.26,59.7,35.9,+23.8,+0.63,44015,"Olivier Giroud, Rafael Leão - 11",Mike Maignan
-2021-2022,7,Inter,it ITA,2,38,25,9,4,84,32,+52,84,2.21,81.6,39.1,+42.5,+1.12,44473,Lautaro Martínez - 21,Samir Handanović
-2021-2022,8,Napoli,it ITA,3,38,24,7,7,74,31,+43,79,2.08,57.8,32.5,+25.3,+0.67,28119,Victor Osimhen - 14,David Ospina
-2021-2022,9,Dortmund,de GER,2,34,22,3,9,85,52,+33,69,2.03,64.0,46.3,+17.7,+0.52,41800,Erling Haaland - 22,Gregor Kobel
-2021-2022,10,Chelsea,eng ENG,3,38,21,11,6,76,33,+43,74,1.95,63.4,33.2,+30.1,+0.79,36443,Mason Mount - 11,Edouard Mendy
-2021-2022,11,Barcelona,es ESP,2,38,21,10,7,68,38,+30,73,1.92,63.4,34.4,+29.0,+0.76,53982,Memphis - 12,Marc-André ter Stegen
-2021-2022,12,Leverkusen,de GER,3,34,19,7,8,80,47,+33,64,1.88,62.6,44.0,+18.6,+0.55,17356,Patrik Schick - 24,Lukáš Hrádecký
-2021-2022,13,Tottenham,eng ENG,4,38,22,5,11,69,40,+29,71,1.87,61.2,39.3,+21.9,+0.58,56523,Son Heung-min - 23,Hugo Lloris
-2021-2022,14,Marseille,fr FRA,2,38,21,8,9,63,38,+25,71,1.87,58.2,39.0,+19.2,+0.51,51755,Dimitri Payet - 12,Pau López
-2021-2022,15,Atlético Madrid,es ESP,3,38,21,8,9,65,43,+22,71,1.87,54.4,33.4,+21.1,+0.56,48039,Ángel Correa - 12,Jan Oblak
-2021-2022,16,Sevilla,es ESP,4,38,18,16,4,53,30,+23,70,1.84,42.4,36.9,+5.4,+0.14,29756,Rafa Mir - 10,Yassine Bounou
-2021-2022,17,Juventus,it ITA,4,38,20,10,8,57,37,+20,70,1.84,51.4,38.1,+13.4,+0.35,22621,Paulo Dybala - 10,Wojciech Szczęsny
-2021-2022,18,Monaco,fr FRA,3,38,20,9,9,65,40,+25,69,1.82,59.4,40.3,+19.0,+0.50,5877,Wissam Ben Yedder - 25,Alexander Nübel
-2021-2022,19,Arsenal,eng ENG,5,38,22,3,13,61,48,+13,69,1.82,60.5,45.7,+14.9,+0.39,59665,Bukayo Saka - 11,Aaron Ramsdale
-2021-2022,20,Rennes,fr FRA,4,38,20,6,12,82,40,+42,66,1.74,62.8,42.9,+19.8,+0.52,25493,Martin Terrier - 21,Alfred Gomis
-2021-2022,21,Nice,fr FRA,5,38,20,7,11,52,36,+16,66,1.74,55.6,42.5,+13.1,+0.35,16055,Andy Delort - 16,Walter Benítez
-2021-2022,22,RB Leipzig,de GER,4,34,17,7,10,72,37,+35,58,1.71,64.5,40.1,+24.5,+0.72,22124,Christopher Nkunku - 20,Péter Gulácsi
-2021-2022,23,Betis,es ESP,5,38,19,8,11,62,40,+22,65,1.71,53.5,43.4,+10.1,+0.27,41749,Juanmi - 16,Rui Silva
-2021-2022,24,Lazio,it ITA,5,38,18,10,10,77,58,+19,64,1.68,55.3,47.7,+7.6,+0.20,23263,Ciro Immobile - 27,Thomas Strakosha
-2021-2022,25,Union Berlin,de GER,5,34,16,9,9,50,44,+6,57,1.68,47.0,38.5,+8.5,+0.25,14046,Taiwo Awoniyi - 15,Andreas Luthe
-2021-2022,26,Strasbourg,fr FRA,6,38,17,12,9,60,43,+17,63,1.66,55.6,43.5,+12.1,+0.32,23555,Ludovic Ajorque - 12,Matz Sels
-2021-2022,27,Roma,it ITA,6,38,18,9,11,59,43,+16,63,1.66,65.1,38.4,+26.8,+0.70,41929,Tammy Abraham - 17,Rui Patrício
-2021-2022,28,Lens,fr FRA,7,38,17,11,10,62,48,+14,62,1.63,50.2,42.7,+7.5,+0.20,28950,Arnaud Kalimuendo - 12,Jean-Louis Leca
-2021-2022,29,Fiorentina,it ITA,7,38,19,5,14,59,51,+8,62,1.63,60.0,40.6,+19.4,+0.51,21107,Dušan Vlahović - 17,Pietro Terracciano
-2021-2022,30,Real Sociedad,es ESP,6,38,17,11,10,40,37,+3,62,1.63,51.5,38.7,+12.8,+0.34,26813,Mikel Oyarzabal - 9,Álex Remiro
-2021-2022,31,Freiburg,de GER,6,34,15,10,9,58,46,+12,55,1.62,50.4,44.0,+6.4,+0.19,18741,Vincenzo Grifo - 9,Mark Flekken
-2021-2022,32,Lyon,fr FRA,8,38,17,11,10,66,51,+15,61,1.61,66.9,54.6,+12.4,+0.33,32329,Moussa Dembélé - 21,Anthony Lopes
-2021-2022,33,Villarreal,es ESP,7,38,16,11,11,63,37,+26,59,1.55,64.2,44.8,+19.4,+0.51,14293,Arnaut Danjuma - 10,Gerónimo Rulli
-2021-2022,34,Atalanta,it ITA,8,38,16,11,11,65,48,+17,59,1.55,62.4,45.3,+17.2,+0.45,10447,Mario Pašalić - 13,Juan Musso
-2021-2022,35,Köln,de GER,7,34,14,10,10,52,49,+3,52,1.53,50.1,50.6,-0.6,-0.02,31965,Anthony Modeste - 20,Marvin Schwäbe
-2021-2022,36,Manchester Utd,eng ENG,6,38,16,10,12,57,57,0,58,1.53,55.8,53.0,+2.8,+0.07,73150,Cristiano Ronaldo - 18,David de Gea
-2021-2022,37,West Ham,eng ENG,7,38,16,8,14,60,51,+9,56,1.47,51.4,53.5,-2.1,-0.06,58370,Jarrod Bowen - 12,Łukasz Fabiański
-2021-2022,38,Athletic Club,es ESP,8,38,14,13,11,43,36,+7,55,1.45,49.6,38.4,+11.3,+0.30,32949,Iñaki Williams - 8,Unai Simón
-2021-2022,39,Nantes,fr FRA,9,38,15,10,13,55,48,+7,55,1.45,45.5,52.7,-7.2,-0.19,20803,Randal Kolo Muani - 12,Alban Lafont
-2021-2022,40,Lille,fr FRA,10,38,14,13,11,48,48,0,55,1.45,50.5,39.9,+10.6,+0.28,34346,Jonathan David - 15,Ivo Grbić
-2021-2022,41,Hellas Verona,it ITA,9,38,14,11,13,65,59,+6,53,1.39,50.4,49.0,+1.4,+0.04,13894,Giovanni Simeone - 17,Lorenzo Montipò
-2021-2022,42,Leicester City,eng ENG,8,38,14,10,14,62,59,+3,52,1.37,47.8,59.3,-11.5,-0.30,32493,Jamie Vardy - 15,Kasper Schmeichel
-2021-2022,43,Mainz 05,de GER,8,34,13,7,14,50,45,+5,46,1.35,50.4,43.9,+6.5,+0.19,17978,Jonathan Burkardt - 11,Robin Zentner
-2021-2022,44,Hoffenheim,de GER,9,34,13,7,14,58,60,-2,46,1.35,58.3,54.6,+3.7,+0.11,11227,Georginio Rutter - 8,Oliver Baumann
-2021-2022,45,Brighton,eng ENG,9,38,12,15,11,42,44,-2,51,1.34,46.2,42.9,+3.3,+0.09,30966,"Leandro Trossard, Neal Maupay - 8",Robert Sánchez
+2021-2022,1,Manchester City,eng ENG,1,38,29,6,3,99,26,73,93,2.45,88.7,24.6,64.0,1.68,52774,Kevin De Bruyne - 15,Ederson
+2021-2022,2,Liverpool,eng ENG,2,38,28,8,2,94,26,68,92,2.42,88.7,33.8,54.9,1.45,53352,Mohamed Salah - 23,Alisson
+2021-2022,3,Bayern Munich,de GER,1,34,24,5,5,97,37,60,77,2.26,89.0,36.3,52.7,1.55,33176,Robert Lewandowski - 35,Manuel Neuer
+2021-2022,4,Paris S-G,fr FRA,1,38,26,8,4,90,36,54,86,2.26,76.7,39.8,36.9,0.97,41589,Kylian Mbappé - 28,Keylor Navas
+2021-2022,5,Real Madrid,es ESP,1,38,26,8,4,80,31,49,86,2.26,71.7,43.9,27.8,0.73,41235,Karim Benzema - 27,Thibaut Courtois
+2021-2022,6,Milan,it ITA,1,38,26,8,4,69,31,38,86,2.26,59.7,35.9,23.8,0.63,44015,"Olivier Giroud, Rafael Leão - 11",Mike Maignan
+2021-2022,7,Inter,it ITA,2,38,25,9,4,84,32,52,84,2.21,81.6,39.1,42.5,1.12,44473,Lautaro Martínez - 21,Samir Handanović
+2021-2022,8,Napoli,it ITA,3,38,24,7,7,74,31,43,79,2.08,57.8,32.5,25.3,0.67,28119,Victor Osimhen - 14,David Ospina
+2021-2022,9,Dortmund,de GER,2,34,22,3,9,85,52,33,69,2.03,64.0,46.3,17.7,0.52,41800,Erling Haaland - 22,Gregor Kobel
+2021-2022,10,Chelsea,eng ENG,3,38,21,11,6,76,33,43,74,1.95,63.4,33.2,30.1,0.79,36443,Mason Mount - 11,Edouard Mendy
+2021-2022,11,Barcelona,es ESP,2,38,21,10,7,68,38,30,73,1.92,63.4,34.4,29.0,0.76,53982,Memphis - 12,Marc-André ter Stegen
+2021-2022,12,Leverkusen,de GER,3,34,19,7,8,80,47,33,64,1.88,62.6,44.0,18.6,0.55,17356,Patrik Schick - 24,Lukáš Hrádecký
+2021-2022,13,Tottenham,eng ENG,4,38,22,5,11,69,40,29,71,1.87,61.2,39.3,21.9,0.58,56523,Son Heung-min - 23,Hugo Lloris
+2021-2022,14,Marseille,fr FRA,2,38,21,8,9,63,38,25,71,1.87,58.2,39.0,19.2,0.51,51755,Dimitri Payet - 12,Pau López
+2021-2022,15,Atlético Madrid,es ESP,3,38,21,8,9,65,43,22,71,1.87,54.4,33.4,21.1,0.56,48039,Ángel Correa - 12,Jan Oblak
+2021-2022,16,Sevilla,es ESP,4,38,18,16,4,53,30,23,70,1.84,42.4,36.9,5.4,0.14,29756,Rafa Mir - 10,Yassine Bounou
+2021-2022,17,Juventus,it ITA,4,38,20,10,8,57,37,20,70,1.84,51.4,38.1,13.4,0.35,22621,Paulo Dybala - 10,Wojciech Szczęsny
+2021-2022,18,Monaco,fr FRA,3,38,20,9,9,65,40,25,69,1.82,59.4,40.3,19.0,0.5,5877,Wissam Ben Yedder - 25,Alexander Nübel
+2021-2022,19,Arsenal,eng ENG,5,38,22,3,13,61,48,13,69,1.82,60.5,45.7,14.9,0.39,59665,Bukayo Saka - 11,Aaron Ramsdale
+2021-2022,20,Rennes,fr FRA,4,38,20,6,12,82,40,42,66,1.74,62.8,42.9,19.8,0.52,25493,Martin Terrier - 21,Alfred Gomis
+2021-2022,21,Nice,fr FRA,5,38,20,7,11,52,36,16,66,1.74,55.6,42.5,13.1,0.35,16055,Andy Delort - 16,Walter Benítez
+2021-2022,22,RB Leipzig,de GER,4,34,17,7,10,72,37,35,58,1.71,64.5,40.1,24.5,0.72,22124,Christopher Nkunku - 20,Péter Gulácsi
+2021-2022,23,Betis,es ESP,5,38,19,8,11,62,40,22,65,1.71,53.5,43.4,10.1,0.27,41749,Juanmi - 16,Rui Silva
+2021-2022,24,Lazio,it ITA,5,38,18,10,10,77,58,19,64,1.68,55.3,47.7,7.6,0.2,23263,Ciro Immobile - 27,Thomas Strakosha
+2021-2022,25,Union Berlin,de GER,5,34,16,9,9,50,44,6,57,1.68,47.0,38.5,8.5,0.25,14046,Taiwo Awoniyi - 15,Andreas Luthe
+2021-2022,26,Strasbourg,fr FRA,6,38,17,12,9,60,43,17,63,1.66,55.6,43.5,12.1,0.32,23555,Ludovic Ajorque - 12,Matz Sels
+2021-2022,27,Roma,it ITA,6,38,18,9,11,59,43,16,63,1.66,65.1,38.4,26.8,0.7,41929,Tammy Abraham - 17,Rui Patrício
+2021-2022,28,Lens,fr FRA,7,38,17,11,10,62,48,14,62,1.63,50.2,42.7,7.5,0.2,28950,Arnaud Kalimuendo - 12,Jean-Louis Leca
+2021-2022,29,Fiorentina,it ITA,7,38,19,5,14,59,51,8,62,1.63,60.0,40.6,19.4,0.51,21107,Dušan Vlahović - 17,Pietro Terracciano
+2021-2022,30,Real Sociedad,es ESP,6,38,17,11,10,40,37,3,62,1.63,51.5,38.7,12.8,0.34,26813,Mikel Oyarzabal - 9,Álex Remiro
+2021-2022,31,Freiburg,de GER,6,34,15,10,9,58,46,12,55,1.62,50.4,44.0,6.4,0.19,18741,Vincenzo Grifo - 9,Mark Flekken
+2021-2022,32,Lyon,fr FRA,8,38,17,11,10,66,51,15,61,1.61,66.9,54.6,12.4,0.33,32329,Moussa Dembélé - 21,Anthony Lopes
+2021-2022,33,Villarreal,es ESP,7,38,16,11,11,63,37,26,59,1.55,64.2,44.8,19.4,0.51,14293,Arnaut Danjuma - 10,Gerónimo Rulli
+2021-2022,34,Atalanta,it ITA,8,38,16,11,11,65,48,17,59,1.55,62.4,45.3,17.2,0.45,10447,Mario Pašalić - 13,Juan Musso
+2021-2022,35,Köln,de GER,7,34,14,10,10,52,49,3,52,1.53,50.1,50.6,-0.6,-0.02,31965,Anthony Modeste - 20,Marvin Schwäbe
+2021-2022,36,Manchester Utd,eng ENG,6,38,16,10,12,57,57,0,58,1.53,55.8,53.0,2.8,0.07,73150,Cristiano Ronaldo - 18,David de Gea
+2021-2022,37,West Ham,eng ENG,7,38,16,8,14,60,51,9,56,1.47,51.4,53.5,-2.1,-0.06,58370,Jarrod Bowen - 12,Łukasz Fabiański
+2021-2022,38,Athletic Club,es ESP,8,38,14,13,11,43,36,7,55,1.45,49.6,38.4,11.3,0.3,32949,Iñaki Williams - 8,Unai Simón
+2021-2022,39,Nantes,fr FRA,9,38,15,10,13,55,48,7,55,1.45,45.5,52.7,-7.2,-0.19,20803,Randal Kolo Muani - 12,Alban Lafont
+2021-2022,40,Lille,fr FRA,10,38,14,13,11,48,48,0,55,1.45,50.5,39.9,10.6,0.28,34346,Jonathan David - 15,Ivo Grbić
+2021-2022,41,Hellas Verona,it ITA,9,38,14,11,13,65,59,6,53,1.39,50.4,49.0,1.4,0.04,13894,Giovanni Simeone - 17,Lorenzo Montipò
+2021-2022,42,Leicester City,eng ENG,8,38,14,10,14,62,59,3,52,1.37,47.8,59.3,-11.5,-0.3,32493,Jamie Vardy - 15,Kasper Schmeichel
+2021-2022,43,Mainz 05,de GER,8,34,13,7,14,50,45,5,46,1.35,50.4,43.9,6.5,0.19,17978,Jonathan Burkardt - 11,Robin Zentner
+2021-2022,44,Hoffenheim,de GER,9,34,13,7,14,58,60,-2,46,1.35,58.3,54.6,3.7,0.11,11227,Georginio Rutter - 8,Oliver Baumann
+2021-2022,45,Brighton,eng ENG,9,38,12,15,11,42,44,-2,51,1.34,46.2,42.9,3.3,0.09,30966,"Leandro Trossard, Neal Maupay - 8",Robert Sánchez
 2021-2022,46,Wolves,eng ENG,10,38,15,6,17,38,43,-5,51,1.34,37.5,56.9,-19.4,-0.51,30841,Raúl Jiménez - 6,José Sá
-2021-2022,47,Torino,it ITA,10,38,13,11,14,46,41,+5,50,1.32,48.7,38.9,+9.8,+0.26,9846,Andrea Belotti - 8,Vanja Milinković-Savić
+2021-2022,47,Torino,it ITA,10,38,13,11,14,46,41,5,50,1.32,48.7,38.9,9.8,0.26,9846,Andrea Belotti - 8,Vanja Milinković-Savić
 2021-2022,48,Sassuolo,it ITA,11,38,13,11,14,64,66,-2,50,1.32,55.7,66.4,-10.7,-0.28,8362,Gianluca Scamacca - 16,Andrea Consigli
-2021-2022,49,Gladbach,de GER,10,34,12,9,13,54,61,-7,45,1.32,56.2,55.0,+1.2,+0.04,26539,Jonas Hofmann - 12,Yann Sommer
-2021-2022,50,Newcastle Utd,eng ENG,11,38,13,10,15,44,62,-18,49,1.29,38.1,57.1,-19.0,-0.50,51487,Callum Wilson - 8,Martin Dúbravka
-2021-2022,51,Crystal Palace,eng ENG,12,38,11,15,12,50,46,+4,48,1.26,46.4,40.7,+5.7,+0.15,24588,Wilfried Zaha - 14,Vicente Guaita
+2021-2022,49,Gladbach,de GER,10,34,12,9,13,54,61,-7,45,1.32,56.2,55.0,1.2,0.04,26539,Jonas Hofmann - 12,Yann Sommer
+2021-2022,50,Newcastle Utd,eng ENG,11,38,13,10,15,44,62,-18,49,1.29,38.1,57.1,-19.0,-0.5,51487,Callum Wilson - 8,Martin Dúbravka
+2021-2022,51,Crystal Palace,eng ENG,12,38,11,15,12,50,46,4,48,1.26,46.4,40.7,5.7,0.15,24588,Wilfried Zaha - 14,Vicente Guaita
 2021-2022,52,Valencia,es ESP,9,38,11,15,12,48,53,-5,48,1.26,39.0,47.7,-8.7,-0.23,27349,"Gonçalo Guedes, Carlos Soler - 11",Giorgi Mamardashvili
 2021-2022,53,Brest,fr FRA,11,38,13,9,16,49,57,-8,48,1.26,43.4,56.3,-12.8,-0.34,11804,Franck Honorat - 11,Marco Bizot
-2021-2022,54,Udinese,it ITA,12,38,11,14,13,61,58,+3,47,1.24,51.3,52.4,-1.0,-0.03,12144,Gerard Deulofeu - 13,Marco Silvestri
+2021-2022,54,Udinese,it ITA,12,38,11,14,13,61,58,3,47,1.24,51.3,52.4,-1.0,-0.03,12144,Gerard Deulofeu - 13,Marco Silvestri
 2021-2022,55,Eint Frankfurt,de GER,11,34,10,12,12,45,49,-4,42,1.24,41.6,47.0,-5.4,-0.16,26162,Rafael Borré - 8,Kevin Trapp
-2021-2022,56,Wolfsburg,de GER,12,34,12,6,16,43,54,-11,42,1.24,47.7,47.3,+0.4,+0.01,12018,Lukas Nmecha - 8,Koen Casteels
+2021-2022,56,Wolfsburg,de GER,12,34,12,6,16,43,54,-11,42,1.24,47.7,47.3,0.4,0.01,12018,Lukas Nmecha - 8,Koen Casteels
 2021-2022,57,Osasuna,es ESP,10,38,12,11,15,37,51,-14,47,1.24,36.7,46.3,-9.6,-0.25,17107,Ante Budimir - 8,Sergio Herrera
 2021-2022,58,Bochum,de GER,13,34,12,6,16,38,52,-14,42,1.24,40.6,55.8,-15.1,-0.46,15125,Sebastian Polter - 10,Manuel Riemann
 2021-2022,59,Celta Vigo,es ESP,11,38,12,10,16,43,43,0,46,1.21,43.1,45.7,-2.6,-0.07,10014,Iago Aspas - 18,Matías Dituro
 2021-2022,60,Reims,fr FRA,12,38,11,13,14,43,44,-1,46,1.21,37.7,46.4,-8.7,-0.23,11071,Hugo Ekitike - 10,Predrag Rajković
 2021-2022,61,Brentford,eng ENG,13,38,13,7,18,48,56,-8,46,1.21,45.8,48.5,-2.7,-0.07,16918,Ivan Toney - 12,David Raya
-2021-2022,62,Bologna,it ITA,13,38,12,10,16,44,55,-11,46,1.21,44.9,52.6,-7.7,-0.20,14158,Marko Arnautović - 14,Łukasz Skorupski
+2021-2022,62,Bologna,it ITA,13,38,12,10,16,44,55,-11,46,1.21,44.9,52.6,-7.7,-0.2,14158,Marko Arnautović - 14,Łukasz Skorupski
 2021-2022,63,Aston Villa,eng ENG,14,38,13,6,19,52,54,-2,45,1.18,44.0,49.0,-4.9,-0.13,41681,Ollie Watkins - 11,Emiliano Martínez
 2021-2022,64,Montpellier,fr FRA,13,38,12,7,19,49,61,-12,43,1.13,42.7,57.1,-14.4,-0.38,10711,Elye Wahi - 10,Jonas Omlin
 2021-2022,65,Augsburg,de GER,14,34,10,8,16,39,56,-17,38,1.12,36.7,57.9,-21.2,-0.62,15197,Michael Gregoritsch - 9,Rafał Gikiewicz
@@ -69,22 +69,22 @@ Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Atte
 2021-2022,68,Espanyol,es ESP,14,38,10,12,16,40,53,-13,42,1.11,36.7,51.2,-14.5,-0.38,17362,Raúl de Tomás - 17,Diego López
 2021-2022,69,Angers,fr FRA,14,38,10,11,17,44,55,-11,41,1.08,46.5,50.0,-3.6,-0.09,7758,Sofiane Boufal - 8,Danijel Petković
 2021-2022,70,Empoli,it ITA,14,38,10,11,17,50,70,-20,41,1.08,44.9,66.0,-21.2,-0.56,6356,Andrea Pinamonti - 13,Guglielmo Vicario
-2021-2022,71,Southampton,eng ENG,15,38,9,13,16,43,67,-24,40,1.05,44.8,60.0,-15.2,-0.40,30134,James Ward-Prowse - 10,Fraser Forster
+2021-2022,71,Southampton,eng ENG,15,38,9,13,16,43,67,-24,40,1.05,44.8,60.0,-15.2,-0.4,30134,James Ward-Prowse - 10,Fraser Forster
 2021-2022,72,Getafe,es ESP,15,38,8,15,15,33,41,-8,39,1.03,29.3,38.6,-9.3,-0.25,8702,Enes Ünal - 16,David Soria
 2021-2022,73,Cádiz,es ESP,17,38,8,15,15,35,51,-16,39,1.03,39.5,48.3,-8.7,-0.23,14055,"Anthony Lozano, Álvaro Negredo - 7",Jeremías Ledesma
 2021-2022,74,Everton,eng ENG,16,38,11,6,21,43,66,-23,39,1.03,41.2,55.4,-14.2,-0.37,38446,Richarlison - 10,Jordan Pickford
 2021-2022,75,Mallorca,es ESP,16,38,10,9,19,36,63,-27,39,1.03,38.8,49.3,-10.5,-0.28,12712,"Vedat Muriqi, Salva Sevilla - 5",Manolo Reina
-2021-2022,76,Troyes,fr FRA,15,38,9,11,18,37,53,-16,38,1.00,39.2,50.8,-11.5,-0.30,9491,"Xavier Chavalerin, Ike Ugbo - 5",Gauthier Gallon
-2021-2022,77,Granada,es ESP,18,38,8,14,16,44,61,-17,38,1.00,39.0,61.2,-22.2,-0.59,13710,Jorge Molina - 10,Luís Maximiano
-2021-2022,78,Leeds United,eng ENG,17,38,9,11,18,42,79,-37,38,1.00,44.4,67.8,-23.5,-0.62,36308,Raphinha - 11,Illan Meslier
-2021-2022,79,Stuttgart,de GER,15,34,7,12,15,41,59,-18,33,0.97,43.7,54.0,-10.2,-0.30,27052,Sasa Kalajdzic - 6,Florian Müller
+2021-2022,76,Troyes,fr FRA,15,38,9,11,18,37,53,-16,38,1.0,39.2,50.8,-11.5,-0.3,9491,"Xavier Chavalerin, Ike Ugbo - 5",Gauthier Gallon
+2021-2022,77,Granada,es ESP,18,38,8,14,16,44,61,-17,38,1.0,39.0,61.2,-22.2,-0.59,13710,Jorge Molina - 10,Luís Maximiano
+2021-2022,78,Leeds United,eng ENG,17,38,9,11,18,42,79,-37,38,1.0,44.4,67.8,-23.5,-0.62,36308,Raphinha - 11,Illan Meslier
+2021-2022,79,Stuttgart,de GER,15,34,7,12,15,41,59,-18,33,0.97,43.7,54.0,-10.2,-0.3,27052,Sasa Kalajdzic - 6,Florian Müller
 2021-2022,80,Hertha BSC,de GER,16,34,9,6,19,37,71,-34,33,0.97,33.3,54.3,-21.0,-0.62,23500,Stevan Jovetić - 6,Alexander Schwolow
 2021-2022,81,Sampdoria,it ITA,15,38,10,6,22,46,63,-17,36,0.95,36.7,56.1,-19.3,-0.51,9417,Francesco Caputo - 11,Emil Audero
 2021-2022,82,Lorient,fr FRA,16,38,8,12,18,35,63,-28,36,0.95,41.3,50.5,-9.2,-0.24,12738,Terem Moffi - 8,Paul Nardi
 2021-2022,83,Spezia,it ITA,16,38,10,6,22,41,71,-30,36,0.95,40.1,64.4,-24.3,-0.64,6709,Daniele Verde - 8,Ivan Provedel
 2021-2022,84,Clermont Foot,fr FRA,17,38,9,9,20,38,69,-31,36,0.95,44.4,52.4,-8.0,-0.21,10569,Mohamed Lamine Bayo - 14,Ouparine Djoco
 2021-2022,85,Burnley,eng ENG,18,38,7,14,17,34,53,-19,35,0.92,39.7,57.1,-17.4,-0.46,19278,Maxwel Cornet - 9,Nick Pope
-2021-2022,86,Levante,es ESP,19,38,8,11,19,51,76,-25,35,0.92,55.1,55.0,+0.1,0.00,14961,José Luis Morales - 13,Dani Cárdenas
+2021-2022,86,Levante,es ESP,19,38,8,11,19,51,76,-25,35,0.92,55.1,55.0,0.1,0.0,14961,José Luis Morales - 13,Dani Cárdenas
 2021-2022,87,Saint-Étienne,fr FRA,18,38,7,11,20,42,77,-35,32,0.84,38.3,58.3,-20.0,-0.53,21806,Wahbi Khazri - 10,Paul Bernardoni
 2021-2022,88,Arminia,de GER,17,34,5,13,16,27,53,-26,28,0.82,26.3,62.8,-36.6,-1.08,16773,Masaya Okugawa - 8,Stefan Ortega
 2021-2022,89,Alavés,es ESP,20,38,8,7,23,31,65,-34,31,0.82,37.3,57.0,-19.7,-0.52,10952,Joselu - 14,Fernando Pacheco

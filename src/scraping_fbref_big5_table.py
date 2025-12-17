@@ -17,6 +17,16 @@ OUTPUT_FOLDER = (PROJECT_ROOT / "Data" / "Raw").resolve()
 
 TABLE_ID = "big5_table"
 
+def is_current_season(season: str) -> bool:
+    year = time.localtime().tm_year
+    month = time.localtime().tm_mon
+
+    if month >= 7:
+        current = f"{year}-{year+1}"
+    else:
+        current = f"{year-1}-{year}"
+
+    return season == current
 
 def _extract_table_html_from_comments(html: str, table_id: str) -> Optional[str]:
     """
@@ -44,58 +54,104 @@ def _extract_table_html_from_comments(html: str, table_id: str) -> Optional[str]
     return None
 
 
-def scrape_big5_table(season: str) -> pd.DataFrame:
+def scrape_big5_table(season: str, *, max_retries: int = 3) -> pd.DataFrame:
     """
-    Scraped die Big-5 League Table pro Saison:
-    https://fbref.com/en/comps/Big5/<season>/<season>-Big-5-European-Leagues-Stats
-    Table id: big5_table
-    """
-    url = f"https://fbref.com/en/comps/Big5/{season}/{season}-Big-5-European-Leagues-Stats"
+    Scrape Big-5 League Table per season from FBref.
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=[
-                "--disable-dev-shm-usage",
-                "--no-sandbox",
-                "--disable-gpu",
-                "--window-size=1920,1080",
-            ],
-        )
-        page = browser.new_page(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/117.0 Safari/537.36"
-            ),
-            viewport={"width": 1920, "height": 1080},
+    Uses:
+      - output=1 (often less cached / cleaner)
+      - cache-buster query param
+      - no-cache headers (via browser context)
+      - wait_until="networkidle"
+
+    URL pattern:
+      https://fbref.com/en/comps/Big5/<season>/<season>-Big-5-European-Leagues-Stats?output=1
+    """
+    if is_current_season(season):
+        url = "https://fbref.com/en/comps/Big5/Big-5-European-Leagues-Stats?output=1"
+    else:
+        url = (
+            f"https://fbref.com/en/comps/Big5/{season}/"
+            f"{season}-Big-5-European-Leagues-Stats?output=1"
         )
 
-        page.goto(url, timeout=0, wait_until="load")
-        # kleine Wartezeit, damit FBref alles rendert
-        time.sleep(random.uniform(1.0, 2.0))
+    last_err: Exception | None = None
 
-        html = page.content()
-        browser.close()
+    for attempt in range(1, max_retries + 1):
+        # cache-buster each attempt
+        url = f"{url}&_={int(time.time())}"
 
-    table_html = _extract_table_html_from_comments(html, TABLE_ID)
-    if table_html is None:
-        raise RuntimeError(f"[Big5] Table id '{TABLE_ID}' not found on {url}")
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(
+                    headless=True,
+                    args=[
+                        "--disable-dev-shm-usage",
+                        "--no-sandbox",
+                        "--disable-gpu",
+                        "--window-size=1920,1080",
+                    ],
+                )
 
-    df = pd.read_html(StringIO(table_html), attrs={"id": TABLE_ID})[0]
+                context = browser.new_context(
+                    user_agent=(
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/121.0 Safari/537.36"
+                    ),
+                    viewport={"width": 1920, "height": 1080},
+                    extra_http_headers={
+                        "Cache-Control": "no-cache, no-store, must-revalidate",
+                        "Pragma": "no-cache",
+                        "Expires": "0",
+                    },
+                )
 
-    df.insert(0, "Season", season)
+                page = context.new_page()
 
-    # MultiIndex flatten, falls vorhanden
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.droplevel(0)
+                print(f"[Big5] Fetching (attempt {attempt}/{max_retries}): {url}")
+                page.goto(url, wait_until="networkidle", timeout=60000)
 
-    # Headerzeilen raus (falls doppelt eingelesen)
-    if "Squad" in df.columns:
-        df = df[df["Squad"] != "Squad"]
+                # small jitter (sometimes helps FBref)
+                time.sleep(random.uniform(0.7, 1.4))
 
-    df = df.loc[:, ~df.columns.duplicated()]
-    return df
+                html = page.content()
+                browser.close()
+
+            table_html = _extract_table_html_from_comments(html, TABLE_ID)
+            if table_html is None:
+                raise RuntimeError(f"[Big5] Table id '{TABLE_ID}' not found on {url}")
+
+            df = pd.read_html(StringIO(table_html), attrs={"id": TABLE_ID})[0]
+
+            # MultiIndex flatten, falls vorhanden
+            if isinstance(df.columns, pd.MultiIndex):
+                df.columns = df.columns.droplevel(0)
+
+            # Headerzeilen raus (falls doppelt eingelesen)
+            if "Squad" in df.columns:
+                df = df[df["Squad"] != "Squad"]
+
+            df = df.loc[:, ~df.columns.duplicated()].copy()
+            df.insert(0, "Season", season)
+
+            # quick sanity print (optional)
+            cols = [c for c in ["Squad", "Pts/MP", "Pts", "GD", "xGD"] if c in df.columns]
+            if cols:
+                print("[Big5] Top rows (sanity):")
+                print(df[cols].head(5).to_string(index=False))
+            print(f"[Big5] Rows scraped: {len(df)}")
+
+            return df
+
+        except (PlaywrightTimeoutError, Exception) as e:
+            last_err = e
+            print(f"[Big5] Attempt {attempt} failed: {type(e).__name__}: {e}")
+            if attempt < max_retries:
+                time.sleep(2.0 + attempt)  # backoff
+            continue
+
+    raise RuntimeError(f"[Big5] Failed after {max_retries} attempts. Last error: {last_err}")
 
 
 def save_big5_table(df: pd.DataFrame, season: str, output_folder: Path | str = OUTPUT_FOLDER) -> Path:
@@ -120,5 +176,6 @@ def run_pipeline_for_season(season: str, output_folder: Path | str = OUTPUT_FOLD
 
 if __name__ == "__main__":
     import sys
-    season = sys.argv[1] if len(sys.argv) > 1 else "2024-2025"
+
+    season = sys.argv[1] if len(sys.argv) > 1 else "2025-2026"
     run_pipeline_for_season(season)
