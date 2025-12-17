@@ -140,9 +140,12 @@ BAND_ORDER = [
     "Below Big-5 Level",
 ]
 
-# ---------- kleine Helper statt externem utils-Modul ----------
+VERSION_FILE = Path("Data/Processed/_last_update.txt")
 
-# ---------- kleine Helper statt externem utils-Modul ----------
+def get_data_version() -> str:
+    if VERSION_FILE.exists():
+        return VERSION_FILE.read_text().strip()
+    return "dev"
 
 def _get_coordinates(n: int) -> np.ndarray:
     """
@@ -567,7 +570,7 @@ class Radar:
 # Data loading (cached)
 # -------------------------------------------------------------------
 @st.cache_data
-def load_data():
+def load_data(version: str):
     try:
         from src.multi_season import load_all_seasons, aggregate_player_scores
         from src.squad import compute_squad_scores
@@ -3440,7 +3443,10 @@ def main():
         unsafe_allow_html=True,
     )
 
-    df_all, df_agg, df_squad, df_big5 = load_data()
+    data_version = get_data_version()
+    df_all, df_agg, df_squad, df_big5 = load_data(data_version)
+
+    st.caption(f"🕒 Data last updated: {data_version}")
 
     if "Pos_raw" not in df_all.columns:
         df_all["Pos_raw"] = df_all["Pos"]
