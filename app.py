@@ -3433,7 +3433,6 @@ def main():
     )
 
     data_version = get_data_version()
-    st.caption(f"🕒 Data version: {data_version}")
 
     df_all, df_agg, df_squad, df_big5 = load_data(data_version) 
 
