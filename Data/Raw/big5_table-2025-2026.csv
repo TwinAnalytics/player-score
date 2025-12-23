@@ -1,24 +1,24 @@
 Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Last 5,Attendance,Top Team Scorer,Goalkeeper
-2025-2026,1,Bayern Munich,de GER,1,15,13,2,0,55,11,44,41,2.73,43.3,10.3,33.0,2.2,W W W D W,75000,Harry Kane - 19,Manuel Neuer
-2025-2026,2,Barcelona,es ESP,1,18,15,1,2,51,20,31,46,2.56,41.3,23.4,17.9,0.99,W W W W W,36275,Ferrán Torres - 11,Joan García
+2025-2026,1,Bayern Munich,de GER,1,15,13,2,0,55,11,44,41,2.73,43.6,10.5,33.1,2.21,W W W D W,75000,Harry Kane - 19,Manuel Neuer
+2025-2026,2,Barcelona,es ESP,1,18,15,1,2,51,20,31,46,2.56,41.5,23.3,18.1,1.01,W W W W W,36275,Ferrán Torres - 11,Joan García
 2025-2026,3,Real Madrid,es ESP,2,18,13,3,2,36,16,20,42,2.33,41.9,20.6,21.3,1.18,D W L W W,73658,Kylian Mbappé - 18,Thibaut Courtois
 2025-2026,4,Lens,fr FRA,1,16,12,1,3,28,13,15,37,2.31,30.5,22.6,7.9,0.49,W W W W W,37306,Odsonne Édouard - 7,Robin Risser
 2025-2026,5,Arsenal,eng ENG,1,17,12,3,2,31,10,21,39,2.29,28.5,9.8,18.7,1.1,D W L W W,60177,Viktor Gyökeres - 5,David Raya
 2025-2026,6,Paris S-G,fr FRA,2,16,11,3,2,35,14,21,36,2.25,29.3,14.4,14.9,0.93,W W L W W,47676,"João Neves, Bradley Barcola - 5",Lucas Chevalier
 2025-2026,7,Inter,it ITA,1,15,11,0,4,34,14,20,33,2.2,27.3,13.4,13.9,0.93,W L W W W,71934,Lautaro Martínez - 8,Yann Sommer
-2025-2026,8,Villarreal,es ESP,4,16,11,2,3,31,15,16,35,2.19,26.6,18.6,8.0,0.5,W W W W L,18209,Alberto Moleiro - 6,Luiz Lúcio Reis Júnior
+2025-2026,8,Villarreal,es ESP,4,16,11,2,3,31,15,16,35,2.19,26.5,18.8,7.7,0.48,W W W W L,18209,Alberto Moleiro - 6,Luiz Lúcio Reis Júnior
 2025-2026,9,Manchester City,eng ENG,2,17,12,1,4,41,16,25,37,2.18,32.4,18.8,13.7,0.8,W W W W W,52382,Erling Haaland - 19,Gianluigi Donnarumma
 2025-2026,10,Dortmund,de GER,2,15,9,5,1,26,12,14,32,2.13,23.0,14.6,8.4,0.56,D W W D W,81365,Serhou Guirassy - 5,Gregor Kobel
 2025-2026,11,Milan,it ITA,2,15,9,5,1,24,13,11,32,2.13,23.3,16.9,6.4,0.43,D W W W D,73012,Christian Pulisic - 7,Mike Maignan
-2025-2026,12,Aston Villa,eng ENG,3,17,11,3,3,27,18,9,36,2.12,17.6,22.7,-5.1,-0.3,W W W W W,41687,Morgan Rogers - 7,Emiliano Martínez
+2025-2026,12,Aston Villa,eng ENG,3,17,11,3,3,27,18,9,36,2.12,17.9,22.7,-4.8,-0.28,W W W W W,41687,Morgan Rogers - 7,Emiliano Martínez
 2025-2026,13,Napoli,it ITA,3,15,10,1,4,22,13,9,31,2.07,21.3,16.1,5.2,0.35,L W W W L,50716,"Kevin De Bruyne, Andre-Frank Zambo Anguissa... - 4",Vanja Milinković-Savić
-2025-2026,14,Atlético Madrid,es ESP,3,18,11,4,3,33,16,17,37,2.06,29.1,20.6,8.6,0.48,W L L W W,61932,Julián Álvarez - 7,Jan Oblak
+2025-2026,14,Atlético Madrid,es ESP,3,18,11,4,3,33,16,17,37,2.06,29.1,20.6,8.5,0.47,W L L W W,61932,Julián Álvarez - 7,Jan Oblak
 2025-2026,15,Marseille,fr FRA,3,16,10,2,4,36,15,21,32,2.0,29.8,17.0,12.8,0.8,W W D L W,64973,Mason Greenwood - 11,Gerónimo Rulli
 2025-2026,16,Lille,fr FRA,4,16,10,2,4,33,20,13,32,2.0,28.8,21.4,7.3,0.46,L W W W W,43371,"Hákon Arnar Haraldsson, Hamza Igamane - 5",Berke Özer
-2025-2026,17,Leverkusen,de GER,3,15,9,2,4,33,20,13,29,1.93,27.0,17.8,9.3,0.62,W L L W W,29988,Patrik Schick - 6,Mark Flekken
-2025-2026,18,RB Leipzig,de GER,4,15,9,2,4,30,19,11,29,1.93,27.9,20.7,7.2,0.48,W D W L L,46725,"Christoph Baumgartner, Yan Diomandé - 6",Péter Gulácsi
-2025-2026,19,Roma,it ITA,4,16,10,0,6,17,10,7,30,1.88,19.6,19.1,0.5,0.03,W L L W L,62671,Matìas Soulé - 4,Mile Svilar
-2025-2026,20,Espanyol,es ESP,5,16,9,3,4,20,16,4,30,1.88,23.9,17.5,6.4,0.4,L W W W W,28743,Pere Milla - 5,Marko Dmitrović
+2025-2026,17,Espanyol,es ESP,5,17,10,3,4,22,17,5,33,1.94,24.8,19.1,5.7,0.34,W W W W W,28743,Pere Milla - 6,Marko Dmitrović
+2025-2026,18,Leverkusen,de GER,3,15,9,2,4,33,20,13,29,1.93,27.0,17.8,9.3,0.62,W L L W W,29988,Patrik Schick - 6,Mark Flekken
+2025-2026,19,RB Leipzig,de GER,4,15,9,2,4,30,19,11,29,1.93,27.9,20.7,7.2,0.48,W D W L L,46725,"Christoph Baumgartner, Yan Diomandé - 6",Péter Gulácsi
+2025-2026,20,Roma,it ITA,4,16,10,0,6,17,10,7,30,1.88,19.6,19.1,0.5,0.03,W L L W L,62671,Matìas Soulé - 4,Mile Svilar
 2025-2026,21,Juventus,it ITA,5,16,8,5,3,21,15,6,29,1.81,23.0,14.7,8.2,0.51,D W L W W,40928,Kenan Yıldız - 5,Michele Di Gregorio
 2025-2026,22,Hoffenheim,de GER,5,15,8,3,4,29,20,9,27,1.8,22.5,22.6,-0.1,-0.01,D W L W D,27358,Fisnik Asllani - 6,Oliver Baumann
 2025-2026,23,Stuttgart,de GER,6,15,8,2,5,25,22,3,26,1.73,21.8,20.3,1.5,0.1,D L L W D,59500,Deniz Undav - 8,Alexander Nübel
@@ -28,48 +28,48 @@ Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Last
 2025-2026,27,Rennes,fr FRA,6,16,7,6,3,27,24,3,27,1.69,24.3,25.1,-0.8,-0.05,W W W L W,27534,Esteban Lepaul - 8,Brice Samba
 2025-2026,28,Bologna,it ITA,6,15,7,4,4,23,13,10,25,1.67,21.0,16.9,4.1,0.28,W W L D L,28351,Riccardo Orsolini - 6,Łukasz Skorupski
 2025-2026,29,Eint Frankfurt,de GER,7,15,7,4,4,30,30,0,25,1.67,22.2,19.4,2.8,0.19,W D L W D,59043,Jonathan Burkardt - 8,Michael Zetterer
-2025-2026,30,Betis,es ESP,6,17,7,7,3,29,19,10,28,1.65,25.9,19.8,6.1,0.36,D W L D W,58350,Cucho - 7,Álvaro Vallés
+2025-2026,30,Betis,es ESP,6,17,7,7,3,29,19,10,28,1.65,26.0,19.8,6.2,0.36,D W L D W,58350,Cucho - 7,Álvaro Vallés
 2025-2026,31,Como,it ITA,7,15,6,6,3,19,12,7,24,1.6,19.3,15.6,3.7,0.25,D W W L L,11202,Nicolás Paz - 5,Jean Butez
 2025-2026,32,Sunderland,eng ENG,6,17,7,6,4,19,17,2,27,1.59,14.7,22.2,-7.4,-0.44,W D L W D,45968,Wilson Isidor - 4,Robin Roefs
-2025-2026,33,Manchester Utd,eng ENG,7,17,7,5,5,31,28,3,26,1.53,31.5,22.7,8.9,0.52,W D W D L,74004,Bryan Mbeumo - 6,Senne Lammens
+2025-2026,33,Manchester Utd,eng ENG,7,17,7,5,5,31,28,3,26,1.53,31.5,23.0,8.5,0.5,W D W D L,74004,Bryan Mbeumo - 6,Senne Lammens
 2025-2026,34,Crystal Palace,eng ENG,8,17,7,5,5,21,19,2,26,1.53,27.7,21.1,6.6,0.39,L W W L L,25005,Jean-Philippe Mateta - 7,Dean Henderson
 2025-2026,35,Lazio,it ITA,8,16,6,5,5,17,11,6,23,1.44,17.0,20.4,-3.4,-0.21,W L D W D,41866,"Mattia Zaccagni, Matteo Cancellieri - 3",Ivan Provedel
 2025-2026,36,Toulouse,fr FRA,7,16,6,5,5,24,19,5,23,1.44,23.1,19.5,3.6,0.22,D L D W W,23843,Yann Gboho - 5,Guillaume Restes
 2025-2026,37,Strasbourg,fr FRA,8,16,7,2,7,25,20,5,23,1.44,24.6,18.5,6.1,0.38,W L L L D,25692,Joaquín Panichelli - 9,Mike Penders
 2025-2026,38,Monaco,fr FRA,9,16,7,2,7,26,27,-1,23,1.44,31.1,27.5,3.6,0.22,L L W L L,9231,Ansu Fati - 5,Philipp Köhn
 2025-2026,39,Brighton,eng ENG,9,17,6,6,5,25,23,2,24,1.41,26.5,22.5,4.0,0.23,W L D L D,31445,Danny Welbeck - 7,Bart Verbruggen
-2025-2026,40,Everton,eng ENG,10,17,7,3,7,18,20,-2,24,1.41,19.7,23.9,-4.1,-0.24,L W W L L,52099,"Kiernan Dewsbury-Hall, Iliman Ndiaye - 4",Jordan Pickford
+2025-2026,40,Everton,eng ENG,10,17,7,3,7,18,20,-2,24,1.41,19.7,23.9,-4.1,-0.24,L W W L L,52145,"Kiernan Dewsbury-Hall, Iliman Ndiaye - 4",Jordan Pickford
 2025-2026,41,Union Berlin,de GER,8,15,6,3,6,20,23,-3,21,1.4,17.4,20.0,-2.6,-0.17,W L L W W,21977,Ilyas Ansah - 5,Frederik Rønnow
-2025-2026,42,Atalanta,it ITA,9,16,5,7,4,20,18,2,22,1.38,22.3,15.6,6.7,0.42,L W L W W,22157,Gianluca Scamacca - 5,Marco Carnesecchi
+2025-2026,42,Atalanta,it ITA,9,16,5,7,4,20,18,2,22,1.38,22.1,15.5,6.6,0.41,L W L W W,22157,Gianluca Scamacca - 5,Marco Carnesecchi
 2025-2026,43,Angers,fr FRA,10,16,6,4,6,17,18,-1,22,1.38,16.2,27.2,-11.0,-0.68,W W L W W,12214,Sidiki Cherif - 4,Hervé Koffi
 2025-2026,44,Newcastle Utd,eng ENG,11,17,6,5,6,23,22,1,23,1.35,23.2,18.3,4.8,0.28,W D W L D,52152,Nick Woltemade - 7,Nick Pope
 2025-2026,45,Celta Vigo,es ESP,7,17,5,8,4,20,19,1,23,1.35,20.1,22.6,-2.5,-0.15,W L W W D,20252,Borja Iglesias - 5,Ionuț Radu
 2025-2026,46,Brentford,eng ENG,12,17,7,2,8,24,25,-1,23,1.35,23.7,22.2,1.5,0.09,W L L D W,17076,Thiago - 11,Caoimhín Kelleher
-2025-2026,47,Athletic Club,es ESP,8,17,7,2,8,15,22,-7,23,1.35,22.7,17.6,5.1,0.3,L W L W L,48332,"Roberto Navarro, Nico Williams - 3",Unai Simón
+2025-2026,47,Fulham,eng ENG,13,17,7,2,8,24,26,-2,23,1.35,18.4,22.4,-4.0,-0.24,W L L W W,27081,Harry Wilson - 5,Bernd Leno
 2025-2026,48,Freiburg,de GER,9,15,5,5,5,25,26,-1,20,1.33,23.8,19.7,4.0,0.27,L W L D W,34186,Vincenzo Grifo - 5,Noah Atubolu
 2025-2026,49,Sassuolo,it ITA,10,16,6,3,7,21,20,1,21,1.31,16.6,22.2,-5.6,-0.35,D L W D L,15956,"Domenico Berardi, Andrea Pinamonti - 4",Arijanet Muric
 2025-2026,50,Cremonese,it ITA,11,16,5,6,5,18,18,0,21,1.31,15.6,23.2,-7.5,-0.47,L W W L D,12644,Federico Bonazzoli - 5,Emil Audero
-2025-2026,51,Udinese,it ITA,12,16,6,3,7,17,27,-10,21,1.31,17.3,22.1,-4.8,-0.3,L W L W L,22036,"Keinan Davis, Nicolò Zaniolo - 4",Maduka Okoye
-2025-2026,52,Tottenham,eng ENG,13,17,6,4,7,26,23,3,22,1.29,16.2,22.6,-6.5,-0.38,L D W L L,61001,Richarlison - 7,Guglielmo Vicario
-2025-2026,53,Elche,es ESP,9,17,5,7,5,23,20,3,22,1.29,19.8,23.8,-4.0,-0.23,D L W L W,26990,Rafa Mir - 6,Iñaki Peña
-2025-2026,54,Bournemouth,eng ENG,14,17,5,7,5,26,29,-3,22,1.29,24.1,23.2,1.0,0.06,L L D D D,11133,Antoine Semenyo - 8,Đorđe Petrović
-2025-2026,55,Fulham,eng ENG,15,16,6,2,8,23,26,-3,20,1.25,16.9,21.8,-4.9,-0.31,W W L L W,27081,Harry Wilson - 5,Bernd Leno
+2025-2026,51,Udinese,it ITA,12,16,6,3,7,17,27,-10,21,1.31,17.3,22.1,-4.9,-0.3,L W L W L,22036,"Keinan Davis, Nicolò Zaniolo - 4",Maduka Okoye
+2025-2026,52,Tottenham,eng ENG,14,17,6,4,7,26,23,3,22,1.29,16.2,22.6,-6.5,-0.38,L D W L L,61001,Richarlison - 7,Guglielmo Vicario
+2025-2026,53,Elche,es ESP,9,17,5,7,5,23,20,3,22,1.29,19.9,23.8,-3.9,-0.23,D L W L W,26990,Rafa Mir - 6,Iñaki Peña
+2025-2026,54,Bournemouth,eng ENG,15,17,5,7,5,26,29,-3,22,1.29,24.1,23.2,1.0,0.06,L L D D D,11133,Antoine Semenyo - 8,Đorđe Petrović
+2025-2026,55,Athletic Club,es ESP,8,18,7,2,9,16,24,-8,23,1.28,24.2,18.5,5.7,0.32,W L W L L,48284,"Roberto Navarro, Nico Williams - 3",Unai Simón
 2025-2026,56,Torino,it ITA,13,16,5,5,6,16,26,-10,20,1.25,19.0,22.3,-3.3,-0.21,L L L W W,21759,"Nikola Vlašić, Giovanni Simeone - 4",Franco Israel
 2025-2026,57,Brest,fr FRA,11,16,5,4,7,21,27,-6,19,1.19,24.2,23.7,0.5,0.03,L W W W L,14563,Romain Del Castillo - 6,Radosław Majecki
 2025-2026,58,Sevilla,es ESP,10,17,6,2,9,24,26,-2,20,1.18,17.2,27.4,-10.3,-0.6,L L D W L,37607,"Ruben Vargas, Adams Akor... - 3",Odysseas Vlachodimos
-2025-2026,59,Getafe,es ESP,11,17,6,2,9,13,22,-9,20,1.18,12.1,17.6,-5.5,-0.32,L W L L L,8331,Borja Mayoral - 4,David Soria
-2025-2026,60,Nott'ham Forest,eng ENG,17,16,5,3,8,17,25,-8,18,1.13,19.5,22.7,-3.2,-0.2,W L W L W,30434,"Morgan Gibbs-White, Callum Hudson-Odoi - 3",Matz Sels
-2025-2026,61,Lorient,fr FRA,12,16,4,6,6,19,28,-9,18,1.13,21.3,21.7,-0.4,-0.02,D D W W D,15519,Pablo Pagis - 5,Yvon Mvogo
-2025-2026,62,Werder Bremen,de GER,10,15,4,5,6,18,28,-10,17,1.13,17.6,26.1,-8.4,-0.56,L D L L D,41600,Jens Stage - 5,Mio Backhaus
-2025-2026,63,Leeds United,eng ENG,16,17,5,4,8,24,31,-7,19,1.12,23.9,23.8,0.1,0.01,L W D D W,36708,Dominic Calvert-Lewin - 7,Lucas Perri
-2025-2026,64,Köln,de GER,11,15,4,4,7,22,24,-2,16,1.07,20.7,23.7,-3.0,-0.2,L D D L L,50000,Said El Mala - 6,Marvin Schwäbe
-2025-2026,65,Gladbach,de GER,12,15,4,4,7,18,24,-6,16,1.07,19.4,21.8,-2.5,-0.16,W D W L L,51340,Haris Tabakovic - 7,Moritz Nicolas
-2025-2026,66,Lecce,it ITA,14,15,4,4,7,11,19,-8,16,1.07,12.8,18.8,-6.1,-0.41,D L W L W,25457,"Lassana Coulibaly, Konan N'dri... - 2",Wladimiro Falcone
-2025-2026,67,Hamburger SV,de GER,13,15,4,4,7,16,25,-9,16,1.07,18.1,22.2,-4.1,-0.27,L W W L D,56888,"Albert Sambi Lokonga, Rayan Philippe - 4",Daniel Heuer Fernandes
-2025-2026,68,Osasuna,es ESP,12,17,5,3,9,17,20,-3,18,1.06,18.7,22.6,-3.9,-0.23,L D W L W,20140,Ante Budimir - 6,Sergio Herrera
-2025-2026,69,Mallorca,es ESP,13,17,4,6,7,19,24,-5,18,1.06,17.2,27.0,-9.8,-0.58,L D D W D,17378,Vedat Muriqi - 9,Leo Román
-2025-2026,70,Alavés,es ESP,14,17,5,3,9,14,20,-6,18,1.06,18.0,18.8,-0.8,-0.05,L L W L L,16814,Carlos Vicente - 4,Antonio Sivera
-2025-2026,71,Rayo Vallecano,es ESP,15,17,4,6,7,13,20,-7,18,1.06,22.8,22.5,0.4,0.02,D D L D L,12786,Jorge de Frutos - 4,Augusto Batalla
+2025-2026,59,Getafe,es ESP,11,17,6,2,9,13,22,-9,20,1.18,12.1,17.7,-5.6,-0.33,L W L L L,8331,Borja Mayoral - 4,David Soria
+2025-2026,60,Lorient,fr FRA,12,16,4,6,6,19,28,-9,18,1.13,21.3,21.7,-0.4,-0.02,D D W W D,15519,Pablo Pagis - 5,Yvon Mvogo
+2025-2026,61,Werder Bremen,de GER,10,15,4,5,6,18,28,-10,17,1.13,17.6,26.1,-8.4,-0.56,L D L L D,41600,Jens Stage - 5,Mio Backhaus
+2025-2026,62,Leeds United,eng ENG,16,17,5,4,8,24,31,-7,19,1.12,23.9,23.8,0.1,0.01,L W D D W,36708,Dominic Calvert-Lewin - 7,Lucas Perri
+2025-2026,63,Köln,de GER,11,15,4,4,7,22,24,-2,16,1.07,20.7,23.7,-3.0,-0.2,L D D L L,50000,Said El Mala - 6,Marvin Schwäbe
+2025-2026,64,Gladbach,de GER,12,15,4,4,7,18,24,-6,16,1.07,19.4,21.8,-2.5,-0.16,W D W L L,51340,Haris Tabakovic - 7,Moritz Nicolas
+2025-2026,65,Lecce,it ITA,14,15,4,4,7,11,19,-8,16,1.07,12.8,18.8,-6.1,-0.41,D L W L W,25457,"Lassana Coulibaly, Konan N'dri... - 2",Wladimiro Falcone
+2025-2026,66,Hamburger SV,de GER,13,15,4,4,7,16,25,-9,16,1.07,18.1,22.2,-4.1,-0.27,L W W L D,56888,"Albert Sambi Lokonga, Rayan Philippe - 4",Daniel Heuer Fernandes
+2025-2026,67,Osasuna,es ESP,12,17,5,3,9,17,20,-3,18,1.06,18.7,22.6,-3.9,-0.23,L D W L W,20140,Ante Budimir - 6,Sergio Herrera
+2025-2026,68,Mallorca,es ESP,13,17,4,6,7,19,24,-5,18,1.06,17.2,27.0,-9.8,-0.58,L D D W D,17378,Vedat Muriqi - 9,Leo Román
+2025-2026,69,Alavés,es ESP,14,17,5,3,9,14,20,-6,18,1.06,18.0,18.8,-0.8,-0.05,L L W L L,16814,Carlos Vicente - 4,Antonio Sivera
+2025-2026,70,Rayo Vallecano,es ESP,15,17,4,6,7,13,20,-7,18,1.06,22.9,22.6,0.3,0.02,D D L D L,12786,Jorge de Frutos - 4,Augusto Batalla
+2025-2026,71,Nott'ham Forest,eng ENG,17,17,5,3,9,17,26,-9,18,1.06,20.1,24.2,-4.1,-0.24,L W L W L,30434,"Morgan Gibbs-White, Callum Hudson-Odoi - 3",Matz Sels
 2025-2026,72,Nice,fr FRA,13,16,5,2,9,19,29,-10,17,1.06,18.0,29.5,-11.4,-0.71,L L L L L,22102,Sofiane Diop - 6,Yehvann Diouf
 2025-2026,73,Real Sociedad,es ESP,16,17,4,5,8,21,25,-4,17,1.0,22.6,22.4,0.2,0.01,W L L L D,30890,Mikel Oyarzabal - 5,Álex Remiro
 2025-2026,74,Wolfsburg,de GER,14,15,4,3,8,23,28,-5,15,1.0,20.5,25.1,-4.7,-0.31,L D W W L,23674,Mohamed Amoura - 6,Kamil Grabara
@@ -79,19 +79,19 @@ Season,Rk,Squad,Country,LgRk,MP,W,D,L,GF,GA,GD,Pts,Pts/MP,xG,xGA,xGD,xGD/90,Last
 2025-2026,78,Valencia,es ESP,17,17,3,7,7,16,26,-10,16,0.94,18.2,22.2,-4.0,-0.23,W D D L D,44487,Hugo Duro - 6,Julen Agirrezabala
 2025-2026,79,Parma,it ITA,17,15,3,5,7,10,18,-8,14,0.93,14.5,19.0,-4.5,-0.3,D W L W L,18722,Mateo Pellegrino - 4,Zion Suzuki
 2025-2026,80,Augsburg,de GER,15,15,4,2,9,17,28,-11,14,0.93,16.7,26.0,-9.3,-0.62,W L W L D,29743,Fabian Rieder - 3,Finn Dahmen
-2025-2026,81,Genoa,it ITA,16,16,3,5,8,16,24,-8,14,0.88,21.3,18.9,2.4,0.15,D W W L L,31126,Leo Skiri Østigård - 3,Nicola Leali
-2025-2026,82,Girona,es ESP,18,17,3,6,8,15,33,-18,15,0.88,18.5,29.7,-11.2,-0.66,D D L W L,11628,"Cristhian Stuani, Viktor Tsyhankov... - 3",Paulo Gazzaniga
+2025-2026,81,Genoa,it ITA,16,16,3,5,8,16,24,-8,14,0.88,21.3,18.7,2.6,0.16,D W W L L,31052,Leo Skiri Østigård - 3,Nicola Leali
+2025-2026,82,Girona,es ESP,18,17,3,6,8,15,33,-18,15,0.88,18.6,29.7,-11.1,-0.66,D D L W L,11628,"Cristhian Stuani, Viktor Tsyhankov... - 3",Paulo Gazzaniga
 2025-2026,83,Hellas Verona,it ITA,18,15,2,6,7,13,22,-9,12,0.8,17.0,18.7,-1.8,-0.12,D L L W W,24201,Gift Orban - 4,Lorenzo Montipò
-2025-2026,84,St. Pauli,de GER,16,15,3,3,9,13,26,-13,12,0.8,12.1,23.6,-11.5,-0.77,L L D W D,29503,Andreas Hountondji - 4,Nikola Vasilj
+2025-2026,84,St. Pauli,de GER,16,15,3,3,9,13,26,-13,12,0.8,12.2,23.7,-11.5,-0.77,L L D W D,29503,Andreas Hountondji - 4,Nikola Vasilj
 2025-2026,85,West Ham,eng ENG,18,17,3,4,10,19,35,-16,13,0.76,17.4,27.9,-10.5,-0.62,L D D L L,62454,Jarrod Bowen - 5,Alphonse Areola
 2025-2026,86,Auxerre,fr FRA,16,16,3,3,10,14,25,-11,12,0.75,19.6,22.1,-2.5,-0.15,L D D W L,16403,Lassine Sinayoko - 6,Donovan Léon
-2025-2026,87,Heidenheim,de GER,17,15,3,2,10,13,34,-21,11,0.73,18.6,28.0,-9.4,-0.63,L W W L L,14750,Stefan Schimmer - 4,Diant Ramaj
+2025-2026,87,Heidenheim,de GER,17,15,3,2,10,13,34,-21,11,0.73,18.8,28.3,-9.5,-0.63,L W W L L,14750,Stefan Schimmer - 4,Diant Ramaj
 2025-2026,88,Pisa,it ITA,19,16,1,8,7,12,22,-10,11,0.69,17.7,23.1,-5.3,-0.33,D L L L D,11306,"Stefano Moreo, M'Bala Nzola - 3",Adrian Šemper
 2025-2026,89,Nantes,fr FRA,17,16,2,5,9,14,28,-14,11,0.69,12.9,27.8,-14.9,-0.93,D D L L L,29680,Youssef El-Arabi - 3,Anthony Lopes
 2025-2026,90,Metz,fr FRA,18,16,3,2,11,17,37,-20,11,0.69,17.8,31.7,-13.9,-0.87,W L L L L,23061,Gauthier Hein - 5,Jonathan Fischer
 2025-2026,91,Burnley,eng ENG,19,17,3,2,12,19,34,-15,11,0.65,14.8,33.9,-19.1,-1.12,L L L L D,21028,Zian Flemming - 5,Martin Dúbravka
 2025-2026,92,Oviedo,es ESP,19,17,2,5,10,7,26,-19,11,0.65,13.8,28.8,-15.0,-0.88,D L D L D,25469,Salomón Rondón - 2,Aarón Escandell
 2025-2026,93,Levante,es ESP,20,16,2,4,10,17,29,-12,10,0.63,20.4,27.3,-6.9,-0.43,L L L L D,20819,Karl Etta Eyong - 5,Mathew Ryan
-2025-2026,94,Fiorentina,it ITA,20,16,1,6,9,17,27,-10,9,0.56,22.8,22.1,0.7,0.04,D L L L W,20329,Rolando Mandragora - 5,David de Gea
-2025-2026,95,Mainz 05,de GER,18,15,1,5,9,13,26,-13,8,0.53,17.0,27.7,-10.7,-0.71,D L L D D,31840,Nadiem Amiri - 3,Robin Zentner
+2025-2026,94,Fiorentina,it ITA,20,16,1,6,9,17,27,-10,9,0.56,22.9,22.1,0.8,0.05,D L L L W,20329,Rolando Mandragora - 5,David de Gea
+2025-2026,95,Mainz 05,de GER,18,15,1,5,9,13,26,-13,8,0.53,17.1,27.7,-10.6,-0.71,D L L D D,31840,Nadiem Amiri - 3,Robin Zentner
 2025-2026,96,Wolves,eng ENG,20,17,0,2,15,9,37,-28,2,0.12,14.9,25.3,-10.5,-0.61,L L L L L,29753,"Hwang Hee-chan, Santiago Bueno... - 1",Sam Johnstone
