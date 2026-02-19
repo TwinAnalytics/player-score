@@ -618,6 +618,7 @@ html, body {
   transform: translateX(60px);
   transition: opacity .4s ease, transform .4s ease;
   pointer-events: none;
+  background: var(--bg);
 }
 .slide.active {
   opacity: 1;

@@ -1301,7 +1301,7 @@ def render_toplist_bar(
         st.info(f"Keine Spalte '{metric_col}' gefunden.")
         return None
 
-    base_cols = ["Player", "Squad", metric_col, "Pos", "Comp"]
+    base_cols = ["Player", "Squad", metric_col, "Pos", "Comp", "Age", "Min"]
     cols_available = [c for c in base_cols if c in df.columns]
 
     df_plot = (
@@ -1364,6 +1364,15 @@ def render_toplist_bar(
     if season is not None:
         full_title += f" (Season {season})"
 
+    _tooltip = [alt.Tooltip("Squad:N", title="Club")]
+    if "Comp" in df_plot.columns:
+        _tooltip.append(alt.Tooltip("Comp:N", title="League"))
+    _tooltip.append(alt.Tooltip(f"{metric_col}:Q", title=metric_label, format=".0f"))
+    if "Age" in df_plot.columns:
+        _tooltip.append(alt.Tooltip("Age:Q", title="Age", format=".0f"))
+    if "Min" in df_plot.columns:
+        _tooltip.append(alt.Tooltip("Min:Q", title="Minutes", format=".0f"))
+
     bars = (
         alt.Chart(df_plot)
         .mark_bar(cornerRadiusTopRight=6, cornerRadiusBottomRight=6)
@@ -1384,11 +1393,7 @@ def render_toplist_bar(
                     grid=False,
                 ),
             ),
-            tooltip=[
-                "Player",
-                "Squad",
-                alt.Tooltip(f"{metric_col}:Q", title=metric_label, format=".0f"),
-            ],
+            tooltip=_tooltip,
             color=alt.value(VALUE_COLOR),
         )
     )
@@ -1407,6 +1412,7 @@ def render_toplist_bar(
             x=alt.X(f"{metric_col}:Q", scale=x_scale),
             y=alt.Y("Player_order:N", sort=y_order),
             text=alt.Text(f"{metric_col}:Q", format=".0f"),
+            tooltip=_tooltip,
         )
     )
 
@@ -1423,6 +1429,7 @@ def render_toplist_bar(
             x=alt.X(f"{metric_col}:Q", scale=x_scale),
             y=alt.Y("Player_order:N", sort=y_order),
             text="Player",
+            tooltip=_tooltip,
         )
     )
 
@@ -2851,16 +2858,6 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     # Standard scatter (unter der Tabelle)
     render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
 
-    # Optional: Big-5 facet (nur sinnvoll wenn League=All)
-    # render_big5_facet_scatter(df_rank, value_color=VALUE_COLOR)
-
-    # Optional: LinkedIn-Optimized (für Screenshot-Modus)
-    
-    # render_scatter_linkedin_optimized(df_rank, value_color=VALUE_COLOR, show_axis_titles=False)
-    # st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
-
-    # render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
-
     squads = df_rank["Squad"].tolist()
     if not squads:
         return
@@ -2941,10 +2938,11 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     ">
       <div>
-        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">League rank</div>
+        <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">Score rank</div>
         <div style="font-size:1.6rem; font-weight:600; color:{VALUE_COLOR};">
           {fmt_int(rank_val)}
         </div>
+        <div style="font-size:0.7rem; color:#9CA3AF;">by squad score</div>
       </div>
       <div>
         <div style="font-size:0.8rem; opacity:0.8; color:#E5E7EB;">Overall score</div>
@@ -3103,7 +3101,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         align="right",
         baseline="middle",
         dx=-6,
-        color="black",
+        color="#F9FAFB",
         fontSize=15,
         fontWeight="bold",
     ).encode(
@@ -3177,7 +3175,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             </div>
 
             <div style="margin-top:0.25rem; font-size:0.9rem; opacity:0.9;">
-                Season score:
+                Primary role score:
                 <span style="font-weight:700;">{season_score:.0f}</span>
             </div>
 
@@ -3227,7 +3225,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     df_long["Component"] = df_long["Component_raw"].map(rename_map)
 
     color_domain = ["Team Score", "Offense Score", "Midfield Score", "Defense Score"]
-    color_range = [VALUE_COLOR, "#61abd2", "#214642", "#ffffff"]
+    color_range = [VALUE_COLOR, "#61abd2", "#f59e0b", "#ffffff"]
 
     hist_chart = (
         alt.Chart(df_long)
@@ -3249,151 +3247,6 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     )
 
     st.altair_chart(hist_chart, use_container_width=True)
-
-def render_team_scatter_under_table(
-    df_rank: pd.DataFrame,
-    *,
-    value_color: str = "#00B8A9",
-):
-    """
-    Scatter: Squad Score vs Team Context (default: Pts/MP).
-    Uses df_rank (already season+league filtered and Big5-merged).
-
-    Fine-tuned:
-    - x-axis fixed: 250..600
-    - y-axis fixed: 0..3
-    - labels in value_color
-    - labels only for top 3 teams by x (squad score)
-    """
-
-    # --- pick x/y columns safely ---
-    x_col = None
-    for c in ["OverallScore_squad", "Squad Score"]:
-        if c in df_rank.columns:
-            x_col = c
-            break
-
-    # prefer Pts/MP, else fallback
-    y_candidates = ["Pts/MP", "Pts", "xGD", "GD"]
-    y_col = next((c for c in y_candidates if c in df_rank.columns), None)
-
-    if x_col is None or y_col is None:
-        st.info("Scatter not available (need squad score + at least one of: Pts/MP, Pts, xGD, GD).")
-        return
-
-    keep_cols = ["Squad", x_col, y_col]
-    for c in ["Comp", "LeagueRank", "Rank"]:
-        if c in df_rank.columns:
-            keep_cols.append(c)
-
-    df = df_rank[keep_cols].copy()
-    df[x_col] = pd.to_numeric(df[x_col], errors="coerce")
-    df[y_col] = pd.to_numeric(df[y_col], errors="coerce")
-    df = df.dropna(subset=[x_col, y_col])
-
-    if df.empty:
-        st.info("Not enough data to render the scatter.")
-        return
-
-    # highlight currently selected team (if set already)
-    selected_team = st.session_state.get("team_scores_selected_team", None)
-    df["is_selected"] = (df["Squad"] == selected_team) if selected_team else False
-
-    # top 3 by squad score (x)
-    top3 = set(df.nlargest(3, x_col)["Squad"].astype(str).tolist())
-    df["label_top3"] = df["Squad"].astype(str).apply(lambda s: s if s in top3 else "")
-
-    # axis labels
-    x_title = "Squad Score"
-    y_title_map = {"Pts/MP": "Points per Match", "Pts": "Points", "xGD": "xG difference", "GD": "Goal difference"}
-    y_title = y_title_map.get(y_col, y_col)
-
-    # tooltips
-    tooltip = [
-        alt.Tooltip("Squad:N", title="Team"),
-        alt.Tooltip(f"{x_col}:Q", title="Squad score", format=".0f"),
-        alt.Tooltip(f"{y_col}:Q", title=y_title, format=".2f" if y_col in ["Pts/MP", "xGD"] else ".0f"),
-    ]
-    if "Comp" in df.columns:
-        tooltip.insert(1, alt.Tooltip("Comp:N", title="League"))
-    if "LeagueRank" in df.columns:
-        tooltip.append(alt.Tooltip("LeagueRank:Q", title="LeagueRank", format=".0f"))
-
-    base = alt.Chart(df).encode(
-        x=alt.X(
-            f"{x_col}:Q",
-            title=x_title,
-            scale=alt.Scale(domain=[250, 600]),
-            axis=alt.Axis(format=".0f"),
-        ),
-        y=alt.Y(
-            f"{y_col}:Q",
-            title=y_title,
-            scale=alt.Scale(domain=[0, 3]),
-            axis=alt.Axis(format=".2f" if y_col in ["Pts/MP"] else ".0f"),
-        ),
-        tooltip=tooltip,
-    )
-
-    # points
-    points = base.mark_circle(size=120, opacity=0.9).encode(
-        color=alt.condition(
-            alt.datum.is_selected,
-            alt.value(value_color),
-            alt.value(value_color),
-        ),
-        stroke=alt.condition(
-            alt.datum.is_selected,
-            alt.value("#FFFFFF"),
-            alt.value("transparent"),
-        ),
-        strokeWidth=alt.condition(alt.datum.is_selected, alt.value(1.5), alt.value(0)),
-    )
-
-    # labels ONLY for top 3, in value_color
-    labels = base.mark_text(
-        align="left",
-        dx=8,
-        dy=-10,
-        fontSize=12,
-        fontWeight="bold",
-        color="#FFFFFF",
-    ).encode(
-        text="label_top3:N"
-    )
-
-    # trend line (still useful)
-    trend = (
-        base
-        .transform_regression(x_col, y_col)
-        .mark_line(
-            strokeDash=[6, 6],
-            strokeWidth=1.5,
-            opacity=0.45,
-            color="#E5E7EB",
-        )
-    )
-
-    chart = (
-        (trend + points + labels)
-        .properties(height=320)
-        .configure_view(strokeWidth=0)
-        .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", grid=False, domain=True)
-    )
-
-    st.markdown("### Squad Score vs Pts/MP")
-    st.markdown(
-        "<p style='font-size:0.85rem; opacity:0.8;'>",
-        unsafe_allow_html=True,
-    )
-    st.altair_chart(chart, use_container_width=True)
-
-    st.markdown(
-        "<div style='margin-top:-0.4rem; font-size:0.75rem; color:#9CA3AF; text-align:right;'>"
-        "Creator: <b>TwinAnalytics</b> • Data: FBref / Big-5 Leagues"
-        "</div>",
-        unsafe_allow_html=True,
-    )
 
 
 # -------------------------------------------------------------------
@@ -3452,12 +3305,13 @@ def main():
         st.stop()
 
     st.sidebar.header("View")
+    st.sidebar.caption("📊 Data: FBref · Big-5 Leagues · Updated weekly")
     mode = st.sidebar.radio(
         "Select mode",
-        ["Home", "Player profile", "Top lists", "Team scores"],
+        ["Home", "Player profile", "Player Rankings", "Team scores"],
     )
 
-    if mode in ("Player profile", "Top lists", "Team scores"):
+    if mode in ("Player profile", "Player Rankings", "Team scores"):
         st.markdown(
             "Score scale (0–1000): 🟣 Exceptional ≥ 900  ·  🟢 World Class ≥ 750  ·  🔵 Top Starter ≥ 400  ·  🟡 Solid Squad Player ≥ 200  ·  ⚪️ Below Big-5 Level < 200"
         )
@@ -3627,7 +3481,7 @@ def main():
 
         st.info(
             "Use the sidebar to switch to **Player profile** to explore an individual player, "
-            "or to **Top lists** to see ranked players by role and season."
+            "or to **Player Rankings** to see ranked players by role and season."
         )
         return
 
@@ -3834,15 +3688,13 @@ def main():
 
         role = typical_pos or (df_player["Pos"].iloc[0] if not df_player.empty and "Pos" in df_player.columns else None)
 
-        if profile_view == "Per season" and season is not None:
-            st.markdown(f"Season: {season}")
-        else:
+        if profile_view == "Career":
             if "Season" in df_player_all.columns and not df_player_all.empty:
                 first_season = df_player_all["Season"].min()
                 last_season = df_player_all["Season"].max()
-                st.markdown(f"Seasons: {first_season} – {last_season}")
+                st.caption(f"Career: {first_season} – {last_season}")
             else:
-                st.markdown("Seasons: n/a")
+                st.caption("Seasons: n/a")
 
         if not df_player.empty:
             df_player = df_player.copy()
@@ -3945,7 +3797,10 @@ def main():
                 )
 
             with col3:
-                score_value = f"{main_score:.0f}" if main_score is not None and not pd.isna(main_score) else "n/a"
+                min_val = None
+                if not df_player.empty and "Min" in df_player.columns:
+                    min_val = df_player["Min"].iloc[0]
+                min_display = f"{int(min_val):,}" if min_val is not None and not pd.isna(min_val) else "n/a"
                 st.markdown(
                     f"""
                     <div style="
@@ -3954,15 +3809,18 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Score</div>
-                        <div style="font-size: 2.5rem; font-weight: 600; color: {VALUE_COLOR};">{score_value}</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.1rem; color: #ffffff;">Minutes</div>
+                        <div style="font-size: 1.45rem; font-weight: 600; color: #ffffff;">{min_display}</div>
                     </div>
                     """,
                     unsafe_allow_html=True,
                 )
 
             with col4:
-                band_value = band_icon if band_icon is not None else "n/a"
+                comp_val = None
+                if not df_player.empty and "Comp" in df_player.columns:
+                    comp_val = df_player["Comp"].iloc[0]
+                comp_display = str(comp_val).replace("eng ", "").replace("es ", "").replace("de ", "").replace("it ", "").replace("fr ", "") if comp_val else "n/a"
                 st.markdown(
                     f"""
                     <div style="
@@ -3971,8 +3829,8 @@ def main():
                         text-align: left;
                         background-color: rgba(15, 23, 42, 0.35);
                     ">
-                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem; color: #ffffff;">Band</div>
-                        <div style="font-size: 1.25rem; font-weight: 600; color: #ffffff;">{band_value}</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.5rem; color: #ffffff;">League</div>
+                        <div style="font-size: 1.0rem; font-weight: 600; color: #ffffff;">{comp_display}</div>
                     </div>
                     """,
                     unsafe_allow_html=True,
@@ -4060,7 +3918,7 @@ def main():
                 )
 
         # ===================== ROLE METRICS =====================
-        st.markdown("### Role metrics")
+        st.markdown("### Performance profile vs. peers")
 
         if profile_view == "Per season":
             try:
@@ -4083,6 +3941,11 @@ def main():
                 df_feat_player = pd.DataFrame()
 
             if role is not None and not df_feat_player.empty:
+                # Check if player is in a Big-5 league for the pizza chart
+                player_comp = df_feat_player["Comp"].iloc[0] if "Comp" in df_feat_player.columns and not df_feat_player.empty else None
+                if player_comp not in BIG5_COMPS:
+                    st.info("ℹ️ The pizza chart is only available for Big-5 league players. The scatter plot is still shown.")
+
                 col_pizza, col_scatter = st.columns(2)
 
                 with col_pizza:
@@ -4104,11 +3967,29 @@ def main():
             if not player_seasons or role is None:
                 st.info("Not enough career data available to build a pizza chart for this player.")
             else:
-                col_chart, _ = st.columns([1, 1])
-                with col_chart:
+                col_pizza, col_career_scatter = st.columns(2)
+                with col_pizza:
                     fig = render_career_pizza_chart(player, role, player_seasons)
                     if fig is not None:
-                        st.pyplot(fig)
+                        st.pyplot(fig, use_container_width=True)
+                with col_career_scatter:
+                    # Career scatter: show score distribution vs peers (all seasons)
+                    if "Season" in df_player_all.columns:
+                        df_career_feat_list = []
+                        for s in player_seasons:
+                            try:
+                                df_s = load_feature_table_for_season(str(s))
+                                if not df_s.empty:
+                                    df_s["Season"] = s
+                                    df_career_feat_list.append(df_s)
+                            except Exception:
+                                pass
+                        if df_career_feat_list:
+                            df_career_feat = pd.concat(df_career_feat_list, ignore_index=True)
+                            df_career_player = df_career_feat[df_career_feat["Player"] == player].copy()
+                            scatter_chart = render_role_scatter(df_career_feat, df_career_player, role)
+                            if scatter_chart is not None:
+                                st.altair_chart(scatter_chart, use_container_width=True)
 
         # ===================== SCORE TREND (Career) =====================
         if profile_view == "Career":
@@ -4263,8 +4144,8 @@ def main():
     # ==================================================================
     # MODE: TOP LISTS
     # ==================================================================
-    if mode == "Top lists":
-        st.sidebar.subheader("Top list filters")
+    if mode == "Player Rankings":
+        st.sidebar.subheader("Ranking filters")
 
         seasons = sorted(df_all["Season"].dropna().unique())
         default_season_idx = len(seasons) - 1 if seasons else 0
@@ -4322,18 +4203,12 @@ def main():
         # Position filter
         if "Pos" in df_view.columns:
             pos_values = sorted(df_view["Pos"].dropna().unique())
-            st.sidebar.markdown("**Positions**")
-
-            selected_positions = []
-            for pos in pos_values:
-                checked = st.sidebar.checkbox(
-                    pos,
-                    value=True,
-                    key=f"top_pos_{pos}",
-                )
-                if checked:
-                    selected_positions.append(pos)
-
+            selected_positions = st.sidebar.multiselect(
+                "Positions",
+                options=pos_values,
+                default=pos_values,
+                key="toplists_positions",
+            )
             if selected_positions:
                 df_view = df_view[df_view["Pos"].isin(selected_positions)]
 
@@ -4351,38 +4226,21 @@ def main():
 
         # Age filter
         if "Age" in df_view.columns:
-            st.sidebar.markdown("**Age filter**")
-            use_age_filter = st.sidebar.checkbox(
-                "Enable Age Filter",
-                value=False,
-                key="top_use_age_filter",
-            )
-
-            if use_age_filter:
-                age_numeric = pd.to_numeric(df_view["Age"], errors="coerce")
-                if age_numeric.notna().any():
-                    min_age = int(age_numeric.min())
-                    max_age = int(age_numeric.max())
-
-                    if "top_age_max" not in st.session_state:
-                        st.session_state["top_age_max"] = min(20, max_age)
-                    else:
-                        current = st.session_state["top_age_max"]
-                        if current < min_age:
-                            st.session_state["top_age_max"] = min_age
-                        elif current > max_age:
-                            st.session_state["top_age_max"] = max_age
-
-                    max_age_selected = st.sidebar.slider(
-                        "Maximum age",
-                        min_value=min_age,
-                        max_value=max_age,
-                        value=st.session_state["top_age_max"],
-                        step=1,
-                        key="top_age_max",
-                    )
-
-                    df_view = df_view[age_numeric <= max_age_selected]
+            age_numeric = pd.to_numeric(df_view["Age"], errors="coerce")
+            if age_numeric.notna().any():
+                min_age = int(age_numeric.min())
+                max_age = int(age_numeric.max())
+                age_range = st.sidebar.slider(
+                    "Age range",
+                    min_value=min_age,
+                    max_value=max_age,
+                    value=(min_age, max_age),
+                    step=1,
+                    key="top_age_range",
+                )
+                df_view = df_view[
+                    (age_numeric >= age_range[0]) & (age_numeric <= age_range[1])
+                ]
 
         if df_view.empty:
             st.warning("No players found for the selected filters.")
@@ -4404,7 +4262,7 @@ def main():
             "Top N players",
             3,
             50,
-            5,
+            10,
             1,
             key="top_topn",
         )
@@ -4437,6 +4295,15 @@ def main():
         if chart_main is not None:
             st.altair_chart(chart_main, use_container_width=True)
 
+        export_cols = [c for c in ["Player", "Squad", "Comp", "Pos", "Age", "Min", "90s", "MainScore", "MainBand"] if c in df_top.columns]
+        csv_bytes = df_top[export_cols].to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="⬇️ Download top list as CSV",
+            data=csv_bytes,
+            file_name=f"playerscore_top{len(df_top)}_{season}.csv",
+            mime="text/csv",
+        )
+
         beeswarm_chart = render_score_age_beeswarm(
             df_all_filtered=df_view,
             df_top=df_top,
@@ -4444,10 +4311,11 @@ def main():
 
         if beeswarm_chart is not None:
             st.altair_chart(beeswarm_chart, use_container_width=True)
+            st.caption("Hollow circles = all players in selection · Filled teal circles = top N · Slight horizontal jitter added to age for readability.")
 
         band_hist = render_band_histogram(df_view, season=season)
         if band_hist is not None:
-            st.altair_chart(band_hist, use_container_width=False)
+            st.altair_chart(band_hist, use_container_width=True)
 
         return
 

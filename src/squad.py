@@ -102,7 +102,7 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
     df_squad = (
         df_all
         .groupby(["Season", "Squad"])
-        .apply(_agg, include_groups=False)
+        .apply(_agg)
         .reset_index(drop=True)
     )
 
