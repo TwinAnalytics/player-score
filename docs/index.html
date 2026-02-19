@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayerScore — Football Analytics Project</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --bg: #0a0f1e;
+  --surface: #111827;
+  --surface2: #1f2937;
+  --accent: #00B8A9;
+  --accent2: #3b82f6;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #374151;
+  --fw-color: #ef4444;
+  --mf-color: #3b82f6;
+  --df-color: #10b981;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* ── Deck wrapper ── */
+#deck {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Individual slides ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 60px;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity .4s ease, transform .4s ease;
+  pointer-events: none;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.slide.exit-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* ── Slide inner containers ── */
+section {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* ── Title slide ── */
+.slide-title {
+  text-align: center;
+}
+.title-badge {
+  display: inline-block;
+  background: rgba(0,184,169,.15);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  margin-bottom: 18px;
+}
+.slide-title h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00B8A9 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+.subtitle {
+  margin-top: 14px;
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tag-row {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.tag {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: .78rem;
+  color: var(--muted);
+}
+
+/* ── Content slides ── */
+.slide-content h2, .slide-closing h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text);
+  border-left: 4px solid var(--accent);
+  padding-left: 14px;
+}
+.app-icon { margin-right: 6px; }
+
+/* problem */
+.problem-list { list-style: none; padding: 0; }
+.problem-list li {
+  padding: 10px 0 10px 24px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.problem-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.quote {
+  margin-top: 22px;
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-left: 3px solid var(--accent2);
+  border-radius: 6px;
+  font-style: italic;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* solution pillars */
+.lead { color: var(--muted); margin-bottom: 22px; font-size: 1rem; }
+.pillars { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.pillar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+}
+.pillar-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.pillar-label { font-weight: 700; font-size: .9rem; margin-bottom: 4px; color: var(--accent); }
+.pillar-text { font-size: .78rem; color: var(--muted); }
+
+/* stats */
+.stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label { font-size: 1rem; font-weight: 600; margin-top: 6px; }
+.stat-sub { font-size: .75rem; color: var(--muted); margin-top: 4px; }
+
+/* architecture */
+.arch-flow { display: flex; gap: 8px; align-items: stretch; }
+.arch-step {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  position: relative;
+}
+.arch-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.2rem;
+  z-index: 1;
+}
+.arch-icon { font-size: 1.6rem; margin-bottom: 6px; }
+.arch-num { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.arch-label { font-weight: 700; font-size: .9rem; margin: 4px 0; color: var(--accent); }
+.arch-detail { font-size: .72rem; color: var(--muted); }
+
+/* feature */
+.feature-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.feature-list { list-style: none; padding: 0; }
+.feature-list li {
+  padding: 8px 0 8px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: .95rem;
+  position: relative;
+}
+.feature-list li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  color: var(--accent);
+}
+.code-line {
+  margin-top: 16px;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: .8rem;
+  color: #00ff9f;
+  overflow-x: auto;
+}
+
+/* scoring */
+.formula-box {
+  background: var(--surface2);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 18px;
+}
+.legend-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+.legend-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); font-size: .88rem; }
+.legend-table .var { color: var(--accent); font-weight: 700; font-family: monospace; width: 40px; }
+.props-list { list-style: none; padding: 0; }
+.props-list li { padding: 6px 0 6px 20px; position: relative; font-size: .88rem; color: var(--muted); }
+.props-list li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 700; }
+
+/* weights */
+.role-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.role-card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.role-name { font-weight: 700; font-size: .9rem; margin-bottom: 10px; }
+.metric-table { width: 100%; border-collapse: collapse; font-size: .75rem; }
+.metric-table th { color: var(--muted); font-weight: 600; padding: 4px 6px; border-bottom: 1px solid var(--border); text-align: left; }
+.metric-table td { padding: 4px 6px; border-bottom: 1px solid rgba(55,65,81,.4); }
+.wt { color: #f59e0b; }
+.bench { color: var(--accent); }
+
+/* bands */
+.bands-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.band-row {
+  display: grid;
+  grid-template-columns: 16px 200px 120px 1fr;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+.band-dot { width: 12px; height: 12px; border-radius: 50%; }
+.band-label { font-weight: 700; font-size: .9rem; }
+.band-range { color: var(--muted); font-size: .85rem; font-family: monospace; }
+.band-example { font-size: .8rem; color: var(--muted); }
+.band-note { font-size: .85rem; color: var(--muted); padding: 8px 0; }
+
+/* app cards */
+.app-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.app-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.app-card-label { font-weight: 700; color: var(--accent); margin-bottom: 6px; font-size: .95rem; }
+.app-card-desc { font-size: .85rem; color: var(--muted); }
+
+/* tech */
+.tech-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.tech-group {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 16px 16px 16px 20px;
+}
+.tech-label { font-weight: 700; font-size: .9rem; margin-bottom: 10px; }
+.tech-group ul { list-style: none; padding: 0; }
+.tech-group li { padding: 4px 0; font-size: .85rem; color: var(--muted); }
+.tech-group li::before { content: '→ '; color: var(--accent); }
+
+/* cicd */
+.cicd-flow { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.cicd-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: .9rem;
+}
+.cicd-num {
+  width: 26px; height: 26px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+.cicd-badge {
+  background: rgba(16,185,129,.15);
+  border: 1px solid #10b981;
+  color: #10b981;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: .85rem;
+  text-align: center;
+}
+
+/* insights */
+.insight-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.insight-col {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 16px;
+}
+.insight-cat { font-weight: 700; margin-bottom: 10px; font-size: .9rem; }
+.insight-col ul { list-style: none; padding: 0; }
+.insight-col li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+/* why */
+.tagline { color: var(--accent); font-weight: 600; margin-bottom: 18px; font-size: 1rem; letter-spacing: .05em; }
+.why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.why-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.why-title { font-weight: 700; color: var(--accent); margin-bottom: 6px; font-size: .95rem; }
+.why-desc { font-size: .83rem; color: var(--muted); }
+
+/* roadmap */
+.road-list { display: flex; flex-direction: column; gap: 12px; }
+.road-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.road-icon { font-size: 1.5rem; flex-shrink: 0; }
+.road-label { font-weight: 700; font-size: .9rem; margin-bottom: 2px; color: var(--accent); }
+.road-desc { font-size: .82rem; color: var(--muted); }
+
+/* closing */
+.slide-closing { text-align: center; }
+.closing-sub { color: var(--muted); margin-bottom: 30px; font-size: 1.05rem; }
+.link-row { display: flex; gap: 16px; justify-content: center; margin-bottom: 28px; }
+.link-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--surface2);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .95rem;
+  transition: background .2s;
+}
+.link-btn:hover { background: rgba(0,184,169,.15); }
+.stack-line { color: var(--muted); font-size: .8rem; }
+
+/* ── Navigation ── */
+#nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(17,24,39,.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 10px 24px;
+  z-index: 100;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background .15s, color .15s;
+}
+.nav-btn:hover { background: var(--surface2); color: var(--accent); }
+#slide-counter { color: var(--muted); font-size: .85rem; min-width: 60px; text-align: center; }
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00B8A9, #3b82f6);
+  transition: width .35s ease;
+  z-index: 200;
+}
+
+/* ── Dot indicators ── */
+#dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.dot.active { background: var(--accent); transform: scale(1.4); }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div id="deck">
+<div class="slide" id="slide-0">
+<section class="slide-title">
+  <div class="title-badge">⚽ Football Analytics Project</div>
+  <h1>PlayerScore</h1>
+  <p class="subtitle">Role-Aware Football Analytics for Europe's Big-5 Leagues</p>
+  <div class="tag-row"><span class="tag">Python</span> <span class="tag">Streamlit</span> <span class="tag">Playwright</span> <span class="tag">FBref</span> <span class="tag">2017–2026</span></div>
+</section></div>
+<div class="slide" id="slide-1">
+<section class="slide-content">
+  <h2>The Problem with Player Evaluation</h2>
+  <ul class="problem-list"><li>Raw stats (goals, assists) ignore playing position and role</li><li>Comparing a striker to a defensive midfielder is meaningless</li><li>Most metrics are league-relative — not cross-league transferable</li><li>Black-box ML models offer predictions without explanations</li></ul>
+  <blockquote class="quote">"How do you compare Rodri and Mbappé on the same scale — fairly?"</blockquote>
+</section></div>
+<div class="slide" id="slide-2">
+<section class="slide-content">
+  <h2>PlayerScore — Transparent & Role-Aware</h2>
+  <p class="lead">A benchmark-driven scoring system that evaluates every player against absolute, role-specific standards — not relative to their peers.</p>
+  <div class="pillars"><div class="pillar"><div class="pillar-icon">🎯</div><div class="pillar-label">Role-Specific</div><div class="pillar-text">FW · Off_MF · MF · Def_MF · DF</div></div><div class="pillar"><div class="pillar-icon">📐</div><div class="pillar-label">Benchmark-Driven</div><div class="pillar-text">Fixed absolute thresholds per metric</div></div><div class="pillar"><div class="pillar-icon">🔍</div><div class="pillar-label">Transparent</div><div class="pillar-text">Every weight & benchmark is visible</div></div><div class="pillar"><div class="pillar-icon">🌍</div><div class="pillar-label">Cross-League</div><div class="pillar-text">Consistent across all Big-5 leagues</div></div></div>
+</section></div>
+<div class="slide" id="slide-3">
+<section class="slide-content">
+  <h2>Dataset at a Glance</h2>
+  <div class="stat-grid"><div class="stat-box"><div class="stat-value">9</div><div class="stat-label">Seasons</div><div class="stat-sub">2017/18 – 2025/26</div></div><div class="stat-box"><div class="stat-value">5</div><div class="stat-label">Leagues</div><div class="stat-sub">PL · La Liga · Bundesliga · Serie A · Ligue 1</div></div><div class="stat-box"><div class="stat-value">6,782</div><div class="stat-label">Unique Players</div><div class="stat-sub">across all seasons</div></div><div class="stat-box"><div class="stat-value">23,095</div><div class="stat-label">Player-Season Records</div><div class="stat-sub">fully scored & classified</div></div></div>
+</section></div>
+<div class="slide" id="slide-4">
+<section class="slide-content">
+  <h2>System Architecture</h2>
+  <div class="arch-flow"><div class="arch-step"><div class="arch-icon">🕷️</div><div class="arch-num">Step 1</div><div class="arch-label">Scrape</div><div class="arch-detail">Playwright → FBref (11 stat tables)</div></div><div class="arch-step"><div class="arch-icon">⚙️</div><div class="arch-num">Step 2</div><div class="arch-label">Process</div><div class="arch-detail">Per-90 normalisation · Position classification</div></div><div class="arch-step"><div class="arch-icon">📊</div><div class="arch-num">Step 3</div><div class="arch-label">Score</div><div class="arch-detail">Role-specific benchmark scoring (0–1000)</div></div><div class="arch-step"><div class="arch-icon">🗂️</div><div class="arch-num">Step 4</div><div class="arch-label">Aggregate</div><div class="arch-detail">Multi-season career stats · Squad-level scores</div></div><div class="arch-step"><div class="arch-icon">🖥️</div><div class="arch-num">Step 5</div><div class="arch-label">Visualise</div><div class="arch-detail">Streamlit dashboard — profiles, lists, scatter plots</div></div></div>
+</section></div>
+<div class="slide" id="slide-5">
+<section class="slide-content">
+  <h2>Automated Data Collection</h2>
+  <div class="feature-header">🕷️ Playwright-based FBref Scraper</div>
+  <ul class="feature-list"><li>Scrapes <strong>11 statistical categories</strong> per season: standard, shooting, passing, creation, defense, possession, misc …</li><li>Merges all tables into a single flat CSV per season</li><li>Handles missing columns gracefully (league-specific stat availability)</li><li>Weekly CI/CD trigger via <strong>GitHub Actions</strong> — runs every Tuesday 06:00 UTC</li><li>Runs on a self-hosted macOS runner; auto-commits updated data to the repo</li></ul>
+  <pre class="code-line"><code>DO_SCRAPE=true USE_AUTO_SEASONS=true python run_multi_season_pipeline.py</code></pre>
+</section></div>
+<div class="slide" id="slide-6">
+<section class="slide-content">
+  <h2>Position Classification</h2>
+  <div class="feature-header">📍 From FBref strings to football roles</div>
+  <ul class="feature-list"><li>FBref reports multi-role strings like <code>"MF,DF"</code> or <code>"FW,MF"</code></li><li><strong>main_pos_from_string()</strong> extracts the primary role</li><li><strong>refine_mf_with_zones()</strong> splits midfielders by touch-zone data:</li><li>&nbsp;&nbsp;→ High Att-3rd touches → <strong>Off_MF</strong></li><li>&nbsp;&nbsp;→ High Def-3rd touches → <strong>Def_MF</strong></li><li>Result: 5 outfield roles — FW · Off_MF · MF · Def_MF · DF</li></ul>
+  
+</section></div>
+<div class="slide" id="slide-7">
+<section class="slide-content">
+  <h2>The Scoring Formula</h2>
+  <div class="formula-box">Score = 1000 × Σ(wᵢ × min(xᵢ / bᵢ, 1)) / Σwᵢ</div>
+  <table class="legend-table"><tr><td class="var">wᵢ</td><td>Weight of feature i (role-specific importance)</td></tr><tr><td class="var">xᵢ</td><td>Player's per-90 value for feature i</td></tr><tr><td class="var">bᵢ</td><td>Benchmark — the value representing 'full performance'</td></tr></table>
+  <ul class="props-list"><li>Absolute: score does not change when new players are added</li><li>Capped at 1 per feature — you can't compensate a weak area by excelling elsewhere</li><li>Benchmarks are fixed real-world thresholds (e.g. 0.9 goals/90 for FW)</li></ul>
+</section></div>
+<div class="slide" id="slide-8">
+<section class="slide-content">
+  <h2>Role-Specific Weights & Benchmarks</h2>
+  <div class="role-grid"><div class="role-card" style="border-top:3px solid #ef4444"><div class="role-name" style="color:#ef4444">FW (Striker / Winger)</div><table class="metric-table"><thead><tr><th>Metric</th><th>Weight</th><th>Benchmark</th></tr></thead><tbody><tr><td>Goals/90</td><td class="wt">wt 0.40</td><td class="bench">bench 0.9</td></tr><tr><td>xG/90</td><td class="wt">wt 0.20</td><td class="bench">bench 0.8</td></tr><tr><td>Assists/90</td><td class="wt">wt 0.15</td><td class="bench">bench 0.6</td></tr><tr><td>Key Passes/90</td><td class="wt">wt 0.10</td><td class="bench">bench 2.5</td></tr></tbody></table></div><div class="role-card" style="border-top:3px solid #3b82f6"><div class="role-name" style="color:#3b82f6">MF (Central Mid)</div><table class="metric-table"><thead><tr><th>Metric</th><th>Weight</th><th>Benchmark</th></tr></thead><tbody><tr><td>Assists/90</td><td class="wt">wt 0.22</td><td class="bench">bench 0.3</td></tr><tr><td>Key Passes/90</td><td class="wt">wt 0.20</td><td class="bench">bench 2.0</td></tr><tr><td>xAG/90</td><td class="wt">wt 0.18</td><td class="bench">bench 0.6</td></tr><tr><td>Prog Passes/90</td><td class="wt">wt 0.14</td><td class="bench">bench 10.0</td></tr></tbody></table></div><div class="role-card" style="border-top:3px solid #10b981"><div class="role-name" style="color:#10b981">DF (Defender)</div><table class="metric-table"><thead><tr><th>Metric</th><th>Weight</th><th>Benchmark</th></tr></thead><tbody><tr><td>Tackles Won/90</td><td class="wt">wt 0.30</td><td class="bench">bench 6.0</td></tr><tr><td>Interceptions/90</td><td class="wt">wt 0.25</td><td class="bench">bench 3.8</td></tr><tr><td>Blocks/90</td><td class="wt">wt 0.18</td><td class="bench">bench 3.0</td></tr><tr><td>Clearances/90</td><td class="wt">wt 0.12</td><td class="bench">bench 9.0</td></tr></tbody></table></div></div>
+</section></div>
+<div class="slide" id="slide-9">
+<section class="slide-content">
+  <h2>Performance Tiers</h2>
+  <div class="bands-container"><div class="band-row"><div class="band-dot" style="background:#f59e0b"></div><div class="band-label" style="color:#f59e0b">Exceptional</div><div class="band-range">≥ 900</div><div class="band-example">Dembélé · Salah · Vinicius Jr</div></div><div class="band-row"><div class="band-dot" style="background:#a78bfa"></div><div class="band-label" style="color:#a78bfa">World Class</div><div class="band-range">750 – 899</div><div class="band-example">Top-10 players per position</div></div><div class="band-row"><div class="band-dot" style="background:#3b82f6"></div><div class="band-label" style="color:#3b82f6">Top Starter</div><div class="band-range">400 – 749</div><div class="band-example">Regular starters in Big-5</div></div><div class="band-row"><div class="band-dot" style="background:#6b7280"></div><div class="band-label" style="color:#6b7280">Solid Squad Player</div><div class="band-range">200 – 399</div><div class="band-example">Rotation & backup players</div></div><div class="band-row"><div class="band-dot" style="background:#374151"></div><div class="band-label" style="color:#374151">Below Big-5 Level</div><div class="band-range">< 200</div><div class="band-example">Limited or below-par output</div></div></div>
+  <p class="band-note">💡 2024/25 sample: Dembélé 908 (Exceptional) · Marmoush 855 (World Class)</p>
+</section></div>
+<div class="slide" id="slide-10">
+<section class="slide-content">
+  <h2><span class="app-icon">👤</span> App: Player Profiles</h2>
+  <div class="app-grid"><div class="app-card"><div class="app-card-label">Pizza Chart</div><div class="app-card-desc">Percentile radar vs Big-5 role peers — attack · possession · defense slices</div></div><div class="app-card"><div class="app-card-label">Career Trend</div><div class="app-card-desc">Score evolution across all seasons with band shading</div></div><div class="app-card"><div class="app-card-label">Scatter Plots</div><div class="app-card-desc">xG vs Goals, xAG vs Assists — overperformance vs underperformance</div></div><div class="app-card"><div class="app-card-label">Summary Tiles</div><div class="app-card-desc">Age · Club · Position · Minutes · Score · Band at a glance</div></div></div>
+</section></div>
+<div class="slide" id="slide-11">
+<section class="slide-content">
+  <h2><span class="app-icon">📊</span> App: Top Lists & Rankings</h2>
+  <div class="app-grid"><div class="app-card"><div class="app-card-label">Multi-Filter</div><div class="app-card-desc">Season · League · Club · Position · Age · Minutes threshold</div></div><div class="app-card"><div class="app-card-label">Top-N Bar Charts</div><div class="app-card-desc">Best players by primary role score — instantly filterable</div></div><div class="app-card"><div class="app-card-label">Score vs Age</div><div class="app-card-desc">Beeswarm plot revealing peak age windows per role</div></div><div class="app-card"><div class="app-card-label">Band Distribution</div><div class="app-card-desc">How the filtered population distributes across tiers</div></div></div>
+</section></div>
+<div class="slide" id="slide-12">
+<section class="slide-content">
+  <h2><span class="app-icon">🟦</span> App: Team / Squad Intelligence</h2>
+  <div class="app-grid"><div class="app-card"><div class="app-card-label">Squad Strength</div><div class="app-card-desc">Minute-weighted offense · midfield · defense scores per club</div></div><div class="app-card"><div class="app-card-label">League Rankings</div><div class="app-card-desc">Side-by-side squad comparison within a single season</div></div><div class="app-card"><div class="app-card-label">Top Contributors</div><div class="app-card-desc">Which players drive each squad's score up</div></div><div class="app-card"><div class="app-card-label">Multi-Season Trends</div><div class="app-card-desc">Track squad development and squad rebuilds over time</div></div></div>
+</section></div>
+<div class="slide" id="slide-13">
+<section class="slide-content">
+  <h2>Technology Stack</h2>
+  <div class="tech-grid"><div class="tech-group" style="border-left:3px solid #f59e0b"><div class="tech-label" style="color:#f59e0b">Data & Scraping</div><ul><li>Python 3.11</li><li>Playwright (async)</li><li>pandas</li><li>FBref (open data)</li></ul></div><div class="tech-group" style="border-left:3px solid #3b82f6"><div class="tech-label" style="color:#3b82f6">Analytics</div><ul><li>Custom benchmark scoring</li><li>Per-90 normalisation</li><li>Touch-zone classification</li><li>Career aggregation</li></ul></div><div class="tech-group" style="border-left:3px solid #10b981"><div class="tech-label" style="color:#10b981">Visualisation</div><ul><li>Streamlit</li><li>Altair</li><li>Matplotlib / mplsoccer</li><li>Pizza charts (PyPizza)</li></ul></div><div class="tech-group" style="border-left:3px solid #a78bfa"><div class="tech-label" style="color:#a78bfa">DevOps / CI</div><ul><li>GitHub Actions (weekly)</li><li>Self-hosted macOS runner</li><li>Auto-commit pipeline</li><li>GitHub Pages (docs)</li></ul></div></div>
+</section></div>
+<div class="slide" id="slide-14">
+<section class="slide-content">
+  <h2>Weekly CI/CD Pipeline</h2>
+  <div class="cicd-flow"><div class="cicd-step"><span class="cicd-num">1</span>GitHub Actions triggers every Tuesday 06:00 UTC</div><div class="cicd-step"><span class="cicd-num">2</span>Self-hosted macOS runner launches run_multi_season_pipeline.py</div><div class="cicd-step"><span class="cicd-num">3</span>Playwright scrapes all 5 leagues for current season</div><div class="cicd-step"><span class="cicd-num">4</span>Processing & scoring runs automatically</div><div class="cicd-step"><span class="cicd-num">5</span>Updated CSVs committed back to repo with timestamp message</div><div class="cicd-step"><span class="cicd-num">6</span>Streamlit app immediately reflects fresh data</div></div>
+  <div class="cicd-badge">✅ Weekly run (2025-2026) — fully automated</div>
+</section></div>
+<div class="slide" id="slide-15">
+<section class="slide-content">
+  <h2>Sample Insights — 2024/25 Season</h2>
+  <div class="insight-grid"><div class="insight-col"><div class="insight-cat">🔴 Exceptional Forwards</div><ul><li>Ousmane Dembélé (PSG) — 908</li><li>Omar Marmoush (Frankfurt) — 855</li><li>Mohamed Salah (Liverpool) — 821</li></ul></div><div class="insight-col"><div class="insight-cat">🟢 Top Defenders</div><ul><li>Olivier Deman (Werder) — 827</li><li>Thomas Delaine (Strasbourg) — 825</li><li>Loïc N'Gatta (Auxerre) — 739</li></ul></div><div class="insight-col"><div class="insight-cat">📈 Dataset Scale</div><ul><li>2,594 players scored in 2024/25</li><li>96 squads across 5 leagues</li><li>Covering ~2,500 minutes minimum threshold</li></ul></div></div>
+</section></div>
+<div class="slide" id="slide-16">
+<section class="slide-content">
+  <h2>Why PlayerScore?</h2>
+  <p class="tagline">Transparent · Reproducible · Role-Aware</p>
+  <div class="why-grid"><div class="why-card"><div class="why-title">No Black Box</div><div class="why-desc">Every weight, benchmark, and formula is open and inspectable. You know exactly why a player scores 650 and not 800.</div></div><div class="why-card"><div class="why-title">Cross-League Fairness</div><div class="why-desc">Absolute benchmarks mean a Bundesliga defender and a Premier League defender are scored on the same scale.</div></div><div class="why-card"><div class="why-title">Scouting-Ready</div><div class="why-desc">Position-aware scoring reflects actual roles — a striker's defensive contribution doesn't inflate their score.</div></div><div class="why-card"><div class="why-title">Living Dataset</div><div class="why-desc">Automated weekly updates mean scores are always current — no manual refresh needed.</div></div></div>
+</section></div>
+<div class="slide" id="slide-17">
+<section class="slide-content">
+  <h2>Roadmap & Future Work</h2>
+  <div class="road-list"><div class="road-item"><span class="road-icon">🥅</span><div><div class="road-label">Goalkeeper Scoring</div><div class="road-desc">Dedicated GK model with PSxG+/- and save rate benchmarks</div></div></div><div class="road-item"><span class="road-icon">📈</span><div><div class="road-label">Value Estimation</div><div class="road-desc">Market value prediction layer on top of benchmark scores</div></div></div><div class="road-item"><span class="road-icon">🔁</span><div><div class="road-label">Player Comparison</div><div class="road-desc">Side-by-side profile comparisons with radar overlays</div></div></div><div class="road-item"><span class="road-icon">🤖</span><div><div class="road-label">NLP Scouting Reports</div><div class="road-desc">Auto-generated plain-language player summaries via LLM</div></div></div><div class="road-item"><span class="road-icon">🌐</span><div><div class="road-label">Extended Coverage</div><div class="road-desc">Eredivisie, Liga Portugal, and more secondary leagues</div></div></div></div>
+</section></div>
+<div class="slide" id="slide-18">
+<section class="slide-closing">
+  <h2>Explore PlayerScore</h2>
+  <p class="closing-sub">Open-source · Data-driven · Football-obsessed</p>
+  <div class="link-row"><a class="link-btn" href="https://github.com/TwinAnalytics/player-score" target="_blank">💻 GitHub Repository</a><a class="link-btn" href="https://twinanalytics.github.io/player-score/" target="_blank">📊 Live Presentation</a></div>
+  <p class="stack-line">Built with: Python · Playwright · pandas · Streamlit · GitHub Actions</p>
+</section></div>
+
+</div>
+
+<div id="dots"><div class="dot" title="Slide 1"></div><div class="dot" title="Slide 2"></div><div class="dot" title="Slide 3"></div><div class="dot" title="Slide 4"></div><div class="dot" title="Slide 5"></div><div class="dot" title="Slide 6"></div><div class="dot" title="Slide 7"></div><div class="dot" title="Slide 8"></div><div class="dot" title="Slide 9"></div><div class="dot" title="Slide 10"></div><div class="dot" title="Slide 11"></div><div class="dot" title="Slide 12"></div><div class="dot" title="Slide 13"></div><div class="dot" title="Slide 14"></div><div class="dot" title="Slide 15"></div><div class="dot" title="Slide 16"></div><div class="dot" title="Slide 17"></div><div class="dot" title="Slide 18"></div><div class="dot" title="Slide 19"></div></div>
+
+<nav id="nav">
+  <button class="nav-btn" id="btn-prev">&#8592;</button>
+  <span id="slide-counter">1 / 19</span>
+  <button class="nav-btn" id="btn-next">&#8594;</button>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const counter = document.getElementById('slide-counter');
+const bar = document.getElementById('progress-bar');
+const dots = document.querySelectorAll('.dot');
+let cur = 0;
+
+function goTo(idx) {
+  slides[cur].classList.remove('active');
+  slides[cur].classList.add('exit-left');
+  setTimeout(() => slides[cur].classList.remove('exit-left'), 400);
+  cur = Math.max(0, Math.min(idx, slides.length - 1));
+  slides[cur].classList.add('active');
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+  dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+document.getElementById('btn-prev').onclick = () => goTo(cur - 1);
+document.getElementById('btn-next').onclick = () => goTo(cur + 1);
+dots.forEach((d, i) => d.onclick = () => goTo(i));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(cur + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    goTo(cur - 1);
+});
+
+// Touch/swipe
+let startX = 0;
+document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - startX;
+  if (dx < -40) goTo(cur + 1);
+  if (dx >  40) goTo(cur - 1);
+});
+
+goTo(0);
+</script>
+</body>
+</html>
