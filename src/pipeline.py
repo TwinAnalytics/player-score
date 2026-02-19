@@ -103,7 +103,9 @@ def build_feature_table(season: str, raw_dir: Path) -> pd.DataFrame:
     # Positionslogik aus processing.py (FW / MF / DF / Off_MF / Def_MF, GK raus)
     df = prepare_positions(df)
 
-    # Minutenfilter (für alle Rollen gleich – Defensiv kannst du später separat strenger machen)
+    # Alle Spieler mit 90s > 0 behalten (add_per90_from_90s filtert 90s=0 bereits heraus).
+    # Das Scoring-Minimum (≥5 90s) wird erst in compute_all_scores angewandt,
+    # damit Spieler mit weniger Einsatzzeit trotzdem im Datensatz sichtbar bleiben.
     df = filter_by_90s(df, min_90s=0.0)
 
     # per90-Spalten (nutzt DEFAULT_PER90_COLS aus processing.add_standard_per90)
@@ -116,17 +118,26 @@ def build_feature_table(season: str, raw_dir: Path) -> pd.DataFrame:
 # Scores pro Rolle zusammenführen
 # ---------------------------------------------------------------------------
 
-def compute_all_scores(df_features: pd.DataFrame) -> pd.DataFrame:
+def compute_all_scores(
+    df_features: pd.DataFrame,
+    min_90s_for_scoring: float = 5.0,
+) -> pd.DataFrame:
     """
     Erwartet eine Feature-Tabelle (nach build_feature_table) und
     gibt eine Gesamttabelle mit allen Scores & Bändern zurück.
+
+    Spieler mit < min_90s_for_scoring erhalten NaN-Scores und tauchen
+    im Datensatz auf, werden aber nicht für Rankings gewertet.
     """
     df = df_features.copy()
 
+    # Nur Spieler mit genug Einsatzzeit für zuverlässige Scores
+    df_score = df[df["90s"] >= min_90s_for_scoring] if "90s" in df.columns else df
+
     # Scores pro Rolle (Logik & Gewichte liegen in scoring.py)
-    df_off = compute_off_scores(df)
-    df_mf = compute_mid_scores(df)
-    df_def = compute_def_scores(df)
+    df_off = compute_off_scores(df_score)
+    df_mf = compute_mid_scores(df_score)
+    df_def = compute_def_scores(df_score)
 
     # Basis-Infos pro Spieler/Rolle
     base_cols = [c for c in ["Player", "Squad", "Comp", "Pos", "Age", "Min", "90s"] if c in df.columns]

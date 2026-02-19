@@ -180,120 +180,126 @@ def make_score_band_5(q1: float, q2: float, q3: float, q4: float):
     return band
 
 # === OFFENSIVE: FW (Striker / Winger) ==========================
+# Benchmarks: p95 FW (min 5 90s, Big-5 2024/25)
+# G-PK / npxG statt Gls / xG → kein Elfmeter-Bonus
 OFF_FW_WEIGHTS_ABS = {
-    "Gls_Per90": 0.40,
-    "Ast_Per90": 0.15,
-    "xG_Per90": 0.20,
-    "xAG_Per90": 0.05,
-    "KP_Per90": 0.10,
-    "PrgP_Per90": 0.05,
-    "PrgC_Per90": 0.05,
-    "Sh/90": 0.03,
-    "SoT/90": 0.02,
+    "G-PK_Per90":  0.40,
+    "Ast_Per90":   0.15,
+    "npxG_Per90":  0.20,
+    "xAG_Per90":   0.05,
+    "KP_Per90":    0.10,
+    "PrgP_Per90":  0.05,
+    "PrgC_Per90":  0.05,
 }
 
 OFF_FW_BENCHMARKS_ABS = {
-    "Gls_Per90": 0.9,   # ~0.9 Tore / 90
-    "Ast_Per90": 0.6,
-    "xG_Per90": 0.8,
-    "xAG_Per90": 0.7,
-    "KP_Per90": 2.5,
-    "PrgP_Per90": 7.0,
-    "PrgC_Per90": 5.0,
-    "Sh/90": 4.0,
-    "SoT/90": 2.0,
+    "G-PK_Per90":  0.65,   # p95=0.643
+    "Ast_Per90":   0.38,   # p95=0.373
+    "npxG_Per90":  0.60,   # p95=0.595
+    "xAG_Per90":   0.33,   # p95=0.326
+    "KP_Per90":    2.4,    # p95=2.351
+    "PrgP_Per90":  5.1,    # p95=5.061
+    "PrgC_Per90":  5.5,    # p95=5.476
 }
 
 # === OFFENSIVE: Off_MF (Attacking Mid / Second Striker) ========
 # weniger Tor-lastig, mehr Playmaking & Progression
+# Benchmarks: p95 Off_MF (min 5 90s, Big-5 2024/25)
 OFF_AM_WEIGHTS_ABS = {
-    "Gls_Per90": 0.25,
-    "Ast_Per90": 0.20,
-    "xG_Per90": 0.15,
-    "xAG_Per90": 0.10,
-    "KP_Per90": 0.12,
-    "PrgP_Per90": 0.08,
-    "PrgC_Per90": 0.05,
-    "Sh/90": 0.03,
-    "SoT/90": 0.02,
+    "G-PK_Per90":  0.25,
+    "Ast_Per90":   0.20,
+    "npxG_Per90":  0.15,
+    "xAG_Per90":   0.10,
+    "KP_Per90":    0.12,
+    "PrgP_Per90":  0.08,
+    "PrgC_Per90":  0.05,
 }
 
 OFF_AM_BENCHMARKS_ABS = {
-    "Gls_Per90": 0.6,
-    "Ast_Per90": 0.7,
-    "xG_Per90": 0.6,
-    "xAG_Per90": 0.8,
-    "KP_Per90": 3.0,
-    "PrgP_Per90": 9.0,
-    "PrgC_Per90": 6.0,
-    "Sh/90": 3.0,
-    "SoT/90": 1.6,
+    "G-PK_Per90":  0.43,   # p95=0.431
+    "Ast_Per90":   0.37,   # p95=0.370
+    "npxG_Per90":  0.38,   # p95=0.377
+    "xAG_Per90":   0.30,   # p95=0.294
+    "KP_Per90":    2.7,    # p95=2.649
+    "PrgP_Per90":  7.2,    # p95=7.177
+    "PrgC_Per90":  4.6,    # p95=4.594
 }
 
 # === MIDFIELD: MF (zentraler Mittelfeldspieler) ================
+# Benchmarks: p95 MF (min 5 90s, Big-5 2024/25)
+# TklW + Int neu – Box-to-box-Arbeit wird jetzt honoriert
 mf_weights_abs = {
-    "Ast_Per90": 0.22,
-    "xAG_Per90": 0.18,
-    "Gls_Per90": 0.08,
-    "KP_Per90": 0.20,
-    "PrgP_Per90": 0.14,
-    "PrgC_Per90": 0.08,
-    "Mid 3rd_stats_possession_Per90": 0.06,
-    "Att 3rd_stats_possession_Per90": 0.04,
+    "Ast_Per90":                          0.18,
+    "xAG_Per90":                          0.15,
+    "G-PK_Per90":                         0.07,
+    "KP_Per90":                           0.17,
+    "PrgP_Per90":                         0.12,
+    "PrgC_Per90":                         0.07,
+    "Mid 3rd_stats_possession_Per90":     0.06,
+    "Att 3rd_stats_possession_Per90":     0.04,
+    "TklW_Per90":                         0.08,
+    "Int_Per90":                          0.06,
 }
 
 mf_benchmarks_abs = {
-    "Ast_Per90": 0.3,
-    "xAG_Per90": 0.6,
-    "Gls_Per90": 0.4,
-    "KP_Per90": 2.0,
-    "PrgP_Per90": 10.0,
-    "PrgC_Per90": 5.0,
-    "Mid 3rd_stats_possession_Per90": 25.0,
-    "Att 3rd_stats_possession_Per90": 12.0,
+    "Ast_Per90":                          0.22,   # p95=0.223
+    "xAG_Per90":                          0.21,   # p95=0.212
+    "G-PK_Per90":                         0.22,   # p95=0.221
+    "KP_Per90":                           1.9,    # p95=1.907
+    "PrgP_Per90":                         8.1,    # p95=8.106
+    "PrgC_Per90":                         2.4,    # p95=2.439
+    "Mid 3rd_stats_possession_Per90":     52.0,   # p95=52.386
+    "Att 3rd_stats_possession_Per90":     22.5,   # p95=22.647
+    "TklW_Per90":                         2.1,    # p95=2.135 – neu
+    "Int_Per90":                          1.7,    # p95=1.732 – neu
 }
 
 # === DEFENSIVE: DF (Innen-/Außenverteidiger) ===================
+# Benchmarks: p95 DF (min 5 90s, Big-5 2024/25)
+# PrgP_Per90 neu – ballspielende Verteidiger / Außenverteidiger werden honoriert
 DEF_DF_WEIGHTS_ABS = {
-    "TklW_Per90": 0.30,
-    "Int_Per90": 0.25,
-    "Blocks_stats_defense_Per90": 0.18,
-    "Clr_Per90": 0.12,
-    "Def Pen_Per90": 0.10,
-    "Def 3rd_stats_possession_Per90": 0.06,
-    "Mid 3rd_stats_possession_Per90": 0.04,
+    "TklW_Per90":                         0.28,
+    "Int_Per90":                          0.23,
+    "Blocks_stats_defense_Per90":         0.16,
+    "Clr_Per90":                          0.12,
+    "Def Pen_Per90":                      0.09,
+    "Def 3rd_stats_possession_Per90":     0.06,
+    "Mid 3rd_stats_possession_Per90":     0.04,
+    "PrgP_Per90":                         0.08,
 }
 
 DEF_DF_BENCHMARKS_ABS = {
-    "TklW_Per90": 6.0,
-    "Int_Per90": 3.8,
-    "Blocks_stats_defense_Per90": 3.0,
-    "Clr_Per90": 9.0,
-    "Def Pen_Per90": 7.5,
-    "Def 3rd_stats_possession_Per90": 50.0,
-    "Mid 3rd_stats_possession_Per90": 22.0,
+    "TklW_Per90":                         1.9,    # p95=1.875  (war: 6.0)
+    "Int_Per90":                          1.8,    # p95=1.805  (war: 3.8)
+    "Blocks_stats_defense_Per90":         1.9,    # p95=1.890  (war: 3.0)
+    "Clr_Per90":                          6.9,    # p95=6.841  (war: 9.0)
+    "Def Pen_Per90":                      11.0,   # p95=11.292 (war: 7.5)
+    "Def 3rd_stats_possession_Per90":     39.0,   # p95=38.717 (war: 50.0)
+    "Mid 3rd_stats_possession_Per90":     45.5,   # p95=45.504 (war: 22.0)
+    "PrgP_Per90":                         6.2,    # p95=6.163  – neu
 }
 
 # === DEFENSIVE: Def_MF (Sechser / defensiver Achter) ==========
 # mehr Fokus auf Tackles/Interceptions & Mittelfeldpräsenz
+# Benchmarks: p95 Def_MF (min 5 90s, Big-5 2024/25; n=29 → ggf. später nachjustieren)
 DEF_DM_WEIGHTS_ABS = {
-    "TklW_Per90": 0.32,
-    "Int_Per90": 0.28,
-    "Blocks_stats_defense_Per90": 0.12,
-    "Clr_Per90": 0.08,
-    "Def Pen_Per90": 0.08,
-    "Def 3rd_stats_possession_Per90": 0.07,
-    "Mid 3rd_stats_possession_Per90": 0.05,
+    "TklW_Per90":                         0.32,
+    "Int_Per90":                          0.28,
+    "Blocks_stats_defense_Per90":         0.12,
+    "Clr_Per90":                          0.08,
+    "Def Pen_Per90":                      0.08,
+    "Def 3rd_stats_possession_Per90":     0.07,
+    "Mid 3rd_stats_possession_Per90":     0.05,
 }
 
 DEF_DM_BENCHMARKS_ABS = {
-    "TklW_Per90": 6.0,
-    "Int_Per90": 4.5,
-    "Blocks_stats_defense_Per90": 2.3,
-    "Clr_Per90": 6.0,
-    "Def Pen_Per90": 4.5,
-    "Def 3rd_stats_possession_Per90": 45.0,
-    "Mid 3rd_stats_possession_Per90": 30.0,
+    "TklW_Per90":                         2.0,    # p95=2.014  (war: 6.0)
+    "Int_Per90":                          2.0,    # p95=2.041  (war: 4.5)
+    "Blocks_stats_defense_Per90":         2.4,    # p95=2.436  (war: 2.3)
+    "Clr_Per90":                          4.1,    # p95=4.100  (war: 6.0)
+    "Def Pen_Per90":                      5.5,    # p95=5.439  (war: 4.5)
+    "Def 3rd_stats_possession_Per90":     22.0,   # p95=22.181 (war: 45.0)
+    "Mid 3rd_stats_possession_Per90":     35.0,   # p95=34.800 (war: 30.0)
 }
 
 
