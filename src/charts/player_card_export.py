@@ -8,6 +8,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import matplotlib.patheffects as pe
 import pandas as pd
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from PIL import Image
+
+from src.club_crests import get_crest_bytes
 
 # ── Colours (match HTML card exactly) ─────────────────────────────────────────
 _GRAD_A  = (0x2E / 255, 0xF2 / 255, 0xE0 / 255)   # bright teal  (#2EF2E0)
@@ -161,7 +165,7 @@ def generate_player_card_png(
 
     # Score — large, white
     ax.text(
-        PAD, 0.90, str(score_int),
+        PAD, 0.96, str(score_int),
         ha="left", va="top",
         fontsize=38, fontweight="bold", color=_WHITE, zorder=6,
         path_effects=[pe.withStroke(linewidth=2, foreground=(0, 0, 0, 0.25))],
@@ -185,7 +189,7 @@ def generate_player_card_png(
     )
     ax.add_patch(band_pill)
     ax.text(
-        PAD + 0.18, 0.719, band or "",
+        PAD - 0.01 + 0.18, 0.719, band or "",
         ha="center", va="center",
         fontsize=6.5, fontweight="bold", color=_WHITE,
         alpha=0.95, zorder=7,
@@ -237,6 +241,17 @@ def generate_player_card_png(
         ha="left", va="top",
         fontsize=8.5, color=_OFFWHITE, alpha=0.9, zorder=6,
     )
+
+    # Club crest — top-right corner
+    crest_b = get_crest_bytes(squad)
+    if crest_b:
+        try:
+            crest_img = np.array(Image.open(io.BytesIO(crest_b)).convert("RGBA"))
+            oi = OffsetImage(crest_img, zoom=0.09)
+            ab = AnnotationBbox(oi, (1 - PAD, 0.82), frameon=False, zorder=8, box_alignment=(1, 1))
+            ax.add_artist(ab)
+        except Exception:
+            pass
 
     # ── DIVIDER ───────────────────────────────────────────────────────────────
     divider_y = 0.515

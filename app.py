@@ -19,6 +19,7 @@ from src.charts.team_scatter import (
 )
 from src.charts.player_card_export import generate_player_card_png
 from src.charts.player_report_pdf import generate_player_report_pdf
+from src.club_crests import get_crest_b64, get_crest_path
 
 import io
 
@@ -1767,6 +1768,13 @@ def render_fifa_card(
     club = str(row.get("Squad", ""))
     age = row.get("Age", None)
 
+    crest_b64 = get_crest_b64(club)
+    crest_html = (
+        f'<img src="{crest_b64}" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;margin-right:4px;">'
+        if crest_b64
+        else ""
+    )
+
     try:
         overall_raw = float(row.get(primary_score_col, 0.0))
         overall = int(round(overall_raw))
@@ -2037,7 +2045,7 @@ def render_fifa_card(
         </div>
 
         <div class="fifa-card-player-name">{player_name}</div>
-        <div class="fifa-card-club">{club}</div>
+        <div class="fifa-card-club">{crest_html}{club}</div>
 
         <div class="fifa-card-divider"></div>
 
@@ -2864,7 +2872,39 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     st.markdown("### League ranking by squad score")
 
-    st.dataframe(df_rank[cols_show], use_container_width=True, hide_index=True)
+    def _build_crest_table_html(df: pd.DataFrame, cols: list[str]) -> str:
+        header_cells = ""
+        for c in cols:
+            align = "left" if c == "Squad" else "center"
+            header_cells += f'<th style="padding:6px 10px;text-align:{align};font-weight:600;border-bottom:2px solid #444;">{c}</th>'
+
+        body_rows = ""
+        for _, r in df.iterrows():
+            cells = ""
+            for c in cols:
+                val = r.get(c, "")
+                val_str = "" if (val is None or (isinstance(val, float) and pd.isna(val))) else str(val)
+                if c == "Squad":
+                    b64 = get_crest_b64(val_str)
+                    img_tag = (
+                        f'<img src="{b64}" style="width:20px;height:20px;object-fit:contain;margin-right:6px;vertical-align:middle;">'
+                        if b64
+                        else ""
+                    )
+                    cells += f'<td style="padding:6px 10px;white-space:nowrap;">{img_tag}{val_str}</td>'
+                else:
+                    cells += f'<td style="padding:6px 10px;text-align:center;">{val_str}</td>'
+            body_rows += f'<tr style="border-bottom:1px solid #333;">{cells}</tr>'
+
+        return (
+            '<div style="overflow-x:auto;">'
+            '<table style="width:100%;border-collapse:collapse;background:#1e1e1e;color:#f0f0f0;font-size:13px;font-family:system-ui,sans-serif;">'
+            f'<thead><tr style="background:#2a2a2a;">{header_cells}</tr></thead>'
+            f'<tbody>{body_rows}</tbody>'
+            '</table></div>'
+        )
+
+    st.markdown(_build_crest_table_html(df_rank, cols_show), unsafe_allow_html=True)
 
     # Standard scatter (unter der Tabelle)
     render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
@@ -4219,8 +4259,17 @@ def main():
             pos_txt = df_player["Pos"].iloc[0] if "Pos" in df_player.columns else None
             squad_txt = df_player["Squad"].iloc[0] if "Squad" in df_player.columns else None
             details = " | ".join(x for x in [pos_txt, squad_txt] if x)
-            if details:
-                st.caption(details)
+            crest_path = get_crest_path(squad_txt or "")
+            if crest_path:
+                c_img, c_txt = st.columns([0.08, 0.92])
+                with c_img:
+                    st.image(str(crest_path), width=52)
+                with c_txt:
+                    if details:
+                        st.caption(details)
+            else:
+                if details:
+                    st.caption(details)
         else:
             st.caption(get_role_label(typical_pos))
 

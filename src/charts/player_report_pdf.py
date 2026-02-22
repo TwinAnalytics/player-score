@@ -12,6 +12,8 @@ from datetime import date
 import pandas as pd
 from fpdf import FPDF
 
+from src.club_crests import get_crest_bytes
+
 
 def _t(text: str) -> str:
     """Sanitise text for fpdf2 Helvetica (Latin-1 encoding)."""
@@ -310,6 +312,15 @@ def generate_player_report_pdf(
     pdf.set_font("Helvetica", size=9)
     pdf.set_text_color(*_GREY)
     pdf.cell(182, 5, "  |  ".join(meta_parts))
+
+    # Club crest — right-aligned in the name block
+    squad_raw = str(row.get("Squad", "") or "")
+    crest_b = get_crest_bytes(squad_raw)
+    if crest_b:
+        try:
+            pdf.image(io.BytesIO(crest_b), x=182, y=20, w=12)
+        except Exception:
+            pass
 
     pdf.set_draw_color(*_DIVIDER)
     pdf.set_line_width(0.3)
