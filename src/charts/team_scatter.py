@@ -235,6 +235,78 @@ def render_big5_facet_scatter(
     )
 
 
+def render_budget_scatter(
+    df_rank: pd.DataFrame,
+    *,
+    value_color: str = "#00B8A9",
+):
+    """
+    Scatter: x = TotalMarketValue_squad (€M), y = OverallScore_squad.
+    Shows only when TotalMarketValue_squad column is present.
+    Includes dashed regression line and labels for top-3 by score.
+    """
+    if "TotalMarketValue_squad" not in df_rank.columns:
+        return
+
+    x_col = "TotalMarketValue_squad"
+    y_col = _pick_first(df_rank.columns.tolist(), ["OverallScore_squad", "Squad Score"])
+    if y_col is None:
+        return
+
+    df = df_rank[["Squad", x_col, y_col] + (
+        ["Comp"] if "Comp" in df_rank.columns else []
+    )].copy()
+    df = _safe_numeric(df, [x_col, y_col])
+    df["MV_M"] = df[x_col] / 1_000_000
+    df = df.dropna(subset=["MV_M", y_col])
+
+    if df.empty or df["MV_M"].max() == 0:
+        return
+
+    top3 = set(df.nlargest(3, y_col)["Squad"].astype(str).tolist())
+    df["label_top3"] = df["Squad"].astype(str).apply(lambda s: s if s in top3 else "")
+
+    tooltip = [
+        alt.Tooltip("Squad:N", title="Team"),
+        alt.Tooltip(f"{y_col}:Q", title="Squad score", format=".0f"),
+        alt.Tooltip("MV_M:Q", title="Total Market Value (€M)", format=".0f"),
+    ]
+    if "Comp" in df.columns:
+        tooltip.insert(1, alt.Tooltip("Comp:N", title="League"))
+
+    base = alt.Chart(df).encode(
+        x=alt.X("MV_M:Q", title="Total Market Value (€M)", axis=alt.Axis(format=".0f")),
+        y=alt.Y(f"{y_col}:Q", title="Squad score", axis=alt.Axis(format=".0f")),
+        tooltip=tooltip,
+    )
+
+    trend = (
+        base.transform_regression("MV_M", y_col)
+        .mark_line(strokeDash=[6, 6], strokeWidth=1.5, opacity=0.25, color="#E5E7EB")
+    )
+    points = base.mark_circle(size=120, opacity=0.9, color="#9CA3AF")
+    labels = base.mark_text(
+        align="left", dx=8, dy=-10, fontSize=12, fontWeight="bold", color=value_color,
+    ).encode(text="label_top3:N")
+
+    chart = (
+        (trend + points + labels)
+        .properties(height=320)
+        .configure_view(strokeWidth=0)
+        .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", grid=False, domain=True)
+    )
+
+    st.markdown("### Budget vs Squad Score")
+    st.altair_chart(chart, use_container_width=True)
+
+    st.markdown(
+        "<div style='margin-top:-0.4rem; font-size:0.75rem; color:#9CA3AF;'>"
+        "Creator: <b>TwinAnalytics</b> &nbsp;•&nbsp; Data: FBref / Transfermarkt"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 def render_scatter_linkedin_optimized(
     df_rank: pd.DataFrame,
     *,

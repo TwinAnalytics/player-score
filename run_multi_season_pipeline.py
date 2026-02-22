@@ -14,6 +14,9 @@ from src.pipeline import run_full_pipeline
 from src.multi_season import load_all_seasons, aggregate_player_scores
 from src.squad import compute_squad_scores
 
+from src.scraping_transfermarkt_values import run_pipeline as scrape_transfermarkt
+from src.match_transfermarkt import build_market_value_lookup
+
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 RAW_DIR = (PROJECT_ROOT / "Data" / "Raw").resolve()
@@ -179,6 +182,50 @@ def run_scraping_block(
 
 
 # -------------------------------------------------------------------
+# STEP 1b: Transfermarkt market values
+# -------------------------------------------------------------------
+def _load_fbref_universe(processed_dir: Path) -> pd.DataFrame:
+    """Load player universe (Player, Squad) from existing processed CSVs."""
+    files = sorted(processed_dir.glob("player_scores-*.csv"))
+    if not files:
+        return pd.DataFrame()
+    frames = []
+    for f in files:
+        try:
+            df = pd.read_csv(f, usecols=lambda c: c in ("Player", "Squad", "Season"))
+            frames.append(df)
+        except Exception:
+            continue
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+
+def run_transfermarkt_block() -> None:
+    if not _env_flag("SCRAPE_TRANSFERMARKT", True):
+        print("[TM] SCRAPE_TRANSFERMARKT=false, skipping.")
+        return
+
+    print("=" * 80)
+    print("STEP 1b: Transfermarkt market value download + matching")
+    print("=" * 80)
+
+    try:
+        scrape_transfermarkt(output_folder=RAW_DIR)
+    except Exception as e:
+        print(f"[TM ERROR] Download failed: {e}")
+        return
+
+    df_fbref = _load_fbref_universe(PROCESSED_DIR)
+    if df_fbref.empty:
+        print("[TM WARN] No existing processed data found for player universe. Matching skipped.")
+        return
+
+    try:
+        build_market_value_lookup(RAW_DIR, PROCESSED_DIR, df_fbref)
+    except Exception as e:
+        print(f"[TM ERROR] Matching failed: {e}")
+
+
+# -------------------------------------------------------------------
 # STEP 2: Processing
 # -------------------------------------------------------------------
 def run_processing_block(seasons: list[str]) -> None:
@@ -225,6 +272,8 @@ def main() -> None:
             scrape_squads=scrape_squads,
             scrape_big5=scrape_big5,
         )
+
+    run_transfermarkt_block()
 
     if do_process:
         run_processing_block(seasons)
