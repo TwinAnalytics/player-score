@@ -19,3 +19,6 @@ notebooks/
 
 #API Token sportmonks
 *.env
+
+# LinkedIn Posts
+LinkedIn Posts/

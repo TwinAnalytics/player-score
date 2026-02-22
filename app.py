@@ -20,6 +20,8 @@ from src.charts.team_scatter import (
 from src.charts.player_card_export import generate_player_card_png
 from src.charts.player_report_pdf import generate_player_report_pdf
 from src.club_crests import get_crest_b64, get_crest_path
+from src.similar_players import find_similar_players
+from src.charts.age_curve import render_age_curve
 
 import io
 
@@ -3855,6 +3857,13 @@ def main():
         st.info("No processed data found yet. Run the pipeline locally and push the CSVs or Kaggle sync.")
         st.stop()
 
+    # ── Deep-link: read URL params into session state (runs once on load) ──
+    _qp = st.query_params
+    if "mode" in _qp and "main_mode" not in st.session_state:
+        st.session_state["main_mode"] = _qp["mode"]
+    if "player" in _qp:
+        st.session_state.setdefault("pp_selected_player", _qp["player"])
+
     # Handle pending navigation from Rankings (must run before radio renders)
     if "_nav_to_player" in st.session_state:
         st.session_state["pp_selected_player"] = st.session_state.pop("_nav_to_player")
@@ -3868,6 +3877,9 @@ def main():
         ["Home", "Player profile", "Player Rankings", "Team scores", "Hidden Gems", "Compare Players"],
         key="main_mode",
     )
+    # ── Deep-link: keep URL in sync with current mode ──
+    st.query_params["mode"] = mode
+
     _c_exc = BAND_COLORS["Exceptional"]
     _c_wc  = BAND_COLORS["World Class"]
     _c_ts  = BAND_COLORS["Top Starter"]
@@ -3959,6 +3971,22 @@ def main():
                 </div>""",
                 unsafe_allow_html=True,
             )
+
+        st.markdown("<div style='height:1.5rem'></div>", unsafe_allow_html=True)
+
+        # ── Global player search ───────────────────────────────────────
+        st.markdown("### Player search")
+        _all_players_home = sorted(df_all["Player"].dropna().unique().tolist())
+        _home_pick = st.selectbox(
+            "Search any player…",
+            [""] + _all_players_home,
+            key="home_search_box",
+        )
+        if _home_pick:
+            st.session_state["pp_selected_player"] = _home_pick
+            st.session_state["pp_source"] = "global"
+            st.session_state["main_mode"] = "Player profile"
+            st.rerun()
 
         st.markdown("<div style='height:1.5rem'></div>", unsafe_allow_html=True)
 
@@ -4215,6 +4243,12 @@ def main():
 
         st.session_state["selected_player_label"] = player
 
+        # ── Deep-link: keep URL in sync with selected player ──
+        if player:
+            st.query_params["player"] = player
+        else:
+            st.query_params.pop("player", None)
+
         # alle Saisons & Clubs des Spielers
         player_squad = None
         df_player_all = df_all[df_all["Player"] == player].copy()
@@ -4445,6 +4479,36 @@ def main():
                         st.altair_chart(scatter_chart, use_container_width=True)
                         scatter_df_all_pdf    = df_features_season
                         scatter_df_player_pdf = df_feat_player
+
+            # ── Similar players ───────────────────────────────────────────
+            with st.expander("Similar players — by playing style", expanded=True):
+                try:
+                    df_feat_sim = load_feature_table_for_season(season)
+                    df_season_scores = df_all[df_all["Season"] == season].copy()
+                    if "MainScore" not in df_season_scores.columns or "MainBand" not in df_season_scores.columns:
+                        df_season_scores[["MainScore", "MainBand"]] = df_season_scores.apply(
+                            get_primary_score_and_band, axis=1, result_type="expand"
+                        )
+                    sim = find_similar_players(
+                        df_feat_sim, df_season_scores, player, role or "MF", n=5
+                    )
+                    if not sim.empty:
+                        for _, r in sim.iterrows():
+                            c1, c2, c3 = st.columns([0.5, 0.25, 0.25])
+                            with c1:
+                                if st.button(str(r["Player"]), key=f"sim_{r['Player']}_{season}"):
+                                    st.session_state["pp_selected_player"] = r["Player"]
+                                    st.session_state["pp_source"] = "global"
+                                    st.rerun()
+                            with c2:
+                                st.caption(str(r.get("Squad", "")))
+                            with c3:
+                                score_val = r.get("MainScore")
+                                st.caption(f"{int(score_val)}" if pd.notna(score_val) else "–")
+                    else:
+                        st.caption("Not enough data for this season/role.")
+                except Exception:
+                    st.caption("Similar players not available for this season.")
 
         else:
             if "Season" in df_player_all.columns:
@@ -4688,6 +4752,9 @@ def main():
             )
 
             st.altair_chart(chart, use_container_width=True)
+
+            # ── Age curve ─────────────────────────────────────────────────
+            render_age_curve(df_all, player, role or "MF", get_primary_score_and_band, VALUE_COLOR)
 
             # ===================== MARKET VALUE HISTORY (Career) =====================
             tm_id = None
