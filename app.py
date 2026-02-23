@@ -3929,8 +3929,10 @@ def main():
         st.markdown(
             f"""
             <div style="padding: 2rem 0 1.5rem 0;">
-                <h1 style="font-size:2.8rem; font-weight:800; color:{VALUE_COLOR};
-                           letter-spacing:-0.03em; margin-bottom:0.3rem;">PlayerScore</h1>
+                <h1 style="font-size:2.8rem; font-weight:800;
+                           letter-spacing:-0.03em; margin-bottom:0.3rem;">
+                    <span style="color:{VALUE_COLOR};">Player</span><span style="color:#FFFFFF;">Score</span>
+                </h1>
                 <p style="font-size:1.15rem; color:#94A3B8; margin:0; max-width:580px;">
                     Role-aware player performance analytics for Europe's Big-5 leagues —
                     transparent, benchmark-driven, updated weekly.
