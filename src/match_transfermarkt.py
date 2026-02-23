@@ -114,12 +114,12 @@ def _match_player(
         r = tm_rows[best_idx]
         return r["mv"], r["tm_id"], 100
 
-    # 2. Fuzzy match
+    # 2. Fuzzy match — token_set_ratio handles "Joel Fujita" ↔ "Joel Chima Fujita"
     if _HAS_RAPIDFUZZ and tm_norms:
         results = rfprocess.extract(
             norm_player,
             tm_norms,
-            scorer=fuzz.token_sort_ratio,
+            scorer=fuzz.token_set_ratio,
             score_cutoff=FUZZY_THRESHOLD,
             limit=5,
         )
