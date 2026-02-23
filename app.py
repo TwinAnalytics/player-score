@@ -3983,9 +3983,7 @@ def main():
             key="home_search_box",
         )
         if _home_pick:
-            st.session_state["pp_selected_player"] = _home_pick
-            st.session_state["pp_source"] = "global"
-            st.session_state["main_mode"] = "Player profile"
+            st.session_state["_nav_to_player"] = _home_pick
             st.rerun()
 
         st.markdown("<div style='height:1.5rem'></div>", unsafe_allow_html=True)
