@@ -1,5 +1,5 @@
 Player,Squad,tm_player_id,MarketValue_EUR,MatchScore
-Patrick van Aanholt,Crystal Palace,52119.0,400000.0,100
+Patrick van Aanholt,Crystal Palace,52119.0,2000000.0,100
 Rolando Aarons,Newcastle Utd,258188.0,250000.0,100
 Rolando Aarons,Hellas Verona,258188.0,250000.0,100
 Ignazio Abate,Milan,16631.0,400000.0,100
@@ -74,7 +74,7 @@ Jordan Amavi,Marseille,241229.0,1200000.0,100
 Stephan Ambrosius,Hamburger SV,327536.0,900000.0,100
 Kelvin Amian,Toulouse,344072.0,2500000.0,100
 Nadiem Amiri,Hoffenheim,232454.0,20000000.0,100
-Ethan Ampadu,Chelsea,392771.0,20000000.0,100
+Ethan Ampadu,Chelsea,392771.0,12000000.0,100
 Nordin Amrabat,Watford,55619.0,300000.0,100
 Nordin Amrabat,Leganés,55619.0,300000.0,100
 Joachim Andersen,Sampdoria,260827.0,25000000.0,100
@@ -207,8 +207,8 @@ Samuel Bastien,Chievo,289510.0,400000.0,100
 Borja Bastón,Málaga,85324.0,3500000.0,100
 Alessandro Bastoni,Atalanta,315853.0,70000000.0,100
 Bastos,Lazio,195810.0,1200000.0,100
-Michy Batshuayi,Chelsea,179184.0,8500000.0,100
-Michy Batshuayi,Dortmund,179184.0,8500000.0,100
+Michy Batshuayi,Chelsea,179184.0,4000000.0,100
+Michy Batshuayi,Dortmund,179184.0,4000000.0,100
 Moritz Bauer,Stoke City,159692.0,200000.0,100
 Robert Bauer,Werder Bremen,179634.0,800000.0,100
 Timo Baumgartl,Stuttgart,187491.0,1800000.0,100
@@ -225,7 +225,7 @@ Bebé,Eibar,153427.0,600000.0,100
 Ihlas Bebou,Hannover 96,237164.0,1000000.0,100
 Andreas Beck,Stuttgart,31182.0,200000.0,100
 Henri Bedimo,Marseille,6803.0,400000.0,100
-Jan Bednarek,Southampton,243028.0,12000000.0,100
+Jan Bednarek,Southampton,243028.0,18000000.0,100
 Valon Behrami,Udinese,21905.0,300000.0,100
 Ishak Belfodil,Werder Bremen,111039.0,1700000.0,100
 Stefan Bell,Mainz 05,82350.0,800000.0,100
@@ -287,7 +287,7 @@ Ludovic Blas,Guingamp,288225.0,18000000.0,100
 Pablo de Blasis,Mainz 05,75446.0,350000.0,100
 Jérémy Blayac,Strasbourg,29280.0,250000.0,100
 Alexis Blin,Toulouse,236041.0,3000000.0,100
-Daley Blind,Manchester Utd,12282.0,1400000.0,100
+Daley Blind,Manchester Utd,12282.0,3000000.0,100
 Danny Blum,Eint Frankfurt,41541.0,250000.0,100
 Emmanuel Boateng,Levante,332612.0,1000000.0,100
 Jérôme Boateng,Bayern Munich,26485.0,400000.0,100
@@ -300,8 +300,8 @@ Quentin Boisgard,Toulouse,412671.0,700000.0,100
 Yannick Bolasie,Everton,75471.0,250000.0,100
 Deian Boldor,Hellas Verona,239570.0,650000.0,100
 Giacomo Bonaventura,Milan,57280.0,3000000.0,100
-Federico Bonazzoli,SPAL,241527.0,1000000.0,100
-Federico Bonazzoli,Sampdoria,241527.0,1000000.0,100
+Federico Bonazzoli,SPAL,241527.0,2500000.0,100
+Federico Bonazzoli,Sampdoria,241527.0,2500000.0,100
 Daniele Bonera,Villarreal,5856.0,200000.0,100
 Gaëtan Bong,Brighton,36291.0,150000.0,100
 Kevin Bonifazi,Torino,247377.0,300000.0,100
@@ -319,8 +319,8 @@ Emmanuel Bourgaud,Amiens,57359.0,325000.0,100
 Benjamin Bourigeaud,Rennes,266359.0,18000000.0,100
 Eneko Bóveda,La Coruña,89313.0,400000.0,100
 Eneko Bóveda,Athletic Club,89313.0,400000.0,100
-Lucas Boyé,Torino,334222.0,5000000.0,100
-Lucas Boyé,Celta Vigo,334222.0,5000000.0,100
+Lucas Boyé,Torino,334222.0,7000000.0,100
+Lucas Boyé,Celta Vigo,334222.0,7000000.0,100
 Robbie Brady,Burnley,128229.0,600000.0,100
 Martin Braithwaite,Bordeaux,95732.0,5000000.0,100
 Brandon,Rennes,236168.0,3500000.0,100
@@ -368,7 +368,7 @@ Leandro Cabrera,Getafe,102423.0,1000000.0,100
 Fabrizio Cacciatore,Chievo,85605.0,100000.0,100
 Martín Cáceres,Hellas Verona,54935.0,250000.0,100
 Martín Cáceres,Lazio,54935.0,250000.0,100
-Cafú,Metz,203655.0,325000.0,100
+Cafú,Metz,203655.0,600000.0,100
 Jonathan Cafu,Bordeaux,347100.0,450000.0,100
 Gary Cahill,Chelsea,27511.0,400000.0,100
 Yannick Cahuzac,Toulouse,44686.0,300000.0,100
@@ -537,7 +537,7 @@ Peter Crouch,Stoke City,4072.0,1000000.0,100
 Juan Cruz,Málaga,585700.0,1500000.0,100
 Juan Cuadrado,Juventus,91970.0,1500000.0,100
 Mickaël Cuisance,Gladbach,344600.0,2000000.0,93
-Josh Cullen,West Ham,242606.0,7000000.0,100
+Josh Cullen,West Ham,242606.0,10000000.0,100
 Patrick Cutrone,Milan,265078.0,2500000.0,100
 Wylan Cyprien,Nice,182889.0,1100000.0,100
 Marco D'Alessandro,Benevento,99232.0,700000.0,100
@@ -631,11 +631,11 @@ Landry Dimata,Wolfsburg,311489.0,1800000.0,100
 Tristan Dingomé,Troyes,126683.0,300000.0,100
 Ismaël Diomandé,Caen,170495.0,150000.0,100
 Lois Diony,Saint-Étienne,126552.0,1500000.0,100
-Issa Diop,Toulouse,272622.0,10000000.0,100
+Issa Diop,Toulouse,272622.0,20000000.0,100
 Papakouli Diop,Espanyol,,,0
 Papakouli Diop,Eibar,,,0
 Assane Dioussé,Saint-Étienne,287635.0,700000.0,100
-Djené,Getafe,221150.0,1600000.0,100
+Djené,Getafe,221150.0,2500000.0,100
 Koffi Djidji,Nantes,183031.0,2500000.0,100
 Alexander Djiku,Caen,250844.0,9000000.0,100
 Papy Djilobodji,Dijon,136610.0,500000.0,100
@@ -687,7 +687,7 @@ Albin Ekdal,Hamburger SV,49275.0,800000.0,100
 Josip Elez,Hannover 96,179895.0,850000.0,100
 Mohamed Elneny,Arsenal,160438.0,3500000.0,100
 Aritz Elustondo,Real Sociedad,229804.0,1800000.0,100
-Nico Elvedi,Gladbach,192635.0,10000000.0,100
+Nico Elvedi,Gladbach,192635.0,8000000.0,100
 Rodrigo Ely,Alavés,176140.0,3000000.0,100
 Breel Embolo,Schalke 04,237662.0,12000000.0,100
 Youssef En-Nesyri,Málaga,433049.0,20000000.0,100
@@ -730,7 +730,7 @@ Federico Fazio,Roma,45314.0,400000.0,100
 Zouhair Feddal,Betis,129386.0,800000.0,100
 Nabil Fekir,Lyon,203496.0,10000000.0,100
 Felipe,Hannover 96,156501.0,1500000.0,100
-Luiz Felipe,Lazio,457931.0,3000000.0,100
+Luiz Felipe,Lazio,457931.0,13000000.0,100
 Ohis Felix Uduokhai,Wolfsburg,278343.0,6000000.0,100
 Marouane Fellaini,Manchester Utd,39679.0,1000000.0,100
 Kiko Femenía,Watford,76467.0,800000.0,100
@@ -750,7 +750,7 @@ Afonso Figueiredo,Rennes,237000.0,175000.0,100
 Gian Filippo Felicioli,Hellas Verona,290733.0,350000.0,100
 Alfreð Finnbogason,Augsburg,90024.0,250000.0,97
 Roberto Firmino,Liverpool,131789.0,15000000.0,100
-Junior Firpo,Betis,374139.0,6000000.0,100
+Junior Firpo,Betis,374139.0,7000000.0,100
 Viktor Fischer,Mainz 05,95755.0,1500000.0,100
 Mathieu Flamini,Getafe,17396.0,600000.0,100
 Darren Fletcher,Stoke City,3547.0,1000000.0,100
@@ -800,7 +800,7 @@ Bruno Gama,La Coruña,15568.0,200000.0,100
 Alessandro Gamberini,Chievo,16868.0,250000.0,100
 Kévin Gameiro,Atlético Madrid,27389.0,700000.0,100
 Jesús Gámez,Newcastle Utd,29055.0,2000000.0,100
-Idrissa Gana Gueye,Everton,1178488.0,1500000.0,100
+Idrissa Gana Gueye,Everton,126665.0,1000000.0,100
 Ignatius Ganago,Nice,531949.0,2000000.0,100
 Najib Gandi,Nantes,226276.0,200000.0,100
 Ganso,Sevilla,67920.0,700000.0,100
@@ -861,7 +861,7 @@ Massimo Gobbi,Chievo,28020.0,300000.0,100
 Diego Godín,Atlético Madrid,54928.0,300000.0,100
 Edoardo Goldaniga,Sassuolo,242940.0,1200000.0,100
 Connor Goldson,Brighton,163656.0,5000000.0,100
-André Gomes,Barcelona,221025.0,6000000.0,100
+André Gomes,Barcelona,221025.0,10000000.0,100
 Ibai Gómez,Alavés,127837.0,400000.0,100
 Joe Gomez,Liverpool,256178.0,15000000.0,100
 Mario Gómez,Wolfsburg,6288.0,800000.0,100
@@ -932,7 +932,7 @@ Manuel Gulde,Freiburg,45683.0,1500000.0,100
 Gerard Gumbau,Leganés,268670.0,1400000.0,100
 İlkay Gündoğan,Manchester City,53622.0,4000000.0,100
 Christian Günter,Freiburg,93707.0,3500000.0,100
-Jon Guridi,Real Sociedad,289257.0,2500000.0,100
+Jon Guridi,Real Sociedad,289257.0,4000000.0,100
 Samuel Gustafson,Torino,255473.0,2500000.0,100
 Luiz Gustavo,Marseille,10471.0,500000.0,100
 Alejandro Gutiérrez Mozo,Leganés,,,0
@@ -945,12 +945,12 @@ Alexander Hack,Mainz 05,126281.0,2200000.0,100
 Robin Hack,Hoffenheim,284010.0,12000000.0,100
 Munir El Haddadi,Alavés,223725.0,2500000.0,100
 Oussama Haddadi,Dijon,191407.0,700000.0,100
-Florent Hadergjonaj,Huddersfield,238809.0,1700000.0,100
+Florent Hadergjonaj,Huddersfield,238809.0,2000000.0,100
 André Hahn,Hamburger SV,42783.0,800000.0,100
 Oualid El Hajjam,Amiens,283127.0,800000.0,100
 Izet Hajrović,Werder Bremen,74996.0,200000.0,100
 Achraf Hakimi,Real Madrid,398073.0,80000000.0,100
-Alen Halilović,Las Palmas,226074.0,1300000.0,100
+Alen Halilović,Las Palmas,226074.0,800000.0,100
 Sébastien Haller,Eint Frankfurt,181375.0,2000000.0,100
 Emil Hallfreðsson,Udinese,22673.0,225000.0,96
 Marcel Halstenberg,RB Leipzig,70243.0,2500000.0,100
@@ -971,7 +971,7 @@ Jonas Hector,Köln,108537.0,3500000.0,100
 Michael Hefele,Huddersfield,102382.0,300000.0,100
 Ahmed Hegazi,West Brom,111524.0,2500000.0,91
 Gauthier Hein,Metz,344892.0,3000000.0,100
-Dominique Heintz,Köln,110036.0,800000.0,100
+Dominique Heintz,Köln,110036.0,2500000.0,100
 Filip Helander,Bologna,198067.0,1000000.0,100
 Marcel Heller,Augsburg,32207.0,75000.0,100
 Tomer Hemed,Brighton,112668.0,200000.0,100
@@ -1062,7 +1062,7 @@ Takashi Inui,Eibar,98249.0,350000.0,100
 Artur Ioniță,Cagliari,98888.0,700000.0,100
 Stephen Ireland,Stoke City,34838.0,1000000.0,100
 Carlos Isaac,Atlético Madrid,396324.0,400000.0,100
-Alexander Isak,Dortmund,349066.0,120000000.0,100
+Alexander Isak,Dortmund,349066.0,75000000.0,100
 Isco,Real Madrid,85288.0,4000000.0,100
 Tatsuya Ito,Hamburger SV,381248.0,700000.0,100
 Gian-Luca Itter,Wolfsburg,296378.0,1500000.0,80
@@ -1107,7 +1107,7 @@ Jonathas,Hannover 96,58345.0,300000.0,100
 Phil Jones,Manchester Utd,117996.0,1000000.0,100
 Nigel de Jong,Mainz 05,4672.0,400000.0,100
 Jony,Málaga,228761.0,300000.0,100
-Joan Jordán,Eibar,263727.0,3500000.0,100
+Joan Jordán,Eibar,263727.0,2000000.0,100
 Jorge,Monaco,345084.0,1100000.0,100
 Jorginho,Napoli,102017.0,12000000.0,100
 Willian José,Real Sociedad,122155.0,5000000.0,100
@@ -1115,14 +1115,14 @@ Joselu,Newcastle Utd,81999.0,5000000.0,100
 Yann Jouffre,Metz,12508.0,1000000.0,100
 Vukašin Jovanović,Bordeaux,264140.0,300000.0,100
 Stevan Jovetić,Monaco,46104.0,700000.0,100
-Luka Jović,Eint Frankfurt,257462.0,6000000.0,100
+Luka Jović,Eint Frankfurt,257462.0,7000000.0,100
 Jozabed,Celta Vigo,207924.0,500000.0,100
 Juanfran,La Coruña,7542.0,100000.0,100
 Juanfran,Atlético Madrid,7542.0,100000.0,100
 Juankar,Málaga,126625.0,500000.0,100
 Juanmi,Real Sociedad,126737.0,1200000.0,100
 Juanpe,Girona,115333.0,1000000.0,100
-Juanpi,Málaga,256680.0,400000.0,100
+Juanpi,Málaga,256680.0,450000.0,100
 Mariano Julio Izco,Crotone,54155.0,300000.0,100
 Christopher Jullien,Toulouse,201737.0,2500000.0,100
 David Juncà,Eibar,164055.0,300000.0,100
@@ -1203,7 +1203,7 @@ Robin Koch,Freiburg,328784.0,18000000.0,100
 Kenan Kodro,Mainz 05,197126.0,1200000.0,100
 Dominik Kohr,Leverkusen,118847.0,3500000.0,100
 Seybou Koita,Amiens,402010.0,3500000.0,86
-Koke,Atlético Madrid,74229.0,7000000.0,100
+Koke,Atlético Madrid,74229.0,12000000.0,100
 Aleksandar Kolarov,Roma,46156.0,500000.0,100
 Sead Kolašinac,Arsenal,94005.0,10000000.0,100
 Vincent Kompany,Manchester City,9594.0,4000000.0,100
@@ -1282,7 +1282,7 @@ Miguel Layún,Sevilla,58576.0,700000.0,100
 Achraf Lazaar,Benevento,139173.0,200000.0,100
 Valentino Lazaro,Hertha BSC,186368.0,3500000.0,100
 Darko Lazović,Genoa,70411.0,1500000.0,100
-Manuel Lazzari,SPAL,331401.0,5000000.0,100
+Manuel Lazzari,SPAL,331401.0,4000000.0,100
 Mickaël Le Bihan,Nice,139018.0,500000.0,100
 Maxime Le Marchand,Nice,60558.0,1000000.0,100
 James Lea Siliki,Rennes,346291.0,900000.0,100
@@ -1303,7 +1303,7 @@ Aaron Lennon,Everton,14221.0,600000.0,100
 Pedro León,Eibar,51587.0,800000.0,100
 Sergio León,Betis,145769.0,2000000.0,100
 Lukas Lerager,Bordeaux,167105.0,3000000.0,100
-Mehdi Léris,Chievo,348601.0,2200000.0,100
+Mehdi Léris,Chievo,348601.0,2500000.0,100
 Jefferson Lerma,Levante,262980.0,8000000.0,100
 Maxime Lestienne,Málaga,96454.0,1000000.0,100
 Gaetano Letizia,Benevento,160560.0,900000.0,100
@@ -1320,9 +1320,9 @@ Jesse Lingard,Manchester Utd,141660.0,6000000.0,100
 Pol Lirola,Sassuolo,298975.0,3000000.0,100
 Jake Livermore,West Brom,61832.0,500000.0,100
 Adem Ljajić,Torino,69374.0,400000.0,100
-Diego Llorente,Real Sociedad,246291.0,7000000.0,100
+Diego Llorente,Real Sociedad,246291.0,3000000.0,100
 Fernando Llorente,Tottenham,35564.0,300000.0,100
-Marcos Llorente,Real Madrid,282411.0,22000000.0,100
+Marcos Llorente,Real Madrid,282411.0,30000000.0,100
 Giovani Lo Celso,Paris S-G,348795.0,15000000.0,100
 Simone Lo Faso,Fiorentina,349719.0,50000.0,100
 Stanislav Lobotka,Celta Vigo,192735.0,30000000.0,100
@@ -1356,14 +1356,14 @@ Anthony Lozano,Girona,49641.0,350000.0,82
 Fabio Lucioni,Benevento,160561.0,600000.0,100
 Filipe Luís,Atlético Madrid,21725.0,300000.0,100
 José Luis Gayà,Valencia,221322.0,5000000.0,100
-José Luis Morales,Levante,252677.0,400000.0,100
+José Luis Morales,Levante,252677.0,1500000.0,100
 José Luis Palomino,Atalanta,125020.0,700000.0,100
 Luisinho,La Coruña,56777.0,200000.0,100
 David Luiz,Chelsea,46741.0,500000.0,100
 Douglas Luiz,Girona,447661.0,25000000.0,100
 Everton Luiz,SPAL,75076.0,250000.0,100
 Jordan Lukaku,Lazio,140804.0,275000.0,100
-Romelu Lukaku,Manchester Utd,96341.0,15000000.0,100
+Romelu Lukaku,Manchester Utd,96341.0,30000000.0,100
 Lars Lukas Mai,Bayern Munich,345780.0,2200000.0,100
 Dodi Lukebakio,Watford,303259.0,20000000.0,100
 Saša Lukić,Levante,245056.0,12000000.0,100
@@ -1426,7 +1426,7 @@ Solly March,Brighton,209212.0,3000000.0,100
 Claudio Marchisio,Juventus,44716.0,3000000.0,100
 Gian Marco Ferrari,Sampdoria,277167.0,1400000.0,100
 Óscar de Marcos,Athletic Club,96718.0,1500000.0,100
-José María Giménez,Atlético Madrid,250845.0,22000000.0,100
+José María Giménez,Atlético Madrid,250845.0,14000000.0,100
 Mariano,Lyon,54155.0,300000.0,100
 Adrian Mariappa,Watford,38145.0,100000.0,100
 Jordan Marié,Dijon,231025.0,450000.0,100
@@ -1474,10 +1474,10 @@ Mërgim Mavraj,Hamburger SV,38267.0,125000.0,100
 Konstantinos Mavropanos,Arsenal,415912.0,15000000.0,100
 Alfie Mawson,Swansea City,287431.0,2500000.0,100
 Philipp Max,Augsburg,111275.0,2000000.0,100
-Alexandru Maxim,Mainz 05,129513.0,750000.0,100
+Alexandru Maxim,Mainz 05,129513.0,1000000.0,100
 Eric Maxim Choupo-Moting,Stoke City,45660.0,2500000.0,95
 Florian Mayer,Gladbach,331634.0,75000.0,100
-Borja Mayoral,Real Madrid,298976.0,15000000.0,100
+Borja Mayoral,Real Madrid,298976.0,7500000.0,100
 Róbert Mazáň,Celta Vigo,181619.0,250000.0,100
 Luca Mazzitelli,Sassuolo,226025.0,1500000.0,100
 Kylian Mbappé,Paris S-G,342229.0,200000000.0,100
@@ -1517,7 +1517,7 @@ Alexandre Mendy,Bordeaux,290561.0,3500000.0,100
 Benjamin Mendy,Manchester City,157495.0,2000000.0,100
 Ferland Mendy,Lyon,291417.0,8000000.0,100
 Nampalys Mendy,Nice,111051.0,3000000.0,100
-Hamza Mendyl,Lille,447221.0,900000.0,100
+Hamza Mendyl,Lille,447221.0,1300000.0,100
 Gabriel Mercado,Sevilla,45319.0,250000.0,100
 Jorge Meré,Köln,286779.0,1000000.0,100
 Mikel Merino,Newcastle Utd,338424.0,30000000.0,100
@@ -1554,7 +1554,7 @@ Henrikh Mkhitaryan,Arsenal,55735.0,6000000.0,100
 Henrikh Mkhitaryan,Manchester Utd,55735.0,6000000.0,100
 Luka Modrić,Real Madrid,27992.0,4000000.0,100
 Niklas Moisander,Werder Bremen,5017.0,300000.0,100
-Johan Mojica,Girona,262939.0,2200000.0,100
+Johan Mojica,Girona,262939.0,1800000.0,100
 Jorge Molina,Getafe,57825.0,600000.0,100
 Daniel Molina Orta,Celta Vigo,92117.0,500000.0,100
 Cristian Molinaro,Torino,21972.0,250000.0,100
@@ -1591,12 +1591,12 @@ Pedro Mosquera,La Coruña,44069.0,500000.0,100
 Lebo Mothiba,Lille,427161.0,1500000.0,100
 Thiago Motta,Paris S-G,7602.0,1000000.0,100
 François Moubandje,Toulouse,123021.0,200000.0,100
-Steve Mounié,Huddersfield,238639.0,6000000.0,100
+Steve Mounié,Huddersfield,238639.0,2000000.0,100
 Lucas Moura,Tottenham,77100.0,6000000.0,100
 Lucas Moura,Paris S-G,77100.0,6000000.0,100
 Lys Mousset,Bournemouth,291422.0,350000.0,100
 João Moutinho,Monaco,461906.0,1100000.0,100
-Samuel Moutoussamy,Nantes,353403.0,1200000.0,100
+Samuel Moutoussamy,Nantes,353403.0,3000000.0,100
 Ndombe Mubele,Toulouse,,,0
 Ndombe Mubele,Rennes,,,0
 Nordi Mukiele,Montpellier,348026.0,15000000.0,100
@@ -1713,7 +1713,7 @@ Prince Oniangué,Angers,60578.0,250000.0,100
 Karim Onisiwo,Mainz 05,119234.0,1500000.0,100
 Javier Ontiveros,Málaga,298983.0,1000000.0,93
 Daniel Opare,Augsburg,65781.0,250000.0,100
-Willi Orban,RB Leipzig,93740.0,10000000.0,100
+Willi Orban,RB Leipzig,93740.0,8000000.0,100
 Fabián Orellana,Eibar,60890.0,200000.0,100
 Divock Origi,Liverpool,148368.0,5000000.0,100
 Divock Origi,Wolfsburg,148368.0,5000000.0,100
@@ -1730,7 +1730,7 @@ Reece Oxford,West Ham,314295.0,1500000.0,100
 Reece Oxford,Gladbach,314295.0,1500000.0,100
 Alex Oxlade-Chamberlain,Arsenal,143424.0,3000000.0,100
 Alex Oxlade-Chamberlain,Liverpool,143424.0,3000000.0,100
-Mikel Oyarzabal,Real Sociedad,351478.0,45000000.0,100
+Mikel Oyarzabal,Real Sociedad,351478.0,25000000.0,100
 Ambroise Oyongo,Montpellier,184922.0,500000.0,100
 Berkay Özcan,Stuttgart,249952.0,2000000.0,100
 Salih Özcan,Köln,244940.0,4000000.0,100
@@ -1775,7 +1775,7 @@ Giampaolo Pazzini,Hellas Verona,19447.0,350000.0,100
 Giampaolo Pazzini,Levante,19447.0,350000.0,100
 Alfonso Pedraza,Alavés,356197.0,2500000.0,100
 Pedro,Chelsea,432895.0,22000000.0,100
-João Pedro,Cagliari,626724.0,65000000.0,100
+João Pedro,Cagliari,626724.0,45000000.0,100
 Stef Peeters,Caen,208542.0,700000.0,100
 Peter Pekarík,Hertha BSC,51100.0,500000.0,100
 Bryan Pelé,Troyes,170938.0,250000.0,100
@@ -1788,7 +1788,7 @@ Federico Peluso,Sassuolo,21763.0,300000.0,100
 Rubén Peña,Eibar,238868.0,2200000.0,100
 Gabriel Peñalba,Las Palmas,30929.0,50000.0,100
 Adalberto Peñaranda,Málaga,308801.0,400000.0,100
-Nicolas Pépé,Lille,343052.0,8500000.0,100
+Nicolas Pépé,Lille,343052.0,6000000.0,100
 Andreas Pereira,Valencia,203394.0,20000000.0,100
 Pedro Pereira,Genoa,314965.0,1200000.0,100
 Bruno Peres,Roma,148751.0,1000000.0,100
@@ -1867,7 +1867,7 @@ Loïc Puyo,Angers,170916.0,200000.0,100
 Fabio Quagliarella,Sampdoria,22328.0,500000.0,100
 Robin Quaison,Mainz 05,206542.0,4500000.0,100
 Collin Quaner,Huddersfield,123397.0,200000.0,100
-Dani Raba,Villarreal,413262.0,2400000.0,100
+Dani Raba,Villarreal,413262.0,1500000.0,100
 Adrien Rabiot,Paris S-G,182913.0,20000000.0,100
 Nemanja Radoja,Celta Vigo,168959.0,1500000.0,100
 Ivan Radovanović,Chievo,46105.0,400000.0,100
@@ -2093,7 +2093,7 @@ Ernest Seka,Strasbourg,283136.0,400000.0,100
 Vahid Selimović,Metz,351072.0,200000.0,100
 Davie Selke,Hertha BSC,178459.0,1800000.0,100
 Ole Selnæs,Saint-Étienne,175961.0,1200000.0,90
-Nélson Semedo,Barcelona,231572.0,12000000.0,100
+Nélson Semedo,Barcelona,231572.0,8000000.0,100
 Rúben Semedo,Villarreal,197602.0,2000000.0,100
 Stefano Sensi,Sassuolo,216179.0,3000000.0,100
 Suat Serdar,Mainz 05,261905.0,5000000.0,100
@@ -2174,7 +2174,7 @@ Niklas Stark,Hertha BSC,162434.0,4000000.0,100
 Timo Stavitski,Caen,363717.0,200000.0,100
 Renato Steffen,Wolfsburg,194638.0,1000000.0,100
 Marc Stendera,Eint Frankfurt,160943.0,225000.0,100
-Pascal Stenzel,Freiburg,195246.0,2500000.0,100
+Pascal Stenzel,Freiburg,195246.0,2000000.0,100
 Dale Stephens,Brighton,49755.0,600000.0,100
 Jack Stephens,Southampton,163744.0,3000000.0,100
 Mariusz Stępiński,Chievo,210363.0,1500000.0,100
@@ -2193,7 +2193,7 @@ Stefano Sturaro,Juventus,167859.0,500000.0,100
 Daniel Sturridge,West Brom,47082.0,200000.0,100
 Daniel Sturridge,Liverpool,47082.0,200000.0,100
 Damián Suárez,Getafe,76746.0,650000.0,100
-Denis Suárez,Barcelona,165007.0,1500000.0,100
+Denis Suárez,Barcelona,165007.0,1200000.0,100
 Leonardo Suárez,Villarreal,44358.0,150000.0,100
 Luis Suárez,Barcelona,44352.0,4000000.0,100
 Neven Subotić,Saint-Étienne,40995.0,200000.0,100
@@ -2226,7 +2226,7 @@ Tana,Las Palmas,223068.0,325000.0,100
 Oussama Tannane,Las Palmas,235540.0,1500000.0,100
 Oussama Tannane,Saint-Étienne,235540.0,1500000.0,100
 Matt Targett,Southampton,250478.0,10000000.0,100
-James Tarkowski,Burnley,173504.0,7000000.0,100
+James Tarkowski,Burnley,173504.0,13000000.0,100
 Júlio Tavares,Dijon,216426.0,500000.0,100
 Taleb Tawatha,Eint Frankfurt,60761.0,250000.0,100
 Charlie Taylor,Burnley,195633.0,3000000.0,100
@@ -2257,8 +2257,8 @@ Ola Toivonen,Toulouse,36500.0,300000.0,100
 Karl Toko Ekambi,Angers,315110.0,5000000.0,100
 Hernán Toledo,Las Palmas,397896.0,275000.0,100
 Corentin Tolisso,Bayern Munich,190393.0,12000000.0,100
-Jeremy Toljan,Hoffenheim,129674.0,3500000.0,100
-Jeremy Toljan,Dortmund,129674.0,3500000.0,100
+Jeremy Toljan,Hoffenheim,129674.0,2200000.0,100
+Jeremy Toljan,Dortmund,129674.0,2200000.0,100
 Rafael Tolói,Atalanta,72441.0,2500000.0,100
 James Tomkins,Crystal Palace,61592.0,700000.0,100
 Nenad Tomović,Fiorentina,47085.0,250000.0,100
@@ -2427,7 +2427,7 @@ Steeve Yago,Toulouse,170903.0,800000.0,100
 Cédric Yamberé,Dijon,291140.0,200000.0,100
 Jawad El Yamiq,Genoa,235412.0,2000000.0,100
 Mapou Yanga-Mbiwa,Lyon,57480.0,250000.0,100
-Andriy Yarmolenko,Dortmund,69015.0,1500000.0,100
+Andriy Yarmolenko,Dortmund,69015.0,2000000.0,100
 DeAndre Yedlin,Newcastle Utd,255916.0,2000000.0,100
 Maya Yoshida,Southampton,81789.0,500000.0,100
 Ashley Young,Manchester Utd,14086.0,500000.0,100
@@ -2451,7 +2451,7 @@ Mehdi Zeffane,Rennes,118303.0,500000.0,100
 Rafik Zekhnini,Fiorentina,354278.0,450000.0,100
 Nabil El Zhar,Leganés,37917.0,500000.0,100
 Enzo Zidane,Alavés,106825.0,250000.0,100
-Piotr Zieliński,Napoli,181136.0,25000000.0,100
+Piotr Zieliński,Napoli,181136.0,22000000.0,100
 Matthias Zimmermann,Stuttgart,86848.0,800000.0,100
 Oleksandr Zinchenko,Manchester City,203853.0,15000000.0,100
 Simon Zoller,Köln,79967.0,350000.0,100
@@ -2556,8 +2556,8 @@ Toma Bašić,Bordeaux,334835.0,1000000.0,100
 Thomas Basila,Nantes,344592.0,300000.0,100
 Borja Bastón,Alavés,85324.0,3500000.0,100
 Alessandro Bastoni,Parma,315853.0,70000000.0,100
-Michy Batshuayi,Crystal Palace,179184.0,8500000.0,100
-Michy Batshuayi,Valencia,179184.0,8500000.0,100
+Michy Batshuayi,Crystal Palace,179184.0,4000000.0,100
+Michy Batshuayi,Valencia,179184.0,4000000.0,100
 Robert Bauer,Nürnberg,179634.0,800000.0,100
 Christoph Baumgartner,Hoffenheim,324278.0,12000000.0,100
 Paul Baysse,Caen,43256.0,800000.0,100
@@ -2624,7 +2624,7 @@ Jimmy Briand,Bordeaux,18909.0,600000.0,100
 Nicolò Brighenti,Frosinone,109110.0,350000.0,100
 Matteo Brighi,Empoli,5868.0,200000.0,100
 Enrico Brignola,Sassuolo,323147.0,550000.0,100
-David Brooks,Bournemouth,277033.0,12000000.0,100
+David Brooks,Bournemouth,277033.0,8000000.0,100
 Jeffrey Bruma,Schalke 04,88721.0,250000.0,100
 Joe Bryan,Fulham,194460.0,2200000.0,100
 Niko Bungert,Mainz 05,30070.0,200000.0,100
@@ -2685,7 +2685,7 @@ Denis Cheryshev,Valencia,98322.0,1000000.0,100
 Raman Chibsah,Frosinone,199633.0,175000.0,100
 Tahith Chong,Manchester Utd,344830.0,6000000.0,100
 Cyrus Christie,Fulham,158623.0,1000000.0,100
-Samuel Chukwueze,Villarreal,401922.0,10000000.0,100
+Samuel Chukwueze,Villarreal,401922.0,20000000.0,100
 Camillo Ciano,Frosinone,61511.0,350000.0,100
 Amato Ciciretti,Parma,159902.0,400000.0,100
 Laurent Ciman,Dijon,22338.0,200000.0,100
@@ -2746,7 +2746,7 @@ Federico Di Francesco,Sassuolo,38607.0,1400000.0,100
 Antonio Di Gaudio,Parma,165722.0,175000.0,100
 Giovanni Di Lorenzo,Empoli,169880.0,18000000.0,100
 Franco Di Santo,Rayo Vallecano,59783.0,350000.0,100
-Boulaye Dia,Reims,626913.0,13000000.0,100
+Boulaye Dia,Reims,626913.0,10000000.0,100
 Moussa Diaby,Paris S-G,395516.0,55000000.0,100
 Adama Diakhaby,Huddersfield,453594.0,600000.0,100
 Mouctar Diakhaby,Valencia,346289.0,2800000.0,100
@@ -2765,7 +2765,7 @@ Javairô Dilrosun,Hertha BSC,315125.0,4000000.0,100
 Federico Dimarco,Parma,198116.0,50000000.0,100
 Tristan Dingomé,Reims,126683.0,300000.0,100
 Federico Dionisi,Frosinone,119369.0,300000.0,100
-Issa Diop,West Ham,272622.0,10000000.0,100
+Issa Diop,West Ham,272622.0,20000000.0,100
 Sofiane Diop,Monaco,569389.0,8000000.0,100
 Assane Dioussé,Chievo,287635.0,700000.0,100
 Axel Disasi,Reims,386047.0,15000000.0,100
@@ -2773,7 +2773,7 @@ Koffi Djidji,Torino,183031.0,2500000.0,100
 Papy Djilobodji,Guingamp,136610.0,500000.0,100
 Berat Djimsiti,Atalanta,165513.0,10000000.0,100
 Johan Djourou,SPAL,34561.0,200000.0,100
-Matt Doherty,Wolves,171679.0,1500000.0,100
+Matt Doherty,Wolves,171679.0,3000000.0,100
 Riccardo Doratiotto,Cagliari,418881.0,50000.0,100
 Mathieu Dossevi,Toulouse,77828.0,100000.0,100
 Moussa Doumbia,Reims,316137.0,1800000.0,100
@@ -2834,7 +2834,7 @@ Rui Fonte,Lille,9335.0,300000.0,100
 Timothy Fosu-Mensah,Fulham,315131.0,800000.0,100
 Dimitri Foulquier,Getafe,170472.0,1200000.0,100
 Juan Foyth,Tottenham,480763.0,15000000.0,100
-Fred,Manchester Utd,191614.0,17000000.0,100
+Fred,Manchester Utd,191614.0,9000000.0,100
 Ryan Fredericks,West Ham,140191.0,1000000.0,100
 Nicolas Frey,Chievo,38591.0,100000.0,100
 Alexander Fuchs,Nürnberg,278323.0,150000.0,100
@@ -2875,7 +2875,7 @@ Massimo Gobbi,Parma,28020.0,300000.0,100
 Kevin Goden,Nürnberg,348214.0,125000.0,100
 Edoardo Goldaniga,Frosinone,242940.0,1200000.0,100
 Aleksandr Golovin,Monaco,263918.0,20000000.0,100
-André Gomes,Everton,221025.0,6000000.0,100
+André Gomes,Everton,221025.0,10000000.0,100
 Angel Gomes,Manchester Utd,392770.0,20000000.0,100
 Ibai Gómez,Athletic Club,127837.0,400000.0,100
 Moi Gómez,Huesca,175449.0,1800000.0,100
@@ -2928,7 +2928,7 @@ Féthi Harek,Nîmes,57170.0,250000.0,100
 Martin Harnik,Werder Bremen,31159.0,800000.0,100
 Kadeem Harris,Cardiff City,136501.0,400000.0,100
 Rhys Healey,Cardiff City,238185.0,2000000.0,100
-Dominique Heintz,Freiburg,110036.0,800000.0,100
+Dominique Heintz,Freiburg,110036.0,2500000.0,100
 Rouwen Hennings,Düsseldorf,16311.0,300000.0,100
 Benjamin Henrichs,Monaco,202591.0,15000000.0,100
 Uche Henry Agbo,Rayo Vallecano,262689.0,375000.0,100
@@ -2976,7 +2976,7 @@ Carl Jenkinson,Arsenal,126321.0,450000.0,100
 Fredrik Jensen,Augsburg,249157.0,3000000.0,100
 Mathias Jensen,Celta Vigo,319859.0,12000000.0,100
 Jesé,Betis,134936.0,1000000.0,100
-Raúl Jiménez,Wolves,206040.0,4000000.0,100
+Raúl Jiménez,Wolves,206040.0,5000000.0,100
 Joelinton,Hoffenheim,333241.0,30000000.0,100
 Stefan Johansen,Fulham,62008.0,600000.0,100
 Jakob Johansson,Rennes,46473.0,700000.0,100
@@ -2988,7 +2988,7 @@ Evens Joseph,Caen,593320.0,200000.0,100
 Diogo Jota,Wolves,340950.0,50000000.0,100
 Miguel Juan Llambrich,Villarreal,662338.0,1200000.0,100
 Juanfran,Leganés,7542.0,100000.0,100
-Juanpi,Huesca,256680.0,400000.0,100
+Juanpi,Huesca,256680.0,450000.0,100
 Nathaël Julan,Guingamp,386315.0,1750000.0,100
 David Juncà,Celta Vigo,164055.0,300000.0,100
 Hamed Junior Traorè,Empoli,391065.0,20000000.0,100
@@ -3049,7 +3049,7 @@ Juraj Kucka,Parma,74943.0,1200000.0,100
 Dejan Kulusevski,Atalanta,431755.0,45000000.0,100
 Pierre Kunde,Mainz 05,339829.0,1500000.0,100
 Rafał Kurzawa,Amiens,870187.0,200000.0,100
-Ahmed Kutucu,Schalke 04,452084.0,2400000.0,100
+Ahmed Kutucu,Schalke 04,452084.0,950000.0,100
 Antonino La Gumina,Empoli,287876.0,1100000.0,100
 Gaëtan Laborde,Montpellier,181378.0,10000000.0,100
 Diego Lainez,Betis,371174.0,2500000.0,100
@@ -3084,7 +3084,7 @@ Sean Longstaff,Newcastle Utd,346707.0,18000000.0,100
 Cristian López,Angers,114282.0,150000.0,100
 Lluis López,Espanyol,262391.0,600000.0,100
 Roberto López,Real Sociedad,569866.0,3000000.0,100
-Unai López,Athletic Club,192009.0,2500000.0,100
+Unai López,Athletic Club,192009.0,3000000.0,100
 Albert Lottin,Bordeaux,540659.0,300000.0,100
 Imran Louza,Nantes,635336.0,7000000.0,100
 Davor Lovren,Düsseldorf,316915.0,25000.0,100
@@ -3143,7 +3143,7 @@ Federico Mattiello,Bologna,200194.0,300000.0,100
 Stephy Mavididi,Juventus,340328.0,9000000.0,100
 Alfie Mawson,Fulham,287431.0,2500000.0,100
 Eric Maxim Choupo-Moting,Paris S-G,45660.0,2500000.0,95
-Borja Mayoral,Levante,298976.0,15000000.0,100
+Borja Mayoral,Levante,298976.0,7500000.0,100
 Luca Mazzitelli,Genoa,226025.0,1500000.0,100
 Loïc Mbe Soh,Paris S-G,463610.0,2000000.0,100
 Nolan Mbemba,Reims,276768.0,350000.0,100
@@ -3161,7 +3161,7 @@ Arthur Melo,Barcelona,362842.0,15000000.0,100
 Nathaniel Mendez-Laing,Cardiff City,125409.0,500000.0,100
 Alexandre Mendy,Guingamp,290561.0,3500000.0,100
 Nampalys Mendy,Leicester City,111051.0,3000000.0,100
-Hamza Mendyl,Schalke 04,447221.0,900000.0,100
+Hamza Mendyl,Schalke 04,447221.0,1300000.0,100
 Chris Mepham,Bournemouth,480987.0,6000000.0,100
 Mehdi Merghem,Guingamp,452877.0,800000.0,100
 Mikel Merino,Real Sociedad,338424.0,30000000.0,100
@@ -3178,7 +3178,7 @@ Yerry Mina,Everton,289446.0,3000000.0,100
 Ignasi Miquel,Getafe,70245.0,1200000.0,100
 Kevin Mirallas,Fiorentina,33639.0,350000.0,100
 Jorge Miramón,Huesca,228917.0,1500000.0,100
-Virgil Misidjan,Nürnberg,214346.0,600000.0,100
+Virgil Misidjan,Nürnberg,214346.0,3000000.0,100
 Simone Missiroli,SPAL,35747.0,300000.0,100
 Aleksandar Mitrović,Fulham,51152.0,28000000.0,100
 Stefan Mitrović,Strasbourg,726526.0,1500000.0,100
@@ -3379,7 +3379,7 @@ Diego Rolán,Leganés,193938.0,700000.0,100
 Diego Rolán,Alavés,193938.0,700000.0,100
 Esteban Rolón,Genoa,399887.0,300000.0,100
 Alaixys Romao,Reims,40014.0,75000.0,100
-Cristian Romero,Genoa,355915.0,65000000.0,100
+Cristian Romero,Genoa,355915.0,60000000.0,100
 Rômulo,Genoa,957874.0,2600000.0,100
 Rômulo,Lazio,957874.0,2600000.0,100
 Cristiano Ronaldo,Juventus,8198.0,15000000.0,100
@@ -3472,7 +3472,7 @@ Roberto Soriano,Torino,63186.0,1800000.0,100
 Roberto Soriano,Bologna,63186.0,1800000.0,100
 Borna Sosa,Stuttgart,293194.0,4000000.0,100
 Sebastian Soto,Hannover 96,605498.0,350000.0,100
-Riccardo Sottil,Fiorentina,386455.0,3500000.0,100
+Riccardo Sottil,Fiorentina,386455.0,6000000.0,100
 Çağlar Söyüncü,Leicester City,320141.0,9000000.0,100
 Leonardo Spinazzola,Juventus,118689.0,4000000.0,100
 Mattia Sprocati,Parma,199274.0,150000.0,100
@@ -3481,7 +3481,7 @@ Kevin Stöger,Düsseldorf,106872.0,3500000.0,100
 Kevin Strootman,Marseille,68864.0,800000.0,100
 Leo Štulac,Parma,171159.0,1000000.0,100
 Stefano Sturaro,Genoa,167859.0,500000.0,100
-Denis Suárez,Arsenal,165007.0,1500000.0,100
+Denis Suárez,Arsenal,165007.0,1200000.0,100
 Leonardo Suárez,Valladolid,44358.0,150000.0,100
 Mario Suárez,Rayo Vallecano,37337.0,300000.0,100
 Mathías Suárez,Montpellier,294895.0,275000.0,100
@@ -3495,7 +3495,7 @@ Strahinja Tanasijević,Chievo,400001.0,500000.0,100
 Rodrigo Tarín,Leganés,131505.0,5000000.0,100
 Júnior Tavares,Sampdoria,362835.0,400000.0,100
 Malik Tchokounté,Caen,412085.0,350000.0,100
-Aurélien Tchouaméni,Bordeaux,413112.0,75000000.0,100
+Aurélien Tchouaméni,Bordeaux,413112.0,100000000.0,100
 Georg Teigl,Augsburg,81698.0,150000.0,100
 Łukasz Teodorczyk,Udinese,157849.0,400000.0,96
 Hidde ter Avest,Udinese,258519.0,1500000.0,100
@@ -3574,7 +3574,7 @@ Walace,Hannover 96,323954.0,6000000.0,100
 Luca Waldschmidt,Freiburg,196095.0,4500000.0,100
 Danny Ward,Cardiff City,124172.0,700000.0,100
 Daniel Wass,Valencia,63463.0,1000000.0,100
-Wout Weghorst,Wolfsburg,228645.0,6000000.0,100
+Wout Weghorst,Wolfsburg,228645.0,3500000.0,100
 Mitchell Weiser,Leverkusen,119211.0,5000000.0,100
 Hendrik Weydandt,Hannover 96,330223.0,450000.0,100
 Connor Wickham,Crystal Palace,95435.0,400000.0,100
@@ -3588,7 +3588,7 @@ Marius Wolf,Dortmund,193900.0,3000000.0,100
 Jeong Woo-yeong,Bayern Munich,297583.0,4000000.0,100
 Bobby Wood,Hannover 96,72519.0,800000.0,100
 Haji Wright,Schalke 04,315291.0,7000000.0,100
-Andriy Yarmolenko,West Ham,69015.0,1500000.0,100
+Andriy Yarmolenko,West Ham,69015.0,2000000.0,100
 John Yeboah,Wolfsburg,439914.0,1500000.0,100
 Okay Yokuşlu,Celta Vigo,137616.0,2500000.0,100
 Elie Youan,Nantes,465715.0,1200000.0,100
@@ -3645,7 +3645,7 @@ Ibrahim Amadou,Norwich City,205503.0,1500000.0,100
 Ibrahim Amadou,Leganés,205503.0,1500000.0,100
 Thierry Ambrose,Metz,265763.0,1000000.0,100
 Nadiem Amiri,Leverkusen,232454.0,20000000.0,100
-Ethan Ampadu,RB Leipzig,392771.0,20000000.0,100
+Ethan Ampadu,RB Leipzig,392771.0,12000000.0,100
 Opoku Ampomah,Düsseldorf,,,0
 Sofyan Amrabat,Hellas Verona,287579.0,12000000.0,100
 Joachim Andersen,Lyon,260827.0,25000000.0,100
@@ -3751,7 +3751,7 @@ Melayro Bogarde,Hoffenheim,476915.0,600000.0,100
 Federico Bonini,Bologna,530552.0,500000.0,100
 Fabio Borini,Hellas Verona,96754.0,2200000.0,100
 Dennis Borkowski,RB Leipzig,467426.0,650000.0,100
-Sebastiaan Bornauw,Köln,338629.0,5000000.0,100
+Sebastiaan Bornauw,Köln,338629.0,7000000.0,100
 Brandon Borrello,Freiburg,293592.0,700000.0,100
 Denis Bouanga,Saint-Étienne,236045.0,8000000.0,100
 Hicham Boudaoui,Nice,560593.0,15000000.0,100
@@ -3851,7 +3851,7 @@ Sébastien Corchia,Espanyol,102744.0,1000000.0,100
 Andreas Cornelius,Parma,203412.0,1000000.0,100
 Rober Correa,Eibar,223890.0,500000.0,100
 Edmilson Correia,Saint-Étienne,,,0
-Thierry Correia,Valencia,367466.0,3000000.0,100
+Thierry Correia,Valencia,367466.0,6000000.0,100
 Antonio Cortés,Granada,334499.0,650000.0,86
 Jaume Costa,Valencia,65318.0,900000.0,100
 Yoann Court,Brest,60525.0,400000.0,100
@@ -3877,7 +3877,7 @@ Danilo,Juventus,808509.0,28000000.0,100
 Arnaut Danjuma,Bournemouth,355861.0,4000000.0,100
 Kevin Danso,Southampton,263236.0,22000000.0,100
 Matteo Darmian,Parma,54906.0,4000000.0,100
-Keinan Davis,Aston Villa,412660.0,3000000.0,100
+Keinan Davis,Aston Villa,412660.0,4000000.0,100
 Paweł Dawidowicz,Hellas Verona,248732.0,3000000.0,100
 Craig Dawson,Watford,121477.0,2000000.0,100
 Lucas Deaux,Nîmes,57372.0,250000.0,100
@@ -3902,7 +3902,7 @@ Giovanni Di Lorenzo,Napoli,169880.0,18000000.0,100
 Fousseni Diabaté,Amiens,364861.0,1200000.0,100
 Moussa Diaby,Leverkusen,395516.0,55000000.0,100
 Abdou Diallo,Paris S-G,229005.0,9000000.0,100
-Amad Diallo,Atalanta,536835.0,50000000.0,100
+Amad Diallo,Atalanta,536835.0,18000000.0,100
 Ibrahima Diallo,Brest,413032.0,6500000.0,100
 Moussa Diarra,Toulouse,694509.0,1500000.0,100
 Amadou Diawara,Roma,355501.0,1500000.0,100
@@ -3927,7 +3927,7 @@ Dominick Drexler,Köln,53400.0,750000.0,100
 Danny Drinkwater,Aston Villa,73491.0,400000.0,100
 Danny Drinkwater,Burnley,73491.0,400000.0,100
 Josip Drmić,Norwich City,140579.0,2000000.0,100
-Domingos Duarte,Granada,257376.0,800000.0,100
+Domingos Duarte,Granada,257376.0,2000000.0,100
 Léo Duarte,Milan,312678.0,2800000.0,100
 Óscar Duarte,Levante,175323.0,500000.0,100
 Ondrej Duda,Norwich City,232418.0,4000000.0,100
@@ -3982,7 +3982,7 @@ Carlos Fernández,Granada,216464.0,1500000.0,100
 Gabriel Fernández,Celta Vigo,259930.0,2000000.0,100
 Fernando,Sevilla,550495.0,10000000.0,100
 Jordan Ferri,Montpellier,118284.0,4500000.0,100
-Junior Firpo,Barcelona,374139.0,6000000.0,100
+Junior Firpo,Barcelona,374139.0,7000000.0,100
 John Fleck,Sheffield Utd,54383.0,900000.0,100
 Alessandro Florenzi,Valencia,130365.0,2000000.0,100
 Mamadou Fofana,Metz,402004.0,1800000.0,100
@@ -4009,13 +4009,13 @@ Marvin Gakpa,Metz,170976.0,450000.0,100
 Enric Gallego,Osasuna,114060.0,600000.0,100
 Enric Gallego,Getafe,114060.0,600000.0,100
 Fran Gámez,Mallorca,442816.0,500000.0,100
-Idrissa Gana Gueye,Paris S-G,1178488.0,1500000.0,100
+Idrissa Gana Gueye,Paris S-G,126665.0,1000000.0,100
 David García,Osasuna,298589.0,10000000.0,100
-Eric García,Manchester City,466794.0,30000000.0,100
+Eric García,Manchester City,466794.0,20000000.0,100
 Raúl García,Valladolid,631002.0,3000000.0,100
 Raúl García,Getafe,631002.0,3000000.0,100
 Rubén García,Osasuna,213260.0,1800000.0,100
-Unai García,Osasuna,197122.0,600000.0,100
+Unai García,Osasuna,197122.0,1200000.0,100
 Víctor García,Valladolid,590690.0,1000000.0,100
 James Garner,Manchester Utd,505219.0,25000000.0,100
 Manuel Garrido,Leganés,789328.0,200000.0,92
@@ -4052,7 +4052,7 @@ Michael Gregoritsch,Schalke 04,120205.0,3000000.0,100
 Antoine Griezmann,Barcelona,125781.0,11000000.0,100
 Christian Groß,Werder Bremen,58396.0,300000.0,100
 Carlos Gruezo,Augsburg,189475.0,3000000.0,100
-Nemanja Gudelj,Sevilla,74294.0,3500000.0,100
+Nemanja Gudelj,Sevilla,74294.0,2500000.0,100
 Adrián Guerrero,Valencia,282724.0,2000000.0,100
 Babacar Guèye,Paderborn 07,342364.0,350000.0,100
 Frederic Guilbert,Aston Villa,354352.0,1000000.0,100
@@ -4061,7 +4061,7 @@ Bruno Guimarães,Lyon,520624.0,75000000.0,100
 Rafik Guitane,Rennes,394328.0,4000000.0,100
 Sinan Gümüş,Genoa,196524.0,75000.0,100
 Koray Günter,Hellas Verona,115763.0,850000.0,100
-Erling Haaland,Dortmund,418560.0,180000000.0,100
+Erling Haaland,Dortmund,418560.0,200000000.0,100
 Sébastien Haller,West Ham,181375.0,2000000.0,100
 Grant Hanley,Norwich City,121385.0,500000.0,100
 Lukáš Haraslín,Sassuolo,239941.0,3000000.0,100
@@ -4108,7 +4108,7 @@ Yun Il-lok,Montpellier,131480.0,650000.0,100
 Stefan Ilsanker,Eint Frankfurt,40074.0,300000.0,100
 Giannelli Imbula,Lecce,130756.0,125000.0,100
 Marcus Ingvartsen,Union Berlin,269878.0,6500000.0,100
-Alexander Isak,Real Sociedad,349066.0,120000000.0,100
+Alexander Isak,Real Sociedad,349066.0,75000000.0,100
 Nicolas Isimat-Mirin,Toulouse,147846.0,325000.0,100
 Jakub Iskra,SPAL,498043.0,25000.0,100
 Ismael,Betis,15724.0,250000.0,100
@@ -4127,18 +4127,18 @@ Laurent Jans,Paderborn 07,163724.0,350000.0,100
 Jason,Getafe,73564.0,750000.0,100
 Dennis Jastrzembski,Paderborn 07,358870.0,500000.0,100
 Tin Jedvaj,Augsburg,206386.0,2500000.0,100
-João Pedro,Watford,626724.0,65000000.0,100
+João Pedro,Watford,626724.0,45000000.0,100
 Joelinton,Newcastle Utd,333241.0,30000000.0,100
-Curtis Jones,Liverpool,433188.0,35000000.0,100
+Curtis Jones,Liverpool,433188.0,40000000.0,100
 Frenkie de Jong,Barcelona,326330.0,45000000.0,100
 Luuk de Jong,Sevilla,72522.0,4000000.0,100
 Jony,Lazio,228761.0,300000.0,100
-Joan Jordán,Sevilla,263727.0,3500000.0,100
+Joan Jordán,Sevilla,263727.0,2000000.0,100
 Bruno Jordão,Wolves,415646.0,700000.0,100
 Joselu,Alavés,81999.0,5000000.0,100
 Jota,Aston Villa,329812.0,9000000.0,100
 Dejan Joveljić,Eint Frankfurt,336382.0,3500000.0,100
-Luka Jović,Real Madrid,257462.0,6000000.0,100
+Luka Jović,Real Madrid,257462.0,7000000.0,100
 Juanmi,Betis,126737.0,1200000.0,100
 Lago Junior,Mallorca,100722.0,900000.0,100
 Hamed Junior Traorè,Sassuolo,391065.0,20000000.0,100
@@ -4179,7 +4179,7 @@ Felix Kroos,Union Berlin,31910.0,600000.0,100
 Rade Krunić,Milan,259953.0,6000000.0,100
 Takefusa Kubo,Mallorca,405398.0,30000000.0,100
 Dejan Kulusevski,Parma,431755.0,45000000.0,100
-Marash Kumbulla,Hellas Verona,371371.0,4500000.0,100
+Marash Kumbulla,Hellas Verona,371371.0,5000000.0,100
 Jasmin Kurtić,Parma,85825.0,800000.0,100
 Dereck Kutesa,Reims,237669.0,4500000.0,100
 Enock Kwateng,Bordeaux,288241.0,800000.0,100
@@ -4202,7 +4202,7 @@ Diego Laxalt,Torino,230552.0,3000000.0,100
 Valentino Lazaro,Newcastle Utd,186368.0,3500000.0,100
 Valentino Lazaro,Inter,186368.0,3500000.0,100
 Darko Lazović,Hellas Verona,70411.0,1500000.0,100
-Manuel Lazzari,Lazio,331401.0,5000000.0,100
+Manuel Lazzari,Lazio,331401.0,4000000.0,100
 Rafael Leão,Milan,357164.0,90000000.0,100
 Adrien Lebeau,Strasbourg,395674.0,300000.0,100
 Toni Leistner,Köln,86916.0,500000.0,100
@@ -4210,7 +4210,7 @@ Moritz Leitner,Norwich City,82243.0,200000.0,100
 Tim Lemperle,Köln,553285.0,2500000.0,100
 Christopher Lenz,Union Berlin,159844.0,1500000.0,100
 Sergio León,Levante,145769.0,2000000.0,100
-Mehdi Léris,Sampdoria,348601.0,2200000.0,100
+Mehdi Léris,Sampdoria,348601.0,2500000.0,100
 Jamal Lewis,Norwich City,346018.0,3500000.0,100
 Stephan Lichtsteiner,Augsburg,2865.0,800000.0,100
 Matthijs de Ligt,Juventus,326031.0,40000000.0,100
@@ -4219,7 +4219,7 @@ Lillo,Osasuna,62913.0,150000.0,100
 Anderson Lima,Lazio,54470.0,3000000.0,100
 Pol Lirola,Fiorentina,298975.0,3000000.0,100
 Fernando Llorente,Napoli,35564.0,300000.0,100
-Marcos Llorente,Atlético Madrid,282411.0,22000000.0,100
+Marcos Llorente,Atlético Madrid,282411.0,30000000.0,100
 Gautier Lloris,Nice,249636.0,3000000.0,100
 Giovani Lo Celso,Tottenham,348795.0,15000000.0,100
 Stanislav Lobotka,Napoli,192735.0,30000000.0,100
@@ -4229,7 +4229,7 @@ Matthew Longstaff,Newcastle Utd,484387.0,900000.0,87
 Rony Lopes,Sevilla,174694.0,2500000.0,100
 Adrián López,Osasuna,45383.0,200000.0,100
 Javi López,Alavés,568158.0,5000000.0,100
-Iker Losada,Celta Vigo,632741.0,1400000.0,100
+Iker Losada,Celta Vigo,632741.0,500000.0,100
 Matteo Lovato,Hellas Verona,459655.0,4000000.0,100
 Eduard Löwen,Augsburg,260655.0,4500000.0,100
 Eduard Löwen,Hertha BSC,260655.0,4500000.0,100
@@ -4241,7 +4241,7 @@ Fabio Lucioni,Lecce,160561.0,600000.0,100
 José Luis Rodríguez,Alavés,425028.0,2000000.0,100
 David Luiz,Arsenal,46741.0,500000.0,100
 Douglas Luiz,Aston Villa,447661.0,25000000.0,100
-Romelu Lukaku,Inter,96341.0,15000000.0,100
+Romelu Lukaku,Inter,96341.0,30000000.0,100
 Dodi Lukebakio,Hertha BSC,303259.0,20000000.0,100
 John Lundstram,Sheffield Utd,156941.0,5000000.0,100
 Alexis Mac Allister,Brighton,534033.0,85000000.0,100
@@ -4286,7 +4286,7 @@ Andrea Masiello,Genoa,34198.0,400000.0,100
 Aleš Matějů,Brescia,242078.0,900000.0,100
 Alessandro Matri,Brescia,40660.0,300000.0,100
 Federico Mattiello,Cagliari,200194.0,300000.0,100
-Neal Maupay,Brighton,217115.0,5000000.0,100
+Neal Maupay,Brighton,217115.0,12000000.0,100
 Stephy Mavididi,Dijon,340328.0,9000000.0,100
 Kevin Mbabu,Wolfsburg,183321.0,4000000.0,100
 Isaac Mbenza,Amiens,260806.0,800000.0,100
@@ -4304,7 +4304,7 @@ Thiago Mendes,Lyon,135617.0,4500000.0,100
 Édgar Méndez,Alavés,133794.0,1000000.0,100
 Alexandre Mendy,Brest,290561.0,3500000.0,100
 Ferland Mendy,Real Madrid,291417.0,8000000.0,100
-Hamza Mendyl,Dijon,447221.0,900000.0,100
+Hamza Mendyl,Dijon,447221.0,1300000.0,100
 Levent Mercan,Schalke 04,388820.0,2200000.0,100
 Fran Mérida,Osasuna,42920.0,700000.0,100
 Yıldırım Mert Çetin,Roma,391498.0,700000.0,100
@@ -4312,7 +4312,7 @@ Roque Mesa,Leganés,202984.0,1800000.0,100
 Mexer,Bordeaux,127610.0,200000.0,100
 Kingsley Michael,Bologna,401920.0,150000.0,100
 Sven Michel,Paderborn 07,186988.0,700000.0,100
-Georges Mikautadze,Metz,729814.0,28000000.0,100
+Georges Mikautadze,Metz,729814.0,20000000.0,100
 Éder Militão,Real Madrid,401530.0,30000000.0,100
 Vincenzo Millico,Torino,390159.0,800000.0,100
 Santi Mina,Celta Vigo,255653.0,2000000.0,100
@@ -4332,7 +4332,7 @@ Wesley Moraes,Aston Villa,381362.0,2500000.0,100
 Jérémy Morel,Rennes,23960.0,300000.0,100
 Alberto Moreno,Villarreal,207917.0,1800000.0,100
 Álex Moreno,Betis,193098.0,3500000.0,100
-Mateu Morey,Dortmund,388513.0,1500000.0,100
+Mateu Morey,Dortmund,388513.0,800000.0,100
 Leonardo Morosini,Brescia,240415.0,200000.0,100
 Ravel Morrison,Sheffield Utd,128907.0,400000.0,100
 Victor Moses,Inter,59866.0,1000000.0,100
@@ -4383,7 +4383,7 @@ Lucas Ocampos,Sevilla,189441.0,9000000.0,100
 Álvaro Odriozola,Bayern Munich,280730.0,800000.0,100
 Kelvin Ofori,Düsseldorf,687035.0,400000.0,100
 Christian Oliva,Cagliari,563812.0,750000.0,100
-Cauly Oliveira Souza,Paderborn 07,162812.0,2500000.0,100
+Cauly Oliveira Souza,Paderborn 07,1086258.0,5000000.0,100
 Marco Olivieri,Juventus,346562.0,700000.0,100
 Dani Olmo,RB Leipzig,293385.0,60000000.0,100
 Jean Onana,Lille,656441.0,3700000.0,100
@@ -4418,7 +4418,7 @@ Marc Pedraza,Mallorca,72319.0,100000.0,100
 Pedro,Fiorentina,432895.0,22000000.0,100
 Daouda Peeters,Juventus,365451.0,200000.0,100
 Rubén Peña,Villarreal,238868.0,2200000.0,100
-Nicolas Pépé,Arsenal,343052.0,8500000.0,100
+Nicolas Pépé,Arsenal,343052.0,6000000.0,100
 Luis Perea,Osasuna,396328.0,600000.0,100
 Mathias Pereira Lage,Angers,424072.0,2500000.0,100
 Gastón Pereiro,Cagliari,264116.0,1000000.0,100
@@ -4478,7 +4478,7 @@ Sandro Ramírez,Valladolid,199369.0,1500000.0,100
 Adrián Ramos,Granada,73782.0,300000.0,100
 Aaron Ramsey,Juventus,646658.0,15000000.0,100
 Luca Ranieri,Fiorentina,346561.0,8000000.0,100
-Raphinha,Rennes,411295.0,80000000.0,100
+Raphinha,Rennes,411295.0,50000000.0,100
 Tobias Raschl,Dortmund,384745.0,1500000.0,100
 Giacomo Raspadori,Sassuolo,405885.0,22000000.0,100
 Raúl,Betis,13168.0,2750000.0,100
@@ -4497,7 +4497,7 @@ Franck Ribéry,Fiorentina,22068.0,1000000.0,100
 Davide Riccardi,Lecce,286259.0,200000.0,100
 Chris Richards,Bayern Munich,578539.0,25000000.0,100
 Emiliano Rigoni,Sampdoria,282544.0,3000000.0,100
-Luis Rioja,Alavés,278837.0,2000000.0,100
+Luis Rioja,Alavés,278837.0,4000000.0,100
 Rodrigo Riquelme,Atlético Madrid,461617.0,8000000.0,100
 Andrea Rispoli,Lecce,74448.0,250000.0,100
 Marlon Ritter,Paderborn 07,151636.0,700000.0,100
@@ -4632,7 +4632,7 @@ Marco Stiepermann,Norwich City,45760.0,250000.0,100
 Vlatko Stojanovski,Nîmes,345041.0,200000.0,100
 Gabriel Strefezza,SPAL,457673.0,7000000.0,100
 Christian Strohdiek,Paderborn 07,48081.0,150000.0,100
-Denis Suárez,Celta Vigo,165007.0,1500000.0,100
+Denis Suárez,Celta Vigo,165007.0,1200000.0,100
 Neven Subotić,Union Berlin,40995.0,200000.0,100
 Marek Suchý,Augsburg,34542.0,200000.0,100
 Ki Sung-yueng,Mallorca,81796.0,700000.0,100
@@ -4651,7 +4651,7 @@ Adil Taoui,Toulouse,463617.0,400000.0,100
 Edmond Tapsoba,Leverkusen,564545.0,35000000.0,100
 Matt Targett,Aston Villa,250478.0,10000000.0,100
 Neil Taylor,Aston Villa,67416.0,500000.0,100
-Aurélien Tchouaméni,Monaco,413112.0,75000000.0,100
+Aurélien Tchouaméni,Monaco,413112.0,100000000.0,100
 Álvaro Tejero,Eibar,290273.0,1800000.0,100
 Bernard Tekpetey,Düsseldorf,422380.0,5500000.0,100
 Lino Tempelmann,Freiburg,378883.0,2000000.0,100
@@ -4669,7 +4669,7 @@ Kieran Tierney,Arsenal,300716.0,8000000.0,100
 David Timor,Getafe,158795.0,600000.0,100
 Jean-Clair Todibo,Schalke 04,605184.0,23000000.0,100
 Karl Toko Ekambi,Lyon,315110.0,5000000.0,100
-Jeremy Toljan,Sassuolo,129674.0,3500000.0,100
+Jeremy Toljan,Sassuolo,129674.0,2200000.0,100
 Raúl de Tomás,Espanyol,162038.0,2000000.0,100
 Takehiro Tomiyasu,Bologna,331560.0,25000000.0,100
 Fikayo Tomori,Chelsea,303254.0,40000000.0,100
@@ -4688,7 +4688,7 @@ Trézéguet,Aston Villa,234189.0,8500000.0,100
 Christopher Trimmel,Union Berlin,75921.0,600000.0,100
 Alessandro Tripaldelli,Sassuolo,357176.0,600000.0,100
 Kieran Trippier,Atlético Madrid,95810.0,2500000.0,100
-Leandro Trossard,Brighton,144028.0,20000000.0,100
+Leandro Trossard,Brighton,144028.0,35000000.0,100
 Tom Trybull,Norwich City,93831.0,350000.0,100
 Axel Tuanzebe,Manchester Utd,342046.0,5000000.0,100
 Georgi Tunjov,SPAL,363610.0,200000.0,100
@@ -4699,13 +4699,13 @@ Mark Uth,Köln,112935.0,1000000.0,100
 Álvaro Vadillo,Granada,162074.0,400000.0,100
 William Vainqueur,Toulouse,47893.0,400000.0,100
 Antoine Valerio,Nîmes,707317.0,300000.0,100
-Martin Valjent,Mallorca,277384.0,4500000.0,100
+Martin Valjent,Mallorca,277384.0,6000000.0,100
 Jesús Vallejo,Wolves,251896.0,1000000.0,100
 Jesús Vallejo,Granada,251896.0,1000000.0,100
 Manu Vallejo,Valencia,527350.0,1500000.0,100
 Luca Valls,Nîmes,,,0
 Matías Vargas,Espanyol,376211.0,5000000.0,100
-Ruben Vargas,Augsburg,345886.0,12000000.0,100
+Ruben Vargas,Augsburg,345886.0,9000000.0,100
 Thibaut Vargas,Montpellier,627463.0,800000.0,100
 Sebastian Vasiliadis,Paderborn 07,333516.0,900000.0,100
 Indiana Vassilev,Aston Villa,469860.0,1500000.0,100
@@ -4753,14 +4753,14 @@ Yusuf Yazıcı,Lille,386726.0,4500000.0,100
 Maya Yoshida,Sampdoria,81789.0,500000.0,100
 Ashley Young,Inter,14086.0,500000.0,100
 Zaydou Youssouf,Saint-Étienne,471582.0,5000000.0,100
-Arthur Zagre,Paris S-G,536477.0,900000.0,100
+Arthur Zagre,Paris S-G,536477.0,1300000.0,100
 Andre-Frank Zambo Anguissa,Villarreal,,,0
 Luca Zanimacchia,Juventus,407265.0,1800000.0,100
 Cristián Zapata,Genoa,34344.0,250000.0,100
 Davide Zappacosta,Roma,173859.0,3500000.0,100
 Mootaz Zemzemi,Strasbourg,422893.0,800000.0,92
 Christoph Zimmermann,Norwich City,77812.0,1000000.0,100
-Joshua Zirkzee,Bayern Munich,435648.0,25000000.0,100
+Joshua Zirkzee,Bayern Munich,435648.0,50000000.0,100
 Richairo Živković,Sheffield Utd,252755.0,500000.0,100
 Jaromír Zmrhal,Brescia,235413.0,1200000.0,100
 Ben Zolinski,Paderborn 07,93841.0,350000.0,100
@@ -4796,13 +4796,13 @@ Thiago Alcántara,Liverpool,60444.0,10000000.0,100
 Omar Alderete,Hertha BSC,353032.0,12000000.0,100
 Iván Alejo,Cádiz,281755.0,1500000.0,100
 Carles Aleñá,Getafe,284854.0,3000000.0,100
-Alfon,Celta Vigo,357628.0,250000.0,100
+Alfon,Celta Vigo,357628.0,4000000.0,100
 Mohamed Ali Cho,Angers,134629.0,200000.0,84
 Ezgjan Alioski,Leeds United,129604.0,4000000.0,100
 Allan,Everton,385271.0,7000000.0,100
 Ibrahim Amadou,Angers,205503.0,1500000.0,100
 Emmanuel Amankwaa Akurugu,Getafe,77153.0,250000.0,80
-Ethan Ampadu,Sheffield Utd,392771.0,20000000.0,100
+Ethan Ampadu,Sheffield Utd,392771.0,12000000.0,100
 Sofyan Amrabat,Fiorentina,287579.0,12000000.0,100
 Jon Ander Garrido,Cádiz,158704.0,300000.0,100
 Joachim Andersen,Fulham,260827.0,25000000.0,100
@@ -4858,7 +4858,7 @@ Paolo Bartolomei,Spezia,281900.0,250000.0,100
 Álvaro Bastida,Cádiz,882772.0,300000.0,100
 Simone Bastoni,Spezia,257751.0,1500000.0,100
 Rodrigo Battaglia,Alavés,89297.0,1500000.0,100
-Donny van de Beek,Manchester Utd,288255.0,2000000.0,100
+Donny van de Beek,Manchester Utd,288255.0,5000000.0,100
 Brian Behrendt,Arminia,85660.0,450000.0,100
 Erwan Belhadji,Dijon,894205.0,250000.0,100
 Jude Bellingham,Dortmund,581678.0,160000000.0,100
@@ -4883,13 +4883,13 @@ Sacha Boey,Dijon,475413.0,18000000.0,100
 Jayden Bogle,Sheffield Utd,465717.0,10000000.0,100
 Quentin Boisgard,Lorient,412671.0,700000.0,100
 Giacomo Bonaventura,Fiorentina,57280.0,3000000.0,100
-Federico Bonazzoli,Torino,241527.0,1000000.0,100
+Federico Bonazzoli,Torino,241527.0,2500000.0,100
 Kevin Bonifazi,Udinese,247377.0,300000.0,100
 Sven Botman,Lille,361093.0,35000000.0,100
 Sofiane Boufal,Angers,232271.0,3500000.0,100
 Ismaël Boura,Lens,770895.0,1000000.0,100
 Edoardo Bove,Roma,562049.0,18000000.0,100
-Lucas Boyé,Elche,334222.0,5000000.0,100
+Lucas Boyé,Elche,334222.0,7000000.0,100
 Umut Bozok,Lorient,259025.0,1200000.0,100
 Jayden Braaf,Udinese,470391.0,800000.0,100
 Lilian Brassier,Brest,485960.0,10000000.0,100
@@ -4925,8 +4925,8 @@ Isaac Carcelen,Cádiz,1083069.0,700000.0,100
 Juan Carlos,Huesca,39004.0,150000.0,100
 Sergio Carreira,Celta Vigo,545647.0,6000000.0,100
 Guido Carrillo,Elche,184672.0,500000.0,100
-Fabio Carvalho,Fulham,559263.0,12000000.0,100
-Matty Cash,Aston Villa,425334.0,22000000.0,100
+Fabio Carvalho,Fulham,559263.0,14000000.0,100
+Matty Cash,Aston Villa,425334.0,28000000.0,100
 Giuseppe Caso,Genoa,398030.0,1500000.0,100
 Timothy Castagne,Leicester City,262226.0,10000000.0,100
 Jean-Charles Castelletto,Nantes,182875.0,3500000.0,100
@@ -4984,7 +4984,7 @@ Bryan Dabo,Benevento,149446.0,500000.0,100
 Leon Dajaku,Union Berlin,483974.0,800000.0,100
 Stuart Dallas,Leeds United,158764.0,1500000.0,100
 Diogo Dalot,Milan,357147.0,28000000.0,100
-Mikkel Damsgaard,Sampdoria,540941.0,30000000.0,100
+Mikkel Damsgaard,Sampdoria,540941.0,10000000.0,100
 Flavius Daniliuc,Nice,322655.0,6000000.0,100
 Tiago Dantas,Bayern Munich,429987.0,3000000.0,100
 Ebrima Darboe,Roma,647484.0,1800000.0,100
@@ -5016,7 +5016,7 @@ Alessandro Di Pardo,Juventus,457674.0,900000.0,100
 Giuseppe Di Serio,Benevento,532040.0,1200000.0,100
 Abdoulay Diaby,Getafe,148396.0,600000.0,100
 Mbaye Diagne,West Brom,271966.0,2000000.0,100
-Amad Diallo,Manchester Utd,536835.0,50000000.0,100
+Amad Diallo,Manchester Utd,536835.0,18000000.0,100
 Habib Diallo,Strasbourg,344888.0,6000000.0,100
 Ibrahima Diallo,Southampton,413032.0,6500000.0,100
 Grady Diangana,West Brom,342048.0,3500000.0,100
@@ -5036,12 +5036,12 @@ Axel Disasi,Monaco,386047.0,15000000.0,100
 Koffi Djidji,Crotone,183031.0,2500000.0,100
 Ritsu Doan,Arminia,358504.0,25000000.0,100
 Mihai Dobre,Dijon,,,0
-Matt Doherty,Tottenham,171679.0,1500000.0,100
+Matt Doherty,Tottenham,171679.0,3000000.0,100
 Jeremy Doku,Rennes,486049.0,65000000.0,100
 Carlos Dominguez,Celta Vigo,636093.0,3000000.0,100
 John Donald,Elche,627290.0,1000000.0,100
 Abdoulaye Doucouré,Everton,127187.0,10000000.0,100
-Cheick Doucouré,Lens,543387.0,15000000.0,100
+Cheick Doucouré,Lens,543387.0,35000000.0,100
 Fodé Doucouré,Reims,798925.0,500000.0,100
 Mahamadou Doucouré,Nîmes,862880.0,100000.0,100
 Idrissa Doumbia,Huesca,430579.0,1700000.0,100
@@ -5058,7 +5058,7 @@ Kyle Edwards,West Brom,314366.0,350000.0,100
 Lilian Egloff,Stuttgart,472243.0,800000.0,100
 Hugo Ekitike,Reims,709726.0,85000000.0,100
 Anthony Elanga,Manchester Utd,583189.0,50000000.0,100
-Niclas Eliasson,Nîmes,251813.0,3500000.0,100
+Niclas Eliasson,Nîmes,251813.0,4500000.0,100
 Keita Endo,Union Berlin,421726.0,600000.0,100
 Wataru Endo,Stuttgart,146310.0,5000000.0,100
 Martin Erlic,Spezia,357003.0,4000000.0,100
@@ -5105,7 +5105,7 @@ Daam Foulon,Benevento,338637.0,2500000.0,100
 Juan Foyth,Villarreal,480763.0,15000000.0,100
 Tyrese Francois,Fulham,528888.0,600000.0,100
 Ryan Fraser,Newcastle Utd,146795.0,3000000.0,100
-Jeremie Frimpong,Leverkusen,484547.0,38000000.0,100
+Jeremie Frimpong,Leverkusen,484547.0,50000000.0,100
 Jorge de Frutos,Levante,455181.0,12000000.0,100
 Darnell Furlong,West Brom,351755.0,3500000.0,100
 Baptiste Gabard,Saint-Étienne,852998.0,250000.0,100
@@ -5208,7 +5208,7 @@ Jesé,Paris S-G,134936.0,1000000.0,100
 John Joe,Getafe,1088818.0,100000.0,84
 Marco John,Hoffenheim,450234.0,1500000.0,100
 Jony,Osasuna,228761.0,300000.0,100
-Josan,Elche,277533.0,1000000.0,100
+Josan,Elche,277533.0,100000.0,100
 Willian José,Wolves,122155.0,5000000.0,100
 Josema,Elche,255892.0,700000.0,100
 Jota,Valladolid,329812.0,9000000.0,100
@@ -5269,7 +5269,7 @@ Takefusa Kubo,Villarreal,405398.0,30000000.0,100
 Takefusa Kubo,Getafe,405398.0,30000000.0,100
 Kuki,Valladolid,311696.0,200000.0,100
 Dejan Kulusevski,Juventus,431755.0,45000000.0,100
-Marash Kumbulla,Roma,371371.0,4500000.0,100
+Marash Kumbulla,Roma,371371.0,5000000.0,100
 Fabian Kunze,Arminia,334186.0,1200000.0,100
 Tom Lacoux,Bordeaux,847759.0,1500000.0,100
 Maxence Lacroix,Wolfsburg,434224.0,35000000.0,100
@@ -5278,7 +5278,7 @@ Sam Lammers,Atalanta,386914.0,3000000.0,100
 Gianluca Lapadula,Benevento,130394.0,1500000.0,100
 Julien Laporte,Lorient,386057.0,2000000.0,100
 Kevin Lasagna,Hellas Verona,131951.0,950000.0,100
-Armand Lauriente,Lorient,579930.0,15000000.0,100
+Armand Lauriente,Lorient,579930.0,10000000.0,100
 Lauti,Celta Vigo,,,0
 Valentino Lazaro,Gladbach,186368.0,3500000.0,100
 Jérémy Le Douaron,Brest,737781.0,5000000.0,100
@@ -5296,7 +5296,7 @@ Dimitris Limnios,Köln,324344.0,800000.0,96
 Karol Linetty,Torino,225873.0,1500000.0,100
 Jesse Lingard,West Ham,141660.0,6000000.0,100
 Pol Lirola,Marseille,298975.0,3000000.0,100
-Diego Llorente,Leeds United,246291.0,7000000.0,100
+Diego Llorente,Leeds United,246291.0,3000000.0,100
 Fernando Llorente,Udinese,35564.0,300000.0,100
 Ruben Loftus-Cheek,Fulham,202886.0,25000000.0,100
 Ademola Lookman,Fulham,406040.0,40000000.0,100
@@ -5313,7 +5313,7 @@ Jean Lucas,Brest,578872.0,5000000.0,100
 Anderson Lucoqui,Arminia,240274.0,600000.0,100
 Jeison Lucumí,Elche,352567.0,800000.0,100
 Kilian Ludewig,Schalke 04,361516.0,400000.0,100
-Florentino Luís,Monaco,357162.0,22000000.0,100
+Florentino Luís,Monaco,357162.0,20000000.0,100
 Luismi,Elche,207922.0,600000.0,100
 Sebastiano Luperto,Crotone,278531.0,3500000.0,100
 Tim Maciejewski,Union Berlin,392156.0,350000.0,100
@@ -5356,13 +5356,13 @@ Pape Matar Sarr,Metz,568693.0,35000000.0,100
 Eliot Matazo,Monaco,535834.0,5000000.0,100
 Jean-Philippe Mateta,Crystal Palace,420002.0,40000000.0,100
 Henning Matriciani,Schalke 04,570160.0,900000.0,100
-Chrislain Matsima,Monaco,569383.0,7000000.0,100
+Chrislain Matsima,Monaco,569383.0,22000000.0,100
 Federico Mattiello,Spezia,200194.0,300000.0,100
 Tony Mauricio,Lens,272549.0,1800000.0,100
 Stephy Mavididi,Montpellier,340328.0,9000000.0,100
 Konstantinos Mavropanos,Stuttgart,415912.0,15000000.0,100
 Eric Maxim Choupo-Moting,Bayern Munich,45660.0,2500000.0,95
-Borja Mayoral,Roma,298976.0,15000000.0,100
+Borja Mayoral,Roma,298976.0,7500000.0,100
 Youssef Maziz,Metz,481116.0,1300000.0,100
 Antonio Mazzotta,Crotone,61751.0,150000.0,100
 Jean-Manuel Mbom,Werder Bremen,335003.0,850000.0,93
@@ -5399,8 +5399,8 @@ Juan Miranda,Betis,341227.0,9000000.0,100
 Jakub Moder,Brighton,384461.0,10000000.0,100
 Anthony Modeste,Saint-Étienne,50512.0,700000.0,100
 Terem Moffi,Lorient,538874.0,15000000.0,100
-Johan Mojica,Atalanta,262939.0,2200000.0,100
-Johan Mojica,Elche,262939.0,2200000.0,100
+Johan Mojica,Atalanta,262939.0,1800000.0,100
+Johan Mojica,Elche,262939.0,1800000.0,100
 Guillem Molina,Valencia,602156.0,600000.0,100
 Jorge Molina,Granada,57825.0,600000.0,100
 Nahuel Molina,Udinese,424042.0,15000000.0,100
@@ -5420,11 +5420,11 @@ Raúl Moro,Lazio,624942.0,7500000.0,100
 Pedro Mosquera,Huesca,44069.0,500000.0,100
 Aimen Moueffek,Saint-Étienne,484992.0,1000000.0,100
 Youssoufa Moukoko,Dortmund,467720.0,10000000.0,100
-Steve Mounié,Brest,238639.0,6000000.0,100
+Steve Mounié,Brest,238639.0,2000000.0,100
 Loris Mouyokolo,Lorient,799936.0,300000.0,100
 Joel Mumbongo,Burnley,381156.0,150000.0,100
 Joaquín Muñoz,Huesca,396334.0,1000000.0,100
-Vedat Muriqi,Lazio,256267.0,4500000.0,100
+Vedat Muriqi,Lazio,256267.0,12000000.0,100
 Nicola Murru,Torino,171399.0,1000000.0,100
 Petar Musa,Union Berlin,387110.0,8000000.0,100
 Mateo Musacchio,Lazio,45653.0,400000.0,100
@@ -5449,7 +5449,7 @@ Tanguy Nianzou,Bayern Munich,538996.0,1400000.0,100
 Nieto,Cádiz,399357.0,500000.0,100
 Joakim Nilsson,Arminia,216804.0,3500000.0,100
 Nino,Elche,520454.0,11000000.0,100
-Niels Nkounkou,Everton,591193.0,3500000.0,100
+Niels Nkounkou,Everton,591193.0,7500000.0,100
 Dan Nlundulu,Southampton,346482.0,350000.0,100
 Olivier Ntcham,Marseille,224088.0,2700000.0,100
 Kelechi Nwakali,Huesca,383153.0,700000.0,100
@@ -5482,7 +5482,7 @@ Daniel Parejo,Villarreal,92117.0,500000.0,100
 Vittorio Parigini,Genoa,238981.0,600000.0,100
 Thomas Partey,Arsenal,230784.0,5000000.0,100
 Christian Pastina,Benevento,476624.0,450000.0,100
-Pedri,Barcelona,683840.0,80000000.0,100
+Pedri,Barcelona,683840.0,140000000.0,100
 Pedro,Roma,432895.0,22000000.0,100
 Graziano Pellè,Parma,29594.0,100000.0,100
 Luca Pellegrini,Genoa,346567.0,3500000.0,100
@@ -5495,7 +5495,7 @@ Danilo Pereira,Paris S-G,141050.0,8000000.0,100
 Matheus Pereira,West Brom,225984.0,7000000.0,100
 Pedro Pereira,Crotone,314965.0,1200000.0,100
 Roberto Pereyra,Udinese,112302.0,800000.0,100
-Luis Pérez,Valladolid,358115.0,1500000.0,100
+Luis Pérez,Valladolid,358115.0,1400000.0,100
 Manuel Perez,Lens,166630.0,250000.0,100
 Nehuén Pérez,Granada,491693.0,12000000.0,100
 Andrea Petagna,Napoli,199258.0,3800000.0,100
@@ -5510,7 +5510,7 @@ Cristiano Piccini,Atalanta,163086.0,700000.0,100
 Roberto Piccoli,Spezia,432092.0,20000000.0,100
 Amos Pieper,Arminia,334221.0,3500000.0,100
 Ronaël Pierre-Gabriel,Brest,410185.0,3500000.0,100
-Yeremi Pino,Villarreal,568157.0,35000000.0,90
+Yeremi Pino,Villarreal,568157.0,30000000.0,90
 Marko Pjaca,Genoa,205940.0,2700000.0,100
 Miralem Pjanić,Barcelona,44162.0,5000000.0,100
 Dani Plomer,Granada,614195.0,150000.0,100
@@ -5532,7 +5532,7 @@ Ivan Rakitić,Sevilla,32467.0,3500000.0,100
 Jonás Ramalho,Osasuna,69660.0,500000.0,100
 Sandro Ramírez,Huesca,199369.0,1500000.0,100
 Jacob Ramsey,Aston Villa,503749.0,35000000.0,100
-Raphinha,Leeds United,411295.0,80000000.0,100
+Raphinha,Leeds United,411295.0,50000000.0,100
 Arkadiusz Reca,Crotone,268178.0,2300000.0,100
 Recio,Eibar,150948.0,300000.0,100
 Harrison Reed,Fulham,226973.0,3000000.0,100
@@ -5563,11 +5563,11 @@ Rodrigo,Leeds United,131505.0,5000000.0,100
 Kévin Rodrigues,Eibar,206947.0,1200000.0,100
 Óscar Rodríguez Arnaiz,Sevilla,85314.0,7500000.0,100
 James Rodríguez,Everton,88103.0,6000000.0,100
-Miguel Rodríguez,Celta Vigo,634427.0,800000.0,100
+Miguel Rodríguez,Celta Vigo,634427.0,6500000.0,100
 Ricardo Rodríguez,Torino,86784.0,1500000.0,100
 Víctor Rodríguez,Elche,129753.0,225000.0,100
 Luis Rojas,Crotone,662752.0,500000.0,100
-Cristian Romero,Atalanta,355915.0,65000000.0,100
+Cristian Romero,Atalanta,355915.0,60000000.0,100
 Amir Rrahmani,Napoli,257732.0,15000000.0,100
 Kevin Rüegg,Hellas Verona,290032.0,500000.0,100
 Daniele Rugani,Cagliari,162959.0,2000000.0,100
@@ -5576,8 +5576,8 @@ Matteo Ruggeri,Atalanta,616631.0,15000000.0,100
 Isma Ruiz,Granada,631221.0,400000.0,100
 Kays Ruiz,Paris S-G,,,0
 Víctor Ruiz,Betis,62920.0,1000000.0,100
-Georginio Rutter,Rennes,538977.0,32000000.0,100
-Georginio Rutter,Hoffenheim,538977.0,32000000.0,100
+Georginio Rutter,Rennes,538977.0,18000000.0,100
+Georginio Rutter,Hoffenheim,538977.0,18000000.0,100
 Mathys Saban,Saint-Étienne,783799.0,100000.0,100
 Modibo Sagnan,Real Sociedad,524925.0,3000000.0,100
 Moïse Sahi Dion,Strasbourg,880330.0,2000000.0,100
@@ -5613,7 +5613,7 @@ Morgan Schneiderlin,Nice,56818.0,300000.0,100
 Christopher Scott,Bayern Munich,503162.0,500000.0,100
 Jacopo Segre,Torino,373899.0,1700000.0,100
 Malik Sellouki,Nice,811430.0,250000.0,100
-Nélson Semedo,Wolves,231572.0,12000000.0,100
+Nélson Semedo,Wolves,231572.0,8000000.0,100
 Léo Sena,Spezia,435213.0,1000000.0,100
 Jaime Seoane,Huesca,340867.0,2000000.0,100
 Jean Seri,Bordeaux,178614.0,1500000.0,100
@@ -5622,7 +5622,7 @@ Nils Seufert,Arminia,279064.0,300000.0,100
 Edgar Sevikyan,Levante,430488.0,2000000.0,100
 Jamie Shackleton,Leeds United,534700.0,2000000.0,100
 Eldor Shomurodov,Genoa,358166.0,5000000.0,100
-Shola Shoretire,Manchester Utd,640026.0,2000000.0,100
+Shola Shoretire,Manchester Utd,640026.0,4000000.0,100
 Mahame Siby,Strasbourg,587646.0,1000000.0,100
 Abdoulaye Sidibé,Saint-Étienne,639758.0,150000.0,100
 Tim Siersleben,Wolfsburg,337092.0,2000000.0,100
@@ -5647,14 +5647,14 @@ Son,Levante,349856.0,1000000.0,100
 Brandon Soppy,Rennes,546880.0,2000000.0,100
 Alberto Soro,Granada,487688.0,700000.0,100
 Florian Sotoca,Lens,354726.0,2000000.0,100
-Riccardo Sottil,Cagliari,386455.0,3500000.0,100
+Riccardo Sottil,Cagliari,386455.0,6000000.0,100
 Cheick Souaré,Marseille,569367.0,300000.0,100
 Cebio Soukou,Arminia,85000.0,500000.0,100
 Adama Soumaoro,Bologna,126673.0,2000000.0,100
 Ansou Sow,Lens,595169.0,250000.0,100
 Saidou Sow,Saint-Étienne,807128.0,2500000.0,100
 Josip Stanišić,Bayern Munich,483046.0,32000000.0,100
-Pascal Stenzel,Stuttgart,195246.0,2500000.0,100
+Pascal Stenzel,Stuttgart,195246.0,2000000.0,100
 Dale Stephens,Burnley,49755.0,600000.0,100
 Kevin Stöger,Mainz 05,106872.0,3500000.0,100
 Tobias Strobl,Augsburg,57845.0,500000.0,100
@@ -5719,7 +5719,7 @@ Lautaro Valenti,Parma,625202.0,1800000.0,100
 Borja Valero,Fiorentina,40372.0,900000.0,100
 Denis Vavro,Huesca,239962.0,7000000.0,100
 Gabriel Veiga,Celta Vigo,79242.0,1500000.0,100
-Joël Veltman,Brighton,111195.0,2500000.0,100
+Joël Veltman,Brighton,111195.0,10000000.0,100
 Daniele Verde,Spezia,256361.0,750000.0,100
 Gonzalo Verdú,Elche,184779.0,700000.0,100
 Edoardo Vergani,Bologna,421780.0,450000.0,100
@@ -5761,17 +5761,17 @@ Burak Yılmaz,Lille,291927.0,200000.0,100
 Okay Yokuşlu,West Brom,137616.0,2500000.0,100
 Amin Younes,Eint Frankfurt,96167.0,800000.0,100
 Wilitty Younoussa,Dijon,804934.0,600000.0,100
-Vasilios Zagaritis,Parma,613781.0,350000.0,100
-Arthur Zagre,Dijon,536477.0,900000.0,100
+Vasilios Zagaritis,Parma,613781.0,2000000.0,100
+Arthur Zagre,Dijon,536477.0,1300000.0,100
 Miha Zajc,Genoa,149829.0,2400000.0,100
-Nicola Zalewski,Roma,550108.0,17000000.0,100
+Nicola Zalewski,Roma,550108.0,12000000.0,100
 Gabriele Zappa,Cagliari,392569.0,2500000.0,100
 Davide Zappacosta,Genoa,173859.0,3500000.0,100
 Oier Zarraga,Athletic Club,524010.0,2000000.0,100
 Deyovaisio Zeefuik,Hertha BSC,338032.0,1200000.0,100
 Andi Zeqiri,Brighton,345468.0,3500000.0,100
 Mehdi Zerkane,Bordeaux,460654.0,450000.0,100
-Joshua Zirkzee,Parma,435648.0,25000000.0,100
+Joshua Zirkzee,Parma,435648.0,50000000.0,100
 Hakim Ziyech,Chelsea,217111.0,9000000.0,100
 Steven Zuber,Eint Frankfurt,68033.0,1200000.0,100
 Martin Ødegaard,Arsenal,316264.0,75000000.0,100
@@ -5800,7 +5800,7 @@ Tomás Alarcón,Cádiz,454238.0,1000000.0,100
 Josué Albert,Clermont Foot,170487.0,300000.0,100
 Rubén Alcaraz,Cádiz,247250.0,1500000.0,100
 Omar Alderete,Valencia,353032.0,12000000.0,100
-Jim Allevinah,Clermont Foot,646733.0,1500000.0,100
+Jim Allevinah,Clermont Foot,646733.0,2000000.0,100
 Dele Alli,Everton,207929.0,5000000.0,100
 Giorgio Altare,Cagliari,354909.0,2000000.0,100
 Hugo Álvarez,Celta Vigo,892929.0,8000000.0,100
@@ -5811,7 +5811,7 @@ Jordan Amavi,Nice,241229.0,1200000.0,100
 Wisdom Amey,Bologna,818878.0,700000.0,100
 Kelvin Amian,Spezia,344072.0,2500000.0,100
 Nadiem Amiri,Genoa,232454.0,20000000.0,100
-Ethan Ampadu,Venezia,392771.0,20000000.0,100
+Ethan Ampadu,Venezia,392771.0,12000000.0,100
 Joachim Andersen,Crystal Palace,260827.0,25000000.0,100
 Florin Andone,Cádiz,177065.0,800000.0,100
 Andrés Andrade Cedeño,Arminia,403808.0,1000000.0,100
@@ -5874,7 +5874,7 @@ Rodrigo Battaglia,Mallorca,89297.0,1500000.0,100
 Maximilian Bauer,Greuther Fürth,388363.0,3000000.0,100
 Timo Baumgartl,Union Berlin,187491.0,1800000.0,100
 Mads Bech Sørensen,Brentford,372240.0,2500000.0,100
-Donny van de Beek,Everton,288255.0,2000000.0,100
+Donny van de Beek,Everton,288255.0,5000000.0,100
 Kevin Behrens,Union Berlin,117432.0,2000000.0,100
 Youcef Belaïli,Brest,175014.0,1500000.0,100
 Ishak Belfodil,Hertha BSC,111039.0,1700000.0,100
@@ -5886,7 +5886,7 @@ Jeanuël Belocian,Rennes,919515.0,15000000.0,100
 Hatem Ben Arfa,Lille,18900.0,200000.0,100
 Marco Benassi,Empoli,201040.0,1200000.0,100
 Darío Benedetto,Elche,92693.0,1200000.0,100
-Iker Benito,Osasuna,710679.0,400000.0,100
+Iker Benito,Osasuna,710679.0,1500000.0,100
 Pedro Benito,Cádiz,835794.0,300000.0,100
 Filip Benković,Udinese,293168.0,1800000.0,100
 Keanan Bennetts,Gladbach,321096.0,500000.0,100
@@ -5906,7 +5906,7 @@ Luis Binks,Bologna,471004.0,2800000.0,100
 Tom Bischof,Hoffenheim,822959.0,30000000.0,100
 Nathan Bitumazala,Paris S-G,618415.0,300000.0,100
 Danny Blum,Bochum,41541.0,250000.0,100
-Myron Boadu,Monaco,412932.0,7000000.0,100
+Myron Boadu,Monaco,412932.0,5000000.0,100
 Jérôme Boateng,Lyon,26485.0,400000.0,100
 Kevin-Prince Boateng,Hertha BSC,16922.0,700000.0,100
 Herbert Bockhorn,Bochum,186477.0,700000.0,100
@@ -5914,11 +5914,11 @@ Jeremie Boga,Atalanta,216569.0,10000000.0,100
 Luka Bogdan,Salernitana,226058.0,600000.0,100
 Emil Bohinen,Salernitana,406806.0,1800000.0,100
 Charles Boli,Lens,695646.0,350000.0,100
-Federico Bonazzoli,Salernitana,241527.0,1000000.0,100
+Federico Bonazzoli,Salernitana,241527.0,2500000.0,100
 Tarsis Bonga,Bochum,283140.0,250000.0,100
 Kevin Bonifazi,Bologna,247377.0,300000.0,100
 Solomon Bonnah,RB Leipzig,508637.0,350000.0,100
-Sebastiaan Bornauw,Wolfsburg,338629.0,5000000.0,100
+Sebastiaan Bornauw,Wolfsburg,338629.0,7000000.0,100
 Rafael Borré,Eint Frankfurt,323831.0,8000000.0,100
 Mehdi Bourabia,Spezia,131731.0,1000000.0,100
 Redwan Bourles,Lorient,804547.0,150000.0,100
@@ -5987,8 +5987,8 @@ Pathé Ciss,Rayo Vallecano,525578.0,2000000.0,100
 Moustapha Cissé,Atalanta,988862.0,800000.0,100
 Álex Collado,Granada,282722.0,3000000.0,100
 Ebrima Colley,Spezia,567217.0,2600000.0,100
-Nathan Collins,Burnley,469050.0,35000000.0,100
-Eray Cömert,Valencia,298583.0,4000000.0,100
+Nathan Collins,Burnley,469050.0,25000000.0,100
+Eray Cömert,Valencia,298583.0,2000000.0,100
 Abdu Conté,Troyes,337798.0,700000.0,100
 Andrea Conti,Sampdoria,111227.0,500000.0,100
 Lucas Copado,Bayern Munich,636898.0,750000.0,100
@@ -6034,12 +6034,12 @@ Yusuf Demir,Barcelona,548031.0,2700000.0,100
 Merih Demiral,Atalanta,340879.0,20000000.0,100
 Emmanuel Dennis,Watford,448854.0,4500000.0,100
 Fabio Depaoli,Hellas Verona,324282.0,3000000.0,100
-Kiernan Dewsbury-Hall,Leicester City,475188.0,28000000.0,100
+Kiernan Dewsbury-Hall,Leicester City,475188.0,30000000.0,100
 Jacopo Dezi,Venezia,165531.0,350000.0,100
 Federico Di Francesco,Empoli,38607.0,1400000.0,100
 Francesco Di Mariano,Venezia,238950.0,1400000.0,100
 Francesco Di Tacchio,Salernitana,84766.0,350000.0,100
-Boulaye Dia,Villarreal,626913.0,13000000.0,100
+Boulaye Dia,Villarreal,626913.0,10000000.0,100
 Yadaly Diaby,Clermont Foot,806496.0,550000.0,100
 Habib Diarra,Strasbourg,876631.0,32000000.0,100
 Luis Díaz,Liverpool,480692.0,80000000.0,100
@@ -6064,7 +6064,7 @@ Radu Drăgușin,Salernitana,568559.0,22000000.0,100
 Cody Drameh,Leeds United,531957.0,3500000.0,100
 Jeremy Dudziak,Greuther Fürth,147359.0,750000.0,100
 Unai Dufur,Osasuna,783429.0,300000.0,100
-Denzel Dumfries,Inter,321528.0,27000000.0,100
+Denzel Dumfries,Inter,321528.0,24000000.0,100
 Hugo Duro,Valencia,573775.0,12000000.0,100
 Edin Džeko,Inter,28396.0,2700000.0,100
 Tyronne Ebuehi,Venezia,309944.0,2000000.0,100
@@ -6097,7 +6097,7 @@ Edimilson Fernandes,Arminia,247555.0,3500000.0,100
 Riccardo Fiamozzi,Empoli,197745.0,300000.0,100
 Karol Fila,Strasbourg,385817.0,700000.0,100
 Luca Fiordilino,Venezia,287875.0,1000000.0,100
-Junior Firpo,Leeds United,374139.0,6000000.0,100
+Junior Firpo,Leeds United,374139.0,7000000.0,100
 Ashley Fletcher,Watford,289846.0,800000.0,100
 Alessandro Florenzi,Milan,130365.0,2000000.0,100
 Adam Forshaw,Leeds United,121257.0,1200000.0,100
@@ -6125,11 +6125,11 @@ Conor Gallagher,Crystal Palace,488362.0,35000000.0,100
 Cristian Gamboa,Bochum,121686.0,500000.0,100
 Kévin Gameiro,Strasbourg,27389.0,700000.0,100
 Silvère Ganvoula M'Boussy,Bochum,312819.0,600000.0,100
-Eric García,Barcelona,466794.0,30000000.0,100
+Eric García,Barcelona,466794.0,20000000.0,100
 Fran Garcia,Rayo Vallecano,341264.0,15000000.0,100
 Alejandro Garnacho,Manchester Utd,811779.0,45000000.0,100
 Johan Gastien,Clermont Foot,72121.0,500000.0,100
-Gavi,Barcelona,646740.0,40000000.0,100
+Gavi,Barcelona,646740.0,90000000.0,100
 Linus Gechter,Hertha BSC,692734.0,1800000.0,100
 Joe Gelhardt,Leeds United,503980.0,7000000.0,100
 Valère Germain,Montpellier,60540.0,1500000.0,100
@@ -6150,7 +6150,7 @@ Olivier Giroud,Milan,82442.0,1500000.0,100
 Jamie Gittens,Dortmund,670882.0,40000000.0,100
 Edoardo Goldaniga,Cagliari,242940.0,1200000.0,100
 Angel Gomes,Lille,392770.0,20000000.0,100
-Toti Gomes,Wolves,606718.0,25000000.0,100
+Toti Gomes,Wolves,606718.0,20000000.0,100
 Sergi Gómez,Espanyol,92947.0,600000.0,100
 Cedric Gondo,Salernitana,213854.0,800000.0,100
 Giovanni González,Mallorca,339699.0,2500000.0,100
@@ -6173,7 +6173,7 @@ Clément Grenier,Mallorca,72479.0,800000.0,100
 Sebastian Griesbeck,Greuther Fürth,153555.0,600000.0,100
 Sergi Guardiola,Rayo Vallecano,256429.0,800000.0,100
 Gabriel Gudmundsson,Lille,362108.0,15000000.0,100
-Marc Guéhi,Crystal Palace,392757.0,38000000.0,100
+Marc Guéhi,Crystal Palace,392757.0,55000000.0,100
 Mattéo Guendouzi,Marseille,465830.0,25000000.0,100
 Yanis Guermouche,Montpellier,876034.0,125000.0,100
 Josuha Guilavogui,Bordeaux,93704.0,700000.0,100
@@ -6196,7 +6196,7 @@ Varazdat Haroyan,Cádiz,155423.0,800000.0,100
 Abdou Harroui,Sassuolo,416386.0,2700000.0,100
 Hwang Hee-chan,Wolves,292246.0,10000000.0,100
 Silvan Hefti,Genoa,237666.0,2500000.0,100
-Dominique Heintz,Union Berlin,110036.0,800000.0,100
+Dominique Heintz,Union Berlin,110036.0,2500000.0,100
 Liam Henderson,Empoli,193867.0,1400000.0,100
 Henrique,Lyon,33572.0,750000.0,100
 Dalbert Henrique,Cagliari,312862.0,1000000.0,100
@@ -6209,7 +6209,7 @@ Mario Hernández,Rayo Vallecano,608531.0,600000.0,100
 Hernani,Genoa,181768.0,2000000.0,100
 Yangel Herrera,Espanyol,378293.0,9000000.0,100
 Daan Heymans,Venezia,446491.0,3000000.0,100
-Piero Hincapié,Leverkusen,659813.0,50000000.0,100
+Piero Hincapié,Leverkusen,659813.0,40000000.0,100
 Gerrit Holtmann,Bochum,190289.0,1000000.0,100
 Martin Hongla,Hellas Verona,398808.0,2500000.0,100
 Justin Hoogma,Greuther Fürth,411287.0,900000.0,100
@@ -6313,7 +6313,7 @@ Grejohn Kyei,Clermont Foot,321647.0,700000.0,100
 Andrea La Mantia,Empoli,134983.0,800000.0,100
 Gaëtan Laborde,Rennes,181378.0,10000000.0,100
 Lenny Lacroix,Metz,620315.0,1200000.0,100
-Vassilis Lambropoulos,Bochum,63489.0,175000.0,90
+Vassilis Lambropoulos,Bochum,63489.0,350000.0,90
 Érik Lamela,Sevilla,111630.0,2000000.0,100
 Mohamed Lamine Bayo,Clermont Foot,594991.0,2800000.0,100
 Didier Lamkel Zé,Metz,442320.0,1000000.0,100
@@ -6342,7 +6342,7 @@ Jürgen Locadia,Bochum,166240.0,1800000.0,100
 Manuel Locatelli,Juventus,265088.0,28000000.0,100
 Bradley Locko,Reims,805908.0,9000000.0,100
 Ademola Lookman,Leicester City,406040.0,40000000.0,100
-Unai López,Rayo Vallecano,192009.0,2500000.0,100
+Unai López,Rayo Vallecano,192009.0,3000000.0,100
 Samuel Loric,Lorient,648886.0,500000.0,100
 Anthony Losilla,Bochum,111266.0,500000.0,100
 Johaneko Louisjean,Bordeaux,926766.0,400000.0,97
@@ -6353,9 +6353,9 @@ Matteo Lovato,Cagliari,459655.0,4000000.0,100
 Eduard Löwen,Bochum,260655.0,4500000.0,100
 Jean Lucas,Monaco,578872.0,5000000.0,100
 Anderson Lucoqui,Mainz 05,240274.0,600000.0,100
-Florentino Luís,Getafe,357162.0,22000000.0,100
+Florentino Luís,Getafe,357162.0,20000000.0,100
 Luismi,Sevilla,207922.0,600000.0,100
-Romelu Lukaku,Chelsea,96341.0,15000000.0,100
+Romelu Lukaku,Chelsea,96341.0,30000000.0,100
 Castello Lukeba,Lyon,618472.0,40000000.0,100
 Dodi Lukebakio,Wolfsburg,303259.0,20000000.0,100
 Levi Lumeka,Troyes,537182.0,200000.0,100
@@ -6397,7 +6397,7 @@ Omar Mascarell,Elche,142031.0,800000.0,100
 Erhan Mašović,Bochum,343959.0,5000000.0,100
 Aleš Matějů,Venezia,242078.0,900000.0,100
 Azor Matusiwa,Reims,315145.0,12000000.0,100
-Borja Mayoral,Getafe,298976.0,15000000.0,100
+Borja Mayoral,Getafe,298976.0,7500000.0,100
 Pasquale Mazzocchi,Venezia,250153.0,3000000.0,100
 Pasquale Mazzocchi,Salernitana,250153.0,3000000.0,100
 Yannis Mbemba,Nantes,822116.0,100000.0,96
@@ -6452,7 +6452,7 @@ Lys Mousset,Salernitana,291422.0,350000.0,100
 Toni Moya,Alavés,295065.0,1500000.0,100
 Samuel Mráz,Spezia,243225.0,450000.0,100
 Bali Mumba,Norwich City,433186.0,1500000.0,100
-Vedat Muriqi,Mallorca,256267.0,4500000.0,100
+Vedat Muriqi,Mallorca,256267.0,12000000.0,100
 Torben Müsel,Gladbach,368860.0,225000.0,100
 Shkodran Mustafi,Levante,88590.0,800000.0,100
 Junior Mwanga,Bordeaux,1011200.0,6000000.0,100
@@ -6500,7 +6500,7 @@ Brian Oliván,Mallorca,166677.0,6000000.0,100
 Sérgio Oliveira,Roma,112465.0,2500000.0,100
 Warmed Omari,Rennes,711996.0,3000000.0,100
 Andrew Omobamidele,Norwich City,621993.0,8000000.0,100
-Amadou Onana,Lille,485706.0,42000000.0,100
+Amadou Onana,Lille,485706.0,50000000.0,100
 Jean Onana,Bordeaux,656441.0,3700000.0,100
 Javier Ontiveros,Osasuna,298983.0,1000000.0,93
 Tyler Onyango,Everton,663225.0,500000.0,100
@@ -6522,7 +6522,7 @@ Miloš Pantović,Bochum,615639.0,3000000.0,100
 Antonios Papadopoulos,Dortmund,482573.0,1000000.0,100
 Merveille Papela,Mainz 05,405689.0,1000000.0,100
 Kevin Paredes,Wolfsburg,711517.0,7500000.0,100
-Fabiano Parisi,Empoli,547985.0,5000000.0,100
+Fabiano Parisi,Empoli,547985.0,9500000.0,100
 Raúl Parra,Cádiz,784719.0,300000.0,100
 Javier Pastore,Elche,55215.0,400000.0,100
 Strahinja Pavlović,Monaco,574671.0,25000000.0,100
@@ -6543,7 +6543,7 @@ Diego Perotti,Salernitana,54984.0,500000.0,100
 Romain Perraud,Southampton,318523.0,5000000.0,100
 Lucas Perrin,Strasbourg,352392.0,3000000.0,100
 Mario Perrone,Salernitana,709579.0,50000.0,100
-Léo Pétrot,Lorient,412829.0,900000.0,100
+Léo Pétrot,Lorient,412829.0,1500000.0,100
 Njegoš Petrović,Granada,376588.0,2500000.0,100
 Jens Petter Hauge,Eint Frankfurt,422355.0,2500000.0,100
 Alex Petxa,Athletic Club,527838.0,600000.0,100
@@ -6567,11 +6567,11 @@ Mateusz Praszelik,Hellas Verona,374418.0,900000.0,100
 Nicolas de Préville,Metz,122116.0,400000.0,100
 Isaac Price,Everton,612749.0,2000000.0,100
 Nick Proschwitz,Hoffenheim,31535.0,125000.0,100
-Marc Pubill,Levante,844637.0,15000000.0,100
+Marc Pubill,Levante,844637.0,4000000.0,100
 Afimico Pululu,Greuther Fürth,410649.0,700000.0,100
 Niklas Pyyhtiä,Bologna,679754.0,1200000.0,100
 Przemysław Płacheta,Norwich City,383109.0,1500000.0,94
-Dani Raba,Granada,413262.0,2400000.0,100
+Dani Raba,Granada,413262.0,1500000.0,100
 Ivan Radovanović,Salernitana,46105.0,400000.0,100
 Rafinha,Real Sociedad,129473.0,4000000.0,100
 Antonio Raimondo,Bologna,818888.0,1400000.0,100
@@ -6610,8 +6610,8 @@ Kévin Rodrigues,Rayo Vallecano,206947.0,1200000.0,100
 Óscar Rodríguez Arnaiz,Getafe,85314.0,7500000.0,100
 Mads Roerslev,Brentford,391005.0,10000000.0,100
 Simone Romagnoli,Empoli,88706.0,800000.0,100
-Cristian Romero,Tottenham,355915.0,65000000.0,100
-Iván Romero,Sevilla,628886.0,7500000.0,100
+Cristian Romero,Tottenham,355915.0,60000000.0,100
+Iván Romero,Sevilla,628886.0,800000.0,100
 Luka Romero,Lazio,769063.0,5000000.0,100
 Cristiano Ronaldo,Manchester Utd,8198.0,15000000.0,100
 Salomón Rondón,Everton,80197.0,1000000.0,100
@@ -6639,7 +6639,7 @@ William Saliba,Marseille,495666.0,90000000.0,100
 Yoann Salmier,Troyes,351843.0,1500000.0,100
 Lazar Samardzic,Udinese,528833.0,20000000.0,100
 Mama Samba Baldé,Troyes,325223.0,4000000.0,100
-Albert Sambi Lokonga,Arsenal,381967.0,15000000.0,100
+Albert Sambi Lokonga,Arsenal,381967.0,8000000.0,100
 Luigi Samele,Sassuolo,658244.0,150000.0,100
 Fede San Emeterio,Cádiz,307519.0,1500000.0,100
 Antonio Sánchez,Mallorca,513031.0,2400000.0,100
@@ -6647,7 +6647,7 @@ Juanlu Sánchez,Sevilla,676042.0,15000000.0,100
 Jadon Sancho,Manchester Utd,401173.0,20000000.0,100
 Philippe Sandler,Troyes,340460.0,2000000.0,100
 Baptiste Santamaria,Rennes,285323.0,4500000.0,100
-Yellu Santiago,Valencia,941869.0,1000000.0,100
+Yellu Santiago,Valencia,941869.0,900000.0,100
 Samir Santos,Watford,19439.0,200000.0,100
 Sergio Santos,Real Madrid,537759.0,300000.0,100
 Alvaro Sanz,Barcelona,466806.0,700000.0,100
@@ -6763,7 +6763,7 @@ William Troost-Ekong,Watford,192875.0,2000000.0,100
 Axel Tuanzebe,Aston Villa,342046.0,5000000.0,100
 Axel Tuanzebe,Napoli,342046.0,5000000.0,100
 Ozan Tufan,Watford,236471.0,2000000.0,100
-Beñat Turrientes,Real Sociedad,634431.0,8000000.0,100
+Beñat Turrientes,Real Sociedad,634431.0,20000000.0,100
 Christos Tzolis,Norwich City,451677.0,25000000.0,100
 Destiny Udogie,Udinese,556385.0,40000000.0,100
 Ike Ugbo,Troyes,339943.0,3000000.0,100
@@ -6785,7 +6785,7 @@ Sebastian Vasiliadis,Arminia,333516.0,900000.0,100
 Johan Vásquez,Genoa,532937.0,10000000.0,100
 José Luis García Vayá,Levante,574758.0,1800000.0,100
 Jesus Vazquez,Valencia,623024.0,3000000.0,100
-Micky van de Ven,Wolfsburg,557459.0,55000000.0,100
+Micky van de Ven,Wolfsburg,557459.0,65000000.0,100
 Simone Verdi,Salernitana,130360.0,2500000.0,100
 Edoardo Vergani,Salernitana,421780.0,450000.0,100
 Valerio Verre,Empoli,162961.0,1400000.0,100
@@ -6808,10 +6808,10 @@ Andreas Voglsammer,Union Berlin,94771.0,800000.0,100
 Cristian Volpato,Roma,746891.0,6500000.0,100
 Aster Vranckx,Wolfsburg,503881.0,7000000.0,100
 Luca Waldschmidt,Wolfsburg,196095.0,4500000.0,100
-Paul Wanner,Bayern Munich,900909.0,18000000.0,100
+Paul Wanner,Bayern Munich,900909.0,3000000.0,100
 Magnus Warming,Torino,482107.0,700000.0,100
 Daniel Wass,Atlético Madrid,63463.0,1000000.0,100
-Wout Weghorst,Burnley,228645.0,6000000.0,100
+Wout Weghorst,Burnley,228645.0,3500000.0,100
 Noah Weißhaupt,Freiburg,392163.0,5000000.0,100
 Ben White,Arsenal,335721.0,30000000.0,100
 Silvan Widmer,Mainz 05,168989.0,1200000.0,100
@@ -6856,7 +6856,7 @@ Salis Abdul Samed,Lens,688707.0,5000000.0,100
 Oliver Abildgaard,Hellas Verona,325993.0,3500000.0,100
 Matthis Abline,Auxerre,659543.0,22000000.0,100
 Abner,Betis,646402.0,7000000.0,100
-Zakaria Aboukhlal,Toulouse,393238.0,12000000.0,100
+Zakaria Aboukhlal,Toulouse,393238.0,10000000.0,100
 Christian Acella,Cremonese,610881.0,150000.0,100
 Francesco Acerbi,Inter,131075.0,3500000.0,100
 Tyler Adams,Leeds United,332705.0,25000000.0,100
@@ -6897,7 +6897,7 @@ Jordan Amavi,Getafe,241229.0,1200000.0,100
 Lukáš Ambros,Wolfsburg,671548.0,200000.0,100
 Bruno Amione,Hellas Verona,644676.0,3000000.0,100
 Bruno Amione,Sampdoria,644676.0,3000000.0,100
-Ethan Ampadu,Spezia,392771.0,20000000.0,100
+Ethan Ampadu,Spezia,392771.0,12000000.0,100
 Ayoub Amraoui,Nice,860051.0,1500000.0,100
 Elliot Anderson,Newcastle Utd,567576.0,60000000.0,100
 Komnen Andrić,Clermont Foot,260316.0,1000000.0,100
@@ -6950,7 +6950,7 @@ Andrea Barberis,Monza,146680.0,800000.0,100
 Tommaso Barbieri,Juventus,569939.0,2500000.0,100
 Ross Barkley,Nice,131978.0,5000000.0,100
 Aymen Barkok,Mainz 05,315332.0,1000000.0,100
-Enzo Barrenechea,Juventus,671915.0,7500000.0,100
+Enzo Barrenechea,Juventus,671915.0,10000000.0,100
 Mickaël Barreto,Ajaccio,23345.0,25000.0,100
 Pablo Barrios,Atlético Madrid,775605.0,60000000.0,100
 Federico Baschirotto,Lecce,351955.0,6000000.0,100
@@ -6961,9 +6961,9 @@ Julian Baumgartlinger,Augsburg,34787.0,400000.0,100
 Cyrille Bayala,Ajaccio,267147.0,900000.0,100
 Brian Bayeye,Torino,715470.0,400000.0,100
 Julius Beck,Spezia,802512.0,350000.0,100
-Jan Bednarek,Aston Villa,243028.0,12000000.0,100
+Jan Bednarek,Aston Villa,243028.0,18000000.0,100
 Yanis Begraoui,Toulouse,569376.0,900000.0,100
-Alexis Beka Beka,Nice,539065.0,1000000.0,100
+Alexis Beka Beka,Nice,539065.0,1500000.0,100
 Jérémie Bela,Clermont Foot,170966.0,600000.0,100
 Reda Belahyane,Nice,982855.0,500000.0,100
 Youcef Belaïli,Ajaccio,175014.0,1500000.0,100
@@ -6991,7 +6991,7 @@ Antonio Blanco,Cádiz,495621.0,10000000.0,100
 Lautaro Blanco,Elche,831161.0,2000000.0,100
 Miha Blažič,Angers,179806.0,1500000.0,100
 Alexis Blin,Lecce,236041.0,3000000.0,100
-Daley Blind,Bayern Munich,12282.0,1400000.0,100
+Daley Blind,Bayern Munich,12282.0,3000000.0,100
 Jean-Paul Boëtius,Hertha BSC,182574.0,1200000.0,100
 Willy Boly,Nott'ham Forest,142310.0,800000.0,100
 Warren Bondo,Monza,659516.0,8500000.0,100
@@ -7030,7 +7030,7 @@ Leonardo Buta,Udinese,653415.0,3000000.0,100
 Rémy Cabella,Lille,113707.0,1500000.0,100
 Jimmy Cabot,Lens,206912.0,2500000.0,100
 Anthony Caci,Mainz 05,453016.0,12000000.0,100
-Cafú,Nott'ham Forest,203655.0,325000.0,100
+Cafú,Nott'ham Forest,203655.0,600000.0,100
 Mattia Caldara,Spezia,197470.0,800000.0,100
 Luca Caldirola,Monza,88680.0,1300000.0,100
 Duje Ćaleta-Car,Southampton,238266.0,3000000.0,100
@@ -7057,7 +7057,7 @@ Diego Carlos,Aston Villa,329145.0,12000000.0,100
 José Carlos Lazo,Almería,282410.0,2500000.0,100
 José Carlos Lazo,Espanyol,282410.0,2500000.0,100
 Carmona,Elche,251846.0,450000.0,100
-Fabio Carvalho,Liverpool,559263.0,12000000.0,100
+Fabio Carvalho,Liverpool,559263.0,14000000.0,100
 Nicolò Casale,Lazio,389837.0,14000000.0,100
 Casemiro,Manchester Utd,16306.0,8000000.0,100
 Tommaso Cassandro,Lecce,412649.0,700000.0,100
@@ -7105,7 +7105,7 @@ Jack Colback,Nott'ham Forest,61644.0,600000.0,100
 David Čolina,Augsburg,371000.0,1000000.0,100
 Álex Collado,Elche,282722.0,3000000.0,100
 Diego Collado,Villarreal,566965.0,800000.0,100
-Nathan Collins,Wolves,469050.0,35000000.0,100
+Nathan Collins,Wolves,469050.0,25000000.0,100
 Lorenzo Colombo,Lecce,487843.0,6000000.0,100
 Andrea Colpani,Monza,392959.0,18000000.0,100
 Levi Colwill,Brighton,614258.0,50000000.0,100
@@ -7134,8 +7134,8 @@ Marco D'Alessandro,Monza,99232.0,700000.0,100
 Luca D'Andrea,Sassuolo,725242.0,2500000.0,100
 Colin Dagba,Strasbourg,460629.0,2500000.0,100
 Thijs Dallinga,Toulouse,538964.0,18000000.0,100
-Muhammed Damar,Hoffenheim,789898.0,1000000.0,100
-Mikkel Damsgaard,Brentford,540941.0,30000000.0,100
+Muhammed Damar,Hoffenheim,789898.0,600000.0,100
+Mikkel Damsgaard,Brentford,540941.0,10000000.0,100
 Flavius Daniliuc,Salernitana,322655.0,6000000.0,100
 Danilo,Nott'ham Forest,808509.0,28000000.0,100
 Arnaut Danjuma,Tottenham,355861.0,4000000.0,100
@@ -7169,7 +7169,7 @@ Mattia Destro,Empoli,88683.0,500000.0,100
 Samuel Di Carmine,Cremonese,45389.0,350000.0,100
 Federico Di Francesco,Lecce,38607.0,1400000.0,100
 Ángel Di María,Juventus,45320.0,3000000.0,100
-Boulaye Dia,Salernitana,626913.0,13000000.0,100
+Boulaye Dia,Salernitana,626913.0,10000000.0,100
 Mamadou Diakhon,Reims,1054839.0,5000000.0,100
 Bafodé Diakité,Lille,463605.0,35000000.0,100
 Ibrahim Diakité,Reims,919173.0,1200000.0,100
@@ -7183,21 +7183,21 @@ Bamba Dieng,Lorient,822458.0,2000000.0,100
 Florian Dietz,Köln,283871.0,600000.0,100
 Junior Dina Ebimbe,Eint Frankfurt,536482.0,6000000.0,100
 Edan Diop,Monaco,745178.0,2000000.0,100
-Issa Diop,Fulham,272622.0,10000000.0,100
+Issa Diop,Fulham,272622.0,20000000.0,100
 Sofiane Diop,Nice,569389.0,8000000.0,100
 Moussa Djitte,Ajaccio,591796.0,1400000.0,100
 Alan Do Marcolino,Rennes,783635.0,200000.0,100
 Ritsu Doan,Freiburg,358504.0,25000000.0,100
 Dodô,Fiorentina,401529.0,17000000.0,100
 Danilho Doekhi,Union Berlin,387047.0,13000000.0,100
-Matt Doherty,Atlético Madrid,171679.0,1500000.0,100
+Matt Doherty,Atlético Madrid,171679.0,3000000.0,100
 Josh Doig,Hellas Verona,567129.0,5000000.0,100
 Kasper Dolberg,Sevilla,283196.0,13000000.0,100
 Kasper Dolberg,Hoffenheim,283196.0,13000000.0,100
 Giulio Donati,Monza,88684.0,300000.0,100
 Kyliane Dong,Troyes,982863.0,600000.0,100
 Jordan Dongmo,Troyes,355369.0,3000000.0,100
-Cheick Doucouré,Crystal Palace,543387.0,15000000.0,100
+Cheick Doucouré,Crystal Palace,543387.0,35000000.0,100
 Siriné Doucouré,Lorient,802747.0,1000000.0,100
 Désiré Doué,Rennes,914562.0,90000000.0,100
 Guela Doué,Rennes,711980.0,18000000.0,100
@@ -7205,7 +7205,7 @@ Flynn Downes,West Ham,506189.0,9000000.0,100
 Kami Doyle,Southampton,,,0
 Dion Drena Beljo,Augsburg,618350.0,4000000.0,100
 Dominick Drexler,Schalke 04,53400.0,750000.0,100
-Domingos Duarte,Getafe,257376.0,800000.0,100
+Domingos Duarte,Getafe,257376.0,2000000.0,100
 Marvin Ducksch,Werder Bremen,125103.0,9000000.0,100
 Ondrej Duda,Hellas Verona,232418.0,4000000.0,100
 Shane Duffy,Fulham,119269.0,2000000.0,100
@@ -7254,7 +7254,7 @@ Cheikh Faye,Montpellier,336828.0,800000.0,81
 Jacopo Fazzini,Empoli,691482.0,6000000.0,100
 Zouhair Feddal,Valladolid,129386.0,800000.0,100
 Felipe,Nott'ham Forest,156501.0,1500000.0,100
-Luiz Felipe,Betis,457931.0,3000000.0,100
+Luiz Felipe,Betis,457931.0,13000000.0,100
 João Félix,Chelsea,462250.0,30000000.0,100
 Kiko Femenía,Villarreal,76467.0,800000.0,100
 Lewis Ferguson,Bologna,428563.0,20000000.0,100
@@ -7298,7 +7298,7 @@ Billy Gilmour,Brighton,423744.0,18000000.0,100
 Gvidas Gineitis,Torino,798929.0,2000000.0,100
 Matthias Ginter,Freiburg,124502.0,7000000.0,100
 Wilfried Gnonto,Leeds United,627626.0,20000000.0,100
-André Gomes,Lille,221025.0,6000000.0,100
+André Gomes,Lille,221025.0,10000000.0,100
 João Gomes,Wolves,735570.0,40000000.0,100
 Dani Gómez,Espanyol,422460.0,1200000.0,100
 Moi Gómez,Osasuna,175449.0,1800000.0,100
@@ -7313,11 +7313,11 @@ Mario Götze,Eint Frankfurt,74842.0,4000000.0,100
 Amine Gouiri,Rennes,418659.0,30000000.0,100
 José Gragera,Espanyol,557147.0,2500000.0,100
 Alberto Grassi,Empoli,197473.0,1800000.0,100
-Ryan Gravenberch,Bayern Munich,478573.0,90000000.0,100
+Ryan Gravenberch,Bayern Munich,478573.0,35000000.0,100
 Andrew Gravillon,Torino,610417.0,3000000.0,100
 Michael Gregoritsch,Freiburg,120205.0,3000000.0,100
-Leo Greiml,Schalke 04,434110.0,1800000.0,100
-Ilia Gruev,Werder Bremen,381753.0,9000000.0,100
+Leo Greiml,Schalke 04,434110.0,1200000.0,100
+Ilia Gruev,Werder Bremen,381753.0,5000000.0,100
 Sergi Guardiola,Cádiz,256429.0,800000.0,100
 Gonçalo Guedes,Wolves,225122.0,6000000.0,100
 Axel Gueguin,Montpellier,981977.0,700000.0,100
@@ -7330,7 +7330,7 @@ Koray Günter,Sampdoria,115763.0,850000.0,100
 Miguel Gutiérrez,Girona,525299.0,20000000.0,100
 Darko Gyabi,Leeds United,663264.0,2000000.0,100
 Christian Gytkjær,Monza,281831.0,100000.0,100
-Erling Haaland,Manchester City,418560.0,180000000.0,100
+Erling Haaland,Manchester City,418560.0,200000000.0,100
 Janik Haberer,Union Berlin,177779.0,2500000.0,100
 Munir El Haddadi,Getafe,223725.0,2500000.0,100
 Jaouen Hadjam,Nantes,750903.0,2000000.0,100
@@ -7348,7 +7348,7 @@ Haissem Hassan,Villarreal,620164.0,5000000.0,100
 Rhys Healey,Toulouse,238185.0,2000000.0,100
 Jan Paul van Hecke,Brighton,576314.0,35000000.0,100
 Gauthier Hein,Auxerre,344892.0,3000000.0,100
-Dominique Heintz,Bochum,110036.0,800000.0,100
+Dominique Heintz,Bochum,110036.0,2500000.0,100
 Jack Hendry,Cremonese,363223.0,3000000.0,100
 Luiz Henrique,Betis,800175.0,25000000.0,100
 Thomas Henry,Hellas Verona,412513.0,1000000.0,100
@@ -7385,7 +7385,7 @@ Samuel Iling-Junior,Juventus,581672.0,10000000.0,100
 Emirhan İlkhan,Torino,743091.0,4500000.0,100
 Emirhan İlkhan,Sampdoria,743091.0,4500000.0,100
 Danny Ings,West Ham,134294.0,8000000.0,100
-Alexander Isak,Newcastle Utd,349066.0,120000000.0,100
+Alexander Isak,Newcastle Utd,349066.0,75000000.0,100
 Isco,Sevilla,85288.0,4000000.0,100
 Ismaily,Lille,124028.0,1800000.0,100
 Ko Itakura,Gladbach,355816.0,12000000.0,100
@@ -7410,7 +7410,7 @@ Paul Joly,Auxerre,806168.0,1200000.0,100
 Jorginho,Arsenal,102017.0,12000000.0,100
 Joselu,Espanyol,81999.0,5000000.0,100
 Mateo Joseph,Leeds United,834742.0,3500000.0,100
-Luka Jović,Fiorentina,257462.0,6000000.0,100
+Luka Jović,Fiorentina,257462.0,7000000.0,100
 Jubal,Auxerre,149928.0,2500000.0,100
 Christopher Jullien,Montpellier,201737.0,2500000.0,100
 Anthony Jung,Werder Bremen,58995.0,1000000.0,100
@@ -7487,7 +7487,7 @@ Juan Larios,Southampton,646738.0,7000000.0,100
 Jordan Larsson,Schalke 04,308552.0,2500000.0,100
 Juanmi Latasa,Getafe,623521.0,2800000.0,100
 Danny Latza,Schalke 04,39025.0,500000.0,100
-Armand Lauriente,Sassuolo,579930.0,15000000.0,100
+Armand Lauriente,Sassuolo,579930.0,10000000.0,100
 Roméo Lavia,Southampton,628451.0,30000000.0,100
 Lázaro,Almería,574772.0,3500000.0,100
 Valentino Lazaro,Torino,186368.0,3500000.0,100
@@ -7514,7 +7514,7 @@ Jesse Lingard,Nott'ham Forest,141660.0,6000000.0,100
 Samuel Lino,Valencia,694928.0,30000000.0,100
 Pol Lirola,Elche,298975.0,3000000.0,100
 Marcin Listkowski,Lecce,291276.0,200000.0,100
-Diego Llorente,Roma,246291.0,7000000.0,100
+Diego Llorente,Roma,246291.0,3000000.0,100
 Luka Lochoshvili,Cremonese,345189.0,1500000.0,100
 Bradley Locko,Brest,805908.0,9000000.0,100
 Renan Lodi,Nott'ham Forest,476352.0,18000000.0,100
@@ -7527,7 +7527,7 @@ Dejan Lovren,Lyon,37838.0,500000.0,100
 Sandi Lovrić,Udinese,268429.0,8000000.0,100
 Jamal Lowe,Bournemouth,239949.0,1500000.0,100
 Jhon Lucumí,Bologna,413565.0,25000000.0,100
-José Luis Morales,Villarreal,252677.0,400000.0,100
+José Luis Morales,Villarreal,252677.0,1500000.0,100
 Saša Lukić,Fulham,245056.0,12000000.0,100
 Charalampos Lykogiannis,Bologna,136514.0,1000000.0,100
 Youssouf M'Changama,Auxerre,167472.0,700000.0,100
@@ -7543,7 +7543,7 @@ Kobbie Mainoo,Manchester Utd,820374.0,40000000.0,100
 Ainsley Maitland-Niles,Southampton,285845.0,12000000.0,100
 Jordan Majchrzak,Roma,846302.0,400000.0,100
 Jean-Victor Makengo,Lorient,322305.0,2500000.0,100
-Tyrell Malacia,Manchester Utd,339340.0,5000000.0,100
+Tyrell Malacia,Manchester Utd,339340.0,18000000.0,100
 Lorenzo Malagrida,Sampdoria,698110.0,400000.0,100
 Daniel Maldini,Spezia,539134.0,4500000.0,100
 Youssef Maleh,Lecce,324377.0,1500000.0,100
@@ -7572,21 +7572,21 @@ Roger Martí,Cádiz,212391.0,1200000.0,100
 Iván Martín,Girona,341278.0,15000000.0,100
 Jonas Martin,Lille,127142.0,1000000.0,100
 Arnau Martinez,Girona,826224.0,10000000.0,100
-Lisandro Martínez,Manchester Utd,480762.0,50000000.0,100
+Lisandro Martínez,Manchester Utd,480762.0,35000000.0,100
 Roger Martínez,Espanyol,285771.0,1500000.0,100
 Adam Masina,Udinese,286949.0,1500000.0,100
 Han-Noah Massengo,Auxerre,536508.0,5000000.0,100
 Yanis Massolin,Clermont Foot,915849.0,250000.0,100
 Pape Matar Sarr,Tottenham,568693.0,35000000.0,100
 Nemanja Matić,Roma,74683.0,2000000.0,100
-Chrislain Matsima,Lorient,569383.0,7000000.0,100
+Chrislain Matsima,Lorient,569383.0,22000000.0,100
 Jean Mattéo Bahoya,Angers,349826.0,400000.0,100
-Neal Maupay,Everton,217115.0,5000000.0,100
+Neal Maupay,Everton,217115.0,12000000.0,100
 Aïman Maurer,Clermont Foot,860056.0,500000.0,100
 Christian Mawissa,Toulouse,1005240.0,15000000.0,100
 Philipp Max,Eint Frankfurt,111275.0,2000000.0,100
 Fernand Mayembo,Ajaccio,413245.0,600000.0,100
-Ibrahim Maza,Hertha BSC,905011.0,600000.0,100
+Ibrahim Maza,Hertha BSC,905011.0,5000000.0,100
 Derek Mazou-Sacko,Troyes,917104.0,250000.0,100
 Noussair Mazraoui,Bayern Munich,340456.0,22000000.0,100
 Kevin Mbabu,Fulham,183321.0,4000000.0,100
@@ -7625,7 +7625,7 @@ Anthony Modeste,Dortmund,50512.0,700000.0,100
 Terem Moffi,Nice,538874.0,15000000.0,100
 Mostafa Mohamed,Nantes,462348.0,5000000.0,100
 Tobias Mohr,Schalke 04,153661.0,900000.0,100
-Johan Mojica,Villarreal,262939.0,2200000.0,100
+Johan Mojica,Villarreal,262939.0,1800000.0,100
 Nahuel Molina,Atlético Madrid,424042.0,15000000.0,100
 Salvatore Molina,Monza,163582.0,450000.0,100
 Florent Mollet,Nantes,222859.0,1800000.0,100
@@ -7647,7 +7647,7 @@ Divin Mubama,West Ham,670848.0,1000000.0,100
 Mykhailo Mudryk,Chelsea,537860.0,30000000.0,93
 François Mughe,Marseille,1027216.0,800000.0,100
 Nordi Mukiele,Paris S-G,348026.0,15000000.0,100
-Abdul Mumin,Rayo Vallecano,451801.0,2500000.0,100
+Abdul Mumin,Rayo Vallecano,451801.0,4000000.0,100
 Iker Muñoz,Osasuna,710677.0,2000000.0,100
 Pablo Muñoz,Rayo Vallecano,531305.0,50000.0,100
 Marlon Mustapha,Mainz 05,532495.0,1000000.0,100
@@ -7668,7 +7668,7 @@ Tanguy Nianzou,Sevilla,538996.0,1400000.0,100
 Rasmus Nicolaisen,Toulouse,283227.0,5000000.0,100
 Hans Nicolussi Caviglia,Salernitana,430280.0,3000000.0,100
 Florian Niederlechner,Hertha BSC,152963.0,600000.0,100
-Justin Njinmah,Dortmund,596153.0,9000000.0,100
+Justin Njinmah,Dortmund,596153.0,7000000.0,100
 Arnaud Nordin,Montpellier,324811.0,5000000.0,100
 Riad Nouri,Ajaccio,119104.0,200000.0,100
 Randy Nteka,Elche,560483.0,1200000.0,100
@@ -7678,7 +7678,7 @@ Unai Núñez,Celta Vigo,338285.0,3000000.0,100
 Bram Nuytinck,Sampdoria,104597.0,250000.0,100
 Lewis O'Brien,Nott'ham Forest,560694.0,5000000.0,100
 Brian Ocampo,Cádiz,598765.0,900000.0,100
-Wilson Odobert,Troyes,743498.0,10000000.0,100
+Wilson Odobert,Troyes,743498.0,22000000.0,100
 Tim Oermann,Bochum,696164.0,5000000.0,100
 Odeluga Offiah,Brighton,567597.0,300000.0,100
 Marios Oikonomou,Sampdoria,174488.0,250000.0,96
@@ -7687,13 +7687,13 @@ Caleb Okoli,Atalanta,461833.0,8000000.0,100
 Olasagasti,Real Sociedad,625660.0,1800000.0,100
 Finn Ole Becker,Hoffenheim,334999.0,2500000.0,100
 Brian Oliván,Espanyol,166677.0,6000000.0,100
-Lucas Oliveira Rosa,Valladolid,468309.0,4000000.0,100
+Lucas Oliveira Rosa,Valladolid,468309.0,1000000.0,100
 Mathías Olivera,Napoli,376514.0,15000000.0,100
 Ado Onaiwu,Toulouse,308133.0,1500000.0,100
-Amadou Onana,Everton,485706.0,42000000.0,100
+Amadou Onana,Everton,485706.0,50000000.0,100
 Jean Onana,Lens,656441.0,3700000.0,100
 Paul Onuachu,Southampton,272855.0,17000000.0,100
-Loïs Openda,Lens,368887.0,45000000.0,100
+Loïs Openda,Lens,368887.0,60000000.0,100
 Ivan Ordets,Bochum,118850.0,2500000.0,100
 Divock Origi,Milan,148368.0,5000000.0,100
 Mislav Oršić,Southampton,119150.0,2500000.0,100
@@ -7727,7 +7727,7 @@ Luca Pellegrini,Eint Frankfurt,346567.0,3500000.0,100
 Théo Pellenard,Auxerre,238716.0,1000000.0,100
 Facundo Pellistri,Manchester Utd,676318.0,7000000.0,100
 Rubén Peña,Osasuna,238868.0,2200000.0,100
-Nicolas Pépé,Nice,343052.0,8500000.0,100
+Nicolas Pépé,Nice,343052.0,6000000.0,100
 Pepín,Monza,,,0
 Juan Perea,Stuttgart,496767.0,1500000.0,100
 Andreas Pereira,Fulham,203394.0,20000000.0,100
@@ -7780,13 +7780,13 @@ Giacomo Quagliata,Cremonese,458777.0,1700000.0,100
 Eduardo Quaresma,Hoffenheim,504073.0,14000000.0,100
 Domingos Quina,Elche,391719.0,1500000.0,100
 Nemanja Radonjić,Torino,245078.0,2800000.0,100
-Largie Ramazani,Almería,518644.0,5000000.0,100
+Largie Ramazani,Almería,518644.0,6000000.0,100
 Chris Ramos,Cádiz,538810.0,4000000.0,100
 Aaron Ramsey,Nice,646658.0,15000000.0,100
 Andrea Ranocchia,Monza,44327.0,800000.0,100
 Filippo Ranocchia,Monza,489611.0,4000000.0,100
 Lilian Raolisoa,Angers,829874.0,1500000.0,100
-Raphinha,Barcelona,411295.0,80000000.0,100
+Raphinha,Barcelona,411295.0,50000000.0,100
 Nicolai Rapp,Werder Bremen,185427.0,700000.0,100
 Giacomo Raspadori,Napoli,405885.0,22000000.0,100
 Rafael Ratão,Toulouse,289802.0,2500000.0,100
@@ -7808,7 +7808,7 @@ Joe Rodon,Rennes,297212.0,12000000.0,100
 Óscar Rodríguez Arnaiz,Celta Vigo,85314.0,7500000.0,100
 Pablo Rodríguez,Lecce,537765.0,2000000.0,100
 Agustín Rogel,Hertha BSC,456535.0,1500000.0,100
-Merlin Röhl,Freiburg,608832.0,16000000.0,100
+Merlin Röhl,Freiburg,608832.0,12000000.0,100
 Tony Rölke,Hertha BSC,688641.0,200000.0,100
 Alessio Romagnoli,Lazio,197747.0,15000000.0,100
 Simone Romagnoli,Lecce,88706.0,800000.0,100
@@ -7821,7 +7821,7 @@ Nicolò Rovella,Juventus,525704.0,18000000.0,100
 Antonio Rüdiger,Real Madrid,86202.0,12000000.0,100
 Kays Ruiz,Auxerre,,,0
 Fabián Ruiz Peña,Paris S-G,350219.0,40000000.0,100
-Georginio Rutter,Leeds United,538977.0,32000000.0,100
+Georginio Rutter,Leeds United,538977.0,18000000.0,100
 Julian Ryerson,Dortmund,370789.0,20000000.0,100
 Halid Šabanović,Angers,422986.0,500000.0,100
 Marcel Sabitzer,Manchester Utd,106987.0,8000000.0,100
@@ -7836,7 +7836,7 @@ Amine Salama,Angers,980576.0,1500000.0,100
 Kike Salas,Sevilla,766583.0,6000000.0,100
 William Saliba,Arsenal,495666.0,90000000.0,100
 Salvi,Rayo Vallecano,246204.0,1200000.0,100
-Albert Sambi Lokonga,Crystal Palace,381967.0,15000000.0,100
+Albert Sambi Lokonga,Crystal Palace,381967.0,8000000.0,100
 Junior Sambia,Salernitana,335147.0,2000000.0,100
 Leandro Sanca,Spezia,539154.0,400000.0,100
 Renato Sanches,Paris S-G,258027.0,2500000.0,100
@@ -7894,7 +7894,7 @@ Manor Solomon,Fulham,396638.0,9000000.0,100
 Brandon Soppy,Atalanta,546880.0,2000000.0,100
 Joaquin Sosa,Bologna,657742.0,1500000.0,100
 Hugo Sotelo,Celta Vigo,892221.0,9000000.0,100
-Moussa Soumano,Ajaccio,1053240.0,1000000.0,100
+Moussa Soumano,Ajaccio,1053240.0,900000.0,100
 Dyego Sousa,Almería,157036.0,800000.0,100
 Harry Souttar,Leicester City,298091.0,12000000.0,100
 Vinicius Souza,Espanyol,146020.0,1200000.0,100
@@ -7912,7 +7912,7 @@ Kevin Stöger,Bochum,106872.0,3500000.0,100
 Jørgen Strand Larsen,Celta Vigo,429983.0,40000000.0,100
 Tony Strata,Ajaccio,1004681.0,400000.0,100
 Gabriel Strefezza,Lecce,457673.0,7000000.0,100
-Denis Suárez,Espanyol,165007.0,1500000.0,100
+Denis Suárez,Espanyol,165007.0,1200000.0,100
 Gabriel Suazo,Toulouse,385105.0,7000000.0,100
 Niklas Süle,Dortmund,166601.0,8000000.0,100
 Ibrahim Sulemana,Hellas Verona,982267.0,4000000.0,100
@@ -7927,16 +7927,16 @@ Nicolás Tagliafico,Lyon,131225.0,6000000.0,100
 Benjamin Tahirovic,Roma,787907.0,1000000.0,100
 Montassar Talbi,Lorient,496706.0,6000000.0,100
 Thibault Tamas,Montpellier,569374.0,150000.0,100
-James Tarkowski,Everton,173504.0,7000000.0,100
+James Tarkowski,Everton,173504.0,13000000.0,100
 Nuno Tavares,Marseille,535955.0,20000000.0,100
 Marcus Tavernier,Bournemouth,399434.0,20000000.0,100
-Aurélien Tchouaméni,Real Madrid,413112.0,75000000.0,100
+Aurélien Tchouaméni,Real Madrid,413112.0,100000000.0,100
 Mathys Tel,Bayern Munich,801734.0,30000000.0,100
 Semir Telalovic,Gladbach,583767.0,400000.0,100
 Alex Telles,Sevilla,255755.0,7000000.0,100
 Simon Terodde,Schalke 04,36284.0,900000.0,100
-Ramón Terrats,Villarreal,783396.0,4000000.0,100
-Ramón Terrats,Girona,783396.0,4000000.0,100
+Ramón Terrats,Villarreal,783396.0,3000000.0,100
+Ramón Terrats,Girona,783396.0,3000000.0,100
 Tetê,Leicester City,371256.0,10000000.0,100
 Florian Thauvin,Udinese,184892.0,3000000.0,100
 Arthur Theate,Rennes,368891.0,24000000.0,100
@@ -7959,7 +7959,7 @@ Souleymane Touré,Auxerre,490415.0,150000.0,86
 Yoann Touzghar,Ajaccio,68718.0,300000.0,100
 Boubacar Traoré,Wolves,649020.0,5000000.0,100
 William Troost-Ekong,Salernitana,192875.0,2000000.0,100
-Leandro Trossard,Arsenal,144028.0,20000000.0,100
+Leandro Trossard,Arsenal,144028.0,35000000.0,100
 Frank Tsadjout,Cremonese,392545.0,1200000.0,100
 Theocharis Tsingaras,Toulouse,464530.0,900000.0,100
 Viktor Tsyhankov,Girona,264372.0,15000000.0,93
@@ -7978,7 +7978,7 @@ Manu Vallejo,Girona,527350.0,1500000.0,100
 Mattia Valoti,Monza,167741.0,1500000.0,100
 Johan Vásquez,Cremonese,532937.0,10000000.0,100
 Matías Vecino,Lazio,143812.0,2500000.0,100
-Renato Veiga,Augsburg,805714.0,1500000.0,100
+Renato Veiga,Augsburg,805714.0,25000000.0,100
 Simone Verdi,Hellas Verona,130360.0,2500000.0,100
 Jordan Veretout,Marseille,164771.0,15000000.0,100
 João Victor,Nantes,671145.0,5000000.0,100
@@ -8003,12 +8003,12 @@ Lukáš Vorlický,Atalanta,552059.0,100000.0,100
 Aster Vranckx,Milan,503881.0,7000000.0,100
 Robert Wagner,Freiburg,690429.0,1400000.0,100
 Sebastian Walukiewicz,Empoli,345458.0,2500000.0,100
-Wout Weghorst,Manchester Utd,228645.0,6000000.0,100
+Wout Weghorst,Manchester Utd,228645.0,3500000.0,100
 Julian Weigl,Gladbach,196792.0,6000000.0,100
 Nelson Weiper,Mainz 05,796213.0,10000000.0,100
 Mitchell Weiser,Werder Bremen,119211.0,5000000.0,100
 Harvey White,Tottenham,581598.0,600000.0,100
-Mateusz Wieteska,Clermont Foot,208172.0,3000000.0,100
+Mateusz Wieteska,Clermont Foot,208172.0,1800000.0,100
 Georginio Wijnaldum,Roma,49499.0,6000000.0,100
 Neco Williams,Nott'ham Forest,503680.0,25000000.0,100
 Willian,Fulham,52769.0,3000000.0,100
@@ -8046,7 +8046,7 @@ Jordan Zemura,Bournemouth,633530.0,5000000.0,100
 Alessio Zerbin,Napoli,433584.0,2400000.0,100
 Nathan Zeze,Nantes,923832.0,5000000.0,100
 Oleksandr Zinchenko,Arsenal,203853.0,15000000.0,100
-Joshua Zirkzee,Bologna,435648.0,25000000.0,100
+Joshua Zirkzee,Bologna,435648.0,50000000.0,100
 Nadir Zortea,Atalanta,392966.0,7000000.0,100
 Nadir Zortea,Sassuolo,392966.0,7000000.0,100
 Szymon Żurkowski,Spezia,387234.0,2500000.0,100
@@ -8056,7 +8056,7 @@ Brenden Aaronson,Union Berlin,393323.0,15000000.0,100
 Nabil Aberdin,Getafe,908621.0,100000.0,100
 Matthis Abline,Nantes,659543.0,22000000.0,100
 Abdel Abqar,Alavés,559979.0,6000000.0,100
-Joshua Acheampong,Chelsea,1004708.0,20000000.0,93
+Joshua Acheampong,Chelsea,1004708.0,300000.0,93
 Akor Adams,Montpellier,607034.0,7000000.0,100
 Tyler Adams,Bournemouth,332705.0,25000000.0,100
 Junior Adamu,Freiburg,452477.0,5000000.0,100
@@ -8096,7 +8096,7 @@ Lorenzo Amatucci,Fiorentina,707450.0,1000000.0,100
 Jordan Amavi,Brest,241229.0,1200000.0,100
 Zeki Amdouni,Burnley,548729.0,9000000.0,100
 Kelvin Amian,Nantes,344072.0,2500000.0,100
-Michael Amir Murillo,Marseille,1005649.0,35000000.0,100
+Michael Amir Murillo,Marseille,1005649.0,55000000.0,100
 Nadiem Amiri,Mainz 05,232454.0,20000000.0,100
 Sofyan Amrabat,Manchester Utd,287579.0,12000000.0,100
 Miguel Ángel Rubio,Granada,583510.0,2000000.0,100
@@ -8117,14 +8117,14 @@ Arthur,Leverkusen,977464.0,7000000.0,100
 Marco Asensio,Paris S-G,296622.0,17000000.0,100
 Joel Asoro,Metz,375391.0,1000000.0,100
 Lorenz Assignon,Burnley,711969.0,9000000.0,100
-Arthur Atta,Metz,855308.0,12000000.0,100
+Arthur Atta,Metz,855308.0,1000000.0,100
 Pierre-Emerick Aubameyang,Marseille,58864.0,5000000.0,100
 Tommaso Augello,Cagliari,284595.0,2000000.0,100
 Carlos Augusto,Inter,585982.0,20000000.0,100
 Yann Aurel Bisseck,Inter,441986.0,15000000.0,100
 Ezequiel Ávila,Betis,50570.0,2000000.0,80
 André Ayew,Le Havre,45403.0,600000.0,100
-Neil El Aynaoui,Lens,901019.0,8000000.0,100
+Neil El Aynaoui,Lens,901019.0,20000000.0,100
 Sardar Azmoun,Roma,180337.0,8000000.0,100
 César Azpilicueta,Atlético Madrid,57500.0,1200000.0,100
 Paulo Azzi,Cagliari,310527.0,1000000.0,100
@@ -8152,11 +8152,11 @@ Valentín Barco,Brighton,849410.0,15000000.0,100
 Bradley Barcola,Paris S-G,708265.0,70000000.0,100
 Ross Barkley,Luton Town,131978.0,5000000.0,100
 Harvey Barnes,Newcastle Utd,398065.0,32000000.0,100
-Enzo Barrenechea,Frosinone,671915.0,7500000.0,100
+Enzo Barrenechea,Frosinone,671915.0,10000000.0,100
 Davide Bartesaghi,Milan,887638.0,3000000.0,100
 Steven Baseya,Strasbourg,988468.0,50000.0,100
 Toma Bašić,Salernitana,334835.0,1000000.0,100
-Calvin Bassey,Fulham,461883.0,28000000.0,100
+Calvin Bassey,Fulham,461883.0,16000000.0,100
 Simone Bastoni,Empoli,257751.0,1500000.0,100
 Elias Baum,Eint Frankfurt,744857.0,250000.0,100
 Christoph Baumgartner,RB Leipzig,324278.0,12000000.0,100
@@ -8165,7 +8165,7 @@ Adrian Beck,Heidenheim,273669.0,2000000.0,100
 Owen Beck,Liverpool,551001.0,1250000.0,100
 Sheraldo Becker,Real Sociedad,188888.0,1500000.0,100
 Chris Bedia,Union Berlin,294791.0,2500000.0,100
-Donny van de Beek,Eint Frankfurt,288255.0,2000000.0,100
+Donny van de Beek,Eint Frankfurt,288255.0,5000000.0,100
 Kevin Behrens,Wolfsburg,117432.0,2000000.0,100
 Reda Belahyane,Hellas Verona,982855.0,500000.0,100
 Amari'i Bell,Luton Town,278166.0,2500000.0,100
@@ -8197,7 +8197,7 @@ El Bilal Touré,Atalanta,649016.0,15000000.0,100
 Antonio Blanco,Alavés,495621.0,10000000.0,100
 Hendry Blank,Dortmund,804831.0,2500000.0,100
 Ludovic Blas,Rennes,288225.0,18000000.0,100
-Daley Blind,Girona,12282.0,1400000.0,100
+Daley Blind,Girona,12282.0,3000000.0,100
 Benicio Boaitey,Brighton,657817.0,400000.0,83
 Jérôme Boateng,Salernitana,26485.0,400000.0,100
 Oscar Bobb,Manchester City,661207.0,25000000.0,100
@@ -8206,7 +8206,7 @@ Jeremie Boga,Nice,216569.0,10000000.0,100
 Emil Bohinen,Genoa,406806.0,1800000.0,100
 Adama Bojang,Reims,1111912.0,500000.0,100
 Daniel Boloca,Sassuolo,441515.0,6500000.0,100
-Federico Bonazzoli,Hellas Verona,241527.0,1000000.0,100
+Federico Bonazzoli,Hellas Verona,241527.0,2500000.0,100
 Giovanni Bonfanti,Atalanta,663900.0,1000000.0,100
 Victor Boniface,Leverkusen,656681.0,40000000.0,100
 Kevin Bonifazi,Frosinone,247377.0,300000.0,100
@@ -8221,7 +8221,7 @@ Mohamed Bouchenna,Clermont Foot,955360.0,200000.0,85
 Mehdi Bourabia,Frosinone,131731.0,1000000.0,100
 Bilal Boutobba,Clermont Foot,344151.0,1800000.0,100
 Hugo Boutsingkham,Nantes,620319.0,200000.0,100
-Lucas Boyé,Granada,334222.0,5000000.0,100
+Lucas Boyé,Granada,334222.0,7000000.0,100
 Conor Bradley,Liverpool,624258.0,30000000.0,100
 Bilal Brahimi,Brest,789094.0,1200000.0,100
 Brau,Granada,713649.0,150000.0,100
@@ -8263,12 +8263,12 @@ Gino Caoki,Lorient,918250.0,50000.0,100
 Valentin Carboni,Monza,787618.0,15000000.0,100
 Marc Cardona,Las Palmas,443222.0,1400000.0,100
 Sergi Cardona,Las Palmas,678406.0,10000000.0,100
-Johnny Cardoso,Betis,689505.0,22000000.0,100
+Johnny Cardoso,Betis,689505.0,25000000.0,100
 Carmona,Getafe,251846.0,450000.0,100
 Álvaro Carreras,Granada,811778.0,60000000.0,100
 Rasmus Carstensen,Köln,542697.0,2000000.0,100
 Antonin Cartillier,Monaco,774772.0,200000.0,100
-Fabio Carvalho,RB Leipzig,559263.0,12000000.0,100
+Fabio Carvalho,RB Leipzig,559263.0,14000000.0,100
 Cesare Casadei,Chelsea,622380.0,12000000.0,100
 Marc Casado,Barcelona,636695.0,25000000.0,100
 Josué Casimir,Le Havre,763182.0,4000000.0,100
@@ -8295,7 +8295,7 @@ Tawanda Chirewa,Wolves,724783.0,500000.0,100
 Leon Chiwome,Wolves,1043634.0,1000000.0,100
 Tahith Chong,Luton Town,344830.0,6000000.0,100
 Jacob Christensen,Köln,515017.0,1500000.0,100
-Samuel Chukwueze,Milan,401922.0,10000000.0,100
+Samuel Chukwueze,Milan,401922.0,20000000.0,100
 Alphadjo Cissè,Hellas Verona,964087.0,1400000.0,100
 Ibrahim Cissoko,Toulouse,575693.0,1500000.0,100
 Giorgio Cittadini,Monza,616628.0,2400000.0,100
@@ -8303,11 +8303,11 @@ Giorgio Cittadini,Genoa,616628.0,2400000.0,100
 Jordan Clark,Luton Town,184129.0,1000000.0,100
 Saúl Coco,Las Palmas,588426.0,8000000.0,100
 Maxime Colin,Metz,156618.0,400000.0,100
-Nathan Collins,Brentford,469050.0,35000000.0,100
+Nathan Collins,Brentford,469050.0,25000000.0,100
 Nnamdi Collins,Eint Frankfurt,684315.0,10000000.0,100
 Lorenzo Colombo,Monza,487843.0,6000000.0,100
 Levi Colwill,Chelsea,614258.0,50000000.0,100
-Eray Cömert,Nantes,298583.0,4000000.0,100
+Eray Cömert,Nantes,298583.0,2000000.0,100
 Santi Comesaña,Villarreal,380598.0,8000000.0,100
 Pietro Comuzzo,Fiorentina,746712.0,700000.0,100
 Alois Confais,Le Havre,292820.0,250000.0,100
@@ -8327,7 +8327,7 @@ Crespo,Rayo Vallecano,498529.0,3000000.0,100
 Juan Cruz,Hellas Verona,585700.0,1500000.0,100
 Juan Cuadrado,Inter,91970.0,1500000.0,100
 Pau Cubarsí,Barcelona,962110.0,80000000.0,100
-Josh Cullen,Burnley,242606.0,7000000.0,100
+Josh Cullen,Burnley,242606.0,10000000.0,100
 Marvin Cuni,Frosinone,453864.0,900000.0,100
 Eric Curbelo,Las Palmas,390823.0,800000.0,100
 Sam Curtis,Sheffield Utd,741267.0,150000.0,100
@@ -8347,7 +8347,7 @@ Lukas Daschner,Bochum,334213.0,1200000.0,100
 David Datro Fofana,Burnley,787232.0,5000000.0,100
 David Datro Fofana,Union Berlin,787232.0,5000000.0,100
 Tom Davies,Sheffield Utd,314210.0,5000000.0,100
-Keinan Davis,Udinese,412660.0,3000000.0,100
+Keinan Davis,Udinese,412660.0,4000000.0,100
 Charles De Ketelaere,Atalanta,435772.0,30000000.0,100
 Koni De Winter,Genoa,490384.0,10000000.0,100
 Hannes Delcroix,Burnley,338635.0,4000000.0,100
@@ -8439,7 +8439,7 @@ Roberto Gagliardini,Monza,197471.0,3000000.0,100
 Javi Galán,Atlético Madrid,448628.0,3500000.0,100
 Javi Galán,Real Sociedad,448628.0,3500000.0,100
 Iñigo Ruiz de Galarreta,Athletic Club,126751.0,2500000.0,100
-Eric García,Girona,466794.0,30000000.0,100
+Eric García,Girona,466794.0,20000000.0,100
 Fran Garcia,Real Madrid,341264.0,15000000.0,100
 Gonzalo García,Real Madrid,935230.0,15000000.0,100
 Jastin García,Girona,574758.0,1800000.0,100
@@ -8470,7 +8470,7 @@ Andoni Gorosabel,Alavés,289255.0,4000000.0,100
 Robin Gosens,Union Berlin,273132.0,18000000.0,100
 Pablo Gozalbez,Valencia,622992.0,800000.0,100
 Samuel Grandsir,Le Havre,432772.0,1500000.0,100
-Ryan Gravenberch,Liverpool,478573.0,90000000.0,100
+Ryan Gravenberch,Liverpool,478573.0,35000000.0,100
 Mason Greenwood,Getafe,532826.0,40000000.0,100
 Álex Grimaldo,Leverkusen,15420.0,1000000.0,100
 Brajan Gruda,Mainz 05,700106.0,28000000.0,100
@@ -8480,11 +8480,11 @@ Raphaël Guerreiro,Bayern Munich,170986.0,8000000.0,100
 Ander Guevara,Alavés,465967.0,3000000.0,100
 Josuha Guilavogui,Mainz 05,93704.0,700000.0,100
 Morgan Guilavogui,Lens,691786.0,3000000.0,100
-Marc Guiu,Barcelona,938158.0,12000000.0,100
+Marc Guiu,Barcelona,938158.0,7500000.0,100
 Arda Güler,Real Madrid,861410.0,90000000.0,100
 Gerard Gumbau,Granada,268670.0,1400000.0,100
 İlkay Gündoğan,Barcelona,53622.0,4000000.0,100
-Jon Guridi,Alavés,289257.0,2500000.0,100
+Jon Guridi,Alavés,289257.0,4000000.0,100
 Malo Gusto,Chelsea,620322.0,35000000.0,100
 Joško Gvardiol,Manchester City,475959.0,70000000.0,100
 Emmanuel Gyasi,Empoli,241076.0,1800000.0,100
@@ -8548,15 +8548,15 @@ Danley Jean-Jacques,Metz,80696.0,400000.0,80
 Salim El Jebari,Atlético Madrid,935457.0,1000000.0,100
 Moritz Jenz,Wolfsburg,460245.0,5000000.0,100
 Álex Jiménez,Milan,741257.0,18000000.0,100
-Raúl Jiménez,Fulham,206040.0,4000000.0,100
-João Pedro,Brighton,626724.0,65000000.0,100
+Raúl Jiménez,Fulham,206040.0,5000000.0,100
+João Pedro,Brighton,626724.0,45000000.0,100
 Brennan Johnson,Tottenham,470607.0,35000000.0,100
 Joseph Johnson,Luton Town,1088818.0,100000.0,88
 Jordi,Getafe,255928.0,600000.0,100
 Kaio Jorge,Frosinone,620477.0,4000000.0,100
 Joselu,Real Madrid,81999.0,5000000.0,100
 Antoine Joujou,Le Havre,1028162.0,2000000.0,100
-Luka Jović,Milan,257462.0,6000000.0,100
+Luka Jović,Milan,257462.0,7000000.0,100
 Kamil Jóźwiak,Granada,289167.0,2000000.0,100
 Juanmi,Cádiz,126737.0,1200000.0,100
 Mads Juel Andersen,Luton Town,407021.0,3000000.0,100
@@ -8624,13 +8624,13 @@ Thomas Kristensen,Udinese,698259.0,9000000.0,100
 Nikola Krstović,Lecce,434433.0,24000000.0,100
 Mohammed Kudus,West Ham,543499.0,55000000.0,100
 Christian Kühlwetter,Heidenheim,184204.0,500000.0,100
-Marash Kumbulla,Sassuolo,371371.0,4500000.0,100
+Marash Kumbulla,Sassuolo,371371.0,5000000.0,100
 Berkan Kutlu,Genoa,469787.0,3000000.0,100
 Daler Kuzyaev,Le Havre,279570.0,3500000.0,100
 Giorgi Kvernadze,Frosinone,412758.0,800000.0,100
 Moritz-Broni Kwarteng,Bochum,316575.0,1200000.0,100
 Giorgos Kyriakopoulos,Monza,311178.0,2000000.0,93
-Yoel Lago,Celta Vigo,939374.0,200000.0,100
+Yoel Lago,Celta Vigo,939374.0,2500000.0,100
 Konrad Laimer,Bayern Munich,223967.0,25000000.0,100
 Mathis Lambourde,Rennes,979766.0,500000.0,100
 Mohamed Lamine Bayo,Le Havre,594991.0,2800000.0,100
@@ -8672,8 +8672,8 @@ Matteo Lovato,Torino,459655.0,4000000.0,100
 Anthony Lozano,Getafe,49641.0,350000.0,82
 Anthony Lozano,Almería,49641.0,350000.0,82
 Lucas,Cádiz,190314.0,400000.0,100
-Lorenzo Lucca,Udinese,572265.0,12000000.0,100
-Romelu Lukaku,Roma,96341.0,15000000.0,100
+Lorenzo Lucca,Udinese,572265.0,30000000.0,100
+Romelu Lukaku,Roma,96341.0,30000000.0,100
 Castello Lukeba,RB Leipzig,618472.0,40000000.0,100
 Dodi Lukebakio,Sevilla,303259.0,20000000.0,100
 Karlo Lulić,Frosinone,240252.0,450000.0,100
@@ -8690,10 +8690,10 @@ James Maddison,Tottenham,294057.0,30000000.0,100
 Matej Maglica,Darmstadt 98,433388.0,2000000.0,100
 Frank Magri,Toulouse,807689.0,3000000.0,100
 Adel Mahamoud,Nantes,952436.0,100000.0,100
-Patrick Mainka,Heidenheim,133731.0,2500000.0,100
+Patrick Mainka,Heidenheim,133731.0,3000000.0,100
 Ainsley Maitland-Niles,Lyon,285845.0,12000000.0,100
 Lovro Majer,Wolfsburg,387106.0,17000000.0,100
-Jordy Makengo,Freiburg,815078.0,3500000.0,100
+Jordy Makengo,Freiburg,815078.0,6000000.0,100
 Antoine Makoumbou,Cagliari,460651.0,4500000.0,100
 Julián Malatini,Werder Bremen,830108.0,2500000.0,100
 Daniel Maldini,Monza,539134.0,4500000.0,100
@@ -8720,7 +8720,7 @@ Omar Marmoush,Eint Frankfurt,445939.0,65000000.0,100
 Marquinhos,Nantes,181767.0,35000000.0,100
 Agustín Martegani,Salernitana,732507.0,1800000.0,100
 Aarón Martín,Genoa,251878.0,5000000.0,100
-Jon Martin,Real Sociedad,1018938.0,2000000.0,100
+Jon Martin,Real Sociedad,1018938.0,10000000.0,100
 Jonas Martin,Brest,127142.0,1000000.0,100
 Mario Martín,Real Madrid,948273.0,5000000.0,100
 Iñigo Martínez,Barcelona,158863.0,5000000.0,100
@@ -8731,11 +8731,11 @@ Han-Noah Massengo,Burnley,536508.0,5000000.0,100
 Clinton Mata,Lyon,187718.0,3500000.0,100
 Nemanja Matić,Rennes,74683.0,2000000.0,100
 Nemanja Matić,Lyon,74683.0,2000000.0,100
-Chrislain Matsima,Clermont Foot,569383.0,7000000.0,100
+Chrislain Matsima,Clermont Foot,569383.0,22000000.0,100
 Jean Mattéo Bahoya,Eint Frankfurt,349826.0,400000.0,100
 Alan Matturro,Genoa,861981.0,4000000.0,100
 Azor Matusiwa,Rennes,315145.0,12000000.0,100
-Neal Maupay,Brentford,217115.0,5000000.0,100
+Neal Maupay,Brentford,217115.0,12000000.0,100
 Konstantinos Mavropanos,West Ham,415912.0,15000000.0,100
 Senny Mayulu,Paris S-G,903693.0,25000000.0,100
 Luca Mazzitelli,Frosinone,226025.0,1500000.0,100
@@ -8778,7 +8778,7 @@ Stefan Mitrović,Hellas Verona,726526.0,1500000.0,100
 Maximilian Mittelstädt,Stuttgart,282660.0,20000000.0,100
 Marko Mladenović,Eint Frankfurt,922413.0,500000.0,100
 Max Moerstedt,Hoffenheim,923595.0,7000000.0,100
-Johan Mojica,Osasuna,262939.0,2200000.0,100
+Johan Mojica,Osasuna,262939.0,1800000.0,100
 Alberto Moleiro,Las Palmas,733576.0,30000000.0,100
 Enzo Mongo,Nantes,,,0
 Ilario Monterisi,Frosinone,550116.0,2800000.0,100
@@ -8797,7 +8797,7 @@ Marcus Müller,Mainz 05,698523.0,200000.0,100
 Rodrigo Muniz,Fulham,735571.0,25000000.0,100
 Daniel Muñoz,Crystal Palace,493003.0,27000000.0,100
 Javier Muñoz,Las Palmas,282421.0,1500000.0,90
-Murillo,Nott'ham Forest,1005649.0,35000000.0,100
+Murillo,Nott'ham Forest,1005649.0,55000000.0,100
 Alex Murphy,Newcastle Utd,900601.0,300000.0,100
 Yunus Musah,Milan,503991.0,22000000.0,100
 Florent Muslija,Freiburg,337036.0,2500000.0,100
@@ -8827,11 +8827,11 @@ Cyril Ngonge,Napoli,358032.0,12000000.0,100
 Steve Ngoura,Le Havre,923838.0,800000.0,100
 M'Baye Niang,Empoli,157501.0,1500000.0,100
 Shamar Nicholson,Clermont Foot,354666.0,5000000.0,100
-Justin Njinmah,Werder Bremen,596153.0,9000000.0,100
-Niels Nkounkou,Eint Frankfurt,591193.0,3500000.0,100
+Justin Njinmah,Werder Bremen,596153.0,7000000.0,100
+Niels Nkounkou,Eint Frankfurt,591193.0,7500000.0,100
 Christopher Nkunku,Chelsea,344381.0,80000000.0,100
 Felix Nmecha,Dortmund,406640.0,28000000.0,100
-Joseph Nonge,Juventus,748807.0,3000000.0,100
+Joseph Nonge,Juventus,748807.0,2000000.0,100
 Rhys Norrington-Davies,Sheffield Utd,543164.0,2500000.0,100
 Tijjani Noslin,Hellas Verona,457736.0,2500000.0,100
 Ernest Nuamah,Lyon,955070.0,15000000.0,100
@@ -8845,7 +8845,7 @@ Mark O'Mahony,Brighton,943549.0,300000.0,100
 Dara O'Shea,Burnley,401320.0,7000000.0,100
 Michael Obafemi,Burnley,444208.0,2200000.0,100
 Jens Odgaard,Bologna,345590.0,4500000.0,100
-Wilson Odobert,Burnley,743498.0,10000000.0,100
+Wilson Odobert,Burnley,743498.0,22000000.0,100
 Chiedozie Ogbene,Luton Town,392591.0,8000000.0,100
 Noah Okafor,Milan,346890.0,18000000.0,100
 David Okereke,Torino,413605.0,2000000.0,100
@@ -8861,7 +8861,7 @@ Samu Omorodion,Granada,291939.0,1500000.0,100
 Jean Onana,Marseille,656441.0,3700000.0,100
 Ryan One,Sheffield Utd,1031293.0,200000.0,100
 Fred Onyedinma,Luton Town,305274.0,500000.0,100
-Loïs Openda,RB Leipzig,368887.0,45000000.0,100
+Loïs Openda,RB Leipzig,368887.0,60000000.0,100
 Royce Openda,Lorient,934838.0,50000.0,100
 Christopher Operi,Le Havre,469976.0,4000000.0,100
 Leon Opitz,Werder Bremen,825073.0,600000.0,100
@@ -8869,7 +8869,7 @@ Gift Orban,Lyon,1018259.0,10000000.0,100
 Divock Origi,Nott'ham Forest,148368.0,5000000.0,100
 Gaetano Oristanio,Cagliari,613393.0,4000000.0,100
 Eneko Ortiz,Alavés,892217.0,150000.0,100
-Asier Osambela,Osasuna,1038512.0,500000.0,100
+Asier Osambela,Osasuna,1038512.0,1000000.0,100
 Gabriel Osho,Luton Town,364409.0,3000000.0,100
 William Osula,Sheffield Utd,609556.0,15000000.0,100
 Kassoum Ouattara,Monaco,947360.0,7000000.0,100
@@ -8886,7 +8886,7 @@ Joaquín Panichelli,Alavés,1064871.0,12000000.0,100
 Sokratis Papastathopoulos,Betis,34322.0,700000.0,100
 Leart Paqarada,Köln,107219.0,700000.0,92
 Leandro Paredes,Roma,166237.0,8000000.0,100
-Fabiano Parisi,Fiorentina,547985.0,5000000.0,100
+Fabiano Parisi,Fiorentina,547985.0,9500000.0,100
 Ben Parkinson,Newcastle Utd,183302.0,2200000.0,83
 Triantafyllos Pasaridīs,Salernitana,470422.0,500000.0,95
 Felix Passlack,Bochum,274461.0,1500000.0,100
@@ -8906,7 +8906,7 @@ Marco Pellegrino,Milan,776303.0,3500000.0,100
 Facundo Pellistri,Granada,676318.0,7000000.0,100
 Andy Pelmard,Clermont Foot,494236.0,3500000.0,100
 Aurélien Pelon,Lorient,918268.0,50000.0,100
-Faris Pemi Moumbagna,Marseille,599663.0,5000000.0,100
+Faris Pemi Moumbagna,Marseille,599663.0,10000000.0,100
 Marcos Peña,Almería,1064121.0,1000000.0,100
 Pedro Pereira,Monza,314965.0,1200000.0,100
 Kike Pérez,Rayo Vallecano,527698.0,3000000.0,100
@@ -8931,7 +8931,7 @@ Ole Pohlmann,Dortmund,405690.0,2500000.0,100
 Sebastian Polter,Darmstadt 98,60957.0,500000.0,100
 Beñat Prados,Athletic Club,625047.0,18000000.0,100
 Matteo Prati,Cagliari,876298.0,10000000.0,100
-Marc Pubill,Almería,844637.0,15000000.0,100
+Marc Pubill,Almería,844637.0,4000000.0,100
 Gustavo Puerta,Leverkusen,936981.0,3000000.0,100
 Christian Pulisic,Milan,315779.0,60000000.0,100
 George Pușcaș,Genoa,208690.0,1500000.0,100
@@ -9001,7 +9001,7 @@ Mohammed Salisu,Monaco,563963.0,10000000.0,100
 Yoann Salmier,Le Havre,351843.0,1500000.0,100
 Diadie Samassékou,Cádiz,315604.0,2000000.0,100
 Mama Samba Baldé,Lyon,325223.0,4000000.0,100
-Albert Sambi Lokonga,Luton Town,381967.0,15000000.0,100
+Albert Sambi Lokonga,Luton Town,381967.0,8000000.0,100
 Renato Sanches,Roma,258027.0,2500000.0,100
 Ricard Sánchez,Granada,388545.0,2500000.0,100
 Manu Sánchez,Celta Vigo,618809.0,6000000.0,100
@@ -9011,9 +9011,9 @@ Arouna Sangante,Le Havre,768380.0,8000000.0,100
 Ibrahim Sangaré,Nott'ham Forest,375885.0,22000000.0,100
 Morgan Sanson,Nice,174094.0,5000000.0,100
 Nicola Sansone,Lecce,82048.0,1000000.0,100
-Yellu Santiago,Getafe,941869.0,1000000.0,100
-Andrey Santos,Nott'ham Forest,743600.0,15000000.0,100
-Andrey Santos,Strasbourg,743600.0,15000000.0,100
+Yellu Santiago,Getafe,941869.0,900000.0,100
+Andrey Santos,Nott'ham Forest,743600.0,40000000.0,100
+Andrey Santos,Strasbourg,743600.0,40000000.0,100
 Tiago Santos,Lille,816580.0,15000000.0,100
 Paco Sanz,Almería,51699.0,300000.0,80
 Riccardo Saponara,Hellas Verona,88909.0,700000.0,100
@@ -9028,7 +9028,7 @@ Stefan Schimmer,Heidenheim,394033.0,500000.0,100
 Niklas Schmidt,Toulouse,275249.0,3000000.0,100
 Fabian Schnellhardt,Darmstadt 98,94148.0,1000000.0,100
 Jan Schöppner,Heidenheim,581357.0,4000000.0,100
-Alex Scott,Bournemouth,855256.0,30000000.0,100
+Alex Scott,Bournemouth,855256.0,20000000.0,100
 Jérémy Sebas,Strasbourg,999229.0,500000.0,100
 Demba Seck,Frosinone,551752.0,2000000.0,100
 Aleksandar Sedlar,Alavés,237499.0,400000.0,100
@@ -9074,13 +9074,13 @@ Stijn Spierings,Lens,241501.0,4500000.0,100
 Anton Stach,Hoffenheim,344069.0,20000000.0,100
 Benjamin Stambouli,Reims,127160.0,400000.0,100
 Josip Stanišić,Leverkusen,483046.0,32000000.0,100
-Carl Starfelt,Celta Vigo,258987.0,6000000.0,100
+Carl Starfelt,Celta Vigo,258987.0,5000000.0,100
 Leonidas Stergiou,Stuttgart,507345.0,5000000.0,100
 Trivante Stewart,Salernitana,880054.0,150000.0,100
 Angelo Stiller,Stuttgart,443710.0,45000000.0,100
 Filip Stojilković,Darmstadt 98,464195.0,900000.0,100
 Álex Suárez,Las Palmas,510396.0,1200000.0,100
-Denis Suárez,Villarreal,165007.0,1500000.0,100
+Denis Suárez,Villarreal,165007.0,1200000.0,100
 Ibrahim Sulemana,Cagliari,982267.0,4000000.0,100
 Tomáš Suslov,Hellas Verona,540333.0,6000000.0,100
 Karol Świderski,Hellas Verona,330126.0,5000000.0,100
@@ -9147,7 +9147,7 @@ Siebe Van Der Heyden,Mallorca,400131.0,3000000.0,100
 José Luis García Vayá,Valencia,574758.0,1800000.0,100
 Alejo Véliz,Tottenham,888493.0,9000000.0,100
 Alejo Véliz,Sevilla,888493.0,9000000.0,100
-Micky van de Ven,Tottenham,557459.0,55000000.0,100
+Micky van de Ven,Tottenham,557459.0,65000000.0,100
 Lorenzo Venuti,Lecce,240219.0,1200000.0,100
 Arthur Vermeeren,Atlético Madrid,926694.0,22000000.0,100
 Yorbe Vertessen,Union Berlin,409517.0,5000000.0,100
@@ -9175,14 +9175,14 @@ James Ward-Prowse,West Ham,181579.0,6000000.0,100
 Deivid Washington,Chelsea,1082850.0,9000000.0,100
 Kjell-Arik Wätjen,Dortmund,884810.0,2000000.0,82
 Timothy Weah,Juventus,370846.0,20000000.0,100
-Wout Weghorst,Hoffenheim,228645.0,6000000.0,100
+Wout Weghorst,Hoffenheim,228645.0,3500000.0,100
 Shon Weissman,Salernitana,247652.0,1700000.0,100
 Shon Weissman,Granada,247652.0,1700000.0,100
 Timo Werner,Tottenham,170527.0,17000000.0,100
 Adam Wharton,Crystal Palace,744149.0,60000000.0,100
 Ethan Wheatley,Manchester Utd,,,0
 Joe White,Newcastle Utd,614811.0,300000.0,100
-Mateusz Wieteska,Cagliari,208172.0,3000000.0,100
+Mateusz Wieteska,Cagliari,208172.0,1800000.0,100
 Josh Wilson-Esbrand,Reims,576121.0,4000000.0,100
 Maximilian Wittek,Bochum,196793.0,2000000.0,100
 Maximilian Wöber,Gladbach,263361.0,12000000.0,100
@@ -9204,8 +9204,8 @@ Arsen Zakharyan,Real Sociedad,555143.0,7500000.0,100
 Nicolò Zaniolo,Aston Villa,392085.0,27000000.0,100
 Alessandro Zanoli,Salernitana,397225.0,5000000.0,100
 Duván Zapata,Torino,73794.0,8000000.0,100
-Bryan Zaragoza,Granada,713644.0,10000000.0,100
-Bryan Zaragoza,Bayern Munich,713644.0,10000000.0,100
+Bryan Zaragoza,Granada,713644.0,12000000.0,100
+Bryan Zaragoza,Bayern Munich,713644.0,12000000.0,100
 Anass Zaroury,Burnley,491296.0,8000000.0,100
 Oier Zarraga,Udinese,524010.0,2000000.0,100
 Jordan Zemura,Udinese,633530.0,5000000.0,100
@@ -9256,7 +9256,7 @@ Andreas Albers,St. Pauli,88647.0,350000.0,100
 Carlos Alcaraz,Everton,748319.0,15000000.0,100
 Carles Aleñá,Alavés,284854.0,3000000.0,100
 Faride Alidou,Hellas Verona,456492.0,2500000.0,100
-Jim Allevinah,Angers,646733.0,1500000.0,100
+Jim Allevinah,Angers,646733.0,2000000.0,100
 Dele Alli,Como,207929.0,5000000.0,100
 Thiago Almada,Lyon,576028.0,20000000.0,100
 Iker Almena,Girona,,,0
@@ -9296,7 +9296,7 @@ Raúl Asencio,Real Madrid,935245.0,30000000.0,100
 Marco Asensio,Aston Villa,296622.0,17000000.0,100
 Yaser Asprilla,Girona,857818.0,12000000.0,100
 Dehmaine Assoumani,Nantes,,,0
-Arthur Atta,Udinese,855308.0,12000000.0,100
+Arthur Atta,Udinese,855308.0,1000000.0,100
 Florian Ayé,Auxerre,372713.0,1800000.0,100
 Jordan Ayew,Leicester City,108354.0,4000000.0,100
 Ayman Azhil,Dortmund,452068.0,400000.0,100
@@ -9323,14 +9323,14 @@ Valentín Barco,Sevilla,849410.0,15000000.0,100
 Valentín Barco,Strasbourg,849410.0,15000000.0,100
 Gabriel Bares,Montpellier,484743.0,400000.0,100
 Borna Barišić,Leganés,39125.0,3500000.0,100
-Enzo Barrenechea,Valencia,671915.0,7500000.0,100
+Enzo Barrenechea,Valencia,671915.0,10000000.0,100
 Thierno Barry,Villarreal,937941.0,30000000.0,100
 Daniele Baselli,Como,134883.0,500000.0,100
-Michy Batshuayi,Eint Frankfurt,179184.0,8500000.0,100
+Michy Batshuayi,Eint Frankfurt,179184.0,4000000.0,100
 Dylan Batubinsika,Saint-Étienne,289432.0,700000.0,100
 Rafael Bauza,Espanyol,61892.0,800000.0,100
 Timo Becker,Holstein Kiel,282349.0,800000.0,100
-Donny van de Beek,Girona,288255.0,2000000.0,100
+Donny van de Beek,Girona,288255.0,5000000.0,100
 Hannes Behrens,Hoffenheim,829838.0,350000.0,92
 Maximilian Beier,Dortmund,578392.0,25000000.0,100
 Luken Beitia,Real Sociedad,,,0
@@ -9340,7 +9340,7 @@ Haris Belkebla,Angers,138055.0,2000000.0,100
 Yassin Belkhdim,Angers,807688.0,2500000.0,100
 Jeanuël Belocian,Leverkusen,919515.0,15000000.0,100
 Andrea Belotti,Como,167727.0,1500000.0,100
-Adrian Benedyczak,Parma,454386.0,3000000.0,100
+Adrian Benedyczak,Parma,71271.0,400000.0,100
 László Bénes,Union Berlin,243188.0,3000000.0,100
 Ismaël Bennacer,Marseille,351816.0,30000000.0,100
 Sander Berge,Fulham,333014.0,25000000.0,100
@@ -9361,7 +9361,7 @@ Philip Billing,Napoli,320411.0,18000000.0,100
 Cristiano Biraghi,Torino,124555.0,3500000.0,100
 Emmanuel Biumla,Angers,1071956.0,3000000.0,100
 Bjarki Bjarkason,Venezia,566613.0,450000.0,100
-Myron Boadu,Bochum,412932.0,7000000.0,100
+Myron Boadu,Bochum,412932.0,5000000.0,100
 Augustine Boakye,Saint-Étienne,,,0
 Mathéo Bodmer,Le Havre,27305.0,250000.0,88
 Lamare Bogarde,Aston Villa,645686.0,12000000.0,100
@@ -9374,8 +9374,8 @@ Benjamin Bouchouari,Saint-Étienne,783094.0,5000000.0,100
 Carlo Boukhalfa,St. Pauli,329373.0,500000.0,100
 Justin Bourgault,Brest,,,0
 Edoardo Bove,Fiorentina,562049.0,18000000.0,100
-Enzo Boyomo,Osasuna,541555.0,20000000.0,100
-Enzo Boyomo,Valladolid,541555.0,20000000.0,100
+Enzo Boyomo,Osasuna,,,0
+Enzo Boyomo,Valladolid,,,0
 Domagoj Bradarić,Hellas Verona,357796.0,3000000.0,100
 Lilian Brassier,Marseille,485960.0,10000000.0,100
 Lilian Brassier,Rennes,485960.0,10000000.0,100
@@ -9425,7 +9425,7 @@ Irvin Cardona,Espanyol,342226.0,2500000.0,100
 Irvin Cardona,Saint-Étienne,342226.0,2500000.0,100
 Sergi Cardona,Villarreal,678406.0,10000000.0,100
 José Carlos González,Las Palmas,425571.0,150000.0,100
-Fabio Carvalho,Brentford,559263.0,12000000.0,100
+Fabio Carvalho,Brentford,559263.0,14000000.0,100
 Cesare Casadei,Torino,622380.0,12000000.0,100
 Nicolò Casale,Bologna,389837.0,14000000.0,100
 Eiran Cashin,Brighton,,,0
@@ -9454,7 +9454,7 @@ Federico Chiesa,Liverpool,341092.0,18000000.0,100
 Ben Chilwell,Crystal Palace,316125.0,22000000.0,100
 Chiquinho,Mallorca,334557.0,5000000.0,100
 Carney Chukwuemeka,Dortmund,659459.0,18000000.0,100
-Alessandro Circati,Parma,867137.0,8500000.0,100
+Alessandro Circati,Parma,338680.0,650000.0,88
 Djaoui Cissé,Rennes,931160.0,10000000.0,100
 Seydouba Cissé,Leganés,22339.0,400000.0,80
 Yoann Cissé,Auxerre,,,0
@@ -9469,7 +9469,7 @@ Toby Collyer,Manchester Utd,654253.0,200000.0,100
 Lorenzo Colombo,Empoli,487843.0,6000000.0,100
 Andrea Colpani,Fiorentina,392959.0,18000000.0,100
 Florinel Coman,Cagliari,,,0
-Eray Cömert,Valladolid,298583.0,4000000.0,100
+Eray Cömert,Valladolid,298583.0,2000000.0,100
 Francisco Conceição,Juventus,487474.0,30000000.0,100
 Tomás Conechny,Alavés,35641.0,300000.0,80
 Sirlord Conteh,Heidenheim,307183.0,1500000.0,100
@@ -9485,8 +9485,8 @@ Logan Costa,Villarreal,484988.0,18000000.0,100
 Lassana Coulibaly,Lecce,386552.0,3500000.0,100
 Lasso Coulibaly,Auxerre,658534.0,1200000.0,100
 Soumaïla Coulibaly,Brest,659513.0,8000000.0,100
-Woyo Coulibaly,Leicester City,592975.0,2000000.0,100
-Woyo Coulibaly,Parma,592975.0,2000000.0,100
+Woyo Coulibaly,Leicester City,167811.0,25000.0,80
+Woyo Coulibaly,Parma,167811.0,25000.0,80
 Marius Courcoul,Angers,1075575.0,700000.0,100
 Yan Couto,Dortmund,627228.0,20000000.0,100
 Charlie Cresswell,Toulouse,597659.0,12000000.0,100
@@ -9515,19 +9515,19 @@ Mattia De Sciglio,Empoli,88682.0,1000000.0,100
 Amar Dedić,Marseille,519184.0,12000000.0,100
 Enrico Del Prato,Parma,392956.0,4500000.0,96
 Liam Delap,Ipswich Town,610849.0,35000000.0,100
-Fisayo Dele-Bashiru,Lazio,530742.0,300000.0,100
+Fisayo Dele-Bashiru,Lazio,530742.0,2000000.0,100
 Ali Dembélé,Torino,1004344.0,300000.0,100
 Ermedin Demirović,Stuttgart,335457.0,22000000.0,100
 Sepp van den Berg,Brentford,541231.0,28000000.0,100
 Justin Devenny,Crystal Palace,747009.0,8000000.0,100
-Kiernan Dewsbury-Hall,Chelsea,475188.0,28000000.0,100
-Boulaye Dia,Lazio,626913.0,13000000.0,100
+Kiernan Dewsbury-Hall,Chelsea,475188.0,30000000.0,100
+Boulaye Dia,Lazio,626913.0,10000000.0,100
 Assane Diao,Como,1061282.0,12000000.0,100
 Moussa Diarra,Alavés,694509.0,1500000.0,100
 Mahamadou Diawara,Le Havre,1053147.0,2000000.0,100
 Daniel Díaz,Real Sociedad,92117.0,500000.0,100
-Pedro Díaz,Rayo Vallecano,432895.0,22000000.0,100
-Tyler Dibling,Southampton,866655.0,30000000.0,100
+Pedro Díaz,Rayo Vallecano,363057.0,3000000.0,100
+Tyler Dibling,Southampton,,,0
 Diego,Leganés,4248.0,300000.0,100
 Justin Diehl,Stuttgart,720162.0,3000000.0,100
 Bamba Dieng,Angers,822458.0,2000000.0,100
@@ -9569,7 +9569,7 @@ Jeff Ekhator,Genoa,934878.0,7000000.0,100
 Jurgen Ekkelenkamp,Udinese,361068.0,4500000.0,100
 Jacques Ekomie,Angers,970279.0,1500000.0,100
 Pierre Ekwah Elimby,Saint-Étienne,538994.0,500000.0,100
-Meschak Elia,Nantes,,,0
+Meschak Elia,Nantes,423678.0,4000000.0,96
 Mikael Ellertsson,Venezia,566615.0,2000000.0,100
 Elif Elmas,Torino,400489.0,15000000.0,95
 Emerson,Milan,181778.0,12000000.0,100
@@ -9582,7 +9582,7 @@ Patrick Erras,Holstein Kiel,193859.0,700000.0,100
 Sebastiano Esposito,Empoli,538918.0,5000000.0,100
 Romain Esse,Crystal Palace,,,0
 Samuel Essende,Augsburg,395522.0,3500000.0,100
-Dario Essugo,Las Palmas,670717.0,20000000.0,100
+Dario Essugo,Las Palmas,670717.0,3500000.0,100
 Estanis,Bologna,913539.0,500000.0,100
 Nahuel Estévez,Parma,552472.0,1500000.0,100
 Etienne Eto'o,Rayo Vallecano,,,0
@@ -9593,7 +9593,7 @@ Alieu Fadera,Como,749552.0,2500000.0,100
 Nicolò Fagioli,Fiorentina,432090.0,15000000.0,100
 Abdul Fatawu Issahaku,Leicester City,864121.0,6000000.0,100
 Mattia Felici,Cagliari,600041.0,500000.0,100
-Luiz Felipe,Marseille,457931.0,3000000.0,100
+Luiz Felipe,Marseille,457931.0,13000000.0,100
 João Félix,Milan,462250.0,30000000.0,100
 Evan Ferguson,West Ham,648046.0,45000000.0,100
 Zinedine Ferhat,Angers,232895.0,2300000.0,100
@@ -9638,7 +9638,7 @@ Lutsharel Geertruida,RB Leipzig,420210.0,20000000.0,100
 Valentin Gendrey,Hoffenheim,569387.0,7000000.0,100
 Tyrique George,Chelsea,936874.0,22000000.0,100
 Max Geschwill,Holstein Kiel,471890.0,250000.0,100
-Daniele Ghilardi,Hellas Verona,701819.0,8000000.0,100
+Daniele Ghilardi,Hellas Verona,197478.0,150000.0,80
 Dimitris Giannoulis,Augsburg,295630.0,3000000.0,97
 Samuel Gigot,Lazio,276896.0,1500000.0,100
 Armin Gigovic,Holstein Kiel,651269.0,2000000.0,100
@@ -9680,7 +9680,7 @@ Luis Guilherme,West Ham,991800.0,10000000.0,100
 Carlos Guirao,Betis,908936.0,2000000.0,80
 Bahereba Guirassy,Nantes,1119453.0,4000000.0,90
 Serhou Guirassy,Dortmund,270541.0,45000000.0,100
-Marc Guiu,Chelsea,938158.0,12000000.0,100
+Marc Guiu,Chelsea,938158.0,7500000.0,100
 Gerard Gumbau,Rayo Vallecano,268670.0,1400000.0,100
 Albert Guðmundsson,Fiorentina,305947.0,22000000.0,97
 Christian Gytkjær,Venezia,281831.0,100000.0,100
@@ -9720,7 +9720,7 @@ Omari Hutchinson,Ipswich Town,741238.0,30000000.0,100
 Hong Hyunseok,Mainz 05,562948.0,3500000.0,96
 Pierre Højbjerg,Marseille,167799.0,20000000.0,82
 Oscar Højlund,Eint Frankfurt,846310.0,7500000.0,100
-Hafiz Ibrahim,Reims,718318.0,600000.0,80
+Hafiz Ibrahim,Reims,905011.0,5000000.0,80
 Arijon Ibrahimović,Lazio,744728.0,4000000.0,100
 Stanis Idumbo,Sevilla,743387.0,5000000.0,100
 Jay Idzes,Venezia,546926.0,2500000.0,100
@@ -9752,7 +9752,7 @@ Kim Jisoo,Brentford,73096.0,50000.0,100
 John Joe,Reims,1088818.0,100000.0,84
 Carl Johansson,Holstein Kiel,225043.0,800000.0,100
 Ben Johnson,Ipswich Town,468002.0,8000000.0,100
-Joan Jordán,Alavés,263727.0,3500000.0,100
+Joan Jordán,Alavés,263727.0,2000000.0,100
 Jota,Rennes,329812.0,9000000.0,100
 Juanmi,Getafe,126737.0,1200000.0,100
 Abdulai Juma Bah,Valladolid,1121298.0,6000000.0,100
@@ -9819,7 +9819,7 @@ Frans Krätzig,Stuttgart,604320.0,2000000.0,100
 Tom Krauß,Bochum,405687.0,4000000.0,100
 Ladislav Krejčí,Girona,345911.0,22000000.0,100
 Rasmus Kristensen,Eint Frankfurt,369684.0,14000000.0,100
-Marash Kumbulla,Espanyol,371371.0,4500000.0,100
+Marash Kumbulla,Espanyol,371371.0,5000000.0,100
 Khvicha Kvaratskhelia,Paris S-G,502670.0,90000000.0,100
 Younes Lachaab,Lille,866328.0,2300000.0,80
 Maxence Lacroix,Crystal Palace,434224.0,35000000.0,100
@@ -9846,16 +9846,16 @@ Pedro Lima,Wolves,1193867.0,5000000.0,100
 Jesper Lindstrøm,Everton,513245.0,22000000.0,100
 Dailon Livramento,Hellas Verona,676411.0,500000.0,100
 Marin Ljubicic,Union Berlin,39792.0,100000.0,100
-Diego Llorente,Betis,246291.0,7000000.0,100
+Diego Llorente,Betis,246291.0,3000000.0,100
 David López,Mallorca,129444.0,800000.0,100
 Fer López,Celta Vigo,1064471.0,16000000.0,100
 Javi López,Real Sociedad,568158.0,5000000.0,100
 Roberto López,Leganés,569866.0,3000000.0,100
-Iker Losada,Betis,632741.0,1400000.0,100
+Iker Losada,Betis,632741.0,500000.0,100
 Yannik Lührs,Dortmund,,,0
 José Luis Palomino,Cagliari,125020.0,700000.0,100
 Douglas Luiz,Juventus,447661.0,25000000.0,100
-Romelu Lukaku,Napoli,96341.0,15000000.0,100
+Romelu Lukaku,Napoli,96341.0,30000000.0,100
 Milos Lukovic,Strasbourg,202228.0,4500000.0,85
 Daniel Luna,Mallorca,857830.0,300000.0,100
 Massimo Luongo,Ipswich Town,111376.0,450000.0,81
@@ -9879,9 +9879,9 @@ Alberto Manzoni,Atalanta,936755.0,300000.0,100
 Sekou Mara,Strasbourg,557612.0,5000000.0,100
 Alessandro Marcandalli,Genoa,818448.0,2000000.0,100
 Alessandro Marcandalli,Venezia,818448.0,2000000.0,100
-Filip Marchwiński,Lecce,,,0
+Filip Marchwiński,Lecce,555106.0,6000000.0,100
 Pablo Marí,Fiorentina,210178.0,3500000.0,100
-Luca Marianucci,Empoli,,,0
+Luca Marianucci,Empoli,814446.0,175000.0,100
 Mirko Marić,Venezia,215649.0,800000.0,100
 Arkaitz Mariezkurrena,Real Sociedad,,,0
 Rafa Marín,Napoli,662261.0,12000000.0,100
@@ -9891,7 +9891,7 @@ Mario Maroto,Valladolid,710484.0,200000.0,100
 Ange Martial Tia,Reims,,,0
 Carlos Martín,Alavés,618813.0,2500000.0,100
 Diego Martín,Las Palmas,4248.0,300000.0,100
-Gerard Martín,Barcelona,142513.0,50000.0,83
+Gerard Martín,Barcelona,705395.0,20000000.0,100
 Mario Martín,Valladolid,948273.0,5000000.0,100
 Ramón Martínez,Sevilla,663578.0,2500000.0,100
 Toni Martínez,Alavés,302371.0,3500000.0,100
@@ -9900,10 +9900,10 @@ Javi Martón,Athletic Club,711394.0,500000.0,91
 Patrizio Masini,Genoa,459665.0,400000.0,100
 Giorgos Masouras,Bochum,329517.0,4000000.0,90
 Jaime Mata,Las Palmas,227961.0,900000.0,100
-Igor Matanovic,Eint Frankfurt,13959.0,100000.0,100
+Igor Matanovic,Eint Frankfurt,605268.0,5000000.0,100
 Rudy Matondo,Auxerre,1241211.0,200000.0,100
-Chrislain Matsima,Augsburg,569383.0,7000000.0,100
-Neal Maupay,Marseille,217115.0,5000000.0,100
+Chrislain Matsima,Augsburg,569383.0,22000000.0,100
+Neal Maupay,Marseille,217115.0,12000000.0,100
 Stephy Mavididi,Leicester City,340328.0,9000000.0,100
 Christian Mawissa,Monaco,1005240.0,15000000.0,100
 Noussair Mazraoui,Manchester Utd,340456.0,22000000.0,100
@@ -9933,7 +9933,7 @@ Karol Mets,St. Pauli,139304.0,1300000.0,100
 Thomas Meunier,Lille,100986.0,2000000.0,100
 Florian Micheler,Hoffenheim,284769.0,1200000.0,80
 Miguel,Leganés,662338.0,1200000.0,100
-Georges Mikautadze,Lyon,729814.0,28000000.0,100
+Georges Mikautadze,Lyon,729814.0,20000000.0,100
 Igor Miladinović,Saint-Étienne,13959.0,100000.0,100
 Nikola Milenković,Nott'ham Forest,413507.0,30000000.0,100
 Pere Milla,Espanyol,225593.0,1200000.0,100
@@ -9945,7 +9945,7 @@ Juan Miranda,Bologna,341227.0,9000000.0,100
 Fabio Miretti,Genoa,571607.0,15000000.0,100
 Koji Miyoshi,Bochum,295060.0,2200000.0,100
 Rui Modesto,Udinese,230485.0,100000.0,100
-Johan Mojica,Mallorca,262939.0,2200000.0,100
+Johan Mojica,Mallorca,262939.0,1800000.0,100
 David Mokwa,Hoffenheim,,,0
 Jeremy Monga,Leicester City,503795.0,2200000.0,80
 Mikey Moore,Tottenham,1011147.0,16000000.0,100
@@ -9957,7 +9957,7 @@ Alberto Moreno,Como,207917.0,1800000.0,100
 Matias Moreno,Fiorentina,1144700.0,4000000.0,100
 Xavier Moreno,Valladolid,243783.0,200000.0,100
 Tete Morente,Lecce,339816.0,2500000.0,100
-Mateu Morey,Mallorca,388513.0,1500000.0,100
+Mateu Morey,Mallorca,388513.0,800000.0,100
 Ilaix Moriba,Celta Vigo,617074.0,10000000.0,100
 Raúl Moro,Valladolid,624942.0,7500000.0,100
 Sam Morsy,Ipswich Town,258478.0,200000.0,80
@@ -9966,7 +9966,7 @@ Daniel Mosquera,Hellas Verona,651569.0,700000.0,100
 Yerson Mosquera,Wolves,716276.0,10000000.0,100
 Yael Mouanga,Montpellier,,,0
 Youssoufa Moukoko,Nice,467720.0,10000000.0,100
-Steve Mounié,Augsburg,238639.0,6000000.0,100
+Steve Mounié,Augsburg,238639.0,2000000.0,100
 Santiago Mouriño,Alavés,953901.0,10000000.0,100
 Louis Mouton,Saint-Étienne,904662.0,1000000.0,100
 Divin Mubama,Manchester City,670848.0,1000000.0,100
@@ -9996,16 +9996,16 @@ Kosta Nedeljković,Aston Villa,848682.0,10000000.0,100
 Kosta Nedeljković,RB Leipzig,848682.0,10000000.0,100
 Ivan Nekić,Holstein Kiel,364257.0,1800000.0,100
 Reiss Nelson,Fulham,340325.0,14000000.0,100
-Victor Nelsson,Roma,422951.0,9000000.0,100
+Victor Nelsson,Roma,422951.0,17000000.0,100
 David Nemeth,St. Pauli,451906.0,4000000.0,100
 David Neres,Napoli,469822.0,24000000.0,100
 Pedro Neto,Chelsea,487465.0,60000000.0,100
 João Neves,Paris S-G,670681.0,90000000.0,100
 Yvan Neyou,Leganés,469669.0,1000000.0,100
-Mikayil Ngor Faye,Rennes,666974.0,6000000.0,100
+Mikayil Ngor Faye,Rennes,666974.0,10000000.0,100
 Bernard Nguene,Nice,1314671.0,100000.0,100
 Moussa Niakhate,Lyon,291200.0,15000000.0,100
-Abdoulaye Niakhate Ndiaye,Brest,673514.0,3000000.0,100
+Abdoulaye Niakhate Ndiaye,Brest,673514.0,7000000.0,100
 Cheikh Niasse,Hellas Verona,644032.0,2800000.0,100
 Hans Nicolussi Caviglia,Venezia,430280.0,3000000.0,100
 Julian Niehues,Heidenheim,530173.0,1500000.0,100
@@ -10029,7 +10029,7 @@ Jake O'Brien,Everton,711544.0,16000000.0,100
 Matt O'Riley,Brighton,406634.0,13000000.0,100
 Dara O'Shea,Ipswich Town,401320.0,7000000.0,100
 Chidozie Obi-Martin,Manchester Utd,,,0
-Wilson Odobert,Tottenham,743498.0,10000000.0,100
+Wilson Odobert,Tottenham,743498.0,22000000.0,100
 David Odogu,Wolfsburg,897423.0,5000000.0,100
 Chiedozie Ogbene,Ipswich Town,392591.0,8000000.0,100
 Ifechukwu Ogbus,Freiburg,,,0
@@ -10044,7 +10044,7 @@ Dani Olmo,Barcelona,293385.0,60000000.0,100
 Warmed Omari,Lyon,711996.0,3000000.0,100
 Andrew Omobamidele,Strasbourg,621993.0,8000000.0,100
 Ado Onaiwu,Auxerre,308133.0,1500000.0,100
-Amadou Onana,Aston Villa,485706.0,42000000.0,100
+Amadou Onana,Aston Villa,485706.0,50000000.0,100
 Jean Onana,Genoa,656441.0,3700000.0,100
 Jacob Ondrejka,Parma,663237.0,7000000.0,100
 Frank Onyeka,Augsburg,421637.0,9000000.0,100
@@ -10073,7 +10073,7 @@ Nico O’Reilly,Manchester City,743413.0,40000000.0,96
 Willian Pacho,Paris S-G,661171.0,65000000.0,100
 Tomás Palacios,Monza,454238.0,1000000.0,81
 Tomás Palacios,Inter,454238.0,1000000.0,81
-Marco Palestra,Atalanta,895937.0,8500000.0,100
+Marco Palestra,Atalanta,895937.0,1000000.0,100
 João Palhinha,Bayern Munich,257455.0,25000000.0,100
 Matteo Palma,Udinese,1058354.0,1000000.0,100
 Mats Pannewig,Bochum,796221.0,125000.0,100
@@ -10090,7 +10090,7 @@ Mateo Pellegrino,Parma,856530.0,700000.0,100
 Andy Pelmard,Lecce,494236.0,3500000.0,100
 Andy Pelmard,Las Palmas,494236.0,3500000.0,100
 Timothee Pembele,Le Havre,538998.0,2000000.0,100
-Nicolas Pépé,Villarreal,343052.0,8500000.0,100
+Nicolas Pépé,Villarreal,343052.0,6000000.0,100
 Peque,Sevilla,639733.0,3500000.0,100
 Sergiu Perciun,Torino,,,0
 Óscar Perea,Strasbourg,1015624.0,2000000.0,100
@@ -10102,7 +10102,7 @@ Romain Perraud,Betis,318523.0,5000000.0,100
 Máximo Perrone,Como,668547.0,15000000.0,100
 Noah Pesch,Gladbach,,,0
 Prosper Peter,Angers,1103958.0,1000000.0,100
-Léo Pétrot,Saint-Étienne,412829.0,900000.0,100
+Léo Pétrot,Saint-Étienne,412829.0,1500000.0,100
 Valentín Pezzolesi,Las Palmas,,,0
 Kalvin Phillips,Ipswich Town,351749.0,25000000.0,100
 Jaden Philogene Bidace,Ipswich Town,665390.0,15000000.0,100
@@ -10124,7 +10124,7 @@ Ivan Prtajin,Union Berlin,340700.0,900000.0,100
 Tymoteusz Puchacz,Holstein Kiel,361575.0,1500000.0,100
 Diego Pugno,Juventus,4248.0,300000.0,100
 Leopold Querfeld,Union Berlin,597432.0,13000000.0,100
-Dani Raba,Leganés,413262.0,2400000.0,100
+Dani Raba,Leganés,413262.0,1500000.0,100
 Adrien Rabiot,Marseille,182913.0,20000000.0,100
 Antonio Raimondo,Venezia,818888.0,1400000.0,100
 Jacobo Ramón,Real Madrid,948278.0,6000000.0,100
@@ -10137,7 +10137,7 @@ Mateo Retegui,Atalanta,554903.0,16000000.0,100
 Chadi Riad,Crystal Palace,689637.0,12000000.0,100
 Amir Richardson,Fiorentina,893675.0,6500000.0,100
 Fabian Rieder,Stuttgart,507341.0,6000000.0,100
-Luis Rioja,Valencia,278837.0,2000000.0,100
+Luis Rioja,Valencia,278837.0,4000000.0,100
 Lars Ritzka,St. Pauli,333903.0,1000000.0,100
 Gorka Rivera Alonso,Getafe,1000136.0,100000.0,100
 Sergi Roberto,Como,85370.0,2500000.0,100
@@ -10165,7 +10165,7 @@ Jonathan Rowe,Marseille,672381.0,17000000.0,100
 Tommaso Rubino,Fiorentina,417818.0,50000.0,80
 Abel Ruiz,Girona,340376.0,3000000.0,100
 Ferrán Ruiz,Girona,,,0
-Georginio Rutter,Brighton,538977.0,32000000.0,100
+Georginio Rutter,Brighton,538977.0,18000000.0,100
 Elias Saad,St. Pauli,74600.0,1200000.0,100
 Umar Sadiq,Valencia,337715.0,4000000.0,100
 Alexis Saelemaekers,Roma,381950.0,20000000.0,100
@@ -10180,7 +10180,7 @@ Jan Salas,Mallorca,,,0
 Manolis Saliakas,St. Pauli,242661.0,3000000.0,100
 Lazar Samardzic,Atalanta,528833.0,20000000.0,100
 Mama Samba Baldé,Brest,325223.0,4000000.0,100
-Albert Sambi Lokonga,Sevilla,381967.0,15000000.0,100
+Albert Sambi Lokonga,Sevilla,381967.0,8000000.0,100
 Junior Sambia,Empoli,335147.0,2000000.0,100
 Chuky san jose,Valladolid,,,0
 Alexis Sánchez,Udinese,40433.0,1400000.0,100
@@ -10228,7 +10228,7 @@ Steven Skrzybski,Holstein Kiel,93827.0,1300000.0,100
 Eric Smith,St. Pauli,292534.0,5000000.0,100
 Justin Smith,Espanyol,904712.0,100000.0,100
 Emile Smith Rowe,Fulham,392765.0,22000000.0,100
-Ivan Smolčić,Como,571271.0,2000000.0,100
+Ivan Smolčić,Como,364257.0,1800000.0,100
 Alex Sola,Getafe,434990.0,4000000.0,100
 Arnau Solà,Villarreal,,,0
 Dominic Solanke,Tottenham,258889.0,35000000.0,100
@@ -10238,12 +10238,12 @@ Julio Soler,Bournemouth,1009658.0,8000000.0,100
 Oumar Solet,Udinese,463665.0,13000000.0,100
 Borna Sosa,Torino,293194.0,4000000.0,100
 Ramón Sosa,Nott'ham Forest,663578.0,2500000.0,100
-Riccardo Sottil,Milan,386455.0,3500000.0,100
+Riccardo Sottil,Milan,386455.0,6000000.0,100
 Matìas Soulé,Roma,668951.0,35000000.0,100
 Saidou Sow,Nantes,807128.0,2500000.0,100
 Leonardo Spinazzola,Napoli,118689.0,4000000.0,100
 Lucas Stassin,Saint-Étienne,655012.0,3000000.0,100
-Orri Steinn Óskarsson,Real Sociedad,660438.0,12000000.0,100
+Orri Steinn Óskarsson,Real Sociedad,660438.0,5000000.0,100
 Raheem Sterling,Arsenal,134425.0,5000000.0,100
 Enzo Sternal,Marseille,,,0
 Ross Stewart,Southampton,447995.0,2800000.0,100
@@ -10274,7 +10274,7 @@ Loum Tchaouna,Lazio,607226.0,15000000.0,100
 Martín Tejón,Valencia,941883.0,100000.0,100
 Mathys Tel,Tottenham,801734.0,30000000.0,100
 Casper Tengstedt,Hellas Verona,464598.0,4000000.0,100
-Ramón Terrats,Getafe,783396.0,4000000.0,100
+Ramón Terrats,Getafe,783396.0,3000000.0,100
 Martin Terrier,Leverkusen,442891.0,17000000.0,100
 Tanner Tessmann,Lyon,670096.0,10000000.0,100
 Jordan Teze,Monaco,364245.0,9000000.0,100
@@ -10302,15 +10302,15 @@ Can Uzun,Eint Frankfurt,816585.0,18000000.0,100
 Nicolás Valentini,Hellas Verona,860992.0,6000000.0,100
 Germán Valera,Valencia,548188.0,5000000.0,100
 Emanuele Valeri,Parma,445126.0,2300000.0,100
-Álex Valle,Como,709957.0,3000000.0,100
+Álex Valle,Como,709957.0,1000000.0,100
 Ignace Van Der Brempt,Como,490423.0,3000000.0,100
 Siebe Van Der Heyden,St. Pauli,400131.0,3000000.0,100
-Ruben Vargas,Sevilla,345886.0,12000000.0,100
+Ruben Vargas,Sevilla,345886.0,9000000.0,100
 Denis Vavro,Wolfsburg,239962.0,7000000.0,100
 Robinio Vaz,Marseille,1131161.0,4000000.0,100
 Danilo Veiga,Lecce,728485.0,800000.0,100
-Renato Veiga,Chelsea,805714.0,1500000.0,100
-Renato Veiga,Juventus,805714.0,1500000.0,100
+Renato Veiga,Chelsea,805714.0,25000000.0,100
+Renato Veiga,Juventus,805714.0,25000000.0,100
 Alejo Véliz,Espanyol,888493.0,9000000.0,100
 Lorenzo Venturino,Genoa,240219.0,1200000.0,83
 Nikolas Veratschnig,Mainz 05,601143.0,1500000.0,100
@@ -10333,7 +10333,7 @@ Hauke Wahl,St. Pauli,154147.0,1500000.0,100
 Kyle Walker,Milan,95424.0,2500000.0,100
 Sebastian Walukiewicz,Torino,345458.0,2500000.0,100
 Aaron Wan-Bissaka,West Ham,477758.0,22000000.0,100
-Paul Wanner,Heidenheim,900909.0,18000000.0,100
+Paul Wanner,Heidenheim,900909.0,3000000.0,100
 James Ward-Prowse,Nott'ham Forest,181579.0,6000000.0,100
 Noah Weißhaupt,St. Pauli,392163.0,5000000.0,100
 Welington,Southampton,234279.0,200000.0,94
@@ -10341,7 +10341,7 @@ Mats Wieffer,Brighton,415381.0,25000000.0,100
 Caleb Wiley,Strasbourg,746833.0,8000000.0,100
 Harry Winks,Leicester City,249126.0,12000000.0,100
 Ben Winterburn,Bournemouth,,,0
-Dani de Wit,Bochum,340459.0,2500000.0,100
+Dani de Wit,Bochum,340459.0,5000000.0,100
 Marius Wolf,Augsburg,193900.0,3000000.0,100
 Nick Woltemade,Stuttgart,455661.0,70000000.0,100
 Jeong Woo-yeong,Union Berlin,297583.0,4000000.0,100
@@ -10354,19 +10354,19 @@ Leny Yoro,Manchester Utd,923831.0,55000000.0,100
 Eloge Zabi,Reims,,,0
 Wilfried Zaha,Lyon,145988.0,11000000.0,100
 Miha Zajc,Toulouse,149829.0,2400000.0,100
-Nicola Zalewski,Inter,550108.0,17000000.0,100
+Nicola Zalewski,Inter,550108.0,12000000.0,100
 Francesco Zampano,Venezia,216872.0,800000.0,100
 Nicolò Zaniolo,Fiorentina,392085.0,27000000.0,100
 Nicolò Zaniolo,Atalanta,392085.0,27000000.0,100
 Alessandro Zanoli,Genoa,397225.0,5000000.0,100
-Bryan Zaragoza,Osasuna,713644.0,10000000.0,100
+Bryan Zaragoza,Osasuna,713644.0,12000000.0,100
 Anass Zaroury,Lens,491296.0,8000000.0,100
 David Zec,Holstein Kiel,469709.0,500000.0,100
 Alessio Zerbin,Venezia,433584.0,2400000.0,100
 Kevin Zeroli,Monza,883349.0,2000000.0,100
 Cedric Zesiger,Augsburg,382478.0,7000000.0,100
-Piotr Zieliński,Inter,181136.0,25000000.0,100
-Joshua Zirkzee,Manchester Utd,435648.0,25000000.0,100
+Piotr Zieliński,Inter,181136.0,22000000.0,100
+Joshua Zirkzee,Manchester Utd,435648.0,50000000.0,100
 Budu Zivzivadze,Heidenheim,187097.0,2000000.0,100
 Nadir Zortea,Cagliari,392966.0,7000000.0,100
 Aristide Zossou,Auxerre,,,0
@@ -10377,7 +10377,7 @@ Zach Abbott,Nott'ham Forest,933017.0,300000.0,100
 Jones El-Abdellaoui,Celta Vigo,960571.0,4000000.0,100
 Salis Abdul Samed,Nice,688707.0,5000000.0,100
 Saud Abdulhamid,Lens,631927.0,4000000.0,100
-Zakaria Aboukhlal,Torino,393238.0,12000000.0,100
+Zakaria Aboukhlal,Torino,393238.0,10000000.0,100
 Abdel Abqar,Getafe,559979.0,6000000.0,100
 Francis Abu,Toulouse,658533.0,1800000.0,100
 Giorgi Abuashvili,Metz,677057.0,1000000.0,100
@@ -10391,7 +10391,7 @@ Marc Aguado,Elche,531404.0,3000000.0,100
 Pablo Agudín,Oviedo,149577.0,2000000.0,100
 Nayef Aguerd,Marseille,361914.0,20000000.0,100
 Honest Ahanor,Atalanta,1077175.0,20000000.0,100
-Lucas Ahijado,Oviedo,349884.0,700000.0,100
+Lucas Ahijado,Oviedo,190314.0,400000.0,100
 Abdelhamid Ait Boudlal,Rennes,1134251.0,200000.0,100
 Rayan Aït-Nouri,Manchester City,578391.0,40000000.0,100
 Manuel Akanji,Inter,284730.0,22000000.0,100
@@ -10401,7 +10401,7 @@ Raúl Albiol,Pisa,15452.0,1000000.0,100
 Omar Alderete,Sunderland,353032.0,12000000.0,100
 Alexandre Alemão,Rayo Vallecano,560417.0,3500000.0,100
 Trent Alexander-Arnold,Real Madrid,314353.0,70000000.0,100
-Alfon,Sevilla,357628.0,250000.0,100
+Alfon,Sevilla,357628.0,4000000.0,100
 Max Alleyne,Manchester City,843595.0,600000.0,100
 Thiago Almada,Atlético Madrid,576028.0,20000000.0,100
 Carlos Álvarez,Levante,668179.0,15000000.0,100
@@ -10409,7 +10409,7 @@ Jaydon Amauri Banel,Burnley,706889.0,1200000.0,100
 Giuseppe Ambrosino,Napoli,707295.0,1800000.0,100
 Mohamed Amine Sbai,Angers,851220.0,600000.0,100
 Mathis Amougou,Strasbourg,1010854.0,300000.0,100
-Ethan Ampadu,Leeds United,392771.0,20000000.0,100
+Ethan Ampadu,Leeds United,392771.0,12000000.0,100
 Sofyan Amrabat,Betis,287579.0,12000000.0,100
 Miguel Ángel Rubio,Espanyol,583510.0,2000000.0,100
 Miguel Ángel Sierra,Sevilla,662338.0,1200000.0,100
@@ -10431,7 +10431,7 @@ Otavio Ataide,Paris FC,231289.0,25000000.0,100
 Zachary Athekame,Milan,990637.0,5000000.0,100
 Leon Avdullahu,Hoffenheim,667457.0,10000000.0,100
 Arthur Avom,Lorient,1074628.0,2000000.0,100
-Neil El Aynaoui,Roma,901019.0,8000000.0,100
+Neil El Aynaoui,Roma,901019.0,20000000.0,100
 César Azpilicueta,Sevilla,57500.0,1200000.0,100
 Oussama El Azzouzi,Auxerre,531065.0,2500000.0,100
 Loïc Bade,Leverkusen,730581.0,25000000.0,100
@@ -10473,18 +10473,18 @@ Adam Boayar,Elche,1064506.0,500000.0,100
 Ben Bobzien,Mainz 05,658116.0,400000.0,100
 Jayden Bogle,Leeds United,465717.0,10000000.0,100
 Morgan Bokelé Mputu,Metz,,,0
-Federico Bonazzoli,Cremonese,241527.0,1000000.0,100
+Federico Bonazzoli,Cremonese,241527.0,2500000.0,100
 Warren Bondo,Cremonese,659516.0,8500000.0,100
 Giovanni Bonfanti,Pisa,663900.0,1000000.0,100
 Victor Boniface,Werder Bremen,656681.0,40000000.0,100
 Rahim Bonkano,Oviedo,,,0
 Ange-Yoan Bonny,Inter,827734.0,23000000.0,100
 Thiago Borbas,Oviedo,743951.0,4000000.0,100
-Sebastiaan Bornauw,Leeds United,338629.0,5000000.0,100
+Sebastiaan Bornauw,Leeds United,338629.0,7000000.0,100
 Gennaro Borrelli,Cagliari,459988.0,2200000.0,100
 Olivier Boscagli,Brighton,318508.0,18000000.0,100
 Badredine Bouanani,Stuttgart,707242.0,7000000.0,100
-Lucas Boyé,Alavés,334222.0,5000000.0,100
+Lucas Boyé,Alavés,334222.0,7000000.0,100
 Josip Brekalo,Oviedo,293169.0,3500000.0,100
 Marco Brescianini,Fiorentina,459128.0,3000000.0,100
 Sascha Britschgi,Parma,932187.0,100000.0,100
@@ -10529,7 +10529,7 @@ Nicolás Capaldo,Hamburger SV,649672.0,5000000.0,100
 Antonio Caracciolo,Pisa,149525.0,500000.0,100
 Valentin Carboni,Genoa,787618.0,15000000.0,100
 Fábio Cardoso,Sevilla,155025.0,2500000.0,100
-Johnny Cardoso,Atlético Madrid,689505.0,22000000.0,100
+Johnny Cardoso,Atlético Madrid,689505.0,25000000.0,100
 Diego Carlos,Como,329145.0,12000000.0,100
 Kevin Carlos,Nice,718201.0,6000000.0,100
 David Carmo,Oviedo,498237.0,10000000.0,100
@@ -10552,10 +10552,10 @@ Samir Chergui,Paris FC,668167.0,2000000.0,100
 Rayan Cherki,Manchester City,607223.0,50000000.0,100
 Ben Chilwell,Strasbourg,316125.0,22000000.0,100
 Joris Chotard,Brest,624037.0,6000000.0,100
-Samuel Chukwueze,Fulham,401922.0,10000000.0,100
+Samuel Chukwueze,Fulham,401922.0,20000000.0,100
 Víctor Chust,Elche,495625.0,4000000.0,100
 Dennis Cirkin,Sunderland,568006.0,8000000.0,100
-Michele Collocolo,Cremonese,434551.0,3000000.0,100
+Michele Collocolo,Cremonese,,,0
 Santiago Colombatto,Oviedo,395122.0,3000000.0,100
 Lorenzo Colombo,Genoa,487843.0,6000000.0,100
 Copete,Valencia,520840.0,4000000.0,100
@@ -10565,12 +10565,12 @@ Félix Correia,Lille,479648.0,7000000.0,100
 David Costas,Oviedo,276111.0,1400000.0,100
 Vladimír Coufal,Hoffenheim,157672.0,9000000.0,100
 Abdoul Coulibaly,Werder Bremen,745173.0,4000000.0,84
-Woyo Coulibaly,Sassuolo,592975.0,2000000.0,100
+Woyo Coulibaly,Sassuolo,167811.0,25000.0,80
 Patrice Čović,Werder Bremen,335479.0,125000.0,84
 Ben Cremaschi,Parma,999127.0,5000000.0,92
 Juan Cuadrado,Pisa,91970.0,1500000.0,100
 Montrell Culbreath,Leverkusen,,,0
-Jair Cunha,Nott'ham Forest,984096.0,12000000.0,100
+Jair Cunha,Nott'ham Forest,353840.0,250000.0,80
 Matheus Cunha,Manchester Utd,517894.0,70000000.0,100
 Patrick Cutrone,Parma,265078.0,2500000.0,100
 Adam Daghim,Wolfsburg,881297.0,5000000.0,100
@@ -10594,7 +10594,7 @@ Daniel Denoon,Pisa,692187.0,500000.0,100
 Nelson Deossa,Betis,907559.0,9000000.0,100
 Bahmed Deuff,Nantes,1176215.0,100000.0,100
 Tidiane Devernois,Auxerre,,,0
-Kiernan Dewsbury-Hall,Everton,475188.0,28000000.0,100
+Kiernan Dewsbury-Hall,Everton,475188.0,30000000.0,100
 Bambo Diaby,Elche,435493.0,300000.0,100
 Bafodé Diakité,Bournemouth,463605.0,35000000.0,100
 Zoumana Diallo,Nice,,,0
@@ -10603,7 +10603,7 @@ Soriba Diaoune,Lille,,,0
 Habib Diarra,Sunderland,876631.0,32000000.0,100
 Junior Diaz,Brest,1009596.0,3000000.0,100
 Luis Díaz,Bayern Munich,480692.0,80000000.0,100
-Tyler Dibling,Everton,866655.0,30000000.0,100
+Tyler Dibling,Everton,,,0
 Nouha Dicko,Paris FC,173750.0,500000.0,100
 Eric Dier,Monaco,175722.0,8000000.0,100
 Kevin Diks,Gladbach,335209.0,4000000.0,100
@@ -10640,7 +10640,7 @@ Emersonn,Toulouse,743599.0,2500000.0,100
 Julio Enciso,Strasbourg,660867.0,11000000.0,100
 Yannik Engelhardt,Gladbach,405670.0,4000000.0,100
 Christian Eriksen,Wolfsburg,69633.0,18000000.0,100
-Carlos Espí,Levante,1063338.0,2000000.0,100
+Carlos Espí,Levante,908936.0,2000000.0,80
 Francesco Esposito,Inter,723614.0,100000.0,81
 Sebastiano Esposito,Cagliari,538918.0,5000000.0,100
 Marco Esteban,Oviedo,15974.0,100000.0,100
@@ -10654,7 +10654,7 @@ Ansu Fati,Monaco,466810.0,10000000.0,100
 Abdoulaye Faye,Lorient,1182738.0,3000000.0,100
 Jacopo Fazzini,Fiorentina,691482.0,6000000.0,100
 Aleix Febas,Elche,217144.0,4000000.0,100
-Luiz Felipe,Rayo Vallecano,457931.0,3000000.0,100
+Luiz Felipe,Rayo Vallecano,457931.0,13000000.0,100
 Robin Fellhauer,Augsburg,264960.0,1000000.0,100
 Kiko Femenía,Getafe,76467.0,800000.0,100
 Evan Ferguson,Roma,648046.0,45000000.0,100
@@ -10674,7 +10674,7 @@ Nicolas Fonseca,Oviedo,462070.0,3000000.0,100
 Héctor Fort,Elche,937955.0,12000000.0,100
 Niccolò Fortini,Fiorentina,984964.0,8500000.0,100
 Przemysław Frankowski,Rennes,239743.0,8000000.0,97
-Jeremie Frimpong,Liverpool,484547.0,38000000.0,100
+Jeremie Frimpong,Liverpool,484547.0,50000000.0,100
 Joel Fujita,St. Pauli,697277.0,3000000.0,100
 Niclas Füllkrug,Milan,75489.0,8000000.0,100
 Roberto Gagliardini,Hellas Verona,197471.0,3000000.0,100
@@ -10691,7 +10691,7 @@ Willem Geubbels,Paris FC,463620.0,10000000.0,100
 Ismaël Gharbi,Augsburg,810096.0,1500000.0,100
 Mourad El Ghezouani,Elche,527972.0,700000.0,100
 Rachid Ghezzal,Lyon,118287.0,1500000.0,100
-Daniele Ghilardi,Roma,701819.0,8000000.0,100
+Daniele Ghilardi,Roma,197478.0,150000.0,80
 Giovane,Hellas Verona,1005165.0,4000000.0,100
 Olivier Giroud,Lille,82442.0,1500000.0,100
 Jamie Gittens,Chelsea,670882.0,40000000.0,100
@@ -10711,16 +10711,16 @@ Mikel Goti,Real Sociedad,,,0
 Tiago Gouveia,Nice,479638.0,5000000.0,100
 Alberto Grassi,Cremonese,197473.0,1800000.0,100
 Jack Grealish,Everton,203460.0,25000000.0,100
-Ilia Gruev,Leeds United,381753.0,9000000.0,100
+Ilia Gruev,Leeds United,381753.0,5000000.0,100
 Albert Grønbaek,Genoa,503866.0,9500000.0,100
 Gabriel Gudmundsson,Leeds United,362108.0,15000000.0,100
 Gonçalo Guedes,Real Sociedad,225122.0,6000000.0,100
 Ismaël Guerti,Metz,860053.0,50000.0,100
 Evann Guessand,Aston Villa,500689.0,28000000.0,100
-Idrissa Guèye,Udinese,1178488.0,1500000.0,100
-Idrissa Guèye,Metz,1178488.0,1500000.0,100
+Idrissa Guèye,Udinese,126665.0,1000000.0,100
+Idrissa Guèye,Metz,126665.0,1000000.0,100
 Daouda Guindo,Brest,671590.0,2000000.0,100
-Marc Guiu,Sunderland,938158.0,12000000.0,100
+Marc Guiu,Sunderland,938158.0,7500000.0,100
 Miguel Gutiérrez,Napoli,525299.0,20000000.0,100
 Viktor Gyökeres,Arsenal,325443.0,70000000.0,100
 Albian Hajdari,Hoffenheim,579459.0,12000000.0,100
@@ -10740,7 +10740,7 @@ Pharell Hensel,Wolfsburg,,,0
 Yangel Herrera,Real Sociedad,378293.0,9000000.0,100
 Charles Herrmann,Gladbach,486078.0,1000000.0,100
 Santiago Hidalgo,Toulouse,989574.0,2500000.0,100
-Piero Hincapié,Arsenal,659813.0,50000000.0,100
+Piero Hincapié,Arsenal,659813.0,40000000.0,100
 Malthe Hojholt,Pisa,543822.0,1200000.0,96
 Benedict Hollerbach,Mainz 05,453870.0,12000000.0,100
 Ali Houary,Elche,,,0
@@ -10765,7 +10765,7 @@ Jonathan Ikone,Paris FC,324690.0,6000000.0,100
 Luka Ilić,Oviedo,429790.0,2000000.0,100
 Ciro Immobile,Bologna,105521.0,7000000.0,100
 Cyriaque Irié,Freiburg,1145064.0,5000000.0,100
-Alexander Isak,Liverpool,349066.0,120000000.0,100
+Alexander Isak,Liverpool,349066.0,75000000.0,100
 Wilson Isidor,Sunderland,494237.0,18000000.0,100
 Ardian Ismajli,Torino,435228.0,3000000.0,100
 Urko Izeta,Athletic Club,610622.0,1500000.0,100
@@ -10780,7 +10780,7 @@ Oliver Jensen,Parma,569639.0,100000.0,100
 Igor Jesus,Nott'ham Forest,432164.0,20000000.0,100
 Álex Jiménez,Bournemouth,741257.0,18000000.0,100
 Jamaldeen Jimoh,Aston Villa,,,0
-João Pedro,Chelsea,626724.0,65000000.0,100
+João Pedro,Chelsea,626724.0,45000000.0,100
 Ísak Jóhannesson,Köln,579565.0,3500000.0,100
 Dennis Johnsen,Cremonese,406042.0,1200000.0,100
 Brennan Johnson,Crystal Palace,470607.0,35000000.0,100
@@ -10809,7 +10809,7 @@ Kevin,Fulham,900195.0,12000000.0,100
 Reda Khadra,Le Havre,405686.0,2000000.0,100
 Bilal El Khannouss,Stuttgart,654982.0,30000000.0,100
 Kiké,Espanyol,298575.0,1500000.0,100
-Semih Kılıçsoy,Cagliari,875334.0,15000000.0,100
+Semih Kılıçsoy,Cagliari,875334.0,12000000.0,100
 Ruben Kluivert,Lyon,578421.0,2500000.0,100
 Christian Kofane,Leverkusen,281831.0,100000.0,100
 Enzo Koffi Vinette,Le Havre,809639.0,200000.0,100
@@ -10819,7 +10819,7 @@ Randal Kolo Muani,Tottenham,487969.0,25000000.0,100
 Timothée Kolodziejczak,Paris FC,84085.0,250000.0,100
 Ismaël Koné,Sassuolo,921655.0,12000000.0,100
 Ransford Königsdörffer,Hamburger SV,470038.0,1700000.0,100
-Charalampos Kostoulas,Brighton,1060087.0,25000000.0,100
+Charalampos Kostoulas,Brighton,365251.0,25000.0,80
 Eddy Kouadio,Fiorentina,957822.0,500000.0,100
 Arsène Kouassi,Lorient,1088199.0,800000.0,100
 Christ-Owen Kouassi,Lecce,,,0
@@ -10833,7 +10833,7 @@ Nikola Krstović,Atalanta,434433.0,24000000.0,100
 Mohammed Kudus,Tottenham,543499.0,55000000.0,100
 Nicolas-Gerrit Kühn,Como,,,0
 Sael Kumbedi,Wolfsburg,951579.0,7000000.0,100
-Marash Kumbulla,Mallorca,371371.0,4500000.0,100
+Marash Kumbulla,Mallorca,371371.0,5000000.0,100
 Jonah Kusi-Asare,Fulham,1069512.0,4000000.0,100
 Jonah Kusi-Asare,Bayern Munich,1069512.0,4000000.0,100
 Godson Kyeremeh,Le Havre,651973.0,800000.0,100
@@ -10853,7 +10853,7 @@ Youssef Lekhedim,Alavés,,,0
 Thomas Lemar,Girona,205562.0,2000000.0,100
 Tim Lemperle,Hoffenheim,553285.0,2500000.0,100
 Esteban Lepaul,Rennes,461607.0,12000000.0,100
-Mehdi Léris,Pisa,348601.0,2200000.0,100
+Mehdi Léris,Pisa,348601.0,2500000.0,100
 Victor Lindelöf,Aston Villa,184573.0,6000000.0,100
 Jesper Lindstrøm,Wolfsburg,513245.0,22000000.0,100
 Adrián Liso,Getafe,1061122.0,8000000.0,100
@@ -10866,13 +10866,13 @@ Julien López,Paris FC,170506.0,250000.0,100
 Maxime Lopez,Paris FC,290862.0,6000000.0,100
 Dachi Lordkipanidze,Cremonese,,,0
 Lorran,Pisa,1009030.0,11000000.0,100
-Iker Losada,Levante,632741.0,1400000.0,100
+Iker Losada,Levante,632741.0,500000.0,100
 Marius Louer,Angers,1103652.0,100000.0,100
 Sergio Lozano,Levante,341277.0,1400000.0,100
 Lucas,Burnley,190314.0,400000.0,100
-Lorenzo Lucca,Napoli,572265.0,12000000.0,100
+Lorenzo Lucca,Napoli,572265.0,30000000.0,100
 Oier Luengo,Oviedo,,,0
-Florentino Luís,Burnley,357162.0,22000000.0,100
+Florentino Luís,Burnley,357162.0,20000000.0,100
 Douglas Luiz,Nott'ham Forest,447661.0,25000000.0,100
 Kristoffer Lund,Köln,623773.0,2700000.0,100
 Mateus Lusuardi,Pisa,1159022.0,300000.0,100
@@ -10894,7 +10894,7 @@ Bendito Mantato,Manchester Utd,,,0
 Sekou Mara,Auxerre,557612.0,5000000.0,100
 Vincent Marchetti,Paris FC,374040.0,2000000.0,100
 Mariano,Alavés,54155.0,300000.0,100
-Luca Marianucci,Napoli,,,0
+Luca Marianucci,Napoli,814446.0,175000.0,100
 Rafa Marín,Villarreal,662261.0,12000000.0,100
 Marius Marin,Pisa,379163.0,3000000.0,100
 João Mário Lopes,Juventus,537602.0,15000000.0,100
@@ -10905,12 +10905,12 @@ Joaquín Martínez Gauna,Sevilla,7663.0,1500000.0,100
 Han-Noah Massengo,Augsburg,536508.0,5000000.0,100
 Franco Mastantuono,Real Madrid,1057316.0,50000000.0,100
 Arthur Masuaku,Sunderland,181380.0,2500000.0,100
-Igor Matanovic,Freiburg,13959.0,100000.0,100
+Igor Matanovic,Freiburg,605268.0,5000000.0,100
 Nemanja Matić,Sassuolo,74683.0,2000000.0,100
 Alan Matturro,Levante,861981.0,4000000.0,100
 Eliezer Mayenda,Sunderland,967346.0,18000000.0,100
 Ezra Mayers,West Ham,,,0
-Ibrahim Maza,Leverkusen,905011.0,600000.0,100
+Ibrahim Maza,Leverkusen,905011.0,5000000.0,100
 Luca Mazzitelli,Cagliari,226025.0,1500000.0,100
 Samuel Mbangula,Werder Bremen,814454.0,100000.0,100
 Chancel Mbemba,Lille,203348.0,2000000.0,100
@@ -10931,7 +10931,7 @@ Khalis Merah,Lyon,1187942.0,6000000.0,100
 Quentin Merlin,Rennes,557613.0,15000000.0,100
 Alejandro Mestanza,Getafe,229815.0,200000.0,87
 Dayann Methalie,Toulouse,1191444.0,4000000.0,100
-Georges Mikautadze,Villarreal,729814.0,28000000.0,100
+Georges Mikautadze,Villarreal,729814.0,20000000.0,100
 Wisdom Mike,Bayern Munich,818878.0,700000.0,81
 William Mikelbrencis,Hamburger SV,743500.0,700000.0,100
 Antoni Milambo,Brentford,683620.0,20000000.0,100
@@ -10979,24 +10979,24 @@ Quentin Ndjantou Mbitcha,Paris S-G,1053208.0,3000000.0,100
 Dan Ndoye,Nott'ham Forest,365108.0,40000000.0,100
 Dan Neil,Sunderland,,,0
 Reiss Nelson,Brentford,340325.0,14000000.0,100
-Victor Nelsson,Hellas Verona,422951.0,9000000.0,100
+Victor Nelsson,Hellas Verona,422951.0,17000000.0,100
 Martim Neto,Elche,549027.0,5000000.0,100
 Yvan Neyou,Getafe,469669.0,1000000.0,100
 Cyril Ngonge,Torino,358032.0,12000000.0,100
-Mikayil Ngor Faye,Cremonese,666974.0,6000000.0,100
+Mikayil Ngor Faye,Cremonese,666974.0,10000000.0,100
 Nathan Ngoy,Lille,548254.0,3500000.0,100
 Rio Ngumoha,Liverpool,1108466.0,15000000.0,100
-Abdoulaye Niakhate Ndiaye,Parma,673514.0,3000000.0,100
+Abdoulaye Niakhate Ndiaye,Parma,673514.0,7000000.0,100
 Hans Nicolussi Caviglia,Fiorentina,430280.0,3000000.0,100
-Niels Nkounkou,Torino,591193.0,3500000.0,100
+Niels Nkounkou,Torino,591193.0,7500000.0,100
 Christopher Nkunku,Milan,344381.0,80000000.0,100
 Lukas Nmecha,Leeds United,314288.0,8000000.0,100
 Noah Nsoki,Paris S-G,,,0
-Álvaro Núñez,Elche,626953.0,6000000.0,100
+Álvaro Núñez,Elche,912703.0,800000.0,81
 Unai Núñez,Hellas Verona,338285.0,3000000.0,100
 M'Bala Nzola,Pisa,354814.0,7000000.0,100
 Christian Nørgaard,Arsenal,148367.0,9000000.0,100
-Luke O'Nien,Sunderland,282939.0,1300000.0,100
+Luke O'Nien,Sunderland,,,0
 Matt O'Riley,Marseille,406634.0,13000000.0,100
 Noam Obougou Jacquet,Le Havre,,,0
 David Odogu,Milan,897423.0,5000000.0,100
@@ -11005,7 +11005,7 @@ Olasagasti,Levante,625660.0,1800000.0,100
 Tuomas Ollila,Paris FC,433887.0,600000.0,100
 Tani Oluwaseyi,Villarreal,972465.0,8000000.0,100
 Warmed Omari,Hamburger SV,711996.0,3000000.0,100
-Loïs Openda,Juventus,368887.0,45000000.0,100
+Loïs Openda,Juventus,368887.0,60000000.0,100
 Louis Oppie,St. Pauli,605265.0,600000.0,100
 Gift Orban,Hellas Verona,1018259.0,10000000.0,100
 Christian Ordoñez,Parma,1043646.0,7000000.0,100
@@ -11018,7 +11018,7 @@ Pablo,West Ham,149577.0,2000000.0,100
 Jon Pacheco,Alavés,580560.0,5000000.0,100
 Kendry Páez,Strasbourg,,,0
 Igor Paixão,Marseille,653610.0,6000000.0,100
-Marco Palestra,Cagliari,895937.0,8500000.0,100
+Marco Palestra,Cagliari,895937.0,1000000.0,100
 João Palhinha,Tottenham,257455.0,25000000.0,100
 Emerson Palmieri,Marseille,181778.0,12000000.0,100
 Diego Pampín,Levante,505493.0,1200000.0,100
@@ -11030,7 +11030,7 @@ Benjamin Pavard,Marseille,353366.0,20000000.0,100
 Martín Payero,Cremonese,555820.0,4500000.0,100
 Zé Pedro Figueiredo,Cagliari,65278.0,1000000.0,100
 Adrià Pedrosa,Elche,501418.0,4000000.0,100
-Faris Pemi Moumbagna,Cremonese,599663.0,5000000.0,100
+Faris Pemi Moumbagna,Cremonese,599663.0,10000000.0,100
 Kojo Peprah Oppong,Nice,1113451.0,3000000.0,100
 Everton Pereira,Nice,321239.0,9000000.0,100
 Mathias Pereira Lage,St. Pauli,424072.0,2500000.0,100
@@ -11038,15 +11038,15 @@ Francisco Perez,Rayo Vallecano,379188.0,100000.0,82
 Joselu Pérez,Getafe,1000135.0,100000.0,100
 Matías Pérez,Lecce,744416.0,3000000.0,100
 Romain Perraud,Lille,318523.0,5000000.0,100
-Léo Pétrot,Elche,412829.0,900000.0,100
+Léo Pétrot,Elche,412829.0,1500000.0,100
 Giuseppe Pezzella,Cremonese,336960.0,2200000.0,100
 Immanuel Pherai,Hamburger SV,412935.0,2500000.0,100
 Rayan Philippe,Hamburger SV,694507.0,1700000.0,100
 Gabriele Piccinini,Pisa,628365.0,4500000.0,100
 Roberto Piccoli,Fiorentina,432092.0,20000000.0,100
 Charles Pickel,Espanyol,243879.0,2500000.0,100
-Yeremi Pino,Crystal Palace,568157.0,35000000.0,90
-Jakub Piotrowski,Udinese,377243.0,4500000.0,100
+Yeremi Pino,Crystal Palace,568157.0,30000000.0,90
+Jakub Piotrowski,Udinese,377243.0,2000000.0,100
 Joël Piroe,Leeds United,369962.0,15000000.0,100
 Damián Pizarro,Le Havre,5896.0,300000.0,81
 Paul Pogba,Monaco,122153.0,5000000.0,100
@@ -11055,15 +11055,15 @@ Stefan Posch,Como,223974.0,7000000.0,100
 Freddie Potts,West Ham,698164.0,8000000.0,100
 Kacper Potulski,Mainz 05,1073748.0,200000.0,100
 Yussuf Poulsen,Hamburger SV,157635.0,5000000.0,100
-Marc Pubill,Atlético Madrid,844637.0,15000000.0,100
+Marc Pubill,Atlético Madrid,844637.0,4000000.0,100
 Cameron Puertas,Werder Bremen,449592.0,15000000.0,100
 Arkadiusz Pyrka,St. Pauli,599733.0,2000000.0,100
 Jarell Quansah,Leverkusen,632349.0,2000000.0,100
 Kenny Quetant,Le Havre,,,0
-Dani Raba,Valencia,413262.0,2400000.0,100
+Dani Raba,Valencia,413262.0,1500000.0,100
 Adrien Rabiot,Milan,182913.0,20000000.0,100
 Uroš Radaković,Nantes,169511.0,850000.0,100
-Largie Ramazani,Valencia,518644.0,5000000.0,100
+Largie Ramazani,Valencia,518644.0,6000000.0,100
 Jacobo Ramón,Como,948278.0,6000000.0,100
 Guilherme Ramos,Hamburger SV,115382.0,2000000.0,100
 Jacob Ramsey,Newcastle Utd,503749.0,35000000.0,100
@@ -11074,7 +11074,7 @@ Federico Redondo,Elche,909758.0,4000000.0,100
 Alejandro Rego,Athletic Club,834491.0,3000000.0,100
 Tijjani Reijnders,Manchester City,460939.0,65000000.0,100
 Alberto Reina,Oviedo,603696.0,1500000.0,100
-Vitor Reis,Girona,,,0
+Vitor Reis,Girona,1005575.0,30000000.0,100
 Nicolai Remberg,Hamburger SV,592534.0,3000000.0,100
 Oriol Rey,Levante,293388.0,2000000.0,100
 Gio Reyna,Gladbach,,,0
@@ -11082,7 +11082,7 @@ Samuele Ricci,Milan,467992.0,25000000.0,100
 Clemens Riedel,Espanyol,692070.0,5000000.0,100
 Fabian Rieder,Augsburg,507341.0,6000000.0,100
 Chris Rigg,Sunderland,947411.0,25000000.0,100
-Hugo Rincón,Girona,834487.0,2500000.0,100
+Hugo Rincón,Girona,834487.0,250000.0,100
 Rodrigo Riquelme,Betis,461617.0,8000000.0,100
 Patrick Roberts,Sunderland,225452.0,3200000.0,100
 Ryan Rodin,Auxerre,,,0
@@ -11090,10 +11090,10 @@ Joe Rodon,Leeds United,297212.0,12000000.0,100
 Álvaro Rodríguez,Elche,948275.0,4000000.0,100
 Jesus Rodríguez,Como,1190411.0,30000000.0,100
 Juan Rodríguez,Cagliari,1228231.0,1200000.0,100
-Merlin Röhl,Everton,608832.0,16000000.0,100
+Merlin Röhl,Everton,608832.0,12000000.0,100
 Miguel Román,Celta Vigo,892932.0,2500000.0,100
 Alessandro Romano,Roma,77910.0,75000.0,84
-Iván Romero,Levante,628886.0,7500000.0,100
+Iván Romero,Levante,628886.0,800000.0,100
 Rômulo,RB Leipzig,957874.0,2600000.0,100
 Salomón Rondón,Oviedo,80197.0,1000000.0,100
 Valentin Rongier,Rennes,332889.0,9000000.0,100
@@ -11103,26 +11103,26 @@ Matteo Ruggeri,Atlético Madrid,616631.0,15000000.0,100
 Alexander Røssing-Lelesiit,Hamburger SV,1213681.0,700000.0,100
 Elias Saad,Augsburg,74600.0,1200000.0,100
 Abdelhamid Sabiri,Fiorentina,340394.0,2200000.0,100
-Noah Sadiki,Sunderland,727089.0,12000000.0,100
+Noah Sadiki,Sunderland,727089.0,5000000.0,100
 Emir Sahiti,Hamburger SV,25812.0,750000.0,81
 Mathis Saka,Toulouse,,,0
 Álex Sala,Lecce,582664.0,1500000.0,100
-José Salinas,Espanyol,819590.0,2800000.0,100
+José Salinas,Espanyol,819590.0,1000000.0,100
 Mbwana Samatta,Le Havre,,,0
-Albert Sambi Lokonga,Hamburger SV,381967.0,15000000.0,100
+Albert Sambi Lokonga,Hamburger SV,381967.0,8000000.0,100
 Antonio Sanabria,Cremonese,234523.0,7000000.0,100
 Alexis Sánchez,Sevilla,40433.0,1400000.0,100
 Borja Sánchez Laborde,Oviedo,95730.0,100000.0,100
 Manu Sánchez,Levante,618809.0,6000000.0,100
-Selton Sánchez,Athletic Club,1312698.0,3000000.0,100
+Selton Sánchez,Athletic Club,,,0
 Jadon Sancho,Aston Villa,401173.0,20000000.0,100
-Álex Sancris,Getafe,560705.0,2000000.0,100
+Álex Sancris,Getafe,15420.0,1000000.0,100
 Mamadou Sangare,Lens,808348.0,8000000.0,100
 Nhoa Sangui,Paris FC,955281.0,6000000.0,100
 Baptiste Santamaria,Valencia,285323.0,4500000.0,100
 Yago Santiago,Elche,706947.0,800000.0,100
-Yellu Santiago,Hellas Verona,941869.0,1000000.0,100
-Andrey Santos,Chelsea,743600.0,15000000.0,100
+Yellu Santiago,Hellas Verona,941869.0,900000.0,100
+Andrey Santos,Chelsea,743600.0,40000000.0,100
 Alejo Sarco,Leverkusen,1000675.0,800000.0,100
 Jeremy Sarmiento,Cremonese,568005.0,7000000.0,100
 Martin Satriano,Lyon,640109.0,5000000.0,100
@@ -11156,7 +11156,7 @@ Manor Solomon,Villarreal,396638.0,9000000.0,100
 Hugo Solozabal,Getafe,13823.0,300000.0,100
 Oliver Sonne,Burnley,541628.0,2000000.0,100
 Borna Sosa,Crystal Palace,293194.0,4000000.0,100
-Riccardo Sottil,Lecce,386455.0,3500000.0,100
+Riccardo Sottil,Lecce,386455.0,6000000.0,100
 Aboubaka Soumahoro,Hamburger SV,97166.0,100000.0,85
 Vinicius Souza,Wolfsburg,146020.0,1200000.0,100
 Anton Stach,Leeds United,344069.0,20000000.0,100
@@ -11165,9 +11165,9 @@ Nicolae Stanciu,Genoa,148372.0,5000000.0,100
 Otto Stange,Hamburger SV,1058520.0,2500000.0,100
 Calvin Stengs,Pisa,409344.0,10000000.0,100
 Nikola Štulić,Lecce,595650.0,4000000.0,100
-Denis Suárez,Alavés,165007.0,1500000.0,100
+Denis Suárez,Alavés,165007.0,1200000.0,100
 Gabriel Suazo,Sevilla,385105.0,7000000.0,100
-Petar Sucic,Inter,668207.0,14000000.0,100
+Petar Sucic,Inter,131735.0,100000.0,81
 Yukinari Sugawara,Werder Bremen,405385.0,4000000.0,100
 Pavel Šulc,Lyon,500053.0,6000000.0,100
 Ibrahim Sulemana,Bologna,982267.0,4000000.0,100
@@ -11179,19 +11179,19 @@ Haris Tabakovic,Gladbach,203123.0,2500000.0,100
 Jonathan Tah,Bayern Munich,196357.0,30000000.0,100
 Kōta Takai,Gladbach,671108.0,5000000.0,100
 Chemsdine Talbi,Sunderland,743384.0,8000000.0,100
-Ao Tanaka,Leeds United,665618.0,650000.0,80
+Ao Tanaka,Leeds United,489359.0,10000000.0,100
 Axel Tapé,Leverkusen,1077670.0,2000000.0,100
 Tylel Tati,Nantes,1241207.0,6000000.0,100
 Kenneth Taylor,Lazio,470394.0,23000000.0,100
 Loum Tchaouna,Burnley,607226.0,15000000.0,100
 Jackson Tchatchoua,Wolves,848509.0,12000000.0,100
 Filippo Terracciano,Cremonese,631007.0,4500000.0,100
-Ramón Terrats,Espanyol,783396.0,4000000.0,100
+Ramón Terrats,Espanyol,783396.0,3000000.0,100
 Florian Thauvin,Lens,184892.0,3000000.0,100
 Malick Thiaw,Newcastle Utd,521964.0,40000000.0,100
 Phillip Tietz,Mainz 05,288340.0,5000000.0,100
 Malik Tillman,Leverkusen,467437.0,1500000.0,100
-Jeremy Toljan,Levante,129674.0,3500000.0,100
+Jeremy Toljan,Levante,129674.0,2200000.0,100
 Pablo Torre,Mallorca,720038.0,5000000.0,100
 Jofre Torrents,Barcelona,,,0
 Jordan Torunarigha,Hamburger SV,227110.0,4000000.0,100
@@ -11223,7 +11223,7 @@ Charles Vanhoutte,Nice,569845.0,6000000.0,100
 Jamie Vardy,Cremonese,197838.0,4000000.0,100
 Franco Vázquez,Cremonese,76163.0,1500000.0,100
 Lucas Vázquez,Leverkusen,221316.0,3000000.0,100
-Renato Veiga,Villarreal,805714.0,1500000.0,100
+Renato Veiga,Villarreal,805714.0,25000000.0,100
 Unai Vencedor Paris,Levante,610083.0,2000000.0,100
 Calvin Verdonk,Lille,258364.0,3000000.0,100
 Antonio Vergara,Napoli,703245.0,2200000.0,100
@@ -11232,8 +11232,8 @@ Jozhua Vertrouwd,Rayo Vallecano,765467.0,3000000.0,100
 Nacho Vidal,Oviedo,216870.0,1600000.0,100
 Fabio Vieira,Hamburger SV,537598.0,17000000.0,100
 Julián Vignolo,Toulouse,1234988.0,1000000.0,100
-Federico Viñas,Oviedo,578419.0,4000000.0,100
-Jan Virgili,Mallorca,,,0
+Federico Viñas,Oviedo,273130.0,250000.0,81
+Jan Virgili,Mallorca,1301775.0,12000000.0,100
 Mattia Viti,Fiorentina,493702.0,5000000.0,100
 Martin Vitík,Bologna,652054.0,13000000.0,100
 Alexis Vossah,Toulouse,1200427.0,1000000.0,100
@@ -11247,8 +11247,8 @@ Kyle Walker-Peters,West Ham,341051.0,13000000.0,100
 Sebastian Walukiewicz,Sassuolo,345458.0,2500000.0,100
 Tom Watson,Brighton,58381.0,50000.0,100
 Timothy Weah,Marseille,370846.0,20000000.0,100
-Wesley,Roma,964580.0,25000000.0,100
-Estêvão Willian,Chelsea,52769.0,3000000.0,100
+Wesley,Roma,1007378.0,3000000.0,100
+Estêvão Willian,Chelsea,1056993.0,80000000.0,100
 Callum Wilson,West Ham,123682.0,5000000.0,100
 Florian Wirtz,Liverpool,598577.0,110000000.0,100
 Yoane Wissa,Newcastle Utd,388165.0,35000000.0,100
@@ -11259,10 +11259,10 @@ Granit Xhaka,Sunderland,111455.0,10000000.0,100
 Terry Yegbe,Metz,991054.0,50000.0,100
 Illia Zabarnyi,Paris S-G,659089.0,55000000.0,88
 Stephan Zagadou,Le Havre,,,0
-Nicola Zalewski,Atalanta,550108.0,17000000.0,100
+Nicola Zalewski,Atalanta,550108.0,12000000.0,100
 Nicolò Zaniolo,Udinese,392085.0,27000000.0,100
 Alessandro Zanoli,Udinese,397225.0,5000000.0,100
-Bryan Zaragoza,Celta Vigo,713644.0,10000000.0,100
+Bryan Zaragoza,Celta Vigo,713644.0,12000000.0,100
 Aaron Zehnter,Wolfsburg,730484.0,400000.0,100
 Alessio Zerbin,Cremonese,433584.0,2400000.0,100
 Edon Zhegrova,Juventus,496857.0,25000000.0,100
