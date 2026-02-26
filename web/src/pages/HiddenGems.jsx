@@ -30,6 +30,8 @@ export default function HiddenGems() {
   const [minNineties, setMinNineties] = useState(5);
   const [selectedComps, setSelectedComps] = useState(new Set());
   const [positions, setPositions] = useState(new Set(ALL_POSITIONS));
+  const [minAge, setMinAge] = useState(15);
+  const [maxAge, setMaxAge] = useState(35);
   const [sortCol, setSortCol] = useState('GemScore');
   const [sortDir, setSortDir] = useState('desc');
 
@@ -66,6 +68,8 @@ export default function HiddenGems() {
       if (selectedComps.size && !selectedComps.has(r.Comp)) return false;
       const nineties = parseFloat(r['90s']) || 0;
       if (nineties < minNineties) return false;
+      const age = parseFloat(r.Age);
+      if (!isNaN(age) && (age < minAge || age > maxAge)) return false;
       return true;
     });
 
@@ -91,7 +95,7 @@ export default function HiddenGems() {
     }));
 
     return withGem;
-  }, [allRows, season, positions, selectedComps, minScore, maxMV, minNineties, getMV]);
+  }, [allRows, season, positions, selectedComps, minScore, maxMV, minNineties, minAge, maxAge, getMV]);
 
   const sorted = useMemo(() => {
     return [...gemsData].sort((a, b) => {
@@ -154,6 +158,24 @@ export default function HiddenGems() {
             type="range" min={1} max={38} step={1}
             value={minNineties}
             onChange={(e) => setMinNineties(+e.target.value)}
+            className={styles.rangeInput}
+          />
+        </div>
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel}>Min Age: {minAge}</label>
+          <input
+            type="range" min={15} max={40} step={1}
+            value={minAge}
+            onChange={(e) => { const v = +e.target.value; setMinAge(v); if (v > maxAge) setMaxAge(v); }}
+            className={styles.rangeInput}
+          />
+        </div>
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel}>Max Age: {maxAge}</label>
+          <input
+            type="range" min={15} max={40} step={1}
+            value={maxAge}
+            onChange={(e) => { const v = +e.target.value; setMaxAge(v); if (v < minAge) setMinAge(v); }}
             className={styles.rangeInput}
           />
         </div>
