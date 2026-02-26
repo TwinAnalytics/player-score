@@ -12,7 +12,6 @@ from src.scoring import (
     compute_mid_scores,
     compute_def_scores,
 )
-from src.normalization import add_main_score
 
 # ---------------------------------------------------------------------------
 # Spaltenauswahl aus der players_data_light-CSV
@@ -187,7 +186,6 @@ def run_full_pipeline(
     """
     df_features = build_feature_table(season, raw_dir)
     df_scores = compute_all_scores(df_features)
-    df_scores = add_main_score(df_scores)  # L1 + L3: cross-position comparable MainScore
 
     processed_dir.mkdir(parents=True, exist_ok=True)
     season_safe = season.replace("/", "-")

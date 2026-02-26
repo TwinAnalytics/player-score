@@ -1,20 +1,14 @@
 import { BAND_COLORS } from './colors';
 
 export const BAND_THRESHOLDS = [
-  { min: 900, label: 'Exceptional', description: 'Top 10% in role — elite Big-5 level' },
-  { min: 750, label: 'World Class', description: 'Top 25% in role' },
-  { min: 400, label: 'Top Starter', description: 'Above median — regular Big-5 starter' },
+  { min: 900, label: 'Exceptional', description: 'Elite — top 1% globally' },
+  { min: 750, label: 'World Class', description: 'Consistently excellent performer' },
+  { min: 400, label: 'Top Starter', description: 'Regular starter at Big-5 level' },
   { min: 200, label: 'Solid Squad Player', description: 'Rotation-quality contributor' },
-  { min: 0, label: 'Below Big-5 Level', description: 'Bottom 20% in role' },
+  { min: 0, label: 'Below Big-5 Level', description: 'Below Big-5 average' },
 ];
 
 export function getPrimaryScore(row) {
-  // Use pre-computed MainScore when available (L1+L3 normalized, cross-position comparable)
-  const ms = parseFloat(row.MainScore);
-  if (!isNaN(ms)) {
-    return { score: ms, band: row.MainBand || scoreToBand(ms) };
-  }
-  // Fallback: old role-based logic (for legacy CSVs without MainScore)
   const pos = row.Pos;
   if (pos === 'FW' || pos === 'Off_MF') {
     return { score: parseFloat(row.OffScore_abs), band: row.OffBand };
