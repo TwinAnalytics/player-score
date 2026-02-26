@@ -1,0 +1,320 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Search */
+.searchWrap {
+  margin-bottom: 2rem;
+}
+
+.searchBox {
+  position: relative;
+  max-width: 420px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--accent);
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  list-style: none;
+  z-index: 50;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.suggestion {
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.1s;
+}
+
+.suggestion:hover {
+  background: rgba(0, 184, 169, 0.08);
+  color: var(--accent);
+}
+
+/* Player header */
+.playerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.playerHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.playerName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.playerMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.dot {
+  color: var(--border);
+}
+
+.seasonSel {
+  flex-shrink: 0;
+}
+
+/* Header actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pdfBtn {
+  padding: 0.45rem 1.1rem;
+  border-radius: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(0, 184, 169, 0.12);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.pdfBtn:hover:not(:disabled) {
+  background: rgba(0, 184, 169, 0.22);
+}
+
+.pdfBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Stat tiles */
+.statTiles {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .statTiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .statTiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Sub-score tiles */
+.subScoreTiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .subScoreTiles {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subTile {
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.subTileLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.subTileValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.subTileBar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.subTileBarFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.statTile {
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* View toggle */
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.toggleBtn {
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all 0.15s;
+}
+
+.toggleBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toggleActive {
+  background: rgba(0, 184, 169, 0.12) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Chart */
+.chartSection {
+  margin-bottom: 1.5rem;
+}
+
+/* Season View: FIFA card + pizza side by side */
+.seasonViewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 860px) {
+  .seasonViewGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard {
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.chartTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.chartSub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Season history */
+.historySection {
+  margin-top: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.tableWrap {
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.activeSeason td {
+  background: rgba(0, 184, 169, 0.06);
+}
+
+.empty {
+  padding: 3rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

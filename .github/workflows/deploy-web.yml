@@ -1,0 +1,62 @@
+name: Deploy Web App to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Data/Processed/**'
+      - 'web/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Generate pizza stats CSV
+        run: |
+          python3 -m pip install -q pandas
+          python3 generate_pizza_csv.py
+
+      - name: Copy data files to public/data/
+        run: |
+          mkdir -p web/public/data
+          cp Data/Processed/player_scores_all_seasons_long.csv web/public/data/
+          cp Data/Processed/player_scores_agg_by_player.csv   web/public/data/
+          cp Data/Processed/squad_scores_all_seasons.csv       web/public/data/
+          cp Data/Processed/player_market_values.csv           web/public/data/
+          cp Data/Processed/player_pizza_all_seasons.csv       web/public/data/
+
+      - name: Copy club crests
+        run: |
+          mkdir -p web/public/crests
+          cp Data/Assets/club_crests/*.png web/public/crests/
+
+      - name: Build
+        working-directory: web
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: web/dist
+          publish_branch: gh-pages

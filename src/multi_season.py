@@ -82,22 +82,28 @@ def aggregate_player_scores(df_all: pd.DataFrame) -> pd.DataFrame:
     """
     group_cols = ["Player"]  # optional später erweitern: + ["Pos"]
 
+    agg_dict = {
+        "OffScore_abs": "mean",
+        "MidScore_abs": "mean",
+        "DefScore_abs": "mean",
+        "Min": "sum",
+        "90s": "sum",
+    }
+    # Include MainScore if available (produced by normalization step)
+    if "MainScore" in df_all.columns:
+        agg_dict["MainScore"] = "mean"
+
     agg = (
         df_all
         .groupby(group_cols, as_index=False)
-        .agg({
-            "OffScore_abs": "mean",
-            "MidScore_abs": "mean",
-            "DefScore_abs": "mean",
-            "Min": "sum",
-            "90s": "sum",
-        })
+        .agg(agg_dict)
     )
 
     agg = agg.rename(columns={
         "OffScore_abs": "OffScore_mean",
         "MidScore_abs": "MidScore_mean",
         "DefScore_abs": "DefScore_mean",
+        "MainScore": "MainScore_mean",
     })
 
     return agg

@@ -664,13 +664,24 @@ def assess_diff(diff: float) -> str:
 
 def get_primary_score_and_band(row: pd.Series) -> tuple[float | None, str | None]:
     """
-    Wählt den passenden Score + Band basierend auf der Roh-Position.
-    - FW und Off_MF -> OffScore_abs / OffBand
-    - MF           -> MidScore_abs / MidBand
-    - DF und Def_MF -> DefScore_abs / DefBand
-    """
-    pos_raw = row.get("Pos_raw") or row.get("Pos")
+    Returns primary score + band for a player row.
 
+    Prefers the pre-computed MainScore (L1+L3 normalized, cross-position comparable)
+    from the processed CSV. Falls back to the old role-based raw score for legacy data
+    that was processed before normalization was added.
+    """
+    # Use pre-computed normalized MainScore if present and valid
+    ms_raw = row.get("MainScore")
+    if ms_raw is not None and not pd.isna(ms_raw):
+        try:
+            ms = float(ms_raw)
+            mb = row.get("MainBand") or band_from_score(ms)
+            return ms, mb
+        except (TypeError, ValueError):
+            pass
+
+    # Fallback: old role-based raw score (legacy CSVs without MainScore column)
+    pos_raw = row.get("Pos_raw") or row.get("Pos")
     if pos_raw in ("FW", "Off_MF"):
         return row.get("OffScore_abs"), row.get("OffBand")
     if pos_raw in ("MF",):

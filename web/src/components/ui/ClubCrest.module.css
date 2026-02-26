@@ -1,0 +1,16 @@
+.img {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-second);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  font-weight: 700;
+  flex-shrink: 0;
+}
