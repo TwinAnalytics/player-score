@@ -22,6 +22,7 @@ from src.charts.player_report_pdf import generate_player_report_pdf
 from src.club_crests import get_crest_b64, get_crest_path
 from src.similar_players import find_similar_players
 from src.charts.age_curve import render_age_curve
+from src.charts.download_utils import altair_dl, plotly_dl, pyplot_dl
 
 import io
 
@@ -732,7 +733,7 @@ def score_trend_chart(df_player_all: pd.DataFrame, score_col: str, label: str):
         )
     )
 
-    st.altair_chart(chart, use_container_width=True)
+    altair_dl(chart, "player_score_history", use_container_width=True)
 
 # -------------------------------------------------------------------
 # Pizza charts (per season)
@@ -1472,6 +1473,8 @@ def render_toplist_bar(
 def render_score_age_beeswarm(
     df_all_filtered: pd.DataFrame,
     df_top: pd.DataFrame,
+    season: str | None = None,
+    comp_label: str | None = None,
 ):
     if "MainScore" not in df_all_filtered.columns:
         st.info("Beeswarm: Spalte 'MainScore' nicht gefunden.")
@@ -1568,9 +1571,13 @@ def render_score_age_beeswarm(
         showlegend=True,
     ))
 
+    _beeswarm_ctx = "  ·  ".join(filter(None, [season, comp_label]))
+    _beeswarm_title = f"Score vs Age  ·  {_beeswarm_ctx}" if _beeswarm_ctx else "Score vs Age"
+    _beeswarm_title += " — click a dot to open the player profile"
+
     fig.update_layout(
         title=dict(
-            text="Score vs Age — click a dot to open the player profile",
+            text=_beeswarm_title,
             font=dict(color="#E5E7EB", size=16),
             x=0,
         ),
@@ -2678,7 +2685,7 @@ def render_team_radar_statsbomb_pretty(
         )
 
     # In Streamlit anzeigen
-    st.pyplot(fig)
+    pyplot_dl(fig, "team_radar")
 
 # ---------------- TEAM SCORES MAIN VIEW (5 MODULE) ---------------- #
 def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big5: pd.DataFrame) -> None:
@@ -2714,6 +2721,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
 
     # ----- League / Comp filter (NOW safe) -----
+    comp_sel = "All"
     if "Comp" in df_squad_season.columns:
         comps = sorted(df_squad_season["Comp"].dropna().unique().tolist())
         comp_options = ["All"] + comps
@@ -2732,6 +2740,15 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     else:
         st.sidebar.caption("League filter disabled (no 'Comp' column in squad scores).")
 
+    _LEAGUE_SHORT_MAP = {
+        "eng Premier League": "Premier League",
+        "es La Liga":         "La Liga",
+        "de Bundesliga":      "Bundesliga",
+        "it Serie A":         "Serie A",
+        "fr Ligue 1":         "Ligue 1",
+    }
+    _comp_label = "All Big 5" if comp_sel == "All" else _LEAGUE_SHORT_MAP.get(comp_sel, comp_sel)
+    _ctx = f"{season}  ·  {_comp_label}"
 
     # Default metric (sorting)
     metric_col = "OverallScore_squad"
@@ -2872,7 +2889,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     ]
     cols_show = [c for c in cols_show if c in df_rank.columns]
 
-    st.markdown("### League ranking by squad score")
+    st.markdown(f"### League ranking by squad score  ·  {_ctx}")
 
     def _build_crest_table_html(df: pd.DataFrame, cols: list[str]) -> str:
         header_cells = ""
@@ -2909,11 +2926,159 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     st.markdown(_build_crest_table_html(df_rank, cols_show), unsafe_allow_html=True)
 
     # Standard scatter (unter der Tabelle)
-    render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR)
+    render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR, ctx=_ctx)
 
     # Budget vs Squad Score scatter (only when market value data is available)
     if "TotalMarketValue_squad" in df_rank.columns:
-        render_budget_scatter(df_rank, value_color=VALUE_COLOR)
+        render_budget_scatter(df_rank, value_color=VALUE_COLOR, ctx=_ctx)
+
+    # ========== SQUAD SCORE vs LEAGUE TABLE POSITION ==========
+    if "LeagueRank" in df_rank.columns and "OverallScore_squad" in df_rank.columns:
+        st.markdown(f"### Squad Score vs League Table Position  ·  {_ctx}")
+        st.markdown(
+            "<p style='font-size:0.85rem; opacity:0.75; margin-top:-0.3rem;'>"
+            "How well does squad quality explain where a team finishes? "
+            "Each dot is one team. The trendline shows the expected position given the squad score."
+            "</p>",
+            unsafe_allow_html=True,
+        )
+
+        _scatter_df = df_rank[["Squad", "OverallScore_squad", "LeagueRank"]].copy()
+        if "Comp" in df_rank.columns:
+            _scatter_df["Comp"] = df_rank["Comp"]
+        if "Pts" in df_rank.columns:
+            _scatter_df["Pts"] = df_rank["Pts"]
+        if "GD" in df_rank.columns:
+            _scatter_df["GD"] = df_rank["GD"]
+        if "xGD" in df_rank.columns:
+            _scatter_df["xGD"] = df_rank["xGD"]
+
+        _scatter_df["OverallScore_squad"] = pd.to_numeric(_scatter_df["OverallScore_squad"], errors="coerce")
+        _scatter_df["LeagueRank"]          = pd.to_numeric(_scatter_df["LeagueRank"],          errors="coerce")
+        _scatter_df = _scatter_df.dropna(subset=["OverallScore_squad", "LeagueRank"])
+
+        _selected_team = st.session_state.get("team_scores_selected_team", None)
+        _scatter_df["is_selected"] = _scatter_df["Squad"] == _selected_team
+
+        _n_teams = int(_scatter_df["LeagueRank"].max()) if not _scatter_df.empty else 20
+
+        _tooltip = [
+            alt.Tooltip("Squad:N", title="Team"),
+            alt.Tooltip("OverallScore_squad:Q", title="Squad Score", format=".0f"),
+            alt.Tooltip("LeagueRank:Q", title="League Rank", format=".0f"),
+        ]
+        if "Comp" in _scatter_df.columns:
+            _tooltip.insert(1, alt.Tooltip("Comp:N", title="League"))
+        if "Pts" in _scatter_df.columns:
+            _tooltip.append(alt.Tooltip("Pts:Q", title="Pts", format=".0f"))
+        if "GD" in _scatter_df.columns:
+            _tooltip.append(alt.Tooltip("GD:Q", title="GD", format=".0f"))
+        if "xGD" in _scatter_df.columns:
+            _tooltip.append(alt.Tooltip("xGD:Q", title="xGD", format=".2f"))
+
+        _multi_league = "Comp" in _scatter_df.columns and _scatter_df["Comp"].nunique() > 1
+
+        _base = alt.Chart(_scatter_df).encode(
+            x=alt.X(
+                "OverallScore_squad:Q",
+                title="Squad Score",
+                axis=alt.Axis(format=".0f"),
+            ),
+            y=alt.Y(
+                "LeagueRank:Q",
+                title="League Rank  (1 = Champion)",
+                scale=alt.Scale(domain=[_n_teams + 0.5, 0.5]),
+                axis=alt.Axis(format=".0f", tickMinStep=1),
+            ),
+            tooltip=_tooltip,
+        )
+
+        _trend = (
+            _base.transform_regression("OverallScore_squad", "LeagueRank")
+            .mark_line(strokeDash=[6, 6], strokeWidth=1.5, opacity=0.30, color="#E5E7EB")
+        )
+
+        if _multi_league:
+            _league_color_map = {
+                "eng Premier League": "#38BDF8",
+                "es La Liga":         "#FACC15",
+                "de Bundesliga":      "#FB923C",
+                "it Serie A":         "#4ADE80",
+                "fr Ligue 1":         "#C084FC",
+            }
+            _present = sorted(_scatter_df["Comp"].dropna().unique().tolist())
+            _color_domain = _present
+            _color_range  = [_league_color_map.get(c, "#9CA3AF") for c in _present]
+
+            _dots = (
+                _base.mark_circle(size=70, opacity=0.75)
+                .encode(
+                    color=alt.Color(
+                        "Comp:N",
+                        title="League",
+                        scale=alt.Scale(domain=_color_domain, range=_color_range),
+                        legend=alt.Legend(labelColor="#E5E7EB", titleColor="#E5E7EB"),
+                    ),
+                    size=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value(160),
+                        alt.value(60),
+                    ),
+                    stroke=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value("#FFFFFF"),
+                        alt.value(None),
+                    ),
+                    strokeWidth=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value(2),
+                        alt.value(0),
+                    ),
+                )
+            )
+        else:
+            _dots = (
+                _base.mark_circle(opacity=0.80)
+                .encode(
+                    color=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value("#FFFFFF"),
+                        alt.value(VALUE_COLOR),
+                    ),
+                    size=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value(160),
+                        alt.value(65),
+                    ),
+                    stroke=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value("#FFFFFF"),
+                        alt.value(None),
+                    ),
+                    strokeWidth=alt.condition(
+                        alt.datum.is_selected,
+                        alt.value(2),
+                        alt.value(0),
+                    ),
+                )
+            )
+
+        # Label only the selected team
+        _labels = (
+            _base.transform_filter(alt.datum.is_selected)
+            .mark_text(align="left", dx=8, dy=-6, fontSize=11, fontWeight="bold", color="#FFFFFF")
+            .encode(text="Squad:N")
+        )
+
+        _rank_chart = (
+            (_trend + _dots + _labels)
+            .properties(height=340)
+            .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", gridColor="#1F2937")
+            .configure_axisX(grid=False)
+            .configure_view(strokeWidth=0)
+        )
+
+        altair_dl(_rank_chart, "squad_score_vs_rank", use_container_width=True)
 
     squads = df_rank["Squad"].tolist()
     if not squads:
@@ -2936,7 +3101,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     st.session_state["team_scores_selected_team"] = team_sel
 
     st.markdown("---")
-    st.markdown("### Squad detail")
+    st.markdown(f"### Squad detail  ·  {_ctx}")
 
     if team_sel == placeholder_label:
         st.info("Please select a team to see squad details.")
@@ -3038,7 +3203,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     # ========== 2) SQUAD RADAR ==========
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown(f"#### Attacking radar: {team_sel} ({season})")
+        st.markdown(f"#### Attacking radar: {team_sel}  ·  {_ctx}")
         render_team_radar_statsbomb_pretty(
             season=season,
             df_squad_season=df_squad_season,
@@ -3047,7 +3212,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             radar_type="Offense",
         )
     with col2:
-        st.markdown(f"#### Defending radar: {team_sel} ({season})")
+        st.markdown(f"#### Defending radar: {team_sel}  ·  {_ctx}")
         render_team_radar_statsbomb_pretty(
             season=season,
             df_squad_season=df_squad_season,
@@ -3057,7 +3222,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         )
 
     # ========== 3) TEAM IN LEAGUE CONTEXT (BAR) ==========
-    st.markdown("#### Team in Big 5 League context")
+    st.markdown(f"#### Team in league context  ·  {_ctx}")
     metric_values = df_squad_season[["Squad", metric_col]].dropna().copy()
 
     if not metric_values.empty:
@@ -3084,12 +3249,12 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB")
             .configure_view(strokeWidth=0)
         )
-        st.altair_chart(chart, use_container_width=True)
+        altair_dl(chart, "team_league_context", use_container_width=True)
     else:
         st.info("Not enough data to show the league context chart.")
 
     # ========== 4) TOP CONTRIBUTORS ==========
-    st.markdown("#### Top contributors within the squad")
+    st.markdown(f"#### Top contributors within the squad  ·  {_ctx}")
     st.markdown(
         "<p style='font-size:0.85rem; opacity:0.8; margin-top:0.6rem;'>"
         "Impact share is the share of minutes-weighted season score within this squad."
@@ -3246,7 +3411,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         with col:
             st_html(card_html, height=240)
 
-    st.altair_chart(contrib_chart, use_container_width=True)
+    altair_dl(contrib_chart, "squad_contributors", use_container_width=True)
 
     # ========== 5) SQUAD DEVELOPMENT OVER SEASONS ==========
     st.markdown("#### Squad development over seasons")
@@ -3303,7 +3468,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         .configure_view(strokeWidth=0)
     )
 
-    st.altair_chart(hist_chart, use_container_width=True)
+    altair_dl(hist_chart, "squad_development", use_container_width=True)
 
 
 # -------------------------------------------------------------------
@@ -3378,6 +3543,21 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
 
     df_gems = df_gems.sort_values("ValueForMoney", ascending=False)
 
+    _LEAGUE_SHORT_G = {
+        "eng Premier League": "Premier League",
+        "es La Liga":         "La Liga",
+        "de Bundesliga":      "Bundesliga",
+        "it Serie A":         "Serie A",
+        "fr Ligue 1":         "Ligue 1",
+    }
+    if sel_leagues and len(sel_leagues) == 1:
+        _gems_league_label = _LEAGUE_SHORT_G.get(sel_leagues[0], sel_leagues[0])
+    elif sel_leagues and len(sel_leagues) < len(_all_leagues):
+        _gems_league_label = "Multiple leagues"
+    else:
+        _gems_league_label = "All Big 5"
+    _ctx_gems = f"{season}  ·  {_gems_league_label}"
+
     # ── Gem Score (1–10 percentile-based efficiency rating) ──────────────────
     pct = df_gems["ValueForMoney"].rank(pct=True)   # 1.0 = best
     df_gems["GemScore"] = (pct * 9 + 1).round(1)
@@ -3402,7 +3582,7 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
     if "Market Value (€M)" in df_show.columns:
         df_show["Market Value (€M)"] = df_show["Market Value (€M)"].round(1)
 
-    st.markdown(f"### Top {len(df_show)} Hidden Gems — {season}")
+    st.markdown(f"### Top {len(df_show)} Hidden Gems  ·  {_ctx_gems}")
     st.caption("Click a row to open the player profile · Gem Score = score-to-market-value efficiency, ranked 1–10 within the current selection")
     gems_event = st.dataframe(
         df_show,
@@ -3437,7 +3617,7 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
     )
 
     # ── Quadrant Chart: Score vs Market Value ─────────────────────────────────
-    st.markdown("### Score vs. Market Value")
+    st.markdown(f"### Score vs. Market Value  ·  {_ctx_gems}")
     import plotly.graph_objects as go
 
     def _strip_icon(band: str) -> str:
@@ -3581,7 +3761,7 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
             dragmode="pan",
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        plotly_dl(fig, "hidden_gems_scatter", use_container_width=True)
 
 
 # -------------------------------------------------------------------
@@ -3731,7 +3911,7 @@ def render_player_comparison(df_all: pd.DataFrame, df_valuations: pd.DataFrame) 
                 .configure_view(strokeWidth=0)
                 .configure_axis(grid=False, domain=True)
             )
-            st.altair_chart(bar, use_container_width=True)
+            altair_dl(bar, "comparison_bar", use_container_width=True)
 
     with tab_deepdive:
         # ── Pizza charts ──────────────────────────────────────────────
@@ -3757,12 +3937,12 @@ def render_player_comparison(df_all: pd.DataFrame, df_valuations: pd.DataFrame) 
                 st.markdown(f"**{p1_name}**")
                 fig1 = render_pizza_chart(df_features, df_feat_p1, role1, season)
                 if fig1 is not None:
-                    st.pyplot(fig1, use_container_width=True)
+                    pyplot_dl(fig1, "comparison_pizza_p1", use_container_width=True)
             with col_pz2:
                 st.markdown(f"**{p2_name}**")
                 fig2 = render_pizza_chart(df_features, df_feat_p2, role2, season)
                 if fig2 is not None:
-                    st.pyplot(fig2, use_container_width=True)
+                    pyplot_dl(fig2, "comparison_pizza_p2", use_container_width=True)
 
         # ── Metrics table ─────────────────────────────────────────────
         st.markdown("### Key Metrics")
@@ -4471,12 +4651,12 @@ def main():
                     fig = render_pizza_chart(df_features_season, df_feat_player, role, season)
                     if fig is not None:
                         pizza_fig_for_pdf = fig
-                        st.pyplot(fig, use_container_width=True)
+                        pyplot_dl(fig, "player_pizza", use_container_width=True)
 
                 with col_scatter:
                     scatter_chart = render_role_scatter(df_features_season, df_feat_player, role)
                     if scatter_chart is not None:
-                        st.altair_chart(scatter_chart, use_container_width=True)
+                        altair_dl(scatter_chart, "player_scatter", use_container_width=True)
                         scatter_df_all_pdf    = df_features_season
                         scatter_df_player_pdf = df_feat_player
 
@@ -4524,7 +4704,7 @@ def main():
                     fig = render_career_pizza_chart(player, role, player_seasons)
                     if fig is not None:
                         pizza_fig_for_pdf = fig
-                        st.pyplot(fig, use_container_width=True)
+                        pyplot_dl(fig, "career_pizza", use_container_width=True)
                 with col_career_scatter:
                     # Career scatter: show score distribution vs peers (all seasons)
                     if "Season" in df_player_all.columns:
@@ -4542,7 +4722,7 @@ def main():
                             df_career_player = df_career_feat[df_career_feat["Player"] == player].copy()
                             scatter_chart = render_role_scatter(df_career_feat, df_career_player, role)
                             if scatter_chart is not None:
-                                st.altair_chart(scatter_chart, use_container_width=True)
+                                altair_dl(scatter_chart, "player_scatter_career", use_container_width=True)
                                 scatter_df_all_pdf    = df_career_feat
                                 scatter_df_player_pdf = df_career_player
 
@@ -4751,7 +4931,7 @@ def main():
                 .configure_view(strokeWidth=0)
             )
 
-            st.altair_chart(chart, use_container_width=True)
+            altair_dl(chart, "player_age_curve", use_container_width=True)
 
             # ── Age curve ─────────────────────────────────────────────────
             render_age_curve(df_all, player, role or "MF", get_primary_score_and_band, VALUE_COLOR)
@@ -4796,7 +4976,7 @@ def main():
                             )
                             .configure_view(strokeWidth=0)
                         )
-                        st.altair_chart(val_chart, use_container_width=True)
+                        altair_dl(val_chart, "player_value_chart", use_container_width=True)
 
         return
 
@@ -4818,6 +4998,7 @@ def main():
         df_view = df_all[df_all["Season"] == season].copy()
 
         # League filter
+        nation_sel = "All"
         if "Comp" in df_view.columns:
             nations = sorted(df_view["Comp"].dropna().unique())
             nation_options = ["All"] + nations
@@ -4839,6 +5020,7 @@ def main():
                 df_view = df_view[df_view["Comp"] == nation_sel]
 
         # Club filter
+        club_sel = "All"
         if "Squad" in df_view.columns:
             clubs = sorted(df_view["Squad"].dropna().unique())
             club_options = ["All"] + clubs
@@ -4858,6 +5040,20 @@ def main():
 
             if club_sel != "All":
                 df_view = df_view[df_view["Squad"] == club_sel]
+
+        _LEAGUE_SHORT_R = {
+            "eng Premier League": "Premier League",
+            "es La Liga":         "La Liga",
+            "de Bundesliga":      "Bundesliga",
+            "it Serie A":         "Serie A",
+            "fr Ligue 1":         "Ligue 1",
+        }
+        if club_sel != "All":
+            _ctx_rankings = f"{season}  ·  {club_sel}"
+        elif nation_sel != "All":
+            _ctx_rankings = f"{season}  ·  {_LEAGUE_SHORT_R.get(nation_sel, nation_sel)}"
+        else:
+            _ctx_rankings = f"{season}  ·  All Big 5"
 
         # Position filter
         if "Pos" in df_view.columns:
@@ -5002,8 +5198,9 @@ def main():
             st.rerun()
 
         if chart_main is not None:
-            bar_event = st.plotly_chart(
+            bar_event = plotly_dl(
                 chart_main,
+                "rankings_bar",
                 use_container_width=True,
                 on_select="rerun",
                 key="rankings_bar_chart",
@@ -5035,11 +5232,14 @@ def main():
         beeswarm_fig = render_score_age_beeswarm(
             df_all_filtered=df_view,
             df_top=df_top,
+            season=season,
+            comp_label=_ctx_rankings.split("  ·  ", 1)[1] if "  ·  " in _ctx_rankings else None,
         )
 
         if beeswarm_fig is not None:
-            beeswarm_event = st.plotly_chart(
+            beeswarm_event = plotly_dl(
                 beeswarm_fig,
+                "rankings_beeswarm",
                 use_container_width=True,
                 on_select="rerun",
                 key="rankings_beeswarm_chart",
@@ -5063,7 +5263,7 @@ def main():
 
         band_hist = render_band_histogram(df_view, season=season)
         if band_hist is not None:
-            st.altair_chart(band_hist, use_container_width=True)
+            altair_dl(band_hist, "band_distribution", use_container_width=True)
 
         return
 

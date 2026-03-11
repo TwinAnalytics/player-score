@@ -7,6 +7,8 @@ Teal line + dots  — selected player's actual score at each age.
 
 from __future__ import annotations
 
+from src.charts.download_utils import altair_dl
+
 from typing import Callable
 
 import altair as alt
@@ -126,5 +128,5 @@ def render_age_curve(
     )
 
     st.markdown("#### Age curve")
-    st.altair_chart(chart, use_container_width=True)
+    altair_dl(chart, "player_age_curve_peers", use_container_width=True)
     st.caption("— Grey dashed: median for role peers  ·  Teal: selected player")

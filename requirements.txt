@@ -17,3 +17,5 @@ kaggle==1.7.4.5
 rapidfuzz==3.12.2
 fpdf2==2.8.3
 plotly==6.5.2
+vl-convert-python>=1.7.0
+kaleido>=0.2.1

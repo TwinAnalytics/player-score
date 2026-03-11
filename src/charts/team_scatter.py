@@ -5,6 +5,8 @@ import pandas as pd
 import altair as alt
 import streamlit as st
 
+from src.charts.download_utils import altair_dl
+
 
 def _safe_numeric(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
     for c in cols:
@@ -26,6 +28,7 @@ def render_team_scatter_under_table(
     value_color: str = "#00B8A9",
     x_domain=(250, 600),
     y_domain=(0, 3),
+    ctx: str | None = None,
 ):
     """
     Single scatter (under league table):
@@ -128,8 +131,9 @@ def render_team_scatter_under_table(
         .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", grid=False, domain=True)
     )
 
-    st.markdown("### Score vs context")
-    st.altair_chart(chart, use_container_width=True)
+    _title_ctx = f"  ·  {ctx}" if ctx else ""
+    st.markdown(f"### Score vs context{_title_ctx}")
+    altair_dl(chart, "score_vs_context", use_container_width=True)
 
     st.markdown(
         "<div style='margin-top:-0.4rem; font-size:0.75rem; color:#9CA3AF;'>"
@@ -239,6 +243,7 @@ def render_budget_scatter(
     df_rank: pd.DataFrame,
     *,
     value_color: str = "#00B8A9",
+    ctx: str | None = None,
 ):
     """
     Scatter: x = TotalMarketValue_squad (€M), y = OverallScore_squad.
@@ -296,8 +301,9 @@ def render_budget_scatter(
         .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", grid=False, domain=True)
     )
 
-    st.markdown("### Budget vs Squad Score")
-    st.altair_chart(chart, use_container_width=True)
+    _title_ctx = f"  ·  {ctx}" if ctx else ""
+    st.markdown(f"### Budget vs Squad Score{_title_ctx}")
+    altair_dl(chart, "budget_vs_squad_score", use_container_width=True)
 
     st.markdown(
         "<div style='margin-top:-0.4rem; font-size:0.75rem; color:#9CA3AF;'>"
