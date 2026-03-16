@@ -3528,6 +3528,20 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
         "Position", _all_pos, default=_all_pos, key="gems_pos"
     )
 
+    _age_col_present = "Age" in df.columns and df["Age"].notna().any()
+    if _age_col_present:
+        _ages = pd.to_numeric(df["Age"], errors="coerce").dropna()
+        _age_min_data = int(_ages.min()) if not _ages.empty else 15
+        _age_max_data = int(_ages.max()) if not _ages.empty else 40
+        age_range = st.sidebar.slider(
+            "Age range",
+            min_value=_age_min_data,
+            max_value=_age_max_data,
+            value=(_age_min_data, _age_max_data),
+            step=1,
+            key="gems_age_range",
+        )
+
     df_gems = df[df["MainScore"] >= min_score].copy()
     df_gems = df_gems[df_gems["MarketValue_M"] <= max_mv].copy()
     if "90s" in df_gems.columns:
@@ -3536,6 +3550,9 @@ def render_hidden_gems(df_all: pd.DataFrame, df_valuations: pd.DataFrame) -> Non
         df_gems = df_gems[df_gems["Comp"].isin(sel_leagues)]
     if sel_pos and "Pos" in df_gems.columns:
         df_gems = df_gems[df_gems["Pos"].isin(sel_pos)]
+    if _age_col_present:
+        _age_num = pd.to_numeric(df_gems["Age"], errors="coerce")
+        df_gems = df_gems[_age_num.between(age_range[0], age_range[1])]
 
     if df_gems.empty:
         st.warning("No players match the current filters. Try relaxing the criteria.")
