@@ -2685,7 +2685,7 @@ def render_team_radar_statsbomb_pretty(
         )
 
     # In Streamlit anzeigen
-    pyplot_dl(fig, "team_radar")
+    pyplot_dl(fig, f"team_radar_{radar_type.lower()}")
 
 # ---------------- TEAM SCORES MAIN VIEW (5 MODULE) ---------------- #
 def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big5: pd.DataFrame) -> None:
