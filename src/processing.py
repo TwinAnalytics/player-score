@@ -69,6 +69,12 @@ DEFAULT_PER90_COLS: list[str] = [
     "Blocks_stats_defense",
     "Fls",
     "Err",
+    # Workrate / Intensity
+    "Recov",                   # loose ball recoveries
+    "Carries",                 # total ball carries
+    "PrgDist_stats_possession", # progressive carry distance
+    "Won",                     # aerial duels won
+    "Tkl+Int",                 # combined tackles + interceptions (pressing proxy)
 
     # Zonen-Touches
     "Def Pen",

@@ -11,6 +11,7 @@ from src.scoring import (
     compute_off_scores,
     compute_mid_scores,
     compute_def_scores,
+    compute_intensity_scores,
 )
 
 # ---------------------------------------------------------------------------
@@ -138,6 +139,7 @@ def compute_all_scores(
     df_off = compute_off_scores(df_score)
     df_mf = compute_mid_scores(df_score)
     df_def = compute_def_scores(df_score)
+    df_int = compute_intensity_scores(df_score)
 
     # Basis-Infos pro Spieler/Rolle
     base_cols = [c for c in ["Player", "Squad", "Comp", "Pos", "Age", "Min", "90s"] if c in df.columns]
@@ -158,6 +160,10 @@ def compute_all_scores(
     if not df_def.empty:
         dfs_to_merge.append(
             df_def[["Player", "Squad", "Pos", "DefScore_abs", "DefBand"]]
+        )
+    if not df_int.empty:
+        dfs_to_merge.append(
+            df_int[["Player", "Squad", "Pos", "IntensityScore_abs", "IntensityBand"]]
         )
 
     df_all = reduce(

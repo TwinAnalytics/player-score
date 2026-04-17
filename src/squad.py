@@ -13,6 +13,7 @@ SQUAD_SCORE_COLS: List[str] = [
     "OffScore_abs",
     "MidScore_abs",
     "DefScore_abs",
+    "IntensityScore_abs",
 ]
 
 

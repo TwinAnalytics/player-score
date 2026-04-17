@@ -42,9 +42,10 @@ SLICE_COLOR = "cornflowerblue"
 VALUE_COLOR = "#00B8A9"
 
 # drei Töne davon für die Pizza-Gruppen
-COLOR_POSSESSION = "#80F5E3"   
-COLOR_ATTACKING  = "#00B8A9"   
-COLOR_DEFENDING  = "#006058"   
+COLOR_POSSESSION = "#80F5E3"
+COLOR_ATTACKING  = "#00B8A9"
+COLOR_DEFENDING  = "#006058"
+COLOR_WORKRATE   = "#3DD9CC"   # mid-teal — physical intensity
 
 BIG5_COMPS = {
     "eng Premier League",
@@ -790,6 +791,9 @@ def render_pizza_chart(
         ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
         ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
         ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
+
+        ("Workrate", ["Recov_Per90", "Recov/90"], "Ball\nRecoveries"),
+        ("Workrate", ["Carries_Per90", "Carries/90"], "Ball\nCarries"),
     ]
 
     params: list[str] = []
@@ -826,6 +830,7 @@ def render_pizza_chart(
         "Possession": COLOR_POSSESSION,
         "Attacking": COLOR_ATTACKING,
         "Defending": COLOR_DEFENDING,
+        "Workrate": COLOR_WORKRATE,
     }
     slice_colors = [group_color_map[g] for g in groups]
 
@@ -900,6 +905,7 @@ def render_pizza_chart(
         mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
         mpatches.Patch(color=COLOR_ATTACKING, label="Attacking"),
         mpatches.Patch(color=COLOR_DEFENDING, label="Defending"),
+        mpatches.Patch(color=COLOR_WORKRATE, label="Workrate"),
     ]
     leg = fig.legend(
         handles=handles,
@@ -996,6 +1002,9 @@ def render_career_pizza_chart(
         ("Defending", ["Int_Per90", "Int/90"], "Interceptions"),
         ("Defending", ["Blocks_stats_defense_Per90", "Blocks_stats_defense"], "Blocks"),
         ("Defending", ["Clr_Per90", "Clr/90"], "Clearances"),
+
+        ("Workrate", ["Recov_Per90", "Recov/90"], "Ball\nRecoveries"),
+        ("Workrate", ["Carries_Per90", "Carries/90"], "Ball\nCarries"),
     ]
 
     params: list[str] = []
@@ -1045,6 +1054,7 @@ def render_career_pizza_chart(
         "Possession": COLOR_POSSESSION,
         "Attacking": COLOR_ATTACKING,
         "Defending": COLOR_DEFENDING,
+        "Workrate": COLOR_WORKRATE,
     }
     slice_colors = [group_color_map[g] for g in groups]
 
@@ -1119,6 +1129,7 @@ def render_career_pizza_chart(
         mpatches.Patch(color=COLOR_POSSESSION, label="Possession"),
         mpatches.Patch(color=COLOR_ATTACKING, label="Attacking"),
         mpatches.Patch(color=COLOR_DEFENDING, label="Defending"),
+        mpatches.Patch(color=COLOR_WORKRATE, label="Workrate"),
     ]
     leg = fig.legend(
         handles=handles,
@@ -2813,7 +2824,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
             )
 
     # ----- Numeric + rounding prep -----
-    for col in ["OverallScore_squad", "OffScore_squad", "MidScore_squad", "DefScore_squad"]:
+    for col in ["OverallScore_squad", "OffScore_squad", "MidScore_squad", "DefScore_squad", "IntensityScore_squad"]:
         if col in df_squad_season.columns:
             df_squad_season[col] = pd.to_numeric(df_squad_season[col], errors="coerce")
 
@@ -2835,10 +2846,11 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     # Scores -> Integer UI columns
     for src, tgt in [
-        ("OverallScore_squad", "Squad Score"),
-        ("OffScore_squad",     "Offense"),
-        ("MidScore_squad",     "Midfield"),
-        ("DefScore_squad",     "Defense"),
+        ("OverallScore_squad",     "Squad Score"),
+        ("OffScore_squad",         "Offense"),
+        ("MidScore_squad",         "Midfield"),
+        ("DefScore_squad",         "Defense"),
+        ("IntensityScore_squad",   "Intensity"),
     ]:
 
         if src in df_rank.columns:
@@ -2883,6 +2895,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
         "Offense",
         "Midfield",
         "Defense",
+        "Intensity",
         "Age (avg)",
         "Minutes (total)",
         "Players",
@@ -2893,9 +2906,13 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     def _build_crest_table_html(df: pd.DataFrame, cols: list[str]) -> str:
         header_cells = ""
-        for c in cols:
+        for i, c in enumerate(cols):
             align = "left" if c == "Squad" else "center"
-            header_cells += f'<th style="padding:6px 10px;text-align:{align};font-weight:600;border-bottom:2px solid #444;">{c}</th>'
+            header_cells += (
+                f'<th onclick="sortTable({i})" style="padding:6px 10px;text-align:{align};'
+                f'font-weight:600;border-bottom:2px solid #444;cursor:pointer;user-select:none;" '
+                f'title="Click to sort">{c} <span id="arrow_{i}"></span></th>'
+            )
 
         body_rows = ""
         for _, r in df.iterrows():
@@ -2907,23 +2924,51 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
                     b64 = get_crest_b64(val_str)
                     img_tag = (
                         f'<img src="{b64}" style="width:20px;height:20px;object-fit:contain;margin-right:6px;vertical-align:middle;">'
-                        if b64
-                        else ""
+                        if b64 else ""
                     )
                     cells += f'<td style="padding:6px 10px;white-space:nowrap;">{img_tag}{val_str}</td>'
                 else:
                     cells += f'<td style="padding:6px 10px;text-align:center;">{val_str}</td>'
             body_rows += f'<tr style="border-bottom:1px solid #333;">{cells}</tr>'
 
+        js = """
+<script>
+var _sortDir = {};
+function sortTable(col) {
+    var table = document.getElementById('ranktable');
+    var tbody = table.querySelector('tbody');
+    var rows  = Array.from(tbody.querySelectorAll('tr'));
+    var asc   = !_sortDir[col];
+    _sortDir  = {};
+    _sortDir[col] = asc;
+
+    // update arrows
+    document.querySelectorAll('[id^="arrow_"]').forEach(function(el){ el.textContent = ''; });
+    document.getElementById('arrow_' + col).textContent = asc ? ' ▲' : ' ▼';
+
+    rows.sort(function(a, b) {
+        var av = a.cells[col].textContent.trim();
+        var bv = b.cells[col].textContent.trim();
+        var an = parseFloat(av.replace(/[^0-9.\\-]/g, ''));
+        var bn = parseFloat(bv.replace(/[^0-9.\-]/g, ''));
+        if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
+        return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+    });
+    rows.forEach(function(r){ tbody.appendChild(r); });
+}
+</script>
+"""
+
         return (
-            '<div style="overflow-x:auto;">'
-            '<table style="width:100%;border-collapse:collapse;background:#1e1e1e;color:#f0f0f0;font-size:13px;font-family:system-ui,sans-serif;">'
-            f'<thead><tr style="background:#2a2a2a;">{header_cells}</tr></thead>'
+            js +
+            '<div style="overflow-x:auto;overflow-y:auto;max-height:420px;">'
+            '<table id="ranktable" style="width:100%;border-collapse:collapse;background:#1e1e1e;color:#f0f0f0;font-size:13px;font-family:system-ui,sans-serif;">'
+            f'<thead><tr style="position:sticky;top:0;background:#2a2a2a;z-index:1;">{header_cells}</tr></thead>'
             f'<tbody>{body_rows}</tbody>'
             '</table></div>'
         )
 
-    st.markdown(_build_crest_table_html(df_rank, cols_show), unsafe_allow_html=True)
+    st_html(_build_crest_table_html(df_rank, cols_show), height=450, scrolling=False)
 
     # Standard scatter (unter der Tabelle)
     render_team_scatter_under_table(df_rank, value_color=VALUE_COLOR, ctx=_ctx)
@@ -3080,6 +3125,96 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
         altair_dl(_rank_chart, "squad_score_vs_rank", use_container_width=True)
 
+    # ========== INTENSITY vs SQUAD SCORE SCATTER ==========
+    if "IntensityScore_squad" in df_rank.columns and "OverallScore_squad" in df_rank.columns:
+        st.markdown(f"### Intensity vs. Squad Score  ·  {_ctx}")
+        st.markdown(
+            "<p style='font-size:0.85rem; opacity:0.75; margin-top:-0.3rem;'>"
+            "Do teams that work harder also score higher? Top-right: high quality + high intensity. "
+            "Bottom-left: low on both. Teams that diverge reveal tactical identity."
+            "</p>",
+            unsafe_allow_html=True,
+        )
+
+        _int_df = df_rank[["Squad", "IntensityScore_squad", "OverallScore_squad"]].copy()
+        if "Comp" in df_rank.columns:
+            _int_df["Comp"] = df_rank["Comp"]
+        _int_df["IntensityScore_squad"] = pd.to_numeric(_int_df["IntensityScore_squad"], errors="coerce")
+        _int_df["OverallScore_squad"]   = pd.to_numeric(_int_df["OverallScore_squad"],   errors="coerce")
+        _int_df = _int_df.dropna(subset=["IntensityScore_squad", "OverallScore_squad"])
+
+        _selected_team = st.session_state.get("team_scores_selected_team", None)
+        _int_df["is_selected"] = _int_df["Squad"] == _selected_team
+
+        _int_tooltip = [alt.Tooltip("Squad:N", title="Team"),
+                        alt.Tooltip("OverallScore_squad:Q", title="Squad Score", format=".0f"),
+                        alt.Tooltip("IntensityScore_squad:Q", title="Intensity Score", format=".0f")]
+        if "Comp" in _int_df.columns:
+            _int_tooltip.insert(1, alt.Tooltip("Comp:N", title="League"))
+
+        _multi = "Comp" in _int_df.columns and _int_df["Comp"].nunique() > 1
+        _league_color_map = {
+            "eng Premier League": "#38BDF8",
+            "es La Liga":         "#FACC15",
+            "de Bundesliga":      "#FB923C",
+            "it Serie A":         "#4ADE80",
+            "fr Ligue 1":         "#C084FC",
+        }
+
+        _int_base = alt.Chart(_int_df).encode(
+            x=alt.X("IntensityScore_squad:Q", title="Intensity Score",
+                    axis=alt.Axis(format=".0f")),
+            y=alt.Y("OverallScore_squad:Q", title="Squad Score",
+                    axis=alt.Axis(format=".0f")),
+            tooltip=_int_tooltip,
+        )
+
+        _int_trend = (
+            _int_base.transform_regression("IntensityScore_squad", "OverallScore_squad")
+            .mark_line(strokeDash=[6, 6], strokeWidth=1.5, opacity=0.30, color="#E5E7EB")
+        )
+
+        if _multi:
+            _present = sorted(_int_df["Comp"].dropna().unique().tolist())
+            _int_dots = (
+                _int_base.mark_circle(opacity=0.80)
+                .encode(
+                    color=alt.Color("Comp:N", title="League",
+                        scale=alt.Scale(domain=_present,
+                                        range=[_league_color_map.get(c, "#9CA3AF") for c in _present]),
+                        legend=alt.Legend(labelColor="#E5E7EB", titleColor="#E5E7EB")),
+                    size=alt.condition(alt.datum.is_selected, alt.value(160), alt.value(65)),
+                    stroke=alt.condition(alt.datum.is_selected, alt.value("#FFFFFF"), alt.value(None)),
+                    strokeWidth=alt.condition(alt.datum.is_selected, alt.value(2), alt.value(0)),
+                )
+            )
+        else:
+            _int_dots = (
+                _int_base.mark_circle(opacity=0.80)
+                .encode(
+                    color=alt.condition(alt.datum.is_selected, alt.value("#FFFFFF"), alt.value(COLOR_WORKRATE)),
+                    size=alt.condition(alt.datum.is_selected, alt.value(160), alt.value(65)),
+                    stroke=alt.condition(alt.datum.is_selected, alt.value("#FFFFFF"), alt.value(None)),
+                    strokeWidth=alt.condition(alt.datum.is_selected, alt.value(2), alt.value(0)),
+                )
+            )
+
+        _int_labels = (
+            _int_base.transform_filter(alt.datum.is_selected)
+            .mark_text(align="left", dx=8, dy=-6, fontSize=11, fontWeight="bold", color="#FFFFFF")
+            .encode(text="Squad:N")
+        )
+
+        _int_chart = (
+            (_int_trend + _int_dots + _int_labels)
+            .properties(height=340)
+            .configure_axis(labelColor="#E5E7EB", titleColor="#E5E7EB", gridColor="#1F2937")
+            .configure_axisX(grid=False)
+            .configure_view(strokeWidth=0)
+        )
+
+        altair_dl(_int_chart, "intensity_vs_squad_score", use_container_width=True)
+
     squads = df_rank["Squad"].tolist()
     if not squads:
         return
@@ -3110,10 +3245,11 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     df_team_row = df_rank[df_rank["Squad"] == team_sel].iloc[0]
 
     # ---------- Squad Summary Card ----------
-    overall_val = pd.to_numeric(df_team_row.get("OverallScore_squad", np.nan), errors="coerce")
-    off_val     = pd.to_numeric(df_team_row.get("OffScore_squad",     np.nan), errors="coerce")
-    mid_val     = pd.to_numeric(df_team_row.get("MidScore_squad",     np.nan), errors="coerce")
-    def_val     = pd.to_numeric(df_team_row.get("DefScore_squad",     np.nan), errors="coerce")
+    overall_val = pd.to_numeric(df_team_row.get("OverallScore_squad",     np.nan), errors="coerce")
+    off_val     = pd.to_numeric(df_team_row.get("OffScore_squad",         np.nan), errors="coerce")
+    mid_val     = pd.to_numeric(df_team_row.get("MidScore_squad",         np.nan), errors="coerce")
+    def_val     = pd.to_numeric(df_team_row.get("DefScore_squad",         np.nan), errors="coerce")
+    int_val     = pd.to_numeric(df_team_row.get("IntensityScore_squad",   np.nan), errors="coerce")
 
     rank_val    = pd.to_numeric(df_team_row.get("Rank", np.nan), errors="coerce")
     age_val     = pd.to_numeric(df_team_row.get("Age_squad_mean", np.nan), errors="coerce")
@@ -3172,7 +3308,7 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
           {fmt_score(overall_val)}
         </div>
         <div style="margin-top:0.15rem; font-size:0.75rem; color:#9CA3AF;">
-          Off {fmt_score(off_val)} · Mid {fmt_score(mid_val)} · Def {fmt_score(def_val)}
+          Off {fmt_score(off_val)} · Mid {fmt_score(mid_val)} · Def {fmt_score(def_val)} · Int {fmt_score(int_val)}
         </div>
         {big5_line}
       </div>
@@ -3423,16 +3559,17 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
 
     df_team_hist = df_team_hist.sort_values("Season")
 
-    value_cols = [c for c in ["OffScore_squad", "MidScore_squad", "DefScore_squad", "OverallScore_squad"] if c in df_team_hist.columns]
+    value_cols = [c for c in ["OffScore_squad", "MidScore_squad", "DefScore_squad", "IntensityScore_squad", "OverallScore_squad"] if c in df_team_hist.columns]
     if not value_cols:
         st.info("No squad score columns available for historical development chart.")
         return
 
     rename_map = {
-        "OffScore_squad": "Offense Score",
-        "MidScore_squad": "Midfield Score",
-        "DefScore_squad": "Defense Score",
-        "OverallScore_squad": "Team Score",
+        "OffScore_squad":       "Offense Score",
+        "MidScore_squad":       "Midfield Score",
+        "DefScore_squad":       "Defense Score",
+        "IntensityScore_squad": "Intensity Score",
+        "OverallScore_squad":   "Team Score",
     }
 
     for src in value_cols:
@@ -3446,8 +3583,8 @@ def render_team_scores_view(df_all: pd.DataFrame, df_squad: pd.DataFrame, df_big
     )
     df_long["Component"] = df_long["Component_raw"].map(rename_map)
 
-    color_domain = ["Team Score", "Offense Score", "Midfield Score", "Defense Score"]
-    color_range = [VALUE_COLOR, "#61abd2", "#f59e0b", "#ffffff"]
+    color_domain = ["Team Score", "Offense Score", "Midfield Score", "Defense Score", "Intensity Score"]
+    color_range  = [VALUE_COLOR, "#61abd2", "#f59e0b", "#ffffff", COLOR_WORKRATE]
 
     hist_chart = (
         alt.Chart(df_long)
@@ -3891,6 +4028,7 @@ def render_player_comparison(df_all: pd.DataFrame, df_valuations: pd.DataFrame) 
             "Offense": ("OffScore_abs", "OffScore"),
             "Midfield": ("MidScore_abs", "MidScore"),
             "Defense": ("DefScore_abs", "DefScore"),
+            "Intensity": ("IntensityScore_abs", "IntensityScore_abs"),
             "Overall": ("MainScore", "MainScore"),
         }
 
@@ -4583,13 +4721,14 @@ def main():
             "background:#161B22;border:1px solid #21262D;height:100%;"
         )
 
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4, col5 = st.columns(5)
 
         if profile_view == "Per season":
             main_score_tile = None
             main_band_tile = None
             min_val = None
             comp_val = None
+            intensity_val = None
 
             if not df_player.empty:
                 if "MainScore" in df_player.columns:
@@ -4600,38 +4739,47 @@ def main():
                     min_val = df_player["Min"].iloc[0]
                 if "Comp" in df_player.columns:
                     comp_val = df_player["Comp"].iloc[0]
+                if "IntensityScore_abs" in df_player.columns:
+                    intensity_val = df_player["IntensityScore_abs"].iloc[0]
 
             score_display = f"{main_score_tile:.0f}" if main_score_tile is not None and not pd.isna(main_score_tile) else "n/a"
             band_display = str(main_band_tile).split(" ")[0] if main_band_tile else "n/a"
             min_display = f"{int(min_val):,}'" if min_val is not None and not pd.isna(min_val) else "n/a"
             comp_display = str(comp_val).replace("eng ", "").replace("es ", "").replace("de ", "").replace("it ", "").replace("fr ", "") if comp_val else "n/a"
+            intensity_display = f"{intensity_val:.0f}" if intensity_val is not None and not pd.isna(intensity_val) else "n/a"
 
             with col1:
                 st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Score</div><div style="font-size:2rem;font-weight:800;color:{VALUE_COLOR};">{score_display}</div></div>', unsafe_allow_html=True)
             with col2:
-                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Band</div><div style="font-size:1rem;font-weight:700;color:#F9FAFB;">{band_display}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Band</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{band_display}</div></div>', unsafe_allow_html=True)
             with col3:
                 st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Minutes</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{min_display}</div></div>', unsafe_allow_html=True)
             with col4:
-                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">League</div><div style="font-size:0.95rem;font-weight:700;color:#F9FAFB;">{comp_display}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">League</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{comp_display}</div></div>', unsafe_allow_html=True)
+            with col5:
+                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Intensity</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{intensity_display}</div></div>', unsafe_allow_html=True)
 
         else:
             career_score, career_band = compute_career_main_score(df_player_all)
             total_90s = float(df_player_all["90s"].sum()) if "90s" in df_player_all.columns else 0.0
             n_seasons = int(df_player_all["Season"].nunique()) if "Season" in df_player_all.columns else 0
+            intensity_career = float(df_player_all["IntensityScore_abs"].mean()) if "IntensityScore_abs" in df_player_all.columns else None
 
             score_display = f"{career_score:.0f}" if career_score is not None and not pd.isna(career_score) else "n/a"
             band_display = str(career_band).split(" ")[0] if career_band else "n/a"
             n90s_display = f"{total_90s:.0f}" if total_90s > 0 else "n/a"
+            intensity_display = f"{intensity_career:.0f}" if intensity_career is not None and not pd.isna(intensity_career) else "n/a"
 
             with col1:
                 st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Career Score</div><div style="font-size:2rem;font-weight:800;color:{VALUE_COLOR};">{score_display}</div></div>', unsafe_allow_html=True)
             with col2:
-                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Band</div><div style="font-size:1rem;font-weight:700;color:#F9FAFB;">{band_display}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Band</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{band_display}</div></div>', unsafe_allow_html=True)
             with col3:
                 st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Career 90s</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{n90s_display}</div></div>', unsafe_allow_html=True)
             with col4:
                 st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Seasons</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{n_seasons}</div></div>', unsafe_allow_html=True)
+            with col5:
+                st.markdown(f'<div style="{_tile}"><div style="font-size:0.78rem;color:#6B7280;margin-bottom:0.2rem;">Avg Intensity</div><div style="font-size:1.4rem;font-weight:700;color:#F9FAFB;">{intensity_display}</div></div>', unsafe_allow_html=True)
 
         # ===================== ROLE METRICS =====================
         st.markdown("### Performance profile vs. peers")
@@ -4742,6 +4890,181 @@ def main():
                                 altair_dl(scatter_chart, "player_scatter_career", use_container_width=True)
                                 scatter_df_all_pdf    = df_career_feat
                                 scatter_df_player_pdf = df_career_player
+
+        # ===================== INTENSITY CHARTS =====================
+        st.markdown("### Intensity profile")
+
+        # Grab feature data (per season or career aggregated)
+        _int_feat = pd.DataFrame()
+        if profile_view == "Per season" and not df_features_season.empty:
+            _int_feat = df_features_season.copy()
+            _int_player_row = df_feat_player.copy() if not df_feat_player.empty else pd.DataFrame()
+        elif profile_view == "Career":
+            try:
+                _career_feat_list = []
+                for _s in (df_player_all["Season"].dropna().unique() if "Season" in df_player_all.columns else []):
+                    try:
+                        _df_s = load_feature_table_for_season(str(_s))
+                        if not _df_s.empty:
+                            _df_s["Season"] = _s
+                            _career_feat_list.append(_df_s)
+                    except Exception:
+                        pass
+                if _career_feat_list:
+                    _int_feat = pd.concat(_career_feat_list, ignore_index=True)
+                    _int_player_row = _int_feat[_int_feat["Player"] == player].copy()
+                else:
+                    _int_player_row = pd.DataFrame()
+            except Exception:
+                _int_player_row = pd.DataFrame()
+
+        # ── Chart 2: Intensity Breakdown Bar ──────────────────────────────
+        _intensity_metrics = [
+            ("Recov_Per90",                     "Ball Recoveries"),
+            ("Carries_Per90",                   "Ball Carries"),
+            ("PrgDist_stats_possession_Per90",   "Progressive Distance"),
+            ("Won_Per90",                        "Aerial Duels Won"),
+            ("Tkl+Int_Per90",                    "Tackles + Interceptions"),
+        ]
+
+        if not _int_feat.empty and not _int_player_row.empty and role is not None:
+            _peers = _int_feat[_int_feat["Pos"] == role].copy()
+            if "Comp" in _int_feat.columns:
+                _peers = _peers[_peers["Comp"].isin(BIG5_COMPS)]
+
+            _breakdown_rows = []
+            for col, label in _intensity_metrics:
+                if col not in _int_feat.columns or col not in _int_player_row.columns:
+                    continue
+                peer_vals = pd.to_numeric(_peers[col], errors="coerce").dropna()
+                player_val = pd.to_numeric(_int_player_row[col].iloc[0], errors="coerce") if not _int_player_row.empty else np.nan
+                if peer_vals.empty or pd.isna(player_val):
+                    continue
+                pct = float((peer_vals <= player_val).mean() * 100)
+                _breakdown_rows.append({"Metric": label, "Percentile": pct})
+
+            if _breakdown_rows:
+                _bd_df = pd.DataFrame(_breakdown_rows)
+                _bd_base = alt.Chart(_bd_df)
+
+                _bd_bars = (
+                    _bd_base.mark_bar(cornerRadiusTopRight=4, cornerRadiusBottomRight=4)
+                    .encode(
+                        y=alt.Y("Metric:N", sort=None, axis=alt.Axis(labelColor="#E5E7EB", titleColor="#E5E7EB")),
+                        x=alt.X("Percentile:Q", scale=alt.Scale(domain=[0, 100]),
+                                title="Percentile vs. position peers (Big-5)",
+                                axis=alt.Axis(format=".0f", labelColor="#E5E7EB", titleColor="#E5E7EB")),
+                        color=alt.Color("Percentile:Q",
+                                        scale=alt.Scale(domain=[0, 50, 100],
+                                                        range=["#374151", COLOR_WORKRATE, "#80F5E3"]),
+                                        legend=None),
+                        tooltip=[alt.Tooltip("Metric:N"), alt.Tooltip("Percentile:Q", format=".1f", title="Percentile")],
+                    )
+                )
+
+                _bd_labels = (
+                    _bd_base.mark_text(align="left", dx=4, fontSize=11, color="#E5E7EB", clip=False)
+                    .encode(
+                        y=alt.Y("Metric:N", sort=None),
+                        x=alt.X("Percentile:Q", scale=alt.Scale(domain=[0, 100])),
+                        text=alt.Text("Percentile:Q", format=".0f"),
+                    )
+                )
+
+                _bd_chart = (
+                    (_bd_bars + _bd_labels)
+                    .properties(height=260, title=alt.TitleParams(
+                        text="Intensity breakdown — percentile vs. position peers",
+                        color="#E5E7EB", fontSize=13))
+                    .configure_view(strokeWidth=0, fill="#161B22")
+                    .configure_axis(gridColor="#1F2937")
+                )
+                altair_dl(_bd_chart, "intensity_breakdown", use_container_width=True)
+
+        # ── Chart 3: Intensity vs Role Score scatter ───────────────────────
+        if not _int_feat.empty and role is not None and "IntensityScore_abs" in df_player.columns:
+            from src.pipeline import build_feature_table
+            from src.scoring import compute_intensity_scores
+
+            _sc_df = _int_feat[_int_feat["Pos"] == role].copy()
+            if "Comp" in _sc_df.columns:
+                _sc_df = _sc_df[_sc_df["Comp"].isin(BIG5_COMPS)]
+
+            _role_score_col = {
+                "FW": "OffScore_abs", "Off_MF": "OffScore_abs",
+                "MF": "MidScore_abs",
+                "DF": "DefScore_abs", "Def_MF": "DefScore_abs",
+            }.get(role)
+
+            _season_scores = df_player if profile_view == "Per season" else df_player_all
+
+            if _role_score_col and _role_score_col in _season_scores.columns and "IntensityScore_abs" in _season_scores.columns:
+                # Merge scores into feature table peers
+                _score_lookup = (
+                    df_all[df_all["Pos"] == role][["Player", "Squad", "Season", _role_score_col, "IntensityScore_abs"]]
+                    .dropna(subset=[_role_score_col, "IntensityScore_abs"])
+                )
+                if profile_view == "Per season" and "Season" in _score_lookup.columns:
+                    _score_lookup = _score_lookup[_score_lookup["Season"] == season]
+
+                if not _score_lookup.empty:
+                    _score_lookup = _score_lookup.copy()
+                    _score_lookup["is_player"] = _score_lookup["Player"] == player
+
+                    _player_point = _score_lookup[_score_lookup["Player"] == player]
+
+                    _s3_base = alt.Chart(_score_lookup).encode(
+                        x=alt.X("IntensityScore_abs:Q", title="Intensity Score",
+                                axis=alt.Axis(format=".0f", labelColor="#E5E7EB", titleColor="#E5E7EB")),
+                        y=alt.Y(f"{_role_score_col}:Q",
+                                title={"OffScore_abs": "Offense Score", "MidScore_abs": "Midfield Score",
+                                       "DefScore_abs": "Defense Score"}.get(_role_score_col, "Role Score"),
+                                axis=alt.Axis(format=".0f", labelColor="#E5E7EB", titleColor="#E5E7EB")),
+                        tooltip=[
+                            alt.Tooltip("Player:N"),
+                            alt.Tooltip("Squad:N"),
+                            alt.Tooltip("IntensityScore_abs:Q", title="Intensity", format=".0f"),
+                            alt.Tooltip(f"{_role_score_col}:Q", title="Role Score", format=".0f"),
+                        ],
+                    )
+
+                    _s3_dots = (
+                        _s3_base.mark_circle(opacity=0.55)
+                        .encode(
+                            color=alt.condition(
+                                alt.datum.is_player,
+                                alt.value(VALUE_COLOR),
+                                alt.value("#4B5563"),
+                            ),
+                            size=alt.condition(alt.datum.is_player, alt.value(180), alt.value(40)),
+                            stroke=alt.condition(alt.datum.is_player, alt.value("#FFFFFF"), alt.value(None)),
+                            strokeWidth=alt.condition(alt.datum.is_player, alt.value(2), alt.value(0)),
+                            opacity=alt.condition(alt.datum.is_player, alt.value(1.0), alt.value(0.35)),
+                        )
+                    )
+
+                    _s3_label = (
+                        _s3_base.transform_filter(alt.datum.is_player)
+                        .mark_text(align="left", dx=9, dy=-6, fontSize=11, fontWeight="bold", color=VALUE_COLOR)
+                        .encode(text="Player:N")
+                    )
+
+                    _s3_trend = (
+                        _s3_base.transform_regression("IntensityScore_abs", _role_score_col)
+                        .mark_line(strokeDash=[6, 6], strokeWidth=1.5, opacity=0.25, color="#E5E7EB")
+                    )
+
+                    _s3_chart = (
+                        (_s3_trend + _s3_dots + _s3_label)
+                        .properties(height=340, title=alt.TitleParams(
+                            text=f"Intensity vs. Role Score — {role} peers (Big-5)",
+                            color="#E5E7EB", fontSize=13))
+                        .configure_view(strokeWidth=0, fill="#161B22")
+                        .configure_axis(gridColor="#1F2937")
+                        .configure_axisX(grid=False)
+                    )
+
+                    altair_dl(_s3_chart, "intensity_vs_role_score", use_container_width=True)
 
         # ===================== PDF EXPORT =====================
         if card_row is not None and main_score is not None:

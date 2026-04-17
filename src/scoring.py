@@ -229,54 +229,58 @@ OFF_AM_BENCHMARKS_ABS = {
 # Benchmarks: p95 MF (min 5 90s, Big-5 2024/25)
 # TklW + Int neu – Box-to-box-Arbeit wird jetzt honoriert
 mf_weights_abs = {
-    "Ast_Per90":                          0.18,
-    "xAG_Per90":                          0.15,
-    "G-PK_Per90":                         0.07,
-    "KP_Per90":                           0.17,
-    "PrgP_Per90":                         0.12,
-    "PrgC_Per90":                         0.07,
-    "Mid 3rd_stats_possession_Per90":     0.06,
-    "Att 3rd_stats_possession_Per90":     0.04,
-    "TklW_Per90":                         0.08,
-    "Int_Per90":                          0.06,
+    "Ast_Per90":                              0.17,
+    "xAG_Per90":                              0.14,
+    "G-PK_Per90":                             0.07,
+    "KP_Per90":                               0.16,
+    "PrgP_Per90":                             0.11,
+    "PrgC_Per90":                             0.07,
+    "Mid 3rd_stats_possession_Per90":         0.06,
+    "Att 3rd_stats_possession_Per90":         0.04,
+    "TklW_Per90":                             0.08,
+    "Int_Per90":                              0.06,
+    "PrgDist_stats_possession_Per90":         0.04,  # progressive carry distance
 }
 
 mf_benchmarks_abs = {
-    "Ast_Per90":                          0.22,   # p95=0.223
-    "xAG_Per90":                          0.21,   # p95=0.212
-    "G-PK_Per90":                         0.22,   # p95=0.221
-    "KP_Per90":                           1.9,    # p95=1.907
-    "PrgP_Per90":                         8.1,    # p95=8.106
-    "PrgC_Per90":                         2.4,    # p95=2.439
-    "Mid 3rd_stats_possession_Per90":     52.0,   # p95=52.386
-    "Att 3rd_stats_possession_Per90":     22.5,   # p95=22.647
-    "TklW_Per90":                         2.1,    # p95=2.135 – neu
-    "Int_Per90":                          1.7,    # p95=1.732 – neu
+    "Ast_Per90":                              0.22,   # p95=0.223
+    "xAG_Per90":                              0.21,   # p95=0.212
+    "G-PK_Per90":                             0.22,   # p95=0.221
+    "KP_Per90":                               1.9,    # p95=1.907
+    "PrgP_Per90":                             8.1,    # p95=8.106
+    "PrgC_Per90":                             2.4,    # p95=2.439
+    "Mid 3rd_stats_possession_Per90":         52.0,   # p95=52.386
+    "Att 3rd_stats_possession_Per90":         22.5,   # p95=22.647
+    "TklW_Per90":                             2.1,    # p95=2.135
+    "Int_Per90":                              1.7,    # p95=1.732
+    "PrgDist_stats_possession_Per90":         133.8,  # p95 MF 2024/25
 }
 
 # === DEFENSIVE: DF (Innen-/Außenverteidiger) ===================
 # Benchmarks: p95 DF (min 5 90s, Big-5 2024/25)
 # PrgP_Per90 neu – ballspielende Verteidiger / Außenverteidiger werden honoriert
 DEF_DF_WEIGHTS_ABS = {
-    "TklW_Per90":                         0.28,
-    "Int_Per90":                          0.23,
-    "Blocks_stats_defense_Per90":         0.16,
-    "Clr_Per90":                          0.12,
-    "Def Pen_Per90":                      0.09,
-    "Def 3rd_stats_possession_Per90":     0.06,
-    "Mid 3rd_stats_possession_Per90":     0.04,
-    "PrgP_Per90":                         0.08,
+    "TklW_Per90":                             0.26,
+    "Int_Per90":                              0.22,
+    "Blocks_stats_defense_Per90":             0.15,
+    "Clr_Per90":                              0.11,
+    "Def Pen_Per90":                          0.08,
+    "Def 3rd_stats_possession_Per90":         0.06,
+    "Mid 3rd_stats_possession_Per90":         0.04,
+    "PrgP_Per90":                             0.05,
+    "PrgDist_stats_possession_Per90":         0.03,  # progressive carry distance
 }
 
 DEF_DF_BENCHMARKS_ABS = {
-    "TklW_Per90":                         1.9,    # p95=1.875  (war: 6.0)
-    "Int_Per90":                          1.8,    # p95=1.805  (war: 3.8)
-    "Blocks_stats_defense_Per90":         1.9,    # p95=1.890  (war: 3.0)
-    "Clr_Per90":                          6.9,    # p95=6.841  (war: 9.0)
-    "Def Pen_Per90":                      11.0,   # p95=11.292 (war: 7.5)
-    "Def 3rd_stats_possession_Per90":     39.0,   # p95=38.717 (war: 50.0)
-    "Mid 3rd_stats_possession_Per90":     45.5,   # p95=45.504 (war: 22.0)
-    "PrgP_Per90":                         6.2,    # p95=6.163  – neu
+    "TklW_Per90":                             1.9,    # p95=1.875
+    "Int_Per90":                              1.8,    # p95=1.805
+    "Blocks_stats_defense_Per90":             1.9,    # p95=1.890
+    "Clr_Per90":                              6.9,    # p95=6.841
+    "Def Pen_Per90":                          11.0,   # p95=11.292
+    "Def 3rd_stats_possession_Per90":         39.0,   # p95=38.717
+    "Mid 3rd_stats_possession_Per90":         45.5,   # p95=45.504
+    "PrgP_Per90":                             6.2,    # p95=6.163
+    "PrgDist_stats_possession_Per90":         162.9,  # p95 DF 2024/25
 }
 
 # === DEFENSIVE: Def_MF (Sechser / defensiver Achter) ==========
@@ -508,3 +512,117 @@ def compute_mid_scores(df: pd.DataFrame) -> pd.DataFrame:
 
     return df[df["Pos"] == "MF"].copy()
 
+
+
+# ============================================================================
+# INTENSITY SCORE — physical workrate proxy (position-specific weights)
+# ============================================================================
+# Benchmarks: p95 all outfield Big-5 2024/25 (min 5 90s) — global, same for all positions
+INTENSITY_BENCHMARKS_ABS = {
+    "Recov_Per90":                        6.00,   # p95=6.00
+    "Carries_Per90":                      49.83,  # p95=49.83
+    "PrgDist_stats_possession_Per90":     149.43, # p95=149.43
+    "Won_Per90":                          3.24,   # p95=3.24
+    "Tkl+Int_Per90":                      4.31,   # p95=4.31
+}
+
+# FW: ball-carrying & progressive runs dominate; less pressing duty
+INT_FW_WEIGHTS = {
+    "Carries_Per90":                      0.30,
+    "PrgDist_stats_possession_Per90":     0.30,
+    "Recov_Per90":                        0.20,
+    "Won_Per90":                          0.10,
+    "Tkl+Int_Per90":                      0.10,
+}
+
+# Off_MF: similar to FW but slightly more pressing contribution
+INT_OFF_MF_WEIGHTS = {
+    "Carries_Per90":                      0.27,
+    "PrgDist_stats_possession_Per90":     0.27,
+    "Recov_Per90":                        0.25,
+    "Tkl+Int_Per90":                      0.14,
+    "Won_Per90":                          0.07,
+}
+
+# MF: balanced — box-to-box engine
+INT_MF_WEIGHTS = {
+    "Recov_Per90":                        0.25,
+    "Tkl+Int_Per90":                      0.25,
+    "Carries_Per90":                      0.20,
+    "PrgDist_stats_possession_Per90":     0.20,
+    "Won_Per90":                          0.10,
+}
+
+# Def_MF: pressing & recovery are primary intensity signals
+INT_DEF_MF_WEIGHTS = {
+    "Tkl+Int_Per90":                      0.35,
+    "Recov_Per90":                        0.30,
+    "Won_Per90":                          0.15,
+    "Carries_Per90":                      0.12,
+    "PrgDist_stats_possession_Per90":     0.08,
+}
+
+# DF: aerial duels + pressing + recovery; less progressive carry emphasis
+INT_DF_WEIGHTS = {
+    "Tkl+Int_Per90":                      0.30,
+    "Won_Per90":                          0.25,
+    "Recov_Per90":                        0.25,
+    "Carries_Per90":                      0.10,
+    "PrgDist_stats_possession_Per90":     0.10,
+}
+
+# Map position label → weight dict
+_INTENSITY_WEIGHTS_BY_POS: dict[str, dict[str, float]] = {
+    "FW":      INT_FW_WEIGHTS,
+    "Off_MF":  INT_OFF_MF_WEIGHTS,
+    "MF":      INT_MF_WEIGHTS,
+    "Def_MF":  INT_DEF_MF_WEIGHTS,
+    "DF":      INT_DF_WEIGHTS,
+}
+
+
+def compute_intensity_scores(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Intensity Score for all outfield players.
+    Position-specific weights: FW/Off_MF → carry-heavy; MF → balanced;
+    Def_MF/DF → pressing & aerial-heavy.
+    All positions share the same global p95 benchmarks.
+    """
+    OUTFIELD_POS = list(_INTENSITY_WEIGHTS_BY_POS.keys())
+    df_out = df[df["Pos"].isin(OUTFIELD_POS)].copy()
+    if df_out.empty:
+        return df_out
+
+    frames: list[pd.DataFrame] = []
+
+    for pos_label, pos_weights in _INTENSITY_WEIGHTS_BY_POS.items():
+        df_pos = df_out[df_out["Pos"] == pos_label].copy()
+        if df_pos.empty:
+            continue
+
+        if "Comp" in df_pos.columns:
+            groups = df_pos.groupby("Comp", dropna=False)
+        else:
+            groups = [("ALL", df_pos)]
+
+        for _, df_comp in groups:
+            weights, bench = _choose_weight_set_for_league(
+                df_comp,
+                full_weights=pos_weights,
+                full_benchmarks=INTENSITY_BENCHMARKS_ABS,
+                min_full_features=3,
+            )
+            df_scored = compute_score_absolute(
+                df_comp,
+                feature_weights=weights,
+                feature_benchmarks=bench,
+                score_name="IntensityScore_abs",
+                max_score=1000.0,
+            )
+            df_scored["IntensityBand"] = df_scored["IntensityScore_abs"].apply(score_band_5)
+            frames.append(df_scored)
+
+    if frames:
+        return pd.concat(frames, axis=0)
+
+    return df_out

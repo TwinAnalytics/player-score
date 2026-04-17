@@ -35,6 +35,9 @@ RAW_METRICS = {
     "Int": "Int_Per90",
     "Blocks_stats_defense": "Blocks_Per90",
     "Clr": "Clr_Per90",
+    # Workrate / Intensity
+    "Recov": "Recov_Per90",
+    "Carries": "Carries_Per90",
 }
 
 ID_COLS = ["Player", "Squad", "Comp", "Pos", "90s"]
