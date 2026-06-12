@@ -1,4 +1,4 @@
-name: PlayerScore — Current Season Update
+name: PlayerScore — Current Season Update (Sofascore)
 
 on:
   schedule:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run-pipeline:
     runs-on: [self-hosted, macOS, X64, playerscore]
-    timeout-minutes: 120
+    timeout-minutes: 300
 
     steps:
       - name: Checkout
@@ -23,21 +23,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
-
-      - name: Compute current season
-        shell: bash
-        run: |
-          YEAR=$(date +%Y)
-          MONTH=$(date +%m)
-          if [ "$MONTH" -ge 7 ]; then
-            NEXT=$((YEAR+1))
-            SEASON="${YEAR}-${NEXT}"
-          else
-            PREV=$((YEAR-1))
-            SEASON="${PREV}-${YEAR}"
-          fi
-          echo "PIPELINE_SEASONS=$SEASON" >> $GITHUB_ENV
-          echo "Using season: $SEASON"
 
       - name: Set up venv + deps
         shell: bash
@@ -49,13 +34,14 @@ jobs:
           pip install playwright
           python -m playwright install chromium
 
-      - name: Run pipeline
+      - name: Run weekly Sofascore pipeline
         shell: bash
         env:
           SCRAPE_TRANSFERMARKT: "true"
+          SOFA_DELAY: "1.5,3"   # polite throttling, the run is not time-critical
         run: |
           source .venv/bin/activate
-          python streamlit/run_multi_season_pipeline.py
+          python streamlit/run_weekly_sofa.py
 
       - name: Write data version file
         shell: bash
@@ -63,22 +49,39 @@ jobs:
           mkdir -p Data/Processed
           echo "$(date -u +'%Y-%m-%d %H:%M:%S UTC')" > Data/Processed/_last_update.txt
 
-      - name: Debug changes
-        shell: bash
-        run: |
-          echo "Git status:"
-          git status --porcelain
-          echo "Changed files:"
-          git diff --name-only
-
-      - name: Commit & push (always)
+      - name: Commit & push data repo
         shell: bash
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+          git add Data/Processed
+          git commit -m "Weekly Sofascore run $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty
+          git push
 
-          git add Data/Raw Data/Processed
-          git add Data/Processed/_last_update.txt
-
-          git commit -m "Weekly run (${PIPELINE_SEASONS}) $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty
+      # The website lives in the separate playerscore-web repo (Vercel).
+      # Needs a repo secret WEB_REPO_TOKEN (PAT with write access to
+      # TwinAnalytics/playerscore-web); without it this step is skipped.
+      - name: Sync website data (playerscore-web -> Vercel)
+        if: ${{ secrets.WEB_REPO_TOKEN != '' }}
+        shell: bash
+        env:
+          WEB_REPO_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
+        run: |
+          rm -rf /tmp/playerscore-web
+          git clone --depth 1 "https://x-access-token:${WEB_REPO_TOKEN}@github.com/TwinAnalytics/playerscore-web.git" /tmp/playerscore-web
+          cp Data/Processed/player_scores_all_seasons_long.csv \
+             Data/Processed/player_scores_agg_by_player.csv \
+             Data/Processed/squad_scores_all_seasons.csv \
+             Data/Processed/player_market_values.csv \
+             Data/Processed/player_sofa_metrics.csv \
+             Data/Processed/player_shots-*.csv \
+             Data/Processed/player_gk_shots-*.csv \
+             Data/Processed/player_heat-*.csv \
+             /tmp/playerscore-web/public/data/
+          cd /tmp/playerscore-web
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add public/data
+          git diff --cached --quiet && echo "No data changes" && exit 0
+          git commit -m "Weekly data refresh $(date -u +'%Y-%m-%d')"
           git push
