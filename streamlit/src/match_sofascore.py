@@ -61,7 +61,7 @@ ID_COLS = ["player_id", "player_name", "player_slug", "team_id", "team_name", "p
 # Characters that NFKD cannot decompose to ASCII and would silently drop
 _CHAR_MAP = str.maketrans({
     "ø": "o", "Ø": "O", "æ": "ae", "Æ": "Ae", "ð": "d", "Ð": "D",
-    "þ": "th", "Þ": "Th", "ł": "l", "Ł": "L", "đ": "d", "Đ": "D", "ß": "ss",
+    "þ": "th", "Þ": "Th", "ł": "l", "Ł": "L", "đ": "dj", "Đ": "Dj", "ß": "ss",
 })
 
 

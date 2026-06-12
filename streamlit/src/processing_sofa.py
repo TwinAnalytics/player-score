@@ -59,10 +59,21 @@ def age_in_season(date_of_birth: pd.Series, season: str) -> pd.Series:
 def load_profiles(sofascore_dir: Path) -> pd.DataFrame:
     path = Path(sofascore_dir) / "player_profiles.csv"
     if not path.exists():
-        return pd.DataFrame(columns=["player_id", "positions_detailed", "date_of_birth",
-                                     "height", "preferred_foot", "country", "market_value_eur"])
-    df = pd.read_csv(path)
-    return df.drop_duplicates("player_id", keep="last")
+        df = pd.DataFrame(columns=["player_id", "positions_detailed", "date_of_birth",
+                                   "height", "preferred_foot", "country", "market_value_eur"])
+    else:
+        df = pd.read_csv(path).drop_duplicates("player_id", keep="last")
+
+    # Birth dates recovered from Transfermarkt for players without a scraped
+    # profile (see build_dob_fallback.py)
+    fb_path = Path(sofascore_dir) / "player_dob_fallback.csv"
+    if fb_path.exists() and fb_path.stat().st_size > 40:
+        fb = pd.read_csv(fb_path)
+        fb = fb[~fb["player_id"].isin(set(df.loc[df["date_of_birth"].notna(), "player_id"]))]
+        if not fb.empty:
+            df = pd.concat([df, fb[["player_id", "date_of_birth"]]], ignore_index=True)
+            df = df.drop_duplicates("player_id", keep="first")
+    return df
 
 
 def fbref_meta_by_sofa_id(season: str, processed_dir: Path) -> dict[int, tuple[str, float]]:
