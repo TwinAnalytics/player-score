@@ -45,7 +45,7 @@ jobs:
           python3 -m venv .venv
           source .venv/bin/activate
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r streamlit/requirements.txt
           pip install playwright
           python -m playwright install chromium
 
@@ -55,7 +55,7 @@ jobs:
           SCRAPE_TRANSFERMARKT: "true"
         run: |
           source .venv/bin/activate
-          python run_multi_season_pipeline.py
+          python streamlit/run_multi_season_pipeline.py
 
       - name: Write data version file
         shell: bash

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#111113"/>
+  <!-- Outer ring fill -->
+  <circle cx="200" cy="200" r="175" fill="#0A84FF" fill-opacity="0.10"/>
+  <!-- Outer ring stroke -->
+  <circle cx="200" cy="200" r="175" stroke="#0A84FF" stroke-width="12"/>
+  <!-- Midfield line -->
+  <line x1="27" y1="200" x2="373" y2="200" stroke="#0A84FF" stroke-width="8" stroke-opacity="0.30"/>
+  <!-- Center circle -->
+  <circle cx="200" cy="200" r="75" stroke="#0A84FF" stroke-width="8" stroke-opacity="0.30"/>
+  <!-- Center spot -->
+  <circle cx="200" cy="200" r="10" fill="#0A84FF" fill-opacity="0.45"/>
+  <!-- Player glow outer -->
+  <circle cx="200" cy="125" r="66" fill="#0A84FF" fill-opacity="0.08"/>
+  <!-- Player glow inner -->
+  <circle cx="200" cy="125" r="46" fill="#0A84FF" fill-opacity="0.18"/>
+  <!-- Player dot -->
+  <circle cx="200" cy="125" r="29" fill="#0A84FF"/>
+</svg>

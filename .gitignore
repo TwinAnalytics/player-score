@@ -14,11 +14,16 @@ __pycache__/
 # Ignore Jupyter notebooks
 notebooks/
 
-# Rohdaten nicht ins Repo
-# Data/Raw/
+# Rohdaten nicht ins Repo (per Scraper regenerierbar)
+Data/Raw/
 
 #API Token sportmonks
 *.env
 
-# LinkedIn Posts
-LinkedIn Posts/
+# Marketing / LinkedIn Posts visuals
+marketing/visuals/
+# Lokale Daten-Exporte (Tableau etc.)
+Data/Exports/
+
+# Frontend ist eigenes Repo (playerscore-web)
+frontend/

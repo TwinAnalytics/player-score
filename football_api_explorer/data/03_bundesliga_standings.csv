@@ -1,0 +1,19 @@
+rank,team_id,team,played,wins,draws,losses,goals_for,goals_against,goal_diff,points,form,description
+1,157,Bayern München,34,25,7,2,99,32,67,82,WWDWW,Promotion - Champions League (League phase: )
+2,168,Bayer Leverkusen,34,19,12,3,72,43,29,69,DLDWD,Promotion - Champions League (League phase: )
+3,169,Eintracht Frankfurt,34,17,9,8,68,46,22,60,WDDWD,Promotion - Champions League (League phase: )
+4,165,Borussia Dortmund,34,17,6,11,71,51,20,57,WWWWW,Promotion - Champions League (League phase: )
+5,160,SC Freiburg,34,16,7,11,49,53,-4,55,LWDWW,Promotion - Europa League (League phase: )
+6,164,FSV Mainz 05,34,14,10,10,55,43,12,52,DWDLD,Promotion - Conference League (Qualification: )
+7,173,RB Leipzig,34,13,12,9,53,48,5,51,LDDLD,
+8,162,Werder Bremen,34,14,9,11,54,57,-3,51,WDDDW,
+9,172,VfB Stuttgart,34,14,8,12,64,53,11,50,WWWLD,Promotion - Europa League (League phase: )
+10,163,Borussia Mönchengladbach,34,13,6,15,55,57,-2,45,LLDLL,
+11,161,VfL Wolfsburg,34,11,10,13,56,54,2,43,WDLLD,
+12,170,FC Augsburg,34,11,10,13,35,51,-16,43,LLLLD,
+13,182,Union Berlin,34,10,10,14,35,51,-16,40,WLDDD,
+14,186,FC St. Pauli,34,8,8,18,28,41,-13,32,LDLDD,
+15,167,1899 Hoffenheim,34,7,11,16,46,68,-22,32,LDDLL,
+16,180,1. FC Heidenheim,34,8,5,21,37,64,-27,29,LWDWL,Bundesliga (Relegation)
+17,191,Holstein Kiel,34,6,7,21,49,80,-31,25,LLWWD,Relegation - 2. Bundesliga
+18,176,VfL Bochum,34,6,7,21,33,67,-34,25,WLDDL,Relegation - 2. Bundesliga

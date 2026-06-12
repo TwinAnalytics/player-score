@@ -1,0 +1,554 @@
+{
+  "get": "players",
+  "parameters": {
+    "id": "1100",
+    "season": "2024"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "player": {
+        "id": 1100,
+        "name": "E. Haaland",
+        "firstname": "Erling",
+        "lastname": "Braut Haaland",
+        "age": 25,
+        "birth": {
+          "date": "2000-07-21",
+          "place": "Leeds",
+          "country": "England"
+        },
+        "nationality": "Norway",
+        "height": "195",
+        "weight": "88",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1100.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 50,
+            "name": "Manchester City",
+            "logo": "https://media.api-sports.io/football/teams/50.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 32,
+            "lineups": 31,
+            "minutes": 2741,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.254838",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 92,
+            "on": 60
+          },
+          "goals": {
+            "total": 22,
+            "conceded": 0,
+            "assists": 3,
+            "saves": null
+          },
+          "passes": {
+            "total": 372,
+            "key": 29,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 12,
+            "blocks": 1,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 218,
+            "won": 94
+          },
+          "dribbles": {
+            "attempts": 33,
+            "success": 13,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 13,
+            "committed": 24
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 3,
+            "missed": 1,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 50,
+            "name": "Manchester City",
+            "logo": "https://media.api-sports.io/football/teams/50.png"
+          },
+          "league": {
+            "id": 45,
+            "name": "FA Cup",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/45.png",
+            "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 2,
+            "minutes": 151,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.500000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 7,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 19,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": 1,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 11,
+            "won": 2
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 1,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 50,
+            "name": "Manchester City",
+            "logo": "https://media.api-sports.io/football/teams/50.png"
+          },
+          "league": {
+            "id": 48,
+            "name": "League Cup",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/48.png",
+            "flag": "https://media.api-sports.io/flags/gb-eng.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 50,
+            "name": "Manchester City",
+            "logo": "https://media.api-sports.io/football/teams/50.png"
+          },
+          "league": {
+            "id": 2,
+            "name": "UEFA Champions League",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/2.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 10,
+            "lineups": 10,
+            "minutes": 772,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.422222",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 30,
+            "on": 21
+          },
+          "goals": {
+            "total": 8,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 88,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 3,
+            "blocks": 1,
+            "interceptions": 4
+          },
+          "duels": {
+            "total": 42,
+            "won": 21
+          },
+          "dribbles": {
+            "attempts": 5,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 4,
+            "committed": 6
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 1,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1090,
+            "name": "Norway",
+            "logo": "https://media.api-sports.io/football/teams/1090.png"
+          },
+          "league": {
+            "id": 10,
+            "name": "Friendlies",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/10.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 317,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 3,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 4,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1090,
+            "name": "Norway",
+            "logo": "https://media.api-sports.io/football/teams/1090.png"
+          },
+          "league": {
+            "id": 5,
+            "name": "UEFA Nations League",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/5.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 6,
+            "minutes": 536,
+            "number": 9,
+            "position": "Attacker",
+            "rating": "8.22",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": 28,
+            "on": 14
+          },
+          "goals": {
+            "total": 7,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 82,
+            "key": 6,
+            "accuracy": 67
+          },
+          "tackles": {
+            "total": null,
+            "blocks": 2,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 36,
+            "won": 20
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1090,
+            "name": "Norway",
+            "logo": "https://media.api-sports.io/football/teams/1090.png"
+          },
+          "league": {
+            "id": 32,
+            "name": "World Cup - Qualification Europe",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/32.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 8,
+            "minutes": 706,
+            "number": 9,
+            "position": "Attacker",
+            "rating": "8.25",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 3,
+            "bench": 0
+          },
+          "shots": {
+            "total": 35,
+            "on": 28
+          },
+          "goals": {
+            "total": 16,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 112,
+            "key": 7,
+            "accuracy": 70
+          },
+          "tackles": {
+            "total": null,
+            "blocks": 2,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 58,
+            "won": 30
+          },
+          "dribbles": {
+            "attempts": 12,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 6
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 1,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}

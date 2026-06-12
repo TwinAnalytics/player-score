@@ -1,0 +1,8 @@
+player_id,name,age,nationality,height_cm,weight_kg,team,league,league_country,season,appearances,lineups,minutes,position,rating,goals,assists,shots_total,shots_on,passes_total,passes_key,passes_accuracy,tackles,interceptions,duels_total,duels_won,dribbles_attempts,dribbles_success,fouls_drawn,fouls_committed,yellow_cards,red_cards,penalty_scored,penalty_missed
+1100,E. Haaland,25,Norway,195,88,Manchester City,Premier League,England,2024,32,31,2741,Attacker,7.254838,22,3.0,92.0,60.0,372.0,29.0,,12.0,5.0,218.0,94.0,33.0,13.0,13.0,24.0,2,0,3.0,1.0
+1100,E. Haaland,25,Norway,195,88,Manchester City,FA Cup,England,2024,3,2,151,Attacker,6.500000,1,0.0,7.0,3.0,19.0,2.0,,,,11.0,2.0,2.0,,,1.0,0,0,0.0,1.0
+1100,E. Haaland,25,Norway,195,88,Manchester City,League Cup,England,2024,0,0,0,Attacker,,0,,,,,,,,,,,,,,,0,0,0.0,0.0
+1100,E. Haaland,25,Norway,195,88,Manchester City,UEFA Champions League,World,2024,10,10,772,Attacker,7.422222,8,0.0,30.0,21.0,88.0,5.0,,3.0,4.0,42.0,21.0,5.0,3.0,4.0,6.0,0,0,2.0,1.0
+1100,E. Haaland,25,Norway,195,88,Norway,Friendlies,World,2024,4,4,317,Attacker,,4,,,,,,,,,,,,,,,0,0,,
+1100,E. Haaland,25,Norway,195,88,Norway,UEFA Nations League,World,2024,6,6,536,Attacker,8.22,7,1.0,28.0,14.0,82.0,6.0,67.0,,1.0,36.0,20.0,6.0,4.0,2.0,1.0,0,0,0.0,0.0
+1100,E. Haaland,25,Norway,195,88,Norway,World Cup - Qualification Europe,World,2024,8,8,706,Attacker,8.25,16,2.0,35.0,28.0,112.0,7.0,70.0,,,58.0,30.0,12.0,5.0,3.0,6.0,1,0,0.0,1.0

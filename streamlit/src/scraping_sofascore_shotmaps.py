@@ -17,7 +17,7 @@ import os
 
 import pandas as pd
 
-from .scraping_sofascore import BASE, LEAGUES, OUT_DIR, SofascoreClient, _wanted_seasons, fetch_seasons
+from .scraping_sofascore import BASE, OUT_DIR, SofascoreClient, _wanted_seasons, fetch_seasons, leagues_from_env
 
 FIRST_SEASON = "2022-2023"
 SHOT_DIR = os.path.join(OUT_DIR, "Shotmaps")
@@ -82,7 +82,7 @@ def main():
 
     client = SofascoreClient()
     try:
-        for league, tid in LEAGUES.items():
+        for league, tid in leagues_from_env().items():
             seasons = fetch_seasons(client, tid)
             targets = sorted(s for s in seasons if s in wanted)
             print(f"== {league}: shotmaps for {targets}", flush=True)

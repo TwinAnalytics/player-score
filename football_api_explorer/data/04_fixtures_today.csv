@@ -1,0 +1,183 @@
+fixture_id,date,status,status_long,elapsed,league_id,league,country,season,round,home_team_id,home_team,away_team_id,away_team,goals_home,goals_away,ht_home,ht_away
+1513088,2026-05-11T00:00:00+00:00,FT,Match Finished,90.0,909,MLS Next Pro,USA,2026,Group Stage,4102,Colorado Rapids II,4019,Sporting KC II,1.0,3.0,1.0,3.0
+1514443,2026-05-11T00:00:00+00:00,PST,Match Postponed,,422,Premier League,Barbados,2026,Regular Season - 16,22944,Kick Start,8410,Weymouth Wales,,,,
+1540098,2026-05-11T00:00:00+00:00,FT,Match Finished,90.0,1220,Copa De La Liga,Chile,2026,Group Stage - 5,2320,O'Higgins,2325,Everton de Vina,2.0,1.0,0.0,1.0
+1543809,2026-05-11T00:00:00+00:00,FT,Match Finished,90.0,421,Division di Honor,Aruba,2025,Relegation round,11176,Jong Aruba,8243,Caiquetio,0.0,0.0,0.0,0.0
+1544660,2026-05-11T00:00:00+00:00,FT,Match Finished,90.0,370,Primera Division,El-Salvador,2025,Clausura - Quarter-finals,26154,Inter,4306,Municipal Limeño,2.0,1.0,0.0,0.0
+1524438,2026-05-11T00:15:00+00:00,FT,Match Finished,90.0,256,USL League Two,USA,2026,Group Stage,23128,West Seattle Junction,23124,Tacoma Stars,0.0,0.0,0.0,0.0
+1544222,2026-05-11T00:15:00+00:00,FT,Match Finished,90.0,673,Liga MX Femenil,Mexico,2025,Clausura - Semi-finals,14879,Monterrey W,14881,Pachuca W,4.0,1.0,1.0,1.0
+1513089,2026-05-11T00:30:00+00:00,FT,Match Finished,90.0,909,MLS Next Pro,USA,2026,Group Stage,21138,Austin II,4020,Tacoma Defiance,3.0,0.0,0.0,0.0
+1544183,2026-05-11T00:30:00+00:00,FT,Match Finished,90.0,128,Liga Profesional Argentina,Argentina,2026,Apertura - Round of 16,438,Velez Sarsfield,434,Gimnasia L.P.,0.0,1.0,0.0,1.0
+1544561,2026-05-11T00:30:00+00:00,FT,Match Finished,90.0,322,Premier League,Jamaica,2025,Quarter-finals,3437,Cavalier,3447,Waterhouse,2.0,2.0,1.0,2.0
+1490280,2026-05-11T01:00:00+00:00,FT,Match Finished,90.0,253,Major League Soccer,USA,2026,Regular Season - 13,1616,Los Angeles FC,1600,Houston Dynamo,1.0,4.0,1.0,2.0
+1532368,2026-05-11T01:00:00+00:00,CANC,Match Cancelled,,1117,USL W League,USA,2026,Regular Season - 1,27609,Los Angeles SC W,25960,OC Sporting,,,,
+1543855,2026-05-11T01:00:00+00:00,FT,Match Finished,90.0,339,Liga Nacional,Guatemala,2025,Semi-finals,3667,Xelajú,3658,Comunicaciones,2.0,0.0,1.0,0.0
+1542919,2026-05-11T01:15:00+00:00,FT,Match Finished,90.0,262,Liga MX,Mexico,2025,Clausura - Quarter-finals,2286,U.N.A.M. - Pumas,2287,Club America,3.0,3.0,3.0,2.0
+1544310,2026-05-11T01:20:00+00:00,FT,Match Finished,90.0,240,Primera B,Colombia,2026,Apertura - Quadrangular - 4,23326,Internacional Palmira,1129,Envigado,0.0,0.0,0.0,0.0
+1544653,2026-05-11T07:00:00+00:00,FT,Match Finished,90.0,1101,AFC U17 Asian Cup - Women,World,2025,Quarter-finals,25228,Japan U17 W,23621,South Korea U17 W,1.0,0.0,0.0,0.0
+1544654,2026-05-11T07:00:00+00:00,FT,Match Finished,90.0,1101,AFC U17 Asian Cup - Women,World,2025,Quarter-finals,27212,Vietnam U17 W,23618,Australia U17 W,0.0,2.0,0.0,2.0
+1416414,2026-05-11T09:00:00+00:00,FT,Match Finished,90.0,1065,U19 League,Ukraine,2025,Regular Season - 28,23081,Oleksandria U19,23085,Zorya Luhansk U19,0.0,1.0,0.0,0.0
+1416415,2026-05-11T09:00:00+00:00,FT,Match Finished,90.0,1065,U19 League,Ukraine,2025,Regular Season - 28,23082,Veres Rivne U19,23076,Kryvbas 2020 U19,3.0,1.0,2.0,1.0
+1529666,2026-05-11T09:00:00+00:00,FT,Match Finished,90.0,343,First League,Armenia,2025,Regular Season - 21,17171,BKMA II,3688,Ararat II,4.0,0.0,2.0,0.0
+1400256,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,235,Premier League,Russia,2025,Regular Season - 29,6786,Akron,779,FC Rostov,1.0,3.0,1.0,3.0
+1416416,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,1065,U19 League,Ukraine,2025,Regular Season - 28,23078,Metalist 1925 U19,24177,Karpaty Lviv U19,3.0,2.0,2.0,2.0
+1421732,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,1065,U19 League,Ukraine,2025,Regular Season - 28,26235,Epitsentr U19,23084,Zhytomyr U19,0.0,2.0,0.0,0.0
+1536348,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,652,Second League - Group 2,Russia,2026,Group 2 - 7,19452,Kosmos Dolgoprudny,24450,Cherepovets,1.0,3.0,0.0,1.0
+1542427,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,236,First League,Russia,2025,Regular Season - 33,1089,Enisey,1077,Arsenal Tula,1.0,0.0,1.0,0.0
+1543562,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,1031,Premier League,Bhutan,2026,,21277,Tsirang,5433,Bhutan U19,2.0,4.0,0.0,1.0
+1544710,2026-05-11T10:00:00+00:00,FT,Match Finished,90.0,840,Taça Revelação U23,Portugal,2026,Quarter-finals,21718,Academico Viseu U23,21719,Santa Clara U23,2.0,4.0,1.0,2.0
+1522102,2026-05-11T10:30:00+00:00,FT,Match Finished,90.0,836,Victoria NPL 2,Australia,2026,Regular Season - 12,22823,Melbourne Victory II,16784,Manningham United Blues,4.0,0.0,0.0,0.0
+1542426,2026-05-11T11:00:00+00:00,FT,Match Finished,90.0,236,First League,Russia,2025,Regular Season - 33,1084,Ural,6801,KAMAZ,2.0,0.0,2.0,0.0
+1543023,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,343,First League,Armenia,2025,Regular Season - 28,21877,Andranik,26198,Sardarapat,1.0,1.0,0.0,0.0
+1543024,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,343,First League,Armenia,2025,Regular Season - 28,24965,Bentonit Ijevan,6281,Lernayin Artsakh,3.0,0.0,0.0,0.0
+1543025,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,343,First League,Armenia,2025,Regular Season - 28,20087,Syunik,3696,Pyunik II,2.0,3.0,0.0,1.0
+1543026,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,343,First League,Armenia,2025,Regular Season - 28,3690,Banants II,21879,Noah II,0.0,0.0,0.0,0.0
+1544655,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,1101,AFC U17 Asian Cup - Women,World,2025,Quarter-finals,20526,China PR U17 W,27721,India U17 W,3.0,0.0,2.0,0.0
+1544656,2026-05-11T11:30:00+00:00,FT,Match Finished,90.0,1101,AFC U17 Asian Cup - Women,World,2025,Quarter-finals,23619,North Korea U17 W,23622,Thailand U17 W,6.0,0.0,3.0,0.0
+1403848,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,274,Liga 1,Indonesia,2025,Regular Season - 32,2448,Bali United,2442,Pusamania Borneo,2.0,3.0,1.0,0.0
+1403849,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,274,Liga 1,Indonesia,2025,Regular Season - 32,2443,Bhayangkara FC,2444,Persepam Madura Utd,3.0,1.0,0.0,1.0
+1470824,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,276,FKF Premier League,Kenya,2025,Regular Season - 31,2459,Posta Rangers FC,2470,Sofapaka,3.0,0.0,1.0,0.0
+1515643,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,813,Elite Two,Cameroon,2026,Regular Season - 13,5399,Avion Academy,27457,Kumba,0.0,0.0,1.0,0.0
+1515644,2026-05-11T12:00:00+00:00,NS,Not Started,,813,Elite Two,Cameroon,2026,Regular Season - 13,5557,Bamboutos,22588,Bafmeng United,,,,
+1515645,2026-05-11T12:00:00+00:00,NS,Not Started,,813,Elite Two,Cameroon,2026,Regular Season - 13,5407,Les Astres,5403,Eding Sport,,,,
+1515647,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,813,Elite Two,Cameroon,2026,Regular Season - 13,10153,Tonnerre,5559,Racing,0.0,0.0,1.0,2.0
+1515649,2026-05-11T12:00:00+00:00,NS,Not Started,,813,Elite Two,Cameroon,2026,Regular Season - 13,25430,Union Abong-Mbang,5558,Yafoot,,,,
+1541053,2026-05-11T12:00:00+00:00,FT,Match Finished,90.0,363,Premier League,Ethiopia,2025,Regular Season - 31,20030,Ethiopian Medhin,4130,Ethiopia Nigd Bank,2.0,1.0,0.0,0.0
+1400259,2026-05-11T12:15:00+00:00,FT,Match Finished,90.0,235,Premier League,Russia,2025,Regular Season - 29,2011,Nizhny Novgorod,555,CSKA Moscow,1.0,2.0,1.0,0.0
+1381160,2026-05-11T12:30:00+00:00,FT,Match Finished,90.0,88,Eredivisie,Netherlands,2025,Regular Season - 33,203,NAC Breda,210,Heerenveen,2.0,0.0,1.0,0.0
+1541054,2026-05-11T13:00:00+00:00,FT,Match Finished,90.0,363,Premier League,Ethiopia,2025,Regular Season - 31,26881,Negelle Arsi,4115,Dire Dawa Kenema,3.0,0.0,2.0,0.0
+1544313,2026-05-11T13:00:00+00:00,FT,Match Finished,90.0,324,I-League,India,2025,Relegation Group - 3,3460,Aizawl,3469,Real Kashmir,1.0,2.0,0.0,1.0
+1544711,2026-05-11T13:00:00+00:00,FT,Match Finished,90.0,840,Taça Revelação U23,Portugal,2026,Quarter-finals,15464,Famalicão U23,19825,Gil Vicente U23,1.0,4.0,1.0,3.0
+1515642,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,813,Elite Two,Cameroon,2026,Regular Season - 13,5398,APEJES Academy,16525,FAP,0.0,0.0,0.0,1.0
+1515646,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,813,Elite Two,Cameroon,2026,Regular Season - 13,27458,Sable,16527,Foncha ST,0.0,0.0,2.0,1.0
+1515648,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,813,Elite Two,Cameroon,2026,Regular Season - 13,5413,Union Douala,25429,Atlantic,0.0,0.0,0.0,1.0
+1521339,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,323,Indian Super League,India,2025,Regular Season - 10,21137,East Bengal II,3466,Minerva Punjab,0.0,0.0,0.0,0.0
+1542425,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,236,First League,Russia,2025,Regular Season - 33,1998,Shinnik Yaroslavl,3985,Torpedo Moskva,1.0,1.0,1.0,0.0
+1543327,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,1102,UEFA U17 Championship - Women,World,2026,Group Stage - 3,27105,Finland U17 W,26053,France U17	W,1.0,4.0,0.0,3.0
+1543328,2026-05-11T14:00:00+00:00,FT,Match Finished,90.0,1102,UEFA U17 Championship - Women,World,2026,Group Stage - 3,25232,Poland U17 W,25233,Spain U17 W,1.0,4.0,0.0,3.0
+1543180,2026-05-11T14:10:00+00:00,FT,Match Finished,90.0,301,Pro League,United-Arab-Emirates,2025,Regular Season - 25,10155,Al Nasr,2876,Al-Ittihad Kalba,2.0,1.0,1.0,0.0
+1543183,2026-05-11T14:10:00+00:00,FT,Match Finished,90.0,1218,Pro League U23,United-Arab-Emirates,2025,Regular Season - 25,27484,Ajman U23,27494,Dibba Al Fujairah U23,0.0,0.0,0.0,0.0
+1543184,2026-05-11T14:10:00+00:00,FT,Match Finished,90.0,1218,Pro League U23,United-Arab-Emirates,2025,Regular Season - 25,27487,Al Dhafra U23,27485,Al Ain U23,0.0,0.0,0.0,1.0
+1543185,2026-05-11T14:10:00+00:00,FT,Match Finished,90.0,1218,Pro League U23,United-Arab-Emirates,2025,Regular Season - 25,27490,Al Sharjah U23,27486,Al Bataeh U23,0.0,0.0,1.0,0.0
+1543186,2026-05-11T14:10:00+00:00,FT,Match Finished,90.0,1218,Pro League U23,United-Arab-Emirates,2025,Regular Season - 25,27497,Shabab Al-Ahli Dubai U23,27493,Bani Yas U23,0.0,0.0,2.0,1.0
+1400260,2026-05-11T14:30:00+00:00,FT,Match Finished,90.0,235,Premier League,Russia,2025,Regular Season - 29,558,Spartak Moscow,1083,Rubin,2.0,1.0,1.0,0.0
+1471757,2026-05-11T14:30:00+00:00,NS,Not Started,,397,Girabola,Angola,2025,Regular Season - 27,17987,CD Lunda-Sul,4918,Desportivo Huíla,,,,
+1527547,2026-05-11T14:30:00+00:00,FT,Match Finished,90.0,569,Premier League,Kyrgyzstan,2026,Regular Season - 4,27432,Asia Talas,25767,Ozgon,4.0,2.0,3.0,1.0
+1543159,2026-05-11T14:30:00+00:00,FT,Match Finished,90.0,542,Iraqi League,Iraq,2025,Regular Season - 34,11064,Al Kahrabaa,6689,Newroz,2.0,1.0,1.0,0.0
+1543160,2026-05-11T14:30:00+00:00,FT,Match Finished,90.0,542,Iraqi League,Iraq,2025,Regular Season - 34,15544,Al Karkh,11069,Baghdad,2.0,1.0,1.0,1.0
+1543161,2026-05-11T14:30:00+00:00,FT,Match Finished,90.0,542,Iraqi League,Iraq,2025,Regular Season - 34,11066,Al Najaf,11070,Erbil,1.0,4.0,1.0,3.0
+1451941,2026-05-11T14:45:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,8528,Yantra 2019,5025,Vihren,0.0,0.0,0.0,0.0
+1384630,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,346,FNL,Czech-Republic,2025,Regular Season - 28,3717,Opava,4257,Artis,0.0,2.0,0.0,1.0
+1451934,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,5024,Sevlievo,8540,Belasitsa,2.0,1.0,1.0,0.0
+1451936,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,6392,FK Minyor Pernik,1415,CSKA Sofia II,1.0,2.0,1.0,2.0
+1451937,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,1409,Ludogorets II,1420,Lokomotiv G. Oryahovitsa,3.0,1.0,2.0,0.0
+1451939,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,8543,Marek,8530,Chernomorets 1919 Burgas,3.0,0.0,1.0,0.0
+1451940,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,8550,Sportist Svoge,1428,Pirin Blagoevgrad,2.0,0.0,0.0,0.0
+1509117,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,327,Erovnuli Liga,Georgia,2026,Regular Season - 12,14864,Spaeri,3505,Gagra,3.0,0.0,1.0,0.0
+1515829,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,365,Virsliga,Latvia,2026,Regular Season - 12,4138,Grobiņa,18834,FS Jelgava,0.0,0.0,0.0,0.0
+1529712,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,361,1 Lyga,Lithuania,2026,Regular Season - 9,23156,Hegelmann II,27557,Transinvest 2,1.0,2.0,0.0,2.0
+1531539,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,283,Liga I,Romania,2025,Relegation Group - 8,2604,Metaloglobus,2579,AFC Hermannstadt,2.0,2.0,1.0,1.0
+1539915,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,287,Prva Liga,Serbia,2025,Relegation Group - 36,24621,Dinamo Jug,17438,Tekstilac Odžaci,0.0,0.0,0.0,0.0
+1539917,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,287,Prva Liga,Serbia,2025,Relegation Group - 36,4252,Grafičar,12312,Dubočica,3.0,1.0,1.0,1.0
+1539918,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,287,Prva Liga,Serbia,2025,Relegation Group - 36,4254,Semendrija 1924,2649,Borac Cacak,1.0,1.0,0.0,1.0
+1544147,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10601,Bouselem,20846,Mégrine,2.0,2.0,1.0,0.0
+1544148,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10599,BS Bouhajla,1190,US Tataouine,0.0,1.0,0.0,0.0
+1544149,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10605,EM Mahdia,10616,Kerkennah,1.0,3.0,1.0,1.0
+1544150,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,1191,CS Hammam-Lif,10609,ES Hammam-Sousse,1.0,1.0,1.0,1.0
+1544151,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10620,M'saken,6252,CS Chebba,2.0,4.0,1.0,2.0
+1544152,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10633,Sfax Railways,10595,AS Agareb,2.0,1.0,0.0,1.0
+1544153,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,828,Ligue 2,Tunisia,2025,Regular Season - 26,10634,Sporting Ben Arous,10621,Menzel Bourguiba,6.0,0.0,3.0,0.0
+1544174,2026-05-11T15:00:00+00:00,PEN,Match Finished,120.0,840,Taça Revelação U23,Portugal,2026,Quarter-finals,15460,Benfica U23,15469,Sporting Braga U23,1.0,1.0,1.0,1.0
+1544175,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,840,Taça Revelação U23,Portugal,2026,Quarter-finals,21720,Torreense U23,15465,Leixões U23,0.0,2.0,0.0,1.0
+1544564,2026-05-11T15:00:00+00:00,FT,Match Finished,90.0,310,Superliga,Albania,2025,Semi-finals,3334,Pogradeci,3322,Besa Kavajë,0.0,0.0,0.0,0.0
+1388288,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,374,2. SNL,Slovenia,2025,Regular Season - 28,4364,Gorica,16302,Dravinja,1.0,1.0,0.0,0.0
+1401381,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,82,Frauen Bundesliga,Germany,2025,Regular Season - 25,20501,RB Leipzig W,1859,Bayer Leverkusen W,1.0,3.0,1.0,2.0
+1495463,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,549,Damallsvenskan,Sweden,2026,Regular Season - 5,21698,Malmö FF W,16483,Häcken W,1.0,2.0,1.0,1.0
+1496778,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,776,3. Division - Girone 3,Norway,2026,Regular Season - 6,22871,Åsane II,6980,Fana,0.0,3.0,0.0,2.0
+1496962,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,777,3. Division - Girone 4,Norway,2026,Regular Season - 6,6982,Flekkerøy,16231,Stabæk II,6.0,0.0,4.0,0.0
+1496964,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,777,3. Division - Girone 4,Norway,2026,Regular Season - 6,7009,Madla,12891,Viking II,2.0,0.0,0.0,0.0
+1519551,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,328,Esiliiga A,Estonia,2026,Regular Season - 10,13826,Nõmme Kalju II,3517,FCI Levadia II,1.0,0.0,0.0,0.0
+1538596,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,391,Super League,Malawi,2026,Regular Season - 3,27655,Masters FC,27656,Mitundu Baptist,2.0,0.0,1.0,0.0
+1541900,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,382,Liga Leumit,Israel,2025,Promotion Group - 4,20105,Kiryat Yam SC,4497,Hapoel Kfar Saba,2.0,0.0,0.0,0.0
+1541901,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,382,Liga Leumit,Israel,2025,Promotion Group - 4,4495,Maccabi Petah Tikva,4491,Hapoel Rishon LeZion,2.0,0.0,1.0,0.0
+1542785,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,282,Segunda División,Peru,2026,Regular Season - 6,2556,Molinos El Pirata,2543,Academia Cantolao,2.0,1.0,2.0,0.0
+1543128,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,200,Botola Pro,Morocco,2025,Regular Season - 20,975,Olympique Safi,977,FUS Rabat,1.0,1.0,1.0,0.0
+1543165,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,417,Premier League,Bahrain,2025,Regular Season - 21,5580,Al Ahli,5483,Al-Hidd,0.0,1.0,0.0,0.0
+1543166,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,417,Premier League,Bahrain,2025,Regular Season - 21,17666,Khalidiya,5488,Muharraq,1.0,2.0,1.0,2.0
+1543169,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,417,Premier League,Bahrain,2025,Regular Season - 21,5486,Malkiya,5482,Al Riffa,0.0,2.0,0.0,0.0
+1544388,2026-05-11T16:00:00+00:00,FT,Match Finished,90.0,386,Ligue 1,Ivory-Coast,2025,Regular Season - 28,22583,Mouna,26340,ES Agboville,1.0,1.0,1.0,0.0
+1541902,2026-05-11T16:15:00+00:00,FT,Match Finished,90.0,382,Liga Leumit,Israel,2025,Relegation Round - 4,4493,Kafr Qasim,4487,Hapoel Nazareth Illit,1.0,1.0,0.0,1.0
+1381798,2026-05-11T16:30:00+00:00,FT,Match Finished,90.0,107,I Liga,Poland,2025,Regular Season - 32,3488,Odra Opole,14750,Pogoń Grod. Mazowiecki,3.0,1.0,1.0,0.0
+1381802,2026-05-11T16:30:00+00:00,FT,Match Finished,90.0,107,I Liga,Poland,2025,Regular Season - 32,337,Slask Wroclaw,3498,ŁKS Łódź,2.0,2.0,0.0,1.0
+1538870,2026-05-11T16:30:00+00:00,FT,Match Finished,90.0,762,Premier League,Mauritania,2025,Regular Season - 24,8071,SNIM,21987,Pompiers,0.0,1.0,0.0,0.0
+1538871,2026-05-11T16:45:00+00:00,FT,Match Finished,90.0,762,Premier League,Mauritania,2025,Regular Season - 24,26812,Nouakchott Academie,16167,Inter Nouakchott,2.0,0.0,2.0,0.0
+1543181,2026-05-11T16:45:00+00:00,FT,Match Finished,90.0,301,Pro League,United-Arab-Emirates,2025,Regular Season - 25,2871,Al-Jazira,2872,Al-Wasl FC,1.0,2.0,1.0,0.0
+1543182,2026-05-11T16:45:00+00:00,FT,Match Finished,90.0,301,Pro League,United-Arab-Emirates,2025,Regular Season - 25,4912,Khorfakkan,2875,Al Wahda FC,1.0,1.0,1.0,0.0
+1436191,2026-05-11T16:50:00+00:00,FT,Match Finished,90.0,307,Pro League,Saudi-Arabia,2025,Regular Season - 32,10513,NEOM,2940,Al Shabab,2.0,1.0,2.0,0.0
+1380663,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,106,Ekstraklasa,Poland,2025,Regular Season - 32,350,Cracovia Krakow,4248,Radomiak Radom,0.0,0.0,0.0,0.0
+1397277,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,142,Primera División Femenina,Spain,2025,Regular Season - 28,1921,Madrid CFF W,1920,Sevilla W,2.0,0.0,1.0,0.0
+1400257,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,235,Premier League,Russia,2025,Regular Season - 29,1088,Dynamo,621,FC Krasnodar,2.0,1.0,0.0,1.0
+1494167,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,113,Allsvenskan,Sweden,2026,Regular Season - 7,370,Sirius,2166,Orgryte IS,2.0,0.0,1.0,0.0
+1495822,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,104,1. Division,Norway,2026,Regular Season - 6,6976,Egersund,330,ODD Ballklubb,0.0,1.0,0.0,0.0
+1496415,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,774,3. Division - Girone 1,Norway,2026,Regular Season - 6,6987,Frigg,21420,KFUM II,4.0,3.0,2.0,2.0
+1496600,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,775,3. Division - Girone 2,Norway,2026,Regular Season - 6,10113,Rosenborg II,25498,Kvik Trondheim,0.0,3.0,0.0,0.0
+1496782,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,776,3. Division - Girone 3,Norway,2026,Regular Season - 6,6990,Fyllingsdalen,16219,Sogndal II,0.0,6.0,0.0,3.0
+1496784,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,776,3. Division - Girone 3,Norway,2026,Regular Season - 6,7043,Vard,16218,Brann II,3.0,0.0,2.0,0.0
+1497328,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,779,3. Division - Girone 6,Norway,2026,Regular Season - 6,25499,Lyn II,27278,Raelingen,3.0,1.0,0.0,1.0
+1509116,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,327,Erovnuli Liga,Georgia,2026,Regular Season - 12,3501,Rustavi,2262,Dinamo Tbilisi,2.0,3.0,2.0,2.0
+1515830,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,365,Virsliga,Latvia,2026,Regular Season - 12,4143,Super Nova,4144,Tukums,1.0,1.0,1.0,0.0
+1530553,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,119,Superliga,Denmark,2025,Relegation Group - 31,401,Randers FC,405,Odense,2.0,2.0,0.0,1.0
+1543162,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,542,Iraqi League,Iraq,2025,Regular Season - 34,26598,Mosul,11067,Al Talaba,2.0,2.0,0.0,1.0
+1543163,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,542,Iraqi League,Iraq,2025,Regular Season - 34,15547,Zakho,25061,Diyala,1.0,2.0,0.0,1.0
+1544565,2026-05-11T17:00:00+00:00,FT,Match Finished,90.0,204,1. Lig,Turkey,2025,Semi-finals,3583,Bodrum FK,6343,Çorum FK,1.0,0.0,0.0,0.0
+1451933,2026-05-11T17:15:00+00:00,FT,Match Finished,90.0,173,Second League,Bulgaria,2025,Regular Season - 32,21836,Fratria,683,Dunav Ruse,2.0,2.0,0.0,1.0
+1436199,2026-05-11T18:00:00+00:00,FT,Match Finished,90.0,307,Pro League,Saudi-Arabia,2025,Regular Season - 32,2936,Al Taawon,2929,Al-Ahli Jeddah,1.0,2.0,0.0,1.0
+1512601,2026-05-11T18:00:00+00:00,FT,Match Finished,90.0,281,Primera División,Peru,2026,Regular Season - 14,20960,Deportivo Garcilaso,2560,Alianza Atletico,2.0,1.0,1.0,0.0
+1522464,2026-05-11T18:00:00+00:00,NS,Not Started,,74,Brasileiro Women,Brazil,2026,Regular Season - 10,3828,Vitória BA W,25825,Juventude W,,,,
+1531538,2026-05-11T18:00:00+00:00,FT,Match Finished,90.0,283,Liga I,Romania,2025,Relegation Group - 8,559,FCSB,6916,Unirea Slobozia,0.0,0.0,0.0,0.0
+1543129,2026-05-11T18:00:00+00:00,FT,Match Finished,90.0,200,Botola Pro,Morocco,2025,Regular Season - 20,25058,Yacoub El Mansour,971,Kawkab Marrakech,2.0,1.0,1.0,0.0
+1544330,2026-05-11T18:00:00+00:00,AET,Match Finished,120.0,703,Professional Development League,England,2025,Semi-finals,20017,Huddersfield Town U21,7193,Everton U21,3.0,1.0,1.0,1.0
+1544567,2026-05-11T18:00:00+00:00,FT,Match Finished,90.0,703,Professional Development League,England,2025,Semi-finals,19746,Nottingham Forest U21,7200,Norwich City U21,1.0,2.0,1.0,0.0
+1491439,2026-05-11T18:15:00+00:00,FT,Match Finished,90.0,208,Challenge League,Switzerland,2025,Regular Season - 35,6616,Bellinzona,2179,FC WIL 1900,2.0,4.0,1.0,1.0
+1491440,2026-05-11T18:15:00+00:00,FT,Match Finished,90.0,208,Challenge League,Switzerland,2025,Regular Season - 35,6646,Stade Nyonnais,4269,Stade Lausanne-Ouchy,1.0,3.0,0.0,1.0
+1491441,2026-05-11T18:15:00+00:00,FT,Match Finished,90.0,208,Challenge League,Switzerland,2025,Regular Season - 35,660,FC Vaduz,2177,FC Aarau,1.0,2.0,1.0,1.0
+1491442,2026-05-11T18:15:00+00:00,FT,Match Finished,90.0,208,Challenge League,Switzerland,2025,Regular Season - 35,1015,Neuchatel Xamax FC,6654,Étoile Carouge,3.0,0.0,2.0,0.0
+1491443,2026-05-11T18:15:00+00:00,FT,Match Finished,90.0,208,Challenge League,Switzerland,2025,Regular Season - 35,6653,Yverdon Sport,2185,Rapperswil,3.0,1.0,0.0,0.0
+1392187,2026-05-11T18:30:00+00:00,FT,Match Finished,90.0,141,Segunda División,Spain,2025,Regular Season - 39,726,Huesca,9585,Real Sociedad II,1.0,2.0,0.0,1.0
+1499882,2026-05-11T18:30:00+00:00,FT,Match Finished,90.0,132,Primera C,Argentina,2026,Regular Season - 11,8374,Fénix,8381,Deportivo Español,1.0,0.0,0.0,0.0
+1499887,2026-05-11T18:30:00+00:00,FT,Match Finished,90.0,132,Primera C,Argentina,2026,Regular Season - 11,1942,Sacachispas,8390,Centro Español,1.0,1.0,0.0,0.0
+1499888,2026-05-11T18:30:00+00:00,FT,Match Finished,90.0,132,Primera C,Argentina,2026,Regular Season - 11,1931,Sportivo Barracas,8393,Deportivo Muñiz,0.0,0.0,0.0,0.0
+1378220,2026-05-11T18:45:00+00:00,FT,Match Finished,90.0,135,Serie A,Italy,2025,Regular Season - 36,492,Napoli,500,Bologna,2.0,3.0,1.0,2.0
+1379327,2026-05-11T19:00:00+00:00,FT,Match Finished,90.0,39,Premier League,England,2025,Regular Season - 36,47,Tottenham,63,Leeds,1.0,1.0,0.0,0.0
+1391165,2026-05-11T19:00:00+00:00,FT,Match Finished,90.0,140,La Liga,Spain,2025,Regular Season - 35,728,Rayo Vallecano,547,Girona,1.0,1.0,0.0,0.0
+1538372,2026-05-11T19:00:00+00:00,FT,Match Finished,90.0,344,Primera División,Bolivia,2026,Apertura - 6,17743,ABB,3707,Oriente Petrolero,3.0,1.0,1.0,1.0
+1543788,2026-05-11T19:00:00+00:00,FT,Match Finished,90.0,40,Championship,England,2025,Semi-finals,58,Millwall,64,Hull City,0.0,2.0,0.0,0.0
+1396527,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,211,Benfica,217,SC Braga,2.0,2.0,0.0,0.0
+1396528,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,15130,Estrela,242,Famalicao,0.0,0.0,0.0,0.0
+1396529,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,762,GIL Vicente,240,Arouca,1.0,3.0,0.0,0.0
+1396530,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,226,Rio Ave,228,Sporting CP,1.0,4.0,1.0,2.0
+1396531,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,227,Santa Clara,225,Nacional,2.0,0.0,1.0,0.0
+1396532,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,218,Tondela,215,Moreirense,2.0,0.0,1.0,0.0
+1396533,2026-05-11T19:15:00+00:00,FT,Match Finished,90.0,94,Primeira Liga,Portugal,2025,Regular Season - 33,224,Guimaraes,4716,Casa Pia,0.0,1.0,0.0,0.0
+1525712,2026-05-11T20:00:00+00:00,2H,Second Half,86.0,712,Liga Femenina,Colombia,2026,Regular Season - 10,22940,Internacional Palmira W,15722,Atlético Nacional W,0.0,1.0,0.0,1.0
+1542987,2026-05-11T20:00:00+00:00,2H,Second Half,81.0,251,Division Intermedia,Paraguay,2026,Regular Season - 6,10474,Atlético Tembetary,1189,Deportivo Santani,1.0,0.0,1.0,0.0
+1543130,2026-05-11T20:00:00+00:00,2H,Second Half,83.0,200,Botola Pro,Morocco,2025,Regular Season - 20,3449,CR Khemis Zemamra,3454,Olympique Dcheïra,0.0,0.0,0.0,0.0
+1544128,2026-05-11T20:00:00+00:00,2H,Second Half,86.0,268,Primera División - Apertura,Uruguay,2026,Regular Season - 15,2370,Deportivo Maldonado,2361,Boston River,2.0,1.0,1.0,1.0
+1544259,2026-05-11T20:00:00+00:00,2H,Second Half,84.0,241,Copa Colombia,Colombia,2026,Group Stage - 2,1468,Depor FC,1140,Patriotas,1.0,1.0,1.0,1.0
+1505074,2026-05-11T20:45:00+00:00,HT,Halftime,45.0,250,Division Profesional - Apertura,Paraguay,2026,Apertura - 20,10487,Sportivo Ameliano,10476,Deportivo Recoleta,2.0,1.0,2.0,1.0
+1522396,2026-05-11T21:00:00+00:00,1H,First Half,43.0,74,Brasileiro Women,Brazil,2026,Regular Season - 10,3826,Internacional RS W,16497,Botafogo W,0.0,0.0,0.0,0.0
+1525715,2026-05-11T21:00:00+00:00,1H,First Half,44.0,712,Liga Femenina,Colombia,2026,Regular Season - 10,25713,Once Caldas W,18432,Orsomarso W,1.0,0.0,1.0,0.0
+1544263,2026-05-11T21:00:00+00:00,1H,First Half,43.0,241,Copa Colombia,Colombia,2026,Group Stage - 2,1128,Independiente Medellin,1147,Fortaleza FC,1.0,0.0,1.0,0.0
+1525713,2026-05-11T21:30:00+00:00,1H,First Half,14.0,712,Liga Femenina,Colombia,2026,Regular Season - 10,15726,Junior W,15730,Santa Fe W,1.0,0.0,1.0,0.0
+1525714,2026-05-11T21:45:00+00:00,NS,Not Started,,712,Liga Femenina,Colombia,2026,Regular Season - 10,15729,Millonarios W,15721,América de Cali W,,,,
+1498514,2026-05-11T22:00:00+00:00,NS,Not Started,,129,Primera Nacional,Argentina,2026,Regular Season - 13,470,Ferro Carril Oeste,1067,Defensores De Belgrano,,,,
+1522392,2026-05-11T22:00:00+00:00,NS,Not Started,,74,Brasileiro Women,Brazil,2026,Regular Season - 10,1794,Flamengo W,1795,Ferroviaria W,,,,
+1537870,2026-05-11T22:00:00+00:00,NS,Not Started,,76,Serie D,Brazil,2026,Regular Season - 6,13094,Piauí,1195,Ferroviario,,,,
+1498516,2026-05-11T22:30:00+00:00,NS,Not Started,,129,Primera Nacional,Argentina,2026,Regular Season - 13,484,Nueva Chicago,482,Almagro,,,,
+1542988,2026-05-11T22:30:00+00:00,NS,Not Started,,251,Division Intermedia,Paraguay,2026,Regular Season - 6,1177,SOL DE America,2138,Guairena FC,,,,
+1505075,2026-05-11T23:00:00+00:00,NS,Not Started,,250,Division Profesional - Apertura,Paraguay,2026,Apertura - 20,1176,Cerro Porteno,1174,Club Guarani,,,,
+1526808,2026-05-11T23:00:00+00:00,NS,Not Started,,75,Serie C,Brazil,2026,Regular Season - 6,1201,Inter De Limeira,753,Santa Cruz,,,,
+1526812,2026-05-11T23:00:00+00:00,NS,Not Started,,75,Serie C,Brazil,2026,Regular Season - 6,7833,Maringá,138,Guarani Campinas,,,,
+1543083,2026-05-11T23:00:00+00:00,NS,Not Started,,614,Paranaense - 2,Brazil,2026,Quarter-finals,12938,Araucária,12914,Rio Branco PR,,,,
+1544262,2026-05-11T23:00:00+00:00,NS,Not Started,,241,Copa Colombia,Colombia,2026,Group Stage - 2,1127,Deportivo Cali,1131,Bucaramanga,,,,
+1544129,2026-05-11T23:30:00+00:00,NS,Not Started,,268,Primera División - Apertura,Uruguay,2026,Regular Season - 15,2369,Cerro Largo,2348,Penarol,,,,

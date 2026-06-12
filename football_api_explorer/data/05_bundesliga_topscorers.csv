@@ -1,0 +1,19 @@
+player_id,name,firstname,lastname,age,nationality,height_cm,weight_kg,team_id,team,appearances,minutes,rating,goals,assists,shots_total,shots_on,passes_key,passes_accuracy,dribbles_success,dribbles_attempts,fouls_drawn,fouls_committed,yellow_cards,red_cards,penalty_scored,penalty_missed
+184,H. Kane,Harry Edward,Kane,32,England,188,86,157,Bayern München,31,2389,7.696774,26,8,90,54,35,,21,49,21,9,5,0,9,0
+794,P. Schick,Patrik,Schick,29,Czechia,191,87,168,Bayer Leverkusen,33,1693,7.183333,21,0,58,34,11,,9,23,23,24,4,0,1,0
+21393,S. Guirassy,Serhou Yadaly,Guirassy,29,Guinea,187,82,165,Borussia Dortmund,30,2602,7.253333,21,2,67,37,25,,11,33,53,16,4,0,3,1
+25926,J. Burkardt,Jonathan Michael,Burkardt,25,Germany,181,76,164,FSV Mainz 05,29,2120,7.185714,18,2,59,30,20,,18,41,24,23,0,0,2,0
+26256,T. Kleindienst,Tim,Kleindienst,30,Germany,194,85,163,Borussia Mönchengladbach,31,2743,7.312903,16,7,58,39,29,,14,37,25,75,5,1,1,1
+46930,E. Demirović,Ermedin,Demirović,27,Bosnia and Herzegovina,185,84,172,VfB Stuttgart,34,1862,6.844117,15,1,52,30,18,,5,24,27,24,2,0,0,2
+174565,H. Ekitike,Hugo,Ekitike,23,France,190,76,169,Eintracht Frankfurt,33,2581,7.284848,15,8,87,48,44,,51,114,17,39,1,0,1,2
+81573,Omar Marmoush,Omar Khaled Mohamed Abd Elsala,Marmoush,26,Egypt,180,81,169,Eintracht Frankfurt,17,1455,8.258823,15,9,64,36,35,,46,91,55,8,2,0,2,0
+115589,B. Šeško,Benjamin,Šeško,22,Slovenia,195,85,173,RB Leipzig,33,2399,6.948484,13,5,50,31,19,,40,72,20,26,1,0,2,0
+19617,M. Olise,Michael Akpovie,Olise,24,France,184,76,157,Bayern München,34,2346,7.923529,12,15,58,36,90,,68,134,65,22,3,0,0,0
+181812,J. Musiala,Jamal,Musiala,22,Germany,184,72,157,Bayern München,25,1804,7.544000,12,2,51,32,41,,69,127,55,20,3,0,0,0
+158054,N. Woltemade,Nick,Woltemade,23,Germany,198,90,172,VfB Stuttgart,28,1620,6.925000,12,2,36,26,36,,31,68,35,24,4,0,2,1
+644,L. Sané,Leroy Aziz,Sané,30,Germany,183,80,157,Bayern München,30,1633,7.163333,11,5,50,30,37,,38,93,25,16,2,0,0,0
+25646,A. Pléa,Alassane Alexandre,Pléa,32,France,181,79,163,Borussia Mönchengladbach,30,1914,7.106896,11,4,26,14,26,,17,40,33,17,3,0,1,0
+106851,S. Machino,Shuto,Machino,26,Japan,185,81,163,Borussia Mönchengladbach,34,1960,7.043750,11,2,41,23,29,,10,17,25,19,2,0,2,0
+726,A. Kramarić,Andrej,Kramarić,34,Croatia,177,73,167,1899 Hoffenheim,32,2782,7.168750,11,8,55,26,50,,20,42,28,12,4,0,3,0
+2598,R. Dōan,Ritsu,Dōan,27,Japan,172,70,169,Eintracht Frankfurt,34,2874,7.197058,10,7,40,23,28,,54,112,56,27,2,0,0,0
+162016,X. Simons,Xavier Quentin Shay,Simons,22,Netherlands,179,58,173,RB Leipzig,25,2157,7.580000,10,6,33,23,50,,33,88,56,24,5,0,0,0

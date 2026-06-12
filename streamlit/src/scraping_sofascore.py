@@ -69,7 +69,8 @@ STAT_FIELDS = [
 
 POSITIONS = ["G", "D", "M", "F"]
 
-REQUEST_DELAY = (0.6, 1.4)  # uniform seconds between API calls
+# uniform seconds between API calls; override e.g. SOFA_DELAY="2.0,4.0" after rate limiting
+REQUEST_DELAY = tuple(float(x) for x in os.getenv("SOFA_DELAY", "0.6,1.4").split(","))
 
 OUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
@@ -90,8 +91,25 @@ def _season_label(year_str: str) -> str | None:
 
 
 def _wanted_seasons() -> set[str]:
-    first = int(FIRST_SEASON.split("-")[0])
+    first_season = os.getenv("SOFA_FIRST_SEASON", FIRST_SEASON)
+    first = int(first_season.split("-")[0])
     return {f"{y}-{y + 1}" for y in range(first, 2100)}
+
+
+def leagues_from_env() -> dict[str, int]:
+    """Override target leagues via SOFA_LEAGUES='slug:id,slug:id' (default: Big-5).
+
+    Used for one-off pulls of extra leagues (e.g. '2-bundesliga:44') without
+    touching the Big-5 defaults that the weekly pipeline relies on.
+    """
+    spec = os.getenv("SOFA_LEAGUES", "").strip()
+    if not spec:
+        return LEAGUES
+    out = {}
+    for part in spec.split(","):
+        slug, tid = part.split(":")
+        out[slug.strip()] = int(tid)
+    return out
 
 
 class SofascoreClient:
@@ -206,7 +224,7 @@ def main():
     client = SofascoreClient()
     all_frames = []
     try:
-        for league, tid in LEAGUES.items():
+        for league, tid in leagues_from_env().items():
             seasons = fetch_seasons(client, tid)
             targets = sorted(s for s in seasons if s in wanted)
             print(f"== {league}: {len(targets)} seasons ({targets[0]} … {targets[-1]})")
@@ -228,11 +246,15 @@ def main():
     finally:
         client.close()
 
-    if all_frames:
-        combined = pd.concat(all_frames, ignore_index=True)
+    # Rebuild the combined file from ALL season files on disk (not just this
+    # run's leagues), so a partial run never shrinks the combined CSV.
+    import glob as _glob
+    season_files = sorted(_glob.glob(os.path.join(OUT_DIR, "sofascore_player_stats-*-????-????.csv")))
+    if season_files:
+        combined = pd.concat((pd.read_csv(f) for f in season_files), ignore_index=True)
         combined_path = os.path.join(OUT_DIR, "sofascore_player_stats_all_seasons_long.csv")
         combined.to_csv(combined_path, index=False)
-        print(f"Combined: {len(combined)} rows -> {combined_path}")
+        print(f"Combined: {len(combined)} rows from {len(season_files)} files -> {combined_path}")
 
 
 if __name__ == "__main__":
