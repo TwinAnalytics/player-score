@@ -62,6 +62,7 @@ PER90_SOURCES = {
     "sofa_gprev_p90": "goalsPrevented",
     "sofa_claims_p90": "highClaims",
     "sofa_runsout_p90": "successfulRunsOut",
+    "sofa_bcc_p90": "bigChancesCreated",
 }
 
 
@@ -85,6 +86,11 @@ def add_per90_features(df: pd.DataFrame) -> pd.DataFrame:
     conceded = df["goalsConceded"].fillna(0)
     df["sofa_save_pct"] = (saves / (saves + conceded).replace(0, pd.NA)) * 100
     df["sofa_pass_pct"] = df["accuratePassesPercentage"]
+
+    # Duel win rates (quality, complementing the per-90 volumes)
+    df["sofa_aerw_pct"] = df["aerialDuelsWonPercentage"]
+    df["sofa_gdw_pct"] = df["groundDuelsWonPercentage"]
+    df["sofa_duelw_pct"] = df["totalDuelsWonPercentage"]
     return df
 
 
@@ -147,6 +153,63 @@ INTENSITY_WEIGHTS = {
                "sofa_touch_p90": 0.10, "sofa_duelw_p90": 0.10},
 }
 
+# ------------------------------------------------------------------
+# V2: extended with Sofascore-only metrics (big chances, duels).
+# Old weights scaled down to make room; new metrics carry 8-15%.
+# Validated against the Sofascore rating before going live.
+# ------------------------------------------------------------------
+
+OFF_WEIGHTS_V2 = {
+    "FW": {
+        "sofa_npg_p90": 0.35, "sofa_npxg_p90": 0.18, "sofa_ast_p90": 0.13,
+        "sofa_bcc_p90": 0.08, "sofa_kp_p90": 0.09, "sofa_xa_p90": 0.05,
+        "sofa_drib_p90": 0.05, "sofa_fthird_p90": 0.04, "sofa_aerw_p90": 0.03,
+    },
+    "Off_MF": {
+        "sofa_npg_p90": 0.22, "sofa_ast_p90": 0.18, "sofa_npxg_p90": 0.13,
+        "sofa_bcc_p90": 0.10, "sofa_kp_p90": 0.11, "sofa_xa_p90": 0.09,
+        "sofa_fthird_p90": 0.07, "sofa_drib_p90": 0.05, "sofa_gdw_p90": 0.05,
+    },
+}
+
+MID_WEIGHTS_V2 = {
+    "MF": {
+        "sofa_ast_p90": 0.15, "sofa_xa_p90": 0.12, "sofa_kp_p90": 0.14,
+        "sofa_bcc_p90": 0.07, "sofa_npg_p90": 0.06, "sofa_fthird_p90": 0.10,
+        "sofa_tklw_p90": 0.07, "sofa_int_p90": 0.05, "sofa_recov_p90": 0.05,
+        "sofa_pwa3_p90": 0.04, "sofa_duelw_p90": 0.08, "sofa_duelw_pct": 0.07,
+    },
+}
+
+DEF_WEIGHTS_V2 = {
+    "DF": {
+        "sofa_tklw_p90": 0.23, "sofa_int_p90": 0.20, "sofa_gdw_p90": 0.13,
+        "sofa_clr_p90": 0.10, "sofa_aerw_p90": 0.08, "sofa_aerw_pct": 0.10,
+        "sofa_gdw_pct": 0.06, "sofa_recov_p90": 0.05, "sofa_lball_p90": 0.05,
+    },
+    "Def_MF": {
+        "sofa_tklw_p90": 0.28, "sofa_int_p90": 0.25, "sofa_gdw_p90": 0.16,
+        "sofa_duelw_pct": 0.09, "sofa_clr_p90": 0.07, "sofa_recov_p90": 0.08,
+        "sofa_aerw_p90": 0.07,
+    },
+}
+
+INTENSITY_WEIGHTS_V2 = {
+    pos: {**w, "sofa_pwa3_p90": 0.10}
+    for pos, w in (
+        ("FW",     {"sofa_touch_p90": 0.27, "sofa_duelw_p90": 0.27, "sofa_recov_p90": 0.18,
+                    "sofa_aerw_p90": 0.09, "sofa_tklint_p90": 0.09}),
+        ("Off_MF", {"sofa_touch_p90": 0.24, "sofa_duelw_p90": 0.24, "sofa_recov_p90": 0.23,
+                    "sofa_tklint_p90": 0.13, "sofa_aerw_p90": 0.06}),
+        ("MF",     {"sofa_recov_p90": 0.22, "sofa_tklint_p90": 0.22, "sofa_touch_p90": 0.18,
+                    "sofa_duelw_p90": 0.18, "sofa_aerw_p90": 0.10}),
+        ("Def_MF", {"sofa_tklint_p90": 0.32, "sofa_recov_p90": 0.27, "sofa_aerw_p90": 0.13,
+                    "sofa_touch_p90": 0.11, "sofa_duelw_p90": 0.07}),
+        ("DF",     {"sofa_tklint_p90": 0.27, "sofa_aerw_p90": 0.23, "sofa_recov_p90": 0.22,
+                    "sofa_touch_p90": 0.09, "sofa_duelw_p90": 0.09}),
+    )
+}
+
 GK_WEIGHTS = {
     "GK": {
         "sofa_gprev_p90": 0.35,   # goals prevented: save quality vs xGOT faced
@@ -197,14 +260,20 @@ def compute_benchmarks(sofascore_dir: Path, processed_dir: Path | None = None) -
         "INTENSITY": df[df["Pos"] != "GK"],
         "GK": df[df["Pos"] == "GK"],
     }
+    # Benchmarks cover the union of v1 and v2 features (p95 per feature is
+    # independent of the weight variant)
     block_weights = {
-        "OFF": OFF_WEIGHTS, "MID": MID_WEIGHTS, "DEF": DEF_WEIGHTS,
-        "INTENSITY": INTENSITY_WEIGHTS, "GK": GK_WEIGHTS,
+        "OFF": (OFF_WEIGHTS, OFF_WEIGHTS_V2),
+        "MID": (MID_WEIGHTS, MID_WEIGHTS_V2),
+        "DEF": (DEF_WEIGHTS, DEF_WEIGHTS_V2),
+        "INTENSITY": (INTENSITY_WEIGHTS, INTENSITY_WEIGHTS_V2),
+        "GK": (GK_WEIGHTS,),
     }
 
     out: dict[str, dict[str, float]] = {}
     for block, pool in pools.items():
-        feats = sorted({f for ws in block_weights[block].values() for f in ws})
+        feats = sorted({f for variant in block_weights[block]
+                        for ws in variant.values() for f in ws})
         out[block] = {f: round(float(pool[f].quantile(0.95)), 3) for f in feats}
     return out
 
@@ -239,11 +308,16 @@ def compute_all_scores_sofa(df: pd.DataFrame) -> pd.DataFrame:
     df = add_per90_features(df)
 
     eligible = df[df["90s"] >= MIN_90S_FOR_SCORING]
+    # V2 weights are production since June 2026: they correlate better with
+    # the independent Sofascore rating in every block (Off .674->.699,
+    # Mid .719->.729, Def .202->.248, Intensity .224->.298) at 0.97+ rank
+    # stability vs v1. The V1 dicts above stay as the documented FBref-era
+    # mirror that the migration was validated against.
     blocks = [
-        (OFF_WEIGHTS, bm["OFF"], "OffScore_abs", "OffBand"),
-        (MID_WEIGHTS, bm["MID"], "MidScore_abs", "MidBand"),
-        (DEF_WEIGHTS, bm["DEF"], "DefScore_abs", "DefBand"),
-        (INTENSITY_WEIGHTS, bm["INTENSITY"], "IntensityScore_abs", "IntensityBand"),
+        (OFF_WEIGHTS_V2, bm["OFF"], "OffScore_abs", "OffBand"),
+        (MID_WEIGHTS_V2, bm["MID"], "MidScore_abs", "MidBand"),
+        (DEF_WEIGHTS_V2, bm["DEF"], "DefScore_abs", "DefBand"),
+        (INTENSITY_WEIGHTS_V2, bm["INTENSITY"], "IntensityScore_abs", "IntensityBand"),
         (GK_WEIGHTS, bm["GK"], "GKScore_abs", "GKBand"),
     ]
     for weights_by_pos, benchmarks, score_col, band_col in blocks:

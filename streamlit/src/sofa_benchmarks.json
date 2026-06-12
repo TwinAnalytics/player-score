@@ -1,8 +1,11 @@
 {
   "OFF": {
+    "sofa_aerw_p90": 3.776,
     "sofa_ast_p90": 0.374,
+    "sofa_bcc_p90": 0.591,
     "sofa_drib_p90": 2.78,
     "sofa_fthird_p90": 18.142,
+    "sofa_gdw_p90": 6.405,
     "sofa_kp_p90": 2.615,
     "sofa_npg_p90": 0.597,
     "sofa_npxg_p90": 0.537,
@@ -10,6 +13,9 @@
   },
   "MID": {
     "sofa_ast_p90": 0.232,
+    "sofa_bcc_p90": 0.384,
+    "sofa_duelw_p90": 7.547,
+    "sofa_duelw_pct": 60.288,
     "sofa_fthird_p90": 18.249,
     "sofa_int_p90": 1.762,
     "sofa_kp_p90": 2.0,
@@ -21,8 +27,11 @@
   },
   "DEF": {
     "sofa_aerw_p90": 3.272,
+    "sofa_aerw_pct": 70.43,
     "sofa_clr_p90": 5.667,
+    "sofa_duelw_pct": 65.63,
     "sofa_gdw_p90": 5.089,
+    "sofa_gdw_pct": 67.09,
     "sofa_int_p90": 1.87,
     "sofa_lball_p90": 4.655,
     "sofa_recov_p90": 6.391,
@@ -31,6 +40,7 @@
   "INTENSITY": {
     "sofa_aerw_p90": 3.249,
     "sofa_duelw_p90": 7.316,
+    "sofa_pwa3_p90": 0.935,
     "sofa_recov_p90": 6.618,
     "sofa_tklint_p90": 4.267,
     "sofa_touch_p90": 86.703
