@@ -41,6 +41,12 @@ METRICS = [
     ("Recoveries90", "sofa_ballRecovery", True),
     ("Dispossessed90", "sofa_dispossessed", True),
     ("Touches90", "sofa_touches", True),
+    # Sofa-era pizza dimensions
+    ("Dribbles90", "sofa_successfulDribbles", True),
+    ("FinalThird90", "sofa_accurateFinalThirdPasses", True),
+    ("LongBalls90", "sofa_accurateLongBalls", True),
+    ("TacklesWon90", "sofa_tacklesWon", True),
+    ("SoT90", "sofa_shotsOnTarget", True),
     ("ErrorsLeadToShot", "sofa_errorLeadToShot", False),
     ("ErrorsLeadToGoal", "sofa_errorLeadToGoal", False),
     # Goalkeeping
