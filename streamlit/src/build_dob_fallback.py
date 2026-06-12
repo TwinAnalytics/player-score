@@ -30,7 +30,7 @@ OUT = SOFA_DIR / "player_dob_fallback.csv"
 
 def main():
     frames = [pd.read_csv(p, usecols=["player_id", "player_name"])
-              for p in glob.glob(str(SOFA_DIR / "sofascore_player_stats-*-2025-2026.csv"))]
+              for p in glob.glob(str(SOFA_DIR / "sofascore_player_stats-*-????-????.csv"))]
     players = pd.concat(frames).drop_duplicates("player_id")
 
     # Read the scraped profiles directly — NOT via load_profiles, which merges

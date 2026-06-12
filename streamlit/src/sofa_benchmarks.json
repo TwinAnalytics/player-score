@@ -47,6 +47,7 @@
   },
   "GK": {
     "sofa_claims_p90": 1.296,
+    "sofa_cs_p90": 0.462,
     "sofa_gprev_p90": 0.259,
     "sofa_pass_pct": 85.141,
     "sofa_runsout_p90": 0.895,

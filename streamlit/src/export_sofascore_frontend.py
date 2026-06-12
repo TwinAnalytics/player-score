@@ -84,21 +84,23 @@ def export_sofa_metrics(processed_dir: Path) -> None:
             vals = vals / minutes * 90
         out[name] = vals.round(2)
 
-    # Players outside the FBref-matched universe (goalkeepers, post-FBref
-    # debuts) appear in player_scores with their Sofascore name from the
-    # 2025-26 era onward; add their metrics rows from the raw season stats.
+    # Players outside the FBref-matched universe: goalkeepers, post-FBref
+    # debuts, and the entire 2015-16/2016-17 seasons. Their display names
+    # come from the name registry so career views stay continuous.
     raw_path = processed_dir.parent / "Raw" / "Sofascore" / "sofascore_player_stats_all_seasons_long.csv"
     if raw_path.exists():
+        from .pipeline_sofa import build_name_registry
         from .processing_sofa import LEAGUE_TO_COMP
 
         raw = pd.read_csv(raw_path)
-        raw = raw[(raw["season"] >= "2025-2026") & raw["league"].isin(LEAGUE_TO_COMP)]
+        raw = raw[raw["league"].isin(LEAGUE_TO_COMP)]
         matched_keys = set(zip(df["sofa_player_id"], df["season"]))
         raw = raw[[(pid, s) not in matched_keys
                    for pid, s in zip(raw["player_id"], raw["season"])]]
+        player_names, team_names = build_name_registry(processed_dir)
         extra = pd.DataFrame({
-            "Player": raw["player_name"],
-            "Squad": raw["team_name"],
+            "Player": raw["player_id"].map(player_names).fillna(raw["player_name"]),
+            "Squad": raw["team_id"].map(team_names).fillna(raw["team_name"]),
             "Season": raw["season"],
             "Comp": raw["league"].map(LEAGUE_TO_COMP),
             "PlayerId": raw["player_id"],

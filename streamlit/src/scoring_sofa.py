@@ -63,6 +63,7 @@ PER90_SOURCES = {
     "sofa_claims_p90": "highClaims",
     "sofa_runsout_p90": "successfulRunsOut",
     "sofa_bcc_p90": "bigChancesCreated",
+    "sofa_cs_p90": "cleanSheet",
 }
 
 
@@ -221,6 +222,47 @@ GK_WEIGHTS = {
     },
 }
 
+# ------------------------------------------------------------------
+# LIGHT variants for seasons before the data exists:
+# xG/xA start in 2022-23, goals prevented in 2021-22. The missing weights
+# are redistributed proportionally across the remaining features, so old
+# and new seasons stay on the same 0-1000 scale.
+# ------------------------------------------------------------------
+
+XG_FROM_SEASON = "2022-2023"
+GPREV_FROM_SEASON = "2021-2022"
+
+OFF_WEIGHTS_LIGHT = {
+    "FW": {
+        "sofa_npg_p90": 0.45, "sofa_ast_p90": 0.17, "sofa_bcc_p90": 0.10,
+        "sofa_kp_p90": 0.12, "sofa_drib_p90": 0.06, "sofa_fthird_p90": 0.05,
+        "sofa_aerw_p90": 0.04,
+    },
+    "Off_MF": {
+        "sofa_npg_p90": 0.28, "sofa_ast_p90": 0.23, "sofa_bcc_p90": 0.13,
+        "sofa_kp_p90": 0.14, "sofa_fthird_p90": 0.09, "sofa_drib_p90": 0.06,
+        "sofa_gdw_p90": 0.06,
+    },
+}
+
+MID_WEIGHTS_LIGHT = {
+    "MF": {
+        "sofa_ast_p90": 0.17, "sofa_kp_p90": 0.16, "sofa_bcc_p90": 0.08,
+        "sofa_npg_p90": 0.07, "sofa_fthird_p90": 0.11, "sofa_tklw_p90": 0.08,
+        "sofa_int_p90": 0.06, "sofa_recov_p90": 0.06, "sofa_pwa3_p90": 0.05,
+        "sofa_duelw_p90": 0.09, "sofa_duelw_pct": 0.08,
+    },
+}
+
+GK_WEIGHTS_LIGHT = {
+    # Without goals prevented, pure save volume would crown keepers of bad
+    # teams; clean-sheet rate balances volume against outcomes.
+    "GK": {
+        "sofa_saves_p90": 0.25, "sofa_save_pct": 0.25, "sofa_cs_p90": 0.20,
+        "sofa_claims_p90": 0.12, "sofa_pass_pct": 0.12, "sofa_runsout_p90": 0.06,
+    },
+}
+
 ALL_FEATURES = sorted({f for ws in (
     *OFF_WEIGHTS.values(), *MID_WEIGHTS.values(), *DEF_WEIGHTS.values(),
     *INTENSITY_WEIGHTS.values(), *GK_WEIGHTS.values(),
@@ -263,11 +305,11 @@ def compute_benchmarks(sofascore_dir: Path, processed_dir: Path | None = None) -
     # Benchmarks cover the union of v1 and v2 features (p95 per feature is
     # independent of the weight variant)
     block_weights = {
-        "OFF": (OFF_WEIGHTS, OFF_WEIGHTS_V2),
-        "MID": (MID_WEIGHTS, MID_WEIGHTS_V2),
+        "OFF": (OFF_WEIGHTS, OFF_WEIGHTS_V2, OFF_WEIGHTS_LIGHT),
+        "MID": (MID_WEIGHTS, MID_WEIGHTS_V2, MID_WEIGHTS_LIGHT),
         "DEF": (DEF_WEIGHTS, DEF_WEIGHTS_V2),
         "INTENSITY": (INTENSITY_WEIGHTS, INTENSITY_WEIGHTS_V2),
-        "GK": (GK_WEIGHTS,),
+        "GK": (GK_WEIGHTS, GK_WEIGHTS_LIGHT),
     }
 
     out: dict[str, dict[str, float]] = {}
@@ -298,14 +340,20 @@ def _apply_block(df: pd.DataFrame, weights_by_pos: dict, benchmarks: dict,
     return pd.concat(frames) if frames else df.iloc[0:0]
 
 
-def compute_all_scores_sofa(df: pd.DataFrame) -> pd.DataFrame:
+def compute_all_scores_sofa(df: pd.DataFrame, season: str | None = None) -> pd.DataFrame:
     """
     df: season table from processing_sofa.build_season_table.
     Returns df with Off/Mid/Def/Intensity/GK scores + bands; players below
     MIN_90S_FOR_SCORING keep NaN scores (same convention as the FBref pipeline).
+    Seasons before the xG era automatically use the LIGHT weight variants.
     """
     bm = load_benchmarks()
     df = add_per90_features(df)
+    if season is None and "season" in df.columns and len(df):
+        season = str(df["season"].iloc[0])
+
+    has_xg = season is None or season >= XG_FROM_SEASON
+    has_gprev = season is None or season >= GPREV_FROM_SEASON
 
     eligible = df[df["90s"] >= MIN_90S_FOR_SCORING]
     # V2 weights are production since June 2026: they correlate better with
@@ -314,11 +362,11 @@ def compute_all_scores_sofa(df: pd.DataFrame) -> pd.DataFrame:
     # stability vs v1. The V1 dicts above stay as the documented FBref-era
     # mirror that the migration was validated against.
     blocks = [
-        (OFF_WEIGHTS_V2, bm["OFF"], "OffScore_abs", "OffBand"),
-        (MID_WEIGHTS_V2, bm["MID"], "MidScore_abs", "MidBand"),
+        (OFF_WEIGHTS_V2 if has_xg else OFF_WEIGHTS_LIGHT, bm["OFF"], "OffScore_abs", "OffBand"),
+        (MID_WEIGHTS_V2 if has_xg else MID_WEIGHTS_LIGHT, bm["MID"], "MidScore_abs", "MidBand"),
         (DEF_WEIGHTS_V2, bm["DEF"], "DefScore_abs", "DefBand"),
         (INTENSITY_WEIGHTS_V2, bm["INTENSITY"], "IntensityScore_abs", "IntensityBand"),
-        (GK_WEIGHTS, bm["GK"], "GKScore_abs", "GKBand"),
+        (GK_WEIGHTS if has_gprev else GK_WEIGHTS_LIGHT, bm["GK"], "GKScore_abs", "GKBand"),
     ]
     for weights_by_pos, benchmarks, score_col, band_col in blocks:
         scored = _apply_block(eligible, weights_by_pos, benchmarks, score_col, band_col)
