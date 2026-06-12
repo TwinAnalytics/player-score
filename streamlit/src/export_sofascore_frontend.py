@@ -18,6 +18,17 @@ import pandas as pd
 
 # (output name, sofa column, as_per90)
 METRICS = [
+    # Season totals for the FIFA card fact line
+    ("Goals", "sofa_goals", False),
+    ("Assists", "sofa_assists", False),
+    ("xGTotal", "sofa_expectedGoals", False),
+    ("xATotal", "sofa_expectedAssists", False),
+    ("Shots", "sofa_totalShots", False),
+    ("KeyPasses", "sofa_keyPasses", False),
+    ("Tackles", "sofa_tackles", False),
+    ("Interceptions", "sofa_interceptions", False),
+    ("Clearances", "sofa_clearances", False),
+    ("Saves", "sofa_saves", False),
     ("GroundDuelsWonPct", "sofa_groundDuelsWonPercentage", False),
     ("AerialDuelsWonPct", "sofa_aerialDuelsWonPercentage", False),
     ("TotalDuelsWonPct", "sofa_totalDuelsWonPercentage", False),
