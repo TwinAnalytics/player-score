@@ -21,6 +21,8 @@ jobs:
   run-pipeline:
     runs-on: [self-hosted, macOS, X64, playerscore]
     timeout-minutes: 300
+    env:
+      WEB_REPO_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
 
     steps:
       - name: Checkout
@@ -68,10 +70,8 @@ jobs:
       # Needs a repo secret WEB_REPO_TOKEN (PAT with write access to
       # TwinAnalytics/playerscore-web); without it this step is skipped.
       - name: Sync website data (playerscore-web -> Vercel)
-        if: ${{ secrets.WEB_REPO_TOKEN != '' }}
+        if: ${{ env.WEB_REPO_TOKEN != '' }}
         shell: bash
-        env:
-          WEB_REPO_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
         run: |
           rm -rf /tmp/playerscore-web
           git clone --depth 1 "https://x-access-token:${WEB_REPO_TOKEN}@github.com/TwinAnalytics/playerscore-web.git" /tmp/playerscore-web
