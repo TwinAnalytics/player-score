@@ -31,6 +31,17 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      # Raw data is not in git; it lives in a persistent store on the runner
+      # and is linked into the fresh checkout (checkout's git clean removes
+      # the link each run, never the store behind it).
+      - name: Link persistent raw data store
+        shell: bash
+        run: |
+          mkdir -p "$HOME/playerscore-data/Raw"
+          rm -rf Data/Raw
+          ln -sfn "$HOME/playerscore-data/Raw" Data/Raw
+          ls Data/Raw/
+
       - name: Set up venv + deps
         shell: bash
         run: |
