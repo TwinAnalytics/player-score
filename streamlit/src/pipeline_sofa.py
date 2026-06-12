@@ -62,7 +62,7 @@ def build_name_registry(processed_dir: Path) -> tuple[dict[int, str], dict[int, 
 def run_sofa_pipeline(season: str, sofascore_dir: Path, processed_dir: Path) -> Path:
     sofascore_dir, processed_dir = Path(sofascore_dir), Path(processed_dir)
 
-    table = build_season_table(season, sofascore_dir)
+    table = build_season_table(season, sofascore_dir, processed_dir)
     if table.empty:
         raise FileNotFoundError(f"No Sofascore season stats for {season} in {sofascore_dir}")
 

@@ -68,6 +68,36 @@ def export_sofa_metrics(processed_dir: Path) -> None:
             vals = vals / minutes * 90
         out[name] = vals.round(2)
 
+    # Players outside the FBref-matched universe (goalkeepers, post-FBref
+    # debuts) appear in player_scores with their Sofascore name from the
+    # 2025-26 era onward; add their metrics rows from the raw season stats.
+    raw_path = processed_dir.parent / "Raw" / "Sofascore" / "sofascore_player_stats_all_seasons_long.csv"
+    if raw_path.exists():
+        from .processing_sofa import LEAGUE_TO_COMP
+
+        raw = pd.read_csv(raw_path)
+        raw = raw[(raw["season"] >= "2025-2026") & raw["league"].isin(LEAGUE_TO_COMP)]
+        matched_keys = set(zip(df["sofa_player_id"], df["season"]))
+        raw = raw[[(pid, s) not in matched_keys
+                   for pid, s in zip(raw["player_id"], raw["season"])]]
+        extra = pd.DataFrame({
+            "Player": raw["player_name"],
+            "Squad": raw["team_name"],
+            "Season": raw["season"],
+            "Comp": raw["league"].map(LEAGUE_TO_COMP),
+            "PlayerId": raw["player_id"],
+            "PosGroup": raw["position_group"],
+            "SofaMinutes": raw["minutesPlayed"],
+        })
+        raw_minutes = raw["minutesPlayed"].where(raw["minutesPlayed"] > 0)
+        for name, col, per90 in METRICS:
+            vals = raw[col.removeprefix("sofa_")]
+            if per90:
+                vals = vals / raw_minutes * 90
+            extra[name] = vals.round(2).values
+        out = pd.concat([out, extra], ignore_index=True)
+        print(f"[SOFA EXPORT] +{len(extra)} unmatched rows (GKs, new players)")
+
     dest = processed_dir / "player_sofa_metrics.csv"
     out.to_csv(dest, index=False)
     print(f"[SOFA EXPORT] {len(out)} rows -> {dest}")

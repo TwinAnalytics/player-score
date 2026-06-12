@@ -95,8 +95,11 @@ def compute_squad_scores(df_all: pd.DataFrame) -> pd.DataFrame:
             result.get("DefScore_squad"),
         ]
         comp_scores = [v for v in comp_scores if v is not None]
-        if comp_scores:
-            result["OverallScore_squad"] = float(sum(comp_scores) / len(comp_scores))
+        # Key must ALWAYS exist: groups with varying keys make groupby.apply
+        # return a stacked Series instead of a DataFrame.
+        result["OverallScore_squad"] = (
+            float(sum(comp_scores) / len(comp_scores)) if comp_scores else None
+        )
 
         return pd.Series(result)
 

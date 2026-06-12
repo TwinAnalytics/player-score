@@ -1,0 +1,46 @@
+{
+  "OFF": {
+    "sofa_ast_p90": 0.374,
+    "sofa_drib_p90": 2.78,
+    "sofa_fthird_p90": 18.142,
+    "sofa_kp_p90": 2.615,
+    "sofa_npg_p90": 0.597,
+    "sofa_npxg_p90": 0.537,
+    "sofa_xa_p90": 0.298
+  },
+  "MID": {
+    "sofa_ast_p90": 0.232,
+    "sofa_fthird_p90": 18.249,
+    "sofa_int_p90": 1.762,
+    "sofa_kp_p90": 2.0,
+    "sofa_npg_p90": 0.215,
+    "sofa_pwa3_p90": 0.891,
+    "sofa_recov_p90": 7.233,
+    "sofa_tklw_p90": 2.0,
+    "sofa_xa_p90": 0.213
+  },
+  "DEF": {
+    "sofa_aerw_p90": 3.272,
+    "sofa_clr_p90": 5.667,
+    "sofa_gdw_p90": 5.089,
+    "sofa_int_p90": 1.87,
+    "sofa_lball_p90": 4.655,
+    "sofa_recov_p90": 6.391,
+    "sofa_tklw_p90": 1.801
+  },
+  "INTENSITY": {
+    "sofa_aerw_p90": 3.249,
+    "sofa_duelw_p90": 7.316,
+    "sofa_recov_p90": 6.618,
+    "sofa_tklint_p90": 4.267,
+    "sofa_touch_p90": 86.703
+  },
+  "GK": {
+    "sofa_claims_p90": 1.296,
+    "sofa_gprev_p90": 0.259,
+    "sofa_pass_pct": 85.141,
+    "sofa_runsout_p90": 0.895,
+    "sofa_save_pct": 76.26,
+    "sofa_saves_p90": 3.987
+  }
+}

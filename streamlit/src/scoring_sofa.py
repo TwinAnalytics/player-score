@@ -118,15 +118,18 @@ MID_WEIGHTS = {
 
 DEF_WEIGHTS = {
     # FBref DF:     TklW .26  Int .22  Blocks .15  Clr .11  DefPen .08  Def3rd .06  PrgP .05
+    # NOTE: Sofascore's blockedShots counts the player's OWN blocked shot
+    # attempts (an attacking stat), so FBref's defensive Blocks weight goes
+    # to ground duels won instead.
     "DF": {
-        "sofa_tklw_p90": 0.26, "sofa_int_p90": 0.22, "sofa_blk_p90": 0.15,
+        "sofa_tklw_p90": 0.26, "sofa_int_p90": 0.22, "sofa_gdw_p90": 0.15,
         "sofa_clr_p90": 0.11, "sofa_aerw_p90": 0.08, "sofa_recov_p90": 0.06,
         "sofa_lball_p90": 0.05,
     },
     # FBref Def_MF: TklW .32  Int .28  Blocks .12  Clr .08  DefPen .08  Def3rd .07
     "Def_MF": {
-        "sofa_tklw_p90": 0.32, "sofa_int_p90": 0.28, "sofa_blk_p90": 0.12,
-        "sofa_clr_p90": 0.08, "sofa_recov_p90": 0.08, "sofa_gdw_p90": 0.07,
+        "sofa_tklw_p90": 0.32, "sofa_int_p90": 0.28, "sofa_gdw_p90": 0.19,
+        "sofa_clr_p90": 0.08, "sofa_recov_p90": 0.08,
     },
 }
 
@@ -171,16 +174,18 @@ def load_benchmarks() -> dict[str, dict[str, float]]:
         return json.load(fh)
 
 
-def compute_benchmarks(sofascore_dir: Path) -> dict[str, dict[str, float]]:
+def compute_benchmarks(sofascore_dir: Path, processed_dir: Path | None = None) -> dict[str, dict[str, float]]:
     """
     p95 per feature over qualified players of BENCHMARK_SEASONS.
     Per score block, the p95 pool is restricted to the roles the block scores
     (e.g. OFF benchmarks come from FW + Off_MF players), mirroring the
-    role-relative spirit of the FBref benchmarks.
+    role-relative spirit of the FBref benchmarks. Roles come from the FBref
+    era via the matching table (processed_dir), so benchmark pools use the
+    same classification as the frozen history.
     """
     from .processing_sofa import build_season_table
 
-    frames = [build_season_table(s, sofascore_dir) for s in BENCHMARK_SEASONS]
+    frames = [build_season_table(s, sofascore_dir, processed_dir) for s in BENCHMARK_SEASONS]
     df = pd.concat([f for f in frames if not f.empty], ignore_index=True)
     df = df[df["minutesPlayed"] >= BENCHMARK_MIN_MINUTES]
     df = add_per90_features(df)
@@ -250,7 +255,7 @@ def compute_all_scores_sofa(df: pd.DataFrame) -> pd.DataFrame:
 
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
-    bm = compute_benchmarks(root / "Data" / "Raw" / "Sofascore")
+    bm = compute_benchmarks(root / "Data" / "Raw" / "Sofascore", root / "Data" / "Processed")
     with open(BENCHMARK_PATH, "w") as fh:
         json.dump(bm, fh, indent=2)
     print(f"Benchmarks written to {BENCHMARK_PATH}:")
