@@ -44,6 +44,11 @@ METRICS = [
     ("ErrorsLeadToShot", "sofa_errorLeadToShot", False),
     ("ErrorsLeadToGoal", "sofa_errorLeadToGoal", False),
     # Goalkeeping
+    ("SavedInBox90", "sofa_savedShotsFromInsideTheBox", True),
+    ("Punches90", "sofa_punches", True),
+    ("RunsOut90", "sofa_successfulRunsOut", True),
+    ("LongBallPct", "sofa_accurateLongBallsPercentage", False),
+    ("PassPct", "sofa_accuratePassesPercentage", False),
     ("Saves90", "sofa_saves", True),
     ("GoalsPrevented", "sofa_goalsPrevented", False),
     ("GoalsConceded90", "sofa_goalsConceded", True),
