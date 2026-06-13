@@ -76,31 +76,23 @@ def load_profiles(sofascore_dir: Path) -> pd.DataFrame:
     return df
 
 
-def fbref_meta_by_sofa_id(season: str, processed_dir: Path) -> dict[int, tuple[str, float]]:
+def role_reference(season: str, processed_dir: Path) -> dict[int, str]:
     """
-    {sofa_player_id: (Pos, Age)} for one season, inherited from the FBref era
-    via the matching table. Keeps roles and ages consistent with the frozen
-    history; players without an FBref match (e.g. debuts after the last FBref
-    run) fall back to profile/coarse classification.
+    {sofa_player_id: Pos} from the frozen role reference (role_reference.csv),
+    seeded once from the FBref-era classification. This keeps the accurate
+    Off_MF/Def_MF refinement that needs full positional data, even for recent
+    seasons where the Sofascore profile scrape has low coverage. Players not in
+    the reference (debuts, 2015/16-2016/17) fall back to profile/coarse roles.
+
+    Ages now come uniformly from Sofascore birth dates, not from this reference.
     """
-    processed_dir = Path(processed_dir)
-    match_path = processed_dir / "player_sofascore_stats.csv"
-    fbref_path = processed_dir / f"player_scores-{season}.csv"
-    if not match_path.exists() or not fbref_path.exists():
+    path = Path(processed_dir) / "role_reference.csv"
+    if not path.exists():
         return {}
-
-    m = pd.read_csv(match_path, usecols=["season", "Player", "sofa_player_id"])
-    m = m[m["season"] == season].drop_duplicates("sofa_player_id")
-    fb = pd.read_csv(fbref_path, usecols=["Player", "Pos", "Age", "Min"])
-    # One row per player: keep the row with most minutes (transfers)
-    fb = fb.sort_values("Min").drop_duplicates("Player", keep="last")
-
-    joined = m.merge(fb, on="Player", how="inner")
-    return {
-        int(r.sofa_player_id): (r.Pos, r.Age)
-        for r in joined.itertuples(index=False)
-        if isinstance(r.Pos, str)
-    }
+    ref = pd.read_csv(path)
+    ref = ref[ref["season"] == season]
+    return {int(r.sofa_player_id): r.Pos for r in ref.itertuples(index=False)
+            if isinstance(r.Pos, str)}
 
 
 def build_season_table(season: str, sofascore_dir: Path,
@@ -135,14 +127,14 @@ def build_season_table(season: str, sofascore_dir: Path,
     ]
     table["Age"] = age_in_season(table["date_of_birth"], season)
 
-    # Inherit role and age from the FBref era where a match exists
+    # Role: prefer the frozen FBref-seeded reference (accurate Off_MF/Def_MF
+    # split even where the Sofascore profile scrape has low coverage), fall
+    # back to the profile/coarse role above. Age is always Sofascore-derived.
     if processed_dir is not None:
-        meta = fbref_meta_by_sofa_id(season, processed_dir)
-        if meta:
-            fb_pos = table["player_id"].map(lambda pid: meta.get(pid, (None, None))[0])
-            fb_age = table["player_id"].map(lambda pid: meta.get(pid, (None, None))[1])
-            table["Pos"] = fb_pos.fillna(table["Pos"])
-            table["Age"] = fb_age.fillna(table["Age"])
+        ref = role_reference(season, processed_dir)
+        if ref:
+            ref_pos = table["player_id"].map(ref)
+            table["Pos"] = ref_pos.fillna(table["Pos"])
     table["Player"] = table["player_name"]
     table["Squad"] = table["team_name"]
     table["Min"] = table["minutesPlayed"]

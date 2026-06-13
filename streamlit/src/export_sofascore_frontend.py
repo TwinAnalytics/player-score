@@ -75,6 +75,18 @@ def export_sofa_metrics(processed_dir: Path) -> None:
     df = pd.read_csv(src)
     minutes = df["sofa_minutesPlayed"].where(df["sofa_minutesPlayed"] > 0)
 
+    # Refined role (FW/Off_MF/MF/Def_MF/DF/GK) per player-season, so the
+    # frontend compares wingers/attacking mids to attackers, not to all
+    # midfielders. Joined from the scored long file by (Player, Squad, Season).
+    long_path = processed_dir / "player_scores_all_seasons_long.csv"
+    role_lookup = {}
+    if long_path.exists():
+        lf = pd.read_csv(long_path, usecols=["Player", "Squad", "Season", "Pos"])
+        role_lookup = {(r.Player, r.Squad, r.Season): r.Pos for r in lf.itertuples(index=False)}
+
+    def role_for(player, squad, season, fallback):
+        return role_lookup.get((player, squad, season), fallback)
+
     out = pd.DataFrame({
         "Player": df["Player"],
         "Squad": df["Squad"],
@@ -82,6 +94,8 @@ def export_sofa_metrics(processed_dir: Path) -> None:
         "Comp": df["Comp"],
         "PlayerId": df["sofa_player_id"],
         "PosGroup": df["sofa_position_group"],
+        "Role": [role_for(p, s, se, None) for p, s, se in
+                 zip(df["Player"], df["Squad"], df["season"])],
         "SofaMinutes": df["sofa_minutesPlayed"],
     })
     for name, col, per90 in METRICS:
@@ -111,6 +125,10 @@ def export_sofa_metrics(processed_dir: Path) -> None:
             "Comp": raw["league"].map(LEAGUE_TO_COMP),
             "PlayerId": raw["player_id"],
             "PosGroup": raw["position_group"],
+            "Role": [role_for(p, s, se, None) for p, s, se in
+                     zip(raw["player_id"].map(player_names).fillna(raw["player_name"]),
+                         raw["team_id"].map(team_names).fillna(raw["team_name"]),
+                         raw["season"])],
             "SofaMinutes": raw["minutesPlayed"],
         })
         raw_minutes = raw["minutesPlayed"].where(raw["minutesPlayed"] > 0)
