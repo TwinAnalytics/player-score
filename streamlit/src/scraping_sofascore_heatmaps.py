@@ -27,11 +27,16 @@ HEAT_DIR = os.path.join(OUT_DIR, "Heatmaps")
 
 
 def stats_files() -> list[tuple[str, str, str]]:
-    """[(league, season, path)] of scraped season-stat CSVs >= FIRST_SEASON."""
+    """[(league, season, path)] of scraped season-stat CSVs >= FIRST_SEASON.
+
+    Only Big-5 leagues (the ones the app uses). Extra leagues such as the
+    2. Bundesliga are scraped for the Tableau package but have no tournament
+    id in LEAGUES, so heatmaps skip them.
+    """
     out = []
     for path in sorted(glob.glob(os.path.join(OUT_DIR, "sofascore_player_stats-*-????-????.csv"))):
         m = re.match(r"sofascore_player_stats-(.+)-(\d{4}-\d{4})\.csv", os.path.basename(path))
-        if m and m.group(2) >= FIRST_SEASON:
+        if m and m.group(2) >= FIRST_SEASON and m.group(1) in LEAGUES:
             out.append((m.group(1), m.group(2), path))
     return out
 

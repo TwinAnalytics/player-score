@@ -43,11 +43,57 @@ def current_season() -> str:
     return f"{year}-{year + 1}"
 
 
+def prev_season(season: str) -> str:
+    start = int(season.split("-")[0])
+    return f"{start - 1}-{start}"
+
+
+def qualified_count(season: str, min_minutes: int = 450) -> int:
+    """Big-5 players in `season` with enough minutes to be scored (>= 5x90)."""
+    import glob
+    import pandas as pd
+    total = 0
+    for f in glob.glob(str(RAW / f"sofascore_player_stats-*-{season}.csv")):
+        if "2-bundesliga" in f:
+            continue
+        try:
+            df = pd.read_csv(f, usecols=["minutesPlayed"])
+            total += int((df["minutesPlayed"] >= min_minutes).sum())
+        except Exception:
+            continue
+    return total
+
+
+def season_to_score(season: str) -> str:
+    """Score the current season once it has enough data; otherwise keep the
+    previous season so the app never shows a near-empty just-started season."""
+    n = qualified_count(season)
+    if n < 80:
+        p = prev_season(season)
+        print(f"[INFO] {season} has only {n} qualified players (season just started); "
+              f"scoring {p} instead", flush=True)
+        return p
+    return season
+
+
 def run_module(module: str, *args: str, **extra_env) -> None:
     env = {**os.environ, **{k: str(v) for k, v in extra_env.items()}}
     print(f"\n=== {module} {extra_env or ''}", flush=True)
     subprocess.run([sys.executable, "-m", module, *args],
                    cwd=STREAMLIT_DIR, env=env, check=True)
+
+
+def run_optional(module: str, *args: str, **extra_env) -> None:
+    """Like run_module, but a failure is logged and does not abort the run.
+
+    Used for non-essential steps (shotmaps, heatmaps, profile delta, extra
+    leagues). The core chain (season stats -> scores -> app exports) must
+    always complete so the website still gets refreshed.
+    """
+    try:
+        run_module(module, *args, **extra_env)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[WARN] optional step {module} failed, continuing: {exc}", flush=True)
 
 
 def delete_current_season_files(season: str) -> None:
@@ -67,42 +113,56 @@ def main() -> None:
     print(f"Weekly Sofascore run for {season}")
 
     if _flag("DO_SCRAPE"):
-        # 1. Season stats (forced, current season, Big-5 + 2. Bundesliga)
+        # 1. Season stats for the Big-5 (essential for the scores)
         run_module("src.scraping_sofascore",
                    FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season)
-        run_module("src.scraping_sofascore",
-                   FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season,
-                   SOFA_LEAGUES=EXTRA_LEAGUES)
 
-        # 2./3. Shotmaps + heatmaps for the current season
+        # Everything below is non-essential: a failure must not stop the run
+        # from producing fresh scores and publishing the site.
+
+        # 2. Extra leagues for the Tableau package (2. Bundesliga)
+        run_optional("src.scraping_sofascore",
+                     FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season,
+                     SOFA_LEAGUES=EXTRA_LEAGUES)
+
+        # 3. Shotmaps + heatmaps for the current season (chart data)
         delete_current_season_files(season)
-        run_module("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season)
-        run_module("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season,
-                   SOFA_LEAGUES=EXTRA_LEAGUES)
-        run_module("src.scraping_sofascore_heatmaps")
+        run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season)
+        run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season,
+                     SOFA_LEAGUES=EXTRA_LEAGUES)
+        run_optional("src.scraping_sofascore_heatmaps")
 
-        # 4. Profile delta (new players only)
-        run_module("src.scraping_sofascore_profiles")
+        # 4. Profile delta (fills ages/roles for new players)
+        run_optional("src.scraping_sofascore_profiles")
 
-        # 5. Transfermarkt market values (works as in the FBref era)
+        # 5. Transfermarkt market values
         if _flag("SCRAPE_TRANSFERMARKT"):
-            sys.path.insert(0, str(STREAMLIT_DIR))
-            from run_multi_season_pipeline import run_transfermarkt_block
-            run_transfermarkt_block()
+            try:
+                sys.path.insert(0, str(STREAMLIT_DIR))
+                from run_multi_season_pipeline import run_transfermarkt_block
+                run_transfermarkt_block()
+            except Exception as exc:  # noqa: BLE001
+                print(f"[WARN] Transfermarkt step failed, continuing: {exc}", flush=True)
 
     if _flag("DO_PROCESS"):
+        # Score the current season only once it has enough data; early in a
+        # new season keep the previous one as the app's latest.
+        score_season = season_to_score(season)
+
+        # Core chain: must succeed so the app gets updated
         run_module("src.build_dob_fallback")
-        run_module("src.pipeline_sofa", season)
+        run_module("src.pipeline_sofa", score_season)
 
         sys.path.insert(0, str(STREAMLIT_DIR))
         from run_multi_season_pipeline import export_multi_season_tables
         export_multi_season_tables()
-
         run_module("src.export_sofascore_frontend")
-        run_module("src.export_shots_frontend")
-        run_module("src.export_heatmaps_frontend")
-        run_module("src.export_gk_shots_frontend")
-        run_module("src.export_tableau_hertha")
+
+        # Chart exports: non-essential
+        run_optional("src.export_shots_frontend")
+        run_optional("src.export_heatmaps_frontend")
+        run_optional("src.export_gk_shots_frontend")
+        run_optional("src.export_tableau_hertha")
 
     print("\nDONE.", flush=True)
 
