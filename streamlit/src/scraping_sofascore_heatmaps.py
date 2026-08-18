@@ -22,7 +22,10 @@ import pandas as pd
 
 from .scraping_sofascore import BASE, LEAGUES, OUT_DIR, SofascoreClient, fetch_seasons
 
-FIRST_SEASON = "2017-2018"
+# Oldest season to scrape. The weekly job sets SOFA_FIRST_SEASON to the
+# current season so it only fills the current season; a manual run without
+# the env backfills the whole history.
+FIRST_SEASON = os.getenv("SOFA_FIRST_SEASON", "2017-2018")
 HEAT_DIR = os.path.join(OUT_DIR, "Heatmaps")
 
 

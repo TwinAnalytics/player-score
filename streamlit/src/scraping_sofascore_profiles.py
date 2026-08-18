@@ -72,6 +72,11 @@ def main():
     players = all_player_ids()
     done = already_done()
     todo = players[~players["player_id"].isin(done)]
+    # Optional cap (players per run). The weekly job sets this so a large
+    # backlog does not block the pipeline for hours; each run chips away at it.
+    cap = os.getenv("PROFILE_MAX")
+    if cap and cap.isdigit():
+        todo = todo.head(int(cap))
     print(f"{len(players)} players total, {len(done)} done, {len(todo)} to fetch", flush=True)
 
     write_header = not os.path.exists(PROFILE_PATH)

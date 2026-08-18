@@ -130,10 +130,12 @@ def main() -> None:
         run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season)
         run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season,
                      SOFA_LEAGUES=EXTRA_LEAGUES)
-        run_optional("src.scraping_sofascore_heatmaps")
+        run_optional("src.scraping_sofascore_heatmaps", SOFA_FIRST_SEASON=season)
 
-        # 4. Profile delta (fills ages/roles for new players)
-        run_optional("src.scraping_sofascore_profiles")
+        # 4. Profile delta (fills ages/roles for new players). Capped per run
+        # so a large historical backlog never blocks the pipeline for hours.
+        run_optional("src.scraping_sofascore_profiles",
+                     PROFILE_MAX=os.getenv("PROFILE_MAX", "400"))
 
         # 5. Transfermarkt market values
         if _flag("SCRAPE_TRANSFERMARKT"):
