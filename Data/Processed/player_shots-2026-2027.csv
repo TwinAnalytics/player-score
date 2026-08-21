@@ -1,0 +1,112 @@
+Timestamp,HomeTeam,AwayTeam,PlayerId,X,Y,GoalMouthY,GoalMouthZ,IsHome,Result,Situation,BodyPart,Minute,xG,xGOT
+1786815000,Deportivo Alavés,Getafe,794937,26.2,65.8,51.2,2.5,True,save,assisted,left-foot,90,0.017,0.021
+1786815000,Deportivo Alavés,Getafe,896073,24.8,43.8,46.3,19.0,True,block,corner,right-foot,90,0.013,0.0
+1786815000,Deportivo Alavés,Getafe,788142,11.5,43.1,48.2,27.9,True,goal,assisted,left-foot,90,0.087,0.478
+1786815000,Deportivo Alavés,Getafe,175753,20.8,38.3,46.0,29.8,True,goal,fast-break,right-foot,90,0.058,0.816
+1786815000,Deportivo Alavés,Getafe,1841875,27.7,46.8,48.0,19.0,False,block,corner,left-foot,89,0.015,0.0
+1786815000,Deportivo Alavés,Getafe,793988,15.6,48.3,51.3,19.0,False,block,set-piece,right-foot,87,0.06,0.0
+1786815000,Deportivo Alavés,Getafe,788142,14.5,56.9,43.7,5.6,True,miss,fast-break,right-foot,85,0.483,0.0
+1786815000,Deportivo Alavés,Getafe,336655,8.0,48.7,44.9,66.7,False,miss,set-piece,head,82,0.086,0.0
+1786815000,Deportivo Alavés,Getafe,855832,25.0,65.4,60.8,65.3,True,miss,assisted,right-foot,80,0.02,0.0
+1786815000,Deportivo Alavés,Getafe,1088565,19.9,64.9,52.0,20.3,False,save,assisted,left-foot,79,0.037,0.074
+1786815000,Deportivo Alavés,Getafe,175753,22.5,60.5,50.3,19.0,True,block,free-kick,right-foot,78,0.072,0.0
+1786815000,Deportivo Alavés,Getafe,896073,7.3,52.8,47.5,28.5,True,goal,assisted,head,73,0.251,0.367
+1786815000,Deportivo Alavés,Getafe,175753,10.8,49.5,50.0,12.0,True,save,assisted,head,71,0.055,0.017
+1786815000,Deportivo Alavés,Getafe,855832,14.2,64.4,55.3,80.6,True,miss,corner,right-foot,70,0.041,0.0
+1786815000,Deportivo Alavés,Getafe,855832,17.6,64.0,46.1,91.7,True,miss,corner,right-foot,58,0.013,0.0
+1786815000,Deportivo Alavés,Getafe,138383,9.0,55.5,46.9,11.4,True,save,fast-break,left-foot,57,0.37,0.444
+1786815000,Deportivo Alavés,Getafe,1088565,1.1,67.7,43.0,19.4,False,miss,set-piece,right-foot,52,0.01,0.0
+1786815000,Deportivo Alavés,Getafe,831253,13.8,55.5,47.1,93.1,True,miss,corner,right-foot,49,0.052,0.0
+1786815000,Deportivo Alavés,Getafe,1513222,9.5,68.5,46.9,20.9,True,save,regular,right-foot,49,0.071,0.154
+1786815000,Deportivo Alavés,Getafe,1082968,25.1,32.7,46.9,7.6,True,save,assisted,right-foot,49,0.017,0.051
+1786815000,Deportivo Alavés,Getafe,973536,20.8,49.1,50.0,13.3,False,save,assisted,right-foot,45,0.034,0.014
+1786815000,Deportivo Alavés,Getafe,831253,13.8,54.0,43.7,2.8,True,miss,assisted,right-foot,32,0.203,0.0
+1786815000,Deportivo Alavés,Getafe,831253,14.8,45.4,58.0,76.4,True,miss,assisted,left-foot,20,0.065,0.0
+1786815000,Deportivo Alavés,Getafe,896073,9.2,57.0,49.0,19.0,True,block,set-piece,head,11,0.046,0.0
+1786822200,Sevilla,Rayo Vallecano,997033,11.5,50.0,53.6,22.2,True,goal,penalty,right-foot,90,0.788,0.93
+1786822200,Sevilla,Rayo Vallecano,981604,4.4,46.9,52.1,29.1,False,save,corner,head,86,0.19,0.726
+1786822200,Sevilla,Rayo Vallecano,965031,10.3,58.6,63.0,20.8,False,miss,corner,left-foot,86,0.058,0.0
+1786822200,Sevilla,Rayo Vallecano,88528,33.0,67.5,51.2,30.4,False,save,free-kick,right-foot,86,0.027,0.053
+1786822200,Sevilla,Rayo Vallecano,88528,11.7,55.4,51.3,65.3,False,miss,set-piece,head,84,0.026,0.0
+1786822200,Sevilla,Rayo Vallecano,872919,9.5,55.0,38.3,36.1,True,miss,assisted,head,72,0.07,0.0
+1786822200,Sevilla,Rayo Vallecano,1534422,14.2,53.6,67.7,1.4,True,miss,assisted,head,69,0.018,0.0
+1786822200,Sevilla,Rayo Vallecano,2509247,20.7,39.3,48.9,19.0,True,block,assisted,left-foot,67,0.029,0.0
+1786822200,Sevilla,Rayo Vallecano,997033,18.1,37.6,50.0,1.3,True,save,fast-break,left-foot,65,0.118,0.05
+1786822200,Sevilla,Rayo Vallecano,1142351,12.3,47.0,39.5,2.8,True,miss,regular,left-foot,63,0.09,0.0
+1786822200,Sevilla,Rayo Vallecano,788141,11.5,50.0,46.8,7.0,True,goal,penalty,left-foot,52,0.788,0.653
+1786822200,Sevilla,Rayo Vallecano,788141,14.1,68.7,46.0,12.7,True,save,assisted,left-foot,50,0.064,0.168
+1786822200,Sevilla,Rayo Vallecano,1534422,15.6,31.9,46.9,19.0,True,block,throw-in-set-piece,left-foot,48,0.03,0.0
+1786822200,Sevilla,Rayo Vallecano,1018190,7.1,48.3,48.2,63.9,True,miss,throw-in-set-piece,head,45,0.123,0.0
+1786822200,Sevilla,Rayo Vallecano,1018190,14.2,48.9,40.2,11.1,True,miss,throw-in-set-piece,head,36,0.02,0.0
+1786822200,Sevilla,Rayo Vallecano,1097719,26.2,38.7,37.8,15.3,True,miss,throw-in-set-piece,left-foot,36,0.01,0.0
+1786822200,Sevilla,Rayo Vallecano,1892023,21.0,57.7,50.5,19.0,True,block,throw-in-set-piece,left-foot,15,0.039,0.0
+1786822200,Sevilla,Rayo Vallecano,932764,8.3,47.0,47.2,65.3,False,miss,fast-break,right-foot,7,0.592,0.0
+1786822200,Sevilla,Rayo Vallecano,345111,1.0,49.2,49.1,20.9,False,goal,regular,left-foot,4,0.998,0.993
+1786892400,Real Racing Club,Villarreal,1383421,21.2,62.4,48.5,19.0,True,block,fast-break,right-foot,90,0.096,0.0
+1786892400,Real Racing Club,Villarreal,851268,10.4,38.9,39.7,29.2,True,miss,corner,head,82,0.014,0.0
+1786892400,Real Racing Club,Villarreal,1009372,12.6,39.3,49.7,19.0,False,block,assisted,right-foot,78,0.038,0.0
+1786892400,Real Racing Club,Villarreal,1396048,21.8,30.3,47.6,81.9,False,miss,assisted,left-foot,68,0.016,0.0
+1786892400,Real Racing Club,Villarreal,593526,20.4,70.9,50.9,8.9,False,save,regular,left-foot,68,0.02,0.013
+1786892400,Real Racing Club,Villarreal,973290,4.8,35.0,1.3,6.9,False,miss,assisted,left-foot,65,0.076,0.0
+1786892400,Real Racing Club,Villarreal,1468046,5.7,66.7,48.7,15.2,False,save,assisted,right-foot,60,0.123,0.125
+1786892400,Real Racing Club,Villarreal,41560,13.9,72.0,46.8,2.5,True,save,corner,left-foot,58,0.025,0.065
+1786892400,Real Racing Club,Villarreal,345195,13.0,59.7,50.0,14.6,False,save,assisted,right-foot,54,0.061,0.041
+1786892400,Real Racing Club,Villarreal,922939,9.1,50.1,37.5,11.1,True,miss,assisted,right-foot,53,0.137,0.0
+1786892400,Real Racing Club,Villarreal,41560,13.3,36.8,51.0,19.0,True,block,assisted,right-foot,52,0.076,0.0
+1786892400,Real Racing Club,Villarreal,1010792,2.0,58.7,40.5,33.3,True,miss,throw-in-set-piece,head,51,0.122,0.0
+1786892400,Real Racing Club,Villarreal,922939,14.2,58.9,59.2,2.8,True,miss,fast-break,left-foot,45,0.105,0.0
+1786892400,Real Racing Club,Villarreal,345195,14.8,49.5,50.5,19.0,False,block,assisted,right-foot,45,0.067,0.0
+1786892400,Real Racing Club,Villarreal,593526,14.4,69.5,53.9,24.1,False,goal,assisted,left-foot,45,0.06,0.807
+1786892400,Real Racing Club,Villarreal,879694,21.9,33.6,45.7,3.2,False,goal,assisted,left-foot,45,0.022,0.187
+1786892400,Real Racing Club,Villarreal,2197894,22.8,48.1,47.2,27.2,True,goal,regular,right-foot,34,0.072,0.401
+1786892400,Real Racing Club,Villarreal,922939,17.8,65.8,48.6,19.0,True,block,assisted,left-foot,34,0.036,0.0
+1786892400,Real Racing Club,Villarreal,355072,3.9,53.2,65.4,4.2,True,miss,corner,head,33,0.183,0.0
+1786892400,Real Racing Club,Villarreal,1010792,2.3,64.0,47.3,19.0,True,block,regular,right-foot,33,0.053,0.0
+1786892400,Real Racing Club,Villarreal,922939,11.5,50.0,45.7,1.3,True,goal,penalty,left-foot,21,0.788,0.926
+1786892400,Real Racing Club,Villarreal,922939,19.9,50.6,61.0,19.4,True,miss,throw-in-set-piece,left-foot,18,0.034,0.0
+1786892400,Real Racing Club,Villarreal,922939,18.7,50.3,51.1,19.0,True,block,throw-in-set-piece,left-foot,14,0.034,0.0
+1786892400,Real Racing Club,Villarreal,1009372,14.7,16.4,44.4,97.2,False,miss,free-kick,right-foot,9,0.044,0.0
+1786892400,Real Racing Club,Villarreal,1009372,16.4,47.2,51.0,10.1,False,save,regular,left-foot,8,0.107,0.102
+1786892400,Real Racing Club,Villarreal,41560,18.9,36.4,50.9,19.0,True,block,assisted,left-foot,6,0.039,0.0
+1786892400,Real Racing Club,Villarreal,1174889,21.9,52.6,50.7,19.0,True,block,regular,left-foot,6,0.027,0.0
+1786892400,Real Racing Club,Villarreal,1009372,22.5,51.3,50.8,4.4,False,save,assisted,right-foot,5,0.032,0.141
+1786892400,Real Racing Club,Villarreal,1174889,22.5,50.3,49.5,19.0,True,block,regular,right-foot,2,0.025,0.0
+1786899600,Espanyol,Levante UD,997244,24.5,41.6,49.3,19.0,False,block,free-kick,right-foot,90,0.058,0.0
+1786899600,Espanyol,Levante UD,1019236,13.0,46.0,67.7,15.3,True,miss,fast-break,right-foot,90,0.18,0.0
+1786899600,Espanyol,Levante UD,1183542,9.2,32.9,37.7,9.7,True,miss,assisted,left-foot,89,0.096,0.0
+1786899600,Espanyol,Levante UD,826010,20.9,45.8,61.2,2.8,True,miss,regular,right-foot,88,0.058,0.0
+1786899600,Espanyol,Levante UD,1063015,15.1,41.3,45.8,3.8,True,goal,fast-break,left-foot,80,0.14,0.682
+1786899600,Espanyol,Levante UD,1393673,8.6,43.7,60.0,65.3,False,miss,assisted,head,59,0.053,0.0
+1786899600,Espanyol,Levante UD,1136863,18.8,46.8,48.7,1.9,True,save,assisted,left-foot,57,0.14,0.068
+1786899600,Espanyol,Levante UD,1063015,11.6,27.2,41.9,19.4,True,miss,regular,right-foot,49,0.029,0.0
+1786899600,Espanyol,Levante UD,877262,27.4,23.4,36.1,4.2,True,miss,assisted,right-foot,45,0.015,0.0
+1786899600,Espanyol,Levante UD,1514913,17.8,46.8,56.5,61.1,True,miss,fast-break,left-foot,43,0.141,0.0
+1786899600,Espanyol,Levante UD,1392592,7.4,46.0,51.1,3.8,True,goal,assisted,right-foot,40,0.229,0.551
+1786899600,Espanyol,Levante UD,877262,21.5,57.7,47.0,19.0,True,block,regular,right-foot,37,0.037,0.0
+1786899600,Espanyol,Levante UD,1136863,14.2,64.9,51.2,4.4,True,save,assisted,left-foot,37,0.031,0.069
+1786899600,Espanyol,Levante UD,1063015,22.3,31.1,52.0,19.0,True,block,assisted,right-foot,34,0.025,0.0
+1786899600,Espanyol,Levante UD,1014042,24.6,49.8,62.2,2.8,False,miss,assisted,right-foot,26,0.029,0.0
+1786899600,Espanyol,Levante UD,1514913,13.3,34.4,51.5,15.8,True,save,assisted,right-foot,25,0.047,0.045
+1786899600,Espanyol,Levante UD,122810,2.7,38.7,58.2,59.7,False,miss,throw-in-set-piece,head,19,0.047,0.0
+1786899600,Espanyol,Levante UD,1392592,3.3,45.8,46.2,26.6,True,goal,set-piece,right-foot,5,0.231,0.859
+1786899600,Espanyol,Levante UD,877262,19.4,38.9,48.9,19.0,True,block,assisted,right-foot,3,0.058,0.0
+1786899600,Espanyol,Levante UD,1063015,14.2,25.2,47.8,19.0,True,block,regular,right-foot,3,0.017,0.0
+1786993200,Deportivo de A Coruña,Elche,966526,5.0,63.4,37.0,5.6,True,miss,assisted,right-foot,90,0.107,0.0
+1786993200,Deportivo de A Coruña,Elche,979476,26.6,55.5,36.3,29.2,True,miss,assisted,right-foot,81,0.015,0.0
+1786993200,Deportivo de A Coruña,Elche,1126447,23.8,62.2,50.3,1.9,False,save,fast-break,left-foot,78,0.039,0.017
+1786993200,Deportivo de A Coruña,Elche,1014595,8.2,44.3,46.6,22.2,False,goal,corner,head,76,0.045,0.504
+1786993200,Deportivo de A Coruña,Elche,51498,11.9,27.4,52.2,5.7,True,save,corner,right-foot,66,0.027,0.033
+1786993200,Deportivo de A Coruña,Elche,984622,9.7,66.0,50.3,19.0,True,block,assisted,right-foot,66,0.043,0.0
+1786993200,Deportivo de A Coruña,Elche,914765,15.0,46.6,48.1,17.1,False,save,regular,right-foot,58,0.066,0.123
+1786993200,Deportivo de A Coruña,Elche,1016019,10.7,42.1,51.0,13.9,False,save,assisted,left-foot,58,0.457,0.224
+1786993200,Deportivo de A Coruña,Elche,988672,27.3,65.8,51.2,19.0,False,block,assisted,right-foot,57,0.015,0.0
+1786993200,Deportivo de A Coruña,Elche,914765,21.2,70.5,52.9,1.3,False,save,assisted,right-foot,52,0.02,0.076
+1786993200,Deportivo de A Coruña,Elche,1146545,8.5,30.7,38.2,30.6,True,miss,assisted,right-foot,49,0.031,0.0
+1786993200,Deportivo de A Coruña,Elche,1117026,10.2,52.9,50.0,19.0,False,block,set-piece,head,45,0.052,0.0
+1786993200,Deportivo de A Coruña,Elche,1516812,15.0,49.3,49.5,19.0,False,block,assisted,right-foot,42,0.065,0.0
+1786993200,Deportivo de A Coruña,Elche,51498,11.3,34.8,47.7,4.4,True,goal,assisted,left-foot,21,0.064,0.233
+1786993200,Deportivo de A Coruña,Elche,1978292,9.9,53.5,78.7,19.4,True,miss,corner,head,17,0.038,0.0
+1786993200,Deportivo de A Coruña,Elche,2335487,29.6,67.7,50.0,28.5,True,save,regular,right-foot,16,0.01,0.009
+1786993200,Deportivo de A Coruña,Elche,1516812,3.2,51.9,49.0,16.5,False,save,corner,right-foot,10,0.316,0.593
+1786993200,Deportivo de A Coruña,Elche,988672,7.6,49.5,42.0,5.6,False,miss,corner,head,10,0.116,0.0
+1786993200,Deportivo de A Coruña,Elche,1516812,18.9,54.0,61.3,5.6,False,miss,assisted,right-foot,6,0.073,0.0
