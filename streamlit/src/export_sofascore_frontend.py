@@ -110,10 +110,14 @@ def export_sofa_metrics(processed_dir: Path) -> None:
     raw_path = processed_dir.parent / "Raw" / "Sofascore" / "sofascore_player_stats_all_seasons_long.csv"
     if raw_path.exists():
         from .pipeline_sofa import build_name_registry
-        from .processing_sofa import LEAGUE_TO_COMP
+        from .processing_sofa import LEAGUE_TO_COMP, EXTRA_LEAGUE_TO_COMP, EXTRA_LEAGUES_FIRST_SEASON
 
+        all_comp = {**LEAGUE_TO_COMP, **EXTRA_LEAGUE_TO_COMP}
         raw = pd.read_csv(raw_path)
-        raw = raw[raw["league"].isin(LEAGUE_TO_COMP)]
+        raw = raw[raw["league"].isin(all_comp)]
+        # Extra leagues only count from their first scoring season on
+        raw = raw[(raw["league"].isin(LEAGUE_TO_COMP)) |
+                  (raw["season"] >= EXTRA_LEAGUES_FIRST_SEASON)]
         matched_keys = set(zip(df["sofa_player_id"], df["season"]))
         raw = raw[[(pid, s) not in matched_keys
                    for pid, s in zip(raw["player_id"], raw["season"])]]
@@ -122,7 +126,7 @@ def export_sofa_metrics(processed_dir: Path) -> None:
             "Player": raw["player_id"].map(player_names).fillna(raw["player_name"]),
             "Squad": raw["team_id"].map(team_names).fillna(raw["team_name"]),
             "Season": raw["season"],
-            "Comp": raw["league"].map(LEAGUE_TO_COMP),
+            "Comp": raw["league"].map(all_comp),
             "PlayerId": raw["player_id"],
             "PosGroup": raw["position_group"],
             "Role": [role_for(p, s, se, None) for p, s, se in

@@ -38,6 +38,21 @@ LEAGUE_TO_COMP = {
     "ligue-1": "fr Ligue 1",
 }
 
+# Extra leagues are scored only from EXTRA_LEAGUES_FIRST_SEASON onward, so the
+# frozen Big-5 history (2015/16-2025/26) is untouched.
+from .scraping_sofascore import EXTRA_SCORING_LEAGUES, EXTRA_LEAGUES_FIRST_SEASON  # noqa: E402
+
+EXTRA_LEAGUE_TO_COMP = {slug: comp for slug, (_id, comp) in EXTRA_SCORING_LEAGUES.items()}
+
+
+def leagues_for_season(season: str) -> dict[str, str]:
+    """slug -> Comp label for a given season: Big-5 always, extra leagues only
+    from their first scoring season on."""
+    out = dict(LEAGUE_TO_COMP)
+    if season >= EXTRA_LEAGUES_FIRST_SEASON:
+        out.update(EXTRA_LEAGUE_TO_COMP)
+    return out
+
 
 def role_from_profile(positions_detailed: str | float, position_group: str) -> str:
     """positions_detailed: pipe-joined string from player_profiles.csv (may be NaN/empty)."""
@@ -103,7 +118,7 @@ def build_season_table(season: str, sofascore_dir: Path,
     """
     sofascore_dir = Path(sofascore_dir)
     frames = []
-    for slug, comp in LEAGUE_TO_COMP.items():
+    for slug, comp in leagues_for_season(season).items():
         path = sofascore_dir / f"sofascore_player_stats-{slug}-{season}.csv"
         if not path.exists():
             continue

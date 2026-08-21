@@ -33,6 +33,27 @@ LEAGUES = {
 
 FIRST_SEASON = "2015-2016"
 
+# Extra scoring leagues beyond the Big-5, added from 2026-27 onward.
+# slug -> (unique-tournament id, FBref-style Comp label). All are scored
+# against the same Big-5 p95 benchmarks. Calendar-year leagues (MLS, Brazil,
+# Norway) have their single-year season mapped to 'YYYY-YYYY' by _season_label.
+EXTRA_SCORING_LEAGUES = {
+    "eredivisie":          (37,  "nl Eredivisie"),
+    "primeira-liga":       (238, "pt Primeira Liga"),
+    "scottish-prem":       (36,  "sco Premiership"),
+    "swiss-super-league":  (215, "ch Super League"),
+    "saudi-pro-league":    (955, "sa Pro League"),
+    "championship":        (18,  "eng Championship"),
+    "2-bundesliga":        (44,  "de 2. Bundesliga"),
+    "super-lig":           (52,  "tr Süper Lig"),
+    "belgian-pro-league":  (38,  "be Pro League"),
+    "austrian-bundesliga": (45,  "at Bundesliga"),
+    "mls":                 (242, "us MLS"),
+    "eliteserien":         (20,  "no Eliteserien"),
+    "brasileirao":         (325, "br Série A"),
+}
+EXTRA_LEAGUES_FIRST_SEASON = "2026-2027"
+
 # All stat fields exposed by the season-statistics leaderboard endpoint.
 STAT_FIELDS = [
     "accurateChippedPasses", "accurateCrosses", "accurateCrossesPercentage",
@@ -79,8 +100,17 @@ OUT_DIR = os.path.join(
 
 
 def _season_label(year_str: str) -> str | None:
-    """Convert Sofascore year strings ('15/16', '2015/2016') to '2015-2016'."""
+    """Convert Sofascore year strings to a 'YYYY-YYYY' season label.
+
+    Split-calendar leagues use '15/16' or '2015/2016'. Calendar-year leagues
+    (MLS, Brazil, Norway ...) use a single year like '2026'; that year Y is
+    mapped to 'Y-(Y+1)' so it co-locates with the current winter season and
+    matches the 'YYYY-YYYY' file-name convention used everywhere.
+    """
     if "/" not in year_str:
+        if year_str.isdigit() and len(year_str) == 4:
+            y = int(year_str)
+            return f"{y}-{y + 1}"
         return None
     a, b = year_str.split("/")
     if len(a) == 2:

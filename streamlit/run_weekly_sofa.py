@@ -29,7 +29,11 @@ RAW = ROOT / "Data" / "Raw" / "Sofascore"
 PROCESSED = ROOT / "Data" / "Processed"
 
 BIG5_SLUGS = ["premier-league", "laliga", "bundesliga", "serie-a", "ligue-1"]
-EXTRA_LEAGUES = "2-bundesliga:44"  # Tableau raw data, not part of PlayerScore
+
+# Extra scoring leagues (Tier 1 + Tier 2), scored from 2026-27 on. Built from
+# the single source of truth in scraping_sofascore.
+from src.scraping_sofascore import EXTRA_SCORING_LEAGUES  # noqa: E402
+EXTRA_LEAGUES = ",".join(f"{slug}:{tid}" for slug, (tid, _c) in EXTRA_SCORING_LEAGUES.items())
 
 
 def _flag(name: str, default: bool = True) -> bool:
@@ -49,13 +53,13 @@ def prev_season(season: str) -> str:
 
 
 def qualified_count(season: str, min_minutes: int = 450) -> int:
-    """Big-5 players in `season` with enough minutes to be scored (>= 5x90)."""
+    """Players (across all leagues) in `season` with enough minutes to be
+    scored (>= 5x90). Calendar-year leagues (MLS, Brazil, Norway) are mature
+    mid-year and make the season worth scoring even while the Big-5 are thin."""
     import glob
     import pandas as pd
     total = 0
     for f in glob.glob(str(RAW / f"sofascore_player_stats-*-{season}.csv")):
-        if "2-bundesliga" in f:
-            continue
         try:
             df = pd.read_csv(f, usecols=["minutesPlayed"])
             total += int((df["minutesPlayed"] >= min_minutes).sum())
@@ -65,8 +69,9 @@ def qualified_count(season: str, min_minutes: int = 450) -> int:
 
 
 def season_to_score(season: str) -> str:
-    """Score the current season once it has enough data; otherwise keep the
-    previous season so the app never shows a near-empty just-started season."""
+    """Score the current season once any league in it has enough data;
+    otherwise keep the previous season so the app never shows a near-empty
+    just-started season. The previous season's file persists regardless."""
     n = qualified_count(season)
     if n < 80:
         p = prev_season(season)
