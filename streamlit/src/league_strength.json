@@ -1,0 +1,20 @@
+{
+  "eng Premier League": 1.0,
+  "es La Liga": 1.0,
+  "de Bundesliga": 1.0,
+  "it Serie A": 1.0,
+  "fr Ligue 1": 1.0,
+  "nl Eredivisie": 0.934,
+  "pt Primeira Liga": 0.953,
+  "sco Premiership": 0.922,
+  "ch Super League": 0.927,
+  "sa Pro League": 0.946,
+  "eng Championship": 0.964,
+  "de 2. Bundesliga": 0.942,
+  "tr Süper Lig": 0.963,
+  "be Pro League": 0.946,
+  "at Bundesliga": 0.92,
+  "us MLS": 0.937,
+  "no Eliteserien": 0.872,
+  "br Série A": 0.981
+}

@@ -368,10 +368,25 @@ def compute_all_scores_sofa(df: pd.DataFrame, season: str | None = None) -> pd.D
         (INTENSITY_WEIGHTS_V2, bm["INTENSITY"], "IntensityScore_abs", "IntensityBand"),
         (GK_WEIGHTS if has_gprev else GK_WEIGHTS_LIGHT, bm["GK"], "GKScore_abs", "GKBand"),
     ]
+    score_cols = [b[2] for b in blocks]
+    band_cols = [b[3] for b in blocks]
     for weights_by_pos, benchmarks, score_col, band_col in blocks:
         scored = _apply_block(eligible, weights_by_pos, benchmarks, score_col, band_col)
         df[score_col] = scored[score_col].reindex(df.index)
         df[band_col] = scored[band_col].reindex(df.index)
+
+    # League-strength adjustment: scale each score by its league factor
+    # (Big-5 = 1.0, easier leagues < 1.0) so leagues are comparable on one
+    # scale, then recompute bands from the adjusted score. Big-5 and the
+    # frozen history are unaffected (factor 1.0 / Comp not in the table).
+    from .league_strength import load_factors
+    factors = load_factors()
+    if factors and "Comp" in df.columns:
+        fac = df["Comp"].map(factors).fillna(1.0)
+        for score_col, band_col in zip(score_cols, band_cols):
+            df[score_col] = df[score_col] * fac
+            df[band_col] = df[score_col].apply(
+                lambda s: score_band_5(s) if pd.notna(s) else None)
     return df
 
 
