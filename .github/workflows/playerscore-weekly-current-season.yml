@@ -60,7 +60,11 @@ jobs:
           DO_SCRAPE: ${{ github.event_name == 'workflow_dispatch' && inputs.do_scrape == false && 'false' || 'true' }}
         run: |
           source .venv/bin/activate
-          python streamlit/run_weekly_sofa.py
+          # Keep macOS awake for the whole run. The self-hosted Mac otherwise
+          # goes to idle sleep mid-run, which drops the runner's connection
+          # ("runner lost communication"). caffeinate holds the assertion until
+          # the wrapped command exits; no sudo needed. -s only binds on AC power.
+          caffeinate -dimsu python streamlit/run_weekly_sofa.py
 
       - name: Write data version file
         shell: bash
