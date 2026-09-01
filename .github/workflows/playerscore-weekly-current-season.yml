@@ -25,6 +25,21 @@ jobs:
       WEB_REPO_TOKEN: ${{ secrets.WEB_REPO_TOKEN }}
 
     steps:
+      # The self-hosted Mac otherwise slips into idle sleep during the run —
+      # most often already during Checkout/setup, before the pipeline step —
+      # which drops the runner connection ("runner lost communication").
+      # Start a detached keep-awake before anything else so the machine stays
+      # up from second one. It survives across steps (orphaned) and is reaped
+      # by the runner's orphan cleanup at job end; -t caps it as a safety net.
+      # No sudo needed. (-s only binds on AC power.)
+      - name: Keep the Mac awake for the whole job
+        shell: bash
+        run: |
+          pkill -f 'caffeinate -dimsu' 2>/dev/null || true
+          nohup caffeinate -dimsu -t 16200 >/dev/null 2>&1 &
+          disown 2>/dev/null || true
+          echo "keep-awake started"
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -60,11 +75,7 @@ jobs:
           DO_SCRAPE: ${{ github.event_name == 'workflow_dispatch' && inputs.do_scrape == false && 'false' || 'true' }}
         run: |
           source .venv/bin/activate
-          # Keep macOS awake for the whole run. The self-hosted Mac otherwise
-          # goes to idle sleep mid-run, which drops the runner's connection
-          # ("runner lost communication"). caffeinate holds the assertion until
-          # the wrapped command exits; no sudo needed. -s only binds on AC power.
-          caffeinate -dimsu python streamlit/run_weekly_sofa.py
+          python streamlit/run_weekly_sofa.py
 
       - name: Write data version file
         shell: bash
@@ -106,3 +117,8 @@ jobs:
           git diff --cached --quiet && echo "No data changes" && exit 0
           git commit -m "Weekly data refresh $(date -u +'%Y-%m-%d')"
           git push
+
+      - name: Stop keep-awake
+        if: always()
+        shell: bash
+        run: pkill -f 'caffeinate -dimsu' 2>/dev/null || true
