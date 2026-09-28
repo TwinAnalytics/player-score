@@ -86,8 +86,8 @@ jobs:
       - name: Commit & push data repo
         shell: bash
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "Stefan Hofmann"
+          git config user.email "stefan.hofmann.es@gmail.com"
           git add Data/Processed
           git commit -m "Weekly Sofascore run $(date -u +'%Y-%m-%d %H:%M UTC')" --allow-empty
           git push
@@ -111,8 +111,12 @@ jobs:
              Data/Processed/player_heat-*.csv \
              /tmp/playerscore-web/public/data/
           cd /tmp/playerscore-web
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          # Vercel (Hobby plan) blocks deployments whose commit author email
+          # does not match a connected GitHub account. Use the account-verified
+          # email so the auto-deploy is not blocked. (github-actions@github.com
+          # matches no account and blocked every deploy since 2026-08-28.)
+          git config user.name "Stefan Hofmann"
+          git config user.email "stefan.hofmann.es@gmail.com"
           git add public/data
           git diff --cached --quiet && echo "No data changes" && exit 0
           git commit -m "Weekly data refresh $(date -u +'%Y-%m-%d')"
