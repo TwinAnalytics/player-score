@@ -17,9 +17,24 @@ Usage:
 import os
 import random
 import time
+from pathlib import Path
 
 import pandas as pd
-from playwright.sync_api import sync_playwright
+
+# Sofascore began returning HTTP 403 to headless Playwright in autumn 2026
+# (Cloudflare bot challenge, same as FBref). Patchright — a stealth-patched
+# Playwright fork — with the real Chrome channel, a persistent profile and
+# headed mode passes the challenge. Falls back to plain Playwright if
+# patchright is missing (will likely hit the 403 again).
+try:
+    from patchright.sync_api import sync_playwright
+    STEALTH = True
+except ImportError:  # pragma: no cover
+    from playwright.sync_api import sync_playwright
+    STEALTH = False
+
+# Persistent profile keeps the cf_clearance cookie between runs.
+SOFA_PROFILE_DIR = Path.home() / ".cache" / "playerscore-sofa-profile"
 
 BASE = "https://www.sofascore.com/api/v1"
 
@@ -146,27 +161,47 @@ class SofascoreClient:
     """Playwright-backed fetch client for Sofascore's internal API."""
 
     def __init__(self):
+        if not STEALTH:
+            print("[SOFA WARN] patchright not installed - Sofascore will likely "
+                  "return 403. pip install patchright")
         self._pw = sync_playwright().start()
-        self._browser = self._pw.chromium.launch(headless=True)
+        self._ctx = None
         self._page = None
         self._open_page()
 
     def _open_page(self):
-        ctx = self._browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-            )
+        # Reopen: close any existing persistent context first.
+        if self._ctx is not None:
+            try:
+                self._ctx.close()
+            except Exception:
+                pass
+        kwargs = dict(
+            user_data_dir=str(SOFA_PROFILE_DIR),
+            headless=False,
+            no_viewport=True,
         )
-        self._page = ctx.new_page()
+        try:
+            self._ctx = self._pw.chromium.launch_persistent_context(channel="chrome", **kwargs)
+        except Exception:
+            # No system Chrome installed - fall back to bundled Chromium.
+            self._ctx = self._pw.chromium.launch_persistent_context(**kwargs)
+        self._page = self._ctx.pages[0] if self._ctx.pages else self._ctx.new_page()
         self._page.goto("https://www.sofascore.com/", wait_until="domcontentloaded", timeout=60000)
+        self._wait_for_cloudflare()
         self._page.wait_for_timeout(2500)
+
+    def _wait_for_cloudflare(self, max_wait_s: int = 45) -> None:
+        """Block until the Cloudflare interstitial ('Just a moment...') is gone."""
+        waited = 0
+        while waited < max_wait_s and "moment" in (self._page.title() or "").lower():
+            self._page.wait_for_timeout(3000)
+            waited += 3
 
     def get_json(self, url: str, retries: int = 4) -> dict | None:
         # Recycle the browser page periodically on very long runs
         self._calls = getattr(self, "_calls", 0) + 1
         if self._calls % 2500 == 0:
-            self._page.context.close()
             self._open_page()
         for attempt in range(retries):
             time.sleep(random.uniform(*REQUEST_DELAY))
@@ -193,8 +228,11 @@ class SofascoreClient:
         raise RuntimeError(f"Giving up on {url}")
 
     def close(self):
-        self._browser.close()
-        self._pw.stop()
+        try:
+            if self._ctx is not None:
+                self._ctx.close()
+        finally:
+            self._pw.stop()
 
 
 def fetch_seasons(client: SofascoreClient, tournament_id: int) -> dict[str, int]:
