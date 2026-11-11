@@ -71,7 +71,7 @@ jobs:
         shell: bash
         env:
           SCRAPE_TRANSFERMARKT: "true"
-          SOFA_DELAY: "1.5,3"   # polite throttling, the run is not time-critical
+          SOFA_DELAY: "0.7,1.6"   # polite throttling; the Cloudflare pass is cookie-based so the JSON API tolerates ~1 req/s
           DO_SCRAPE: ${{ github.event_name == 'workflow_dispatch' && inputs.do_scrape == false && 'false' || 'true' }}
         run: |
           source .venv/bin/activate

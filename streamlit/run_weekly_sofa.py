@@ -20,6 +20,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -34,6 +35,26 @@ BIG5_SLUGS = ["premier-league", "laliga", "bundesliga", "serie-a", "ligue-1"]
 # the single source of truth in scraping_sofascore.
 from src.scraping_sofascore import EXTRA_SCORING_LEAGUES  # noqa: E402
 EXTRA_LEAGUES = ",".join(f"{slug}:{tid}" for slug, (tid, _c) in EXTRA_SCORING_LEAGUES.items())
+EXTRA_SLUGS = list(EXTRA_SCORING_LEAGUES.keys())
+
+# Wall-clock budget for the whole scraping phase. The essential Big-5 stats
+# always run; every optional step below is skipped once the budget is spent, so
+# scoring + exports + the website publish ALWAYS finish inside the job timeout.
+# Before this guard existed, a slow optional step (extra-league shotmaps, ~4 h)
+# could eat the entire 5 h cap and the run was cancelled before it ever
+# committed — throwing away even the ~30 min of good stats work.
+_START = time.monotonic()
+SCRAPE_BUDGET_MIN = int(os.getenv("SOFA_SCRAPE_BUDGET_MIN", "180"))
+
+
+def over_budget(label: str) -> bool:
+    used = (time.monotonic() - _START) / 60
+    if used >= SCRAPE_BUDGET_MIN:
+        print(f"[BUDGET] {used:.0f} min used (cap {SCRAPE_BUDGET_MIN}) — skipping "
+              f"{label} so scoring + publish still finish; last run's files are kept",
+              flush=True)
+        return True
+    return False
 
 
 def _flag(name: str, default: bool = True) -> bool:
@@ -101,16 +122,21 @@ def run_optional(module: str, *args: str, **extra_env) -> None:
         print(f"[WARN] optional step {module} failed, continuing: {exc}", flush=True)
 
 
-def delete_current_season_files(season: str) -> None:
-    patterns = [
-        RAW / "Shotmaps" / f"shotmaps-*-{season}.csv",
-        RAW / "Heatmaps" / f"heatmaps-*-{season}.csv.gz",
-    ]
-    import glob
-    for pattern in patterns:
-        for path in glob.glob(str(pattern)):
-            os.remove(path)
-            print(f"refresh: removed {Path(path).name}")
+def delete_season_files(season: str, slugs) -> None:
+    """Delete current-season chart files for the given leagues so the scraper
+    re-fetches them (it skips any league-season whose file already exists).
+
+    Scoped per league on purpose: leagues we are NOT about to rescrape (because
+    the budget ran out) keep last run's files, so their charts stay stale rather
+    than disappearing."""
+    for slug in slugs:
+        for path in (
+            RAW / "Shotmaps" / f"shotmaps-{slug}-{season}.csv",
+            RAW / "Heatmaps" / f"heatmaps-{slug}-{season}.csv.gz",
+        ):
+            if path.exists():
+                path.unlink()
+                print(f"refresh: removed {path.name}")
 
 
 def main() -> None:
@@ -118,38 +144,52 @@ def main() -> None:
     print(f"Weekly Sofascore run for {season}")
 
     if _flag("DO_SCRAPE"):
-        # 1. Season stats for the Big-5 (essential for the scores)
+        # 1. Season stats for the Big-5 (ESSENTIAL for the scores). ~30 min.
+        #    Always runs — never gated by the budget.
         run_module("src.scraping_sofascore",
                    FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season)
 
-        # Everything below is non-essential: a failure must not stop the run
-        # from producing fresh scores and publishing the site.
+        # Everything below is non-essential and wall-clock-budgeted: a failure
+        # must not stop the run from producing fresh scores and publishing the
+        # site, and neither must a slow step. Ordered most to least important so
+        # the budget, if it runs out, drops only the least essential work. The
+        # slow extra-league shotmaps (~4 h) deliberately run LAST.
 
-        # 2. Extra leagues for the Tableau package (2. Bundesliga)
-        run_optional("src.scraping_sofascore",
-                     FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season,
-                     SOFA_LEAGUES=EXTRA_LEAGUES)
+        # 2. Extra-league season stats (2. Bundesliga + Tier-2 scores)
+        if not over_budget("extra-league stats"):
+            run_optional("src.scraping_sofascore",
+                         FORCE_RESCRAPE="true", SOFA_FIRST_SEASON=season,
+                         SOFA_LEAGUES=EXTRA_LEAGUES)
 
-        # 3. Shotmaps + heatmaps for the current season (chart data)
-        delete_current_season_files(season)
-        run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season)
-        run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season,
-                     SOFA_LEAGUES=EXTRA_LEAGUES)
-        run_optional("src.scraping_sofascore_heatmaps", SOFA_FIRST_SEASON=season)
+        # 3. Big-5 shotmaps + heatmaps (chart data, ~45 min)
+        if not over_budget("Big-5 shotmaps/heatmaps"):
+            delete_season_files(season, BIG5_SLUGS)
+            run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season)
+            run_optional("src.scraping_sofascore_heatmaps", SOFA_FIRST_SEASON=season)
 
         # 4. Profile delta (fills ages/roles for new players). Capped per run
         # so a large historical backlog never blocks the pipeline for hours.
-        run_optional("src.scraping_sofascore_profiles",
-                     PROFILE_MAX=os.getenv("PROFILE_MAX", "400"))
+        if not over_budget("player profiles"):
+            run_optional("src.scraping_sofascore_profiles",
+                         PROFILE_MAX=os.getenv("PROFILE_MAX", "400"))
 
         # 5. Transfermarkt market values
-        if _flag("SCRAPE_TRANSFERMARKT"):
+        if _flag("SCRAPE_TRANSFERMARKT") and not over_budget("Transfermarkt"):
             try:
                 sys.path.insert(0, str(STREAMLIT_DIR))
                 from run_multi_season_pipeline import run_transfermarkt_block
                 run_transfermarkt_block()
             except Exception as exc:  # noqa: BLE001
                 print(f"[WARN] Transfermarkt step failed, continuing: {exc}", flush=True)
+
+        # 6. Extra-league shotmaps (Tableau package; SLOW, ~4 h). Last on
+        # purpose: when the budget runs out here, last run's files stay in place
+        # (the scraper skips existing files) so those charts are stale, never
+        # empty — and scoring + publish below still run.
+        if not over_budget("extra-league shotmaps"):
+            delete_season_files(season, EXTRA_SLUGS)
+            run_optional("src.scraping_sofascore_shotmaps", SOFA_FIRST_SEASON=season,
+                         SOFA_LEAGUES=EXTRA_LEAGUES)
 
     if _flag("DO_PROCESS"):
         # Score the current season only once it has enough data; early in a
